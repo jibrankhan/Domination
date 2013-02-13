@@ -18,6 +18,7 @@ import net.yura.domination.engine.ai.planrecognition.events.EventRegisterAgent;
 import net.yura.domination.engine.ai.planrecognition.events.EventSuccessfulOccupation;
 import net.yura.domination.engine.ai.planrecognition.events.EventCountryPlacement;
 import net.yura.domination.engine.ai.planrecognition.events.EventArmyMoved;
+import net.yura.domination.engine.ai.planrecognition.events.EventFailedOccupation;
 import net.yura.domination.engine.ai.planrecognition.events.EventRemoveAgent;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
@@ -214,6 +215,11 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 }
             }*/
             //System.out.println(" ");
+        }
+        
+        if(event instanceof EventFailedOccupation){
+            
+            
         }
         
         if(event instanceof EventCountryReinforced){
