@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!-- The Galician langpack for the Risk installer -->
+<langpack>
+	<str id="package.base" txt="Arquivos básicos do Risk" />
+	<str id="package.base.description" txt="Contén tódolos arquivos e mapas requiridos para inicia-lo xogo" />
+
+	<str id="package.manual" txt="Manual" />
+	<str id="package.manual.description" txt="Manual e documentación do programa" />
+
+	<str id="package.source" txt="Fontes de Código" />
+	<str id="package.source.description" txt="Os arquivos de código java" />
+</langpack>
+

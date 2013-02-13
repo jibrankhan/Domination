@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="net.yura.domination"
+      android:versionCode="30"
+      android:versionName="30"
+      android:installLocation="preferExternal">
+      
+    <!-- android:targetSdkVersion 11 to hide the legacy menu button on tablets -->
+    <!-- android:targetSdkVersion 14 to hide the legacy menu button on phones  -->
+    <!-- this also has a side effect of hiding the legacy resize button -->
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14" />
+
+	<!-- App receives GCM messages. -->
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<!-- GCM connects to Google Services. -->
+	<uses-permission android:name="android.permission.INTERNET" /> 
+	<!-- GCM requires a Google account. -->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<!-- Keeps the processor from sleeping when a message is received. -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+
+	<permission android:name="net.yura.domination.permission.C2D_MESSAGE"/>
+	<uses-permission android:name="net.yura.domination.permission.C2D_MESSAGE"/>
+
+	<!-- online it says i should add this if i want it to vibrate with notifications, but in my own test i did not need it, strange -->
+	<uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> this is for AdMob -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    
+    <!-- this means i dont need different assets for different resolutions -->
+    <!-- supports-screens android:anyDensity="false"/ -->
+    <!-- THIS DOES NOT WORK IF hardwareAccelerated=true!!!! -->
+
+    <application android:name="net.yura.android.AndroidMeApp"
+		         android:icon="@drawable/icon"
+		         android:label="@string/app_name"
+		         android:theme="@style/android:Theme.Light.NoTitleBar"
+		         android:hardwareAccelerated="true"
+		         android:debuggable="true"
+        >
+        <!-- android:backupAgent="TheBackupAgent" cant get this to work :( -->
+
+		<!-- <service android:name="net.yura.android.AndroidMeService" /> -->
+
+		<receiver android:name="net.yura.domination.android.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+		  <intent-filter>
+		    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+		    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+		    <category android:name="net.yura.domination" />
+		  </intent-filter>
+		</receiver>
+		<service android:name="net.yura.domination.android.GCMIntentService" />
+		<activity android:name="net.yura.domination.android.GCMActivity" android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@android:style/Theme.NoDisplay"/>
+
+        <activity android:name="net.yura.android.AndroidMeActivity"
+            	  android:launchMode="singleTask"
+                  android:label="@string/app_name"
+                  android:windowSoftInputMode="adjustResize|stateHidden"
+                  android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="net.yura.android.OptionPaneActivity" android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@style/DialogTheme"/>
+        <activity android:name="net.yura.android.WebViewActivity" android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name="net.yura.android.LoadingDialog" android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:name="net.yura.android.ToastActivity" android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:name="net.yura.domination.android.StatsActivity" android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@style/Theme" />
+        
+        <!-- <activity android:name="com.google.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/> -->
+        
+        <meta-data android:name="com.google.android.backup.api_key" android:value="AEdPqrEAAAAIxe-Rf-f53FlB4U2LIu_xF0lTNJfcWOALXBn1VA" />
+    </application>
+
+</manifest>

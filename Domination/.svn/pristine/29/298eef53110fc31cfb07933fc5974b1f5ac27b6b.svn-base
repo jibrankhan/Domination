@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<synth>
+
+    <style id="tabbar">
+	   <state>
+	      <imagePainter path="/ms_tabbar.9.png"/>
+              <color type="BACKGROUND" value="#00FFFFFF"/>
+              <!-- as nimbus background default is a color, we need to clear it -->
+	   </state>
+    </style>
+    <bind style="tabbar" key="TabBar"/>
+
+    <style id="badge">
+	   <state>
+	      <imagePainter path="/ms_ic_notification_overlay.9.png"/>
+	   </state>
+    </style>
+    <bind style="badge" key="Badge"/>
+
+
+    <style id="segmentedControlLeft">
+	<opaque value="false"/>
+	<state>
+	    <imagePainter path="/ms_segmented_control_left.9.png"/>
+	</state>
+	<state value="SELECTED">
+	    <imagePainter path="/ms_segmented_control_selected_left.9.png"/>
+            <color type="FOREGROUND" value="#FFFFFF"/>
+	</state>
+    </style>
+    <bind style="segmentedControlLeft" key="SegmentedControlLeft"/>
+
+    <style id="segmentedControlMiddle">
+	<opaque value="false"/>
+	<state>
+	    <imagePainter path="/ms_segmented_control_middle.9.png"/>
+	</state>
+	<state value="SELECTED">
+	    <imagePainter path="/ms_segmented_control_selected_middle.9.png"/>
+            <color type="FOREGROUND" value="#FFFFFF"/>
+	</state>
+    </style>
+    <bind style="segmentedControlMiddle" key="SegmentedControlMiddle"/>
+
+    <style id="segmentedControlRight">
+	<opaque value="false"/>
+	<state>
+	    <imagePainter path="/ms_segmented_control_right.9.png"/>
+	</state>
+	<state value="SELECTED">
+	    <imagePainter path="/ms_segmented_control_selected_right.9.png"/>
+            <color type="FOREGROUND" value="#FFFFFF"/>
+	</state>
+    </style>
+    <bind style="segmentedControlRight" key="SegmentedControlRight"/>
+
+
+</synth>

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="rules">
+  <title>Game rules</title>
+
+  <section>
+    <title>Object of the game</title>
+
+    <para>Your duty is to use your army to conquer countries, eventually whole
+    continents and fulfil the mission. The mission depends on the game type
+    you play, of which there are three:</para>
+
+    <para>Secret Mission - this is the classic and most-played game type. You
+    (and your opponents of course as well) get a mission you have to comply.
+    Missions range from conquering two or three continents to the elimination
+    of a single opponent.</para>
+
+    <para>World Domination - as the name states, you have to defeat all your
+    enemies and conquer the whole world.</para>
+
+    <para>Capital - The same rules as world domination; but you don't have to
+    conquer the whole world: Only the capital countries have to get under your
+    control.</para>
+  </section>
+
+  <section>
+    <title>Basic rules</title>
+
+    <para>On your turn, try to capture territories by defeating your
+    opponents' armies. But be careful: Winning battles will depend on careful
+    planning, quick decisions and bold moves. You?ll have to place your forces
+    wisely, attack at just the right time and fortify your defenses against
+    all enemies.</para>
+
+    <para>Each of your turns consists of three steps, in this order:</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Getting and placing new armies</para>
+      </listitem>
+
+      <listitem>
+        <para>Attacking, if you choose to, by rolling the dice</para>
+      </listitem>
+
+      <listitem>
+        <para>Fortifying your position</para>
+      </listitem>
+    </orderedlist>
+
+    <section>
+      <title>Getting and placing new armies</title>
+
+      <para>At the beginning of each turn, calculate how many new armies
+      you'll add to your territories based on:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>The number of territories you occupy</para>
+        </listitem>
+
+        <listitem>
+          <para>The value of the continents you control</para>
+        </listitem>
+
+        <listitem>
+          <para>The value of the matched sets of RISK cards you trade
+          in</para>
+        </listitem>
+
+        <listitem>
+          <para>The specific territory pictured on a traded-in card</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The above 4 steps is automatically calculated by the game and it
+      will display how many armies you can place for that turn.</para>
+
+      <section>
+        <title>Territories</title>
+
+        <para>At the beginning of every turn (including your first), count the
+        number of territories you currently occupy, then divide the total by
+        three (ignore any fraction). The answer is the number of armies you
+        receive. Place the new armies on any territory you already
+        occupy.</para>
+
+        <example>
+          <title>Your territory and your new army</title>
+
+          <para>11 territories = 3 armies</para>
+
+          <para>14 territories = 4 armies</para>
+
+          <para>17 territories = 5 armies</para>
+        </example>
+
+        <para>You will always receive at least 3 armies on a turn, even if you
+        occupy fewer than 9 territories.</para>
+      </section>
+
+      <section>
+        <title>Continents</title>
+
+        <para>In addition, at the beginning of your turn you will receive
+        armies for each continent you control. (To control a continent, you
+        must occupy all its territories at the start of your turn.) </para>
+
+        <para>To find the exact number of armies you'll receive for each
+        continent, look at the chart in the lower left-hand corner of the game
+        board.</para>
+
+        <para><table>
+            <title>Continent values of the classic board</title>
+
+            <tgroup cols="2">
+              <tbody>
+                <row>
+                  <entry>North America</entry>
+
+                  <entry>5</entry>
+                </row>
+
+                <row>
+                  <entry>South America</entry>
+
+                  <entry>2</entry>
+                </row>
+
+                <row>
+                  <entry>Europe</entry>
+
+                  <entry>5</entry>
+                </row>
+
+                <row>
+                  <entry>Africa</entry>
+
+                  <entry>3</entry>
+                </row>
+
+                <row>
+                  <entry>Asia</entry>
+
+                  <entry>7</entry>
+                </row>
+
+                <row>
+                  <entry>Australia</entry>
+
+                  <entry>2</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>Risk cards</title>
+
+        <section>
+          <title>Earning Cards</title>
+
+          <para>At the end of any turn in which you have captured at least one
+          territory, you will earn one (and only one) Risk card. You are
+          trying to collect sets of 3 cards in any of the following
+          combinations:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>3 cards of same design (3 Infantry or 3 Cavalry or 3
+              Artillery)</para>
+            </listitem>
+
+            <listitem>
+              <para>1 each of 3 designs (1 Infantry + 1 Cavalry + 1
+              Artillery)</para>
+            </listitem>
+
+            <listitem>
+              <para>Any two + 1 "wildcard" (card with all three symbols on
+              it)</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>If you have collected a set of 3 Risk cards, you may turn them
+          in at the beginning of your next turn, or you may wait. But if you
+          have 5 or 6 cards at the beginning of your turn, you must trade in
+          at least one set, and may trade in a second set if you have
+          one.</para>
+        </section>
+
+        <section>
+          <title>Trading In Cards for Armies</title>
+
+          <para>At the beginning of subsequent turns, you may trade in matched
+          sets of cards and take additional armies based on the total number
+          of sets anyone has traded in so far. The game will show you the
+          value of the next set to be traded in.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>The first set traded in - 4 armies</para>
+            </listitem>
+
+            <listitem>
+              <para>The second set traded in - 6 armies</para>
+            </listitem>
+
+            <listitem>
+              <para>The third set traded in - 8 armies</para>
+            </listitem>
+
+            <listitem>
+              <para>The fourth set traded in - 10 armies</para>
+            </listitem>
+
+            <listitem>
+              <para>The fifth set traded in - 12 armies</para>
+            </listitem>
+
+            <listitem>
+              <para>The sixth set traded in - 15 armies</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>After the sixth set has been traded in, each additional set is
+          worth 5 more armies. Example: If you trade in the seventh set, you
+          get 20 armies; if you trade in the eighth, you get 25 armies, and so
+          on. "First" and "second" set, etc., refer to sets traded in by
+          anyone during the game. Thus, if you trade in the third set in the
+          game, you receive 8 armies, even if it's the first set you have
+          traded in.</para>
+        </section>
+
+        <section>
+          <title>Occupied territories</title>
+
+          <para>If any of the 3 cards you trade in shows the picture of a
+          territory you occupy, you receive 2 extra armies. You must place
+          both those armies onto that particular territory.</para>
+
+          <note>
+            <para>On a single turn, you may receive no more than 2 extra
+            armies above and beyond those you receive for the matched sets of
+            cards you trade in.</para>
+          </note>
+
+          <para>Hint: No matter how many armies you receive at the start of
+          your turn, deploy them carefully-either to prepare for an attack or
+          to defend against one. It is good military strategy to move your
+          armies to the front, heavily fortifying territories that border
+          enemy territories.</para>
+        </section>
+      </section>
+    </section>
+
+    <section>
+      <title>Attacking</title>
+
+      <para>After placing your armies at the beginning of your turn, decide if
+      you wish to attack at this time. The object of an attack is to capture a
+      territory by defeating all the opposing armies already on it. The battle
+      is fought by a roll of the dice. Study the board for a moment. Do you
+      want to attack?</para>
+
+      <para>If you choose not to attack, pass the dice to the player on your
+      left. You may still fortify your position, if you wish.</para>
+
+      <para>If you choose to attack, you must follow these rules:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>You may only attack a territory that's adjacent (touching) to
+          one of your own, or connected to it by a dashed line.</para>
+
+          <example>
+            <title>Touching territories</title>
+
+            <para>Greenland may attack the Northwest Territory, Ontario,
+            Quebec and Iceland. North Africa may attack Egypt, Western Europe
+            and Brazil. At the western and eastern edges of the board, Alaska
+            is considered adjacent to, and may attack, Kamchatka.</para>
+          </example>
+        </listitem>
+
+        <listitem>
+          <para>You must always have at least two armies in the territory
+          you're attacking from.</para>
+        </listitem>
+
+        <listitem>
+          <para>You may continue attacking one territory until you have
+          eliminated all armies on it, or you may shift your attack from one
+          territory to another, attacking each as often as you like and
+          attacking as many territories as you like during one turn.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>To attack</title>
+
+        <para>First announce both the territory you're attacking and the one
+        you're attacking from. Then roll the dice against the opponent who
+        occupies the opposing territory.</para>
+
+        <para>Before rolling, both you and your opponent must announce the
+        number of dice you intend to roll, and you both must roll at the same
+        time.</para>
+
+        <para>You, the attacker, will roll 1,2 or 3 red dice: You must have at
+        least one more army in your territory than the number of dice you
+        roll. Hint: The more dice you roll, the greater your odds of winning.
+        Yet the more dice you roll, the more armies you may lose, or be
+        required to move into a captured territory.</para>
+
+        <para>The defender will roll either 1 or 2 white dice: To roll 2 dice,
+        he or she must have at least 2 armies on the territory under attack.
+        Hint: The more dice the defender rolls, the greater his or her odds of
+        winning - but the more armies he or she may lose.</para>
+      </section>
+
+      <section>
+        <title>To Decide a Battle</title>
+
+        <para> Compare the highest die each of you rolled. If yours (the
+        attacker's) is higher, the defender loses one army from the territory
+        under attack. But if the defender's die is higher than yours, you lose
+        one army from the territory you attacked from; put it back in your
+        clear plastic box. If each of you rolled more than one die, now
+        compare the two next-highest dice and repeat the process.</para>
+
+        <note>
+          <para>In case of a tie, the defender always wins. </para>
+
+          <para>The attacker can never lose more than 2 armies on a single
+          roll.</para>
+        </note>
+      </section>
+
+      <section>
+        <title>Capturing territories</title>
+
+        <para>As soon as you defeat the last opposing army on a territory, you
+        capture that territory and must occupy it immediately. To do so, move
+        in at least as many armies as the number of dice you rolled in your
+        last battle.</para>
+
+        <para>Remember: In most cases, moving as many armies as you can to the
+        front is advantageous, because armies left behind can't help you when
+        you are attacking.</para>
+
+        <para>Also remember you must always leave at least one army behind on
+        the territory you attacked from.</para>
+
+        <para>During the game, every territory must always be occupied by at
+        least one army.</para>
+      </section>
+
+      <section>
+        <title>Ending your attack</title>
+
+        <para>You may end your attack(s) at any time. If you have captured at
+        least one territory, you will be awarded 1 Risk card. Your last step
+        is to fortify your position, if you wish.</para>
+      </section>
+
+      <section>
+        <title>Eliminating an opponent</title>
+
+        <para>If during your turn you eliminate an opponent by defeating his
+        or her last army on the game board, you win any RISK cards that player
+        has collected.</para>
+
+        <para>If winning them gives you 6 or more cards, you must immediately
+        trade in enough sets to reduce your hand to 4 or fewer cards, but once
+        your hand is reduced to 4,3, or 2 cards, you must stop trading.</para>
+
+        <para>But if winning them gives you fewer than 6, you must wait until
+        the beginning of your next turn to trade in a set.</para>
+
+        <note>
+          <para>When you draw a card from the deck at the end of your turn
+          (for having won a battle), if this brings your total to 6, you must
+          wait until your next turn to trade in.</para>
+        </note>
+      </section>
+    </section>
+
+    <section>
+      <title>Fortifying your position</title>
+
+      <para>No matter what you've done on your turn, you may, if you wish, end
+      your turn by fortifying your position. You are not required to win a
+      battle or even to try an attack to do so. Some players refer to this as
+      the "free move".</para>
+
+      <para>To fortify your position, move as many armies as you'd like from
+      one (and only one) of your territories into one (and only one) of your
+      adjacent territories. Remember to move troops towards borders where they
+      can help in an attack!</para>
+
+      <para>In moving your armies from one territory to another, you must
+      leave at least one army behind.</para>
+    </section>
+
+    <section>
+      <title>Winning</title>
+
+      <para>The winner is the first player to fulfil his mission, dependent on
+      the type of game you're playing.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Secret Mission</title>
+
+    <section>
+      <title>Object of the game</title>
+
+      <para>To be the first player to complete the Mission described on your
+      own Mission card. </para>
+
+      <para>This game is suitable for from 3 to 6 players.</para>
+    </section>
+
+    <section>
+      <title>Equipment</title>
+
+      <para>Use all the equipment of the World Domination game, plus the 12
+      Mission cards. These cards give each player a different mission; when
+      that mission has been completed, that player automatically wins the
+      game.</para>
+    </section>
+
+    <section>
+      <title>Initial army placement</title>
+
+      <para>Select a color and, depending on the number of players, count out
+      the "armies" you'll need to start the game.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>If 2 are playing, see instructions on Two Player Risk</para>
+        </listitem>
+
+        <listitem>
+          <para>If 3 are playing, each player counts out 35 Infantry.</para>
+        </listitem>
+
+        <listitem>
+          <para>If 4 are playing, each player counts out 30 Infantry.</para>
+        </listitem>
+
+        <listitem>
+          <para>If 5 are playing, each player counts out 25 Infantry.</para>
+        </listitem>
+
+        <listitem>
+          <para>If 6 are playing, each player counts out 20 Infantry.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Setup</title>
+
+      <para>Before play begins, elect one player to be the General. If fewer
+      than 6 are playing, the General removes the Mission cards that refer to
+      the unused colors.</para>
+
+      <para>The General shuffles the Mission cards and, starting to the left,
+      deals one card face down to each player. The remaining Mission cards are
+      put back in the box; no one, including the General, may look at
+      them.</para>
+
+      <para>The General removes the 2 Wild Cards from the deck of RISK cards,
+      shuffles, and deals out all the cards, starting with the player to the
+      left. (In a 4- or 5-player game, 2 players will each receive one extra
+      card.) These cards determine which territories each of you will occupy
+      at the beginning of the game.</para>
+
+      <para>Each player places one army on each of his or her territories.
+      When you've done this, go around the table in turn, placing another army
+      on each of your territories. There is no limit to the number of armies
+      that can occupy a single territory. Continue until all troops have been
+      deployed across the map.</para>
+
+      <para>The General now collects the RISK cards, replaces the 2 Wild
+      Cards, shuffles the deck, and puts it to the side, face down.</para>
+
+      <para>Game play continues as in the standard rules.</para>
+    </section>
+
+    <section>
+      <title>Winning</title>
+
+      <para>The player who completes his or her mission first - and reveals
+      the Mission card to prove it - wins.</para>
+
+      <para>Important note: In Secret Mission RISK, it is possible that you
+      will accomplish your mission with the aid (usually unintentional) of
+      another player. For example, if your mission is to destroy all the
+      yellow troops and another player actually removes the final yellow
+      armies from the board, that player has helped you complete your Secret
+      Mission.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>World Domination</title>
+
+    <section>
+      <title>Object of the game</title>
+
+      <para>To conquer the world by occupying every territory on the board,
+      thus eliminating all your opponents.</para>
+    </section>
+
+    <section>
+      <title>Initial Army Placement</title>
+
+      <itemizedlist>
+        <listitem>
+          <para>If 2 are playing, see instructions on Two Player Risk</para>
+        </listitem>
+
+        <listitem>
+          <para>If 3 are playing, each player counts out 35 Infantry.</para>
+        </listitem>
+
+        <listitem>
+          <para>If 4 are playing, each player counts out 30 Infantry.</para>
+        </listitem>
+
+        <listitem>
+          <para>If 5 are playing, each player counts out 25 Infantry.</para>
+        </listitem>
+
+        <listitem>
+          <para>If 6 are playing, each player counts out 20 Infantry.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Setup</title>
+
+      <para>Roll one die. Whoever rolls the highest number takes one Infantry
+      piece from his or her pile and places it onto any territory on the
+      board, thus claiming that territory.</para>
+
+      <para>Starting to the left of the first player, everyone in turn places
+      one army onto any unoccupied territory. Continue until all 42
+      territories have been claimed.</para>
+
+      <para>After all 42 territories are claimed, each player in turn places
+      one additional army onto any territory he or she already occupies.
+      Continue in this way until everyone has run out of armies. There is no
+      limit to the number of armies you may place onto a single
+      territory.</para>
+    </section>
+
+    <section>
+      <title>Completing the setup</title>
+
+      <para>Shuffle the pack of RISK cards (remove the Mission cards) and
+      place it, face down, by the side of the board. This pack forms the draw
+      pile. This is done automatically by the game and you will be handed
+      cards when necessary.</para>
+
+      <para>Whoever placed the first army takes the first turn.</para>
+    </section>
+
+    <section>
+      <title>Winning</title>
+
+      <para>The winner is the first player to eliminate every opponent by
+      capturing all territories on the map.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Capital</title>
+
+    <para>Read the complete World Domination rules first.</para>
+
+    <section>
+      <title>Object of the game</title>
+
+      <para>To capture all opposing Headquarters-while still controlling your
+      own territory.</para>
+
+      <para>If you wish, you may shorten the game even further:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>4 players: Capture any 2 opposing Headquarters while
+          controlling your own.</para>
+        </listitem>
+
+        <listitem>
+          <para>5 or 6 players: Capture any 3 opposing Headquarters while
+          controlling your own.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Equipment</title>
+
+      <para>Same as in World Domination Risk. Remember to remove the Secret
+      Mission cards.</para>
+    </section>
+
+    <section>
+      <title>Setup</title>
+
+      <para>After deploying your armies at the beginning of the game, select
+      one of the territories you?ve claimed and make it your Headquarters.
+      Then, without revealing the territory you?ve chosen, find its matching
+      RISK card and place it face down in front of you.</para>
+
+      <para>After everyone in turn has selected a Headquarters, all players
+      turn their cards face up, thus revealing the location of their
+      Headquarters.</para>
+    </section>
+
+    <section>
+      <title>Playing</title>
+
+      <para>All World Domination Risk Rules apply, with these additions: If
+      you capture an opposing Headquarters, place the Headquarters card you?ve
+      won face up in front of you to prove you've captured it.</para>
+
+      <para>If at any point your Headquarters is captured by an opponent, you
+      are not eliminated from the game. Simply give your card to that opponent
+      and continue playing.</para>
+
+      <para>You may not use a Headquarters card as part of a matched set of
+      RISK cards. Be sure to keep all Headquarters cards out of the way during
+      the game.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Hints and Tips</title>
+
+    <para>In all the RISK games, keep these 3 strategy hints in mind as you
+    play, add armies, and fortify:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Conquer whole continents: You will earn more armies that way.
+        (This doesn't apply in Secret Mission Risk.)</para>
+      </listitem>
+
+      <listitem>
+        <para>Watch your enemies: If they are building up forces on adjacent
+        territories or continents, they may be planning an attack.
+        Beware!</para>
+      </listitem>
+
+      <listitem>
+        <para>Fortify borders adjacent to enemy territories for better defense
+        if a neighbor decides to attack you.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</chapter>

@@ -1,0 +1,40 @@
+ver - show what version the risk game is - please quote this when sending bug reports
+manual - open the "On-line help system"
+newgame - creates a new game (replay will replay a game from the start)
+loadgame filename - load a saved game from a file
+closegame - close the current running game
+savegame filename - save the current running game to a file
+(for network risk use: "startserver", "killserver", "join <server name>" and "closegame")
+
+choosemap filename - load a new mapfile, choosecards filename - load a new card file
+newplayer type (skill) color name - creates a new player with a name and a color
+(type can be: human ai) (when type is "ai", skill can be easy or hard)
+(color can be: black blue cyan darkgray green lightgray magenta orange pink red white yellow)
+delplayer name - delete a player with a name
+startgame type cards (autoplaceall) - once all the players have been set up, start the game
+(type can be: domination capital mission) (cards can be: increasing fixed italianlike)
+info - to check everything is set up, autosetup - auto setup some players
+
+undo - undo your go
+autoendgo on/off - set the autoendgo to on or off (when on it may stop you from doing an undo)
+autodefend on/off - set the autodefend to on or off (will roll your defending dice for you)
+showarmies - shows you what armies are positioned were
+showmission - shows you what mission you have
+showcards - show what cards the current player has
+(1=trading cards 2=placing reinforcements 3=attacking 4=battle 5=invading 6=tactical)
+    capital country - select a country to be your capital (only used in capital risk)
+1  trade card card card - trade in 3 cards of your choice
+    (card can be either wildcard or the name of the country on the card)
+    endtrade - end the card trading phase
+2  placearmies country number - place a number of armies in a selected country
+    autoplace - automaticaly place army in any empty country
+3  attack country country - attack a country, first put the attacker then the defender
+    endattack - end the attacking phase
+4  roll number - roll the number of dice you want to attack or defend
+    retreat - do not attack the country
+5  move number - move a number of armies to a defeated country
+    (number can be the number of troops or all) - all to move all your troops
+6  movearmies country country number - move a number of armies from one country the second country
+    nomove - do not make any tactical moves
+7  endgo - end your go (not used when autoendgo is set to "on")
+8  continue - continue playing domination risk even if you have won misson or capital risk

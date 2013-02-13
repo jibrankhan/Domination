@@ -1,0 +1,65 @@
+# Risk map translation: Normal board strings
+# Dutch language
+# http://jrisk.sourceforge.net
+#
+# Ad Schoof
+# Properties version 0.01
+
+#continents
+North-America =Noord-Amerika
+South-America =Zuid-Amerika
+Europe        =Europa
+Africa        =Afrika
+Asia          =Azië
+Australia     =Australië
+
+#countries
+# North America
+Alaska               =Alaska
+North-West-Territory =Noord-Westelijk Territorium
+Alberta              =Alberta
+Western-United-States=Westelijke Verenigde Staten
+Central-America      =Midden-Amerika
+Greenland            =Groenland
+Ontario              =Ontario
+Quebec               =Québec
+Eastern-United-States=Oostelijke Verenigde Staten
+# South America
+Venezuela            =Venezuela
+Peru                 =Peru
+Brazil               =Brazilië
+Argentina            =Argentinië
+# Europe
+Iceland              =IJsland
+Scandinavia          =Skandinavië
+Ukraine              =Oekraïne
+Great-Britain        =Groot-Britannië
+Northern-Europe      =Noord-Europa
+Western-Europe       =West-Europa
+Southern-Europe      =Oost-Europa
+#Africa
+North-Africa         =Noord-Afrika
+Egypt                =Egypte
+Congo                =Congo
+East-Africa          =Oost-Afrika
+South-Africa         =Zuid-Afrika
+Madagascar           =Madagaskar
+# Asia
+Siberia              =Siberië
+Ural                 =Oeral
+China                =China
+Afghanistan          =Afghanistan
+Middle-East          =Midden-Oosten
+India                =India
+Siam                 =Perzië
+Yakutsk              =Jakoetsk
+Irkutsk              =Tchita
+Mongolia             =Mongolië
+Japan                =Japan
+Kamchatka            =Kamchatka
+# Australia
+Indonesia            =Indonesie
+New-Guinea           =Nieuw-Ginea
+Western-Australia    =West-Australië
+Eastern-Australia    =Oost-Australië
+

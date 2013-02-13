@@ -1,0 +1,19 @@
+<html>
+
+<head>
+<title>Game manual</title>
+</head>
+
+<frameset rows="64,*">
+  <frame name="top" scrolling="no" noresize target="main" src="top.htm">
+  <frame name="bottom" src="game.htm" scrolling="auto">
+  <noframes>
+  <body>
+
+  <p>This page uses frames, but your browser doesn't support them.</p>
+
+  </body>
+  </noframes>
+</frameset>
+
+</html>

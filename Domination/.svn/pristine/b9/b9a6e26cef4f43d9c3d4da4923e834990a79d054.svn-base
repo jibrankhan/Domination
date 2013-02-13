@@ -1,0 +1,33 @@
+default.port=4444
+default.host=localhost
+default.map=@game.defaultmap@
+default.cards=@game.defaultcards@
+
+default.player1.type=human
+default.player1.color=green
+#default.player1.name=username
+
+default.player2.type=ai easy
+default.player2.color=blue
+default.player2.name=bob
+
+default.player3.type=ai easy
+default.player3.color=red
+default.player3.name=fred
+
+default.player4.type=ai easy
+default.player4.color=cyan
+default.player4.name=ted
+
+default.player5.type=ai hard
+default.player5.color=magenta
+default.player5.name=yura
+
+default.player6.type=ai hard
+default.player6.color=yellow
+default.player6.name=lala
+
+default.autoplaceall=false
+default.recyclecards=true
+
+ai.wait=500

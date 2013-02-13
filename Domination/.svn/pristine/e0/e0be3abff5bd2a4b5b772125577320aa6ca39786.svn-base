@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+
+	<TITLE>RISK</TITLE>
+
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm }
+		TD P { margin-bottom: 0.1cm }
+		A:link { color: #0000ff }
+		A:visited { color: #800080 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff" BACKGROUND="back.jpg" DIR="LTR">
+
+			<P ALIGN=CENTER STYLE="border: none; padding: 0cm"><B>Main Game
+			screen</B></P>
+			<P ALIGN=CENTER STYLE="border: none; padding: 0cm; font-weight: medium">
+			The main game screen is where all the fun takes place. The map
+			screen can be viewed in different ways and the views can be
+			selected by clicking the selected tabs.</P>
+			<P ALIGN=CENTER STYLE="border: none; padding: 0cm"><IMG SRC="maingame.gif" NAME="Graphic2" ALIGN=BOTTOM WIDTH=722 HEIGHT=1028 BORDER=0></P>
+
+<P align="center"><B>The In-game
+			sub menu</B></P>
+
+<P align="center"><BR><IMG SRC="submenu.gif" NAME="Graphic2" ALIGN=BOTTOM WIDTH=586 HEIGHT=327 BORDER=0><BR>
+</P>
+</BODY>
+</HTML>

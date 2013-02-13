@@ -1,0 +1,154 @@
+; map: middleearth.map
+; map made with the map maker
+; yura.net Risk 1.0.9.2
+
+name LOTR Map
+
+[files]
+pic lotr_pic.jpg
+map lotr_map.gif
+crd lotr.cards
+prv lotr.jpg
+
+[continents]
+Gondor 7 #663300
+Mirkwood 4 #009900
+Rohan 4 #009999
+Rhovanion 5 #ff9900
+Arnor 7 #ff3333
+Eriador 3 #cccc00
+Rhun 2 #330033
+Haradwaith 2 #ffff33
+Mordor 2 #333300
+
+[countries]
+1 Forodwaith 5 13 150
+2 Eastern_Angmar 5 56 154
+3 Borderlands 5 78 251
+4 Angmar 5 79 210
+5 North_Downs 5 117 251
+6 Fornost 5 150 258
+7 Buckland 5 188 275
+8 Old_Forest 5 187 249
+9 South_Downs 5 222 249
+10 Weather_Hills 5 161 225
+11 Rhudaur 5 148 180
+12 Carrock 2 115 140
+13 North_Mirkwood 2 112 105
+14 Eastern_Mirkwood 2 194 90
+15 Anduin_Valley 2 227 116
+16 South_Mirkwood 2 260 90
+17 Eregion 3 220 204
+18 Minhiriath 3 276 295
+19 Dunland 3 282 235
+20 Enedwaith 3 352 251
+21 West_Rohan 3 413 266
+22 Fangorn 3 356 186
+23 Gap_of_Rohan 3 416 190
+24 Rhun_Hills 4 334 15
+25 Brown_Lands 4 354 59
+26 Emyn_Muil 4 330 102
+27 The_Wold 4 347 141
+28 Lorien 4 287 164
+29 Gladden_Fields 4 220 147
+30 Moria 4 232 178
+31 Dead_Marshes 4 422 111
+32 Druwaith_Iaur 1 478 307
+33 Andras 1 530 322
+34 Anfalas 1 521 284
+35 Vale_of_Erech 1 488 252
+36 Lamedon 1 497 218
+37 Belfalas 1 548 213
+38 Lebennin 1 521 177
+39 Minis_Tirith 1 485 167
+40 Ithilien 1 496 133
+41 South_Ithilien 1 557 134
+42 Forlindon 6 120 392
+43 Lune_Valley 6 84 316
+44 Mithlond 6 148 359
+45 Harlindon 6 236 368
+46 Tower_Hills 6 162 318
+47 The_Shire 6 202 302
+48 Evendim_Hills 6 100 291
+49 North_Rhun 7 22 16
+50 Withered_Heath 7 54 57
+51 Esgaroth 7 130 63
+52 South_Rhun 7 173 15
+53 Harandor 8 589 146
+54 Umbar 8 627 182
+55 Deep_Harad 8 663 173
+56 Harad 8 646 114
+57 Near_Harad 8 644 63
+58 Khand 8 614 17
+59 Udun_Value 9 467 88
+60 Mount_Doom 9 493 68
+61 Barad-Dur 9 478 32
+62 Minas_Morgul 9 522 95
+63 Gorgoroth 9 521 19
+64 Nurn 9 564 73
+
+[borders]
+1 49 50 2 4 3 44 46
+2 12 1
+3 1 4 43 48 5 6 10
+4 1 3
+5 3 6
+6 3 10 5 8 7
+7 6 47 8 9
+8 10 6 7 9
+9 18 10 7 8
+10 3 11 9 8 6
+11 17 12 10
+12 15 11 2 13
+13 14 12 51
+14 25 16 15 13
+15 26 29 16 14 12
+16 25 26 15 14
+17 19 30 11
+18 20 19 9 44 46 37 54
+19 20 18 17
+20 23 19 18
+21 32 23
+22 23 28 27
+23 39 21 22 27 20
+24 25
+25 31 26 24 16 14 52
+26 31 27 25 16 15
+27 23 22 28 26
+28 22 27 29
+29 30 28 15
+30 17 29
+31 40 59 26 25
+32 34 21
+33 34
+34 35 32 33
+35 36 34
+36 38 37 35
+37 38 54 36 18
+38 39 37 36
+39 40 23 38
+40 41 39 31 62
+41 53 40
+42 44
+43 3 44 48
+44 46 42 43 1 18
+45 46
+46 47 44 45 48 1 18
+47 7 46
+48 3 43 46
+49 52 50 1
+50 49 1 51
+51 13 50
+52 25 49
+53 56 41
+54 55 37 18
+55 56 54
+56 57 53 55
+57 58 56
+58 57
+59 60 31
+60 63 61 59
+61 63 60
+62 63 40
+63 64 62 61 60
+64 63

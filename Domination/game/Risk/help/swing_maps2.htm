@@ -1,0 +1,159 @@
+<html>
+
+<head>
+<title>Map Manual</title>
+
+</head>
+
+<body background="back.jpg">
+
+
+
+
+
+<h2>Manual way of editing the map files</h2>
+
+<p><u><b>THE MAP FILE</b></u> (board.map)</p>
+
+<p>This file is a text file and can be opened in kate/nedit/notepad for editing, 
+inside the file you will find:</p>
+
+<p>; comment <i>&lt;~~ comments can be added to the map and cards file by putting a 
+semi-colon &quot;;&quot; at the beginning of the line</i></p>
+
+<p>test &lt;~~ optional here, if it is here a borders test is run when the map is loaded, (version 1.0.8.9+)</p>
+
+<p>[files]<br>
+pic board_pic.jpg <i>&lt;~~ this is the name if the image you see</i><br>
+map board_map.gif <i>&lt;~~ this is the name of the image the game uses to know 
+where each country is</i><br>
+crd risk.cards <i>&lt;~~ this is the cards file that best works with that map 
+(MAKE SURE YOU DON'T HAVE A CARDS FILE THAT USES MORE COUNTRIES THEN YOU HAVE IN 
+YOUR MAP FILE, remember that missions are in the cards file too)</i><br>
+<br>
+[continents]<br>
+North-America 6 yellow <i>&lt;~~ name of the continent (try keep them in that order if 
+you are doing a map of the &quot;real world&quot; as then the missions work. The number is 
+the army value, and the color does totally nothing</i><br>
+.<br>
+.<br>
+.<br>
+<br>
+[countries]<br>
+1 Alaska 1 44 83 <i>&lt;~~ the first number is the number of the country (they do have 
+to be in order) the next one is what continent it belongs to. the other two numbers are the x and y co-ordinates of the 
+circle that will be put on that country</i><br>
+.<br>
+.<br>
+.<br>
+
+<p><b>Countries and continents can NOT have spaces in there name, if u want to have a space then put a "_" and it will be displayed as a space when you play the game.</b></p>
+
+[borders]<br>
+1 2 3 38 <i>&lt;~~ the first number is the number of the country (need to be in order 
+here as well I think) and the other numbers that follow are what countries that 
+country is adjacent too</i><br>
+.<br>
+.<br>
+.</p>
+
+<p><u><b>THE CARDS FILE</b></u> (risk.cards)</p>
+
+<p>[cards]<br>
+Infantry 1<i> &lt;~~ first is the type of card, and then the number of the country 
+on it, you can have less cards then countries but you cant have more cards then 
+countries.</i><br>
+Cannon 2<br>
+Cavalry 3<br>
+.<br>
+.<br>
+.<br>
+wildcard<i> &lt;~~ put as many wildcards as you want to have in the game</i></p>
+
+<p><i>(a cards file can have NO missions, then the mission option in the start 
+of the game will be greyed out)</i></p>
+
+<p><i>;destroy X occupy Y Z continents A B C<br>
+;destroy (Player) occupy (int int) continents (Continent Continent Continent)</i></p>
+
+<p><i>X= the number of the player you have to destroy<br>
+Y= the number of countries you need to occupy<br>
+Z= the number of troops you need in each country<br>
+A= the number of the first continent you need to occupy<br>
+B= the number of the second continent you need to occupy<br>
+C= the number of the third continent you need to occupy</i></p>
+
+<p><i>if &quot;*&quot; is used for a continent, that means any continent would be ok.</i></p>
+
+<p>[missions]<br>
+0 0 0 5 2 0 Conquer the continents of ASIA and SOUTH AMERICA.<br>
+0 0 0 3 6 * Conquer the continents of EUROPE and AUSTRALIA and a third continent 
+of your choice.<br>
+.<br>
+.<br>
+.<br>
+0 18 2 0 0 0 Occupy 18 countries of your choice and occupy each with at least 2 
+armies.<br>
+0 24 1 0 0 0 Occupy 24 countries of your choice and occupy each with at least 1 
+army.<br>
+1 24 1 0 0 0 Destroy all of PLAYER1 TROOPS. If they are yours or they have 
+already been destroyed by another player then your mission is: Occupy 24 
+countries.<br>
+.<br>
+.<br>
+.</p>
+
+<p><u><b>THE PNG/JPG FILE</b></u> (board_pic.jpg)</p>
+
+<p>This file is the image you actually see</p>
+
+<p>resolution HAS to be 677 x 425</p>
+
+<p>YOU MUST NOT HAVE ONE COUNTRY OVERLAPPING FROM ONE SIDE OF THE MAP TO THE 
+OTHER! (this will make the country display wrongly on the card with that country 
+on it)</p>
+
+<p>This image must display the CONTINENTS highlighted in deferent colours as 
+this is the image you see in continents view, this is not a must have but is 
+recommended.</p>
+
+<p><b>if there are lots of flat colours please use the PNG format to save the file, 
+otherwise use JPG</b></p>
+
+<p><u><b>THE GIF FILE</b></u> (board_map.gif)</p>
+
+<p>This is the file that the game uses to find out where each country is on the 
+map.</p>
+
+<p>resolution HAS to be 677 x 425</p>
+
+<p>YOU MUST NOT HAVE ONE COUNTRY OVERLAPPING FROM ONE SIDE OF THE MAP TO THE 
+OTHER! (this will make the country display wrongly on the card with that country 
+on it)</p>
+
+<p>each pixel has to have the value of one of the countries ( NO colour black 
+(0,0,0) as there is no country &quot;0&quot; and no colours more then the number of 
+countries you have in the .map file)</p>
+
+<p>If a colour has a rgb value of r=13 g=13 b=13 so the 
+country would be 13</p>
+
+<p>ALL the colours must be grey scale colours (the red green and blue components 
+must be the same value)</p>
+
+<p>The file must be saved as a GRAY SCALE GIF FILE</p>
+
+<p><u><b>TESTING</b></u></p>
+
+<p>finally if you have created a map and want to test out if you made any mistakes 
+in the borders (one country linked to another but no link back) then put the word "test" in the beginning of the file before the "[files]" section, then when you load the map a test to make sure there are no one way borders is run, and if there are any errors found a box will pop up telling you what countries have a problem.
+
+<p>SEND ME ANY MAPS YOU MAKE AND I WILL PUT THEM ON THE WEBSITE
+(<a href="&#0109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;u&#114;&#097;&#064;&#121;&#117;&#0114;&#097;&#046;&#0110;&#101;&#0116;">&#121;u&#114;&#097;&#064;&#0121;&#0117;&#0114;&#97;&#046;&#0110;&#101;&#0116;</a>)
+</p>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.java.j2seproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+            <name>Domination</name>
+            <minimum-ant-version>1.6.5</minimum-ant-version>
+            <source-roots>
+                <root id="src.src.dir"/>
+                <root id="src.src_swing.dir"/>
+                <root id="src.src_lobbyserver.dir"/>
+                <root id="src.src_mapstore.dir"/>
+                <root id="src.src_android.dir"/>
+                <root id="src.res_android.dir"/>
+                <root id="src.drawable-mdpi.dir" name="res_drawable"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.junit.dir" name="test"/>
+            </test-roots>
+        </data>
+    </configuration>
+</project>

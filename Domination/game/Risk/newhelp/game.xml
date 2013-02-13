@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="game">
+  <title>The game</title>
+
+  <section>
+    <title>Introduction</title>
+
+    <para>jRisk is a free computer version of the classic board game
+    "Risk".</para>
+
+    <para>In the classic "World Domination" game of military strategy, you are
+    battling to conquer the world. To win, you must launch daring attacks,
+    defend yourself to all fronts, and sweep across vast continents with
+    boldness and cunning. But remember, the dangers, as well as the rewards,
+    are high. Just when the world is within your grasp, your opponent might
+    strike and take it all away!</para>
+  </section>
+
+  <section>
+    <title>Installation</title>
+
+    <para>Risk can be played on nearly every computer platform - independent
+    of your operating system (Windows, Linux, Mac OS or others). This
+    independence has a small price: You will have to do three or four steps to
+    get it running, instead of the two you need with a Windows installer. But
+    don't be frightened; it's really easy.</para>
+
+    <section>
+      <title>System requirements</title>
+
+      <para>Risk is programmed in Java, which means that you need have Java
+      version 1.4 or higher installed. You can get it from <ulink
+      url="http://java.sun.com/jre/">Sun Microsystems' Java
+      page</ulink>.</para>
+
+      <para>Further, you need a screen resolution of at least 1024x768
+      pixels.</para>
+
+      <para>The game needs 4MiB of disk space and we recommend at least 64MiB
+      RAM to play.</para>
+
+      <para>If you're computer has been bought within the last four years you
+      shouldn't have any problems playing Risk.</para>
+    </section>
+
+    <section>
+      <title id="game_installation_install">Installing and running the
+      game</title>
+
+      <orderedlist>
+        <listitem>
+          <para>Make sure your system meets the requirements.</para>
+        </listitem>
+
+        <listitem>
+          <para>Go to the <ulink
+          url="http://sourceforge.net/project/showfiles.php?group_id=108916">Risk
+          download page</ulink> and get the latest .zip file. Save it
+          somewhere you'll find it again.</para>
+        </listitem>
+
+        <listitem>
+          <para>Unzip the loaded file with an unzipping utility like <ulink
+          url="http://7zip.sourceforge.net">7zip</ulink> or <ulink
+          url="http://www.winzip.com">WinZip</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Go into the new <filename>Risk</filename> folder.</para>
+        </listitem>
+
+        <listitem>
+          <para>If you are on windows, all you have to do is (double) clicking
+          on the <filename>Risk.jar</filename> or
+          <filename>FlashGUI.cmd</filename> file. On Linux or Mac OS, open a
+          terminal and type <command>java -jar Risk.jar</command>.</para>
+        </listitem>
+
+        <listitem>
+          <para>You should see the the main menu now. If not, write a mail to
+          <link linkend="game_credits">us</link> - we'll try to help
+          you.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+
+  <section>
+    <title>Maps and cards</title>
+
+    <para>Additional to the classic board, the jRisk computer game allows you
+    to play on different maps. These maps don't necessarily have to be world
+    maps: there is a map for the UK and even London's tube!</para>
+
+    <para>Not only the maps can be exchanged; a different card set can be used
+    as well.</para>
+
+    <section>
+      <title>Loading a different map</title>
+
+      <para>Loading a different map only be done from the New Game
+      screen.</para>
+
+      <para>Click on the Choose Map button and a smaller window should
+      open.</para>
+
+      <para>Navigate to the map file and open it to load it.</para>
+
+      <para>If the map file is valid, a mini picture should be displayed in
+      the Map: window showing the map that you have selected, and the map file
+      name will be displayed.</para>
+    </section>
+
+    <section>
+      <title>Supplied maps</title>
+
+      <table>
+        <title>Supplied maps</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>board.map</entry>
+
+              <entry>default map</entry>
+            </row>
+
+            <row>
+              <entry>luca.map</entry>
+
+              <entry>map made by Luca</entry>
+            </row>
+
+            <row>
+              <entry>risk.map</entry>
+
+              <entry>map from an old risk game</entry>
+            </row>
+
+            <row>
+              <entry>risk2.map</entry>
+
+              <entry>map from the game RiskII</entry>
+            </row>
+
+            <row>
+              <entry>sersom.map</entry>
+
+              <entry>supplied map</entry>
+            </row>
+
+            <row>
+              <entry>simple.map</entry>
+
+              <entry>map for testing</entry>
+            </row>
+
+            <row>
+              <entry>tube.map</entry>
+
+              <entry>map of London Zone 1 Tube</entry>
+            </row>
+
+            <row>
+              <entry>uk.map</entry>
+
+              <entry>alternative map requirement</entry>
+            </row>
+
+            <row>
+              <entry>world.map</entry>
+
+              <entry>geographical map of the world</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>If the map is not valid, then the mini map will remain as it was,
+      i.e. no change.</para>
+    </section>
+
+    <section>
+      <title>Loading a new set of cards</title>
+
+      <para>Loading a set of cards can only be done from the New Game
+      screen.</para>
+
+      <para>Click on the Choose Cards button and a smaller window should
+      open.</para>
+
+      <para>Navigate to the cards file and open it to load it, it will be
+      displayed in the cards field.</para>
+
+      <table>
+        <title>Valid cards supplied are</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>nomission.cards</entry>
+
+              <entry>cards for uk.map and tube.map</entry>
+            </row>
+
+            <row>
+              <entry>risk.cards</entry>
+
+              <entry>these are the standard cards</entry>
+            </row>
+
+            <row>
+              <entry>simple.cards</entry>
+
+              <entry>cards that are used with simple.map</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <warning>
+        <para>Loading an incorrect set of cards for a map may result in the
+        game not starting.</para>
+      </warning>
+    </section>
+  </section>
+
+  <section>
+    <title>Saving and loading games</title>
+
+    <para>Running games (except network games) can be saved and loaded
+    (resumed) if you have time to play.</para>
+  </section>
+
+  <section>
+    <title>FAQ</title>
+
+    <para>Here are answers to some frequently asked questions. If your
+    question isn't answered, don't hesitate to <link
+    linkend="game_credits">write a mail to us</link>.</para>
+
+    <qandaset>
+      <qandadiv>
+        <qandaentry>
+          <question>
+            <para>How can i start the game Risk, there is no exe file?</para>
+          </question>
+
+          <answer>
+            <para>The Risk.jar is the Java executable file. Double clicking it
+            should work. If not, have a look at the <link
+            linkend="game_installation_install">installation
+            section</link>.</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Is there another way to start the game</para>
+          </question>
+
+          <answer>
+            <para>Yes, in the command line type "<command>java -jar
+            Risk.jar</command>" when you are in the same dir as Risk.jar
+            file.</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>What port does network play use?</para>
+          </question>
+
+          <answer>
+            <para>It is port 4444.</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>I have windows 95/98/ME and i can't run the .cmd
+            files?</para>
+          </question>
+
+          <answer>
+            <para>Rename them to .bat (This game does not officially support
+            windows 9x).</para>
+          </answer>
+        </qandaentry>
+      </qandadiv>
+    </qandaset>
+  </section>
+
+  <section>
+    <title>License</title>
+
+    <para>jRisk is released under the terms of the GPL, the General Public
+    License.</para>
+  </section>
+
+  <section>
+    <title>Other Risk computer games</title>
+
+    <para>jRisk is not the only computer version of the board game; there is a
+    number of commercial and free programs:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>The <ulink url="http://en.wikipedia.org/wiki/Risk_(game)">Risk
+        Wikipedia article</ulink></para>
+      </listitem>
+
+      <listitem>
+        <para><ulink url="http://risk.pagina.nl/">risk.pagina.nl</ulink>, a
+        website full of links to other risk pages</para>
+      </listitem>
+
+      <listitem>
+        <para>JTeg, <ulink
+        url="http://jteg.sourceforge.net/">jteg.sourceforge.net</ulink></para>
+      </listitem>
+
+      <listitem>
+        <para><ulink url="http://www.takto.de">Takto</ulink>, a web-based Risk
+        game</para>
+      </listitem>
+
+      <listitem>
+        <para><ulink url="http://www.netrisk.nl/">NetRisk</ulink>, a complete
+        online Risk game</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title id="game_credits">Credits</title>
+
+    <para>The Risk homepage can be found at <ulink
+    url="http://jrisk.sourceforge.net">jrisk.sourceforge.net</ulink>.</para>
+
+    <para>People which have contributed to Risk:</para>
+
+    <glosslist>
+      <glossentry>
+        <glossterm>Yura Mamyrin &lt;<ulink
+        url="mailto:yura@yura.net">yura@yura.net</ulink>&gt;</glossterm>
+
+        <glossdef>
+          <para>Risk Core/API, FlashGUI Code, Graphics, SwingGUI, SimpleGUI
+          and Increment1GUI, Command Line Risk, HTML help, testing</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Naeem Patel</glossterm>
+
+        <glossdef>
+          <para>Smart AI, Testing</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Adrian Tsen</glossterm>
+
+        <glossdef>
+          <para>HTML help, testing</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Christian Weiske &lt;<ulink
+        url="mailto:cweiske@cweiske.de">cweiske@cweiske.de</ulink>&gt;</glossterm>
+
+        <glossdef>
+          <para>HTML help, translation code, some FlashGUI changes</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Other testers</glossterm>
+
+        <glossdef>
+          <para>Mubarak Patel</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Thanks to</glossterm>
+
+        <glossdef>
+          <para>Queen Mary, University of London</para>
+
+          <para>SUN Microsystems</para>
+
+          <para>Nullsoft Winamp</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Greetings</glossterm>
+
+        <glossdef>
+          <para>Theo, Luca, Mike, Alex, Oksana, Sarah, Jo, Baris,
+          Rob, Rob, Babu, bob, Chris.</para>
+        </glossdef>
+      </glossentry>
+    </glosslist>
+  </section>
+</chapter>

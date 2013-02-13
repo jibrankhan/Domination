@@ -1,0 +1,65 @@
+# Risk map translation: Normal board strings
+# French language
+# http://jrisk.sourceforge.net
+#
+# Christian Weiske <cweiske@cweiske.de>
+# Properties version 0.01
+
+#continents
+North-America =Amérique Du Nord
+South-America =Amérique Du Sud
+Europe        =Europe
+Africa        =Afrique
+Asia          =Asie
+Australia     =Australie
+
+#countries
+# North America
+Alaska               =Alaska
+North-West-Territory =Territoire du Nord Ouest
+Alberta              =Alberta
+Western-United-States=Etat de l'Ouest
+Central-America      =Amérique Centrale
+Greenland            =Groenland
+Ontario              =Ontario
+Quebec               =Québec
+Eastern-United-States=Etat de l'Est
+# South America
+Venezuela            =Venezuela
+Peru                 =Pérou
+Brazil               =Brésil
+Argentina            =Argentine
+# Europe
+Iceland              =Islande
+Scandinavia          =Scandinavie
+Ukraine              =Ukraine
+Great-Britain        =Grande Bretagne
+Northern-Europe      =Europe du Nord
+Western-Europe       =Europe de l'Ouest
+Southern-Europe      =Europe de l'Est
+#Africa
+North-Africa         =Afrique Du Nord
+Egypt                =Egypte
+Congo                =Congo
+East-Africa          =Afrique Oriental
+South-Africa         =Afrique du Sud
+Madagascar           =Madagascar
+# Asia
+Siberia              =Sibérie
+Ural                 =Oural
+China                =Chine
+Afghanistan          =Afghanistan
+Middle-East          =Moyen Orient
+India                =Inde
+Siam                 =Siam
+Yakutsk              =Yakoutie
+Irkutsk              =Tchita
+Mongolia             =Mongolie
+Japan                =Japon
+Kamchatka            =Kamchatka
+# Australia
+Indonesia            =Indonésie
+New-Guinea           =Nouvelle Guinée
+Western-Australia    =Australie Occidentale
+Eastern-Australia    =Australie Orientale
+

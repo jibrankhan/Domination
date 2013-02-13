@@ -1,0 +1,65 @@
+# Risk map translation: Normal board strings
+# French language
+# http://jrisk.sourceforge.net
+#
+# Christian Weiske <cweiske@cweiske.de>
+# Properties version 0.01
+
+#continents
+North-America =\u5317\u7f8e
+South-America =\u5357\u7f8e
+Europe        =\u6b27\u6d32
+Africa        =\u975e\u6d32
+Asia          =\u4e9a\u6d32
+Australia     =\u6fb3\u5927\u5229\u4e9a
+
+#countries
+# North America
+Alaska               =\u963f\u62c9\u65af\u52a0
+North-West-Territory =\u897f\u5317\u56fd
+Alberta              =\u963f\u5c14\u4f2f\u8fbe
+Western-United-States=\u897f\u5317\u7f8e
+Central-America      =\u4e2d\u7f8e
+Greenland            =\u683c\u9675\u5170\u5c9b
+Ontario              =\u5b89\u5927\u7565
+Quebec               =\u9b41\u5317\u514b
+Eastern-United-States=\u4e1c\u5317\u7f8e
+# South America
+Venezuela            =\u59d4\u5185\u745e\u62c9
+Peru                 =\u79d8\u9c81
+Brazil               =\u5df4\u897f
+Argentina            =\u963f\u6839\u5ef7
+# Europe
+Iceland              =\u51b0\u5c9b
+Scandinavia          =\u65af\u582a\u7684\u7eb3\u7ef4\u4e9a
+Ukraine              =\u4e4c\u514b\u5170
+Great-Britain        =\u82f1\u56fd
+Northern-Europe      =\u5317\u6b27
+Western-Europe       =\u897f\u6b27
+Southern-Europe      =\u5357\u6b27
+#Africa
+North-Africa         =\u5317\u975e
+Egypt                =\u57c3\u53ca
+Congo                =\u521a\u679c
+East-Africa          =\u4e1c\u975e
+South-Africa         =\u5357\u975e
+Madagascar           =\u9a6c\u8fbe\u52a0\u65af\u52a0
+# Asia
+Siberia              =\u897f\u4f2f\u5229\u4e9a
+Ural                 =\u4e4c\u62c9\u5c14
+China                =\u4e2d\u56fd
+Afghanistan          =\u963f\u5bcc\u6c57
+Middle-East          =\u4e2d\u4e1c
+India                =\u5370\u5ea6
+Siam                 =\u66b9\u7f57
+Yakutsk              =\u96c5\u5e93\u8328\u514b
+Irkutsk              =\u4f0a\u5c14\u5e93\u6b21\u514b
+Mongolia             =\u8499\u53e4
+Japan                =\u65e5\u672c
+Kamchatka            =\u582a\u5bdf\u52a0\u534a\u5c9b
+# Australia
+Indonesia            =\u5370\u5c3c
+New-Guinea           =\u65b0\u51e0\u5185\u4e9a
+Western-Australia    =\u897f\u6fb3\u5927\u5229\u4e9a
+Eastern-Australia    =\u4e1c\u6fb3\u5927\u5229\u4e9a
+

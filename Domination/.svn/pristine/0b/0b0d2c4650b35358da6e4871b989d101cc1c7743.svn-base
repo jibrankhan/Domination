@@ -1,0 +1,163 @@
+; P. Habermann
+; Risk Map - A&A
+; fix angola hawaii midway
+
+name Axis and Allies Map
+
+[files]
+pic aa.jpg
+map aa.gif
+crd nomission.cards
+prv aa.jpg
+
+[continents]
+America 5 green
+Germany 3 blue
+United-Kingdom 7 #A52A2A
+Russia 3 red
+Japan  4 yellow
+Neutrals 9 #D2B48C
+
+[countries]
+1 Eastern-Canada 3 58 114
+2 Eastern-USA 1 24 163
+3 West-Indies 1 47 208
+4 Panama 1 12 219
+5 Venezuela 6 35 242
+6 Peru 6 27 280
+7 Argentina 6 44 339
+8 Brazil 1 78 276
+9 Eire 3 139 75
+10 United-Kingdom 3 159 88
+11 Finland-Norway 2 227 51
+12 Sweden 6 202 74
+13 Gibraltar 3 148 164
+14 Spain 6 149 140
+15 Western-Europe 2 174 118
+16 Germany 2 200 102
+17 Switzerland 6 184 124
+18 Southern-Europe 2 205 133
+19 Eastern-Europe 2 234 101
+20 Ukraine 2 258 96
+21 Caucasus 4 281 86
+22 Karelia 4 267 49
+23 Russia 4 320 78
+24 Evenki-Natl-Okrug 4 382 55
+25 Novosibirsk 4 362 112
+26 Kazakh 4 323 137
+27 Yakut 4 432 54
+28 Soviet-Far-East 4 494 44
+29 Algeria 2 169 185
+30 Rio-De-Oro 6 130 222
+31 West-Africa 3 150 231
+32 Libya 2 204 210
+33 Equatoral-Africa 3 195 238
+34 Egypt-Sudan 3 242 217
+35 Congo 3 218 282
+36 Kenya-Rhodesia 3 248 296
+37 East-Africa 3 280 254
+38 Angola 6 217 318
+39 South-Africa 3 235 347
+40 Mozambique 6 258 335
+41 Madagascar 3 280 355
+42 Turkey 6 261 153
+43 Syria 3 264 182
+44 Saudi-Arabia 3 293 201
+45 Persia 3 297 162
+46 Afghan 6 326 165
+47 India 3 355 196
+48 Sinkiang 1 384 146
+49 Mongolia 6 411 114
+50 China 1 414 150
+51 Manchuria 5 460 121
+52 Kwangtung 5 440 178
+53 Indochina 5 404 207
+54 Japan 5 493 148
+55 Philipines 5 456 226
+56 Okinawa 5 488 195
+57 Carolines 5 506 236
+58 Wake 5 528 197
+59 East-Indies 5 403 276
+60 Borneo 5 437 258
+61 New-Guinea 5 462 281
+62 Solomans 5 532 285
+63 Australia 3 455 337
+64 New-Zealand 3 540 364
+65 Alaska 1 567 64
+66 Western-Canada 3 642 82
+67 Western-USA 1 646 144
+68 Mexico 1 654 194
+69 Midway 1 566 150
+70 Hawaii 1 589 212
+
+[borders]
+1 2 9 66
+2 1 3 67
+3 2
+4 5 68
+5 4 6 8
+6 7 5 8
+7 6 8
+8 5 6 7
+9 1 10
+10 9 15
+11 12 22
+12 11
+13 14
+14 13 15
+15 10 14 16 17 18
+16 15 17 18 19
+17 15 16 18
+18 15 16 17 19
+19 16 18 20 22
+20 19 21 22
+21 20 22 23 42 45
+22 11 19 20 21 23
+23 21 22 24 25 26
+24 23 25 27
+25 23 24 26 27 48 49
+26 23 25 45 46 48
+27 24 25 28 49 51
+28 27 51 65
+29 31 32 33
+30 31
+31 29 30 33
+32 29 33 34
+33 29 31 32 34 35
+34 32 33 35 36 37 43
+35 33 34 36 38
+36 34 35 37 38 39 40
+37 34 36
+38 35 36 39
+39 36 38 40 41
+40 36 39
+41 39 
+42 21 43 45
+43 34 42 44 45
+44 43 45
+45 21 26 42 43 44 46 47
+46 26 45 47 48
+47 45 46 48 53
+48 25 26 46 47 49 50 53
+49 25 27 48 50 51 
+50 48 49 51 52 53
+51 27 28 49 50 52 54
+52 50 51 53
+53 47 48 50 52 55 59 60
+54 51 56 58
+55 53 57
+56 54 
+57 55
+58 54
+59 53 63
+60 53 61
+61 60 62
+62 61
+63 59 64
+64 63
+65 28 66
+66 1 65 67
+67 2 66 68 69
+68 4 67 70
+69 67
+70 68

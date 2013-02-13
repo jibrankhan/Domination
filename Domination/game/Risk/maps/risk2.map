@@ -1,0 +1,121 @@
+; Yura Mamyrin
+; Risk Map
+
+; Risk II Map
+; Dimensions: 677 x 425 Pixels
+
+name Risk II Map
+
+[files]
+pic risk2_pic.jpg
+map risk2_map.gif
+crd risk.cards
+prv risk2.jpg
+
+[continents]
+North-America 6 yellow
+South-America 4 red
+Europe 6 blue
+Africa 5 orange
+Asia 8 green
+Australia 4 magenta
+
+[countries]
+1 Alaska 1 44 83
+2 North-West-Territory 1 134 83
+3 Alberta 1 114 105
+4 Western-United-States 1 125 151
+5 Central-America 1 127 203
+6 Greenland 1 264 42
+7 Ontario 1 162 109
+8 Quebec 1 208 109
+9 Eastern-United-States 1 156 166
+10 Venezuela 2 142 249
+11 Peru 2 165 308
+12 Brazil 2 202 285
+13 Argentina 2 163 366
+14 Iceland 3 280 87
+15 Scandinavia 3 332 90
+16 Ukraine 3 385 109
+17 Great-Britain 3 286 129
+18 Northern-Europe 3 322 127
+19 Western-Europe 3 288 167
+20 Southern-Europe 3 333 181
+21 North-Africa 4 290 235
+22 Egypt 4 341 219
+23 Congo 4 334 300
+24 East-Africa 4 360 265
+25 South-Africa 4 335 354
+26 Madagascar 4 404 352
+27 Siberia 5 494 87
+28 Ural 5 449 103
+29 China 5 507 181
+30 Afghanistan 5 433 169
+31 Middle-East 5 388 202
+32 India 5 462 221
+33 Siam 5 514 236
+34 Yakutsk 5 562 73
+35 Irkutsk 5 540 116
+36 Mongolia 5 559 144
+37 Japan 5 620 147
+38 Kamchatka 5 630 82
+39 Indonesia 6 537 280
+40 New-Guinea 6 607 290
+41 Western-Australia 6 532 338
+42 Eastern-Australia 6 593 363
+43 Hawaii 1 38 168
+44 Oikiqtaluk 1 179 49
+45 Falkland-Islands 2 188 380
+46 Svalbard 3 373 39
+47 Philippines 6 598 215
+48 New-Zealand 6 640 349
+
+[borders]
+1 2 3 38
+2 1 3 7 44
+3 1 2 7 4
+4 3 7 5 9 43
+5 4 9 10
+6 8 14 46 44
+7 2 3 4 8 9 44
+8 6 7 9 44
+9 4 5 7 8
+10 5 11 12
+11 10 12 13
+12 10 11 13 21
+13 11 12 45 48
+14 6 17 15
+15 16 18 46 14 17
+16 15 28 30 31 18 20
+17 14 18 19 15
+18 15 16 17 19 20
+19 17 18 20 21
+20 16 18 19 21 22 31
+21 12 19 20 22 23 24
+22 20 21 24 31
+23 21 24 25
+24 21 22 23 25 26 31
+25 23 24 26 45
+26 24 25
+27 28 29 34 35 36
+28 16 27 29 30
+29 27 28 30 32 33 36
+30 16 28 29 31 32
+31 16 22 30 32 20 24
+32 29 30 31 33
+33 29 32 39
+34 27 35 38
+35 27 34 36 38
+36 29 35 37 38 27
+37 36 38 43 47
+38 1 34 35 36 37
+39 33 41 40 47
+40 39 41 42
+41 39 40 42
+42 40 41 48
+43 4 37
+44 6 7 8 2
+45 13 25
+46 6 15
+47 37 39
+48 42 13

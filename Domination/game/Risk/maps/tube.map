@@ -1,0 +1,142 @@
+; Yura Mamyrin
+; Risk Map
+
+; London Zone 1 Tube Map
+; Dimensions: 677 x 425 Pixels
+
+name Tube Map
+
+[files]
+pic tube_pic.png
+map tube_map.gif
+crd nomission.cards
+prv tube.jpg
+
+[continents]
+London 10 red
+
+[countries]
+1 Aldgate 1 581 175
+2 Aldgate-East 1 626 165
+3 Angel 1 456 55
+4 Baker-Street 1 228 67
+5 Bank-Monument 1 494 192
+6 Barbican 1 450 95
+7 Bayswater 1 107 108
+8 Blackfriars 1 407 228
+9 Bond-Street 1 222 147
+10 Borough 1 431 347
+11 Cannon-Street 1 446 203
+12 Chancery-Lane 1 413 148
+13 Charing-Cross 1 338 236
+14 Covent-Garden 1 363 161
+15 Earl's-Court 1 96 260
+16 Edgware-Road 1 148 67
+17 Elephant-&-Castle 1 367 414
+18 Embankment 1 342 267
+19 Euston 1 365 43
+20 Euston-Square 1 363 63
+21 Farringdon 1 434 80
+22 Gloucester-Road 1 136 258
+23 Goodge-Street 1 338 112
+24 Great-Portland-Street 1 300 61
+25 Green-Park 1 232 196
+26 High-Street-Kensington 1 107 189
+27 Holborn 1 379 147
+28 Hyde-Park-Corner 1 214 205
+29 King's-Cross-St.Pancras 1 405 48
+30 Knightsbridge 1 195 224
+31 Lambeth-North 1 346 380
+32 Lancaster-Gate 1 174 148
+33 Leicester-Square 1 338 188
+34 Liverpool-Street 1 558 114
+35 London-Bridge 1 492 276
+36 Mansion-House 1 418 218
+37 Marble-Arch 1 195 147
+38 Marylebone 1 188 74
+39 Moorgate 1 492 111
+40 Notting-Hill-Gate 1 110 147
+41 Old-Street 1 492 70
+42 Oxford-Circus 1 270 147
+43 Paddington 1 104 69
+44 Piccadilly-Circus 1 298 196
+45 Pimlico 1 234 345
+46 Queensway 1 137 147
+47 Regent's-Park 1 259 97
+48 Russell-Square 1 386 98
+49 St.James's-Park 1 255 261
+50 St.Paul's 1 440 162
+51 Sloane-Square 1 204 262
+52 South-Kensington 1 158 260
+53 Southwark 1 395 342
+54 Temple 1 388 243
+55 Tottenham-Court-Road 1 338 147
+56 Tower-Hill-Tower-Gateway 1 579 211
+57 Vauxhall 1 244 414
+58 Victoria 1 232 263
+59 Warren-Street 1 338 78
+60 Waterloo 1 343 312
+61 Westminster 1 301 263
+
+[borders]
+1 56 34
+2 56 34
+3 41 29
+4 24 38 16 9 47
+5 56 60 35 34 39 50 11
+6 39 21
+7 43 40
+8 36 54
+9 42 37 25 4
+10 17 35
+11 5 36
+12 50 27
+13 18 33 44
+14 27 33
+15 22 26
+16 43 38 4
+17 31 10
+18 60 13 54 61
+19 29 59
+20 29 24
+21 6 29
+22 52 15 26
+23 59 55
+24 20 4
+25 44 42 9 28 58 61
+26 40 15 22
+27 55 12 14 48
+28 30 25
+29 19 20 48 21 3
+30 28 52
+31 17 60
+32 37 46
+33 55 13 44 14
+34 1 2 39 5
+35 10 53 5
+36 8 11
+37 9 32
+38 16 4
+39 34 5 6 41
+40 7 26 46
+41 3 39
+42 9 55 44 47 25 59
+43 16 7
+44 33 25 13 42
+45 57 58
+46 40 32
+47 4 42
+48 29 27
+49 58 61
+50 5 12
+51 58 52
+52 51 30 22
+53 60 35
+54 8 18
+55 42 27 33 23
+56 5 1 2
+57 45
+58 25 45 51 49
+59 19 23 42
+60 61 53 18 31 5
+61 49 18 60 25

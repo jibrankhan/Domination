@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<title>translation files</title>
+
+</head>
+
+<body background="back.jpg">
+
+
+
+
+<h2>Manual way of editing the properties files</h2>
+
+<p>As Risk comes by default in English language only, it may be hard to
+    understand by non-english speaking people.</p><p>However, it's an open source project and you are very welcome to
+    translate it into your mother tongue - or any other language you speak (or
+    write) well. This helps non-english people to have a better game
+    experience and thus a better time playing Risk.</p><p>Translation is very easy: You just have to translate a simple text
+    file of the following form:</p><pre class="programlisting">...
+mainmenu.newgame=New Game
+mainmenu.startserver=Start Server
+...</pre><p>the translated german version would look like</p><pre class="programlisting">...
+mainmenu.newgame=Neues Spiel
+mainmenu.startserver=Server starten
+...</pre><p>Easy, isn't it?</p><p>To translate Risk into your language, just get the sources and make
+    a copy of the file <tt class="filename">translation/Risk.properties</tt> and
+    rename it to <tt class="filename">Risk_&lt;language code&gt;.properties</tt>
+    (Replace <tt class="filename">&lt;language code&gt;</tt> with the 2-digit code
+    of your language, e.g. "en" for english, "de" for german or "fr" for
+    french).</p><p>Now just open the new <tt class="filename">Risk_xx.properties</tt> file
+    in your favorite text editor and translate the strings in there.</p><p>Additional to the <tt class="filename">Risk.properties</tt> there is a
+    file called <tt class="filename">DefaultMaps.properties</tt> which contains the
+    translation of continent and country names, which can be translated as
+    well.</p>
+
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4773309"></a>Translating maps</h3></div></div></div><p>Standard maps (whole world) are translated via the
+      <tt class="filename">DefaultMaps.properties</tt> file. It it possible to
+      translate single maps without using the DefaultMaps file.</p><p>Just create a new file in the <tt class="filename">maps/</tt> folder,
+      called <tt class="filename">&lt;map name&gt;_&lt;language
+      code&gt;.properties</tt>. For example, the german translation file
+      for the <tt class="filename">simple.map</tt> map file would be called
+      <tt class="filename">simple_de.properties</tt>.</p></div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

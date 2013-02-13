@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+
+	<TITLE>RISK</TITLE>
+
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm }
+		TD P { margin-bottom: 0.1cm }
+		A:link { color: #0000ff }
+		A:visited { color: #800080 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff" BACKGROUND="back.jpg" DIR="LTR">
+<CENTER>
+			<P STYLE="border: none; padding: 0cm"><IMG SRC="splash.jpg" NAME="Graphic1" ALIGN=BOTTOM BORDER=0></P>
+
+THIS MANUAL IS ALMOST ALWAYS OUT OF DATE!<br>
+THIS IS BECAUSE I CAN NEVER BE BOTHERED TO DO IT, SORRY.<br>
+IF SOMEONE ELSE WANTS TO DO IT, I WILL REALLY APPRECIATE IT.
+
+			<P STYLE="border: none; padding: 0cm"><FONT FACE="Arial, sans-serif"><B>Introduction</B></FONT></P>
+			<P STYLE="border: none; padding: 0cm"><FONT FACE="Arial, sans-serif">In
+			the classic &ldquo;World Domination&rdquo; game of military
+			strategy, you are battling to conquer the world. To win, you must
+			launch daring attacks, defend yourself to all fronts, and sweep
+			across vast continents with boldness and cunning. But remember,
+			the dangers, as well as the rewards, are high. Just when the world
+			is within your grasp, your opponent might strike and take it all
+			away!</FONT></P>
+			<P STYLE="border: none; padding: 0cm"><FONT FACE="Arial, sans-serif"><B>Site
+			Navigation</B></FONT></P>
+			<P STYLE="border: none; padding: 0cm"><FONT FACE="Arial, sans-serif">Pressing
+			the <U>Home</U><SPAN STYLE="text-decoration: none"> button on your
+			keyboard will bring the window back to the top of the
+			page.</SPAN><BR><BR></FONT><BR>
+			</P>
+			<P STYLE="border: none; padding: 0cm"><FONT FACE="Arial, sans-serif">This
+			Page is best viewed using a web browser</FONT> <FONT FACE="Arial, sans-serif">with a
+			screen resolution of 1024x768 and a minimum of 16bit colour depth</FONT></P>
+</CENTER>
+</BODY>
+</HTML>

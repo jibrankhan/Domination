@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!-- The English langpack for the Risk installer -->
+<langpack>
+	<str id="package.base" txt="Risk base files" />
+	<str id="package.base.description" txt="Contains all the files and maps required to run the game" />
+
+	<str id="package.manual" txt="Manual" />
+	<str id="package.manual.description" txt="The program manual and documentation" />
+
+	<str id="package.source" txt="Sources" />
+	<str id="package.source.description" txt="The java source files" />
+</langpack>
+

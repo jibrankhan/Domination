@@ -1,0 +1,14 @@
+# core Game settings! for Android
+
+name=Domination
+
+# comes from the manifest on Android
+version=1.1.1.2
+
+defaultmap=luca.map
+defaultcards=risk.cards
+
+VERSION_URL=http://yura.net/AndroidDominationVersion
+
+# does not work for Android yet
+#LOBBY_URL=http://yura.net/@game.name@Lobby

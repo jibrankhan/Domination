@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<shortcuts>
+	<skipIfNotSupported/>
+
+	<!-- program group called "games" in the startmenu application directory -->
+	<programGroup defaultName="@game.name@" location="applications"/>
+
+	<!-- normal shortcut which starts the game -->
+	<shortcut
+		name="@game.name@"
+		programGroup="yes"
+		desktop="no"
+		applications="no"
+		startMenu="no"
+		startup="no"
+		target="$INSTALL_PATH\run.cmd"
+		commandLine=""
+		workingDirectory="$INSTALL_PATH\"
+		description="Starts the @game.name@ game"
+		iconFile="$INSTALL_PATH\resources\icon.ico"
+		iconIndex="0">
+	</shortcut>
+
+	<shortcut
+		name="Swing GUI (@game.name@ IDE and Map Editor)"
+		programGroup="yes"
+		desktop="no"
+		applications="no"
+		startMenu="no"
+		startup="no"
+		target="$INSTALL_PATH\SwingGUI.cmd"
+		commandLine=""
+		workingDirectory="$INSTALL_PATH\"
+		description="Starts the Swing version of @game.name@"
+		iconFile="$INSTALL_PATH\resources\icon.ico"
+		iconIndex="0">
+	</shortcut>
+
+	<shortcut
+		name="Manual"
+		programGroup="yes"
+		desktop="no"
+		applications="no"
+		startMenu="no"
+		startup="no"
+		target="$INSTALL_PATH\help\index.htm"
+		commandLine=""
+		description="@game.name@ documentation (HTML format)">
+	</shortcut>
+<!--
+	<shortcut
+		name="Uninstall @game.name@"
+		programGroup="yes"
+		desktop="no"
+		applications="no"
+		startMenu="no"
+		startup="no"
+		target="$INSTALL_PATH\Uninstaller\uninstaller.jar"
+		description="Uninstall @game.name@">
+	</shortcut>
+-->
+</shortcuts>

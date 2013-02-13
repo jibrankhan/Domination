@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+
+	<TITLE>RISK</TITLE>
+
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm }
+		TD P { margin-bottom: 0.1cm }
+		A:link { color: #0000ff }
+		A:visited { color: #800080 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff" BACKGROUND="back.jpg" DIR="LTR">
+
+			<P ALIGN=CENTER STYLE="border: none; padding: 0cm"><B>Creating a
+			new game</B></P>
+			<P ALIGN=LEFT STYLE="border: none; padding: 0cm"><B>Special Notes</B></P>
+			<P ALIGN=LEFT STYLE="border: none; padding: 0cm; font-weight: medium">
+			Auto Place All &ndash; If this is checked, the game with
+			automatically select territories for you during the territory
+			selection phase. Note, some game types will automatically select
+			territories for you.</P>
+			<P ALIGN=LEFT STYLE="border: none; padding: 0cm; font-weight: medium">
+			Auto End Go &ndash; If this is checked the turn will end
+			automatically once you have ended or carried out a Fortify
+			Position move, however, you will not be able to use the Undo
+			feature, this allows for faster game play. Leaving this option
+			unchecked will allow use of the Undo feature.<BR><BR>
+			</P>
+			<P ALIGN=center STYLE="border: none; padding: 0cm"><IMG SRC="newgame.gif" NAME="Graphic2" ALIGN=BOTTOM WIDTH=717 HEIGHT=737 BORDER=0></P>
+
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

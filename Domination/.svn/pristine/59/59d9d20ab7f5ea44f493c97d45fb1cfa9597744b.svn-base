@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!-- The German langpack for the Risk installer -->
+<langpack>
+	<str id="package.base" txt="Basisdateien" />
+	<str id="package.base.description" txt="Alle Dateien und Karten, die zum Spielen von Risiko notwendig sind." />
+
+	<str id="package.manual" txt="Handbuch" />
+	<str id="package.manual.description" txt="Handbuch und Dokumentation zu Risiko." />
+
+	<str id="package.source" txt="Quellcode" />
+	<str id="package.source.description" txt="Die .java-Quellcodedateien." />
+</langpack>
+

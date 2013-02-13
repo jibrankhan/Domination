@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="src_lobby_core"/>
+	<classpathentry kind="src" path="res_android"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src_android"/>
+	<classpathentry kind="src" path="src_mapstore"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/AndroidME"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="lib/achartengine-1.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Dev/android-sdk-windows/extras/google/admob_ads_sdk/GoogleAdMobAdsSdk-6.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Dev/android-sdk-windows/extras/google/gcm/gcm-client/dist/gcm.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"[
+
+<!ENTITY chapter.game       SYSTEM "game.xml">
+<!ENTITY chapter.rules      SYSTEM "rules.xml">
+<!ENTITY chapter.gui_flash  SYSTEM "gui_flash.xml">
+<!ENTITY chapter.gui_swing  SYSTEM "gui_swing.xml">
+<!ENTITY chapter.gui_commandline  SYSTEM "gui_commandline.xml">
+<!ENTITY chapter.extending  SYSTEM "extending.xml">
+
+]>
+<book>
+  <title>Risk manual</title>
+  &chapter.game;
+  &chapter.rules;
+  &chapter.gui_flash;
+  &chapter.gui_swing;
+  &chapter.gui_commandline;
+  &chapter.extending;
+</book>

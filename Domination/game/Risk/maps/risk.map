@@ -1,0 +1,109 @@
+; Yura Mamyrin
+; Risk Map
+
+; Risk Game Map
+; Dimensions: 677 x 425 Pixels
+
+name Risk Map
+
+[files]
+pic risk_pic.png
+map risk_map.gif
+crd risk.cards
+prv risk.jpg
+
+[continents]
+North-America 5 yellow
+South-America 2 green
+Europe 5 blue
+Africa 3 orange
+Asia 7 pink
+Oceania 2 red
+
+[countries]
+1 Alaska 1 41 55
+2 North-West-Territory 1 97 51
+3 Alberta 1 83 93
+4 Western-United-States 1 102 144
+5 Central-America 1 118 206
+6 Greenland 1 195 48
+7 Ontario 1 135 100
+8 Quebec 1 200 106
+9 Eastern-United-States 1 157 149
+10 Venezuela 2 184 251
+11 Peru 2 187 308
+12 Brazil 2 223 285
+13 Argentina 2 199 339
+14 Iceland 3 250 58
+15 Scandinavia 3 360 40
+16 Ukraine 3 422 76
+17 Great-Britain 3 280 80
+18 Northern-Europe 3 342 96
+19 Western-Europe 3 285 139
+20 Southern-Europe 3 371 122
+21 North-Africa 4 305 217
+22 Egypt 4 356 203
+23 Congo 4 360 278
+24 East-Africa 4 394 248
+25 South-Africa 4 368 332
+26 Madagascar 4 423 338
+27 Siberia 5 533 51
+28 Ural 5 478 52
+29 China 5 544 158
+30 Afghanistan 5 474 128
+31 Middle-East 5 421 182
+32 India 5 493 207
+33 Siam 5 547 213
+34 Yakutsk 5 580 26
+35 Irkutsk 5 582 77
+36 Mongolia 5 581 123
+37 Japan 5 644 147
+38 Kamchatka 5 624 57
+39 Indonesia 6 575 279
+40 New-Guinea 6 643 278
+41 Western-Australia 6 591 353
+42 Eastern-Australia 6 647 355
+
+[borders]
+1 2 3 38
+2 1 3 7 6
+3 1 2 7 4
+4 3 7 5 9
+5 4 9 10
+6 2 7 8 14
+7 2 3 4 6 8 9
+8 6 7 9
+9 4 5 7 8
+10 5 11 12
+11 10 12 13
+12 10 11 13 21
+13 11 12
+14 6 17
+15 16 18
+16 15 28 30 31 18 20
+17 14 18 19
+18 15 16 17 19 20
+19 17 18 20 21
+20 16 18 19 21 22 31
+21 12 19 20 22 23 24
+22 20 21 24 31
+23 21 24 25
+24 21 22 23 25 26 31
+25 23 24 26
+26 24 25
+27 28 29 34 35 36
+28 16 27 29 30
+29 27 28 30 32 33 36
+30 16 28 29 31 32
+31 16 22 30 32 20 24
+32 29 30 31 33
+33 29 32 39
+34 27 35 38
+35 27 34 36 38
+36 29 35 37 38 27
+37 36 38
+38 1 34 35 36 37
+39 33 41 40
+40 39 41 42
+41 39 40 42
+42 40 41

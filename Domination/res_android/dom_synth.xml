@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<synth>
+<!--
+    <style id="backingStyle">
+	   <state>
+	       <font name="Dialog" size="14"/>
+	       <color value="#D8D987" type="BACKGROUND"/>
+	       <color value="#FF0000" type="FOREGROUND"/>
+	   </state>
+    </style>
+    <bind style="backingStyle" type="region" key=".*"/>
+
+    <style id="contentPane">
+	   <insets top="6" left="6" bottom="6" right="6"/>
+	   <opaque value="false"/>
+	   <state>
+	      <imagePainter path="/patternRed.png" sourceInsets="43 43 43 43" paintCenter="true"/>
+	   </state>
+    </style>
+    <bind style="contentPane" type="region" key="Frame"/>
+
+    <style id="textfield">
+	<insets top="4" left="6" bottom="4" right="6"/>
+	<state>
+	    <font name="Verdana" size="14"/>
+	    <color value="#D2DFF2" type="BACKGROUND"/>       
+	    <color value="#000000" type="FOREGROUND"/>
+	<imagePainter path="/textfield.png" sourceInsets="4 6 4 6" paintCenter="false"/>
+	</state>
+    </style>
+    <bind style="textfield" type="region" key="TextField"/>
+
+    <style id="button">
+	<insets top="5" left="10" bottom="5" right="10"/>
+	<opaque value="false"/>
+	<state>
+	<property key="Button.textShiftOffset" type="integer" value="1"/>
+	    <imagePainter method="buttonBackground" path="/button.png" sourceInsets="12 15 12 15" />
+	    <color type="BORDERFILL" value="#296ED3"/>
+	    <font name="Dialog" size="16"/>
+	    <color type="FOREGROUND" value="#FFFFFF"/>
+	</state>
+	<state value="FOCUSED">
+	    <imagePainter path="/button_over.png" sourceInsets="12 15 12 15" />
+	    <color type="BORDERFILL" value="#F37529"/>
+	</state>
+	<!- - not supported yet
+        <state value="PRESSED"> 
+	    <imagePainter path="/button_press.png" sourceInsets="12 15 12 15" />
+	</state>
+        - ->
+    </style>
+    <bind style="button" type="region" key="Button"/>
+
+    <style id="checkbox">
+	<imageIcon id="check_off" path="/checkbox_off.png"/>
+	<imageIcon id="check_on" path="/checkbox_on.png"/>
+	<state>
+	    <property key="icon" value="check_off"/>
+	</state>
+	<state value="SELECTED">
+	    <property key="icon" value="check_on"/>
+	</state>
+    </style>
+    <bind style="checkbox" type="region" key="CheckBox"/>
+
+    <style id="frameTitlePane">
+      <state>
+	<property key="titleAlignment" type="string" value="center"/>
+      </state>
+    </style>
+    <bind style="frameTitlePane" type="region" key="TitleBar"/>
+
+    <style id="window">
+      <state>
+        <property key="dim" type="integer" value="#AA000000"/>
+      </state>
+    </style>
+    <bind style="window" type="region" key="Window"/>
+
+    <style id="scrollBarThumbStyle">
+        <insets top="4" left="4" bottom="5" right="5"/>
+        <state>
+            <imagePainter method="scrollBarThumbBackground" path="/thumb.png" sourceInsets="4 4 5 5" />
+        </state>
+    </style>
+    <bind style="scrollBarThumbStyle" type="REGION" key="ScrollBarThumb" />
+-->
+
+    <style id="panel">
+        <opaque value="false"/>
+    </style>
+    <bind style="panel" type="region" key="Panel"/>
+    <bind style="panel" type="region" key="ScrollPane"/>
+    <bind style="panel" type="region" key="Label"/>
+    <bind style="panel" type="region" key="PicturePanel"/>
+    <bind style="panel" type="region" key="TransparentDialog"/>
+
+    <style id="view">
+	   <opaque value="false"/>
+	   <state>
+	      <imagePainter path="/shadow.9.png"/>
+	   </state>
+    </style>
+    <bind style="view" type="region" key="PicturePanel"/>
+
+    <style id="transPanel">
+	   <state>
+	      <color value="#AA000000" type="BACKGROUND"/>
+              <color value="#FFFFFF" type="FOREGROUND"/>
+	   </state>
+    </style>
+    <bind style="transPanel" type="region" key="TransPanel"/>
+
+    <style id="actionbarMenuButton">
+	   <state>
+	      <imagePainter method="buttonBackground" path="/menu_button.9.png" />
+	   </state>
+           <state value="FOCUSED">
+              <imagePainter method="buttonBackground" path="/menu_button_pressed.9.png" />
+           </state>
+    </style>
+    <bind style="actionbarMenuButton" type="region" key="ActionbarMenuButton"/>
+
+
+
+    <style id="spinner">
+      <imageIcon id="icon_left_normal" path="/spinner.png" x="0" y="0" width="25" height="25"/>
+      <imageIcon id="icon_right_normal" path="/spinner.png" x="0" y="25" width="25" height="25"/>
+      <imageIcon id="icon_left_highlight" path="/spinner.png" x="0" y="50" width="25" height="25"/>
+      <imageIcon id="icon_right_highlight" path="/spinner.png" x="0" y="75" width="25" height="25"/>
+      <state>
+        <property key="iconLeft" value="icon_left_normal"/>
+        <property key="iconRight" value="icon_right_normal"/>
+      </state>
+      <state value="SELECTED">
+        <property key="iconLeft" value="icon_left_highlight"/>
+        <property key="iconRight" value="icon_right_highlight"/>
+      </state>
+    </style>
+    <bind style="spinner" key="Spinner"/>
+
+
+    <style id="mainButton">
+	<state>
+	    <imagePainter path="/button.9.png" />
+	</state>
+	<state value="FOCUSED">
+	    <imagePainter path="/button_focus.9.png" />
+	</state>
+        <state value="FOCUSED AND SELECTED"> 
+	    <imagePainter path="/button_pressed.9.png" />
+	</state>
+    </style>
+    <bind style="mainButton" type="region" key="MainButton"/>
+
+
+    <style id="goButton">
+	<state>
+	    <imagePainter path="/go_button.9.png" />
+	</state>
+	<state value="FOCUSED">
+	    <imagePainter path="/go_button_active.9.png" />
+	</state>
+        <state value="DISABLED"> 
+	    <imagePainter path="/go_button_disabled.9.png" />
+	</state>
+    </style>
+    <bind style="goButton" type="region" key="GoButton"/>
+
+
+    <style id="card">
+	<state>
+	    <imagePainter path="/card.9.png" />
+	</state>
+	<state value="SELECTED">
+	    <imagePainter path="/card_active.9.png" />
+	</state>
+        <state value="DISABLED"> 
+	    <imagePainter path="/card_disabled.9.png" />
+	</state>
+    </style>
+    <bind style="card" type="region" key="Card"/>
+
+
+    <style id="cardsButton">
+	<imageIcon id="cards" path="/cards_button.png"/>
+	<imageIcon id="cards_active" path="/cards_button_active.png"/>
+	<imageIcon id="cards_disabled" path="/cards_button_disabled.png"/>
+	<state>
+	    <property key="icon" value="cards"/>
+	</state>
+	<state value="FOCUSED">
+	    <property key="icon" value="cards_active"/>
+	</state>
+	<state value="DISABLED">
+	    <property key="icon" value="cards_disabled"/>
+	</state>
+    </style>
+    <bind style="cardsButton" key="CardsButton"/>
+
+
+    <style id="mustTradeButton">
+	<imageIcon id="cards_green" path="/cards_button_green.png"/>
+	<imageIcon id="cards_green_active" path="/cards_button_green_active.png"/>
+	<imageIcon id="cards_disabled" path="/cards_button_disabled.png"/>
+	<state>
+	    <property key="icon" value="cards_green"/>
+	</state>
+	<state value="FOCUSED">
+	    <property key="icon" value="cards_green_active"/>
+	</state>
+	<state value="DISABLED">
+	    <property key="icon" value="cards_disabled"/>
+	</state>
+    </style>
+    <bind style="mustTradeButton" key="MustTradeButton"/>
+
+
+    <style id="hintButton">
+	<imageIcon id="mission" path="/mission_button.png"/>
+	<imageIcon id="mission_active" path="/mission_button_active.png"/>
+	<imageIcon id="mission_disabled" path="/mission_button_disabled.png"/>
+	<state>
+	    <property key="icon" value="mission"/>
+	</state>
+	<state value="FOCUSED">
+	    <property key="icon" value="mission_active"/>
+	</state>
+	<state value="DISABLED">
+	    <property key="icon" value="mission_disabled"/>
+	</state>
+    </style>
+    <bind style="hintButton" key="HintButton"/>
+
+
+
+</synth>

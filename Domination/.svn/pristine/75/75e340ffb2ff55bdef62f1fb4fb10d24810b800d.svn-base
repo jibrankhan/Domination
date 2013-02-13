@@ -1,0 +1,232 @@
+Risk - Yura Mamyrin (yura@yura.net)
+
+TODO Android
+
+    When bulding with ant, to extra jars for grasshopper are not included
+
+    HOME SCREEN:
+	(design home screen)
+
+    GAME SETUP SCREEN:
+	(design game setup screen)
+	(add "custom player" button and dialog)
+	on small ldpi "Start Game" button still not visable
+
+    INGAME SCREEN:
+	when a device runs out of memory, it closes the game without saving it
+	when placing armies, the player can only place 1 army at a time, no choice to place 1 or 5 or 10 or 25 ...
+	when attacking should be able to choose less dice to attack
+	(try semi-transparent marble for top and bottom, or add a gradient to the black)
+
+Still needs to be done:
+
+
+	LOBBY:
+		* map and missions dont get translated coz of the sending the game object
+		* if they WERE loaded, then the ResourceBundle.getBundle may pull the whole system over
+
+	GUI:
+		make the spinners force correct entry by 1 going down when another goes up
+		java.lang.StackOverflowError in windows vista, not my bug really
+		in the installer it says "package.base" instead of "Risk base files"
+			^ now seems fixed, but does not allow you to unselect something
+		* add globe animation to applet loading, MAYBE
+
+	CORE:
+
+		game.ini should not be overridden by installing an update
+		add the new AI to the game from the masters project
+		**** save should be blocked in mustmove mode after a won battle, otherwise when its loaded it crashes
+		redo graph to use doubles instead of ints for scale
+		should let u stop a game if it is in replay mode
+		ADD continue command to Flash GUI and Swing GUI
+		ADD replay to FlashGUI
+		* Same time Risk - inovation (maybe)
+
+	NETWORK:
+
+		**** when 1 player selects a map others dont have it crashes the game, should revert to old 1
+		can not leave when its not ur go
+		after everyone has left server after a game, u should be able to rejoin the same server
+		when people select a capital in network game other ppl can see when they select it in the console
+		should be able to join a game at any stage and it should be fast
+
+	TEXT/HELP:
+
+		make everything that should be translated be translated
+		update help files with the crads fixed thengy
+		Help needs to be Finished
+		make it say u can trade 3 different cards
+		the console prompt is not getting the text for it from the translation file
+
+Known Bugs:
+
+	SWING GTK BUG - move armies to captured country bar is too high in gtk
+	SWING GTK BUG - in linux in gtk cards box text is abit off
+	SWING GTK BUG - in linux in gtk the text boxes and scroll boxes are white instead of gray
+	SWING GTK BUG - in-game text boxes dont work with gtk theme
+
+	SWING GUI BUG - when moving lots and lots of armies the slidebar numbers overlap
+	SWING GUI BUG - for cards that have countries with very long names they go off the card and are unclear
+	SWING GUI BUG - make the move dialog not a dialog, and the move text boxes not what they are now, in SwingGUI
+
+	FLASH GUI BUG - one of the countries in the uk map has a very very long name, overlaps in the card (not quite sure what to do about it); maybe put "..." after the first few words
+	FLASH GUI BUG - Fonts in Linux are way too big in some windows
+	FLASH GUI BUG - Windows sometimes open in the background (dont come forward after opening)
+	FLASH GUI BUG - when a name is too long it pushes the text of the screen
+
+	COMMAND LINE BUG - startserver print out is a bit odd, and other print outs during network game
+	COMMAND LINE BUG - noInput does nothing
+
+Possible Additions: (and yuras comments)
+
+	After a game is over over, I always wanted to see a time lapsed replay of the game... like a .gif made from still shots after each move so you could see how the game progressed.
+
+	maybe you can add a notify sound for when its the player's turn?
+	Music - http://en.wikipedia.org/wiki/The_Planets#Media
+
+	Idea:
+		* If a new round starts each player who holds his own capital get's 1 or x additional armie(s) -> (fix placed at the capital) 
+	Optional:
+		* If you hold a capital of another player you get additional armies too -> (fix placed at the capital) 
+
+
+	should let u use contry names in the console
+	If the task, you have to fulfill, is coincidentally solved by another player, then you had luck and nevertheless won
+	would be nice if the player knows how many cards the enemies have!
+
+	add gpl info to about box and all the java files
+	add command line options like "Risk.jar -server" or "Risk.jar test.save"
+	make a map file a zip of jar file that holds all the map images and stuff
+	make choosemap and choosecards drop down menus in GUIs
+	Add network commands to help in commands section and add "info" command
+	Help should use css
+
+	"Attack untill defeated" option,
+		untill you've won;
+		untill "n" armies left;
+		untill you only have "n" more armies than the defender;
+	making a just-defeated country the default attacker for the next attack.
+	dice roll and attack/defense statistics.
+
+	Easter egg - cheat for good dice
+	Easter egg - when u select sertain names - things happen
+	Easter egg - funny cards - NO TRADE CARD
+
+	3D circles on map
+	the undo button should be disabled at the start of the players go i.e. when there is nothing to undo..?
+	- put in a pause finction
+	- if u win u get a sad message of game over, and the results message it crap
+	-fast AI, fast dice in FlashGUI
+	make the highlight fade in and out
+
+	make it not case sensitive in the console
+	Add Stats to the text console
+	Yura - add a history command (if i just have way too much time)
+	"New player selected: ELMEEEEEEEEER3. You have +number_of_cards+ cards, you must trade until you possess under 5 cards"
+	^ somehow show trade cap and when u MUST trade
+	Rolled dice... 1 armies defeated, 1 armies lost. 13 armies remain on +defendercountry 23 armies available +attackercountry+ for attack
+
+	ADD SAVE GAME IN GAME SETUP, but \/
+	GAME BUG - save game during game setup couses all kinds of problems when loading with the map images and players
+
+GAME ENGINE ADDITIONS
+
+	-distribute extra units option - not really needed, but other risk has it
+	Naeem - in 2 player mode let the player put 2 armies down at a time
+	-let the first player not be random
+	-let the number of troops for a cards trade not increase or be fixed or be none
+	-let u NOT get the captured cards
+	-do not limmmit supply lines/no supply lines
+	-support missions were u need to conquer and hold countries
+	-optimise defending dice by not throwing many if the attacker has all 6
+	-wait untill next go to win mission risk
+	put in some sort of campagn system where u get through diferent maps with diferent set up problems that get harder and harder.
+	nutral player gets reinforcments
+	a option that will restrict you from rolling 2 dice if you have only 2 armies in that country (you must have 3 or moew to roll 2 when defending)
+	i saw that in some risk rules you get reinforcements as seen on your card (e.g. for 3 artillery you get 3 artillery units)
+
+NOT GOING TO DO OR NOT UNDER MY CONTROLL:
+
+	This is a resurved file name in windows, so u can not save a file	- in any GUI when u save with the file name "con" it does not save, if text file is being saved, then in prints to the console
+	?DONT CARE 1.0.7.0 - MAP BUG - You can find out other peoples risk cards by looking at the Risk card ownership view during there go
+	?I will not support java 1.3 any more as it does not support the new jar files - GUI BUG - make the image loading work in java 1.3
+	?FIXED in java 1.4 but still in java 1.5 - sometimes the image goes wrong when dialog boxes are opened (e.g on my laptop) - can anyone find other better ways of putting a gif into a program
+	put some sort of basic chat into the network play - not needed as game is not full screen and u can use GAIM ...
+	WE DID NOT CONFIRM THIS IN THE RULE BOOK				- Adrian - card trading - the rules say that a player can trade cards if the player still has armies to place at the start of the turn.
+	MAYBE IF HE PUT THAT COUNTRY FIRST IN THE LIST OF CARDS TO TRADE	- let the player choose what country he gets the extra armies on when he trades cards 
+	the gui will remember this						- After all countries are taken, there should be a command to view what countries the player owns (i'm assuming gui will show it though) since autoplace doesn't seem to work, i think its trying to place armys onto all 42 countries, and not randomly placing armys on what countrys the player owns. 
+	use same names as in mapfile (worldmap.txt) or use the numbers		- Consider using shortened country names or how they show exactly on the map (Or show valid country names in help)
+
+
+
+[checkbox] only make 3 attacks per turn
+
+
+
+Some ideas for Domination:
+
+    * Checkbox to disable popup-window if others dices are rolling
+    * Checkbox to enable a popup-window if its your turn
+    * List of online servers / optional listing of the own server at an well-known online-list
+
+
+
+
+
+
+- beside a circle brush - it would be nice to have the alternative to draw lines also, because is easier then to follow borders.
+- draw shape?!
+- load maps from other risk game?!
+
+
+- after you played a game -> when you start a new one, the adjustments will go lost (map type, # of players, etc.) It would be nice to keep the personal preferences ..
+
+- should not see what cards other players have, but SHOULD see how many cards they have
+
+
+play this game with another ruleset.
+
+- After winning a battle you can shift only three armies into the conquered land.
+In this way you can attack the next land with only two armies.
+This decrease the distributionvelocity.
+- Each opponent can use three dice (defender and attacker).
+- In army displacement phase after the battle phase, you can shift your troups how you want.
+But you con only shift troups between countries wich have a connection. Either they lies direct side by side or
+the countries have a contact over own land.
+- If a opponent has lost his last country, the attacker don't get the cards from the defeded player.
+The released cards will be removed from the game
+
+Could you create a section in the risk.ini, in wich I can modify my own rulesets?
+
+
+
+
+
+Theo: a button on the dice screen equivalent to "destroy and move all troops"
+
+
+
+
+
+Hi, your online risk game is the best I've found.
+
+I want to propose you to add 3 (optional) rules I saw in Risk II videogame.
+
+1) Connected Empire Bonus
+Each player receives a extra bonus of armies equal to largest connected empire divided by 3.
+
+2) a limit to reinforcements for each territory
+Max reinforcement armies for each territory, every round, is equal to 2 plus 1 for each friend neighbour state a player has.
+
+Example: if I have South Africa, Madagascar and Congo (isolated by enemy territories) I can put max 4 (2+2) reinforcement armies in South Africa, 3 (2+1) in Congo and 3 (2+1) in Madagascar.
+
+3) In the same round, from every territory I can attack only one single enemy territory. I can't continue to attack from the territory just conquered. I can attack from others territories of mine.
+
+Example: from the Ural I attack and conquer Siberia, but from here I can't continue to attack China or others territories (i.e. Yakutsk). Obviously I can attack China from others territories of mine (i.e. from Mongolia).
+
+I think these are very easy to implement in the game.
+
+What's the fixed value of cards combinations?
+Thank you very much
+John Blisset

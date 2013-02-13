@@ -1,0 +1,23 @@
+<html>
+
+<head>
+<title>top nav</title>
+<base target="bottom">
+</head>
+
+<body background="back.jpg">
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="16%"><a href="game.htm">GAME MANUAL</a></td>
+    <td width="16%"><a href="risk.htm">RISK MANUAL</a></td>
+    <td width="16%"><a href="applet.htm">GAME APPLET</a></td>
+    <td width="16%"><a href="flash.htm">FLASH GUI HELP</a></td>
+    <td width="16%"><a href="swing.htm">SwingGUI/IDE HELP</a></td>
+    <td width="16%"><a href="commands.htm">COMMAND LINE HELP</a></td>
+  </tr>
+</table>
+
+</body>
+
+</html>

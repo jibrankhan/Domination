@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!--
+	Game izPack installer description file
+
+	Contains the description to generate a java-based installation .jar file
+	for the game
+
+	@author Christian Weiske <cweiske@cweiske.de>
+-->
+<installation version="1.0">
+
+	<info>
+		<appname>@game.name@</appname>
+		<appversion>@game.version@</appversion>
+		<authors>
+			<author name="Yura Mamyrin" email="yura@yura.net"/>
+			<author name="Christian Weiske" email="cweiske@cweiske.de"/>
+			<author name="Mike Chaten" email="colbertff@gmail.com"/>
+			<author name="And many others! Thank you!" email=""/>
+		</authors>
+		<url>@game.website@</url>
+		<run-privileged condition="izpack.windowsinstall.vista|izpack.windowsinstall.7"/>
+		<!-- izpack.macinstall is needed for non-admin mac users, but most mac users are admins -->
+	</info>
+
+	<guiprefs width="640" height="480" resizable="yes"/>
+
+	<locale>
+		<langpack iso3="eng"/>
+		<langpack iso3="deu"/>
+		<langpack iso3="fra"/>
+		<langpack iso3="spa"/>
+		<langpack iso3="rus"/>
+		<langpack iso3="ned"/>
+		<langpack iso3="ita"/>
+		<langpack iso3="chn"/>
+		<langpack iso3="cat"/>
+		<langpack iso3="fin"/>
+		<langpack iso3="tur"/>
+		<langpack iso3="scg"/>
+		<langpack iso3="por"/>
+		<langpack iso3="swe"/>
+		<langpack iso3="glg"/>
+		<langpack iso3="pol"/>
+		<langpack iso3="ukr"/>
+	</locale>
+
+	<!--
+		The resources section.
+		The ids must be these ones if you want to use the LicencePanel and/or the InfoPanel.
+	-->
+	<resources>
+		<res id="LicencePanel.licence" src="../../build/game/gpl.txt"/>
+		<res id="InfoPanel.info" src="../../build/game/ReadMe.txt"/>
+
+		<!-- packs translation files -->
+		<res id="packsLang.xml_deu" src="../../installer/izpack/packsLang.xml_deu"/>
+		<res id="packsLang.xml_glg" src="../../installer/izpack/packsLang.xml_glg"/>
+
+		<!-- desktop shortcuts -->
+		<res id="shortcutSpec.xml" src="../../build/shortcutSpec.xml"/>
+		<res id="Unix_shortcutSpec.xml" src="../../build/Unix_shortcutSpec.xml"/>
+	</resources>
+
+	<!--
+		The panels section.
+		We indicate here which panels we want to use. The order will be respected.
+	-->
+	<panels>
+		<panel classname="HelloPanel"/>
+		<!--<panel classname="InfoPanel"/>-->
+		<panel classname="LicencePanel"/><!-- DOES NOT WORK IN JAVA 1.4 -->
+		<panel classname="TargetPanel"/><!-- installation path -->
+		<panel classname="PacksPanel"/>
+		<panel classname="InstallPanel"/>
+		<panel classname="ShortcutPanel"/>
+		<panel classname="FinishPanel"/>
+	</panels>
+
+	<!--
+		The packs section.
+		We specify here our packs.
+	-->
+	<packs>
+		<pack name="Game base files" required="yes" id="package.base">
+			<description>Contains all the files and maps required to run the game</description>
+
+			<fileset dir="." targetdir="$INSTALL_PATH" excludes="help/**,src.zip,*.cmd,*.sh,*.app/**,game.ini"/>
+                        <fileset dir="." targetdir="$INSTALL_PATH" includes="game.ini" override="false"/>
+			<fileset dir="." targetdir="$INSTALL_PATH" os="windows" includes="*.cmd"/>
+			<fileset dir="." targetdir="$INSTALL_PATH" os="unix" includes="*.sh" excludes="mac.sh"/>
+			<fileset dir="." targetdir="$INSTALL_PATH" os="mac" includes="mac.sh,*.app/**"/>
+			<fileset dir="." targetdir="$INSTALL_PATH" os="mac" includes="._*" defaultexcludes="no"/>
+
+			<!-- set the executable flag on unix -->
+
+			<executable stage="postinstall" targetfile="$INSTALL_PATH/mac.sh" os="mac"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/Domination.app/Contents/MacOS/JavaApplicationStub" os="mac"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/Map Editor.app/Contents/MacOS/JavaApplicationStub" os="mac"/>
+
+			<executable stage="never" targetfile="$INSTALL_PATH/run.sh" os="unix"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/CommandLine.sh" os="unix"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/FlashGUI.sh" os="unix"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/Increment1GUI.sh" os="unix"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/SimpleGUI.sh" os="unix"/>
+			<executable stage="never" targetfile="$INSTALL_PATH/SwingGUI.sh" os="unix"/>
+		</pack>
+
+		<pack name="Manual" required="no" id="package.manual">
+			<description>The program manual and documentation</description>
+			<file src="help" targetdir="$INSTALL_PATH"/>
+		</pack>
+
+		<pack name="Sources" required="no" id="package.source">
+			<description>The java source files</description>
+			<file src="src.zip" targetdir="$INSTALL_PATH"/>
+		</pack>
+	</packs>
+
+	<!-- needed for shortcuts -->
+	<native type="izpack" name="ShellLink.dll">
+	  <os family="windows" />
+	</native>
+	<native type="izpack" name="ShellLink_x64.dll">
+	  <os family="windows" />
+	</native>
+
+</installation>

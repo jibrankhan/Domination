@@ -1,0 +1,118 @@
+; map: RiskEurope.map
+; map made with the map maker
+; yura.net Risk 1.0.9.2
+
+name Europe Map
+
+[files]
+pic RiskEurope_pic.jpg
+map RiskEurope_map.gif
+crd RiskEurope.cards
+prv riskeurope.jpg
+
+[continents]
+North_Africa 2 yellow
+Iberia 1 orange
+Benelux_States 2 blue
+Great_Britain 3 green
+Scandinavia 3 cyan
+Central_Europe 5 red
+Adria_States 4 green
+The_Balkans 4 blue
+East_Europe 4 magenta
+
+[countries]
+1 Malta 1 564 416
+2 Tunisia 1 514 411
+3 Algeria 1 451 411
+4 Morocco 1 380 412
+5 Spain 2 405 350
+6 Portugal 2 358 347
+7 France 3 459 291
+8 Luxembourg 3 503 259
+9 Belgium 3 472 249
+10 Netherlands 3 483 222
+11 England 4 448 229
+12 Wales 4 425 214
+13 Scotland 4 432 177
+14 Northern_Ireland 4 402 183
+15 Ireland 4 397 214
+16 Finland 5 593 111
+17 Sweden 5 546 151
+18 Norway 5 509 136
+19 Denmark 5 506 186
+20 Iceland 5 385 74
+21 Poland 6 573 228
+22 Slovakia 6 590 259
+23 Czech_Republic 6 550 257
+24 Austria 6 543 280
+25 Germany 6 520 245
+26 Switzerland 6 491 289
+27 Italy 7 533 338
+28 Slovenia 7 560 293
+29 Croatia 7 550 316
+30 Bosnia_and_Herzegovina 7 576 313
+31 Serbia_and_Montenegro 7 581 337
+32 Albania 7 589 358
+33 Hungary 8 586 280
+34 Romania 8 625 285
+35 Moldova 8 657 262
+36 Serbia 8 600 315
+37 Bulgaria 8 633 322
+38 Former_Yugoslav_Republic_of_Macedonia 8 617 349
+39 Greece 8 625 381
+40 Turkey 8 663 350
+41 Russia 9 639 150
+42 Estonia 9 599 150
+43 Latvia 9 606 174
+44 Lithuania 9 598 194
+45 Belarus 9 633 208
+46 Ukraine 9 637 240
+
+[borders]
+1 39 2 27
+2 1 27 3
+3 2 4
+4 3 5
+5 4 6 7
+6 5
+7 5 26 27 25 8 9 11
+8 7 25 9
+9 7 8 10 25
+10 9 25
+11 7 12 13
+12 11 15
+13 11 14 18 20
+14 15 13
+15 12 14
+16 18 17 41
+17 18 16 19
+18 13 20 17 16 41
+19 17 25
+20 13 18
+21 46 45 44 25 23 22
+22 46 21 23 24 33
+23 21 25 24 22
+24 23 26 25 28 27 22 33
+25 7 8 9 10 19 21 23 26 24
+26 7 25 24 27
+27 1 2 7 26 24 28 29
+28 24 33 27 29
+29 33 30 28 27
+30 29 36 31
+31 30 36 32
+32 31 38 39
+33 46 24 22 28 29 34 36
+34 46 33 37 36 35
+35 46 34
+36 33 30 31 38 34
+37 40 38 39 34
+38 32 36 37 39
+39 1 32 40 38 37
+40 37 39
+41 18 16 42 43 44 45 46
+42 41 43
+43 41 44 42
+44 41 45 43 21
+45 41 46 21 44
+46 41 45 21 22 33 34 35

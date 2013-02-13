@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://172.16.0.2/Risk/build/game/" href="flashrisk.jnlp">
+  <information>
+    <title>Flash Risk</title>
+    <vendor>yura.net</vendor>
+    <homepage href=".."/>
+    <description>Java Risk board game.</description> 
+    <icon href="../images/icon.gif"/>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.4+"/>
+    <jar href="Risk.jar"/>
+  </resources>
+  <application-desc main-class="risk.ui.flashgui.MainMenu">
+    <argument>maps=aa.map,board.map,godstorm.map,luca.map,risk.map,risk2.map,risk2210.map,roman_empire.map,sersom.map,teg.map,tube.map,uk.map,world.map</argument>
+    <argument>cards=godstorm.cards,risk.cards,risk2210.cards,nomission.cards,roman_empire.cards</argument>
+  </application-desc>
+</jnlp>

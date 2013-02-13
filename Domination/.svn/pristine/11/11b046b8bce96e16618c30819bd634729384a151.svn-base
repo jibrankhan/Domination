@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<title>Map Editor</title>
+
+</head>
+
+<body background="back.jpg">
+
+
+
+<h1>How to make a map file</h1>
+
+<p><b>Download Risk 1.0.9.3 or higher, Start the SwingGUI, and go to the Map Editor Tab.</b></p>
+
+<p>
+You can open some other maps to get a idea of what things will look like when ur finished
+</p>
+
+<p>Here is a step by step guide:</p>
+
+<ol>
+<li>Click on "New Map"</li>
+<li>Click "Load Image Pic" and select your image.</li>
+<li>Add all the continents and then add all the countries (do this by clicking the "Add" button on the Map editor views window)</li>
+<li>Move all the countries to where they are located on the image (use the move tool and simply drag them)</li>
+<li>Use the join tool to join 2 countries together, do this for all neighbouring countries (to select none use right click).</li>
+<li>Now move the "Image Map Fade" to the middle. and also move the "Draw Brush Size" to say 20</li>
+<li>Go though the list of countries and draw onto the image using the draw tool where that countries area is.</li>
+<li>YOUR DONE! Save your map (4 files will be saved)</li>
+</ol>
+
+
+<h2>Finally</h2>
+<p>
+    When you have finished making your map and you are happy with it:<br/>
+    <b>submit your map to the MapStore by clicking the "Publish" button at the top of the Map Editor.</b><br/>
+    Fill in your information, select which categories you want the map to appear in (at least one) and then click "OK".
+</p>
+<p>If you have any problems or need advice email: 
+<a href="&#0109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;u&#114;&#097;&#064;&#121;&#117;&#0114;&#097;&#046;&#0110;&#101;&#0116;">&#121;u&#114;&#097;&#064;&#0121;&#0117;&#0114;&#97;&#046;&#0110;&#101;&#0116;</a>
+</p>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

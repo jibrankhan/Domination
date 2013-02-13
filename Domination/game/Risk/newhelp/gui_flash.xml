@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="flash">
+  <title>Flash GUI</title>
+
+  <section>
+    <title>Main menu</title>
+
+    <para></para>
+
+    <table>
+      <title>Keyboard shortcuts for the main menu</title>
+
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Create new game</entry>
+
+            <entry>N</entry>
+          </row>
+
+          <row>
+            <entry>Start/Stop the network game server</entry>
+
+            <entry>S</entry>
+          </row>
+
+          <row>
+            <entry>Load saved game</entry>
+
+            <entry>L</entry>
+          </row>
+
+          <row>
+            <entry>Display help</entry>
+
+            <entry>H</entry>
+          </row>
+
+          <row>
+            <entry>Join network game</entry>
+
+            <entry>J</entry>
+          </row>
+
+          <row>
+            <entry>Quit the game</entry>
+
+            <entry>Esc or Q</entry>
+          </row>
+
+          <row>
+            <entry>About</entry>
+
+            <entry>A</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section>
+    <title>Network play</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>New game</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Main game dialog</title>
+
+    <para></para>
+
+    <table>
+      <title>Keyboard shortcuts for the main game dialog</title>
+
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Ctrl + 1</entry>
+
+            <entry>"Continents" map view</entry>
+          </row>
+
+          <row>
+            <entry>Ctrl + 2</entry>
+
+            <entry>"Ownership" map view</entry>
+          </row>
+
+          <row>
+            <entry>Ctrl + 3</entry>
+
+            <entry>"Border threat" map view</entry>
+          </row>
+
+          <row>
+            <entry>Ctrl + 4</entry>
+
+            <entry>"Card ownership" map view</entry>
+          </row>
+
+          <row>
+            <entry>Ctrl + 5</entry>
+
+            <entry>"Troop strength" map view</entry>
+          </row>
+
+          <row>
+            <entry>Ctrl + 6</entry>
+
+            <entry>"Connected Empire" map view</entry>
+          </row>
+
+          <row>
+            <entry>C</entry>
+
+            <entry>Cards dialog</entry>
+          </row>
+
+          <row>
+            <entry>M</entry>
+
+            <entry>Mission dialog</entry>
+          </row>
+
+          <row>
+            <entry>U</entry>
+
+            <entry>Undo</entry>
+          </row>
+
+          <row>
+            <entry>F10</entry>
+
+            <entry>Display menu</entry>
+          </row>
+
+          <row>
+            <entry>G</entry>
+
+            <entry>Press "Go" button</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section>
+    <title>Attack dialog</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Move dialog</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Cards dialog</title>
+
+    <para></para>
+  </section>
+</chapter>

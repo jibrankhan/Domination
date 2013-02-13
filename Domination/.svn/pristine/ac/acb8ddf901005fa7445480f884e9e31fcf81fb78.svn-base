@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<shortcuts>
+	<programGroup defaultName="Games" location="applications"/>
+	<shortcut
+		name="@game.name@"
+		programGroup="yes"
+		target="$INSTALL_PATH/run.sh"
+		iconFile="$INSTALL_PATH/resources/icon.png"
+		workingDirectory="$INSTALL_PATH"
+		type="Application"
+		encoding="UTF-8"
+		description="Starts the @game.name@ game">
+
+<!--		<createForPack name="@game.name@ base files" />-->
+	</shortcut>
+
+	<shortcut
+		name="@game.name@ Map Editor"
+		programGroup="yes"
+		target="$INSTALL_PATH/SwingGUI.sh"
+		iconFile="$INSTALL_PATH/resources/icon.png"
+		workingDirectory="$INSTALL_PATH"
+		type="Application"
+		encoding="UTF-8"
+		description="Starts the @game.name@ Map Editor">
+	</shortcut>
+
+</shortcuts>

@@ -1,0 +1,9 @@
+#Lobby Client Config file
+#Sun Sep 16 18:50:57 BST 007
+default.host=localhost
+default.port=1964
+default.mode=debug
+
+default.back=risklobbyart/back.jpg
+default.logo=risklobbyart/logo.png
+default.color=#0000FF

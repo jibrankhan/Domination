@@ -1,0 +1,882 @@
+Risk - Yura Mamyrin (yura@yura.net)
+
+CURRENT VERSION:
+
+	Risk Game:	1.1.1.3
+	 * Save:	8
+	 * Network:	11
+
+	Android		30
+	Flash GUI:	2
+	Swing GUI:	2
+	Simple GUI:	1.1.1.1
+	Increment1GUI:	1.1.1.1
+	CommandLine:	1.0.4.1
+
+1.1.1.3
+
+	Online Mini Lobby added to FlashGUI and SwingGUI
+	Brazilian Portuguese added by Ricardo Gomes Ponce
+	much more info added to the Testing tab in SwingGUI
+	game.ini has ai.wait property that can be changed
+	other game.ini properties work fully now
+
+	Android 30 fixed: do not show old games when re-connect to lobby
+	Android 29 can view hint at any point
+		   annihilate button added to battle dialog
+		   show tooltip at start of go
+	Android 28 can resign from a online game
+	Android 27 do not allow someone to make a mission online game with a map that does not have missions
+		   display lobby chat messages more correctly
+		   fixed: entering a game half way through a attack, either roll or move armes is not working
+		   online play works for everyone
+		   fixed: nullpointer in MapStore after updateall if select is clicked
+	Android 26 donate button fixed
+		   double click on online game fix
+		   do not crash on failed to send message for lobby
+		   allow user to close game even in battle mode
+		   notifications will make sound/vibrate/lights
+	Android 25 timeout for turn in multiplayer game
+	Android 24 lib missing in v23
+	Android 23 push notifications for online play
+		   Grasshopper update to send jpg and not png
+		   http.keepAlive=false android hack added
+		   savegame for / or \ in name fix
+		   nullpointer in desktoppane hack added
+		   do not spam logs with known MapServer connections errors
+	Android 22 online multiplayer Beta for en_GB users
+
+1.1.1.2
+
+	italian update by Marco Barbarino
+	when publishing maps, it checks to see if the map name is already taken
+	missions translations update
+	when you update to a new version it does not replace the game.ini
+	do not give 414 errors on really large numbers of maps
+	when loading a cards file into the map editor, the mission text for destroy a player is displayed incorrectly
+	fixed: in flashGUI closing the game when a game can be continued does not close the game
+	Ukrainian added and russian updated by Oleksandra Spiegler
+
+	Android 21 grasshopper update
+		   new languages - Ukrainian
+		   another maps not loading fix for color white corruption 
+	Android 20 maps not loading because of currupted download error fixed,
+		   (files were currupted because of operator transcoding)
+	Android 19 more clear when selecting a capital
+		   only load .save game save files, do not even try to load others
+		   do not crash on "application/xml" mime type from server
+		   shows new line as a new line and not a [] in the MapStore
+
+1.1.1.1
+
+	in p2p online play, when someone disconnects, the others can carry on playing
+	in italian cards, there is no limit to the number of cards you can hold
+	FlashGUI does not show crapAI as a option as it is not needed for normal play
+	FlashGUI nullpointer in closegame double click fix
+	MapEditor will save a image added as a bmp as a png
+
+	Android 18 nullpointer in getPlayerColors and android menu fixed
+	Android 17 warn exception in MapUpdateService does not spam logs
+		   nullpointer in getPlayerColors fixed
+		   fixed: MapView combo error when no item selected by swiping bellow items while AI is playing
+	Android 16 italian fix
+		   grasshopper update
+		   nullpointer in map chooser fixed
+	Android 15 fixed: help screen crash on display string with & symbol
+		   fixed: MapView combo error when no item selected by swiping bellow items
+	Android 14 lobby integration started
+		   2nd nullpointer in loadgame fixed
+		   do not print stack on getDrawable(Context,String) failing
+		   fixed: in ICS the menu button still comes up, (eg THC One X)
+		   fixed: ldpi/small green go button looks wrong
+
+1.1.1.0
+
+	when you must trade, the "End Trade" button becomes disabled/hidden
+	can have different circle sizes on maps
+	the map Editor can save jpeg files as well as png for the img pic
+
+	Android 13 xhdpi graphics update
+		   fixed - some maps not loading (e.g Italia_s)
+	Android 12 Grasshopper update
+		   xhdpi update for 9.png for main meu button and appstore
+		   null pointer in drawArnies fix
+	Android 11 donate button added to main menu
+		   circles on map can be different size for different maps
+		   capitals look a bit better
+	Android 10 stats graph added
+	Android 9 some maps fail to load on Android
+		  when a map needs to be updated then it shows the download icon instead of the play icon
+		  if a map does not download fully it does not come up in the list of maps
+	Android 8 fixed - WARNING: trying to set a transparent color: 0 (going from mainmenu to newgame)
+		  DONE - when map is loading, should show a loading screen
+		  DONE - attack and move screen need to take into account dpi when drawing the countries
+		  country names added to move and attack screen
+		  fixed - Text in cards dialog is not very good and does not mention "trade 3 same or 3 different cards"
+		  in fixed cards rules the cards dialog shows you have many armies you will get for a particular trade
+	Android 7 handle OutOfMemoryError much better when loading the map
+		  nice theme added for main menu buttons
+		  nice theme added for cards
+		  better error message in MapStore when it fails to connect
+	Android 6 DONE - when you are in "MUST TRADE" mode the "Go" button should not say "End Trade" and the cards button should be green
+		  DONE - something fun for the end of the game has not been added to the Android version
+		  fixed - java.lang.NoSuchFieldException: btn_circle
+	Android 5 save game works on api < 9
+	Android 4 DONE - Go> Button needs to be green and nice
+		  DONE - [Cards] button needs to be nice
+		  DONE - [Hint] button needs to be nice
+	Android 3 FileChooser nullpointer fix
+		  save and undo icons added
+		  RadioButton hack added to make startgame button more visible
+		  DONE - PicturePanel should not use defualt font as it changes with dpi, should be a fixed size
+		  fixed - WARNING: trying to set a transparent color: 0 (going from newgame to mainmenu)
+		  fixed - on tablet the segmented control for the map views needs extra padding
+	Android 2 MapStore sprite wrong size on ldpi fix
+	Android 1 DONE - layout attack dialog fully
+
+1.1.0.9 (26.06.2012) ### released for Android on Google Play for the first time ###
+
+	error now does not trigger a error box to pop up:
+	 Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
+	if UNDO fails once, do not try and do undo any more
+	recycle cards works more like it would in real life
+	continue added to SwingGUI and FlashGUI and Android
+	DONE - in the MapStore the "top downloaded" "Top New" text is not visable in mdpi
+	download icon in MapStore changed to blue
+	game can be played on Android
+
+1.1.0.8 (02.04.2012)
+
+	Fixed crash in AIHardCapital.java for map CRO.map and capital italianlike game
+	copyright date fixed in About box
+	memory usage smaller for PicturePanel, Castle in the Sky.map OutOfMemoryError
+	can click to toggle animation at the end of the game
+	mission to destroy a player show the players color as well as the name
+	on Mac OS X the .sh files run correctly and have nice icons
+
+1.1.0.7 (11.03.2012)
+
+	spaces in names support for publishing new maps
+	fixed nullpointer when you close the MapStore right after fetching a new XML file
+	mapeditor saved map version inside map file
+	update to grasshopper to not error on Logger.info and to correctly report errors in javaw mode
+
+1.1.0.6 (08.01.2012)
+
+	fixed xml not working sometimes when there are unicode chars
+	fixed, show loading screens when loading data in MapStore
+	fixed on windows 7, preview map image does not download correctly
+
+1.1.0.5 (04.01.2012)
+
+	got rid of Abba dependence, now just uses SwingME
+	fix for maps that link to existing cards files, such as france.map
+	fix for MapStore showing local maps with spaces in names
+
+1.1.0.4 (30.12.2011)
+
+	fallback to png if can not save jpeg for OpenJDK Linux users
+	map editor, can load maps with empty missions and spaces in the names
+	MapStore will show scaled down full image when preview image is missing
+	Black player on stats panel has a white background
+	got rid of dependence on AbbaRepository, replaces it with net.yura.cache.Cache
+
+1.1.0.3 (21.12.2011)
+
+	when there is a new version out, clicking ok takes you to the website
+	NewGameFrame will show preview of map even if preview file is missing (shows red dot)
+	support for java 1.4 again, got rid of the dependence on ToolsME.jar
+	in network play if a user is missing a map, it will try to download it from the server
+	special FX on game end :-)
+
+1.1.0.2 (12.12.2011)
+
+	continents in map editor show color in list
+	can double click on items in list
+	German update - Oliver S.
+	Map Store added for downloading new maps
+	Donate switched from paypal to google
+	Map editor will default to user dir if it does not have access to save in normal maps dir, e.g win7
+	publish button added to send maps to the server
+
+Risk 1.1.0.1 (18.06.2010)
+
+	in FlashGUI when u make a new game, it remembers your old player state
+	bug with trading cards in CARD_INCREASING_SET fixed
+	fix to trade button in FlashGUI Cards Dialog not being disabled
+
+Risk 1.1.0.0 (02.06.2010)
+
+	new build system to allow for building both Risk and Domination
+	translation tool split off from main code
+	pl language added
+	italian card rules added
+	3 dice to defend option added
+	core Domination engine split from anything UI related in the hope to create a Risk for android
+	in the map editor, if a new image is loaded with a different size to the imgmap, it asks if you want to update the size of the imgmap
+
+Risk 1.0.9.8 (07.10.2008)
+
+	no more licence in installer, as does not work in java 1.4
+	In FixedCards gameMode some card trades were returning zero armies, for example {WILDCARD,WILDCARD,*}. - davet
+	IT update - Orfeo Ciano
+	DE update - Steffen Hornung
+	better Hard AI - Cameron Macintosh
+	Done - in lobby should use image factories so they dont have to keep reloading images in the GUI (RiskUtil.getUIImage)
+	better applet errors in the map editor and message tool
+	network update on different default maps
+
+Risk 1.0.9.7 (06.05.2008)
+
+	Game Name externalized
+	fixed - closegame BattleDialog paintComponent hasArmiesInt NullPointerException
+	improved - mid-game closegame problem when its not ur turn
+	jsmooth exe installer works now
+	fixed - installer gets version from build file
+	help updated a bit with IDE info
+	applets added to Help
+
+Risk 1.0.9.6 (16.04.2008)
+
+	gives error message when cant load a game
+	cant highlight any country now when selecting capital
+	Risk can now run FlashGUI and SwingGUI as unsigned Java Web Start
+	donate button added
+	gives an error message when cant connect to a server
+	if there is a error loading 1 file in about box, others still load
+	NullPointerException in _paintImmediately maybe fixed by using SwingUtilities.invokeLater()
+	RiskIO added, so lobby can use own IO
+	RiskUtil added, for util methods from Risk
+	FlashGUI goButton should work better under vista
+	Fixed - when there is no net connection FlashGUI does not quit the java process
+
+Risk 1.0.9.5 (05.03.2008)
+
+	FlashGUI can be resized
+	Message tool shows you when a translation is missing
+	in SwingGUI when a error happens it adds a red icon to the tab
+	bugs and suggestions have different subjects
+	made map get bigger as u resize in SwingGUI
+	made map editor bigger then u resize
+	allow for maps of any size
+	fixed JFileChooser maybe
+	fixed SwingGUI attack select country bug
+	add dialog to show continent values
+	fixed - when u have "\" in the name of the player strange things happen with String.replaceAll()
+
+Risk 1.0.9.4 (02.02.2008)
+
+	Swedish language added
+	Galician language added
+	hardAI a little bit better
+	added some nullpointer checks to the map editor
+	fixed bug with java 1.4/1.5 and files that start file://Claire/Disk/...
+	fixed more nullpointers in getAutoEndGo
+	does not clear the log after the game if an error happened
+	Lobby bug fixed: in none english if about button text is too long, the button drops down
+	can refresh and reload a locale in applet mode
+	in the map maker, u get random colors when u make continents
+	lobby fix: if u resign during a battle it does not close the battle window
+	testing tab: can view all available cards
+	fixed: tooltips do not work when u zoom in
+
+Risk 1.0.9.3 (06.10.2007)
+
+	Portuguese added
+	changed to use png instead of gif for old versions of java
+	mouse wheel zoom added to editor
+	fixed: CRASH when more then 1 player hits startgame, now it ignores the 2nd 1
+	fixed end of game mouse move bug, i think
+	new logo in about box
+	does not select the close button by default in SwingGUI
+
+	Josh:
+	Hard AI fixed with 1 way borders
+	done: make crapAI spread its troops out more
+
+Risk 1.0.9.2 (22.08.2007)
+
+	GPL v3 now!
+	added map saving to map editor and all other editor things finished!
+	fixed very rare bug with keys being pressed in FlashGUI with modifiers
+	translation tool remembers dir and has a icon for load
+	info/testing tab added into SwingGUI
+	new Join Method for Lobby Risk and timmer added, that seems to work
+	split turnbased game and risk game for lobby
+	added 3D View of Map to SwingGUI
+	added option to let Risk open a webpage with the lobby on it
+	added option to run flash gui with same risk backend as swinggui for testing
+
+Risk 1.0.9.1 (07.07.2007)
+
+	fixed not checking if there map folder is correct
+	fixed games not loading when u load then after closing the app (broken in 1.0.9.0)
+	fixed undo does not crash on macs
+	fixed added extra check when trade is clicked in flashgui
+	fixed, proper file filters added to translation tool
+	fixed cards did not trade correctly with 2 wildcards
+	fixed when special trading mode, u can not trade in 2 sets, but it looks like u can
+	checks for new versions of Risk
+
+Risk 1.0.9.0 (02.07.2007)
+
+	Serbian language added
+	can run and PLAY the game when there is no X server
+	added a config file
+	done - make the player names saved in a file that can be edited, maybe also default map & cards
+	small french fix ("game.note.armiesleft={0} arm\u00E9es restantes")
+	Lobby project integration added
+	Map editor added
+	bugs are sent automatically
+	ai speed can be changed in swingGUI
+	leave command WORKS fully!!!
+	added recycle cards option
+	made auto-defend ON by default
+	Fixed (by getting rid of 2 player mode) NETWORK BUG - guis get confused in 2 player mode,
+		when 1 person takes a go, also need to make it posible for nutal player to use auto defend
+	Fixed - SWING GUI BUG - when game is created with no default map the layout looks odd
+	added Risk Translation Tool
+
+Risk 1.0.8.9 (20.01.2007)
+
+	added Catalan
+	added Finnish
+	does not crash if it cant find maps dir
+	can add the word "test" to the top of a maps file to run the mapstest
+	fixed bug where game saves would not load unless the maps dir was exactly in the same location
+	made more flexable missions work, like get 3 of ANY continent
+	fixed bugs in spelling and parts not being translated
+	fixed bug in borders not looking right in SwingGUI in xp
+
+Risk 1.0.8.8 (25.09.2006)
+
+	hopefully fixed 1 of the rare bugs in flash gui repaint
+	in applet mode it shows u when its loading something
+	added new map (aa)
+	Chinese added
+	Turkish added
+	added card options
+	more stuff stored as array
+	added new map 2210
+	in SwingGUI added right click for text
+	some PicturePanel updates
+	in SwingGUI sorted out opaqueness in text boxes (java 1.6 problem)
+	SwingGUI wrong colors for move armies
+	SwingGUI more start game options
+	conected empire view works better
+	fixed bug where u could see other peoples cards & missions
+	redone translation so things are not repeated
+	does not throw on wrong cards any more - got tired of those bug reports
+
+Risk 1.0.8.7 (29.04.2006)
+
+	tiny bug in print out of errors in the console fixed
+	fixed - did not include the file roman_empire_fr.properties
+	WOW applet!!!! SwingGUI works inside a applet window
+	FlashGUI works as a applet too!
+	fixed - size of FlashGUI game frame is wrong
+
+Risk 1.0.8.6 (29.01.2006)
+
+	does not crash when '$' is in the player name
+	easy AI attack is more random
+	ADDed OK button for capital selecting in SwingGUI - it is too easy to select a capital you do not want
+	FIXED - NETWORK BUG - should not let a player click twice on a contry when placing armies at start of game,
+	...if someone clicks to fast on inital placing for network game
+	hopefully fixed a bug with the movedialog in flashGUI throwing exceptions
+	when new game is started does not let u highlight any Country for no reason
+
+Risk 1.0.8.5 (23.12.2005)
+
+	fixed bug where battle dialog did not close when game was won on the auto move bit
+	italian added
+	no one can join a game once something has been changed
+	fixed - NETWORK BUG - network should only allow players to join before any players have been created
+	fixed - NETWORK BUG - network should not allow 2 players on 1 computer using 2 clients
+	new map added - roman_empire.map
+	fixed - if server is unable to start it does not give error
+
+Risk 1.0.8.4 (02.12.2005)
+
+	fixed very rare battle dialog bug
+	fixed SwingGUI not working in Linux
+	fixed no error message when manual does not open
+	firefox default browser on Linux now, instead of netscape
+	hopefully FlashGUI will use less memory now, as it now reuses all its dialog boxes
+	hopefully the dice wont roll for too long on slow computers now
+	FIXED - SWING GUI BUG - when del player in gui if u del player when color drop down menu is open it does not let you select any other players
+	FIXED - FLASH GUI BUG - DICE ROLL FOR FAR TOO LONG ON SLOW COMPUTER
+	Dutch added
+	much faster PicturePanel.java
+
+Risk 1.0.8.3 (28.10.2005)
+
+	fixed - FLASH GUI BUG - the bottom bar does not change color at the right speed AGAIN
+	fixed - pimlico station had error in map image
+	split easy AI and hard AI into 2 classes
+	fixed HardAI crashes on tube and uk maps
+	Flash GUI gives better error messages
+	ant script lets java show debug info
+	added Error catching system
+	added a save error function into SwingGUI
+	added Spanish
+	added Russian
+	SwingGUI works with network game setup
+
+Risk 1.0.8.2 (10.10.2005)
+
+	fixed - GAME BUG - only mozilla browser works on Linux, no browser at all on a mac
+	old help updated about map names and extra maps
+	done - make string in cards dialog of Flash GUI not touch button
+	done - make credits add credit for chris and "Hervé KINDER"
+	done - make installer have right version
+	french added
+	cards dialog in SwingGUI works in non-english
+
+Risk 1.0.8.1 (27.09.2005)
+
+	fixed small AI bug
+	added statistics view to FlashGUI
+	added dubug tab to SwingGUI
+	added replay and play commands
+	redone menus in SwingGUI
+	made stats screen black when nothing is selected
+	redone network sending system, cant use country names any more, MUST use numbers
+	FlashGUI newgameframe looks nicer for the button highlighting
+	FlashGUI you can now get rid of the menu by clicking on it again
+	DONE - make it posible to record a game, then replay it
+	Debug - save dubug log
+	Debug - play debug log
+	Debug - clear debug log
+
+Risk 1.0.8.0 (18.09.2005)
+
+	packages redone
+	added a better hard AI
+	code improvments, country images is now array and others
+	more constants added to the core to make it easer to code AI and other things
+	FIXED - in swingGUI card ownership goes black
+	FIXED - in SwingGUI the game does not start if its set to german
+	FIXED - FLASH GUI BUG - SAVE SHOULD BE DISABLED IN NETOWRK GAME MODE!!!!!
+	FIXED - statistics menu and buttons work propelly now
+	--lang=de works in SwingGUI too
+
+Risk 1.0.7.6 (22.05.2005)
+
+	cweiske:
+	Translated the FlashGUI and the Risk server messages
+	The internal working is more based on country ids now than on country names, as there were problems with translated country names
+	The flashgui main dialog and the new game frame can be controlled with the keyboard now,
+	the normal game frame a bit (tab through countries is still missing)
+
+	Yura:
+	made it move armies automatically when you have no choice over how many to move
+	made testmap a method
+	FIXED - Spelling error on the card screen: "on more thEn one" --> "on more thAn one"
+	The about dialog got a tabbed interface like the ones in the KDE apps
+	FIXED - network game would not work if both clients thought that 127.0.0.1 is there IP
+	The toolbars in SwingGUI look nicer
+	FIXED BUG - when attacking to gain a large amount of cards that will require a trade, the battle dialog does not disapear after armies are moved
+	FIXED BUG - should disable trade button when there are only 3 cards in the "odd trading mode"
+
+
+Risk 1.0.7.5 (10.07.2004)
+
+	ALL maps HAVE to be in the maps directory, or they will not load
+	NEW MAP!! - tube.map
+	Map Loading redone with Exception system!!
+	FIXED GAME BUG - if cards file is wrong it should not let you select it
+	FIXED GAME BUG - in network play if you select a deferent map, it may not change it for all clients
+	Better Color system
+	info command added - Have a "showcurrentplayers" command to list the current created players.
+	gpl in help
+	FIXED GAME BUG - game setup is a bit vague "place armie on your country or empty"
+	FIXED GAME BUG - if server dies all cliends crash
+	Fixed game bug when mission game was started with no missions loaded
+	DONE - make mission option be disabled for maps that dont allow it
+	DONE - AutoPlaceAll option should be disabled for Mission Risk (as it is always on in mission risk)
+	newplayer command has type first again
+	changed format of some of the map files
+	more troops at start for big maps
+
+Risk 1.0.7.4 (25.06.2004)
+
+	Cards Dialog in SwingGUI is not resizeable any more
+	SaveGame button is disabled in SwingGUI during game setup (and so is Options Button)
+	added options [x] Autodefend during game in Swing GUI and FlashGUI
+	added options [x] Autoendgo during game in Swing GUI
+	added options [_] Autoplaceall at startgame in Swing GUI
+	Menu in FlashGUI GameFrame is ANTIALIASed
+	changed none and all to min and max in move dialog in FlashGUI
+	added "server running" logo to the bottom of FlashGUI menu
+	added help button to FlashGUI game setup
+	save game disabled in game setup
+	added AutoDefend (command line) - "Automatic Defense" option
+	names can now have spaces in them, newplayer command syntax now different
+	AutoEndGo can now be diferent for every player in the game - fixed: AI was slow when autoendgo was off
+	FIXED - null pointer exception when joining network game and the default map can not be found
+	stats panel works differently, need feedback on this!!! is this better then b4? or worse?
+
+Risk 1.0.7.3 (20.05.2004)
+
+	FIXED - in java 1.4 the stats pannel makes nullpointer exceptions
+	FIXED - BIG GAME BUG AFTER TRADING CARDS WHEN PLAYER IS ELIMINATED (zyphrus)
+	FLASH GUI - added 1 2 3 to the cards dialog trade pannel
+	added statistics tab in SwingGUI
+	added credits to the help file
+	* Added statistics to the game core - display stats inovation (yes)
+	if your name is "Theo" you get twice as many armies at the start of your go (only local game)
+	FIXED - COMMAND LINE BUG - network game does not work
+	Fixed - you can win mission risk during tac move stage
+	FIXED - zyphrus, unable to attack after trading a set of cards, end trade button did not go in FlashGUI
+	FIXED -	JAVADOC BUG - 59 errors in the java doc comments
+	FIXED - smartAI tryed to move too few armies in 18c2a mission
+
+Risk 1.0.7.2 (15.05.2004)
+
+	white box around the name of a country on the map top left corner
+	when you can not trade the game does not put you into trade mode
+	added "no map loaded" text to flashGUI
+	FIXED - swing gui does not show dice results, it just pauses after the defender rolls
+	Swing GUI can place 10 armies on right click
+	game engin (Risk.java) is now a thread, AI is no longer a thread (AI now static)
+
+Risk 1.0.7.1 (13.05.2004)
+
+	wait Cursors added during map loading
+	map loads faster (now uses getRGB)
+	manual layout redone with frames
+	manual has correct commands for command line risk
+	right click in flash GUI makes you place 10 armies instead of 1
+	made this changelog file, split readme into 2 files (ChangeLog.txt and BugTrack.txt)
+	let you have a option to carry on playing if you win in capital or mission risk (command line)
+	renamed addListoner to addRiskListoner and gui to controller in Risk.java
+	add to manual that port 4444 is used for network play
+	PicturePanel dimensions ppX and ppY are constants in PicturePanel
+	simple gui use file filtering on run script and save log
+	FIXED BUG - Merioneth (43) and Cardiganshire (45) assume yes, and another one (look in the map file)
+	FIXED BUG - risk_map.gif badly drawn stuff
+	FIXED BUG - Swing GUI should NOT resizeable
+
+Risk 1.0.7.0 (07.05.2004) ### released on sourceforge.net for the first time ###
+
+	FIXED GUI BUG - open file does not filter files and does not go to current folder
+	FIXED MAP BUG - map images do not load if program is run from a wrong dir
+
+Risk 1.0.6.7 (01.05.2004)
+
+	more then 1 GUI can connect to the same game core
+
+Risk 1.0.6.6 (01.05.2004)
+
+	new different options of connecting to the game core
+
+Risk 1.0.6.5 (01.05.2004)
+
+	more flexible GUI
+	Simple GUI added (color command line with clickable map on top)
+	Command Line Risk is BACK!
+
+Risk 1.0.6.4 (04.04.2004) ### submitted as Increment 2 ###
+
+	FINISHED EVERYTHING and commenting and help added
+	FIXED Flash GUI lets you select more dice then you are allowed to roll
+	FIXED undestand miss-spelled
+
+Risk 1.0.6.3 (26.03.2004)
+
+	battle dialog in flash gui done
+	FLASH GUI IS FINISHED!!!!
+	removed all System.out.print from the API
+	FIXED MAP BUG - NOT DONE - map does not show connected empires
+	FIXED GAME BUG - game does not end when in 2 player mode you kill the human but the nutral is still alive
+	FIXED FLASH GUI BUG - new game setup the player colors do not show up well
+	FIXED FLASH GUI BUG - when you start a network game it still lets you click the buttons on the new game screen
+
+Risk 1.0.6.2 (24.03.2004)
+
+	nice arrows
+	move armies dialog finished in FlashGUI
+	Make the map have nice arrows instead of lines
+	FIXED local human v human game did not work in FLASH GUI
+	FIXED MAP BUG - it is hard to read black text on blue on the map
+	FIXED the leave command does not work when it is not your go
+
+Risk 1.0.6.1 (23.03.2004)
+
+	Cards work in FlashGUI,
+	you can attack/defend and make tac moves (no flash gui done though) GAME WORKS FULLY
+	FIXED GUI BUG - when selecting capitals they do not highlight
+	FIXED GUI BUG - cards stay highlighted after u click if u dont move the mouse
+
+Risk 1.0.6.0 (18.03.2004)
+
+	Undo disabled in network game
+	you can now autoplaceall in any mode
+	autoendgo works on network (ie 1 player can have it on and another can have it off)
+	game setup for FlashGUI mostly done (works fully)
+
+Risk 1.0.5.9 (12.03.2004)
+
+	AI parts taken out of API (THERE SHOULD BE NO AI METHODS IN THE API)
+	more work on FlashGUI
+	FIXED GUI BUG - when placing the armies (before all territories are occupies) when u move the mous over a territory u already own, it lights up
+
+Risk 1.0.5.8 (08.03.2004)
+
+	basic "smart" AI
+
+Risk 1.0.5.7 (05.03.2004)
+
+	optimization and small fixes
+	NEW MAP (map_luca.txt)
+	FIXED? (if anyone get this bug can they tell me) - GUI BUG - when playing with AI the map sometimes jumps down then back up
+	(use hide instead of remove) use "card layout" (fixed in SwingGUI 1.0.3.3)
+	FIXED? (if anyone get this bug can they tell me) - GUI BUG - when u change map view, if u dont move the mouse it only updates half the map
+	FIXED? (if anyone get this bug can they tell me) - GUI BUG - when u move mouse out of the picture panel during ai move the map (SOMETIMES) filckers
+
+Risk 1.0.5.6 (04.03.2004)
+
+	split PicturePanel from SwingGUI
+	started FlashGUI
+	SimpleGUI is back
+	FIXED GUI BUG - tac move when u deselect it does not highlight, and lets u open the move dialog with no c2 selected
+
+Risk 1.0.5.5 (28.02.2004)
+
+	added Undo button
+	added options to Autoendgo on/off
+	RiskAPI is now a package
+
+Risk 1.0.5.4 (23.02.2004)
+
+	network supports all game modes
+	FIXED GAME ENGINE BUG - u can win the 2 armies in 18 countries mission during the place armies stage of the game (game does not allow this)
+	FIXED GUI BUG - java.lang.ArrayIndexOutOfBoundsException: 589 at RiskGUI$GamePanel.mouseReleased(RiskGUI.java:1764)
+	FIXED GUI BUG - Naeem - if u select 1 country to move from it does not let u change your mind (unselect it)
+	FIXED GAME ENGINE BUG! (found by ########) if u have to get only 2 continents it does not let u win in mission risk
+	FIXED GAME ENGINE BUG! (found by ########) if ur mission is to kill a player or get 24 countries if u r that player then it does not let you win!
+	FIXED game askes u how many troops u want to move after u won the game
+	FIXED leave makes all the clients leave
+	FIXED blank line after game created
+	FIXED autoplace is not random (makes ai very bad)
+	FIXED it shows to all player what card u get and showcards
+	FIXED missons are not random
+
+Risk 1.0.5.3 (20.02.2004)
+
+	Network Play - inovation (yes)
+	FIXED GAME BUG - showmission works even with no player selected
+	FIXED GAME BUG - if ai takes first go the game lets human enter things
+	FIXED GAME BUG - you can use up to 10 troops to defend - should say 3
+	FIXED GAME BUG - attack again? (you can use up to 16 dice to attack)
+	FIXED GAME BUG - attack again using 0 dice? is asked when it should not
+	FIXED GAME BUG - autoplace all does not display results corectly
+
+Risk 1.0.5.2 (16.02.2004)
+
+	FIXED winning capital risk does not end the game
+	FIXED GUI BUG - map does not work (SORRY)
+
+Risk 1.0.5.1 (11.02.2004)
+
+	GUI FINISHED - Players panel in gui
+	trade cards finished
+	capitals shown on map (Adrian - capitals need to be shown on the map.)
+	FIXED map bug in sersom 27 35
+	FIXED during attack the border of the map went thick
+	FIXED GUI BUG - if you save in the middle of a defend state and then u open the file it does not give u a options to roll
+
+Risk 1.0.5.0 (10.02.2004)
+
+	FIXED gui-1.0.2.6 GUI BUG - in java 1.5 the main window width was wrong
+	FIXED gui-1.0.2.6 GUI BUG - colors do not work in Linux for diferent map views
+	gui-1.0.2.5 started on cards dialog
+	gui-1.0.2.4 got rid of the not needed attack button in the SwingGUI!
+	- add diferent views for the map
+	- YURA - make it load all the buffers images for the map on game load
+	gui-1.0.2.3 redone image panel again!
+	gui-1.0.2.2 redone image panel again!
+	gui-1.0.2.1 redone image panel again!
+	gui-1.0.2.0 redone image panel
+
+Risk 1.0.4.7 (04.02.2004)
+
+	- Adrian - need a function to recall a players mission during anytime like "mymission"
+	- YURA - do not show buttons that are not needed for rolling
+	added lots of GUI in-game-panels
+	changed the check winner (not in endgo any more but in defend roll)
+	- The console constantly needs to display/remind how many armies the player can place, for example...
+	...currently after trading player has to guess how many armies they had to start with plus the trading value.
+	- Adrian - should display "+armynumber+ armies placed in :Alberta" then next line "+armies_remaining+ armies remaining for desployment"
+	shows armies left to place - Adrian - the total armies left to place needs to be updated and printed to the console when ever it is modified
+	missions are secret now - Adrian - missions are supposed to be secret, only the player knows their own mission
+	shows mission at end of game - Adrian - pinky's mission was <insert mission here> \n pinky has won!
+
+Risk 1.0.4.6 (03.02.2004)
+
+	set up players gui
+	split up riskgui into inner classes
+	- Adrian - get rid of the endgo command
+	added auto endgo
+	FIXED savegame during ai go makes ai very confused
+	FIXED gui crashes with 2 player
+	FIXED does not load map files or other files if there is a space in the path
+	FIXED it should not aloow ai to play 2 player risk
+
+
+Risk 1.0.4.5 (02.02.2004)
+
+	New GUI (Swing GUI)
+
+Risk 1.0.4.4 (30.01.2004)
+
+	NEW MAP (map_risk2.txt)
+	countries light up when the mouse is over them
+	FIXED map_risk2.txt bug with counties 37 and 39
+	FIXED isNeighbours is only checked 1 way dureing attack and movearmies
+
+Risk 1.0.4.3 (28.01.2004)
+
+	new Graphics2D lines and circles
+	numbers fit better into the circles
+	FIXED odd line when Alaska attacks Kamchatka
+	FIXED game does not load if u load a wrong cards file first time
+	FIXED back text on black in gui
+
+Risk 1.0.4.2 (27.01.2004)
+
+	draws lines when it attacks
+	FIXED - border bugs in map file
+	- Yura - the ai should not have to close the game if it wins (unable to display what armies who has at the end if ai wins)
+	FIXED - when the ai takes turns it only outputs to the screen when everything is finished
+
+Risk 1.0.4.1 (26.01.2004)
+
+	map now shows the number of troops in the countries and the color of the owner of that country
+	simple map is back! (map_simple.txt)
+	FIXED - load game did not display the map from the loaded game
+
+Risk 1.0.4.0 (24.01.2004)
+
+	You can enter the number of a country OR its name to place or attack
+	OR!!! you can now click on the map to get the country name
+	supports TWO map files map_risk.txt and map_sersom.txt!!!
+	FIXED - GAME ENGINE BUG! (found by ai) mission risk did not check now many armies you had when u need a min of 2
+	FIXED - in windows the saved log does not open well in microsoft notepad
+
+Risk 1.0.3.7 (22.01.2004)
+
+	!!more info in the about box!!
+	finished random (Stupid) ai player
+	fixed small gui bugs
+	added up command and down command - add the prev command on up key option
+	FIXED - GAME ENGINE BUG! (found by ai) if a player is enialated and cards need to be traded ...
+	...the game forgets to ask you to move armies to the defeated country (SOMEONE SHOULD HAVE SPOTTED THIS ONE!!!!)
+	FIXED - if there are no countries with enemy borders (ie the game is over) but there are armies to place ...
+	...ai gets confused and tries to placeamies in country with name ""
+	FIXED - at tries to trade when the tradeCap is on
+	FIXED - ai can not trade cards
+
+Risk 1.0.3.6 (21.01.2004)
+
+	better info during game
+	more ai features
+	split the roll command so that ai can use it
+	- should try to keep it consistant, either movearmies or movearmy, and placearmies or placearmy
+	renamed movearmy to movearmies and move
+	status bar now shows current player
+	FIXED - ai can not roll dice (change the roll command so the AI can roll to defend)
+	FIXED - in linux status bar does not show (bug apeared in version 1.0.3.5)
+	FIXED - unable to make jar file (now u just zip all the class files and the META-INF dir, and call it Risk.jar)
+
+Risk 1.0.3.5 (17.01.2004)
+
+	fixed help
+	added a game-status bar at the bottom of the gui
+
+Risk 1.0.3.4 (16.01.2004) ### submitted as Increment 1 ###
+
+	help added
+	FIXED - Adrian - something wrong with the dice results - can anyone help
+
+Risk 1.0.3.3 (16.01.2004)
+
+	added new icon
+	added more ai things
+	FIXED - when you copy and paste from the while console it does not scroll down any more when comands are entered - anyone?
+	FIXED - unable to save game when game is running
+	FIXED - the main box status bar is a odd color
+
+Risk 1.0.3.2 (16.01.2004)
+
+	added savegame and loadgame
+	added basic AI
+	FIXED - when the game runs out of cards it crashes
+	FIXED - allows a player to put more armies in a country then he/she/it has
+	FIXED - in capital risk game crashes after setup
+
+Risk 1.0.3.1 (14.01.2004)
+
+	added new armies disply at beggining of turn
+	optimised cards class
+	showarmies now works almost all the time - allow players to use the showarmies command in the attack phase.
+	- if you can, the game really needs a way to place more than 1 army at a time and show how many armys a player can place
+	placearmies now can place any number of armies
+	FIXED - when player is eliminated the game crashes (bug apeared in version 1.0.3.0)
+	FIXED - when a card or map file has a error in it the program crashes
+	FIXED - when invalid file is selected and game started, it crashes
+	FIXED - when a card name is wildcard (when trading) the program crashes
+
+Risk 1.0.3.0 (14.01.2004)
+
+	added Capital Risk
+	added Secret Mission
+	started on AI and Network
+
+Risk 1.0.2.7 (13.01.2004)
+
+	show all forces
+	show dice results
+	fixed small GUI bugs
+	added the command for the "On-line help system"
+	FIXED - unable to placearmy during setup of 2 player mode
+
+Risk 1.0.2.6 (13.01.2004)
+
+	added CommandGUISwing
+	added 2 player mode
+	added load map or card file
+	FIXED - fixed bug that in 2 player mode autoplace and autoplaceall did not place anything
+	FIXED - Alt key bug in GUI - can anyone help? i have no idea why this happens
+
+Risk 1.0.2.5 (12.01.2004)
+
+	FIXED - GUI and about box still dont work in Linux (size problem) MainBox setSize(910,680);
+	// (860, 670) // 580 AboutBox setSize(280,250); // (214,180)
+	FIXED - showcards makes program crash
+
+Risk 1.0.2.4 (12.01.2004)
+
+	new method for get number of armies
+	FIXED - BUG1 a. from Naeem attack  - parser fixed gave wrong syntax
+	FIXED - BUG1 b. after country is captured it does not ask you to move troops - yet another parser bug :-( i must have rushed making the parser
+	FIXED - BUG2 from Naeem movearmy returns crap - parser bug
+
+Risk 1.0.2.3 (12.01.2004)
+
+	added the eliminate player card thing
+	added better color handling in the parser
+	renamed Command to CommandText
+	FIXED - endattack does not work
+	FIXED - attack wants 4 options instead of 2
+	FIXED - crash on string instead of number
+
+Risk 1.0.2.2 (12.01.2004)
+
+	FIXED - Players are able to choose the same colour and enter the same name. - did not get round to it
+	FIXED - Incorrect country name causes the game to end (Nullpointer exception) - sorry about this 1 ..very stupid mistake
+
+Risk 1.0.2.1 (11.01.2004)
+
+	Game Engin done

@@ -1,0 +1,20 @@
+<html>
+
+<head>
+
+<title>Applet</title>
+</head>
+
+<frameset cols="150,*">
+  <frame name="contents" target="main" src="applet_nav.htm">
+  <frame name="main" src="applet_main.htm">
+  <noframes>
+  <body>
+
+  <p>This page uses frames, but your browser doesn't support them.</p>
+
+  </body>
+  </noframes>
+</frameset>
+
+</html>

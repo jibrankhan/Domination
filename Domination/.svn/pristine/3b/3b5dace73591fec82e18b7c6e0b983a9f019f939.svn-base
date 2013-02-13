@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+
+	<TITLE>RISK</TITLE>
+
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm }
+		TD P { margin-bottom: 0.1cm }
+		A:link { color: #0000ff }
+		A:visited { color: #800080 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff" BACKGROUND="back.jpg" DIR="LTR">
+
+<center>
+
+			<P STYLE="border: none; padding: 0cm"><B>Loading a
+			different map or set of cards</B></P>
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Loading a different map<BR>
+			</P>
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Loading a different map only be done from the New Game screen,
+			click on the Choose Map button and a smaller window should open,
+			navigate to the map file and open it to load it. If the map file
+			is valid, a mini picture should be displayed in the Map: window
+			showing the map that you have selected, and the map file name will
+			be displayed.</P>
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Valid maps supplied are:</P>
+
+
+	<P STYLE="border: none; padding: 0cm; font-weight: medium">
+	<b>board.map</b> (default map)</P>
+
+	<P STYLE="border: none; padding: 0cm; font-weight: medium">
+	<b>aa.map</b> (Axis and Allies Map)</P>
+
+	<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+	luca.map<span style="font-weight: 400"> (map made by Luca)</span></P>
+
+	<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+	risk.map<span style="font-weight: 400"> (map from a old risk game)</span></P>
+
+	<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+	risk2.map<span style="font-weight: 400"> (map from the game RiskII)</span></P>
+
+	<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+	risk2210.map<span style="font-weight: 400"> (map from the game Risk 2210)</span></P>
+
+	<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+	<b>sersom.map</b><span style="font-weight: 400"> (supplied map)</span></P>
+
+	<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+	roman_empire.map<span style="font-weight: 400"> (roman empire map)</span></P>
+
+	<P STYLE="border: none; padding: 0cm; font-weight: medium">
+	<b>teg.map</b> (map from the game TEG)</P>
+
+	<P STYLE="border: none; padding: 0cm; font-weight: medium">
+	<b>tube.map</b> (map of London Zone 1 Tube)</P>
+
+	<P STYLE="border: none; padding: 0cm; font-weight: medium">
+	<b>uk.map</b> (alternative map requirement)</P>
+
+	<P STYLE="border: none; padding: 0cm; font-weight: medium">
+	<b>world.map</b> (geographical map of the world)</P>
+
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			If the map is not valid, then the mini map will remain as it was,
+			i.e. no change.<BR>
+			</P>
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Loading a new set of cards</P>
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Valid cards supplied are:</P>
+
+<P STYLE="border: none; padding: 0cm; font-weight: medium">
+<b>nomission.cards</b> (cards for uk.map, tube.map and others)</P>
+
+<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+risk.cards<span style="font-weight: 400"> (these are the standard cards)</span></P>
+
+<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+risk2210.cards<span style="font-weight: 400"> (cards that are used with risk2210.map)</span></P>
+
+<P STYLE="border: medium none; padding: 0cm; font-weight: 700">
+roman_empire.cards<span style="font-weight: 400"> (cards that are used with roman_empire.map)</span></P>
+
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Loading a set of cards can only be done form the New Game screen</P>
+			<P STYLE="border: none; padding: 0cm; font-weight: medium">
+			Loading a different map only be done from the New Game screen,
+			click on the Choose Cards button and a smaller window should open,
+			navigate to the cards file and open it to load it, it
+			will be displayed in the cards field.</P>
+
+	<p>To download more maps go <a target="_blank" href="http://jrisk.sf.net/getmaps.shtml">here</a>.</p>
+
+
+</center>
+</BODY>
+</HTML>

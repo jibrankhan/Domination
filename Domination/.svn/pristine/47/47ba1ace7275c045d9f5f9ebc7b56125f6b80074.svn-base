@@ -1,0 +1,16 @@
+#Wed Nov 07 19:05:03 GMT 2012
+#yura.net Translation Tool 2.7
+0-0-0-1-4-0=Conquistar os continentes NORTH AMERICA e AFRICA.
+0-0-0-1-6-0=Conquistar os continentes NORTH AMERICA e AUSTRALIA.
+0-0-0-3-2-*=Conquistar os continentes EUROPE, SOUTH AMERICA e um terceiro a vossa escolha.
+0-0-0-3-6-*=Conquistar os continentes EUROPE, AUSTRALIA e um terceiro a vossa escolha.
+0-0-0-5-2-0=Conquistar os continentes ASIA e SOUTH AMERICA.
+0-0-0-5-4-0=Conquistar os continentes ASIA e AFRICA.
+0-18-2-0-0-0=Ocupar 18 pa\u00EDses com no m\u00EDnimo 2 ex\u00E9rcitos.
+0-24-1-0-0-0=Ocupar 24 pa\u00EDses com no m\u00EDnimo 1 ex\u00E9rcito.
+1-24-1-0-0-0=Destruir todos os ex\u00E9rcitos de {PLAYER1}. Se eles s\u00E3o vossos ou foram destru\u00EDdos por outro jogador ent\u00E3o vossa miss\u00E3o \u00E9\: ocupar 24 pa\u00EDses.
+2-24-1-0-0-0=Destruir todos os ex\u00E9rcitos de {PLAYER2}. Se eles s\u00E3o vossos ou foram destru\u00EDdos por outro jogador ent\u00E3o vossa miss\u00E3o \u00E9\: ocupar 24 pa\u00EDses.
+3-24-1-0-0-0=Destruir todos os ex\u00E9rcitos de {PLAYER3}. Se eles s\u00E3o vossos ou foram destru\u00EDdos por outro jogador ent\u00E3o vossa miss\u00E3o \u00E9\: ocupar 24 pa\u00EDses.
+4-24-1-0-0-0=Destruir todos os ex\u00E9rcitos de {PLAYER4}. Se eles s\u00E3o vossos ou foram destru\u00EDdos por outro jogador ent\u00E3o vossa miss\u00E3o \u00E9\: ocupar 24 pa\u00EDses.
+5-24-1-0-0-0=Destruir todos os ex\u00E9rcitos de {PLAYER5}. Se eles s\u00E3o vossos ou foram destru\u00EDdos por outro jogador ent\u00E3o vossa miss\u00E3o \u00E9\: ocupar 24 pa\u00EDses.
+6-24-1-0-0-0=Destruir todos os ex\u00E9rcitos de {PLAYER6}. Se eles s\u00E3o vossos ou foram destru\u00EDdos por outro jogador ent\u00E3o vossa miss\u00E3o \u00E9\: ocupar 24 pa\u00EDses.
