@@ -20,6 +20,7 @@ Now build the project.
 After a sucessful build:
 
 1) Copy the guava-14.0-rc1.jar located in Domination\lib 
+
 2) Paste the JAR into the location Domination\build\game\lib
 
 Bulld the project again.
