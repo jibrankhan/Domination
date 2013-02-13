@@ -13,6 +13,7 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionCountryReinforced;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.rootgoalmanagement.RootGoal;
@@ -49,6 +50,7 @@ public class ExplanationManager implements Serializable {
                 conActions.add(new ActionSuccessfulOccupation(currentCountry.getName(), 1.0f));
                 conActions.add(new ActionCountryReinforced(currentCountry.getName(), 1.0f));
                 conActions.add(new ActionArmyMovement(currentCountry.getName(), 1.0f));
+                conActions.add(new ActionSuccessfulDefence(currentCountry.getName(), 1.0f));
                 
                 inConActions.add(new ActionFailedDefence(currentCountry.getName(), 1.0f));
             }      

@@ -27,6 +27,8 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationFailedDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationSuccessfulOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationCountryReinforced;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationFailedOccupation;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationSuccessfulDefence;
 import net.yura.domination.engine.core.Country;
 import net.yura.domination.engine.core.Player;
 
@@ -219,7 +221,70 @@ public class PlanRecognition extends AbstractService implements Serializable{
         
         if(event instanceof EventFailedOccupation){
             
+            EventFailedOccupation currentEvent = (EventFailedOccupation) event;
             
+            String agentWon = currentEvent.getPlayerWonName();
+            String agentLost = currentEvent.getPlayerLostName();
+            
+            String continentName = currentEvent.getContinentName();
+            String countryName = currentEvent.getCountryName();
+            
+            // Compute Explanation probabilites based on latest observation
+            for(Agent a : agentManager){
+                
+                if(a.getAgentName().equals(agentWon)){
+                    
+                    // Add observation to agents observation list
+                    a.getAgentObservationSet().add(new ObservationSuccessfulDefence(continentName, countryName));
+                    
+                    // Set calculation mode here!
+                    // Uniform = Uniform Distribution
+                    // Weighted = Weighted Distribution
+                    for(Explanation e : a.getAgentExplanationList()){
+                        
+                        a.computeExpProbability("Weighted", "Successful Defence" , e);
+                    }
+                    
+                    /*System.out.println(a.getAgentName());
+                    
+                    for(Explanation e : a.getAgentExplanationList()){
+                        
+                        System.out.println(e.getExplanationName());
+                    }*/
+                    
+                    // Sum probabilities of all explanations
+                    totalProb = a.computeTotalExpProbabilties();
+                    
+                    // Testing = Check if explanation values are right
+                    for(Explanation e : a.getAgentExplanationList()){
+
+                        // compute normalized probabilites
+                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                    }
+                    System.out.println(" ");
+                }
+                
+                if(a.getAgentName().equals(agentLost)){
+                    
+                    a.getAgentObservationSet().add(new ObservationFailedOccupation(continentName, countryName));
+                    
+                    for(Explanation e : a.getAgentExplanationList()){
+                        
+                        a.computeExpProbability("Weighted", "Failed Occupation", e);
+                    }
+                    
+                    totalProb = a.computeTotalExpProbabilties();
+                    //a.removeCountryAndUpdateList(continentName, country);
+                    
+                    // Testing = Check if explanation values are right
+                    for(Explanation e : a.getAgentExplanationList()){
+
+                        // compute normalized probabilites
+                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                    }
+                    System.out.println(" ");
+                }
+            }
         }
         
         if(event instanceof EventCountryReinforced){

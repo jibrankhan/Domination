@@ -35,11 +35,13 @@ public class Explanation extends BasicExplanation implements Serializable {
     
     public void computeExplanationProbabilityWeighted(String ObservationType, HashSet<BasicAction> activeSet, BasicObservation currentObservation){
         
-        if(!ObservationType.equals("Failed Defence")){
-            
-            int conActionCounter = 0;
-
-            ArrayList<BasicAction> conActiveSet = new ArrayList<BasicAction>();
+        ArrayList<BasicAction> conActiveSet = new ArrayList<BasicAction>();
+        ArrayList<BasicAction> inConActiveSet = new ArrayList<BasicAction>();
+        
+        int conActionCounter = 0;
+        int inConActionCounter = 0;
+        
+        if(!ObservationType.equals("Failed Defence") && !ObservationType.equals("Successful Defence")){
 
             // Filters out actions that are not in the same action type
             for(BasicAction ba : this.getConActions()){
@@ -97,16 +99,20 @@ public class Explanation extends BasicExplanation implements Serializable {
             }
         } else {
             
-            int inConActionCounter = 0;
-
-            ArrayList<BasicAction> inConActiveSet = new ArrayList<BasicAction>();
-            
             // Filters out actions that are not in the same action type
             for(BasicAction ba : this.getInConActions()){
 
                 if(ba.getActionType().equals(ObservationType)){
 
                     inConActiveSet.add(ba);
+                }
+            }
+            
+            for(BasicAction ba : this.getConActions()){
+                
+                if(ba.getActionType().equals(ObservationType)){
+                    
+                    conActiveSet.add(ba);
                 }
             }
             
@@ -120,17 +126,31 @@ public class Explanation extends BasicExplanation implements Serializable {
                 } 
             }
             
-             // Use a different maths function to calculate weighting amounts!
-            float conActionProb = 0.6f / inConActionCounter;
-            // If it is not consistent it is inconsistent
-            float inconActionProb = 0.4f / (activeSet.size() - inConActionCounter);
+            for(BasicAction b : activeSet){
+                
+                if(conActiveSet.contains(b)){
+                    
+                    conActionCounter++;
+                }
+            }
             
+             // Use a different maths function to calculate weighting amounts!
+            float conActionProb = 1.02f;
+            // If it is not consistent it is inconsistent
+            float inconActionProb = 0.98f;
+            
+            //System.out.println(currentObservation.getActionType() + " " + currentObservation.getContinentName() + " " + currentObservation.getCountryName());
             if(inConActiveSet.contains(currentObservation)){
 
-                System.out.println(getExplanationName() + " inconsistent action!" + " " + explanationProbability + " * " + conActionProb);
+                System.out.println(getExplanationName() + " inconsistent action!" + " " + explanationProbability + " * " + inconActionProb);
                 //System.out.println(" ");
                 explanationProbability *= inconActionProb;
 
+            } else if(conActiveSet.contains(currentObservation)){
+                
+                System.out.println(getExplanationName() + " consistent action!" + " " + explanationProbability + " * " + conActionProb );
+                explanationProbability *= conActionProb;
+                
             } else { 
 
                 System.out.println(getExplanationName() + " action does not apply!");

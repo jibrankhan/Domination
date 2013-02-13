@@ -17,6 +17,8 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionCountryReinforced;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedOccupation;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.BasicObservation;
@@ -96,6 +98,7 @@ public class Agent implements Serializable{
             // Adds reinforce action
             activePendingSet.add(new ActionCountryReinforced(currentCountry.getName(), 1.0f));
             activePendingSet.add(new ActionFailedDefence(currentCountry.getName(), 1.0f));
+            activePendingSet.add(new ActionSuccessfulDefence(currentCountry.getName(), 1.0f));
             //System.out.println("Reinforce " + currentCountry.getName());
             
             // Generates Occupy actions for each neigbouring country
@@ -121,6 +124,7 @@ public class Agent implements Serializable{
                     if(!currentNeighbour.getOwner().getName().equals(this.player.getName())){
 
                         activePendingSet.add(new ActionSuccessfulOccupation(currentNeighbour.getName(), 1.0f));
+                        activePendingSet.add(new ActionFailedOccupation(currentNeighbour.getName(), 1.0f));
                     }
                 //System.out.println("Occupy " + currentNeighbour.getName());
                 } catch(NullPointerException e){
@@ -272,6 +276,32 @@ public class Agent implements Serializable{
             }
             
             else if(ObservationType.equals("Failed Defence")){
+                
+                for(BasicAction b : this.generateActivePendingSet()){
+                    
+                    if(b.getActionType().equals(ObservationType)){
+                        
+                        filteredActiveSet.add(b);
+                    }
+                }
+                
+                expToBeUpdated.computeExplanationProbabilityWeighted(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
+            }
+            
+            else if(ObservationType.equals("Failed Occupation")){
+                
+                for(BasicAction b : this.generateActivePendingSet()){
+                    
+                    if(b.getActionType().equals(ObservationType)){
+                        
+                        filteredActiveSet.add(b);
+                    }
+                }
+                
+                expToBeUpdated.computeExplanationProbabilityWeighted(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
+            }
+            
+            else if(ObservationType.equals("Successful Defence")){
                 
                 for(BasicAction b : this.generateActivePendingSet()){
                     

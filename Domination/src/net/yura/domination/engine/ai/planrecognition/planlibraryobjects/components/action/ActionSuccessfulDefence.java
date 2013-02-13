@@ -14,6 +14,6 @@ public class ActionSuccessfulDefence extends BasicAction implements Serializable
     
     public ActionSuccessfulDefence(String countryName, float probability){
         
-        super("Defended Country", countryName, probability);
+        super("Successful Defence", countryName, probability);
     }
 }
