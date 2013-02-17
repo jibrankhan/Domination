@@ -1971,15 +1971,16 @@ transient - A keyword in the Java programming language that indicates that a fie
 
                                         }
 
-					if ( rawLoad || s1 <= Players.size() ) {
+					//if ( rawLoad || s1 <= Players.size() ) {
 
 						//System.out.print(description+"\n"); // testing
 						Mission mission = new Mission(p, noc, noa, c1, c2, c3, description);
 						Missions.add(mission);
-					}
-					else {
+                                                
+					//}
+					//else {
 						//System.out.print("NOT adding this mission as it refures to an unused player\n"); // testing
-					}
+					//}
 
 				}
 				else if (mode.equals("newsection")) {

@@ -9,17 +9,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionArmyMovement;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulOccupation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionCountryReinforced;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulDefence;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.rootgoalmanagement.RootGoal;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.subgoalmanagement.SubGoal;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyAsiaAfrica;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyNAAusExp;
 import net.yura.domination.engine.core.Continent;
-import net.yura.domination.engine.core.Country;
 
 /**
  *
@@ -29,6 +22,9 @@ public class ExplanationManager implements Serializable {
     
     private HashSet<Explanation> explanationList = new HashSet<Explanation>();
     
+    OccupyNAAusExp occupyNAAusExp = new OccupyNAAusExp();
+    OccupyAsiaAfrica occupyAsiaAfrica = new OccupyAsiaAfrica();
+    
     public ExplanationManager(Vector Continent){
         
         // Automated building of each action set per country and each explanation 
@@ -36,29 +32,29 @@ public class ExplanationManager implements Serializable {
             
             Continent currentContinent = (Continent) continent;
             
-            ArrayList<BasicAction> conActions = new ArrayList<BasicAction>();
-            ArrayList<BasicAction> inConActions = new ArrayList<BasicAction>();
-            HashSet rootGoals = new HashSet<RootGoal>();
-            HashSet methodChoices = new HashSet<SubGoal>();
-            
-            for(Object country : currentContinent.getTerritoriesContained()){
+            if(currentContinent.getName().equals("North America")){
                 
-                Country currentCountry = (Country) country;
-                
-                // Building explanations
-                // Occupying countries that are part of a continent is consistent with the plan of conquering that continent
-                conActions.add(new ActionSuccessfulOccupation(currentCountry.getName(), 1.0f));
-                conActions.add(new ActionCountryReinforced(currentCountry.getName(), 1.0f));
-                conActions.add(new ActionArmyMovement(currentCountry.getName(), 1.0f));
-                conActions.add(new ActionSuccessfulDefence(currentCountry.getName(), 1.0f));
-                
-                inConActions.add(new ActionFailedDefence(currentCountry.getName(), 1.0f));
-            }      
+                occupyNAAusExp.addConsistentActions(currentContinent);
+            }
             
-            rootGoals.add(new RootGoal("Occupy", currentContinent.getName(), (float) 1/Continent.size()));
+            if(currentContinent.getName().equals("Asia")){
+                
+                occupyAsiaAfrica.addConsistentActions(currentContinent);
+            }
             
-            explanationList.add(new Explanation("Occupy " + currentContinent.getName(), rootGoals, methodChoices, conActions, inConActions));       
+            if(currentContinent.getName().equals("Africa")){
+                
+                occupyAsiaAfrica.addConsistentActions(currentContinent);
+            }
+            
+            if(currentContinent.getName().equals("Australia")){
+                
+                occupyNAAusExp.addConsistentActions(currentContinent);
+            }   
         }
+        
+        explanationList.add(occupyNAAusExp);
+        explanationList.add(occupyAsiaAfrica);
         
         System.out.println("All Explanations and Countires Initialized!");
     }  

@@ -9,6 +9,7 @@ import net.yura.domination.engine.ai.planrecognition.events.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
 import net.yura.domination.engine.ai.planrecognition.eventhandling.AbstractService;
@@ -39,7 +40,7 @@ import net.yura.domination.engine.core.Player;
 public class PlanRecognition extends AbstractService implements Serializable{
 
     public ExplanationManager actionManager;  
-    ArrayList<Agent> agentManager = new ArrayList<Agent>();
+    List<Agent> agentManager = new ArrayList<Agent>();
     
     HashSet<Explanation> totalExplanationList;
     
@@ -52,7 +53,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
         super(processing);
     }
 
-    public ArrayList<Agent> getAgentManager() {
+    public List<Agent> getAgentManager() {
         
         return agentManager;
     }
@@ -179,7 +180,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                        System.out.println(" " + e.normalizeExplanationProbability(totalProb));
                     }
                     System.out.println(" ");
                 }
@@ -200,7 +201,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
                     System.out.println(" ");
                 }
@@ -259,7 +260,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
                     System.out.println(" ");
                 }
@@ -280,7 +281,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
                     System.out.println(" ");
                 }
@@ -315,7 +316,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
                     System.out.println(" ");
                 }
@@ -349,7 +350,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getExplanationName() + " " + e.normalizeExplanationProbability(totalProb));
+                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                 }
                 System.out.println(" ");
             }
