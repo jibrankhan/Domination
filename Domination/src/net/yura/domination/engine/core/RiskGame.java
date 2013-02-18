@@ -200,7 +200,8 @@ transient - A keyword in the Java programming language that indicates that a fie
 
 		//simone=true;//false;
 
-		r = new Random();
+                // CHANGED SEED OF DICE ROLLS HERE!
+		r = new Random(0);
 	}
 
 	public void addCommand(String a) {
@@ -804,6 +805,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 					done=1;
                                         processing.inject(new EventCountryPlacement(currentPlayer.getName(), t.getName(), t.getContinent().getName()));
 					//System.out.print("country taken and army placed in: " + t.getName() + "\n"); // testing
+                                        
 				}
 
 			}
@@ -1182,14 +1184,14 @@ transient - A keyword in the Java programming language that indicates that a fie
 		if (gameState==STATE_ROLLING) { // if we were in the attacking phase
 
 			currentPlayer.currentStatistic.addRetreat();
+                        processing.inject(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
 
 			attacker=null;
 			defender=null;
 
 			gameState=STATE_ATTACKING; // go to attack phase
 			//System.out.print("Retreating\n");
-                        planRecognition.updatePlayers(Players);
-                        processing.inject(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
+                        planRecognition.updatePlayers(Players);               
 			return true;
 		}
 		return false;

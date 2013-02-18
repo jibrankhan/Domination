@@ -237,10 +237,6 @@ public class Agent implements Serializable{
         
         HashSet<BasicAction> filteredActiveSet = new HashSet<BasicAction>();
         
-        int activePendingSetSize = this.generateActivePendingSet().size();
-        // Turn - 20 BECAUSE = Observations only start on turn 20 after placement is done
-        // If there is a null pointer exception problem check HERE!
-        
         if(calculationMethod.equals("Weighted")){
              
                 for(BasicAction b: this.generateActivePendingSet()){

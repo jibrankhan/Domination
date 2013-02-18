@@ -115,7 +115,7 @@ public class OccupyNAAusExp extends Explanation implements Serializable {
 
             if(conActiveSet.contains(currentObservation)){
 
-                System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
+                //System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
                 //System.out.println(" ");
                 this.setExplanationProbability(missionProbability *= conActionProb);
 

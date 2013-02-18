@@ -28,12 +28,12 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
 
     public OccupyAsiaAfrica() {
         
-        this.setMissionName("Occupy Asia and South America");
+        this.setMissionName("Occupy Asia and Africa");
         
         this.getRootGoalSet().add(new RootGoal("Occupy", "Asia and South America", 1.0f/20.0f));  
         
         this.getSubGoalSet().add(new SubGoal("Occupy", "Asia", 1.0f));
-        this.getSubGoalSet().add(new SubGoal("Occupy", "South America", 1.0f));
+        this.getSubGoalSet().add(new SubGoal("Occupy", "Africa", 1.0f));
         
         this.calcInitialExpProb();
     }
@@ -58,7 +58,7 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
         }
     }
     
-    public void computeMissionProbability(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation){
+    public void computeMissionProbability(String observationType, Set<BasicAction> activeSet, BasicObservation currentObservation){
         
         List<BasicAction> conActiveSet = new ArrayList<BasicAction>();
         List<BasicAction> inConActiveSet = new ArrayList<BasicAction>();
@@ -68,12 +68,12 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
         
         float missionProbability = this.getExplanationProbability();
         
-        if(!ObservationType.equals("Failed Defence") && !ObservationType.equals("Successful Defence")){
-
+        if(!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence")){
+            
             // Filters out actions that are not in the same action type
             for(BasicAction ba : this.getConActions()){
-
-                if(ba.getActionType().equals(ObservationType)){
+                
+                if(ba.getActionType().equals(observationType)){
 
                     conActiveSet.add(ba);
                 }
@@ -129,7 +129,7 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
             // Filters out actions that are not in the same action type
             for(BasicAction ba : this.getInConActions()){
 
-                if(ba.getActionType().equals(ObservationType)){
+                if(ba.getActionType().equals(observationType)){
 
                     inConActiveSet.add(ba);
                 }
@@ -137,7 +137,7 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
             
             for(BasicAction ba : this.getConActions()){
                 
-                if(ba.getActionType().equals(ObservationType)){
+                if(ba.getActionType().equals(observationType)){
                     
                     conActiveSet.add(ba);
                 }
@@ -146,7 +146,7 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
             // Count number of inconsistent and consistent actions in active pending set when action took place
             for(BasicAction b : activeSet){
 
-                System.out.println(b.getActionType() + " " + b.getCountryName());
+                //System.out.println(b.getActionType() + " " + b.getCountryName());
                 if(inConActiveSet.contains(b)){
 
                     inConActionCounter++;

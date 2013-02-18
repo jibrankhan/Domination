@@ -1,36 +1,36 @@
-// Yura Mamyrin
-
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package net.yura.domination.engine.ai;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-
 import net.yura.domination.engine.core.Card;
 import net.yura.domination.engine.core.Country;
 import net.yura.domination.engine.core.Player;
 import net.yura.domination.engine.core.RiskGame;
 
 /**
- * THIS IS NOT A REAL AI, THIS IS WHAT A HUMAN PLAYER THAT HAS RESIGNED FROM A GAME BECOMES
- * SO THAT OTHER PLAYERS CAN CARRY ON PLAYING, THIS AI NEVER ATTACKS ANYONE, JUST FOLLOWS RULES
- * @author Yura Mamyrin
+ *
+ * @author s0914007
  */
-public class AICrap {
-
-    protected Random r = new Random(); // this was always static
-
-    protected RiskGame game;
-    protected Player player;
-
+public class AIMine extends AICrap {
+    
+    @Override
     public String getBattleWon() {
-	return "move all";
+        
+        return "move all";
     }
-
+    
+    @Override
     public String getTacMove() {
 	return "nomove";
     }
-
-	public String getTrade() {
+    
+    @Override
+    public String getTrade() {
 
 		List<Card> cards = player.getCards();
 
@@ -51,43 +51,47 @@ public class AICrap {
 		}
 
 		return "endtrade";
-	}
-
-	/**
-	 * @return a bounding factor for the number of trades to scan
-	 */
-	public int tradeCombinationsToScan() {
+    }
+    
+    @Override
+    public int tradeCombinationsToScan() {
 		return 1;
-	}
-
-	public String getCardName(Card card1, String output) {
+    }
+           
+    @Override
+    public String getCardName(Card card1, String output) {
 		if (card1.getName().equals("wildcard")) {
 			output = output + card1.getName();
 		} else {
 			output = output + card1.getCountry().getColor();
 		}
 		return output;
-	}
-
+    }
+    
+    @Override
     public String getPlaceArmies() {
 		if ( game.NoEmptyCountries()==false ) {
-		    return "autoplace";
+		    return "placearmies" + " 32" + " 1";
 		}
 		return "placearmies " + randomCountry(player.getTerritoriesOwned()).getColor() +" 1";
     }
-
+    
+    @Override
     public String getAttack() {
 	return "endattack";
     }
 
+    @Override
     public String getRoll() {
 	return "retreat";
     }
 
+    @Override
     public String getCapital() {
 	    return "capital " + randomCountry(player.getTerritoriesOwned()).getColor();
     }
     
+    @Override
     public Country randomCountry(List<Country> countries) {
     	if (countries.isEmpty()) {
     		return null;
@@ -105,6 +109,7 @@ public class AICrap {
      * @param p player object, c Country object
      * @return boolean True if the country owns its neighbours, else returns false
      */
+    @Override
     public boolean ownsNeighbours(Player p, Country c) {
         List<Country> neighbours = c.getNeighbours();
 
@@ -117,9 +122,27 @@ public class AICrap {
         return true;
     }
     
+    @Override
     public void setPlayer(RiskGame game) {
     	this.game = game;
     	this.player = game.getCurrentPlayer();
     }
-
+        
+    /**
+     * Finds all countries that can be attacked from.
+     * @param p player object
+     * @param attack true if this is durning attack, which requires the territority to have 2 or more armies
+     * @return a Vector of countries, never null
+     */
+    public List<Country> findAttackableTerritories(Player p, boolean attack) {
+    	List<Country> countries = p.getTerritoriesOwned();
+    	List<Country> result = new ArrayList<Country>();
+    	for (int i=0; i<countries.size(); i++) {
+    		Country country = countries.get(i);
+    		if ((!attack || country.getArmies() > 1) && !ownsNeighbours(p, country)) {
+				result.add(country);
+    		}
+    	}
+    	return result;
+    }
 }

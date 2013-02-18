@@ -11,6 +11,8 @@ public class AIPlayer {
 	private static AIEasy aihard = new AIHardDomination();
 	private static AIEasy aihardc = new AIHardCapital();
 	private static AIEasy aihardm = new AIHardMission();
+        
+        private static AIMine aimine = new AIMine();
 
 	private static int wait=500;
 
@@ -29,11 +31,11 @@ public class AIPlayer {
 
 		RiskGame game = risk.getGame();
 
-		int skill =  game.getCurrentPlayer().getType();
+		//int skill =  game.getCurrentPlayer().getType();
 
 		AICrap usethisAI=null;
 
-		if (skill == Player.PLAYER_AI_CRAP ) {
+		/*if (skill == Player.PLAYER_AI_CRAP ) {
 
 			usethisAI = aicrap;
 
@@ -63,7 +65,9 @@ public class AIPlayer {
 
 			}
 
-		}
+		}*/
+                
+                usethisAI = aimine;
 
 		String output = getOutput(game,usethisAI);
                 
