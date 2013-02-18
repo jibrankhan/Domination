@@ -58,7 +58,7 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
         }
     }
     
-    public void computeExplanationProbabilityWeighted(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation){
+    public void computeMissionProbability(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation){
         
         List<BasicAction> conActiveSet = new ArrayList<BasicAction>();
         List<BasicAction> inConActiveSet = new ArrayList<BasicAction>();
@@ -146,7 +146,7 @@ public class OccupyAsiaAfrica extends Explanation implements Serializable {
             // Count number of inconsistent and consistent actions in active pending set when action took place
             for(BasicAction b : activeSet){
 
-                //System.out.println(b.getActionType() + " " + b.getCountryName());
+                System.out.println(b.getActionType() + " " + b.getCountryName());
                 if(inConActiveSet.contains(b)){
 
                     inConActionCounter++;

@@ -4,7 +4,9 @@
  */
 package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation;
 
+import java.util.Set;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.BasicObservation;
 
 /**
  *
@@ -13,6 +15,7 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 public interface Mission {
  
     String getMissionName();
-    String setMissionName();
+    void setMissionName(String missionName);
     boolean isConsistent(BasicAction action);
+    void computeMissionProbability(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation);
 }

@@ -252,7 +252,7 @@ public class Agent implements Serializable{
                     }
                 }
      
-                expToBeUpdated.computeExplanationProbabilityWeighted(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
+                expToBeUpdated.computeMissionProbability(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
             }  
         //System.out.println(e.getExplanationName() + " " + e.getExplanationProbability()); 
     }

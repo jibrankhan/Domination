@@ -59,7 +59,7 @@ public class OccupyNAAusExp extends Explanation implements Serializable {
         }
     }
     
-    public void computeExplanationProbabilityWeighted(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation){
+    public void computeMissionProbability(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation){
         
         List<BasicAction> conActiveSet = new ArrayList<BasicAction>();
         List<BasicAction> inConActiveSet = new ArrayList<BasicAction>();

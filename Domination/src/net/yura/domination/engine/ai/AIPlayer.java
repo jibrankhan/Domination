@@ -66,6 +66,8 @@ public class AIPlayer {
 		}
 
 		String output = getOutput(game,usethisAI);
+                
+                System.out.println(output);
 
 		try { Thread.sleep(wait); }
 		catch(InterruptedException e) {}

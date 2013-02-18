@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.ComputeExplanationProbabilityWeighted;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.rootgoalmanagement.RootGoal;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.subgoalmanagement.SubGoal;
@@ -18,7 +17,7 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
  *
  * @author s0914007
  */
-public abstract class Explanation implements Mission, ComputeExplanationProbabilityWeighted, Serializable {
+public abstract class Explanation implements Mission, Serializable {
 
     private Set<RootGoal> rootGoalSet = new HashSet<RootGoal>();
     private Set<SubGoal> subGoalSet = new HashSet<SubGoal>();
