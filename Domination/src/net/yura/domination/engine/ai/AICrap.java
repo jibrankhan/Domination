@@ -121,5 +121,10 @@ public class AICrap {
     	this.game = game;
     	this.player = game.getCurrentPlayer();
     }
+    
+    public String endGo(){
+        
+        return "endgo";
+    }
 
 }

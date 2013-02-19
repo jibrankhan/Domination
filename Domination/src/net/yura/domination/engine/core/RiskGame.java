@@ -29,6 +29,7 @@ import java.util.Vector;
 
 import net.yura.domination.engine.ColorUtil;
 import net.yura.domination.engine.RiskUtil;
+import net.yura.domination.engine.ai.planrecognition.CommandManager;
 import net.yura.domination.engine.ai.planrecognition.PlanRecognition;
 import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
 import net.yura.domination.engine.ai.planrecognition.eventhandling.Processing;
@@ -186,7 +187,7 @@ transient - A keyword in the Java programming language that indicates that a fie
         final static Charset ENCODING = StandardCharsets.UTF_8;
         final static boolean recordGame = false;
         
-        File file = new File("C:\\temp\\output.txt");
+        File file = new File("C:\\temp\\game.txt");
 
 	/**
 	 * Creates a new RiskGame
@@ -194,8 +195,11 @@ transient - A keyword in the Java programming language that indicates that a fie
 	public RiskGame() throws Exception {
 
                 planRecognition.startAndWait();
-                file.delete();
-                file.createNewFile();
+                if(recordGame){
+                    
+                    file.delete();
+                    file.createNewFile();
+                }
 		//try {
 
 			setMapfile("default");
@@ -482,14 +486,9 @@ transient - A keyword in the Java programming language that indicates that a fie
 		if (gameState==STATE_END_TURN) {
 
 			//System.out.print("go ended\n"); // testing
-                    try{
-                        if(recordGame){
-                            this.write(file, "endgo");
-                        }
-                    } catch (IOException e){
-                        
-                        e.printStackTrace();
-                    }
+                    
+                    //this.writeToFile(file, "endgo");
+                    
                         
 			// work out who is the next player
 
@@ -819,6 +818,8 @@ transient - A keyword in the Java programming language that indicates that a fie
 						done=1;
                                                 processing.inject(new EventCountryReinforced(currentPlayer.getName(), t.getContinent().getName(), t.getName()));
 						//System.out.print("army placed in: " + t.getName() + "\n"); // testing
+                                                
+                                                this.writeToFile(file, CommandManager.placeArmies(t.getColor(), 1));
 					}
 
 				}
@@ -832,15 +833,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 					done=1;
                                         processing.inject(new EventCountryPlacement(currentPlayer.getName(), t.getName(), t.getContinent().getName()));
                                         
-                                        String placementCommand = "placearmies " + Integer.toString(t.getColor()) + " 1";
-                                        try{
-                                            if(recordGame){
-                                                this.write(file, placementCommand);
-                                            }
-                                        } catch (IOException e){
-                                            
-                                            System.out.println("IOException!");
-                                        }
+                                        this.writeToFile(file, CommandManager.placeArmies(t.getColor(), 1));
 					//System.out.print("country taken and army placed in: " + t.getName() + "\n"); // testing
                                         
 				}
@@ -858,6 +851,8 @@ transient - A keyword in the Java programming language that indicates that a fie
 					//System.out.print("army placed in: " + t.getName() + "\n"); // testing
 					done=1;
                                         processing.inject(new EventCountryReinforced(t.getOwner().getName(), t.getContinent().getName() , t.getName()));
+                                        
+                                        this.writeToFile(file, CommandManager.placeArmies(t.getColor(), n));
 
 				}
 			}
@@ -957,6 +952,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 				battleRounds = 0;
 				gameState=STATE_ROLLING;
 				//System.out.print("Attacking "+t2.getName()+" ("+t2.getArmies()+") with "+t1.getName()+" ("+t1.getArmies()+").\n"); // testing
+                                writeToFile(file, CommandManager.attacking(t1.getColor(), t2.getColor()));
 			}
 		}
 		return result;
@@ -973,6 +969,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 			// YURA:TODO check if there are any countries with more then 1 amy, maybe even check that a move can be made
 
 			gameState=STATE_FORTIFYING; // go to move phase
+                        this.writeToFile(file, "endattack");
 			//System.out.print("Attack phase ended\n");
 			return true;
 		}
@@ -1065,13 +1062,14 @@ transient - A keyword in the Java programming language that indicates that a fie
 		if (gameState==STATE_DEFEND_YOURSELF) { // if we were in the defending phase
 			battleRounds++;
 			// battle away!
+                        writeToFile(file, CommandManager.roll(attacker.getArmies()-1));
 			for (int c=0; c< Math.min(attackerResults.length, defenderResults.length) ; c++) {
-
+                            
 				if (attackerResults[c] > defenderResults[c]) {
 					defender.looseArmy();
 					((Player)defender.getOwner()).currentStatistic.addCasualty();
 					((Player)attacker.getOwner()).currentStatistic.addKill();
-					result[2]++;
+					result[2]++;         
 				}
 				else {
 					attacker.looseArmy();
@@ -1079,7 +1077,6 @@ transient - A keyword in the Java programming language that indicates that a fie
 					((Player)defender.getOwner()).currentStatistic.addKill();
 					result[1]++;
 				}
-
 			}
 
 			// if all the armies have been defeated
@@ -1140,6 +1137,7 @@ transient - A keyword in the Java programming language that indicates that a fie
                                 planRecognition.updatePlayers(Players);
                                 processing.inject(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
 
+                                writeToFile(file, "retreat");
 				currentPlayer.currentStatistic.addRetreat();
 			}
 			else { gameState=STATE_ROLLING; }
@@ -1227,6 +1225,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 			defender=null;
 
 			gameState=STATE_ATTACKING; // go to attack phase
+                        writeToFile(file, "retreat");
 			//System.out.print("Retreating\n");
                         planRecognition.updatePlayers(Players);               
 			return true;
@@ -1283,6 +1282,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 			gameState=STATE_END_TURN; // go to end phase
 
 			//System.out.print("No Move.\n"); // testing
+                        writeToFile(file, "nomove");
 			return true;
 		}
 		else return false;
@@ -2832,7 +2832,7 @@ System.out.print(str+"]\n");
     
     void write(File file, String inputText) throws IOException {
      
-        log("Writing to file name " + file);
+        //log("Writing to file name " + file);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
         
         writer.write(inputText);
@@ -2840,6 +2840,17 @@ System.out.print(str+"]\n");
         writer.close();
     }
 	
+    public void writeToFile(File file, String string){
+        try{
+            if(recordGame){
+                this.write(file, string);
+            }
+        } catch (IOException e){
+                        
+                        e.printStackTrace();
+        }
+    }
+    
     private void log(String aMessage){
 		
 	    System.out.println(aMessage);

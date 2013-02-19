@@ -180,9 +180,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(" " + e.normalizeExplanationProbability(totalProb));
+                        //System.out.println(" " + e.normalizeExplanationProbability(totalProb));
                     }
-                    System.out.println(" ");
+                    //System.out.println(" ");
                 }
                 
                 if(a.getAgentName().equals(agentLost)){
@@ -201,9 +201,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
-                    System.out.println(" ");
+                    //System.out.println(" ");
                 }
             }
             // Testing - Iterate through observation manager
@@ -260,9 +260,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
-                    System.out.println(" ");
+                    //System.out.println(" ");
                 }
                 
                 if(a.getAgentName().equals(agentLost)){
@@ -281,9 +281,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
-                    System.out.println(" ");
+                    //System.out.println(" ");
                 }
             }
         }
@@ -316,9 +316,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                     }
-                    System.out.println(" ");
+                    //System.out.println(" ");
                 }
             }
             //System.out.println(reinforcedCountry.getPlayerName() + " reinforced " + reinforcedCountry.getCountryName());
@@ -350,9 +350,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 for(Explanation e : a.getAgentExplanationList()){
 
                         // compute normalized probabilites
-                        System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
                 }
-                System.out.println(" ");
+                //System.out.println(" ");
             }
             //System.out.println(countryMovedTo.getPlayerName() + " " + countryMovedTo.getCountryName()); 
         }
