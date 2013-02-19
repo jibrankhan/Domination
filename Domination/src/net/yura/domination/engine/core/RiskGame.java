@@ -3,9 +3,21 @@
 package net.yura.domination.engine.core;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -170,6 +182,11 @@ transient - A keyword in the Java programming language that indicates that a fie
         // Plan Recognition Event Handling Code
         Processing processing = new Processing();
         PlanRecognition planRecognition = new PlanRecognition(processing);
+        
+        final static Charset ENCODING = StandardCharsets.UTF_8;
+        final static boolean recordGame = false;
+        
+        File file = new File("C:\\temp\\output.txt");
 
 	/**
 	 * Creates a new RiskGame
@@ -177,6 +194,8 @@ transient - A keyword in the Java programming language that indicates that a fie
 	public RiskGame() throws Exception {
 
                 planRecognition.startAndWait();
+                file.delete();
+                file.createNewFile();
 		//try {
 
 			setMapfile("default");
@@ -463,7 +482,15 @@ transient - A keyword in the Java programming language that indicates that a fie
 		if (gameState==STATE_END_TURN) {
 
 			//System.out.print("go ended\n"); // testing
-
+                    try{
+                        if(recordGame){
+                            this.write(file, "endgo");
+                        }
+                    } catch (IOException e){
+                        
+                        e.printStackTrace();
+                    }
+                        
 			// work out who is the next player
 
 			while (true) {
@@ -804,6 +831,16 @@ transient - A keyword in the Java programming language that indicates that a fie
 					currentPlayer.loseExtraArmy(1);
 					done=1;
                                         processing.inject(new EventCountryPlacement(currentPlayer.getName(), t.getName(), t.getContinent().getName()));
+                                        
+                                        String placementCommand = "placearmies " + Integer.toString(t.getColor()) + " 1";
+                                        try{
+                                            if(recordGame){
+                                                this.write(file, placementCommand);
+                                            }
+                                        } catch (IOException e){
+                                            
+                                            System.out.println("IOException!");
+                                        }
 					//System.out.print("country taken and army placed in: " + t.getName() + "\n"); // testing
                                         
 				}
@@ -2791,5 +2828,20 @@ System.out.print(str+"]\n");
     public int getNoDefendDice() {
         if ( defender.getArmies() > maxDefendDice ) { return maxDefendDice; }
         else { return defender.getArmies(); }
+    }
+    
+    void write(File file, String inputText) throws IOException {
+     
+        log("Writing to file name " + file);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+        
+        writer.write(inputText);
+        writer.newLine();
+        writer.close();
+    }
+	
+    private void log(String aMessage){
+		
+	    System.out.println(aMessage);
     }
 }

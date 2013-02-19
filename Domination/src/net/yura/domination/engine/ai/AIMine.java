@@ -4,9 +4,14 @@
  */
 package net.yura.domination.engine.ai;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.StringTokenizer;
 import net.yura.domination.engine.core.Card;
 import net.yura.domination.engine.core.Country;
 import net.yura.domination.engine.core.Player;
@@ -17,6 +22,21 @@ import net.yura.domination.engine.core.RiskGame;
  * @author s0914007
  */
 public class AIMine extends AICrap {
+    
+    final static String fileName = "C:\\temp\\input.txt";
+    List<String> commandList = new ArrayList<String>();
+    int commandCounter = 0;
+
+    public AIMine() {
+        
+        try{
+            
+            this.read(fileName);
+            
+        } catch(IOException e){
+            
+        }
+    }
     
     @Override
     public String getBattleWon() {
@@ -71,7 +91,8 @@ public class AIMine extends AICrap {
     @Override
     public String getPlaceArmies() {
 		if ( game.NoEmptyCountries()==false ) {
-		    return "placearmies" + " 32" + " 1";
+                   
+                    return commandList.get(commandCounter++);
 		}
 		return "placearmies " + randomCountry(player.getTerritoriesOwned()).getColor() +" 1";
     }
@@ -144,5 +165,29 @@ public class AIMine extends AICrap {
     		}
     	}
     	return result;
+    }
+    
+    void read(String fileName) throws IOException {
+     
+        log("Reading from file " + fileName);
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        String line = null;
+        while((line = reader.readLine()) != null){
+            
+            commandList.add(line);
+            //reader.close();
+        }
+        
+        for(String s : commandList){
+            
+            System.out.println(s);
+        }
+        
+        reader.close();
+    }
+	
+    private void log(String aMessage){
+		
+	    System.out.println(aMessage);
     }
 }

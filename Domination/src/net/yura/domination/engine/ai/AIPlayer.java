@@ -33,7 +33,7 @@ public class AIPlayer {
 
 		//int skill =  game.getCurrentPlayer().getType();
 
-		AICrap usethisAI=null;
+		AICrap usethisAI=aimine;
 
 		/*if (skill == Player.PLAYER_AI_CRAP ) {
 
@@ -66,8 +66,6 @@ public class AIPlayer {
 			}
 
 		}*/
-                
-                usethisAI = aimine;
 
 		String output = getOutput(game,usethisAI);
                 
