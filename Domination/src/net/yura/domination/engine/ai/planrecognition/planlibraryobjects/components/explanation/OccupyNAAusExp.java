@@ -115,13 +115,13 @@ public class OccupyNAAusExp extends Explanation implements Serializable {
 
             if(conActiveSet.contains(currentObservation)){
 
-                //System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
+                System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
                 //System.out.println(" ");
                 this.setExplanationProbability(missionProbability *= conActionProb);
 
             } else { 
 
-                //System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
+                System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
                 //System.out.println(" ");
                 this.setExplanationProbability(missionProbability *= inconActionProb);  
             }
@@ -170,18 +170,18 @@ public class OccupyNAAusExp extends Explanation implements Serializable {
             //System.out.println(currentObservation.getActionType() + " " + currentObservation.getContinentName() + " " + currentObservation.getCountryName());
             if(inConActiveSet.contains(currentObservation)){
 
-                //System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
+                System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
                 //System.out.println(" ");
                 this.setExplanationProbability(missionProbability *= inconActionProb);    
 
             } else if(conActiveSet.contains(currentObservation)){
                 
-                //System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb );
+                System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb );
                 this.setExplanationProbability(missionProbability *= conActionProb);
                 
             } else { 
 
-                //System.out.println(this.getMissionName() + " action does not apply!");
+                System.out.println(this.getMissionName() + " action does not apply!");
                 //System.out.println(" ");   
             }
         }

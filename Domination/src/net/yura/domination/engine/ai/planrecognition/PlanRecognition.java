@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
 import net.yura.domination.engine.ai.planrecognition.eventhandling.AbstractService;
@@ -144,9 +145,6 @@ public class PlanRecognition extends AbstractService implements Serializable{
             String continentName = currentEvent.getContinentName();
             String countryName = currentEvent.getCountryName();
             
-            //System.out.println(continentName);
-            //System.out.println(countryName);
-            
             // Compute Explanation probabilites based on latest observation
             for(Agent a : agentManager){
                 
@@ -166,23 +164,10 @@ public class PlanRecognition extends AbstractService implements Serializable{
                         a.computeExpProbability("Weighted", "Successful Occupation" , e);
                     }
                     
-                    /*System.out.println(a.getAgentName());
-                    
-                    for(Explanation e : a.getAgentExplanationList()){
-                        
-                        System.out.println(e.getExplanationName());
-                    }*/
-                    
                     // Sum probabilities of all explanations
                     totalProb = a.computeTotalExpProbabilties();
                     
-                    // Testing = Check if explanation values are right
-                    for(Explanation e : a.getAgentExplanationList()){
-
-                        // compute normalized probabilites
-                        //System.out.println(" " + e.normalizeExplanationProbability(totalProb));
-                    }
-                    //System.out.println(" ");
+                    this.printExpProbs(a.getAgentExplanationList());
                 }
                 
                 if(a.getAgentName().equals(agentLost)){
@@ -197,13 +182,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     totalProb = a.computeTotalExpProbabilties();
                     //a.removeCountryAndUpdateList(continentName, country);
                     
-                    // Testing = Check if explanation values are right
-                    for(Explanation e : a.getAgentExplanationList()){
-
-                        // compute normalized probabilites
-                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
-                    }
-                    //System.out.println(" ");
+                    this.printExpProbs(a.getAgentExplanationList());
                 }
             }
             // Testing - Iterate through observation manager
@@ -246,23 +225,10 @@ public class PlanRecognition extends AbstractService implements Serializable{
                         a.computeExpProbability("Weighted", "Successful Defence" , e);
                     }
                     
-                    /*System.out.println(a.getAgentName());
-                    
-                    for(Explanation e : a.getAgentExplanationList()){
-                        
-                        System.out.println(e.getExplanationName());
-                    }*/
-                    
                     // Sum probabilities of all explanations
                     totalProb = a.computeTotalExpProbabilties();
                     
-                    // Testing = Check if explanation values are right
-                    for(Explanation e : a.getAgentExplanationList()){
-
-                        // compute normalized probabilites
-                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
-                    }
-                    //System.out.println(" ");
+                   this.printExpProbs(a.getAgentExplanationList());
                 }
                 
                 if(a.getAgentName().equals(agentLost)){
@@ -277,13 +243,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     totalProb = a.computeTotalExpProbabilties();
                     //a.removeCountryAndUpdateList(continentName, country);
                     
-                    // Testing = Check if explanation values are right
-                    for(Explanation e : a.getAgentExplanationList()){
-
-                        // compute normalized probabilites
-                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
-                    }
-                    //System.out.println(" ");
+                    this.printExpProbs(a.getAgentExplanationList());
                 }
             }
         }
@@ -296,8 +256,6 @@ public class PlanRecognition extends AbstractService implements Serializable{
             
             String continentName = reinforcedCountry.getContinentName();
             String countryName = reinforcedCountry.getCountryName();
-            
-            //System.out.println("Hello?");
             
             for(Agent a : agentManager){
                 
@@ -312,13 +270,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     totalProb = a.computeTotalExpProbabilties();
                     
-                    // Testing = Check if explanation values are right
-                    for(Explanation e : a.getAgentExplanationList()){
-
-                        // compute normalized probabilites
-                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
-                    }
-                    //System.out.println(" ");
+                    this.printExpProbs(a.getAgentExplanationList());
                 }
             }
             //System.out.println(reinforcedCountry.getPlayerName() + " reinforced " + reinforcedCountry.getCountryName());
@@ -347,44 +299,39 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 
                 totalProb = a.computeTotalExpProbabilties();
                 
-                for(Explanation e : a.getAgentExplanationList()){
-
-                        // compute normalized probabilites
-                        //System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
-                }
-                //System.out.println(" ");
+                this.printExpProbs(a.getAgentExplanationList());
             }
             //System.out.println(countryMovedTo.getPlayerName() + " " + countryMovedTo.getCountryName()); 
         }
     }
     
-        // Method to synchronize Player Vector
-        public void updatePlayers(Vector Players){
-            
-            this.Players = Players;
-            
-            /*for(Object p : Players){
-                
-                Player currentPlayer = (Player) p;
-                
-                System.out.println(currentPlayer.getName());
-            }*/
-        }
-        
-        // Setup of action space
-        public void initialiseActionSpace(Vector Continents){
+    // Method to synchronize Player Vector
+    public void updatePlayers(Vector Players){
 
-            this.actionManager = new ExplanationManager(Continents);
+        this.Players = Players;
 
-            totalExplanationList = actionManager.getExplanationList();
-            
-            /*for(Explanation e : totalExplanationList){
-                
-                System.out.println(e.getExplanationName());
-            }*/
-        }
+        /*for(Object p : Players){
+
+            Player currentPlayer = (Player) p;
+
+            System.out.println(currentPlayer.getName());
+        }*/
+    }
+
+    // Setup of action space
+    public void initialiseActionSpace(Vector Continents){
+
+        this.actionManager = new ExplanationManager(Continents);
+
+        totalExplanationList = actionManager.getExplanationList();
+
+        /*for(Explanation e : totalExplanationList){
+
+            System.out.println(e.getExplanationName());
+        }*/
+    }
         
-        public void cacheActivePendingSet(String playerName){
+    public void cacheActivePendingSet(String playerName){
         
         for(Agent a : this.getAgentManager()){
 
@@ -394,6 +341,16 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 a.getAgentActivePendingSetHistory().add(a.generateActivePendingSet());
             }
         }
+    }
+    
+    public void printExpProbs(Set<Explanation> expList){
+        
+        for(Explanation e : expList){
+
+            // compute normalized probabilites
+            System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+        }
+        System.out.println(" ");
     }
 }
 

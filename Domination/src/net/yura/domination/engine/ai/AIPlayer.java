@@ -11,8 +11,6 @@ public class AIPlayer {
 	private static AIEasy aihard = new AIHardDomination();
 	private static AIEasy aihardc = new AIHardCapital();
 	private static AIEasy aihardm = new AIHardMission();
-        
-        private static AIMine aimine = new AIMine();
 
 	private static int wait=500;
 
@@ -31,14 +29,11 @@ public class AIPlayer {
 
 		RiskGame game = risk.getGame();
 
-		//int skill =  game.getCurrentPlayer().getType();
+		int skill =  game.getCurrentPlayer().getType();
                 
-                //AICrap usethisAI = null;
+                AICrap usethisAI = null;
 
-		//AICrap usethisAI=aieasy;
-                AICrap usethisAI = aimine;
-
-		/*if (skill == Player.PLAYER_AI_CRAP ) {
+		if (skill == Player.PLAYER_AI_CRAP ) {
 
 			usethisAI = aicrap;
 
@@ -68,18 +63,14 @@ public class AIPlayer {
 
 			}
 
-		}*/
+		}
 
 		String output = getOutput(game,usethisAI);
-                
-                System.out.println(output);
 
 		try { Thread.sleep(wait); }
 		catch(InterruptedException e) {}
 
 		risk.parser(output);
-                System.out.println(" ");
-
 	}
 
 
@@ -88,10 +79,6 @@ public class AIPlayer {
 		usethisAI.setPlayer(game);
 
 		String output=null;
-                
-                //System.out.println("Game State " + game.getState());
-                System.out.println(game.getCurrentPlayer().getName());
-                System.out.println(game.getCurrentPlayer().getExtraArmies());
 
 		switch ( game.getState() ) {
 			case RiskGame.STATE_TRADE_CARDS:	output = usethisAI.getTrade(); break;

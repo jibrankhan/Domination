@@ -56,7 +56,7 @@ public class ExplanationManager implements Serializable {
         explanationList.add(occupyNAAusExp);
         explanationList.add(occupyAsiaAfrica);
         
-        System.out.println("All Explanations and Countires Initialized!");
+        System.out.println("ALL EXPLANATIONS INITIALIZED!");
     }  
     
     public HashSet<Explanation> getExplanationList() {

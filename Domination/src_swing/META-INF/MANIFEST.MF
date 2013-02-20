@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Created-By: Yura Mamyrin (yura@yura.net)
-Main-Class: net.yura.domination.ui.flashgui.MainMenu
+Main-Class: net.yura.domination.ui.swinggui.SwingGUIFrame
 Class-Path: lib/TranslationTool.jar lib/Grasshopper.jar lib/SwingME.jar lib/midletrunner.jar lib/m3gbasic.jar lib/httpmime-4.1.2.jar lib/httpcore-4.1.2.jar lib/LobbyCore.jar lib/guava-14.0-rc1.jar
