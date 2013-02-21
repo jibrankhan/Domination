@@ -965,7 +965,6 @@ transient - A keyword in the Java programming language that indicates that a fie
 			// YURA:TODO check if there are any countries with more then 1 amy, maybe even check that a move can be made
 
 			gameState=STATE_FORTIFYING; // go to move phase
-                        this.writeToFile(file, "endattack");
 			//System.out.print("Attack phase ended\n");
 			return true;
 		}
@@ -1159,6 +1158,9 @@ transient - A keyword in the Java programming language that indicates that a fie
 
 			attacker.removeArmies(noa);
 			defender.addArmies(noa);
+                        
+                        planRecognition.updatePlayers(Players);
+                        processing.inject(new EventArmyMoved(currentPlayer.getName(), defender.getContinent().getName(), defender.getName()));
 
 			attacker=null;
 			defender=null;
@@ -1195,7 +1197,6 @@ transient - A keyword in the Java programming language that indicates that a fie
                     
 			return attacker.getArmies() - 1;
                         
-
 		}
 		return -1;
 
@@ -1212,17 +1213,18 @@ transient - A keyword in the Java programming language that indicates that a fie
 	public boolean retreat() {
 
 		if (gameState==STATE_ROLLING) { // if we were in the attacking phase
-
+ 
 			currentPlayer.currentStatistic.addRetreat();
-                        processing.inject(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
 
 			attacker=null;
 			defender=null;
+                        
+                        planRecognition.updatePlayers(Players); 
+                        processing.inject(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
 
 			gameState=STATE_ATTACKING; // go to attack phase
-                        writeToFile(file, "retreat");
 			//System.out.print("Retreating\n");
-                        planRecognition.updatePlayers(Players);               
+                                      
 			return true;
 		}
 		return false;
@@ -1277,7 +1279,6 @@ transient - A keyword in the Java programming language that indicates that a fie
 			gameState=STATE_END_TURN; // go to end phase
 
 			//System.out.print("No Move.\n"); // testing
-                        writeToFile(file, "nomove");
 			return true;
 		}
 		else return false;

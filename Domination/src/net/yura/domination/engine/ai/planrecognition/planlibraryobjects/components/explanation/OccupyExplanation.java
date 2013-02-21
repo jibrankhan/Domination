@@ -6,6 +6,7 @@ package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.compone
 
 import java.io.Serializable;
 import java.util.Set;
+import net.yura.domination.engine.ai.planrecognition.ActionConstants;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionArmyMovement;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionCountryReinforced;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
@@ -37,16 +38,14 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
         }
     }
     
-    public boolean isConsistent(BasicAction action) {
+    public void computeMissionProbability(Set<BasicAction> activePendingSet, BasicObservation currentObservation){
         
-        throw new UnsupportedOperationException("Not supported yet.");
-    }    
-    
-    public void computeMissionProbability(String observationType, Set<BasicAction> activePendingSet, BasicObservation currentObservation){
+        String observationType = currentObservation.getActionType();
         
         // Filters out actions that are not in the same action type
         Set<BasicAction> conActiveSet = this.filterSet(observationType, this.getConActions());
         Set<BasicAction> filteredActiveSet = this.filterSet(observationType, activePendingSet);
+        Set<BasicAction> inConActiveSet = this.filterSet(observationType, this.getInConActions());
         
         int conActionCounter = 0;
         int inConActionCounter = 0;
@@ -59,12 +58,23 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
                 conActionCounter++;
             }
         }
+        
         //System.out.println(conActionCounter);
         //System.out.println(" ");
         
+        // Count number of inconsistent and consistent actions in active pending set when action took place
+        for(BasicAction b : filteredActiveSet){
+
+            //System.out.println(b.getActionType() + " " + b.getCountryName());
+            if(inConActiveSet.contains(b)){
+
+                inConActionCounter++;
+            } 
+        }
+       
         float missionProbability = this.getExplanationProbability();
         
-        if(!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence")){
+        //if(!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence")){
             
             /*System.out.println("Agents Active Pending Set");
             for(BasicAction a : activeSet){
@@ -82,53 +92,38 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
 
             if(conActiveSet.contains(currentObservation)){
 
+                if(observationType.equals(ActionConstants.successfulDefence)){
+                    
+                    // Seperate probability for defence actions
+                    conActionProb = 1.02f;
+                }
+                
                 System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
                 //System.out.println(" ");
                 this.setExplanationProbability(missionProbability *= conActionProb);
 
-            } else { 
+            } else if(inConActiveSet.contains(currentObservation)) { 
 
+                if(observationType.equals("Failed Defence")){
+
+                    // Seperate probability for defence actions
+                    inconActionProb = 0.98f;
+                }
+                
                 System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
                 //System.out.println(" ");
-                this.setExplanationProbability(missionProbability *= inconActionProb);  
-            }
-        } else {
-            
-            // Filters out actions that are not in the same action type
-            Set<BasicAction> inConActiveSet = this.filterSet(observationType, this.getInConActions());
-            
-            // Count number of inconsistent and consistent actions in active pending set when action took place
-            for(BasicAction b : filteredActiveSet){
-
-                //System.out.println(b.getActionType() + " " + b.getCountryName());
-                if(inConActiveSet.contains(b)){
-
-                    inConActionCounter++;
-                } 
-            }
-            
-             // Use a different maths function to calculate weighting amounts!
-            float conActionProb = 1.02f;
-            // If it is not consistent it is inconsistent
-            float inconActionProb = 0.98f;
-            
-            //System.out.println(currentObservation.getActionType() + " " + currentObservation.getContinentName() + " " + currentObservation.getCountryName());
-            if(inConActiveSet.contains(currentObservation)){
-
+                this.setExplanationProbability(missionProbability *= inconActionProb); 
+                
+            // Condition for when there is an inconsistent action that is not in the set of inconsistent actions - why because this is less intensive than maintaining the whole list.
+            } else if(!inConActiveSet.contains(currentObservation) && (!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence"))) {
+                
                 System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
                 //System.out.println(" ");
-                this.setExplanationProbability(missionProbability *= inconActionProb);    
-
-            } else if(conActiveSet.contains(currentObservation)){
+                this.setExplanationProbability(missionProbability *= inconActionProb); 
                 
-                System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb );
-                this.setExplanationProbability(missionProbability *= conActionProb);
+            } else {
                 
-            } else { 
-
-                System.out.println(this.getMissionName() + " action does not apply!");
-                //System.out.println(" ");   
+                System.out.println(this.getMissionName() + " Does not apply!");
             }
-        }
     }
 }

@@ -5,7 +5,6 @@
 package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation;
 
 import java.io.Serializable;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.rootgoalmanagement.RootGoal;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.subgoalmanagement.SubGoal;
 
