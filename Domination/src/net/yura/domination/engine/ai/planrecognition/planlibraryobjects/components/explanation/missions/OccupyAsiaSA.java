@@ -11,6 +11,6 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
  *
  * @author s0914007
  */
-public class OccupyAsisaSA extends OccupyExplanation implements Serializable{
+public class OccupyAsiaSA extends OccupyExplanation implements Serializable{
 
 }
