@@ -14,8 +14,16 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
  */
 public class BasicSubGoal extends BasicPlanComponent implements Serializable {
     
+    private final String actionLocation;
+    
     public BasicSubGoal(String actionType, String actionLocation , float probability){
         
         super(actionType, probability);  
+        this.actionLocation = actionLocation;
+    }
+    
+    public String getActionLocation(){
+       
+        return  this.actionLocation;
     }
 }

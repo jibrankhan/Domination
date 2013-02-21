@@ -10,8 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-import net.yura.domination.engine.ai.planrecognition.events.Event;
-import net.yura.domination.engine.ai.planrecognition.events.EventSuccessfulOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionArmyMovement;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulOccupation;
@@ -20,8 +18,9 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyAsiaAfrica;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyNAAusExp;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaAfrica;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyExplanation;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNAAus;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.BasicObservation;
 import net.yura.domination.engine.core.Country;
 import net.yura.domination.engine.core.Player;
@@ -187,24 +186,16 @@ public class Agent implements Serializable {
                 //Explanation newExplanation = new Explanation(e.getExplanationName(), e.getRootGoalSet(), e.getMethodChoiceSet(), e.getConActions(), e.getInConActions());
                 // TODO NewExp should calculate probability of explanation given list of all observations  
                 
-                if(e instanceof OccupyNAAusExp){
+                try{
                     
-                    OccupyNAAusExp currentExp = (OccupyNAAusExp) e; 
-                    OccupyNAAusExp newExp = new OccupyNAAusExp();
+                    Explanation clonedExp = (Explanation) e.clone();
+                    agentExplanationList.add(clonedExp);
                     
-                    newExp.duplicateExplanation(currentExp.getMissionName(), currentExp.getRootGoalSet(), currentExp.getSubGoalSet(), currentExp.getConActions(), currentExp.getInConActions());
+                }catch (CloneNotSupportedException excep){
                     
-                    agentExplanationList.add(newExp);
-                }
-                
-                if(e instanceof OccupyAsiaAfrica){
+                    excep.printStackTrace();
+                    System.out.println("Cloneable not implemented");
                     
-                    OccupyAsiaAfrica currentExp = (OccupyAsiaAfrica) e;
-                    OccupyAsiaAfrica newExp = new OccupyAsiaAfrica();
-                    
-                    newExp.duplicateExplanation(currentExp.getMissionName(), currentExp.getRootGoalSet(), currentExp.getSubGoalSet(), currentExp.getConActions(), currentExp.getInConActions());
-                    
-                    agentExplanationList.add(newExp);
                 }
             }
         }

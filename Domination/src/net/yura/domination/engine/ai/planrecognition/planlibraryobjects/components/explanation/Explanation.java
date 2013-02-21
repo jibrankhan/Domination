@@ -15,7 +15,7 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
  *
  * @author s0914007
  */
-public abstract class Explanation implements Mission, Serializable {
+public abstract class Explanation implements Mission, Cloneable, Serializable {
 
     private Set<RootGoal> rootGoalSet = new HashSet<RootGoal>();
     private Set<SubGoal> subGoalSet = new HashSet<SubGoal>();
@@ -64,6 +64,12 @@ public abstract class Explanation implements Mission, Serializable {
     public Set<BasicAction> getInConActions() {
         
         return inConActions;
+    }
+    
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        
+        return super.clone();
     }
     
     public void calcInitialExpProb(){

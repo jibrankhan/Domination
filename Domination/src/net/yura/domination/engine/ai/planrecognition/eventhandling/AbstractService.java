@@ -9,87 +9,79 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public abstract class AbstractService extends AbstractExecutionThreadService implements Observer {
     
-    private Processing processing;
-	
+    private EventObserver processing;
     private boolean keepRunning;
-
     private Queue<Event> eventQueue;
     
-    protected Processing getProcessing() {	
+    protected EventObserver getProcessing() {	
 
         return this.processing;
-
     }
     
-    public AbstractService(Processing processing) {
+    public AbstractService(EventObserver processing) {
 		
 	super();
 		
 	this.processing = processing;
-		
-	this.eventQueue = new ConcurrentLinkedQueue<Event>();
-                
-    }
-    
-    @Override
-    protected void startUp() throws Exception {
-
-            super.startUp();
-
-            this.processing.addObserver(this);
-
-            this.keepRunning = true;
+	this.eventQueue = new ConcurrentLinkedQueue<Event>();         
     }
 
     @Override
     protected void run() throws Exception {
 
-            while (this.keepRunning) {
+        while (this.keepRunning) {
 
-                    while (!this.eventQueue.isEmpty()) {
+            while (!this.eventQueue.isEmpty()) {
 
-                            this.handle(this.eventQueue.remove());
+                this.handle(this.eventQueue.remove());
 
-                            if (!this.keepRunning) {
+                if (!this.keepRunning) {
 
-                                    break;
-                            }
-                    }
+                    break;
+                }
             }
+        }
+    }
+    
+    @Override
+    protected void startUp() throws Exception {
+
+        super.startUp();
+
+        this.processing.addObserver(this);
+        this.keepRunning = true;
     }
 
     @Override
     public void update(Observable observable, Object object) {
 
-            if (observable == this.processing) {
+        if (observable == this.processing) {
 
-                    if (object instanceof Event) {
+            if (object instanceof Event) {
 
-                            this.eventQueue.add((Event) object);
-                    }
-                    else {
-
-                            System.err.println("Object not an Event instance: " + object.toString());
-                    }
+                this.eventQueue.add((Event) object);
             }
-    }
+            else {
 
-    @Override
-    protected void triggerShutdown() {
-
-            super.triggerShutdown();
-
-            this.keepRunning = false;
+                System.err.println("Object not an Event instance: " + object.toString());
+            }
+        }
     }
 
     @Override
     protected void shutDown() throws Exception {
 
-            super.shutDown();
+        super.shutDown();
 
-            this.processing.deleteObserver(this);
+        this.processing.deleteObserver(this);
+        this.eventQueue.clear();
+    }
+    
+    @Override
+    protected void triggerShutdown() {
 
-            this.eventQueue.clear();
+        super.triggerShutdown();
+        this.keepRunning = false;
     }
 
     protected abstract void handle(Event event) throws Exception;

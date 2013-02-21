@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
 import net.yura.domination.engine.ai.planrecognition.eventhandling.AbstractService;
-import net.yura.domination.engine.ai.planrecognition.eventhandling.Processing;
+import net.yura.domination.engine.ai.planrecognition.eventhandling.EventObserver;
 import net.yura.domination.engine.ai.planrecognition.events.EventCountryReinforced;
 import net.yura.domination.engine.ai.planrecognition.events.EventRegisterAgent;
 import net.yura.domination.engine.ai.planrecognition.events.EventSuccessfulOccupation;
@@ -48,7 +48,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
     
     Vector Players;
  
-    public PlanRecognition(Processing processing){
+    public PlanRecognition(EventObserver processing){
         
         super(processing);
     }
