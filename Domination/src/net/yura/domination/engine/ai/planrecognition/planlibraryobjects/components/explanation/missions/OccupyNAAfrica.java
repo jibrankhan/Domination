@@ -13,9 +13,9 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
  *
  * @author s0914007
  */
-public class OccupyNAAfrica extends OccupyExplanation implements Serializable {
+public class OccupyNaAfrica extends OccupyExplanation implements Serializable {
     
-    public OccupyNAAfrica() {
+    public OccupyNaAfrica() {
         
         this.setMissionName("Occupy North America and Africa");
         

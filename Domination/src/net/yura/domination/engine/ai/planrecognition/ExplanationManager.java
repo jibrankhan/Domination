@@ -9,10 +9,19 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaAfrica;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyExplanation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNAAfrica;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaAfrica;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaSa;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuAusAfrica;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuAusAsia;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuAusNa;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuAusSa;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaAfrica;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaAsia;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaAus;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaNa;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNAAus;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNaAfrica;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.subgoalmanagement.SubGoal;
 import net.yura.domination.engine.core.Continent;
 
@@ -24,15 +33,37 @@ public class ExplanationManager implements Serializable {
     
     private Set<Explanation> explanationSet = new HashSet<Explanation>();
     
-    OccupyNAAus occupyNAAusExp = new OccupyNAAus();
     OccupyAsiaAfrica occupyAsiaAfrica = new OccupyAsiaAfrica();
-    OccupyNAAfrica occupyNAAfrica = new OccupyNAAfrica();
+    OccupyAsiaSa occupyAsiaSa = new OccupyAsiaSa();
+    OccupyNAAus occupyNAAusExp = new OccupyNAAus();  
+    OccupyNaAfrica occupyNAAfrica = new OccupyNaAfrica();
+    
+    OccupyEuAusAfrica occupyEuAusAfrica = new OccupyEuAusAfrica();
+    OccupyEuAusAsia occupyEuAusAsia = new OccupyEuAusAsia();
+    OccupyEuAusNa occupyEuAusNa = new OccupyEuAusNa();
+    OccupyEuAusSa occupyEuAusSa = new OccupyEuAusSa();
+    
+    OccupyEuSaAfrica occupyEuSaAfrica = new OccupyEuSaAfrica();
+    OccupyEuSaAsia occupyEuSaAsia = new OccupyEuSaAsia();
+    OccupyEuSaNa occupyEuSaNa = new OccupyEuSaNa();
+    OccupyEuSaAus occupyEuSaAus = new OccupyEuSaAus();
     
     public ExplanationManager(Vector Continent){
         
         explanationSet.add(occupyNAAusExp);
         explanationSet.add(occupyAsiaAfrica);
         explanationSet.add(occupyNAAfrica);
+        explanationSet.add(occupyAsiaSa);
+        
+        explanationSet.add(occupyEuAusAfrica);
+        explanationSet.add(occupyEuAusAsia);
+        explanationSet.add(occupyEuAusNa);
+        explanationSet.add(occupyEuAusSa);
+        
+        explanationSet.add(occupyEuSaAfrica);
+        explanationSet.add(occupyEuAusAsia);
+        explanationSet.add(occupyEuSaNa);
+        explanationSet.add(occupyEuSaAus);
         
         // Automated building of explanations
         for(Object c : Continent){

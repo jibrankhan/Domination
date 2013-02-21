@@ -18,9 +18,6 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaAfrica;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyExplanation;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNAAus;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.BasicObservation;
 import net.yura.domination.engine.core.Country;
 import net.yura.domination.engine.core.Player;

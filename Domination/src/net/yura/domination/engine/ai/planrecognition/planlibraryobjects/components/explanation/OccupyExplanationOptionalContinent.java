@@ -4,6 +4,8 @@
  */
 package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation;
 
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.subgoalmanagement.SubGoal;
+
 /**
  *
  * @author s0914007
