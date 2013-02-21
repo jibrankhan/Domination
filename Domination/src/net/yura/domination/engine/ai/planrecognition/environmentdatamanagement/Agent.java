@@ -30,7 +30,7 @@ import net.yura.domination.engine.core.Player;
  *
  * @author s0914007
  */
-public class Agent implements Serializable{
+public class Agent implements Serializable {
     
     private Player player;
     
@@ -81,6 +81,11 @@ public class Agent implements Serializable{
     public void setAgentActivePendingSetHistory(List<Set<BasicAction>> agentActivePendingSetHistory) {
         
         this.agentActivePendingSetHistory = agentActivePendingSetHistory;
+    }
+    
+    public Player getPlayer(){
+        
+        return player;
     }
     
     // Generates Active Pending Set
@@ -146,11 +151,6 @@ public class Agent implements Serializable{
         return activePendingSet;
     }
     
-    public Player getPlayer(){
-        
-        return player;
-    }
-    
     public void updateExplanationList(Set<Explanation> fullExplanationList){
         
         //System.out.println(this.getAgentName());
@@ -185,7 +185,8 @@ public class Agent implements Serializable{
             if(addFlag == 1){
                 
                 //Explanation newExplanation = new Explanation(e.getExplanationName(), e.getRootGoalSet(), e.getMethodChoiceSet(), e.getConActions(), e.getInConActions());
-                  
+                // TODO NewExp should calculate probability of explanation given list of all observations  
+                
                 if(e instanceof OccupyNAAusExp){
                     
                     OccupyNAAusExp currentExp = (OccupyNAAusExp) e; 
@@ -205,28 +206,15 @@ public class Agent implements Serializable{
                     
                     agentExplanationList.add(newExp);
                 }
-                // Set calculation mode here!
-                // Uniform = Uniform Distribution
-                // Weighted = Weighted Distribution
-                    
-                //generateNewExplanationProbability("Weighted", newExplanation);
-                
-                //System.out.println(newExplanation.getExplanationName());
-                //System.out.println(" ");
             }
         }
-        
-        /*for(Explanation e : this.getAgentExplanationList()){
-            
-            System.out.println(e.getExplanationName());
-        }*/
     }
     
     /**
      * Recomputes an explanation with ONLY the last observation from the environment.
      * @param expToBeUpdated Explanation to be computed.
      */
-    public void computeExpProbability(String calculationMethod, String ObservationType, Explanation expToBeUpdated){
+    /*public void computeExpProbability(String calculationMethod, String ObservationType, Explanation expToBeUpdated){
         
         // Computing explanation probabilities
         
@@ -234,24 +222,10 @@ public class Agent implements Serializable{
             
             System.out.println(b.getActionType() + " " + b.getCountryName());
         }*/
-        
-        HashSet<BasicAction> filteredActiveSet = new HashSet<BasicAction>();
-        
-        if(calculationMethod.equals("Weighted")){
-             
-                for(BasicAction b: this.generateActivePendingSet()){
-                    
-                    if(b.getActionType().equals(ObservationType)){
-                        
-                        filteredActiveSet.add(b);
-                        //System.out.println(b.getActionType() + " " + b.getCountryName());
-                    }
-                }
      
-                expToBeUpdated.computeMissionProbability(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
-            }  
+       // expToBeUpdated.computeMissionProbability(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
         //System.out.println(e.getExplanationName() + " " + e.getExplanationProbability()); 
-    }
+    //}
     
     public float computeTotalExpProbabilties(){
         
@@ -263,5 +237,21 @@ public class Agent implements Serializable{
         }
         
         return agentTotalExplanationProbabilities;
+    }
+    
+    public Set<BasicAction> filterActiveSet(String observationType, Set<BasicAction> activePendingSet){
+        
+        Set<BasicAction> filteredActiveSet = new HashSet<BasicAction>();
+           
+        for(BasicAction b: this.generateActivePendingSet()){
+
+            if(b.getActionType().equals(observationType)){
+
+                filteredActiveSet.add(b);
+                //System.out.println(b.getActionType() + " " + b.getCountryName());
+            }
+        }
+        
+        return  filteredActiveSet;
     }
 }

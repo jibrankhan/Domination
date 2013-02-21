@@ -4,7 +4,6 @@
  */
 package net.yura.domination.engine.ai.planrecognition;
 
-import com.google.common.collect.ArrayListMultimap;
 import net.yura.domination.engine.ai.planrecognition.events.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,10 +39,10 @@ import net.yura.domination.engine.core.Player;
  */
 public class PlanRecognition extends AbstractService implements Serializable{
 
-    public ExplanationManager actionManager;  
+    public ExplanationManager explanationManager;  
     List<Agent> agentManager = new ArrayList<Agent>();
     
-    HashSet<Explanation> totalExplanationList;
+    Set<Explanation> totalExplanationList;
     
     float totalProb;
     
@@ -159,10 +158,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     // Set calculation mode here!
                     // Uniform = Uniform Distribution
                     // Weighted = Weighted Distribution
-                    for(Explanation e : a.getAgentExplanationList()){
-                        
-                        a.computeExpProbability("Weighted", "Successful Occupation" , e);
-                    }
+                    this.computeExpProbs("Weighted", ActionConstants.successfulOccupation, a);
                     
                     // Sum probabilities of all explanations
                     totalProb = a.computeTotalExpProbabilties();
@@ -176,7 +172,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     for(Explanation e : a.getAgentExplanationList()){
                         
-                        a.computeExpProbability("Weighted", "Failed Defence", e);
+                        e.computeMissionProbability(ActionConstants.failedDefence, a.generateActivePendingSet(), a.getAgentObservationSet().get(a.getAgentObservationSet().size() - 1));
                     }
                     
                     totalProb = a.computeTotalExpProbabilties();
@@ -220,10 +216,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     // Set calculation mode here!
                     // Uniform = Uniform Distribution
                     // Weighted = Weighted Distribution
-                    for(Explanation e : a.getAgentExplanationList()){
-                        
-                        a.computeExpProbability("Weighted", "Successful Defence" , e);
-                    }
+                    this.computeExpProbs("Weighted", ActionConstants.successfulDefence, a);
                     
                     // Sum probabilities of all explanations
                     totalProb = a.computeTotalExpProbabilties();
@@ -235,10 +228,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationFailedOccupation(continentName, countryName));
                     
-                    for(Explanation e : a.getAgentExplanationList()){
-                        
-                        a.computeExpProbability("Weighted", "Failed Occupation", e);
-                    }
+                    this.computeExpProbs("Weighted", ActionConstants.failedOccupation, a);
                     
                     totalProb = a.computeTotalExpProbabilties();
                     //a.removeCountryAndUpdateList(continentName, country);
@@ -263,10 +253,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationCountryReinforced(continentName, countryName));
                     
-                    for(Explanation e : a.getAgentExplanationList()){
-                        
-                        a.computeExpProbability("Weighted", "Reinforce", e);
-                    }
+                    this.computeExpProbs("Weighted", ActionConstants.countryReinforced, a);
                     
                     totalProb = a.computeTotalExpProbabilties();
                     
@@ -290,16 +277,13 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 if(a.getAgentName().equals(playerName)){
                     
                     a.getAgentObservationSet().add(new ObservationArmyMovement(continentName, countryName));
-                }
                 
-                for(Explanation e : a.getAgentExplanationList()){
-                        
-                        a.computeExpProbability("Weighted", "Army Movement", e);
-                }
+                    this.computeExpProbs("Weighted", ActionConstants.armyMovement, a);
+                    
+                    totalProb = a.computeTotalExpProbabilties();
                 
-                totalProb = a.computeTotalExpProbabilties();
-                
-                this.printExpProbs(a.getAgentExplanationList());
+                    this.printExpProbs(a.getAgentExplanationList());
+                } 
             }
             //System.out.println(countryMovedTo.getPlayerName() + " " + countryMovedTo.getCountryName()); 
         }
@@ -321,9 +305,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
     // Setup of action space
     public void initialiseActionSpace(Vector Continents){
 
-        this.actionManager = new ExplanationManager(Continents);
+        this.explanationManager = new ExplanationManager(Continents);
 
-        totalExplanationList = actionManager.getExplanationList();
+        totalExplanationList = explanationManager.getAllExplanations();
 
         /*for(Explanation e : totalExplanationList){
 
@@ -347,10 +331,21 @@ public class PlanRecognition extends AbstractService implements Serializable{
         
         for(Explanation e : expList){
 
+            e.setExplanationProbability(e.normalizeExplanationProbability(totalProb));
             // compute normalized probabilites
-            System.out.println(e.getMissionName() + " " + e.normalizeExplanationProbability(totalProb));
+            System.out.println(e.getMissionName() + " " + e.getExplanationProbability());
         }
         System.out.println(" ");
+    }
+    
+    public void computeExpProbs(String calculationType, String observationType, Agent agent){
+        
+        Set<BasicAction> filterActiveSet = agent.filterActiveSet(observationType, agent.generateActivePendingSet());
+        
+        for(Explanation e : agent.getAgentExplanationList()){
+        
+            e.computeMissionProbability(observationType, filterActiveSet, agent.getAgentObservationSet().get(agent.getAgentObservationSet().size() - 1));
+        }
     }
 }
 

@@ -17,5 +17,5 @@ public interface Mission {
     String getMissionName();
     void setMissionName(String missionName);
     boolean isConsistent(BasicAction action);
-    void computeMissionProbability(String ObservationType, Set<BasicAction> activeSet, BasicObservation currentObservation);
+    void computeMissionProbability(String observationType, Set<BasicAction> activePendingSet, BasicObservation currentObservation);
 }

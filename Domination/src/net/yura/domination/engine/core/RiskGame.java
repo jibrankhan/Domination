@@ -186,6 +186,8 @@ transient - A keyword in the Java programming language that indicates that a fie
         final static Charset ENCODING = StandardCharsets.UTF_8;
         final static boolean recordGame = false;
         
+        int turnCounter = 0;
+        
         File file = new File("C:\\temp\\game.txt");
 
 	/**
@@ -483,7 +485,9 @@ transient - A keyword in the Java programming language that indicates that a fie
 
 		if (gameState==STATE_END_TURN) {
 
-			//System.out.print("go ended\n"); // testing
+                    //System.out.print("go ended\n"); // testing
+                    System.out.println("Turn: " + turnCounter);
+                    turnCounter++;
                     
                     //this.writeToFile(file, "endgo");
                     

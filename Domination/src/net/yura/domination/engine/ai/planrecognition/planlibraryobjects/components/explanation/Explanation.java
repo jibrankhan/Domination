@@ -5,9 +5,7 @@
 package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.rootgoalmanagement.RootGoal;
@@ -22,8 +20,8 @@ public abstract class Explanation implements Mission, Serializable {
     private Set<RootGoal> rootGoalSet = new HashSet<RootGoal>();
     private Set<SubGoal> subGoalSet = new HashSet<SubGoal>();
     
-    private List<BasicAction> conActions = new ArrayList<BasicAction>();
-    private List<BasicAction> inConActions = new ArrayList<BasicAction>();
+    private Set<BasicAction> conActions = new HashSet<BasicAction>();
+    private Set<BasicAction> inConActions = new HashSet<BasicAction>();
     
     private float explanationProbability = 1.0f;
     private String missionName;
@@ -58,12 +56,12 @@ public abstract class Explanation implements Mission, Serializable {
         return subGoalSet;
     }
     
-    public List<BasicAction> getConActions() {
+    public Set<BasicAction> getConActions() {
         
         return conActions;
     }
 
-    public List<BasicAction> getInConActions() {
+    public Set<BasicAction> getInConActions() {
         
         return inConActions;
     }
@@ -97,12 +95,28 @@ public abstract class Explanation implements Mission, Serializable {
         return explanationProbability / sumExplanationProbabilites;
     }
     
-    public void duplicateExplanation(String missionName, Set<RootGoal> rootGoalSet, Set<SubGoal> subGoalSet, List<BasicAction> conActions, List<BasicAction> inConActions){
+    public void duplicateExplanation(String missionName, Set<RootGoal> rootGoalSet, Set<SubGoal> subGoalSet, Set<BasicAction> conActions, Set<BasicAction> inConActions){
 
         this.missionName = missionName;
         this.rootGoalSet = rootGoalSet;
         this.subGoalSet = subGoalSet;
         this.conActions = conActions;
         this.inConActions = inConActions;
+    }
+    
+    public Set<BasicAction> filterSet(String observationType, Set<BasicAction> actionSet){
+        
+        Set<BasicAction> filteredSet = new HashSet<BasicAction>();
+           
+        for(BasicAction b: actionSet){
+
+            if(b.getActionType().equals(observationType)){
+
+                filteredSet.add(b);
+                //System.out.println(b.getActionType() + " " + b.getCountryName());
+            }
+        }
+        
+        return  filteredSet;
     }
 }

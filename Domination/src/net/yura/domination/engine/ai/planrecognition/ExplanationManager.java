@@ -5,9 +5,8 @@
 package net.yura.domination.engine.ai.planrecognition;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyAsiaAfrica;
@@ -20,7 +19,7 @@ import net.yura.domination.engine.core.Continent;
  */
 public class ExplanationManager implements Serializable {
     
-    private HashSet<Explanation> explanationList = new HashSet<Explanation>();
+    private Set<Explanation> explanationSet = new HashSet<Explanation>();
     
     OccupyNAAusExp occupyNAAusExp = new OccupyNAAusExp();
     OccupyAsiaAfrica occupyAsiaAfrica = new OccupyAsiaAfrica();
@@ -53,14 +52,14 @@ public class ExplanationManager implements Serializable {
             }   
         }
         
-        explanationList.add(occupyNAAusExp);
-        explanationList.add(occupyAsiaAfrica);
+        explanationSet.add(occupyNAAusExp);
+        explanationSet.add(occupyAsiaAfrica);
         
         System.out.println("ALL EXPLANATIONS INITIALIZED!");
     }  
     
-    public HashSet<Explanation> getExplanationList() {
+    public Set<Explanation> getAllExplanations() {
         
-        return explanationList;
+        return explanationSet;
     }
 }
