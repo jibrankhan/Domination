@@ -16,7 +16,7 @@ public class BasicRootGoal extends BasicPlanComponent implements Serializable {
     
     private final String actionLocation;
     
-    public BasicRootGoal(String actionType, String actionLocation, float probability){
+    public BasicRootGoal(String actionType, String actionLocation, double probability){
         
         super(actionType, probability);
         this.actionLocation = actionLocation;

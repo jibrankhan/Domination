@@ -13,16 +13,16 @@ import java.io.Serializable;
 public class BasicPlanComponent implements ActionTypeComponent, ProbabilityComponent, Serializable {
 
     String actionName;
-    float probability;
+    double probability;
     
-    public BasicPlanComponent(String actionType, float probability){
+    public BasicPlanComponent(String actionType, double probability){
         
         this.actionName = actionType;
         this.probability = probability;   
     }
     
     @Override
-    public float getProbability() {
+    public double getProbability() {
         
         return probability;
     }

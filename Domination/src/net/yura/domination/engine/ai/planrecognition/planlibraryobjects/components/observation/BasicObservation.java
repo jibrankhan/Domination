@@ -21,7 +21,7 @@ public class BasicObservation extends BasicAction implements ActionTypeComponent
     // TODO Refactor to remove useless probability
     public BasicObservation(String actionType, String continentName, String countryName){
         
-        super(actionType, countryName, 0);
+        super(actionType, countryName, 0d);
         this.continentName = continentName;
     }
 

@@ -5,6 +5,7 @@
 package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action;
 
 import java.io.Serializable;
+import net.yura.domination.engine.ai.planrecognition.ActionConstants;
 
 /**
  * Pending state action for conquering a territory
@@ -12,8 +13,8 @@ import java.io.Serializable;
  */
 public class ActionSuccessfulOccupation extends BasicAction implements Serializable {
     
-    public ActionSuccessfulOccupation(String countryName, float probability){
+    public ActionSuccessfulOccupation(String countryName, double probability){
         
-        super("Successful Occupation", countryName, probability);
+        super(ActionConstants.successfulOccupation, countryName, probability);
     }
 }

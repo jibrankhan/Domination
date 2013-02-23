@@ -10,6 +10,7 @@ import net.yura.domination.engine.ai.planrecognition.ActionConstants;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionArmyMovement;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionCountryReinforced;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
@@ -35,6 +36,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             this.getConActions().add(new ActionSuccessfulDefence(currentCountry.getName(), 1.0f));
 
             this.getInConActions().add(new ActionFailedDefence(currentCountry.getName(), 1.0f));
+            this.getInConActions().add(new ActionFailedOccupation(currentCountry.getName(), 1.0f));
         }
     }
     
@@ -59,9 +61,6 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             }
         }
         
-        //System.out.println(conActionCounter);
-        //System.out.println(" ");
-        
         // Count number of inconsistent and consistent actions in active pending set when action took place
         for(BasicAction b : filteredActiveSet){
 
@@ -71,59 +70,72 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
                 inConActionCounter++;
             } 
         }
-       
-        float missionProbability = this.getExplanationProbability();
         
-        //if(!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence")){
+        double weight = 0.01;
+        double base;
+        double conActionProb;
+        double inconActionProb;
+        
+        double missionProbability = this.getExplanationProbability();
+        
+        // Handles probabilities when conActionCounter is zero
+        if(observationType.equals("Failed Defence") || observationType.equals("Failed Occupation")){
             
-            /*System.out.println("Agents Active Pending Set");
-            for(BasicAction a : activeSet){
+            weight = 0.01;
+            
+            base = this.computeBaseWeight(weight, filteredActiveSet.size(), inConActionCounter);
+            
+            conActionProb = base;
+            inconActionProb = base - weight;
+               
+        } else if(observationType.equals(ActionConstants.countryReinforced)){
+            
+            weight = 0.001;
+            
+            base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
-                System.out.println(a.getActionType() + " " + a.getCountryName());
+            conActionProb = base + weight;
+            inconActionProb = base;
+            
+        } else{
+        
+            base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
+
+            conActionProb = base + weight;
+            inconActionProb = base;
+        }   
+
+        if(conActiveSet.contains(currentObservation)){
+
+            if(observationType.equals(ActionConstants.successfulDefence)){
+
+                conActionProb = 1.02f;
             }
-            System.out.println(" ");*/
 
-            // Use a different maths function to calculate weighting amounts!
-            float conActionProb = 0.6f / conActionCounter;
-            // If it is not consistent it is inconsistent
-            float inconActionProb = 0.4f / (filteredActiveSet.size() - conActionCounter);
+            System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
+            this.setExplanationProbability(missionProbability *= conActionProb);
 
-            //System.out.println(currentObservation.getActionType() + " " + currentObservation.getCountryName());
+        } else if(inConActiveSet.contains(currentObservation)) { 
 
-            if(conActiveSet.contains(currentObservation)){
-
-                if(observationType.equals(ActionConstants.successfulDefence)){
-                    
-                    // Seperate probability for defence actions
-                    conActionProb = 1.02f;
-                }
-                
-                System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
-                //System.out.println(" ");
-                this.setExplanationProbability(missionProbability *= conActionProb);
-
-            } else if(inConActiveSet.contains(currentObservation)) { 
-
-                if(observationType.equals("Failed Defence")){
-
-                    // Seperate probability for defence actions
-                    inconActionProb = 0.98f;
-                }
-                
-                System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
-                //System.out.println(" ");
-                this.setExplanationProbability(missionProbability *= inconActionProb); 
-                
-            // Condition for when there is an inconsistent action that is not in the set of inconsistent actions - why because this is less intensive than maintaining the whole list.
-            } else if(!inConActiveSet.contains(currentObservation) && (!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence"))) {
-                
-                System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
-                //System.out.println(" ");
-                this.setExplanationProbability(missionProbability *= inconActionProb); 
-                
-            } else {
-                
-                System.out.println(this.getMissionName() + " Does not apply!");
+            if(observationType.equals("Failed Defence")){
+              
+                inconActionProb = 0.98f;
             }
+
+            System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
+            //System.out.println(" ");
+            this.setExplanationProbability(missionProbability *= inconActionProb); 
+
+        // Condition for when there is an inconsistent action that is not in the set of inconsistent actions - why because this is less intensive than maintaining the whole list.
+        } else if(!inConActiveSet.contains(currentObservation) && (!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence"))) {
+
+            System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
+            //System.out.println(" ");
+            this.setExplanationProbability(missionProbability *= inconActionProb); 
+
+        } else {
+
+            System.out.println(this.getMissionName() + " Does not apply!");
+        }
     }
 }

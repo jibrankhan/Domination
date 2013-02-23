@@ -23,7 +23,7 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
     private Set<BasicAction> conActions = new HashSet<BasicAction>();
     private Set<BasicAction> inConActions = new HashSet<BasicAction>();
     
-    private float explanationProbability = 1.0f;
+    private double explanationProbability = 1.0f;
     private String missionName;
     
     public String getMissionName() {
@@ -65,6 +65,22 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
         
         return inConActions;
     }
+
+    public void setExplanationProbability(double explanationProbability) {
+        
+        this.explanationProbability = explanationProbability;
+    }
+    
+        
+    public double getExplanationProbability() {
+        
+        return explanationProbability;
+    }
+    
+    public double normalizeExplanationProbability(double sumExplanationProbabilites){
+        
+        return explanationProbability / sumExplanationProbabilites;
+    }
     
     @Override
     public Object clone() throws CloneNotSupportedException{
@@ -86,30 +102,6 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
         }
     }
     
-    public float getExplanationProbability() {
-        
-        return explanationProbability;
-    }
-    
-    public void setExplanationProbability(float explanationProbability) {
-        
-        this.explanationProbability = explanationProbability;
-    }
-    
-    public float normalizeExplanationProbability(float sumExplanationProbabilites){
-        
-        return explanationProbability / sumExplanationProbabilites;
-    }
-    
-    public void duplicateExplanation(String missionName, Set<RootGoal> rootGoalSet, Set<SubGoal> subGoalSet, Set<BasicAction> conActions, Set<BasicAction> inConActions){
-
-        this.missionName = missionName;
-        this.rootGoalSet = rootGoalSet;
-        this.subGoalSet = subGoalSet;
-        this.conActions = conActions;
-        this.inConActions = inConActions;
-    }
-    
     public Set<BasicAction> filterSet(String observationType, Set<BasicAction> actionSet){
         
         Set<BasicAction> filteredSet = new HashSet<BasicAction>();
@@ -124,5 +116,16 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
         }
         
         return  filteredSet;
+    }
+    
+    // Method to calculate weight based on provided number of actions and actions to weight
+    public double computeBaseWeight(double weight, int numActions, int numActionsToWeight){
+        
+        double sumWeight = weight * (double) numActionsToWeight;
+        double leftOver = 1d - sumWeight;
+        
+        double base = leftOver / (double) numActions;
+        
+        return base;
     }
 }

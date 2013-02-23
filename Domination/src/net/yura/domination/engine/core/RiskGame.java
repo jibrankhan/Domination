@@ -30,7 +30,6 @@ import java.util.Vector;
 import net.yura.domination.engine.ColorUtil;
 import net.yura.domination.engine.RiskUtil;
 import net.yura.domination.engine.ai.planrecognition.PlanRecognition;
-import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
 import net.yura.domination.engine.ai.planrecognition.eventhandling.EventObserver;
 import net.yura.domination.engine.ai.planrecognition.events.EventArmyMoved;
 import net.yura.domination.engine.ai.planrecognition.events.EventCountryPlacement;
@@ -818,6 +817,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 						t.addArmy();
 						currentPlayer.loseExtraArmy(1);
 						done=1;
+                                                planRecognition.updatePlayers(Players);
                                                 processing.fireEvent(new EventCountryReinforced(currentPlayer.getName(), t.getContinent().getName(), t.getName()));
 						//System.out.print("army placed in: " + t.getName() + "\n"); // testing
 					}
@@ -831,6 +831,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 					t.addArmy();
 					currentPlayer.loseExtraArmy(1);
 					done=1;
+                                        planRecognition.updatePlayers(Players);
                                         processing.fireEvent(new EventCountryPlacement(currentPlayer.getName(), t.getName(), t.getContinent().getName()));
                                         
 					//System.out.print("country taken and army placed in: " + t.getName() + "\n"); // testing
@@ -849,6 +850,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 					currentPlayer.loseExtraArmy(n);
 					//System.out.print("army placed in: " + t.getName() + "\n"); // testing
 					done=1;
+                                        planRecognition.updatePlayers(Players);
                                         processing.fireEvent(new EventCountryReinforced(t.getOwner().getName(), t.getContinent().getName() , t.getName()));
 
 				}
@@ -1215,12 +1217,12 @@ transient - A keyword in the Java programming language that indicates that a fie
 		if (gameState==STATE_ROLLING) { // if we were in the attacking phase
  
 			currentPlayer.currentStatistic.addRetreat();
-
-			attacker=null;
-			defender=null;
                         
                         planRecognition.updatePlayers(Players); 
                         processing.fireEvent(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
+
+			attacker=null;
+			defender=null;
 
 			gameState=STATE_ATTACKING; // go to attack phase
 			//System.out.print("Retreating\n");
@@ -2006,16 +2008,17 @@ transient - A keyword in the Java programming language that indicates that a fie
 
                                         }
 
-					//if ( rawLoad || s1 <= Players.size() ) {
+					if ( rawLoad || s1 <= Players.size() ) {
 
 						//System.out.print(description+"\n"); // testing
 						Mission mission = new Mission(p, noc, noa, c1, c2, c3, description);
 						Missions.add(mission);
+ 
                                                 
-					//}
-					//else {
+					}
+					else {
 						//System.out.print("NOT adding this mission as it refures to an unused player\n"); // testing
-					//}
+					}
 
 				}
 				else if (mode.equals("newsection")) {

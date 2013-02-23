@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+import net.yura.domination.engine.ai.planrecognition.PlanRecognition;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionArmyMovement;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionFailedDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.ActionSuccessfulOccupation;
@@ -35,7 +36,7 @@ public class Agent implements Serializable {
     private List<Set<BasicAction>> agentActivePendingSetHistory = new ArrayList<Set<BasicAction>>();
     private List<BasicObservation> agentObservationSet = new ArrayList<BasicObservation>();
     
-    private float agentTotalExplanationProbabilities;
+    private double agentTotalExplanationProbabilities;
     
     private int turnNumber = 0;
    
@@ -64,7 +65,7 @@ public class Agent implements Serializable {
         return turnNumber;
     }
 
-    public void setAgentTotalExplanationProbabilities(float totalExplanationProbabilities) {
+    public void setAgentTotalExplanationProbabilities(double totalExplanationProbabilities) {
         
         this.agentTotalExplanationProbabilities = totalExplanationProbabilities;
     }
@@ -78,6 +79,11 @@ public class Agent implements Serializable {
         
         this.agentActivePendingSetHistory = agentActivePendingSetHistory;
     }
+
+    public void setPlayer(Player player) {
+        
+        this.player = player;
+    }
     
     public Player getPlayer(){
         
@@ -88,6 +94,8 @@ public class Agent implements Serializable {
     public Set<BasicAction> generateActivePendingSet(){
         
         Set<BasicAction> activePendingSet = new HashSet<BasicAction>();
+        
+        //Synchronises Player Object
         
         Vector playerTerritories = new Vector();
                 
@@ -147,53 +155,22 @@ public class Agent implements Serializable {
         return activePendingSet;
     }
     
-    public void updateExplanationList(Set<Explanation> fullExplanationList){
+    public void generateExplanationList(Set<Explanation> fullExplanationList){
         
         //System.out.println(this.getAgentName());
         
         for(Explanation e : fullExplanationList){
                             
-            int addFlag = 0;
-            
-            //System.out.println(e.getExplanationName());
+            try{
+                    
+                Explanation clonedExp = (Explanation) e.clone();
+                agentExplanationList.add(clonedExp);
+                    
+            }catch (CloneNotSupportedException excep){
 
-            for(BasicAction b : this.generateActivePendingSet()){
+                excep.printStackTrace();
+                System.out.println("Cloneable not implemented");
 
-                // If active pending set contains an action that is consistent with an explanation,
-                // add the explanation to the agents explanation list
-                if(addFlag != 1 && e.getConActions().contains(b)){
-
-                    addFlag = 1;
-                    //System.out.println("Its consistent!");
-                    //System.out.println(b.getActionType() + " " + b.getCountryName());
-                } 
-            }
-
-            // Check if set already contains 
-            for(Explanation agentsE : agentExplanationList){
-                
-                if(agentsE.getMissionName().equals(e.getMissionName())){
-                    
-                    addFlag = 0;
-                }
-            }
-            // If explanation is new to set of agents explanations
-            if(addFlag == 1){
-                
-                //Explanation newExplanation = new Explanation(e.getExplanationName(), e.getRootGoalSet(), e.getMethodChoiceSet(), e.getConActions(), e.getInConActions());
-                // TODO NewExp should calculate probability of explanation given list of all observations  
-                
-                try{
-                    
-                    Explanation clonedExp = (Explanation) e.clone();
-                    agentExplanationList.add(clonedExp);
-                    
-                }catch (CloneNotSupportedException excep){
-                    
-                    excep.printStackTrace();
-                    System.out.println("Cloneable not implemented");
-                    
-                }
             }
         }
     }
@@ -215,7 +192,7 @@ public class Agent implements Serializable {
         //System.out.println(e.getExplanationName() + " " + e.getExplanationProbability()); 
     //}
     
-    public float computeTotalExpProbabilties(){
+    public double computeTotalExpProbabilties(){
         
         this.agentTotalExplanationProbabilities = 0;
         

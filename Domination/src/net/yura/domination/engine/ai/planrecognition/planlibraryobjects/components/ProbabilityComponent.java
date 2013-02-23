@@ -10,5 +10,5 @@ package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.compone
  */
 public interface ProbabilityComponent {
     
-    float getProbability(); 
+    double getProbability(); 
 }

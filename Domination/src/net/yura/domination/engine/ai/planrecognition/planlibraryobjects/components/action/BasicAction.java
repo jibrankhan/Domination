@@ -17,7 +17,7 @@ public class BasicAction extends BasicPlanComponent implements CountryNameCompon
    String countryName;
    
    // Basic Pending State Action Class
-   public BasicAction(String actionType, String countryName, float probability){
+   public BasicAction(String actionType, String countryName, double probability){
        
        super(actionType, probability);
        this.countryName = countryName;    
@@ -30,8 +30,6 @@ public class BasicAction extends BasicPlanComponent implements CountryNameCompon
 
     @Override
     public boolean equals(Object o) {
-              
-        //System.out.println(newAction.getCountryName());
         
         if(o instanceof BasicAction){
             
@@ -56,7 +54,6 @@ public class BasicAction extends BasicPlanComponent implements CountryNameCompon
         return  false;
     }
 
-    // TODO Make proper hash code id system http://stackoverflow.com/questions/5186081/java-hashset-duplicates-comparison
     @Override
     public int hashCode() {
         

@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class SubGoal extends BasicSubGoal implements Serializable {
     
-    public SubGoal(String actionType, String actionLocation, float probability){
+    public SubGoal(String actionType, String actionLocation, double probability){
         
         super(actionType, actionLocation, probability);
     }

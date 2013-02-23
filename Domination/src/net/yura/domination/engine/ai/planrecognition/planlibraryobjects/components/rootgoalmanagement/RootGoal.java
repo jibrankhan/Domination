@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class RootGoal extends BasicRootGoal implements Serializable {
     
-    public RootGoal(String actionType, String actionLocation, float probability){
+    public RootGoal(String actionType, String actionLocation, double probability){
         
         super(actionType, actionLocation, probability);
     }

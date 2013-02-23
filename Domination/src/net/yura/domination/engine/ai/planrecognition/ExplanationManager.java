@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.OccupyExplanation;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.Occupy24;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaAfrica;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyAsiaSa;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuAusAfrica;
@@ -61,7 +62,7 @@ public class ExplanationManager implements Serializable {
         explanationSet.add(occupyEuAusSa);
         
         explanationSet.add(occupyEuSaAfrica);
-        explanationSet.add(occupyEuAusAsia);
+        explanationSet.add(occupyEuSaAsia);
         explanationSet.add(occupyEuSaNa);
         explanationSet.add(occupyEuSaAus);
         
@@ -82,6 +83,10 @@ public class ExplanationManager implements Serializable {
                         if(continent.getName().equals(s.getActionLocation())){
 
                             occupyExp.addConsistentActions(continent);
+                        }
+                        if(s.getActionLocation().equals("24 Territories")){
+                            
+                            Occupy24 occupy24 = (Occupy24) e;
                         }
                     }
                 }

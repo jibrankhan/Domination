@@ -5,6 +5,7 @@
 package net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action;
 
 import java.io.Serializable;
+import net.yura.domination.engine.ai.planrecognition.ActionConstants;
 
 /**
  *
@@ -12,8 +13,8 @@ import java.io.Serializable;
  */
 public class ActionFailedDefence extends BasicAction implements Serializable{
     
-    public ActionFailedDefence(String countryName, float probability){
+    public ActionFailedDefence(String countryName, double probability){
         
-        super("Failed Defence", countryName, probability);
+        super(ActionConstants.failedDefence, countryName, probability);
     }
 }

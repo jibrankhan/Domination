@@ -16,7 +16,7 @@ public class BasicSubGoal extends BasicPlanComponent implements Serializable {
     
     private final String actionLocation;
     
-    public BasicSubGoal(String actionType, String actionLocation , float probability){
+    public BasicSubGoal(String actionType, String actionLocation , double probability){
         
         super(actionType, probability);  
         this.actionLocation = actionLocation;

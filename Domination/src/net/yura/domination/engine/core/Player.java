@@ -212,6 +212,8 @@ public class Player implements Serializable {
      * @param m The new mission
      */
     public void setMission(Mission m) {
+        
+        System.out.println(this.getName() + " " + m.getDiscription());
 	mission=m;
     }
 
