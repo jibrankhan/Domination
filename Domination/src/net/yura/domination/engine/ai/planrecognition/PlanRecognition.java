@@ -43,7 +43,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
     
     double totalProb;
     
-    Vector Players;
+    private static Vector Players;
  
     public PlanRecognition(EventObserver processing){
         
@@ -253,9 +253,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
     // Method to synchronize Player Vector in this class and all classes that contain a player object
     public void updatePlayers(Vector Players){
 
-        this.Players = Players;
+        PlanRecognition.setPlayers(Players);
 
-        for(Object p : Players){
+        for(Object p : PlanRecognition.Players){
             
             Player player = (Player) p;
             
@@ -316,6 +316,16 @@ public class PlanRecognition extends AbstractService implements Serializable{
         
             e.computeMissionProbability(filterActiveSet, agent.getAgentObservationSet().get(agent.getAgentObservationSet().size() - 1));
         }
+    }
+
+    public static Vector getPlayers() {
+        
+        return PlanRecognition.Players;
+    }
+
+    public static void setPlayers(Vector Players) {
+        
+        PlanRecognition.Players = Players;
     }
 }
 

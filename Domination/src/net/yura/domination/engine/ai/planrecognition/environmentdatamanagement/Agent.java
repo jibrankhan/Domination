@@ -98,6 +98,16 @@ public class Agent implements Serializable {
         //Synchronises Player Object
         
         Vector playerTerritories = new Vector();
+        
+        for(Object p : PlanRecognition.getPlayers()){
+            
+            Player currentPlayer = (Player) p;
+            
+            if(currentPlayer.getName().equals(this.getAgentName())){
+                
+                this.setPlayer(currentPlayer);
+            }
+        }
                 
         playerTerritories.addAll(player.getTerritoriesOwned());
         
@@ -174,23 +184,6 @@ public class Agent implements Serializable {
             }
         }
     }
-    
-    /**
-     * Recomputes an explanation with ONLY the last observation from the environment.
-     * @param expToBeUpdated Explanation to be computed.
-     */
-    /*public void computeExpProbability(String calculationMethod, String ObservationType, Explanation expToBeUpdated){
-        
-        // Computing explanation probabilities
-        
-        /*for(BasicObservation b : agentObservationSet){
-            
-            System.out.println(b.getActionType() + " " + b.getCountryName());
-        }*/
-     
-       // expToBeUpdated.computeMissionProbability(ObservationType, filteredActiveSet, agentObservationSet.get(agentObservationSet.size()-1));
-        //System.out.println(e.getExplanationName() + " " + e.getExplanationProbability()); 
-    //}
     
     public double computeTotalExpProbabilties(){
         

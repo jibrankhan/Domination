@@ -99,6 +99,8 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             
         } else{
         
+            weight = 0.01;
+            
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
             conActionProb = base + weight;
