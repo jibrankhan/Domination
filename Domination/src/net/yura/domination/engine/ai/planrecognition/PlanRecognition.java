@@ -7,6 +7,7 @@ package net.yura.domination.engine.ai.planrecognition;
 import net.yura.domination.engine.ai.planrecognition.events.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -16,12 +17,12 @@ import net.yura.domination.engine.ai.planrecognition.eventhandling.EventObserver
 import net.yura.domination.engine.ai.planrecognition.events.EventCountryReinforced;
 import net.yura.domination.engine.ai.planrecognition.events.EventRegisterAgent;
 import net.yura.domination.engine.ai.planrecognition.events.EventSuccessfulOccupation;
-import net.yura.domination.engine.ai.planrecognition.events.EventCountryPlacement;
 import net.yura.domination.engine.ai.planrecognition.events.EventArmyMoved;
 import net.yura.domination.engine.ai.planrecognition.events.EventFailedOccupation;
 import net.yura.domination.engine.ai.planrecognition.events.EventRemoveAgent;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.action.BasicAction;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.BasicObservation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationArmyMovement;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationFailedDefence;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationSuccessfulOccupation;
@@ -43,7 +44,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
     
     double totalProb;
     
-    private static Vector Players;
+    public static Vector Players;
  
     public PlanRecognition(EventObserver processing){
         
@@ -75,7 +76,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
             
             EventRegisterAgent newA = (EventRegisterAgent) event;
             
-            Agent newAgent = new Agent(newA.getNewPlayer());
+            Agent newAgent = new Agent(newA.getNewPlayer().getName());
 
             agentManager.add(newAgent);
         }
@@ -109,6 +110,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
 
                     System.out.println(a.getAgentName());
                     System.out.println(ActionConstants.successfulOccupation + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.successfulOccupation, a);
                     
@@ -124,6 +126,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     System.out.println(a.getAgentName());
                     System.out.println(ActionConstants.failedDefence + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.failedDefence, a);
                     
@@ -167,6 +170,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     System.out.println(a.getAgentName());
                     System.out.println(ActionConstants.successfulDefence + " " + countryName);
+                    System.out.println(" ");
 
                     this.computeExpProbs("Weighted", ActionConstants.successfulDefence, a);
                     
@@ -182,6 +186,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     System.out.println(a.getAgentName());
                     System.out.println(ActionConstants.failedOccupation + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.failedOccupation, a);
                     
@@ -210,6 +215,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
   
                     System.out.println(a.getAgentName());
                     System.out.println(ActionConstants.countryReinforced + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.countryReinforced, a);
                     
@@ -238,6 +244,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 
                     System.out.println(a.getAgentName());
                     System.out.println(ActionConstants.armyMovement + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.armyMovement, a);
                     
@@ -254,19 +261,6 @@ public class PlanRecognition extends AbstractService implements Serializable{
     public void updatePlayers(Vector Players){
 
         PlanRecognition.setPlayers(Players);
-
-        for(Object p : PlanRecognition.Players){
-            
-            Player player = (Player) p;
-            
-            for(Agent agent : agentManager){
-                
-                if(player.getName().equals(agent.getAgentName())){
-                    
-                    agent.setPlayer(player);
-                }
-            }
-        }
     }
 
     // Setup of action space
@@ -279,18 +273,6 @@ public class PlanRecognition extends AbstractService implements Serializable{
         for(Agent a : agentManager){
             
             a.generateExplanationList(totalExplanationList);
-        }
-    }
-        
-    public void cacheActivePendingSet(String playerName){
-        
-        for(Agent a : this.getAgentManager()){
-
-            if(a.getAgentName().equals(playerName)){
-
-                // Cache active pending set
-                a.getAgentActivePendingSetHistory().add(a.generateActivePendingSet());
-            }
         }
     }
     
@@ -310,11 +292,12 @@ public class PlanRecognition extends AbstractService implements Serializable{
     
     public void computeExpProbs(String calculationType, String observationType, Agent agent){
         
-        Set<BasicAction> filterActiveSet = agent.filterActiveSet(observationType, agent.generateActivePendingSet());
+        Set<BasicAction> activePendingSet = agent.generateActivePendingSet();
+        BasicObservation currentObservation = agent.getAgentObservationSet().get(agent.getAgentObservationSet().size() - 1);
         
         for(Explanation e : agent.getAgentExplanationList()){
         
-            e.computeMissionProbability(filterActiveSet, agent.getAgentObservationSet().get(agent.getAgentObservationSet().size() - 1));
+            e.computeMissionProbability(activePendingSet, currentObservation);
         }
     }
 

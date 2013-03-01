@@ -29,7 +29,7 @@ import net.yura.domination.engine.core.Player;
  */
 public class Agent implements Serializable {
     
-    private Player player;
+    String agentName;
     
     private Set<Explanation> agentExplanationList = new HashSet<Explanation>();
     
@@ -40,14 +40,14 @@ public class Agent implements Serializable {
     
     private int turnNumber = 0;
    
-    public Agent(Player player){
+    public Agent(String agentName){
         
-        this.player = player;
+        this.agentName = agentName;
     }
     
     public String getAgentName(){
         
-        return player.getName();
+        return agentName;
     }
     
     public Set<Explanation> getAgentExplanationList() {
@@ -79,41 +79,32 @@ public class Agent implements Serializable {
         
         this.agentActivePendingSetHistory = agentActivePendingSetHistory;
     }
-
-    public void setPlayer(Player player) {
-        
-        this.player = player;
-    }
-    
-    public Player getPlayer(){
-        
-        return player;
-    }
     
     // Generates Active Pending Set
     public Set<BasicAction> generateActivePendingSet(){
         
         Set<BasicAction> activePendingSet = new HashSet<BasicAction>();
         
+        Player thisPlayer = null;
+
         //Synchronises Player Object
-        
-        Vector playerTerritories = new Vector();
-        
         for(Object p : PlanRecognition.getPlayers()){
             
             Player currentPlayer = (Player) p;
             
             if(currentPlayer.getName().equals(this.getAgentName())){
-                
-                this.setPlayer(currentPlayer);
+               
+                thisPlayer = currentPlayer;
             }
         }
                 
-        playerTerritories.addAll(player.getTerritoriesOwned());
+        Vector playerTerritories = thisPlayer.getTerritoriesOwned();
         
         for(Object c : playerTerritories){
             
             Country currentCountry = (Country) c;
+            
+            //System.out.println(currentCountry.getName());
             
             // Adds reinforce action
             activePendingSet.add(new ActionCountryReinforced(currentCountry.getName(), 1.0f));
@@ -127,35 +118,27 @@ public class Agent implements Serializable {
                 Country currentNeighbour = (Country) n;
                 
                 try{
-                // Addition of movement actions
-                    if(currentNeighbour.getOwner().getName().equals(this.player.getName())){
+                // Addition of movement actions and occupy actions based on whether player owns the country or not
+                    if(currentNeighbour.getOwner().getName().equals(thisPlayer.getName())){
 
+                        //System.out.println(currentNeighbour.getName() + " " + thisPlayer.getName());
                         activePendingSet.add(new ActionArmyMovement(currentNeighbour.getName(), 1.0f));
+                        
+                    } else if (!currentNeighbour.getOwner().getName().equals(thisPlayer.getName())){
+                        
+                        activePendingSet.add(new ActionSuccessfulOccupation(currentNeighbour.getName(), 1.0f));
+                        activePendingSet.add(new ActionFailedOccupation(currentNeighbour.getName(), 1.0f));
                     }
                 } catch (NullPointerException e ){
                     
                     //System.out.println("No player assigned yet!");
-                }
-                
-                // Addition of occupy actions
-                // Removes the addition of occupy pending state actions for countries a player owns
-                try{
-                    
-                    if(!currentNeighbour.getOwner().getName().equals(this.player.getName())){
-
-                        activePendingSet.add(new ActionSuccessfulOccupation(currentNeighbour.getName(), 1.0f));
-                        activePendingSet.add(new ActionFailedOccupation(currentNeighbour.getName(), 1.0f));
-                    }
-                //System.out.println("Occupy " + currentNeighbour.getName());
-                } catch(NullPointerException e){
-                    
-                    //System.out.println("No player assigned yet!");
                     activePendingSet.add(new ActionSuccessfulOccupation(currentNeighbour.getName(), 1.0f));
+                    activePendingSet.add(new ActionFailedOccupation(currentNeighbour.getName(), 1.0f));
                 }
             }
         }
         
-        /*System.out.println(player.getName());
+        /*System.out.println(thisPlayer.getName());
         for(BasicAction b : activePendingSet){
             
             System.out.println(b.getActionType() + " " + b.getCountryName());
@@ -201,7 +184,7 @@ public class Agent implements Serializable {
         
         Set<BasicAction> filteredActiveSet = new HashSet<BasicAction>();
            
-        for(BasicAction b: this.generateActivePendingSet()){
+        for(BasicAction b: activePendingSet){
 
             if(b.getActionType().equals(observationType)){
 

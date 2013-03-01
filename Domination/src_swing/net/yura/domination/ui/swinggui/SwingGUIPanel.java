@@ -3171,9 +3171,9 @@ public void setNODDefender(int n) {}
 			GameTypeButtonGroup = new ButtonGroup();
 			CardTypeButtonGroup = new ButtonGroup();
 
-			domination = new JRadioButton(resbundle.getString("newgame.mode.domination"), true);
+			domination = new JRadioButton(resbundle.getString("newgame.mode.domination"));
 			capital = new JRadioButton(resbundle.getString("newgame.mode.capital"));
-			mission = new JRadioButton(resbundle.getString("newgame.mode.mission"));
+			mission = new JRadioButton(resbundle.getString("newgame.mode.mission"), true);
 
 			domination.setOpaque(false);
 			capital.setOpaque(false);
@@ -3183,8 +3183,8 @@ public void setNODDefender(int n) {}
 			capital.addActionListener( this );
 			mission.addActionListener( this );
 
-			final JRadioButton increasing = new JRadioButton(resbundle.getString("newgame.cardmode.increasing"), true);
-			final JRadioButton fixed = new JRadioButton(resbundle.getString("newgame.cardmode.fixed"));
+			final JRadioButton increasing = new JRadioButton(resbundle.getString("newgame.cardmode.increasing"));
+			final JRadioButton fixed = new JRadioButton(resbundle.getString("newgame.cardmode.fixed"), true);
                         final JRadioButton italian = new JRadioButton(resbundle.getString("newgame.cardmode.italianlike"));
 
 			increasing.setOpaque(false);

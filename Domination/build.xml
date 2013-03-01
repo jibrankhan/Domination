@@ -46,7 +46,7 @@
 	<property name="dir.dist" location="dist"/>
 	<property name="dir.sources" location="src:src_swing:src_mapstore"/>
         <property name="dir.properties" location="src"/>
-        <property name="dir.libs" location="lib/httpmime-4.1.2.jar;lib/httpcore-4.1.2.jar;lib/jnlp.jar;lib/TranslationTool.jar;lib/SwingME.jar;lib/midletrunner.jar;lib/Grasshopper.jar;lib/LobbyClient.jar;lib/guava-14.0-rc1.jar"/>
+        <property name="dir.libs" location="lib/httpmime-4.1.2.jar;lib/httpcore-4.1.2.jar;lib/jnlp.jar;lib/TranslationTool.jar;lib/SwingME.jar;lib/midletrunner.jar;lib/Grasshopper.jar;lib/LobbyClient.jar;lib/guava-14.0-rc1.jar;lib/jxl.jar"/>
 
 	<property name="file.src" location="${dir.dist}/src.zip"/>
 

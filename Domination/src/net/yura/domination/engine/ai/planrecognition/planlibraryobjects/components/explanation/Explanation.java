@@ -108,10 +108,10 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
            
         for(BasicAction b: actionSet){
 
+            //System.out.println(b.getActionType() + " " + b.getCountryName());
             if(b.getActionType().equals(observationType)){
 
                 filteredSet.add(b);
-                //System.out.println(b.getActionType() + " " + b.getCountryName());
             }
         }
         
