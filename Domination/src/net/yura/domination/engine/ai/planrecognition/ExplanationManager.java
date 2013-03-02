@@ -20,7 +20,7 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaAsia;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaAus;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyEuSaNa;
-import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNAAus;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNaAus;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.missions.OccupyNaAfrica;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.subgoalmanagement.SubGoal;
 import net.yura.domination.engine.core.Continent;
@@ -35,7 +35,7 @@ public class ExplanationManager implements Serializable {
     
     OccupyAsiaAfrica occupyAsiaAfrica = new OccupyAsiaAfrica();
     OccupyAsiaSa occupyAsiaSa = new OccupyAsiaSa();
-    OccupyNAAus occupyNAAusExp = new OccupyNAAus();  
+    OccupyNaAus occupyNAAusExp = new OccupyNaAus();  
     OccupyNaAfrica occupyNAAfrica = new OccupyNaAfrica();
     
     OccupyEuAusAfrica occupyEuAusAfrica = new OccupyEuAusAfrica();
