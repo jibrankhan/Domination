@@ -4,11 +4,14 @@
  */
 package net.yura.domination.engine.ai.planrecognition;
 
+import java.io.File;
 import net.yura.domination.engine.ai.planrecognition.events.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
@@ -77,7 +80,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
             EventRegisterAgent newA = (EventRegisterAgent) event;
             
             Agent newAgent = new Agent(newA.getNewPlayer().getName());
-
+            
             agentManager.add(newAgent);
         }
         
@@ -108,32 +111,32 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     // Add observation to agents observation list
                     a.getAgentObservationSet().add(new ObservationSuccessfulOccupation(continentName, countryName));
 
-                    System.out.println(a.getAgentName());
-                    System.out.println(ActionConstants.successfulOccupation + " " + countryName);
-                    System.out.println(" ");
+                    //System.out.println(a.getAgentName());
+                    //System.out.println(ActionConstants.successfulOccupation + " " + countryName);
+                    //System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.successfulOccupation, a);
                     
                     // Sum probabilities of all explanations
                     totalProb = a.computeTotalExpProbabilties();
                     
-                    this.printExpProbs(a.getAgentExplanationList());
+                    this.printExpProbs(a);
                 }
                 
                 if(a.getAgentName().equals(agentLost)){
                     
                     a.getAgentObservationSet().add(new ObservationFailedDefence(continentName, countryName));
                     
-                    System.out.println(a.getAgentName());
-                    System.out.println(ActionConstants.failedDefence + " " + countryName);
-                    System.out.println(" ");
+                    //System.out.println(a.getAgentName());
+                    //System.out.println(ActionConstants.failedDefence + " " + countryName);
+                    //System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.failedDefence, a);
                     
                     totalProb = a.computeTotalExpProbabilties();
                     //a.removeCountryAndUpdateList(continentName, country);
                     
-                    this.printExpProbs(a.getAgentExplanationList());
+                    this.printExpProbs(a);
                 }
             }
             // Testing - Iterate through observation manager
@@ -168,32 +171,32 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     // Add observation to agents observation list
                     a.getAgentObservationSet().add(new ObservationSuccessfulDefence(continentName, countryName));
                     
-                    System.out.println(a.getAgentName());
-                    System.out.println(ActionConstants.successfulDefence + " " + countryName);
-                    System.out.println(" ");
+                    //System.out.println(a.getAgentName());
+                    //System.out.println(ActionConstants.successfulDefence + " " + countryName);
+                    //System.out.println(" ");
 
                     this.computeExpProbs("Weighted", ActionConstants.successfulDefence, a);
                     
                     // Sum probabilities of all explanations
                     totalProb = a.computeTotalExpProbabilties();
                     
-                   this.printExpProbs(a.getAgentExplanationList());
+                   this.printExpProbs(a);
                 }
                 
                 if(a.getAgentName().equals(agentLost)){
                     
                     a.getAgentObservationSet().add(new ObservationFailedOccupation(continentName, countryName));
                     
-                    System.out.println(a.getAgentName());
-                    System.out.println(ActionConstants.failedOccupation + " " + countryName);
-                    System.out.println(" ");
+                    //System.out.println(a.getAgentName());
+                    //System.out.println(ActionConstants.failedOccupation + " " + countryName);
+                    //System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.failedOccupation, a);
                     
                     totalProb = a.computeTotalExpProbabilties();
                     //a.removeCountryAndUpdateList(continentName, country);
                     
-                    this.printExpProbs(a.getAgentExplanationList());
+                    this.printExpProbs(a);
                 }
             }
         }
@@ -213,15 +216,15 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationCountryReinforced(continentName, countryName));
   
-                    System.out.println(a.getAgentName());
-                    System.out.println(ActionConstants.countryReinforced + " " + countryName);
-                    System.out.println(" ");
+                    //System.out.println(a.getAgentName());
+                    //System.out.println(ActionConstants.countryReinforced + " " + countryName);
+                    //System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.countryReinforced, a);
                     
                     totalProb = a.computeTotalExpProbabilties();
                     
-                    this.printExpProbs(a.getAgentExplanationList());
+                    this.printExpProbs(a);
                 }
             }
             //System.out.println(reinforcedCountry.getPlayerName() + " reinforced " + reinforcedCountry.getCountryName());
@@ -242,15 +245,15 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationArmyMovement(continentName, countryName));
                 
-                    System.out.println(a.getAgentName());
-                    System.out.println(ActionConstants.armyMovement + " " + countryName);
-                    System.out.println(" ");
+                    //System.out.println(a.getAgentName());
+                    //System.out.println(ActionConstants.armyMovement + " " + countryName);
+                    //System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.armyMovement, a);
                     
                     totalProb = a.computeTotalExpProbabilties();
                 
-                    this.printExpProbs(a.getAgentExplanationList());
+                    this.printExpProbs(a);
                 } 
             }
             //System.out.println(countryMovedTo.getPlayerName() + " " + countryMovedTo.getCountryName()); 
@@ -276,18 +279,20 @@ public class PlanRecognition extends AbstractService implements Serializable{
         }
     }
     
-    public void printExpProbs(Set<Explanation> expList){
+    public void printExpProbs(Agent a){
+        
+        Set<Explanation> expList = a.getAgentExplanationList();
         
         for(Explanation e : expList){
 
-            e.setExplanationProbability(e.normalizeExplanationProbability(totalProb));
             // compute normalized probabilites
-            if(e.getExplanationProbability() > 0.10){
-                
-                System.out.println(e.getMissionName() + " " + e.getExplanationProbability());
-            }
+            e.setExplanationProbability(e.normalizeExplanationProbability(totalProb));
+  
+            //if(e.getExplanationProbability() > 0.10){
+            //System.out.println(e.getMissionName() + " " + e.getExplanationProbability());
+            //}
         }
-        System.out.println(" ");
+        //System.out.println(" ");
     }
     
     public void computeExpProbs(String calculationType, String observationType, Agent agent){
@@ -309,6 +314,40 @@ public class PlanRecognition extends AbstractService implements Serializable{
     public static void setPlayers(Vector Players) {
         
         PlanRecognition.Players = Players;
+    }
+    
+    public void printAllProbs(){
+        
+        int file_name_var = 0;
+        
+        //File file = new File("/afs/inf.ed.ac.uk/user/s09/s0914007/Desktop/honours_project/Domination/Domination/Game Logs/Data Results/data_" + file_name_var + ".csv");
+        //System.out.println("Executed!");
+        
+        for(Agent a : this.getAgentManager()){
+            
+            System.out.println(a.getAgentName());
+            for(Object o : Players){
+                
+                Player p = (Player) o;
+                
+                if(a.getAgentName().equals(p.getName())){
+                    
+                    System.out.println(p.getMission().getDiscription());
+                }
+            }
+            for(String s : a.getMyMutlimap().keySet()){
+
+                System.out.print(s);
+                for(Map<Integer, Double> probs : a.getMyMutlimap().get(s)){
+
+                    for(Integer i : probs.keySet()){
+
+                        System.out.print(", " + probs.get(i));
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
 }
 

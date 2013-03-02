@@ -26,6 +26,7 @@ import java.util.Vector;
 import net.yura.domination.engine.ColorUtil;
 import net.yura.domination.engine.RiskUtil;
 import net.yura.domination.engine.ai.planrecognition.PlanRecognition;
+import net.yura.domination.engine.ai.planrecognition.environmentdatamanagement.Agent;
 import net.yura.domination.engine.ai.planrecognition.eventhandling.EventObserver;
 import net.yura.domination.engine.ai.planrecognition.events.EventArmyMoved;
 import net.yura.domination.engine.ai.planrecognition.events.EventCountryPlacement;
@@ -34,6 +35,7 @@ import net.yura.domination.engine.ai.planrecognition.events.EventFailedOccupatio
 import net.yura.domination.engine.ai.planrecognition.events.EventRegisterAgent;
 import net.yura.domination.engine.ai.planrecognition.events.EventRemoveAgent;
 import net.yura.domination.engine.ai.planrecognition.events.EventSuccessfulOccupation;
+import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.explanation.Explanation;
 import net.yura.domination.engine.translation.MapTranslator;
 import net.yura.domination.engine.translation.TranslationBundle;
 
@@ -480,8 +482,28 @@ transient - A keyword in the Java programming language that indicates that a fie
 
 		if (gameState==STATE_END_TURN) {
 
+                    //System.out.println(turnCounter);
+                    if(turnCounter > 41){
+                        
+                        for(Agent a : planRecognition.getAgentManager()){
+
+                            //System.out.println(a.getAgentName());
+                            for(Explanation e : a.getAgentExplanationList()){
+
+                                HashMap<Integer, Double> prob = new HashMap<Integer, Double>();
+                                //System.out.println(", " + e.getExplanationProbability());
+                                prob.put(turnCounter, e.getExplanationProbability());
+                                
+                                a.getMyMutlimap().put(e.getMissionName(), prob);
+                                //System.out.println(a.getMyMutlimap().get(e.getMissionName()));
+                            }                          
+                        }
+                    }
+                    
+
+                    
                     //System.out.print("go ended\n"); // testing
-                    System.out.println("Turn: " + turnCounter);
+                    //System.out.println("Turn: " + turnCounter);
                     turnCounter++;
                     
                     //this.writeToFile(file, "endgo");
@@ -1494,7 +1516,9 @@ transient - A keyword in the Java programming language that indicates that a fie
 			) {
 
 				// yay you have won
+                                planRecognition.printAllProbs();
 				result=true;
+                                
 
 			}
 
@@ -2007,10 +2031,10 @@ transient - A keyword in the Java programming language that indicates that a fie
 						//System.out.print(description+"\n"); // testing
 						Mission mission = new Mission(p, noc, noa, c1, c2, c3, description);
                                                 // GENERAL OCCUPY EXPLANATONS REMOVED FROM HERE!
-                                                if(!mission.getDiscription().contains("Destroy") && !mission.getDiscription().equals("Occupy 18 countries of your choice and occupy each with at least 2 armies.") && !mission.getDiscription().equals("Occupy 24 countries of your choice and occupy each with at least 1 army.")){
+                                                //if(!mission.getDiscription().contains("Destroy") && !mission.getDiscription().equals("Occupy 18 countries of your choice and occupy each with at least 2 armies.") && !mission.getDiscription().equals("Occupy 24 countries of your choice and occupy each with at least 1 army.")){
 						
                                                     Missions.add(mission);
-                                                }
+                                                //}
  
                                                 
 					}

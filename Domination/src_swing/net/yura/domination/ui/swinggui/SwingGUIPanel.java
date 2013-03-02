@@ -2757,17 +2757,17 @@ public void setNODDefender(int n) {}
 
 			if (e.getSource()==mission) {
 
-				AutoPlaceAll.setEnabled(false);
+				AutoPlaceAll.setEnabled(true);
 
 			}
 			else if (e.getSource()==domination) {
 
-				AutoPlaceAll.setEnabled(true);
+				AutoPlaceAll.setEnabled(false);
 
 			}
 			else if (e.getSource()==capital) {
 
-				AutoPlaceAll.setEnabled(true);
+				AutoPlaceAll.setEnabled(false);
 
 			}
 
@@ -3214,12 +3214,12 @@ public void setNODDefender(int n) {}
 			AutoPlaceAll = new JCheckBox(resbundle.getString("newgame.autoplace"));
 			GameOptionsButtons.add( AutoPlaceAll );
 			AutoPlaceAll.setOpaque(false);
-                        AutoPlaceAll.setSelected( "true".equals(myrisk.getRiskConfig("default.autoplaceall")) );
+                        AutoPlaceAll.setSelected(true);
 
 			recycle = new JCheckBox(resbundle.getString("newgame.recycle"));
 			GameOptionsButtons.add( recycle );
 			recycle.setOpaque(false);
-                        recycle.setSelected( "true".equals(myrisk.getRiskConfig("default.recyclecards")) );
+                        recycle.setSelected(true);
 
 			JButton startGame = new JButton(resbundle.getString("newgame.startgame"));
 

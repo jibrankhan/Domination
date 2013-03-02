@@ -19,11 +19,11 @@ public class OccupyEuSaAsia extends OccupyExplanation implements OccupyMission {
         
         this.setMissionName("Occupy Europe, South America and Asia");
         
-        this.getRootGoalSet().add(new RootGoal("Occupy", "Europe, South America and Asia", 1.0d/20.0d));  
+        this.getRootGoalSet().add(new RootGoal("Occupy", "Europe, South America and Asia", 1d/12d));  
 
-        this.getSubGoalSet().add(new SubGoal("Occupy", "Europe", 1.0d));
-        this.getSubGoalSet().add(new SubGoal("Occupy", "South America", 1.0d));
-        this.getSubGoalSet().add(new SubGoal("Occupy", "Asia", 1.0d/4.0d));
+        this.getSubGoalSet().add(new SubGoal("Occupy", "Europe", 1d));
+        this.getSubGoalSet().add(new SubGoal("Occupy", "South America", 1d));
+        this.getSubGoalSet().add(new SubGoal("Occupy", "Asia", 1d));
 
         this.calcInitialExpProb();
     }

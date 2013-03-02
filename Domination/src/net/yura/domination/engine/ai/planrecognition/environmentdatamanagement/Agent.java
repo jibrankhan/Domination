@@ -4,10 +4,13 @@
  */
 package net.yura.domination.engine.ai.planrecognition.environmentdatamanagement;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 import net.yura.domination.engine.ai.planrecognition.PlanRecognition;
@@ -32,9 +35,8 @@ public class Agent implements Serializable {
     String agentName;
     
     private Set<Explanation> agentExplanationList = new HashSet<Explanation>();
-    
-    private List<Set<BasicAction>> agentActivePendingSetHistory = new ArrayList<Set<BasicAction>>();
     private List<BasicObservation> agentObservationSet = new ArrayList<BasicObservation>();
+    private ListMultimap<String,Map<Integer,Double>> myMutlimap = ArrayListMultimap.create();
     
     private double agentTotalExplanationProbabilities;
     
@@ -70,16 +72,18 @@ public class Agent implements Serializable {
         this.agentTotalExplanationProbabilities = totalExplanationProbabilities;
     }
 
-    public List<Set<BasicAction>> getAgentActivePendingSetHistory() {
+    public ListMultimap<String, Map<Integer, Double>> getMyMutlimap() {
         
-        return agentActivePendingSetHistory;
+        return myMutlimap;
     }
 
-    public void setAgentActivePendingSetHistory(List<Set<BasicAction>> agentActivePendingSetHistory) {
+    public void setMyMutlimap(ListMultimap<String, Map<Integer, Double>> myMutlimap) {
         
-        this.agentActivePendingSetHistory = agentActivePendingSetHistory;
+        this.myMutlimap = myMutlimap;
     }
+
     
+
     // Generates Active Pending Set
     public Set<BasicAction> generateActivePendingSet(){
         
@@ -152,7 +156,7 @@ public class Agent implements Serializable {
         
         //System.out.println(this.getAgentName());
         
-        for(Explanation e : fullExplanationList){
+        for(Explanation e : fullExplanationList){ 
                             
             try{
                     
