@@ -14,10 +14,6 @@ import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.io.Writer;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -182,7 +178,7 @@ transient - A keyword in the Java programming language that indicates that a fie
         EventObserver processing = new EventObserver();
         PlanRecognition planRecognition = new PlanRecognition(processing);
         
-        final static Charset ENCODING = StandardCharsets.UTF_8;
+        //final static Charset ENCODING = StandardCharsets.UTF_8;
         final static boolean recordGame = false;
         
         int turnCounter = 0;

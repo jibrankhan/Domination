@@ -11,9 +11,9 @@ To fix this is a bit of a pain for this project but essentially Netbeans 'seems'
 
 TO FIX:
 
-Remove (I highly suggest copying it to somewhere) the planrecognition file in Domination\src\net\yura\domination\engine\ai
+Comment out everything in the planrecognition file in Domination\src\net\yura\domination\engine\ai
 
-Now there will be some errors in the RiskGame.java file. Comment out (not delete) all the lines that are causing errors.
+Now there will be some errors in a few files in the project. Comment out (not delete) all the lines that are causing these errors.
 
 Now build the project.
 
@@ -25,9 +25,9 @@ After a sucessful build:
 
 Bulld the project again.
 
-Now put back the planrecognition folder from where you removed it and uncomment all the lines you commented out in RiskGame.java
+Now uncomment everything you had commented previously.
 
-Build again.
+Build the project again.
 
 That should be it working! Enjoy!
 

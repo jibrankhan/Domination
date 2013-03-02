@@ -34,9 +34,9 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             this.getConActions().add(new ActionCountryReinforced(currentCountry.getName(), 1.0f));
             this.getConActions().add(new ActionArmyMovement(currentCountry.getName(), 1.0f));
             this.getConActions().add(new ActionSuccessfulDefence(currentCountry.getName(), 1.0f));
+            this.getConActions().add(new ActionFailedOccupation(currentCountry.getName(), 1.0f));
 
             this.getInConActions().add(new ActionFailedDefence(currentCountry.getName(), 1.0f));
-            this.getInConActions().add(new ActionFailedOccupation(currentCountry.getName(), 1.0f));
         }
     }
     
@@ -78,24 +78,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
         double missionProbability = this.getExplanationProbability();
         
         // Handles probabilities when conActionCounter is zero
-        if(observationType.equals("Failed Defence") || observationType.equals("Failed Occupation")){
-            
-            weight = 0.01;
-            
-            base = this.computeBaseWeight(weight, filteredActiveSet.size(), inConActionCounter);
-            
-            //System.out.println("Failed Defence & Failed Occupation " + filteredActiveSet.size() + " " + inConActionCounter);
-            conActionProb = base;
-            inconActionProb = base - weight;
-               
-        } else if(observationType.equals(ActionConstants.countryReinforced) || observationType.equals(ActionConstants.armyMovement)){
-            
-            int totalSize = filteredActiveSet.size();
-            
-            /*if(totalSize == 0){
-            
-                totalSize = 1;
-            }*/
+        if(observationType.equals(ActionConstants.countryReinforced) || observationType.equals(ActionConstants.armyMovement)){
             
             double proportion = ((double) conActionCounter /  (double) filteredActiveSet.size()) * 0.1d; 
             
@@ -104,7 +87,17 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             conActionProb = 0.9 + proportion;
             inconActionProb = 1.0d - proportion;
             
-        } else{
+        } else if(observationType.equals(ActionConstants.failedOccupation)){
+            
+            weight = 0.02;
+
+            base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
+
+            //System.out.println("Other " + filteredActivePendingSet.size() + " " + conActionCounter);
+            conActionProb = base + weight;
+            inconActionProb = base;
+            
+        } else if(observationType.equals(ActionConstants.successfulOccupation)) {
         
             weight = 0.03;
             
@@ -113,7 +106,12 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             //System.out.println("Other " + filteredActivePendingSet.size() + " " + conActionCounter);
             conActionProb = base + weight;
             inconActionProb = base;
+        } else {
+    
+            conActionProb = 1d;
+            inconActionProb = 1d; 
         }
+
 
         if(conActiveSet.contains(currentObservation)){
 
@@ -127,7 +125,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
 
         } else if(inConActiveSet.contains(currentObservation)) { 
 
-            if(observationType.equals("Failed Defence")){
+            if(observationType.equals(ActionConstants.failedDefence)){
               
                 inconActionProb = 0.98f;
             }
