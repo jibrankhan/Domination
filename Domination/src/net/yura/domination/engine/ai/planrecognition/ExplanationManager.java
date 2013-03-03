@@ -35,8 +35,8 @@ public class ExplanationManager implements Serializable {
     
     OccupyAsiaAfrica occupyAsiaAfrica = new OccupyAsiaAfrica();
     OccupyAsiaSa occupyAsiaSa = new OccupyAsiaSa();
-    OccupyNaAus occupyNAAusExp = new OccupyNaAus();  
-    OccupyNaAfrica occupyNAAfrica = new OccupyNaAfrica();
+    OccupyNaAus occupyNaAusExp = new OccupyNaAus();  
+    OccupyNaAfrica occupyNaAfrica = new OccupyNaAfrica();
     
     OccupyEuAusAfrica occupyEuAusAfrica = new OccupyEuAusAfrica();
     OccupyEuAusAsia occupyEuAusAsia = new OccupyEuAusAsia();
@@ -50,9 +50,9 @@ public class ExplanationManager implements Serializable {
     
     public ExplanationManager(Vector Continent){
         
-        explanationSet.add(occupyNAAusExp);
+        explanationSet.add(occupyNaAusExp);
         explanationSet.add(occupyAsiaAfrica);
-        explanationSet.add(occupyNAAfrica);
+        explanationSet.add(occupyNaAfrica);
         explanationSet.add(occupyAsiaSa);
         
         explanationSet.add(occupyEuAusAfrica);
