@@ -1,0 +1,77 @@
+Turn 42 Blue - Go for Europe
+
+Turn 43 Red - Go for Africa
+
+Turn 44 Aqua - Go for North America
+
+Turn 45 Purple - Go for Asia
+
+Turn 46 Yellow - Attacking Europe from Asia
+
+Turn 47 Green - Go for Australia
+
+Turn 120 Attack begin
+
+Turn 120 - Blue COnquers Europe
+
+Turn 121 - Red Conquered Africa
+
+Turn 122 - Aqua COnquered NA tried to get to Africa through SA
+
+Turn 123 - Purple tried to conquer asia, did not take whole
+
+Turn 123 - Yellow tried to take europe, did not take whole
+
+Turn 124 - Green COnquered Aus, tried to get to NA through asia succeded conquering 3 countries in NA
+
+Turn 125 - Blue tried to take back europe, conquered two territories but failed
+
+Turn 126 - Red Tried to Asia in one turn, did not succeed but conquered 6 territories
+
+Turn 127 - Aqua fought back green from na and took na back
+
+Turn 128 - Purple Tried to retake asia fought back mostly green and red but did not take all of asia
+
+Turn 129 - Yellow Fought blue to try capture europe, failed
+
+Turn 130 - Green pushed through asia fighting red and purple to get to NA, did not succeed
+
+Turn 131 - Blue tried to recapture europe fighting yellow, did not succeed
+
+Turn 132 - Red attacked asia to capture, fought mostly purple, did not succeed
+
+Turn 134 - Aqua attack africa through sa america, fought red
+
+Turn 135 - Purple Tried to recapture asia fought red, did not succeed
+
+Turn 136 - Yellow Tried to conquer europe, fighting blue, failed
+
+Turn 137 - Green Tried to conquer na from asia fighting aqua, failed
+
+Turn 136 - Blue tried to conquer europe, fought yellow, failed
+
+Turn 137 - Red got cards, tried to conquer both africa and asia, failed but conquered a lot of territories
+
+Turn 138 - Aqua tried to take back na from green, failed
+
+Turn 139 - Purple tried to take asia, mostly fought green, failed
+
+Turn 140 - Yellow Tried to take europe from blue, conquered 1 territory but failed
+
+Turn 141 - Green Tried to conquer NA from aqua, failed but conquered a few territories
+
+Turn 142 - Blue Tried to conquer Europe from yellow, failed but conquered one territory
+
+Turn 143 - Red Recaptured africa and tried to recapture asia, failed but conquered 1 territory
+
+Turn 144 - Got cards, tried to recapture africa from red, nearly succeeded, recaptured all of na from green <- Lot happened this turn
+
+Turn 145 - Purple Got Cards, conquered all of asia taking from red and green, succeeded ,tried to get to sa from asia through africa, failed
+
+Turn 146 - Yellow captured europe from blue, got cards, tried to conquer australia through asia, failed
+
+Turn 147 - Green got cards, recaptured europe, tried to get to na through asia failed
+
+Turn 148 - Red tried to recapture africa from aqua failed
+
+Turn 149 - Aqua captured africa GAME DONE 
