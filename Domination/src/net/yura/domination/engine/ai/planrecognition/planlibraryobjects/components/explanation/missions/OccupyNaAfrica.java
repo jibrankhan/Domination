@@ -17,9 +17,9 @@ public class OccupyNaAfrica extends OccupyExplanation implements Serializable {
     
     public OccupyNaAfrica() {
         
-        this.setMissionName("Occupy North America and Africa");
+        this.setMissionName("Occupy-North-America-Africa");
         
-        this.getRootGoalSet().add(new RootGoal("Occupy", "North America and Africa", 1d/12d));  
+        this.getRootGoalSet().add(new RootGoal("Occupy", "North-America-Africa", 1d/12d));  
         
         this.getSubGoalSet().add(new SubGoal("Occupy", "North America", 1d));
         this.getSubGoalSet().add(new SubGoal("Occupy", "Africa", 1d));

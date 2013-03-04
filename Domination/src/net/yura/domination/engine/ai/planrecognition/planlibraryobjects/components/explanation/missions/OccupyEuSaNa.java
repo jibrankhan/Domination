@@ -17,9 +17,9 @@ public class OccupyEuSaNa extends OccupyExplanation implements OccupyMission {
 
     public OccupyEuSaNa() {
         
-        this.setMissionName("Occupy Europe, South America and North America");
+        this.setMissionName("Occupy-Europe-South-America-North-America");
         
-        this.getRootGoalSet().add(new RootGoal("Occupy", "Europe, South America and North America", 1d/12d));  
+        this.getRootGoalSet().add(new RootGoal("Occupy", "Europe-South-America-North-America", 1d/12d));  
 
         this.getSubGoalSet().add(new SubGoal("Occupy", "Europe", 1d));
         this.getSubGoalSet().add(new SubGoal("Occupy", "South America", 1d));

@@ -17,9 +17,9 @@ public class OccupyEuAusSa extends OccupyExplanation implements Serializable {
 
     public OccupyEuAusSa() {
         
-        this.setMissionName("Occupy Europe, Australia and South America");
+        this.setMissionName("Occupy-Europe-Australia-South-America");
         
-        this.getRootGoalSet().add(new RootGoal("Occupy", "Europe, Australia and South America", 1d/12d));  
+        this.getRootGoalSet().add(new RootGoal("Occupy", "Europe-Australia-South-America", 1d/12d));  
         
         this.getSubGoalSet().add(new SubGoal("Occupy", "Europe", 1d));
         this.getSubGoalSet().add(new SubGoal("Occupy", "Australia", 1d));

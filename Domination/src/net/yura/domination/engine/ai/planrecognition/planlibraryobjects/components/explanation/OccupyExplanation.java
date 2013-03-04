@@ -89,7 +89,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             
         } else if(observationType.equals(ActionConstants.failedOccupation)){
             
-            weight = 0.02;
+            weight = 0.01;
 
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
@@ -99,7 +99,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             
         } else if(observationType.equals(ActionConstants.successfulOccupation)) {
         
-            weight = 0.03;
+            weight = 0.02;
             
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
