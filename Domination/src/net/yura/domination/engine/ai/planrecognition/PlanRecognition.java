@@ -111,9 +111,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     // Add observation to agents observation list
                     a.getAgentObservationSet().add(new ObservationSuccessfulOccupation(continentName, countryName));
 
-                    //System.out.println(a.getAgentName());
-                    //System.out.println(ActionConstants.successfulOccupation + " " + countryName);
-                    //System.out.println(" ");
+                    System.out.println(a.getAgentName());
+                    System.out.println(ActionConstants.successfulOccupation + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.successfulOccupation, a);
                     
@@ -127,9 +127,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationFailedDefence(continentName, countryName));
                     
-                    //System.out.println(a.getAgentName());
-                    //System.out.println(ActionConstants.failedDefence + " " + countryName);
-                    //System.out.println(" ");
+                    System.out.println(a.getAgentName());
+                    System.out.println(ActionConstants.failedDefence + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.failedDefence, a);
                     
@@ -171,9 +171,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     // Add observation to agents observation list
                     a.getAgentObservationSet().add(new ObservationSuccessfulDefence(continentName, countryName));
                     
-                    //System.out.println(a.getAgentName());
-                    //System.out.println(ActionConstants.successfulDefence + " " + countryName);
-                    //System.out.println(" ");
+                    System.out.println(a.getAgentName());
+                    System.out.println(ActionConstants.successfulDefence + " " + countryName);
+                    System.out.println(" ");
 
                     this.computeExpProbs("Weighted", ActionConstants.successfulDefence, a);
                     
@@ -187,9 +187,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationFailedOccupation(continentName, countryName));
                     
-                    //System.out.println(a.getAgentName());
-                    //System.out.println(ActionConstants.failedOccupation + " " + countryName);
-                    //System.out.println(" ");
+                    System.out.println(a.getAgentName());
+                    System.out.println(ActionConstants.failedOccupation + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.failedOccupation, a);
                     
@@ -216,9 +216,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationCountryReinforced(continentName, countryName));
   
-                    //System.out.println(a.getAgentName());
-                    //System.out.println(ActionConstants.countryReinforced + " " + countryName);
-                    //System.out.println(" ");
+                    System.out.println(a.getAgentName());
+                    System.out.println(ActionConstants.countryReinforced + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.countryReinforced, a);
                     
@@ -245,9 +245,9 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     a.getAgentObservationSet().add(new ObservationArmyMovement(continentName, countryName));
                 
-                    //System.out.println(a.getAgentName());
-                    //System.out.println(ActionConstants.armyMovement + " " + countryName);
-                    //System.out.println(" ");
+                    System.out.println(a.getAgentName());
+                    System.out.println(ActionConstants.armyMovement + " " + countryName);
+                    System.out.println(" ");
                     
                     this.computeExpProbs("Weighted", ActionConstants.armyMovement, a);
                     

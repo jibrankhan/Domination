@@ -154,13 +154,14 @@ public class Agent implements Serializable {
     
     public void generateExplanationList(Set<Explanation> fullExplanationList){
         
-        //System.out.println(this.getAgentName());
+        System.out.println(this.getAgentName());
         
         for(Explanation e : fullExplanationList){ 
                             
             try{
                     
                 Explanation clonedExp = (Explanation) e.clone();
+                System.out.println(clonedExp.getMissionName());
                 agentExplanationList.add(clonedExp);
                     
             }catch (CloneNotSupportedException excep){

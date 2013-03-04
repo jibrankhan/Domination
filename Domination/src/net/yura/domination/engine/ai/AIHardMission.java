@@ -84,7 +84,7 @@ public class AIHardMission extends AIHardDomination {
 				|| player.getMission().getContinent2() == co
 				|| player.getMission().getContinent3() == co
 				) {
-			result *= 4;
+			result *= 100;
 		}
 		return result;
 	}
