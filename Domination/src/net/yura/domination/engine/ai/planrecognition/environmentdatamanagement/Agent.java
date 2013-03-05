@@ -161,7 +161,7 @@ public class Agent implements Serializable {
             try{
                     
                 Explanation clonedExp = (Explanation) e.clone();
-                System.out.println(clonedExp.getMissionName());
+                //System.out.println(clonedExp.getMissionName());
                 agentExplanationList.add(clonedExp);
                     
             }catch (CloneNotSupportedException excep){

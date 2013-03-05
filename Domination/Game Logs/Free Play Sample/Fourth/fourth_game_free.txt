@@ -1,0 +1,7 @@
+s0914007 Conquer the continents of ASIA and AFRICA.
+bob Conquer the continents of NORTH AMERICA and AUSTRALIA.
+fred Conquer the continents of EUROPE and SOUTH AMERICA and a third continent of your choice.
+
+s0914007 - conquered africa first then tried to conquer asia
+bob - tried to conquer australia and north america, sucessful in conquering north america and australia
+fred - fred conquered asia first then tried to conquer australia

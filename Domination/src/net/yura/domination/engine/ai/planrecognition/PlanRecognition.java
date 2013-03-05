@@ -289,7 +289,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
             e.setExplanationProbability(e.normalizeExplanationProbability(totalProb));
   
             //if(e.getExplanationProbability() > 0.10){
-            //System.out.println(e.getMissionName() + " " + e.getExplanationProbability());
+            System.out.println(e.getMissionName() + " " + e.getExplanationProbability());
             //}
         }
         //System.out.println(" ");

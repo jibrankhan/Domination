@@ -84,8 +84,8 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             
             //System.out.println("Reinforce or Army Movement " + filteredActiveSet.size() + " " + conActionCounter);
             //System.out.println(proportion);
-            conActionProb = 0.9d + proportion;
-            inconActionProb = 1.0d - proportion;
+            conActionProb = 1.0d;
+            inconActionProb = 0.98f;
             
         } else if(observationType.equals(ActionConstants.failedOccupation)){
             
@@ -93,7 +93,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
 
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
-            //System.out.println("Other " + filteredActivePendingSet.size() + " " + conActionCounter);
+            //System.out.println("Other " + filteredActiveSet.size() + " " + conActionCounter);
             conActionProb = base + weight;
             inconActionProb = base;
             
@@ -103,7 +103,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
-            //System.out.println("Other " + filteredActivePendingSet.size() + " " + conActionCounter);
+            //System.out.println("Other " + filteredActiveSet.size() + " " + conActionCounter);
             conActionProb = base + weight;
             inconActionProb = base;
         } else {
@@ -120,7 +120,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
                 conActionProb = 1.02f;
             }
 
-            System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
+            //System.out.println(this.getMissionName() + " consistent action!" + " " + missionProbability + " * " + conActionProb);
             this.setExplanationProbability(missionProbability *= conActionProb);
 
         } else if(inConActiveSet.contains(currentObservation)) { 
@@ -130,20 +130,20 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
                 inconActionProb = 0.98f;
             }
 
-            System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
+            //System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
             //System.out.println(" ");
             this.setExplanationProbability(missionProbability *= inconActionProb); 
 
         // Condition for when there is an inconsistent action that is not in the set of inconsistent actions - why because this is less intensive than maintaining the whole list.
         } else if(!inConActiveSet.contains(currentObservation) && (!observationType.equals("Failed Defence") && !observationType.equals("Successful Defence"))) {
 
-            System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
+            //System.out.println(this.getMissionName() + " inconsistent action!" + " " + missionProbability + " * " + inconActionProb);
             //System.out.println(" ");
             this.setExplanationProbability(missionProbability *= inconActionProb); 
 
         } else {
 
-            System.out.println(this.getMissionName() + " Does not apply!");
+            //System.out.println(this.getMissionName() + " Does not apply!");
         }
     }
 }
