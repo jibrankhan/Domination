@@ -4,12 +4,13 @@
  */
 package net.yura.domination.engine.ai.planrecognition;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import net.yura.domination.engine.ai.planrecognition.events.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -316,38 +317,59 @@ public class PlanRecognition extends AbstractService implements Serializable{
         PlanRecognition.Players = Players;
     }
     
-    public void printAllProbs(){
+    public void printAllProbs() throws IOException {
+
+        File dir = new File("C:/Users/s0914007/Desktop/game-logs");
         
-        int file_name_var = 0;
+        if(!dir.exists()){
+            
+            dir.mkdir();
+        }
+    
+        long file_name_var = System.currentTimeMillis();
         
-        //File file = new File("/afs/inf.ed.ac.uk/user/s09/s0914007/Desktop/honours_project/Domination/Domination/Game Logs/Data Results/data_" + file_name_var + ".csv");
+        File file = new File("C:/Users/s0914007/Desktop/game-logs/data-" + file_name_var + ".csv");
         //System.out.println("Executed!");
+        
+        if(!file.exists()){
+            
+            file.createNewFile();
+        }
+        
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
         
         for(Agent a : this.getAgentManager()){
             
-            System.out.println(a.getAgentName());
+            bw.write(a.getAgentName());
+            bw.newLine();
             for(Object o : Players){
                 
                 Player p = (Player) o;
                 
                 if(a.getAgentName().equals(p.getName())){
                     
-                    System.out.println(p.getMission().getDiscription());
+                    bw.write(p.getMission().getDiscription());
+                    bw.newLine();
                 }
             }
             for(String s : a.getMyMutlimap().keySet()){
 
-                System.out.print(s);
+                bw.write(s);
+                //System.out.print(s);
                 for(Map<Integer, Double> probs : a.getMyMutlimap().get(s)){
 
                     for(Integer i : probs.keySet()){
 
-                        System.out.print(", " + probs.get(i));
+                        //System.out.print(", " + probs.get(i));
+                        bw.write(", " + probs.get(i));
                     }
                 }
-                System.out.println();
+                bw.newLine();
             }
         }
+        bw.close();
+        System.out.println("Completed! File data-" + file_name_var + ".csv");
     }
 }
 

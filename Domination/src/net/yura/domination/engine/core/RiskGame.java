@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import net.yura.domination.engine.ColorUtil;
 import net.yura.domination.engine.RiskUtil;
@@ -182,6 +184,7 @@ transient - A keyword in the Java programming language that indicates that a fie
         
         //final static Charset ENCODING = StandardCharsets.UTF_8;
         final static boolean recordGame = false;
+        public static boolean printedAlready;
         
         int turnCounter = 0;
         
@@ -193,6 +196,8 @@ transient - A keyword in the Java programming language that indicates that a fie
 	public RiskGame() throws Exception {
 
                 planRecognition.startAndWait();
+                printedAlready = false;
+                
                 if(recordGame){
                     
                     file.delete();
@@ -1517,9 +1522,6 @@ transient - A keyword in the Java programming language that indicates that a fie
 					checkPlayerOwnesContinentForMission(m.getContinent3(),3)
 
 			) {
-
-				// yay you have won
-                                planRecognition.printAllProbs();
 				result=true;
                                 
 
@@ -1529,6 +1531,24 @@ transient - A keyword in the Java programming language that indicates that a fie
 
 		if (result==true) {
 			gameState=STATE_GAME_OVER;
+                        
+                        try {
+                            
+                            
+                            // yay you have won
+                            if(!printedAlready){
+                                
+                                planRecognition.printAllProbs();
+                                
+                                printedAlready = true;
+                            }
+                            
+                        } catch (IOException ex) {
+                            
+                            Logger.getLogger(RiskGame.class.getName()).log(Level.SEVERE, null, ex);
+                            
+                        }
+                        
 		}
 
 		return result;
