@@ -23,7 +23,7 @@ public class SwingGUIFrame {
 	public static void main(String[] argv) {
 
 		RiskUIUtil.parseArgs(argv);
-
+                
 		SwingGUIPanel sg = new SwingGUIPanel( new Risk() );
 
 		JFrame gui = new JFrame();

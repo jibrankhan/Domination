@@ -22,6 +22,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -70,6 +71,7 @@ import net.yura.domination.engine.Risk;
 import net.yura.domination.engine.RiskAdapter;
 import net.yura.domination.engine.RiskUIUtil;
 import net.yura.domination.engine.RiskUtil;
+import net.yura.domination.engine.ai.planrecognition.PlanRecognition;
 import net.yura.domination.engine.core.Continent;
 import net.yura.domination.engine.core.Player;
 import net.yura.domination.engine.core.RiskGame;
@@ -89,6 +91,10 @@ public class SwingGUIPanel extends JPanel implements ActionListener{
 
 	public final static String version = "2";
 	public final static String product;
+        
+        public static JTextArea debugText;
+        
+        public static JButton tdSaveDebug;
 
 	static {
 
@@ -1476,8 +1482,7 @@ class GameTab extends JPanel implements SwingGUITab, ActionListener {
     }
 
 class DebugTab extends JSplitPane implements SwingGUITab,ActionListener {
-
-	private JTextArea debugText;
+    
 	private JTextArea errText;
 
 	private JToolBar toolbarDebug;
@@ -1516,7 +1521,7 @@ class DebugTab extends JSplitPane implements SwingGUITab,ActionListener {
 		toolbarDebug = new JToolBar();
 		toolbarDebug.setRollover(true);
 
-		JButton tdSaveDebug  = new JButton("Save Debug Log");
+		tdSaveDebug  = new JButton("Save Debug Log");
 		JButton tdPlayDebug  = new JButton("Play Debug Log");
 		JButton tdClearDebug = new JButton("Clear Debug Log");
 		JButton tdSaveError = new JButton("Save Error Log");
@@ -1541,8 +1546,6 @@ class DebugTab extends JSplitPane implements SwingGUITab,ActionListener {
                 JButton gc = new JButton("GC");
 		gc.setActionCommand("gc");
 		gc.addActionListener(this);
-		
-                
                 
 		toolbarDebug.add(tdSaveDebug);
 		toolbarDebug.add(tdPlayDebug);
@@ -1723,6 +1726,7 @@ class DebugTab extends JSplitPane implements SwingGUITab,ActionListener {
 		}
 		else if (a.getActionCommand().equals("save debug")) {
 
+                        System.out.println("Save Debug Log!");
 			saveLog(debugText);
 
 		}
@@ -2196,6 +2200,21 @@ class StatisticsTab extends JPanel implements SwingGUITab,ActionListener {
                                 winner.continueButton.setVisible( myrisk.getGame().canContinue() );
                             
 				inGameCards.show(inGameInput, "winner");
+                                
+                                try{
+                                    
+                                    BufferedWriter fileOut = new BufferedWriter(new FileWriter("C:/Users/s0914007/Desktop/game-logs/data-folder-" + PlanRecognition.file_name_var + "/data-" + PlanRecognition.file_name_var + ".log"));
+                                    
+                                    String debugString = debugText.getText();
+                                    
+                                    fileOut.write(debugString);
+                                    fileOut.close();
+                                    
+                                } catch (IOException e){
+                                    
+                                }
+       
+                                
 			}
 			else if (gameState == RiskGame.STATE_SELECT_CAPITAL) {
 				inGameCards.show(inGameInput, "capital");

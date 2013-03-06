@@ -46,6 +46,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
     
     Set<Explanation> totalExplanationList;
     
+    public static long file_name_var;
     double totalProb;
     
     public static Vector Players;
@@ -318,18 +319,18 @@ public class PlanRecognition extends AbstractService implements Serializable{
     }
     
     public void printAllProbs() throws IOException {
-
-        File dir = new File("C:/Users/s0914007/Desktop/game-logs");
-        
-        if(!dir.exists()){
-            
-            dir.mkdir();
-        }
     
-        long file_name_var = System.currentTimeMillis();
-        
-        File file = new File("C:/Users/s0914007/Desktop/game-logs/data-" + file_name_var + ".csv");
+        file_name_var = System.currentTimeMillis();
+            
+        File folder = new File("C:/Users/s0914007/Desktop/game-logs/data-folder-" + file_name_var);
         //System.out.println("Executed!");
+        
+        if(!folder.exists()){
+            
+            folder.mkdir();
+        }
+        
+        File file = new File("C:/Users/s0914007/Desktop/game-logs/data-folder-" + file_name_var + "/data-" + file_name_var + ".csv");
         
         if(!file.exists()){
             
