@@ -106,6 +106,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             //System.out.println("Other " + filteredActiveSet.size() + " " + conActionCounter);
             conActionProb = base + weight;
             inconActionProb = base;
+            
         } else {
     
             conActionProb = 1d;

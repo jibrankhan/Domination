@@ -1519,7 +1519,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 			) {
 
 				// yay you have won
-                                //planRecognition.printAllProbs();
+                                planRecognition.printAllProbs();
 				result=true;
                                 
 
@@ -2034,10 +2034,10 @@ transient - A keyword in the Java programming language that indicates that a fie
 						//System.out.print(description+"\n"); // testing
 						Mission mission = new Mission(p, noc, noa, c1, c2, c3, description);
                                                 // GENERAL OCCUPY EXPLANATONS REMOVED FROM HERE!
-                                                if(!mission.getDiscription().contains("Destroy") && !mission.getDiscription().equals("Occupy 18 countries of your choice and occupy each with at least 2 armies.") && !mission.getDiscription().equals("Occupy 24 countries of your choice and occupy each with at least 1 army.")){
+                                                //if(!mission.getDiscription().contains("Destroy") && !mission.getDiscription().equals("Occupy 18 countries of your choice and occupy each with at least 2 armies.") && !mission.getDiscription().equals("Occupy 24 countries of your choice and occupy each with at least 1 army.")){
 						
                                                     Missions.add(mission);
-                                                }
+                                                //}
  
                                                 
 					}
