@@ -11,6 +11,7 @@ import java.io.IOException;
 import net.yura.domination.engine.ai.planrecognition.events.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -300,7 +301,10 @@ public class PlanRecognition extends AbstractService implements Serializable{
     
     public void computeExpProbs(String calculationType, String observationType, Agent agent){
         
-        Set<BasicAction> activePendingSet = agent.generateActivePendingSet();
+        Set<BasicAction> activePendingSet = new HashSet<BasicAction>();
+        
+        activePendingSet.addAll(agent.generateActivePendingSet());
+        
         BasicObservation currentObservation = agent.getAgentObservationSet().get(agent.getAgentObservationSet().size() - 1);
         
         for(Explanation e : agent.getAgentExplanationList()){

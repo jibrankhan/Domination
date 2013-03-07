@@ -102,7 +102,9 @@ public class Agent implements Serializable {
             }
         }
                 
-        Vector playerTerritories = thisPlayer.getTerritoriesOwned();
+        Vector playerTerritories = new Vector();
+                
+        playerTerritories.addAll(thisPlayer.getTerritoriesOwned());
         
         for(Object c : playerTerritories){
             
