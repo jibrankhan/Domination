@@ -353,7 +353,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     
                     bw.write(p.getMission().getDiscription());
                     
-                    for(int i = 1; i <= RiskGame.turnCounter; i++){
+                    for(int i = 1; i <= RiskGame.turnCounter - 42; i++){
                         
                         bw.write(", Turn " + i);
                     }

@@ -187,7 +187,7 @@ transient - A keyword in the Java programming language that indicates that a fie
         public static boolean printedAlready;
         
         public static int turnCounter = 0;
-        
+                
         File file = new File("C:\\temp\\game.txt");
 
 	/**
@@ -196,6 +196,7 @@ transient - A keyword in the Java programming language that indicates that a fie
 	public RiskGame() throws Exception {
 
                 planRecognition.startAndWait();
+                this.turnCounter = 0;
                 printedAlready = false;
                 
                 if(recordGame){
