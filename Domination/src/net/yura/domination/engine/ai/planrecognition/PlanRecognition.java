@@ -34,6 +34,7 @@ import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.componen
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationFailedOccupation;
 import net.yura.domination.engine.ai.planrecognition.planlibraryobjects.components.observation.ObservationSuccessfulDefence;
 import net.yura.domination.engine.core.Player;
+import net.yura.domination.engine.core.RiskGame;
 
 /**
  *
@@ -351,6 +352,11 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 if(a.getAgentName().equals(p.getName())){
                     
                     bw.write(p.getMission().getDiscription());
+                    
+                    for(int i = 1; i <= RiskGame.turnCounter; i++){
+                        
+                        bw.write(", Turn " + i);
+                    }
                     bw.newLine();
                 }
             }
