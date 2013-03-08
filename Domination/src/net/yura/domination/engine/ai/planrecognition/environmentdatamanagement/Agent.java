@@ -154,7 +154,7 @@ public class Agent implements Serializable {
         return activePendingSet;
     }
     
-    public void generateExplanationList(Set<Explanation> fullExplanationList){
+    public synchronized void generateExplanationList(Set<Explanation> fullExplanationList){
         
         System.out.println(this.getAgentName());
         
