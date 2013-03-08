@@ -88,7 +88,7 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
         return super.clone();
     }
     
-    public void calcInitialExpProb(){
+    public synchronized void calcInitialExpProb(){
         
         for(RootGoal r : getRootGoalSet()){
             
@@ -102,7 +102,7 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
         }
     }
     
-    public Set<BasicAction> filterSet(String observationType, Set<BasicAction> actionSet){
+    public synchronized Set<BasicAction> filterSet(String observationType, Set<BasicAction> actionSet){
         
         Set<BasicAction> filteredSet = new HashSet<BasicAction>();
            
@@ -119,7 +119,7 @@ public abstract class Explanation implements Mission, Cloneable, Serializable {
     }
     
     // Method to calculate weight based on provided number of actions and actions to weight
-    public double computeBaseWeight(double weight, int numActions, int numActionsToWeight){
+    public synchronized double computeBaseWeight(double weight, int numActions, int numActionsToWeight){
         
         double sumWeight = weight * (double) numActionsToWeight;
         double leftOver = 1d - sumWeight;

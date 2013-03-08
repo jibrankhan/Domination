@@ -1542,6 +1542,7 @@ transient - A keyword in the Java programming language that indicates that a fie
                                 planRecognition.printAllProbs();
                                 
                                 printedAlready = true;
+                                planRecognition.cleanUp();
                             }
                             
                         } catch (IOException ex) {

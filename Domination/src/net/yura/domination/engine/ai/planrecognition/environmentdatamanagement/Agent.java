@@ -85,7 +85,7 @@ public class Agent implements Serializable {
     
 
     // Generates Active Pending Set
-    public Set<BasicAction> generateActivePendingSet(){
+    public synchronized Set<BasicAction> generateActivePendingSet(){
         
         Set<BasicAction> activePendingSet = new HashSet<BasicAction>();
         
@@ -175,7 +175,7 @@ public class Agent implements Serializable {
         }
     }
     
-    public double computeTotalExpProbabilties(){
+    public synchronized double computeTotalExpProbabilties(){
         
         this.agentTotalExplanationProbabilities = 0;
         
@@ -187,7 +187,7 @@ public class Agent implements Serializable {
         return agentTotalExplanationProbabilities;
     }
     
-    public Set<BasicAction> filterActiveSet(String observationType, Set<BasicAction> activePendingSet){
+    public synchronized Set<BasicAction> filterActiveSet(String observationType, Set<BasicAction> activePendingSet){
         
         Set<BasicAction> filteredActiveSet = new HashSet<BasicAction>();
            
