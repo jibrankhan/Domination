@@ -143,18 +143,6 @@ public class PlanRecognition extends AbstractService implements Serializable{
                     this.printExpProbs(a);
                 }
             }
-            // Testing - Iterate through observation manager
-            /*for(String s : observationManager.keySet()){
-                
-                System.out.println(s);
-                
-                for(BasicObservation b : observationManager.get(s)){
-                    
-                    if(b instanceof ObservationCountryOccupied){ System.out.println(b.getActionType() + " " + b.getCountryName()); }
-                    if(b instanceof ObservationCountryLost){ System.out.println(b.getActionType() + " " + b.getCountryName()); }
-                }
-            }*/
-            //System.out.println(" ");
         }
         
         if(event instanceof EventFailedOccupation){
