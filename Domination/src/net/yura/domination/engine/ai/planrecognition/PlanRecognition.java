@@ -76,7 +76,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
     }
     
     @Override
-    protected synchronized void handle(Event event) throws Exception {
+    protected void handle(Event event) throws Exception {
         
         // Adds players to agentManager
         if(event instanceof  EventRegisterAgent){
@@ -265,13 +265,13 @@ public class PlanRecognition extends AbstractService implements Serializable{
     }
     
     // Method to synchronize Player Vector in this class and all classes that contain a player object
-    public synchronized void updatePlayers(Vector Players){
+    public void updatePlayers(Vector Players){
 
         PlanRecognition.setPlayers(Players);
     }
 
     // Setup of action space
-    public synchronized void initialiseActionSpace(Vector Continents){
+    public void initialiseActionSpace(Vector Continents){
 
         this.explanationManager = new ExplanationManager(Continents);
 
@@ -283,7 +283,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
         }
     }
     
-    public synchronized void printExpProbs(Agent a){
+    public void printExpProbs(Agent a){
         
         Set<Explanation> expList = a.getAgentExplanationList();
         
@@ -299,7 +299,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
         //System.out.println(" ");
     }
     
-    public synchronized void computeExpProbs(String calculationType, String observationType, Agent agent){
+    public void computeExpProbs(String calculationType, String observationType, Agent agent){
         
         Set<BasicAction> activePendingSet = new HashSet<BasicAction>();
         
@@ -313,12 +313,12 @@ public class PlanRecognition extends AbstractService implements Serializable{
         }
     }
 
-    public synchronized static Vector getPlayers() {
+    public static Vector getPlayers() {
         
         return PlanRecognition.Players;
     }
 
-    public synchronized static void setPlayers(Vector Players) {
+    public static void setPlayers(Vector Players) {
         
         PlanRecognition.Players = Players;
     }
@@ -383,7 +383,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
         System.out.println("Completed! File data-" + file_name_var + ".csv");
     }
     
-    public synchronized void cleanUp(){
+    public void cleanUp(){
         
         this.agentManager.clear();
         this.explanationManager.getAllExplanations().clear();

@@ -187,8 +187,6 @@ transient - A keyword in the Java programming language that indicates that a fie
         public static boolean printedAlready;
         
         public static int turnCounter = 0;
-                
-        File file = new File("C:\\temp\\game.txt");
 
 	/**
 	 * Creates a new RiskGame
@@ -199,11 +197,6 @@ transient - A keyword in the Java programming language that indicates that a fie
                 this.turnCounter = 0;
                 printedAlready = false;
                 
-                if(recordGame){
-                    
-                    file.delete();
-                    file.createNewFile();
-                }
 		//try {
 
 			setMapfile("default");
@@ -1158,7 +1151,6 @@ transient - A keyword in the Java programming language that indicates that a fie
                                 planRecognition.updatePlayers(Players);
                                 processing.fireEvent(new EventFailedOccupation(defender.getOwner().getName(), attacker.getOwner().getName(), defender.getContinent().getName(), defender.getName()));
 
-                                writeToFile(file, "retreat");
 				currentPlayer.currentStatistic.addRetreat();
 			}
 			else { gameState=STATE_ROLLING; }
@@ -2056,10 +2048,10 @@ transient - A keyword in the Java programming language that indicates that a fie
 						//System.out.print(description+"\n"); // testing
 						Mission mission = new Mission(p, noc, noa, c1, c2, c3, description);
                                                 // GENERAL OCCUPY EXPLANATONS REMOVED FROM HERE!
-                                                //if(!mission.getDiscription().contains("Destroy") && !mission.getDiscription().equals("Occupy 18 countries of your choice and occupy each with at least 2 armies.") && !mission.getDiscription().equals("Occupy 24 countries of your choice and occupy each with at least 1 army.")){
+                                                if(!mission.getDiscription().contains("Destroy") && !mission.getDiscription().equals("Occupy 18 countries of your choice and occupy each with at least 2 armies.") && !mission.getDiscription().equals("Occupy 24 countries of your choice and occupy each with at least 1 army.")){
 						
                                                     Missions.add(mission);
-                                                //}
+                                                }
  
                                                 
 					}
@@ -2874,27 +2866,6 @@ System.out.print(str+"]\n");
     public int getNoDefendDice() {
         if ( defender.getArmies() > maxDefendDice ) { return maxDefendDice; }
         else { return defender.getArmies(); }
-    }
-    
-    void write(File file, String inputText) throws IOException {
-     
-        //log("Writing to file name " + file);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-        
-        writer.write(inputText);
-        writer.newLine();
-        writer.close();
-    }
-	
-    public void writeToFile(File file, String string){
-        try{
-            if(recordGame){
-                this.write(file, string);
-            }
-        } catch (IOException e){
-                        
-                        e.printStackTrace();
-        }
     }
     
     private void log(String aMessage){

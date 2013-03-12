@@ -24,7 +24,7 @@ import net.yura.domination.engine.core.Country;
  */
 public abstract class OccupyExplanation extends Explanation implements OccupyMission, Serializable {
     
-    public synchronized void addConsistentActions(Continent continent) {
+    public void addConsistentActions(Continent continent) {
         
         for(Object country : continent.getTerritoriesContained()){
                 
@@ -40,7 +40,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
         }
     }
     
-    public synchronized void computeMissionProbability(Set<BasicAction> activePendingSet, BasicObservation currentObservation){
+    public void computeMissionProbability(Set<BasicAction> activePendingSet, BasicObservation currentObservation){
         
         String observationType = currentObservation.getActionType();
         

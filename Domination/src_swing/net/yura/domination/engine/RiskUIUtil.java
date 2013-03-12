@@ -840,6 +840,7 @@ public class RiskUIUtil {
 
 					String[] newversion = (String[])buffer.toArray( new String[buffer.size()] );
 
+                                        /*
 					if (newversion[0].startsWith("RISKOK ")) {
 
 						String v = newversion[0].substring(7, newversion[0].length() );
@@ -867,7 +868,7 @@ public class RiskUIUtil {
                                                         }
 
 						}
-					}
+					}*/
 
 				}
 				catch (Throwable e) { }
