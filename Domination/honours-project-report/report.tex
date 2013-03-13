@@ -68,7 +68,7 @@ The application of Artificial Intelligence techniques to games has been an area 
 
 \subsection{Difference between academic and game AI}
 
-As the primary goal of academia is to further human understanding the scope of developed A.I. techniques are preferably general in applicaton. Game A.I. on the other hand is built to create the illusion of intelligence and provide good gameplay for those playing the game, it therefore needs not be as and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
+As the primary goal of academia is to further human understanding the scope of developed A.I. techniques are preferably general in application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
 
 Reference - difference between academic and game A.I [AI and computer games]
 
@@ -87,7 +87,7 @@ What is emerging is the idea that as users become accustomed to high quality gra
 
 Mention notable AI's like F.E.A.R.
 
-With this shift in focus, there is a greater incentive for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunitiy. 
+With this shift in focus, there is a greater incentive for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
 
 \section{Plan Recognition}
 
@@ -109,12 +109,12 @@ Plan recognition can lead to AI responses that are personalized.
 
 \section{Artificial Intelligence and Board Games}
 
-In 1915 Leonardo Torres y Quevedo's built a chess automaton[ref]. It was considered the worlds first computer program and argueably the beginning of Artificial Intelligence and board games.
+In 1915 Leonardo Torres y Quevedo's built a chess automaton[ref]. It was considered the worlds first computer program and arguably the beginning of Artificial Intelligence and board games.
 
 Thirty five years later Alan Turing published a landmark paper[ref], marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College[ref]. He defined it as "the science and engineering of making intelligent machines"[ref].
 
 E.g
-There existed Christopher Stracheys Game AI for the board game draughts built in 1951[ref]. As AI continued to develop so did the complexity of the AI's seen in computer games, first AI to appear which used enemies was arcade game [ref].
+There existed Christopher Stracheys Game AI for the board game draughts built in 1951[ref]. As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
 
 Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 [ref] have continued to impress the public. 
 
@@ -153,7 +153,7 @@ What do you want to answer?
 Are plan recognition algorithms beneficial in games? Specifically RISK?
 
 
-Why because they are an arficiially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
+Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
 
 NOT COMPLETE
 
@@ -183,7 +183,7 @@ They defined each as:
 \item
 \textit{Keyhole plan recognition} is the recognition of an agent's plan through unobtrusive observation".
 \item
-\textit{Intended plan recognition} is the recongition of the plan of a cooperative agent who wishes to be understood.
+\textit{Intended plan recognition} is the recognition of the plan of a cooperative agent who wishes to be understood.
 \newline
 \end{itemize}
 
@@ -221,7 +221,7 @@ Through observing A cook, B can predict with absolute certainty what A will cook
 \item
 A cannot hide any observations.
 \item
-A only wishes to cook one meall.
+A only wishes to cook one meal.
 \item
 A has no preferences of what to cook, in other words given a choice the probability of choosing is equally likely.
 \item
@@ -232,9 +232,9 @@ Given these assumptions and B's knowledge of A's cooking abilities we can model 
 
 \begin{figure}[h]
 \centering
-\includegraphics{images/example_plan_recognition}
+\includegraphics{images/example-plan-recognition}
 \caption{Example Plan Library}
-\label{fig:example_plan_library}
+\label{fig:example-plan-library}
 \end{figure}
 
 The top level goals or root g are cooked vegetarian burgers and cooked beef burger. 
@@ -257,9 +257,9 @@ Developed and released by french director Albert Lamorisse in 1957 as La Conqu\^
 
 \begin{figure}[h]
 \centering
-\includegraphics{images/risk_board}
+\includegraphics{images/risk-board}
 \caption{Risk Equipment}
-\label{fig:risk_equipment}
+\label{fig:risk-equipment}
 \end{figure}
 
 The game consists of three pieces of equipment:
@@ -353,7 +353,7 @@ South America & 2 \\
 \hline 
 \end{tabular}
 \caption{Occupied Continent Army Reinforcement Bonus}
-\label{table:continent_bonus}
+\label{table:continent-bonus}
 \end{table}
 
 \subsubsection{Attack Phase}
@@ -398,7 +398,7 @@ Minmax Algorithm with Alpha-Beta Pruning
 
 Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], this has been said because the search space for such games is large and that finding the best move would take an unreasonable amount of time (Find a ref for this)
 
-Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms one can weed out unlikely explanations before commiting to a search of the 
+Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms one can weed out unlikely explanations before committing to a search of the 
 
 Main benefit is that responses can be personalized.
 
@@ -417,7 +417,7 @@ They went on to introduce a model of plan execution based on the notion of \text
 
 In summary, plan execution according to PHATT was modelled as the following process. An agent would first choose a goal, then a set of plans to achieve that goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set. This would result in some actions being added to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until
 
-Following their new model of plan execution Geib and Goldman proposed an algorithm utilizing a bayesian approach to perform probabalistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs} by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
+Following their new model of plan execution Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs} by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
 
 Using to Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
 
@@ -425,7 +425,7 @@ Using to Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
 \textit{Pr(exp}|\textit{obs)} = \textit{Pr(exp} $\wedge$ \textit{obs)} / \textit{Pr(obs)}
 }
 
-They then (as other practical bayesian systems do) exploited the equivalent formulation:\newline
+They then (as other practical Bayesian systems do) exploited the equivalent formulation:\newline
 
 \centerline{
 \textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
@@ -456,13 +456,13 @@ Each of these features are multipled together in the following manner:\newline
 
 The probability of a given explanation is then calculated by multiplying together the priors for each goal, the probabilities of each of the sub goals, and the probability of the observed actions being chosen.
 
-For a full specfication of how to compute an explanation probability please refer to [ref]
+For a full specification of how to compute an explanation probability please refer to [ref]
 
 With an idea of the operation of PHATT now in mind it is now necessary to design PHATT to operate in RISK.
 
 \subsection{Environment Modelling and Data Structure Design}
 
-For PHATT to operate in RISK,  modelling of the environment and a design of data structures was necessary. This process began with the identification of the root goals, sub goals and significant actions in the RISK environment as these would consistitue the three probabilistic features necessary by PHATT.
+For PHATT to operate in RISK,  modelling of the environment and a design of data structures was necessary. This process began with the identification of the root goals, sub goals and significant actions in the RISK environment as these would constitute the three probabilistic features necessary by PHATT.
 
 \subsubsection{Root Goals}
 
@@ -512,7 +512,7 @@ South America & 2 \\
 \hline 
 \end{tabular}
 \caption{Occupied Continent Army Reinforcement Bonus}
-\label{table:continent_bonus}
+\label{table:continent-bonus}
 \end{table}
 
 \textit{Occupy} mission cards  
@@ -583,7 +583,7 @@ Each of these must be modelled in a manner that contributes towards explanations
 
 \textbf{Attacking and Defending}
 
-The actions of attacking and defending only ever occur together and so given the outcomes of a battle in the attack phase that have been previously defined, the actions of attacking and defending can be modelled as consitent or inconsistent towards achieveing a root goal as follows.
+The actions of attacking and defending only ever occur together and so given the outcomes of a battle in the attack phase that have been previously defined, the actions of attacking and defending can be modelled as consistent or inconsistent towards achieving a root goal as follows.
 
 \begin{table}[ht]
 \centering
@@ -601,10 +601,10 @@ FailedDefence & No \\
 \hline 
 \end{tabular}
 \caption{Attack and Defence Actions}
-\label{table:att_def_actions}
+\label{table:attack-def-actions}
 \end{table}
 
-FailedAttack is a clear message of the intention of a player to occupy that territory and therefore should be considered a consitent action though given a less weight than that of a successful attack due to the nature of success and failure.
+FailedAttack is a clear message of the intention of a player to occupy that territory and therefore should be considered a consistent action though given a less weight than that of a successful attack due to the nature of success and failure.
 
 \textbf{Fortifiy}
 
@@ -614,7 +614,7 @@ For each territory $T$ that $P$ owns at a certain turn $t$. In $P$'s pending set
 
 \textbf{Movement}
 
-Initially my movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, but this was changed as a player gains more consistent movement and reinforce actions as they continue to be sucessful in their goal.
+Initially my movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, but this was changed as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
 
 Probability model changed to proportion of consistent actions * 0.1 
 0.9 - proportion for consistent probability
@@ -790,7 +790,7 @@ This is where each feature of an explanation is modelled as equally likely among
 
 NOT COMPLETE
 
-Following an idea found from an earlier paper by Geib[ref] which proposes a weighting towards consistent actions [ref - new model of plan recognition] that contribute to a plan. A different method of assinging probabilties to pending set actions was deduced.
+Following an idea found from an earlier paper by Geib[ref] which proposes a weighting towards consistent actions [ref - new model of plan recognition] that contribute to a plan. A different method of assigning probabilities to pending set actions was deduced.
 
 Actions are separated into consistent and inconsistent actions. A hard coded weight is then equally distributed between each action.
 
@@ -898,7 +898,7 @@ Classes are modelled as an aggregation of components allowing
 Extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
 
 \subsubsection{Replaying Games}
-Had to find a way to replay games so that game can be made reproducable for testing of algorithm. Therefore had to create a system of writing actions in game to file, then read actions into a custome ai that would perform the actions.
+Used an inbuilt tool by the developer of saying "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
 
 \subsection{Summary}
 
@@ -922,7 +922,7 @@ This is defined as given a situation a player can only:
 
 attack a country that is directly consistent with their plan or a country that is on the shortest route to a country that is directly consistent with their plan.
 reinforce a country that is directly consistent with their plan or a country that is on the shortest route to a country that is directly consistent with their plan.
-move armies to a country that is diretly consistent with their plan or a country that is on the shortest route to a country that is directly consisten with their plan.
+move armies to a country that is directly consistent with their plan or a country that is on the shortest route to a country that is directly consistent with their plan.
 
 Why did I choose to do this?
 
@@ -947,7 +947,7 @@ How did I get the data?
 Collect data
 Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
 
-For games of ai players used a program called autohotkey which allowed me to create macros which automated the data collection process.
+For games of A.I. players used a program called Autohotkey which allowed me to create macros which automated the data collection process.
 
 Using an system built by the original developers was able to easily reproduce a game for the purposes of evaluating the algorithm.
 
@@ -956,13 +956,17 @@ Questions to answer:
 
 What did I tell players?
 
+Explained to players the rules of the game, that they had two ways of winning the game, either by eliminating their opponents or by completing their mission card. Had the mantra, "play to win"
+
+Experimental De-briefing, asked players to give a summary of what they had done in the game, recorded this down to use for comparison purposes at a later point.
+
 \section{Experimental Findings}
 
 Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
 
 Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
 
-Misclassification by Association - Explanations appear likely because players do things related to them even though they havn't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations.
+Misclassification by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations.
 
 Main questions to answer.
 
@@ -970,7 +974,7 @@ Whether is converges?
 
 How fast it converges?
 
-Players dont ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
+Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
 
 \section{Outcomes}
 
@@ -988,7 +992,7 @@ Inherent issues with PHATT is unable to deal with deception[ref] and often playe
 
 The problem of prediction by association, this is where an explanation which involves a continent that a player has not done anything at all to becoming likely because the explanation contains two other continents that the algorithm has observed many things happen to.
 
-How to deciede weighting of 
+How to decide weighting of 
 
 How to deal with this problem?
 
