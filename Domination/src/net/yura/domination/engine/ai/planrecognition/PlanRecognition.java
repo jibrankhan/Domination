@@ -311,7 +311,7 @@ public class PlanRecognition extends AbstractService implements Serializable{
         PlanRecognition.Players = Players;
     }
     
-    public synchronized void printAllProbs() throws IOException {
+    public synchronized void printAllProbs(String wonPlayerName) throws IOException {
     
         file_name_var = System.currentTimeMillis();
             
@@ -342,6 +342,17 @@ public class PlanRecognition extends AbstractService implements Serializable{
                 Player p = (Player) o;
                 
                 if(a.getAgentName().equals(p.getName())){
+                    
+                    if(a.getAgentName().equals(wonPlayerName)){
+                        
+                        bw.write(("WINNER"));
+                        bw.newLine();
+                        
+                    } else {
+                        
+                        bw.write("LOSER");
+                        bw.newLine();
+                    }
                     
                     bw.write(p.getMission().getDiscription());
                     

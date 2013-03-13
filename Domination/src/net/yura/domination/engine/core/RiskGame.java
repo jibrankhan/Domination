@@ -1528,10 +1528,11 @@ transient - A keyword in the Java programming language that indicates that a fie
                         try {
                             
                             
+                            System.out.println(currentPlayer.getName() + " has won!");
                             // yay you have won
                             if(!printedAlready){
                                 
-                                planRecognition.printAllProbs();
+                                planRecognition.printAllProbs(currentPlayer.getName());
                                 
                                 printedAlready = true;
                                 planRecognition.cleanUp();
