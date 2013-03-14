@@ -191,9 +191,7 @@ It was Charniak and Goldman[ref - 1991 paper] who first argued that plan recogni
 
 Albrecht, Zukerman and Nicholson [ref 1998 A Bayesian model for keyhole plan recognition in an adventure game] performed research on keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The result of their experiments they claimed "showed promise" for some domains. 
 
-More recently Synnaeve and Bessiere [ref - RTS Bayesian model plan recognition in Starcraft 2011] published a paper of the design and implementation of a plan recognition agent that through observations of building construction in the game Starcraft, could predict the types of units a player was planning on building.
-
-FIND MORE RECENT STUFF?
+More recently Synnaeve and Bessiere [ref - RTS Bayesian model plan recognition in Starcraft 2011] published a paper of the design and implementation of a plan recognition agent that through observations of building construction in the game Starcraft, can predict the types of units a player intends to produce based on what buildings they construct.
 
 \subsection{An Example of Plan Recognition}
 
@@ -231,19 +229,17 @@ Given these assumptions and B's knowledge of A's cooking abilities we can model 
 \begin{figure}[h]
 \centering
 \includegraphics{images/example-plan-recognition}
-\caption{Example Plan Library}
+\caption{Root goals are located at the top, sub goals are in middle. and-nodes are represented by an undirected arc across the lines connecting the parent node to its children, or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}
 \label{fig:example-plan-library}
-\end{figure}
+\end{figure} 
 
-The top level goals or root g are cooked vegetarian burgers and cooked beef burger. 
+The top level goals or root goals are cooked vegetarian (veg) burgers and cooked beef burger. These root goals can be broken down into sub goals, for the case of cooked veg burger the sub goals are cooked veg pattie mix and prepare burger buns.
 
-Root goals are at top, sub goals are in middle. And nodes are represented by an undirected arc across the lines connecting the parent node to its children, Or-nodes do not have this arc [ref geib]. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.
-
-A takes bread out of its packet and toasts the burger bun, looking at the plan library we have two possible \textit{explanations} for As behaviour, as the sub goals prepare burger buns is part of both the cooked veg burger and cooked beef hamburger root goal.
+A takes bread out of its packet and toasts the burger bun, looking at the plan library we have two possible \textit{explanations} for As behaviour, cooked veg burger or cooked beef hamburger.
 
 Each of these explanations are equally likely at this point.
 
-A now buys some meat. At this point B can conclude that they will be getting a ham burger for dinner.
+A takes the meat of the packet, now given our assumptions we can conclude that A's plan is too cook beef hamburgers. At this point B can conclude that they will be getting a ham burger for dinner.
 
 \newpage
 
@@ -989,23 +985,6 @@ GRAPHS to make
 Probabilities of each explanation over rounds, how to combine into a single graph?
 
 Table of correctness (an percentage of correct predictions by end of game for all data)
-
-\chapter{Project Schedule}
-
-TODO: 
-
-REP Analysis and Evaluation
-
-REP Conclusion
-
-REP Summary of each chapter
-
-REP Complete various sections of report
-
-REP Write up pseudo code and data structures  in proper latex form
-
-Today: 25 Jan
-Deadline: April the 3rd
 
 % use the following and \cite{} as above if you use bibtex
 % otherwise generate bibtem entries
