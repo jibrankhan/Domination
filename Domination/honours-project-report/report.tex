@@ -64,39 +64,39 @@ John David Funge, Artificial Intelligence for Computer Games
 
 \subsection{What is game AI}
 
-The application of Artificial Intelligence techniques to games has been an area of research ever since the beginning of significant work on A.I. Presently termed game A.I. it is a term used to differentiate A.I. applied in games from academic AI, and though the techniques have typically come from academia it is significantly different in both its scope and application.
+The application of Artificial Intelligence techniques to games has been an area of research ever since the beginning of significant work on A.I. Presently termed game A.I. it is used to differentiate A.I. applied in games from academic AI, and though the techniques have typically come from academia it is significantly different in both its scope and application.
 
 \subsection{Difference between academic and game AI}
 
-As the primary goal of academia is to further human understanding the scope of developed A.I. techniques are preferably general in application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
+As the primary goal of academia is to further human understanding the scope of developed A.I. techniques are preferably general in application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as general and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
 
 Reference - difference between academic and game A.I [AI and computer games]
 
 \subsection{Computer Graphics previously getting more attention}
 
-Companies in video games industry tirelessly look for an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
+Companies in the games industr who utilize game A.I. (which today is the vast majoirty) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
 
-\section{AI getting more attention now}
+\subsection{AI getting more attention now}
 
-What is emerging is the idea that as users become accustomed to high quality graphics, developers will need something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
+Emerging though is the idea that as users become accustomed to high quality graphics, developers will need something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
 
-Mention notable A.I's like F.E.A.R.
+There has already been some notable examples such as the (name of the A.I technique from F.E.A.R) from F.E.A.R which used (describe the A.I. technique briefly), the game gained much aclaim and is referenced as a good example of game A.I. by the industry and others.
 
 With this shift in focus, there is a greater incentive for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
 
-\section{Plan Recognition}
+\subsection{Plan Recognition}
 
-Plan recognition definition.
+Plan recognition definition - plan recongnition is the problem of inferring an agents plans from observations. Charniak, Goldman 1992
 
 When research began
 
-\section{Applications of Plan Recognition}
+\subsection{Applications of Plan Recognition}
 
 How it is used
 
 Currently plan recognition applications range from computer security to help systems (more detail).
 
-\section{Application of plan recognition algorithms to games}
+\subsection{Application of plan recognition algorithms to games}
 
 Plan recognition can perform automated game analysis which can be used by players to improve their performance. 
 
@@ -135,11 +135,9 @@ To further understanding of the complexities of performing plan recognition in t
 
 An objective is a more specific statement about what the learner should or will be able to do after the training experience.
 
-To show plan recognition algorithms can be used successfully to predict an agent's plan in the board game RISK.
+To show plan recognition algorithms can be used successfully to predict an agent's plan in the board game RISK with an accuracy better than randomly picking a mission card.
 
-To provide insight into the complexities of creating a plan recognition mode for the RISK environment.
-
-To build a plan recognition agent that has an accuracy better than randomly picking a mission card.
+To provide insight into the complexities of creating a plan recognition models for the RISK environment.
 
 To provide insight into the nature of making plans in RISK. 
 
@@ -165,13 +163,13 @@ The following chapter presents a background to the project where plan recognitio
 
 Chapter 3 describes the methodology of the project, it is split into two sections. The first is design, in this section PHATT is introduced and the design of the plan recognition agent is detailed. The subsequent section is implementation. Code related issues such as modifications to the open source project and any relevant design concepts are discussed. 
 
-Finally there is the evaluation and conclusion chapters. In these the experimental findings are presented and discussed and any conclusions derived from the experimental findings are presented.
+Finally an an evaluation plan and conclusion is presented. In these, the experimental findings are presented, discussed and any conclusions derived from the experimental findings are presented.
 
 \chapter{Background}
 
 \section{Previous Work in Plan Recognition}
 
-Many consider one of the earliest projects on plan recognition to have been in 1978. Schmidt et al [ref - Schmidt Plan Recognition Problem] had conducted experiments to determine whether or not people inferred the plans of other agents. From their results they created a rule based system called BELIEVER which attempted to capture the process of plan recognition. 
+Many consider one of the earliest projects on plan recognition to have been in 1978. Having identified plan recognition as a problem in itself, Schmidt et al [ref - Schmidt Plan Recognition Problem] conducted experiments to determine whether or not people inferred the plans of other agents. From their results they created a rule based system called BELIEVER which attempted to capture the process of plan recognition. 
 
 Three years later Cohen, Perrault and Allen identified two different types of plan recognition \textit{keyhole} and \textit{intended} [ref - cpa strategies in natural language processing]. 
 
@@ -456,7 +454,43 @@ With an idea of the operation of PHATT now in mind it is now necessary to design
 
 \subsection{Environment Modelling}
 
-For PHATT to operate in RISK, modelling of the RISK environment is necessary. This process began with the identification of the root goals, sub goals and actions in the RISK environment as these would constitute the three probabilistic features necessary by PHATT.
+\subsubsection{Territory}
+
+As territories are a vital part of the RISK environmen it is necesarry to define  model. contribute to several different sub goals they require a model. The data structure of a territory contains a number of important items.
+
+The name of the territory
+The actions available by owning this territory.
+
+(Diagram of territory and associated actions)
+
+T = Territory Object
+
+In the form of the pending set of that Territory and the countries name C = { TerritoryName, PS }
+
+By owning a Territory a player can perform a number of actions.
+Each Territory is modelled as a state. Each state has a number available actions which together form its associated pending set.
+
+\subsubsection{Continent}
+
+Each continent C contain several territories T. Therefore the data structure can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
+
+$C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
+
+\subsubsection{Player}
+
+The term \textit{Player} can be used inter changeably with the term agent that was introduced in previous descriptions. A data structure of a player must contain a number of things:
+
+Each player has a list of countries they own.
+Each player has a name.
+Each player must have a history of active pending sets.
+Each player must have a list of actions they have taken.
+Each player must maintain a list of explanations that has been assigned to them.
+
+Each player must be manageable.
+
+The active pending set of an agent is decided \textit{a priori} based on the territories a player owns.
+
+\subsection{Explanation Modelling}
 
 \subsubsection{Root Goals}
 
@@ -526,32 +560,24 @@ SuccessfulDefence - another good indication of
 
 FailedDefence - inconsistent because a player would successfully defend 
 
-\textbf{Fortify}
+\textbf{Reinforce}
 
-To \textit{fortify} a territory is the act of placing an army in a territory. The fortify actions that a particular player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the fortify actions is therefore modelled as follows. 
+To \textit{reinforce} a territory is the act of placing an army in a territory. The reinforce actions that a particular player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
 
-For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to fortify $T$. If a territory $T_{new}$ is lost by $P$ (it is attacked and then occupied by another player), its corresponding fortify action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{other}$ is gained by $P$ then a fortify action for $T_{other}$ is added to the players pending set at turn $t+1$.\newline
+For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{new}$ is lost by $P$ (it is attacked and then occupied by another player), its corresponding reinforce action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{other}$ is gained by $P$ then a reinforce action for $T_{other}$ is added to the players pending set at turn $t+1$.\newline
 
 \textbf{Movement}
 
+Movement is the action of a player $p$ moving armies from one territory $T_{1}$ that they occupy, to another adjacent territory $T_{2}$ they occupy.
+
+The pending set is 
+
+The pending set actions is neighbouring countries where a player has more than one army.
+
 Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
 
-The new model worked in such a way:
-
-Probability model changed to proportion of consistent actions * 0.1 
-0.9 - proportion for consistent probability
-1 - proportion for inconsistent probability
-
-Due to time constraints did not use it. Why?
-
-Movement is the action of moving armies from one territory to another adjacent territory.
-
-Pending set for move is neighbouring countries where a player has more than one army.
-
-From an analysis of the environment model, it allowed for a formal definition of its various data structures
-
 Capturing effectively the impact of movement of armies to a Territory 
-A list of available attack actions are created for each player and based on what they do a probability is calculated.\newline
+A list of available attack actions are created for each player and based on what they do a probability is calculated.
 
 \subsubsection{Explanations}
 
@@ -605,106 +631,33 @@ Occupy Asia and Africa.
 
 Each of these are considered as possible explanations of a players behaviour.
 
-\subsubsection{Territory}
-
-As territories contribute to several different sub goals they require a model. The data structure of a territory contains a number of important items.
-
-The name of the territory
-The actions available by owning this territory.
-
-(Diagram of territory and associated actions)
-
-C = Territory Object
-
-In the form of the pending set of that Territory and the countries name C = { TerritoryName, PS }
-
-By owning a Territory a player can perform a number of actions.
-Each Territory is modelled as a state. Each state has a number available actions which together form its associated pending set. \newline
-
-\subsubsection{Continent}
-
-Each continent C contain several territories T. Therefore the data structure is a tuple of the name of the continent and the set of territories that are contained in that continent.
-
-C = {continentName, <T1... Tn>}
-
-\subsubsection{Player}
-
-The term \textit{Player} can be used inter changeably with the term agent that was introduced in previous descriptions. A data structure of a player must contain a number of things:
-
-Each player has a list of countries they own.
-Each player has a name.
-Each player must have a history of active pending sets.
-Each player must have a list of actions they have taken.
-Each player must maintain a list of explanations that has been assigned to them.
-
-Each player must be manageable.
-
-The active pending set of an agent is decided \textit{a priori} based on the territories a player owns.
-
-\subsection{Issues Applying PHATT to RISK}
-
-NOT COMPLETE
-
-Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
-
-Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
-
-For each player a 
-
-\subsubsection{Building the Set of Explanations}
-
-In building the set of explanations there is in this design a difference. Where the 
-
 \subsection{Prediction Agent Pseudo Code}
 
 In this section is presented the pseudo code of the most significant operations of the plan recognition agent.
 
-\subsubsection{Explanation Allocation}
-
-Given a list of all explanations \textit{EL} which contain all the explanations for an environment $E_1$ $\dots$ $E_j$, and a list of observations $\sigma_l$ which contain all the observations of a player in the environment $\sigma_1$ $\dots$ $\sigma_n$.  A player is then allocated a number of explanations of their behaviour.
-
-\begin{pseudocode}{ExplanationAllocation}{\sigma_1 \dots \sigma_n}
-\begin{algorithm}[H]
-\ForAll {E $\in$ EL}{
-
-	\ForAll{$\sigma$ $\in$ $\sigma_l$}{
-
-		\If {$\sigma$ is consistent with E \textbf{AND} E has not already been added}{
-
-			add E to AE
-		}
-	}
-}
-\end{algorithm}
-\end{pseudocode}
-
-The pseudocode above is a nested loop. First it loops through each explanation $E$ in the list of all explanations $E_l$, then during the first loop again loops through each observation $\sigma$ in the list of observations $\sigma_l$. 
-
-At each point in the loop through the observations two conditions are checked. The first condition \textit{observationIsConsistent} is a method which  returns true if and only if the current observation is contained in the list of actions that are consistent with that explanation \textit{E}. 
-
-The second condition returns true if only if the explanation is not already in the list of that agents explanations \textit{AE}.
-
 \subsubsection{Explanation Computation}
 
-To compute the probability of an explanation, first a function that generates all the available actions a player can perform is required.
+Given a list of all environment explanations \textit{EL} each player is simply allocated a single instance of each explanation. Since we know that the computation of the probability of an explanation requires three features two of which we have already, we then require a function that generates all the available actions a player can perform to facilitate computing the probability of a player choosing that action.
 
-\begin{pseudocode}{GeneratePendingSet}{-}
+\begin{pseudocode}{GeneratePendingSet}{AT}
 \begin{algorithm}[H]
-\textit{newPendingSet} = $\emptyset$
+\textit{playerPendingSet} = $\emptyset$
 
 \ForAll {T $\in$ AT}{
 
-	addAction(FortifyT) to \textit{newPendingSet}\newline
-	addAction(LoseT) to \textit{newPendingSet}
+	\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
+	\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
+	\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
 
 	\ForAll{N $\in$ T}{
 			
 		\eIf {playerOwnsN}{
 
-			addAction(MovementT) to \textit{newPendingSet}
+			\textit{addAction}(MovementT) to \textit{playerPendingSet}
 		}{
 
-			addAction(OccupyT) to \textit{newPendingSet}
+			\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
+			\textit{addAction}(SucessfulAttackT) to \textit{playerPendingSet}
 		}
 	}
 
@@ -713,7 +666,7 @@ To compute the probability of an explanation, first a function that generates al
 \end{algorithm}
 \end{pseudocode}
 
-After initializing an empty \textit{newPendingSet} which is a data structure that can only contain performable actions in the environment. The above pseudo first loops through each territory \textit{T} in the list of all the territories \textit{AT} that a player owns. For each territory a \textit{FortifyT} action and a \textit{LoseT} action is added to the newPendingSet. 
+After initializing an empty \textit{newPendingSet} which is a data structure that can only contain performable actions in the environment. The above pseudo first loops through each territory \textit{T} in the list of all the territories \textit{AT} that a player owns. For each territory a \textit{ReinforceT} action and a \textit{LoseT} action is added to the newPendingSet. 
 
 Before proceeding onto the next territory another loop is done through the list of neighbours \textit{N} of that territory with a simple if-then-else statement. If the player owns that territory a \textit{MovementT} action is added to the newPendingSet, if not then a \textit{OccupyT} action is added to the newPendingSet, at the end the newPendingSet is returned and can be cached if necessary.
 
@@ -773,6 +726,10 @@ For each agents explanation choose the highest probability.
 Use example written up before.
 
 \subsection{Conceptual Issues}
+
+Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
+
+Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
 
 Narrowing large search space
 Initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions?
@@ -871,11 +828,19 @@ Two questions to answer,
 
 1) Does it work?
 
+It performs better than randomly guessing but it is still a low probability
+
 2) If not why?
 
-Two types of games to test the algorithm in:
+Nature of game, simplicity of model.
+
+Three types of games to test the algorithm in:
 
 \section{Experiments}
+
+\subsection{AI Games}
+
+The open source project has built in AI to play for the mission game mode. This provided an opporunity for the collection fo a large number of data samples to test the performance of the plan recognition agent.
 
 \subsection{Constrained Play}
 
@@ -916,7 +881,6 @@ Using an system built by the original developers was able to easily reproduce a 
 
 Questions to answer:
 
-
 What did I tell players?
 
 Explained to players the rules of the game, that they had two ways of winning the game, either by eliminating their opponents or by completing their mission card. Had the mantra, "play to win"
@@ -935,7 +899,11 @@ Main questions to answer.
 
 Whether is converges?
 
+It does converge.
+
 How fast it converges?
+
+Converges quite quickly after the attacks begin - use data from average data over time.
 
 Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
 
@@ -963,7 +931,25 @@ Using the plan recognition software given a programs a plan to detect how well a
 
 Using genetic algorithms to optimize this by looking at the numbers returned by the plan recognition algorithm and choosing the best configuration that survived and won.
 
+\section{Critism}
+
+Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. This attack is the most significant action in the vironment and this we can intuitvely tell is not true.
+
 \chapter{Conclusions}
+
+\section{Future Work}
+
+The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
+
+Only attack actions have been modelled in a matter 
+
+Probability model changed to proportion of consistent actions * 0.1 
+0.9 - proportion for consistent probability
+1 - proportion for inconsistent probability
+
+Due to time constraints did not use it. Why?
+
+\section{Final}
 
 I would dare to say that I believe that the benefit of such systems would be such much that they would be considering cheating if used in events such as official tournaments.
 

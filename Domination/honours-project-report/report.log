@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  14 MAR 2013 17:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  14 MAR 2013 22:46
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -268,200 +268,180 @@ t\report.toc [5])
 [1
 
 
-] [2] [3] [4] [5] [6
-
-]
+] [2] [3] [4]
  2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 182.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 180.
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 182.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 180.
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--186
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
 
  []
 
-[7] [8] <images/example-plan-recognition.pdf, id=56, 441.85077pt x 84.40533pt>
+[5
+
+] [6] <images/example-plan-recognition.pdf, id=49, 441.85077pt x 84.40533pt>
 File: images/example-plan-recognition.pdf Graphic file (type pdf)
 
 <use images/example-plan-recognition.pdf>
 Package pdftex.def Info: images/example-plan-recognition.pdf used on input line
- 233.
+ 229.
 (pdftex.def)             Requested size: 441.84969pt x 84.4051pt.
 
-Overfull \hbox (29.91092pt too wide) in paragraph at lines 233--234
+Overfull \hbox (29.91092pt too wide) in paragraph at lines 229--230
  [][] 
  []
 
-[9 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-re
+[7 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-re
 port/images/example-plan-recognition.pdf>]
-<images/risk-board.jpg, id=67, 192.72pt x 192.72pt>
+<images/risk-board.jpg, id=61, 192.72pt x 192.72pt>
 File: images/risk-board.jpg Graphic file (type jpg)
 
 <use images/risk-board.jpg>
-Package pdftex.def Info: images/risk-board.jpg used on input line 258.
+Package pdftex.def Info: images/risk-board.jpg used on input line 252.
 (pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
- [10 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
-report/images/risk-board.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
+ [8 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+eport/images/risk-board.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--297
+Underfull \hbox (badness 10000) in paragraph at lines 279--291
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--310
+Underfull \hbox (badness 10000) in paragraph at lines 302--304
 
  []
 
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 331--333
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 325--327
 
  []
 
-[12] [13] [14]
+[10] [11] [12]
  3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
+
+ []
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
-
- []
-
-[15
+[13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
+
+ []
+
+[14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 517--519
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--547
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 487--489
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 515--517
+Underfull \hbox (badness 10000) in paragraph at lines 567--568
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 537--538
+Underfull \hbox (badness 10000) in paragraph at lines 628--630
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 557--559
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 606--608
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 625--627
-
- []
-
-[20]
-Overfull \hbox (10.1654pt too wide) in paragraph at lines 670--683
+Overfull \hbox (10.1654pt too wide) in paragraph at lines 642--667
 $[]$ 
  []
 
-[21]
-Overfull \hbox (10.1654pt too wide) in paragraph at lines 695--718
+
+Overfull \hbox (10.1654pt too wide) in paragraph at lines 673--693
 $[]$ 
  []
 
-[22]
-Overfull \hbox (10.1654pt too wide) in paragraph at lines 724--744
-$[]$ 
- []
-
-[23]
-Overfull \hbox (3.05284pt too wide) in paragraph at lines 784--788
+[19] [20]
+Overfull \hbox (3.05284pt too wide) in paragraph at lines 737--741
 []\T1/cmr/m/n/12 Calibrating Mech-a-nisms of al-go-rithm Uni-form dis-tri-bu-ti
 on Sim-ple weight-ing based
  []
 
-[24] [25] [26] [27] [28
-
-]
+[21] [22] [23] [24]
  4.
-[29] [30] [31] [32]
- 5.
-[33
+[25
 
-] [34
+] [26] [27] [28]
+ 5.
+[29
+
+] [30
 
 ]
  6.
-[35] [36
-
-]
- 7.
 
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
-t\report.bbl [37] [38
+t\report.bbl [31] [32
 
 ]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [39]
+) [33]
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
 t\report.aux) ) 
 Here is how much of TeX's memory you used:
- 3724 strings out of 493921
- 48785 string characters out of 3147273
- 129413 words of memory out of 3000000
- 6984 multiletter control sequences out of 15000+200000
- 16103 words of font info for 38 fonts, out of 3000000 for 9000
+ 3722 strings out of 493921
+ 48762 string characters out of 3147273
+ 129412 words of memory out of 3000000
+ 6983 multiletter control sequences out of 15000+200000
+ 15404 words of font info for 37 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,23n,24p,618b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,23n,21p,618b,521s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
-appen\ec\dpi600\ecbi1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\
-pk\ljfour\jknappen\ec\dpi600\eccc1200.pk> <C:\Users\s0914007\AppData\Local\MiKT
-eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\s0914007\AppDa
-ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\s
-0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
+appen\ec\dpi600\eccc1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\s0914007\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\s0914007\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Users\s
+0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk
 > <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
-0\ecbx2488.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
-ppen\ec\dpi600\ecbx1728.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\p
-k\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\s0914007\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\s0914007\AppDat
-a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\s0
-914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk>
-<D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (45 pages, 557330 bytes).
+0\ecbx1728.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
+ppen\ec\dpi600\ecbx1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\s0914007\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\s0914007\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk><D:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb>
+Output written on report.pdf (39 pages, 544227 bytes).
 PDF statistics:
- 651 PDF objects out of 1000 (max. 8388607)
+ 605 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
