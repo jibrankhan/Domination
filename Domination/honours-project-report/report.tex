@@ -64,7 +64,9 @@ John David Funge, Artificial Intelligence for Computer Games
 
 \subsection{What is game AI}
 
-The application of Artificial Intelligence techniques to games has been an area of research ever since the beginning of significant work on A.I. Presently termed game A.I. it is used to differentiate A.I. applied in games from academic AI, and though the techniques have typically come from academia it is significantly different in both its scope and application.
+Termed game Artificial Intelligence I.the application of A.I. techniques to games has been an area of research ever since the beginning of significant work on A.I. 
+
+Game A.I. is a term used used to differentiate A.I. applied in games from academic AI, and though the techniques have typically come from academia it is significantly different in both its scope and application.
 
 \subsection{Difference between academic and game AI}
 
@@ -74,19 +76,19 @@ Reference - difference between academic and game A.I [AI and computer games]
 
 \subsection{Computer Graphics previously getting more attention}
 
-Companies in the games industr who utilize game A.I. (which today is the vast majoirty) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
+Companies in the games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
 
 \subsection{AI getting more attention now}
 
 Emerging though is the idea that as users become accustomed to high quality graphics, developers will need something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
 
-There has already been some notable examples such as the (name of the A.I technique from F.E.A.R) from F.E.A.R which used (describe the A.I. technique briefly), the game gained much aclaim and is referenced as a good example of game A.I. by the industry and others.
+There has already been some notable examples such as the (name of the A.I technique from F.E.A.R) from F.E.A.R which used (describe the A.I. technique briefly), the game gained much acclaim and is referenced as a good example of game A.I. by the industry and others.
 
 With this shift in focus, there is a greater incentive for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
 
 \subsection{Plan Recognition}
 
-Plan recognition definition - plan recongnition is the problem of inferring an agents plans from observations. Charniak, Goldman 1992
+Plan recognition definition - plan recognition is the problem of inferring an agents plans from observations. Charniak, Goldman 1992
 
 When research began
 
@@ -227,7 +229,7 @@ Given these assumptions and B's knowledge of A's cooking abilities we can model 
 \begin{figure}[h]
 \centering
 \includegraphics{images/example-plan-recognition}
-\caption{Root goals are located at the top, sub goals are in middle. and-nodes are represented by an undirected arc across the lines connecting the parent node to its children, or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}
+\caption{Root goals are nodes that have no parent nodes, sub goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children, or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.REPHRASE}
 \label{fig:example-plan-library}
 \end{figure} 
 
@@ -243,7 +245,7 @@ A takes the meat of the packet, now given our assumptions we can conclude that A
 
 \section{Introduction to RISK}
 
-Developed and released by french director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. There exist many variations but the standard version, which this paper is concerned with, is an adversarial environment where players vie to control a fully observable board portraying a static geographical map of the Earth.
+Developed and released by french movie director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. There exist many variations but the standard version, which this paper is concerned with, is an adversarial environment where players vie to control a fully observable board portraying a static geographical map of the Earth.
 
 \subsection{Equipment}
 
@@ -386,7 +388,7 @@ Algorithmic landmark - such as the solution of the game of checkers
 
 In the realm of board games such as chess, there have for many years dominated a number of algorithms such as the:
 
-Minmax Algorithm with Alpha-Beta Pruning
+Min-max Algorithm with Alpha-Beta Pruning
 
 Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], this has been said because the search space for such games is large and that finding the best move would take an unreasonable amount of time (Find a ref for this)
 
@@ -395,68 +397,87 @@ Instead of a brute force method of finding the best alternative the idea of plan
 Main benefit is that responses can be personalized.
 
 This issue prompted research into the development of variants of the original algorithms that could cope but this 
+
 Using these algorithms people like Kabanza are starting to be able to tackle certain aspects which are harder to model?
 
-\chapter{Methodology}
+\chapter{Design}
 
-\section{Design}
+\section{Environment Modelling}
 
-\subsection{Introduction to PHATT}
+\subsection{Actions}
 
-PHATT was published in 2009 by Geib and Goldman. In their paper they presented the central realization of the PHATT approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions he has previously taken". 
-
-They went on to introduce a model of plan execution based on the notion of \textit{pending sets} of actions. They defined a pending set as the actions an agent could take based on the actions that the agent had already performed, calling it "actions that are pending execution by the agent".
-
-In summary, plan execution according to PHATT was modelled as the following process. An agent would first choose a goal, then a set of plans to achieve that goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set. This would result in some actions being added to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until
-
-Following their new model of plan execution Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs} by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
-
-Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
-
-\centerline{
-\textit{Pr(exp}|\textit{obs)} = \textit{Pr(exp} $\wedge$ \textit{obs)} / \textit{Pr(obs)}
-}
-
-They then (as other practical Bayesian systems do) exploited the equivalent formulae\newline
-
-\centerline{
-\textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
-}
-
-This they described as the conditional probability of the specific explanation $exp_0$ being computed by dividing the probability of that explanation and the observations by the sum of the probability mass associated with al of the possible explanations.
-
-For an exact specification of PHATT and its probability model please refer to [ref].
-
-\subsubsection{Computing an Explanation's Probability}
-
-To go on to compute \textit{Pr(exp} $\wedge$ \textit{obs)} according to Geib and Goldman's paper, requires three probabilistic features:\newline
+In RISK the key actions players perform are:
 
 \begin{itemize}
 \item
-The probability of the root goal.
+Attacking a Territory.
 \item
-The probability of choosing each sub goal.
+Defending a Territory.
 \item
-The probability of picking an action from the pending set.\newline
+Occupying a Territory.
+\item
+Losing a Territory.
+\item
+Reinforcing a Territory.
+\item
+Moving armies into a Territory.
+\newline
 \end{itemize}
 
-Each of these features are multiplied together in the following manner:\newline
+Each action must be modelled in a manner that contributes towards explanations of a player's behaviour.
 
-\centerline{
-\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{P}(\textit{goals})\textit{P}(\textit{plans}|\textit{goals})\textit{P}(\textit{obs}|\textit{exp})
-}
+\subsubsection{Attacking and Defending}
 
-The probability of a given explanation is then calculated by multiplying together the priors for each goal, the probabilities of each of the sub goals, and the probability of the observed actions being chosen.
+By owning a territory a player can successful or unsuccessfully defend it. 
 
-For a full specification of how to compute an explanation probability please refer to [ref]
+Any territory a player does not own can be successfully or unsuccessfully attacked.
 
-With an idea of the operation of PHATT now in mind it is now necessary to design PHATT to operate in RISK.
+The actions of attacking and defending a territory only ever occur together and so given the previously defined outcomes of a battle, these can be modelled as follows:
 
-\subsection{Environment Modelling}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Occupied Continent} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
+\hline 
+SuccessfulAttack & Yes & the best indication of a players intention \\ 
+\hline 
+FailedAttack & Yes & is a clear message of the intention of a player to occupy that territory and therefore should be considered a consistent action though given a less weight than that of a successful attack due to the nature of success and failure. \\ 
+\hline 
+SuccessfulDefence & Yes & Players defending a country is a sign that they have invested in interest in that territory \\ 
+\hline 
+FailedDefence & No & inconsistent because a player would successfully defend \\ 
+\end{tabular}
+\caption{Modelling Attack and Defence Actions}
+\label{table:attack-defend-modelling}
+\end{table}
 
-\subsubsection{Territory}
+CRITICISM - ASSUMPTIONS ARE NOT ALWAYS TRUE BECAUSE OF NON-DETERMINISTIC NATURE OF BATTLES!
 
-As territories are a vital part of the RISK environmen it is necesarry to define  model. contribute to several different sub goals they require a model. The data structure of a territory contains a number of important items.
+\subsubsection{Reinforce}
+
+To \textit{reinforce} a territory is the act of placing an army in that territory. The reinforce actions that a particular player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
+
+For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{lost}$ is lost by $p$ (it is attacked and then occupied by another player), its corresponding reinforce action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{occupied}$ is occupied by $P$ then a reinforce action for $T_{occupied}$ is added to the players pending set at turn $t+1$.\newline
+
+\subsubsection{Movement}
+
+Movement is the action of a player $p$ moving armies from one territory $T_{1}$ that they occupy, to another adjacent territory $T_{2}$ they occupy.
+
+The pending set actions is neighbouring countries where a player has more than one army.
+
+Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
+
+Capturing effectively the impact of movement of armies to a Territory 
+A list of available attack actions are created for each player and based on what they do a probability is calculated.
+
+\subsection{Territory}
+
+As territories are a vital part of the RISK environment it is necessary to define  model. contribute to several different sub goals they require a model. The data structure of a territory contains a number of important items.
+
+By owning a Territory a player can perform a number of actions.
+
+Each Territory is modelled as a state. Each state has a number available actions which together form its associated pending set.
 
 The name of the territory
 The actions available by owning this territory.
@@ -465,18 +486,15 @@ The actions available by owning this territory.
 
 T = Territory Object
 
-In the form of the pending set of that Territory and the countries name C = { TerritoryName, PS }
+In the form of the pending set of that Territory and the countries name T = { TerritoryName, PS }
 
-By owning a Territory a player can perform a number of actions.
-Each Territory is modelled as a state. Each state has a number available actions which together form its associated pending set.
-
-\subsubsection{Continent}
+\subsection{Continent}
 
 Each continent C contain several territories T. Therefore the data structure can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
 
 $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
 
-\subsubsection{Player}
+\subsection{Player}
 
 The term \textit{Player} can be used inter changeably with the term agent that was introduced in previous descriptions. A data structure of a player must contain a number of things:
 
@@ -490,7 +508,52 @@ Each player must be manageable.
 
 The active pending set of an agent is decided \textit{a priori} based on the territories a player owns.
 
-\subsection{Explanation Modelling}
+\section{PHATT Modelling}
+
+\subsection{Introduction to PHATT}
+
+PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of the PHATT approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
+
+They went on to introduce a model of plan execution based on the notion of \textit{pending sets} of actions. They defined a pending set as the actions an agent could take based on the actions that the agent had already performed, calling it "actions that are pending execution by the agent".
+
+In summary, plan execution according to PHATT was modelled as the following. An agent would first choose a root goal, then a set of plans to achieve that root goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set. This would result in some actions being added to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as the the agent concluding the root goal had been achieved.
+
+From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
+
+Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
+
+\centerline{
+\textit{Pr(exp}|\textit{obs)} = \textit{Pr(exp} $\wedge$ \textit{obs)} / \textit{Pr(obs)}
+}
+
+They then (as other practical Bayesian systems do) exploited the equivalent formulae\newline
+
+\centerline{
+\textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
+}
+
+This they described as the conditional probability of the specific explanation $exp_0$ being computed by dividing the probability of that explanation and the observations by the sum of the probability mass associated with all possible explanations.
+
+\subsubsection{Computing an Explanation's Probability}
+
+To go on to compute \textit{Pr(exp} $\wedge$ \textit{obs)} required three probabilistic features:\newline
+
+\begin{itemize}
+\item
+The probability of the root goal.
+\item
+The respective probabilities of choosing any sub goals.
+\item
+The probabilities of picking actions from the agents pending set.\newline
+\end{itemize}
+
+The probability of a given explanation is then calculated by multiplying together the priors for each goal, the probabilities of each of the sub goals, and the probability of the observed actions being chosen as follows:\newline
+
+\centerline{
+\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{P}(\textit{goals})\textit{P}(\textit{plans}|\textit{goals})\textit{P}(\textit{obs}|\textit{exp})
+}
+
+\subsection{RISK Explanation Modelling}
 
 \subsubsection{Root Goals}
 
@@ -526,60 +589,7 @@ As mission cards are handed out to players' at random, the prior probability of 
 
 For root goals that involve occupying atleast two continents it follows by definition that the sub goals of that root goal is occupying each continent. Two root goals allow an option to occupy a continent of choice provided they also occupy two particular continents. These two types of root goals therefore make the occupation of any single continent part of atleast one mission card.
 
-\subsubsection{Actions}
-
-In RISK the key actions players perform are:
-
-\begin{itemize}
-\item
-Attacking a Territory.
-\item
-Defending a Territory.
-\item
-Occupying a Territory.
-\item
-Losing a Territory.
-\item
-Reinforcing a Territory.
-\item
-Moving armies into a Territory.
-\newline
-\end{itemize}
-
-Each of these must be modelled in a manner that contributes towards explanations of the players behaviour.
-
-\textbf{Attacking and Defending}
-
-The actions of attacking and defending a territory only ever occur together and so given the outcomes of a battle, the actions of attacking and defending can be modelled as consistent or inconsistent towards achieving a root goal as follows:
-
-SuccessfulAttack - the best indication of a player intention
-
-FailedAttack - is a clear message of the intention of a player to occupy that territory and therefore should be considered a consistent action though given a less weight than that of a successful attack due to the nature of success and failure.
-
-SuccessfulDefence - another good indication of 
-
-FailedDefence - inconsistent because a player would successfully defend 
-
-\textbf{Reinforce}
-
-To \textit{reinforce} a territory is the act of placing an army in a territory. The reinforce actions that a particular player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
-
-For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{new}$ is lost by $P$ (it is attacked and then occupied by another player), its corresponding reinforce action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{other}$ is gained by $P$ then a reinforce action for $T_{other}$ is added to the players pending set at turn $t+1$.\newline
-
-\textbf{Movement}
-
-Movement is the action of a player $p$ moving armies from one territory $T_{1}$ that they occupy, to another adjacent territory $T_{2}$ they occupy.
-
-The pending set is 
-
-The pending set actions is neighbouring countries where a player has more than one army.
-
-Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
-
-Capturing effectively the impact of movement of armies to a Territory 
-A list of available attack actions are created for each player and based on what they do a probability is calculated.
-
-\subsubsection{Explanations}
+\subsubsection{Explanation Modelling}
 
 An explanation must be designed to contain all the necessary data required to compute its probability.
 
