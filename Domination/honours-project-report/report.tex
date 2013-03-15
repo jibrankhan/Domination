@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{algorithm2e}
+\usepackage{array}
 
 \begin{document}
 
@@ -90,11 +91,13 @@ With this shift in focus, there is a greater incentive for the continued develop
 
 Plan recognition definition - plan recognition is the problem of inferring an agents plans from observations. Charniak, Goldman 1992
 
-When research began
+Research in plan recogniton began in the (find out)
 
 \subsection{Applications of Plan Recognition}
 
-How it is used
+According to Nate Blaylock a few of the most prominent of the application of plan recognition 
+
+User modelling, multi agent interaction and natural language processing
 
 Currently plan recognition applications range from computer security to help systems (more detail).
 
@@ -239,7 +242,7 @@ A takes bread out of its packet and toasts the burger bun, looking at the plan l
 
 Each of these explanations are equally likely at this point.
 
-A takes the meat of the packet, now given our assumptions we can conclude that A's plan is too cook beef hamburgers. At this point B can conclude that they will be getting a ham burger for dinner.
+A takes the meat of the packet, now given our assumptions we can conclude that A's plan is to cook beef hamburgers as A does not change his plan. In this way B has recognised A's plan.
 
 \newpage
 
@@ -286,7 +289,7 @@ Domination & Players aim to conquer a certain number of territories, \\
 \hline 
 Mission & Each player is given a single unique mission card. A mission card describes a state they must reach e.g. Occupy North America and Africa, for the rest of the game this is their \textit{root goal} which only they know. In order to win they can either complete this root goal or eliminate all other players. \\ 
 \hline 
-Capital Risk & Each player is given a Capital territory and to win a player must capture all other Capital territories. \\ 
+Capital Risk & Each player is given a Capital territory and to win a player must occupy all other Capital territories. \\ 
 \hline
 \end{tabular} 
 \newline
@@ -406,7 +409,7 @@ Using these algorithms people like Kabanza are starting to be able to tackle cer
 
 \subsection{Actions}
 
-In RISK the key actions players perform are:
+In RISK the actions players perform are:
 
 \begin{itemize}
 \item
@@ -421,44 +424,48 @@ Losing a Territory.
 Reinforcing a Territory.
 \item
 Moving armies into a Territory.
-\newline
+\item
+Moving armies out of a Territory.
 \end{itemize}
 
-Each action must be modelled in a manner that contributes towards explanations of a player's behaviour.
+Each action must be modelled in a manner that contributes towards explaning a player's behaviour.
 
 \subsubsection{Attacking and Defending}
 
-By owning a territory a player can successful or unsuccessfully defend it. 
+Any territory a player does not own but is adjacent to a territory that a player does own, can be successfully or unsuccessfully attacked. Additionally by occupying a territory a player can successful or unsuccessfully defend it.
 
-Any territory a player does not own can be successfully or unsuccessfully attacked.
+Defence can be seen as a 'passive' action because an attack is required before a defence can occur. In that way it is only inconsistent with the explanations it is directly related to, 
+
+Attack is a choice and when a player chooses to attack a territory they have chosen not to attack another territory therefore is consistent with the mission that is affects but is inconsistent with all that it does not.
 
 The actions of attacking and defending a territory only ever occur together and so given the previously defined outcomes of a battle, these can be modelled as follows:
 
+MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTENT ACTION
+
 \begin{table}[ht]
 \centering
-\begin{tabular}{|c|c|}
+\begin{tabular}{|c|c|p{8cm}|}
 \hline 
-\textbf{Occupied Continent} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
+\textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-SuccessfulAttack & Yes & the best indication of a players intention \\ 
+SuccessfulAttack & Yes & Arguably the best indication of a players plan in mission card explanations is the territories they attack and successful attacks is in itself the best outcome. \\ 
 \hline 
-FailedAttack & Yes & is a clear message of the intention of a player to occupy that territory and therefore should be considered a consistent action though given a less weight than that of a successful attack due to the nature of success and failure. \\ 
+FailedAttack & Yes & Is indictive of a playes intention to occupy a territory though is less significant than a successfull attack.\\ 
 \hline 
-SuccessfulDefence & Yes & Players defending a country is a sign that they have invested in interest in that territory \\ 
+SuccessfulDefence & Yes & Players investing in the defence of a territory is a strong sign that they have an plan involving that territory. \\ 
 \hline 
-FailedDefence & No & inconsistent because a player would successfully defend \\ 
+FailedDefence & No & This is an inconsistent action because a player would not allow a territory to be lost of it is important to their plan. \\ 
+\hline
 \end{tabular}
 \caption{Modelling Attack and Defence Actions}
 \label{table:attack-defend-modelling}
 \end{table}
 
-CRITICISM - ASSUMPTIONS ARE NOT ALWAYS TRUE BECAUSE OF NON-DETERMINISTIC NATURE OF BATTLES!
-
 \subsubsection{Reinforce}
 
 To \textit{reinforce} a territory is the act of placing an army in that territory. The reinforce actions that a particular player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
 
-For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{lost}$ is lost by $p$ (it is attacked and then occupied by another player), its corresponding reinforce action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{occupied}$ is occupied by $P$ then a reinforce action for $T_{occupied}$ is added to the players pending set at turn $t+1$.\newline
+For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{lost}$ is lost by $p$ (it is attacked and then occupied by another player), its corresponding reinforce action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{occupied}$ is occupied by $P$ then a reinforce action for $T_{occupied}$ is added to the players pending set at turn $t+1$
 
 \subsubsection{Movement}
 
@@ -468,19 +475,9 @@ The pending set actions is neighbouring countries where a player has more than o
 
 Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
 
-Capturing effectively the impact of movement of armies to a Territory 
-A list of available attack actions are created for each player and based on what they do a probability is calculated.
-
 \subsection{Territory}
 
-As territories are a vital part of the RISK environment it is necessary to define  model. contribute to several different sub goals they require a model. The data structure of a territory contains a number of important items.
-
-By owning a Territory a player can perform a number of actions.
-
-Each Territory is modelled as a state. Each state has a number available actions which together form its associated pending set.
-
-The name of the territory
-The actions available by owning this territory.
+Territories form a vital part of the RISK environment and it is necessary to define a model for them. Each Territory is modelled as a state and by owning Each state has a number available actions which together form that territories associated pending set.
 
 (Diagram of territory and associated actions)
 
@@ -490,7 +487,7 @@ In the form of the pending set of that Territory and the countries name T = { Te
 
 \subsection{Continent}
 
-Each continent C contain several territories T. Therefore the data structure can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
+Each continent $C$ contain's atleast two territories $T$ and so can be modelled simply as a tuple of the name of the continent and the set of territories that are contained in that continent.
 
 $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
 
@@ -509,8 +506,6 @@ Each player must be manageable.
 The active pending set of an agent is decided \textit{a priori} based on the territories a player owns.
 
 \section{PHATT Modelling}
-
-\subsection{Introduction to PHATT}
 
 PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of the PHATT approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
 
@@ -534,9 +529,9 @@ They then (as other practical Bayesian systems do) exploited the equivalent form
 
 This they described as the conditional probability of the specific explanation $exp_0$ being computed by dividing the probability of that explanation and the observations by the sum of the probability mass associated with all possible explanations.
 
-\subsubsection{Computing an Explanation's Probability}
+\subsection{Computing an Explanation's Probability}
 
-To go on to compute \textit{Pr(exp} $\wedge$ \textit{obs)} required three probabilistic features:\newline
+To go on to compute \textit{Pr(exp} $\wedge$ \textit{obs)} requires three probabilistic features:\newline
 
 \begin{itemize}
 \item
@@ -645,11 +640,38 @@ Each of these are considered as possible explanations of a players behaviour.
 
 In this section is presented the pseudo code of the most significant operations of the plan recognition agent.
 
+\subsubsection{Building the Set of Explanations}
+
+\begin{pseudocode}[ruled]{GenerateExplanationList}{-}
+\begin{algorithm}[H]
+\ForAll {C $\in$ CL}{
+
+	\ForAll{E $\in$ EL}{
+
+		\If{C \textbf{is} subGoal $of$ E}{
+
+			\ForAll{T $\in$ CT}{
+
+				\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
+				\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
+				\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
+				\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
+
+				\textit{addAction}(MovementT) to \textit{playerPendingSet}
+			}
+		}
+	}
+}
+\end{algorithm}
+\end{pseudocode}
+
+Though this is an n operation, it only needs to be done once at the beginning of the game after the map has been loaded.
+
 \subsubsection{Explanation Computation}
 
 Given a list of all environment explanations \textit{EL} each player is simply allocated a single instance of each explanation. Since we know that the computation of the probability of an explanation requires three features two of which we have already, we then require a function that generates all the available actions a player can perform to facilitate computing the probability of a player choosing that action.
 
-\begin{pseudocode}{GeneratePendingSet}{AT}
+\begin{pseudocode}[ruled]{GeneratePendingSet}{AT}
 \begin{algorithm}[H]
 \textit{playerPendingSet} = $\emptyset$
 
@@ -680,29 +702,26 @@ After initializing an empty \textit{newPendingSet} which is a data structure tha
 
 Before proceeding onto the next territory another loop is done through the list of neighbours \textit{N} of that territory with a simple if-then-else statement. If the player owns that territory a \textit{MovementT} action is added to the newPendingSet, if not then a \textit{OccupyT} action is added to the newPendingSet, at the end the newPendingSet is returned and can be cached if necessary.
 
-\begin{pseudocode}{ComputeExplanation}{-}
+\begin{pseudocode}[ruled]{ComputeExplanation}{-}
 \begin{algorithm}[H]
 
 \textit{expProbability} = 1.0
 
-\ForAll {R $\in$ RGL}{
-
-	\textit{expProbability} = \textit{R} * \textit{expProbability}	
-}
-
-\ForAll {S $\in$ SGL}{
-	\textit{expProbability} = \textit{M} * \textit{expProbability}
-}
+\textit{expProbability} = \textit{R} * \textit{expProbability}	
 
 \ForAll {O $\in$ OL}{
 	\textit{expProbability} = \textit{computeObservationProbability(O)} * \textit{expProbability}
 }
 
+explanationProbability = normalized{explanationProbability}
+
 \Return{explanationProbability}
 \end{algorithm}
 \end{pseudocode}
 
-The above pseudo code details the computation of an explanation. After initialising the float \textit{explanationProbability} three loops are performed. The first loop multiplies each of the root goal probabilities $R$ with explanationProbability. The second loop multiplies each of the sub goal probabilities $S$ by explanationProbability. Using the method computeObservationProbability, the last loop computes the probability of choosing each observation $O$ by the player from the list of observations $OL$.
+The above pseudo code details the computation of an explanation. After initialising the float \textit{explanationProbability} we multiply the explanation by the root probability. Now according to the specifications of PHATT we would normally multiply the method choice probabilties next but since each player has the full set of explanations we have eliminated the need for this term as we measure each explanation against the observations.
+
+Using the method computeObservationProbability, the last loop computes the probability of choosing each observation $O$ by the player from the list of observations $OL$.
 
 The computeObservationProbability method is a vitally important operation as it computes one of the three probabilistic features required by the algorithm.
 
@@ -726,14 +745,17 @@ NOT COMPLETE
 
 Write up explanation of new method of probability distribution.
 
-\subsubsection{Explanation Evaluation Stage}
+\subsubsection{Example of Operation}
 
-For each agent
-For each agents explanation choose the highest probability.
+This can be clarified with an example.
 
-\subsection{Example of Operation}
+As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Thefore the probability of a single explanation is 1/12.
 
-Use example written up before.
+There are no method choice probabilties as at all times we consider the full set of explanations.
+
+Imagine the risk map every territory has a border with every other territory
+
+That the probability of a player choosing to attack any territory is uniform.
 
 \subsection{Conceptual Issues}
 
@@ -771,9 +793,11 @@ Because of sensitivity had to make up a more evenly weighted automatic system.
 
 \subsection{Summary}
 
-\section{Implementation}
+The summary for this section is
 
-\subsection{Modifications to Open Source Project}
+\chapter{Implementation}
+
+\section{Modifications to Open Source Project}
 
 Initialised plan recognition agent and processing class within 
 
@@ -794,7 +818,7 @@ Attacks
 Army Movements
 \end{itemize}
 
-\subsection{System Construction}
+\section{System Construction}
 
 The architecture of the plan recognition agent was built around an existing open source RISK game developed by Yura Mamyrin (verify name) and (anyone else) in (year?)[ref - to website?].
 
@@ -813,24 +837,25 @@ Through the modelling process the realization that I could utilize the data stru
 
  was could use mirrored those that had already been defined by the developers of the open source game.
 
-\subsection{System Architecture Concepts}
+\section{System Architecture Concepts}
 
-\subsubsection{Event Driven System}
+\subsection{Event Driven System}
 
 Plan recognition agent receives event objects that are fired from the previously mentioned modifications to the original source code. These event objects contain important information from the environment which the plan recognition agent uses to compute the likelihood of explanations.
 
-\subsubsection{Component Based Class Architecture}
+\subsection{Component Based Class Architecture}
 
 Classes are modelled as an aggregation of components allowing
 
-\subsubsection{Google Guava Libraries}
+\subsection{Google Guava Libraries}
 
 Extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
 
-\subsubsection{Replaying Games}
+\subsection{Replaying Games}
+
 Used an inbuilt tool by the developer of saying "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
 
-\subsection{Summary}
+\section{Summary}
 
 \chapter{Evaluation}
 
@@ -838,7 +863,7 @@ Two questions to answer,
 
 1) Does it work?
 
-It performs better than randomly guessing but it is still a low probability
+It performs better than randomly guessing but still at a low probability
 
 2) If not why?
 
@@ -882,7 +907,12 @@ Explained to players the rules of the game
 
 How did I get the data?
 
-Collect data
+After the game is finished I automatically generate a log file that allows me to reply a game exactly and a csv file recording features such as:
+
+a players actual mission
+player explanation probabilites over time
+which player won and lost
+
 Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
 
 For games of A.I. players used a program called Autohotkey which allowed me to create macros which automated the data collection process.
@@ -896,6 +926,8 @@ What did I tell players?
 Explained to players the rules of the game, that they had two ways of winning the game, either by eliminating their opponents or by completing their mission card. Had the mantra, "play to win"
 
 Experimental De-briefing, asked players to give a summary of what they had done in the game, recorded this down to use for comparison purposes at a later point.
+
+Used python scripts to analyse the csv files.
 
 \section{Experimental Findings}
 
@@ -958,6 +990,8 @@ Probability model changed to proportion of consistent actions * 0.1
 1 - proportion for inconsistent probability
 
 Due to time constraints did not use it. Why?
+
+CRITICISM - ASSUMPTIONS ARE NOT ALWAYS TRUE BECAUSE OF NON-DETERMINISTIC NATURE OF BATTLES! AND OF MULTIPLE ATTACKS PER TURN FOR PLAYERS
 
 \section{Final}
 
