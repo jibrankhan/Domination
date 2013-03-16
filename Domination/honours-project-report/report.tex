@@ -91,7 +91,7 @@ With this shift in focus, there is a greater incentive for the continued develop
 
 Plan recognition definition - plan recognition is the problem of inferring an agents plans from observations. Charniak, Goldman 1992
 
-Research in plan recogniton began in the (find out)
+Research in plan recognition began in the (find out)
 
 \subsection{Applications of Plan Recognition}
 
@@ -248,7 +248,7 @@ A takes the meat of the packet, now given our assumptions we can conclude that A
 
 \section{Introduction to RISK}
 
-Developed and released by french movie director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. There exist many variations but the standard version, which this paper is concerned with, is an adversarial environment where players vie to control a fully observable board portraying a static geographical map of the Earth.
+Developed and released by french film director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. There exist many variations but the standard version, which this paper is concerned with, is an adversarial environment where players vie to control a fully observable board portraying a static geographical map of the Earth.
 
 \subsection{Equipment}
 
@@ -268,15 +268,18 @@ A board portraying a geographical map of the earth.
 Different coloured tokens called \textit{armies}.
 \item
 Two sets of regular six-sided dice.
+\item
+A deck of forty four cards.
 \end{itemize}
 
 \subsection{Rules}
 
-Games are played following a set of rules which define the purpose of each piece of equipment and how they relate to each other. The following is a brief summary of these rules.
-
 The board is divided into forty two \textit{territories}. Each territory is a representation of a real country on Earth. These territories are partitioned into six \textit{continents} usually corresponding to their real continent grouping.
 
-Armies are placed in countries. If a player places an army in a territory, this declares that the player \textit{occupies} that territory. Players must have at least one army placed in a territory they own at all times. Players can then choose to place as many additional armies as they wish in that territory.
+For each territory is a corresponding card, in addition to the name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is then award a card and no more than one in that turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing.
+Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
+
+Armies are placed in territories. If a player places an army in a territory, this declares that the player \textit{occupies} that territory. Players must have at least one army placed in a territory they own at all times. Players can choose to place as many additional armies as they wish in that territory.
 
 How a player wins largely depends on the \textit{Game mode}. Game modes significantly impact the behaviour of players and is decided by players beforehand. In standard RISK they are:
 \newline
@@ -409,7 +412,7 @@ Using these algorithms people like Kabanza are starting to be able to tackle cer
 
 \subsection{Actions}
 
-In RISK the actions players perform are:
+Excluding card related actions, in RISK the only actions players perform are:
 
 \begin{itemize}
 \item
@@ -428,19 +431,32 @@ Moving armies into a Territory.
 Moving armies out of a Territory.
 \end{itemize}
 
-Each action must be modelled in a manner that contributes towards explaning a player's behaviour.
+Each action must be modelled in a manner that contributes towards explanations of a player's behaviour.
 
 \subsubsection{Attacking and Defending}
 
-Any territory a player does not own but is adjacent to a territory that a player does own, can be successfully or unsuccessfully attacked. Additionally by occupying a territory a player can successful or unsuccessfully defend it.
+Though players can perform several attacks per turn, they can only attack one territory at a time. This therefore means that players must choose what to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. This choice provides the opportunity of insight into a players plan.
 
-Defence can be seen as a 'passive' action because an attack is required before a defence can occur. In that way it is only inconsistent with the explanations it is directly related to, 
+The attack action is thus modelled as a singular event that is either \texti{consistent} or \textit{inconsistent} with explanations of a player behaviour.
 
-Attack is a choice and when a player chooses to attack a territory they have chosen not to attack another territory therefore is consistent with the mission that is affects but is inconsistent with all that it does not.
+For example, given three explanations:
 
-The actions of attacking and defending a territory only ever occur together and so given the previously defined outcomes of a battle, these can be modelled as follows:
+\begin{enumerate}
+\item
+Occupy North America and Australia.
+\item
+Occupy North America and Africa.
+\item
+Occupy Asia and South America.
+\end{enumerate}
 
-MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTENT ACTION
+The event of successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3.
+
+Defence can be seen as a 'passive' action, this is because an attack is required before a defence can occur. In that way it is modelled as only inconsistent with the explanations it is directly related to.
+
+PROBLEM - DUE TO NORMALIZING OTHER EXPLANATIONS BECOME MORE LIKELY AS A BI-PRODUCT, TRIED TO AVOID THIS BY MAKING PROBABILITIES MULTIPLICATIONS MINIMAL.
+
+The actions of attacking and defending a territory only ever occur together and so given the outcomes of a battle, attack and defence can be decomposed into the following:
 
 \begin{table}[ht]
 \centering
@@ -450,7 +466,7 @@ MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTE
 \hline 
 SuccessfulAttack & Yes & Arguably the best indication of a players plan in mission card explanations is the territories they attack and successful attacks is in itself the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Is indictive of a playes intention to occupy a territory though is less significant than a successfull attack.\\ 
+FailedAttack & Yes & Is indicative of a players intention to occupy a territory though is less significant than a successful attack.\\ 
 \hline 
 SuccessfulDefence & Yes & Players investing in the defence of a territory is a strong sign that they have an plan involving that territory. \\ 
 \hline 
@@ -477,13 +493,17 @@ Initially the movement model was based on the attack model where the smaller the
 
 \subsection{Territory}
 
-Territories form a vital part of the RISK environment and it is necessary to define a model for them. Each Territory is modelled as a state and by owning Each state has a number available actions which together form that territories associated pending set.
+Territories form a vital part of the RISK environment and so are necessary model. Each Territory is modelled as an entity and by owning a territory one gains access to a set of actions which together form that territories associated action set.
 
-(Diagram of territory and associated actions)
+The set of actions for all territories are:
 
-T = Territory Object
+successfulAttack - occupying the territory failedAttack,
+successfulDefence - successfully defending $T$
+failedDefence - failing to defend $T$
+movement - moving armies in to $T$
+reinforce - placing armies in $T$
 
-In the form of the pending set of that Territory and the countries name T = { TerritoryName, PS }
+A key concept in the design of this agent, is that by combining the action sets the current pending set of a player is decided \textit{a priori} based on the territories a player owns.
 
 \subsection{Continent}
 
@@ -502,8 +522,6 @@ Each player must have a list of actions they have taken.
 Each player must maintain a list of explanations that has been assigned to them.
 
 Each player must be manageable.
-
-The active pending set of an agent is decided \textit{a priori} based on the territories a player owns.
 
 \section{PHATT Modelling}
 
@@ -719,7 +737,7 @@ explanationProbability = normalized{explanationProbability}
 \end{algorithm}
 \end{pseudocode}
 
-The above pseudo code details the computation of an explanation. After initialising the float \textit{explanationProbability} we multiply the explanation by the root probability. Now according to the specifications of PHATT we would normally multiply the method choice probabilties next but since each player has the full set of explanations we have eliminated the need for this term as we measure each explanation against the observations.
+The above pseudo code details the computation of an explanation. After initialising the float \textit{explanationProbability} we multiply the explanation by the root probability. Now according to the specifications of PHATT we would normally multiply the method choice probabilities next but since each player has the full set of explanations we have eliminated the need for this term as we measure each explanation against the observations.
 
 Using the method computeObservationProbability, the last loop computes the probability of choosing each observation $O$ by the player from the list of observations $OL$.
 
@@ -747,11 +765,11 @@ Write up explanation of new method of probability distribution.
 
 \subsubsection{Example of Operation}
 
-This can be clarified with an example.
+These concepts can be tied together with an arbitrary example.
 
-As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Thefore the probability of a single explanation is 1/12.
+As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
 
-There are no method choice probabilties as at all times we consider the full set of explanations.
+There are no method choice probabilities as at all times we consider the full set of explanations.
 
 Imagine the risk map every territory has a border with every other territory
 
@@ -875,17 +893,19 @@ Three types of games to test the algorithm in:
 
 \subsection{AI Games}
 
-The open source project has built in AI to play for the mission game mode. This provided an opporunity for the collection fo a large number of data samples to test the performance of the plan recognition agent.
+The open source project has built in AI to play for the mission game mode. This provided an opportunity for the collection of a large number of data samples to test the performance of the plan recognition agent.
 
 \subsection{Constrained Play}
 
 Where players are asked only to perform actions that are consistent with their root goal.
 
-This is defined as given a situation a player can only:
+This is defined as given a situation a player only:
 
-attack a country that is directly consistent with their plan or a country that is on the shortest route to a country that is directly consistent with their plan.
-reinforce a country that is directly consistent with their plan or a country that is on the shortest route to a country that is directly consistent with their plan.
-move armies to a country that is directly consistent with their plan or a country that is on the shortest route to a country that is directly consistent with their plan.
+Chooses to attack a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+
+Reinforces a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+
+Moves armies to a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 
 Why did I choose to do this?
 
@@ -910,24 +930,28 @@ How did I get the data?
 After the game is finished I automatically generate a log file that allows me to reply a game exactly and a csv file recording features such as:
 
 a players actual mission
-player explanation probabilites over time
+player explanation probabilities over time
 which player won and lost
 
 Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
 
 For games of A.I. players used a program called Autohotkey which allowed me to create macros which automated the data collection process.
 
-Using an system built by the original developers was able to easily reproduce a game for the purposes of evaluating the algorithm.
+Using an system built by the original developers was able to easily reproduce a game if necessary for the purposes of evaluating the algorithm under different conditions.
+
+Used python scripts to analyse the csv files.
 
 Questions to answer:
 
 What did I tell players?
 
-Explained to players the rules of the game, that they had two ways of winning the game, either by eliminating their opponents or by completing their mission card. Had the mantra, "play to win"
+Explained to players the rules of the game and that there were two primary methods of winning in mission risk either by eliminating their opponents or by completing their mission card player were instructed to "Play to Win"
 
-Experimental De-briefing, asked players to give a summary of what they had done in the game, recorded this down to use for comparison purposes at a later point.
+\textbf{Experimental De-briefing}
 
-Used python scripts to analyse the csv files.
+At the end of the experiment I asked players to give a short high-level summary of their plan, this included when their plan
+
+asked players to give a summary of what they had done in the game, recorded this down to use for comparison purposes at a later point.
 
 \section{Experimental Findings}
 
@@ -961,6 +985,8 @@ Would you recommend doing something, what would you recommend not doing?
 
 TALK ABOUT THE OUTCOMES OF YOUR WORK!
 
+NATURE OF GAME PROBLEM
+
 Inherent issues with PHATT is unable to deal with deception[ref] and often players must perform actions unrelated to a plan to be able to complete their plan e.g survive, have to conquer other non-relevant continents, this confuses the algorithm.
 
 The problem of prediction by association, this is where an explanation which involves a continent that a player has not done anything at all to becoming likely because the explanation contains two other continents that the algorithm has observed many things happen to.
@@ -973,9 +999,9 @@ Using the plan recognition software given a programs a plan to detect how well a
 
 Using genetic algorithms to optimize this by looking at the numbers returned by the plan recognition algorithm and choosing the best configuration that survived and won.
 
-\section{Critism}
+\section{Criticism}
 
-Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. This attack is the most significant action in the vironment and this we can intuitvely tell is not true.
+Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. This attack is the most significant action in the environment and this we can intuitively tell is not true.
 
 \chapter{Conclusions}
 
@@ -991,11 +1017,29 @@ Probability model changed to proportion of consistent actions * 0.1
 
 Due to time constraints did not use it. Why?
 
+MODEL AUGMENTATION
+
 CRITICISM - ASSUMPTIONS ARE NOT ALWAYS TRUE BECAUSE OF NON-DETERMINISTIC NATURE OF BATTLES! AND OF MULTIPLE ATTACKS PER TURN FOR PLAYERS
+
+MODEL PROBLEM - MODEL HAS BEEN BUILT NOT TAKING THE EFFECTS OF OTHER PLAYERS INTO ACCOUNT AS WELL
+
+MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTENT ACTION
+
+MODEL PROBLEM - DOES NOT TAKE EFFECT OF TRADING CARDS INTO ACCOUNT
+
+MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY
+
+MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAKE INTO ACCOUNT CONTINENT ENTRY TERRITORIES
+
+MODEL PROBLEM - ATTACK, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
+
+MODEL PROBLEM - Talk about other players using a players own territory as a blocking mechanism to prevent another player attacking.
+
+A platform has been setup for further improvements of the model.
 
 \section{Final}
 
-I would dare to say that I believe that the benefit of such systems would be such much that they would be considering cheating if used in events such as official tournaments.
+I would dare to say that I believe that the benefit of such systems would be to such an extent that it would be considering cheating if used in events such as official tournaments.
 
 \chapter{Appendix}
 
@@ -1005,16 +1049,15 @@ Write up class descriptions with a diagram here
 
 \section{Experimental Results}
 
-Findings
-
 Table of correct predictions and incorrect predictions in each game type.
+
+Table of correctness (an percentage of correct predictions by end of game for all data)
 
 Graph of the line of the correct explanation for each agent in a single graph.
 
 GRAPHS to make
-Probabilities of each explanation over rounds, how to combine into a single graph?
-
-Table of correctness (an percentage of correct predictions by end of game for all data)
+Probabilities of each explanation over rounds, a graph for average correctness for each game type.
+How to make this graph meaningful?
 
 % use the following and \cite{} as above if you use bibtex
 % otherwise generate bibtem entries
