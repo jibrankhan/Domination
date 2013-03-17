@@ -71,7 +71,7 @@ Artificial Intelligence for games or commonly termed 'game A.I.' has been an are
 
 \subsection{Difference between academic and game AI}
 
-As the primary goal of academia is to further human understanding or solve a particuarily complex problem and so the scope of developed A.I. techniques from academia are usually general in their application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as general and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
+As the primary goal of academia is to further human understanding or solve a particularly complex problem and so the scope of developed A.I. techniques from academia are usually general in their application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as general and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
 
 Reference - difference between academic and game A.I [AI and computer games]
 
@@ -433,11 +433,17 @@ Moving armies out of a Territory.
 
 Each of these action must be modelled in a manner that contributes towards explanations of a player's behaviour.
 
-\subsubsection{Attacking and Defending}
+\subsubsection{Attacking}
 
-Though players can perform several attacks per turn, they can only attack one territory at a time. This means that players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. Being able to observer these choices provides the opportunity of insight into a players plan.
+Though players can perform several attacks during their turn, they can only attack one territory at a time. This means that players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. By modelling these choices, it provides an avenue to infer a players plan.
 
-The attack action is thus modelled as a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour.
+The attack pending set of a players' attack actions for any turn $t$ is to either successfully or unsuccessfully attack territories they do not own that are adjacent to atleast one territory that they own which also contains atleast two armies.
+
+If a player successfully attacks a territory then the adjacent territories that they do not own of that territory are added to their attack pending set.
+
+If they lose a territory due to another players successful attack then the attack actions of the adjacent territories that they do not own of that territory are removed from their attack pending set for their next turn. 
+
+The attack action thus modelled as a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour.
 
 For example, given three explanations:
 
@@ -450,13 +456,25 @@ Occupy North America and Africa.
 Occupy Asia and South America.
 \end{enumerate}
 
-Successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3.
+Successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3 or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall. The likelihood of each explanation is lowered or raised by the following means. 
 
-Defence can be seen as a 'passive' action, this is because an attack is required before a defence can occur. In that way it is modelled as only inconsistent with the explanations it is directly related to.
+Given the consistent attack actions of each explanation and a list of the territories a player owns one can collect a set of the territories that a player can attack and a set of territories a player can attack that is also consistent with that explanation.
 
-PROBLEM - DUE TO NORMALIZING OTHER EXPLANATIONS BECOME MORE LIKELY AS A BI-PRODUCT, TRIED TO AVOID THIS BY MAKING PROBABILITIES MULTIPLICATIONS MINIMAL.
+Therefore one can compute the probability of choosing the attack action as follows:
 
-The actions of attacking and defending a territory only ever occur together and so given the outcomes of a battle, attack and defence can be decomposed into the following:
+(Look up in code how I did it)
+
+Applying this formulae to each explanation respectively, the number computed is then multiplied by the probability of the explanation.
+
+The formulae makes the assumption that any territories including ones that only contain one army can attack and though this is not technically true due to the nature of RISK where players are not restricted in any way on where they may place their armies a player could easily place an army on a territory that contained only a single army and attack another territory.
+
+\subsubsection{Defending}
+
+Defending as opposed to attacking can be seen as a 'passive' action, as an attack is required before a defence can occur. In that way it is modelled rather as only inconsistent with the explanations it is directly related to and inconsequential to those it is not.
+
+Given the three explanations from the previous section. If a defence were to occur in a territory in North America, this would not have any effect on the probability of explanation 3. 
+
+The actions of attacking and defending a territory only ever occur together and so given the outcomes of a battle, the actions of attack and defence can be decomposed into the following:
 
 \begin{table}[ht]
 \centering
@@ -464,11 +482,11 @@ The actions of attacking and defending a territory only ever occur together and 
 \hline 
 \textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-SuccessfulAttack & Yes & Arguably the best indication of a players plan in mission card explanations is the territories they attack and successful attacks is in itself the best outcome. \\ 
+SuccessfulAttack & Yes & Arguably the best indication of a players plan is the territories they attack and successful attacks is in itself the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Is indicative of a players intention to occupy a territory though is less significant than a successful attack.\\ 
+FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indicative of a players intention to occupy that territory and therefore is a consistent action.\\ 
 \hline 
-SuccessfulDefence & Yes & Players investing in the defence of a territory is a strong sign that they have an plan involving that territory. \\ 
+SuccessfulDefence & Yes & A successful defence of a territory may be purely based on chance, but is more likely when a player has invested armies in the defence of that territory and so provides a good sign that they have an plan involving that territory. \\ 
 \hline 
 FailedDefence & No & This is an inconsistent action because a player would not allow a territory to be lost of it is important to their plan. \\ 
 \hline
@@ -741,6 +759,8 @@ The above pseudo code details the computation of an explanation. After initialis
 Using the method computeObservationProbability, the last loop computes the probability of choosing each observation $O$ by the player from the list of observations $OL$.
 
 The computeObservationProbability method is a vitally important operation as it computes one of the three probabilistic features required by the algorithm.
+
+Normalizing the explanation probability at the end of each operation is also vital as this prevents the probability of any explanation from dropping to zero at a near exponential rate.
 
 \subsubsection{Equal Distribution}
 
@@ -1022,7 +1042,7 @@ MODEL AUGMENTATION
 
 CRITICISM - ASSUMPTIONS ARE NOT ALWAYS TRUE BECAUSE OF NON-DETERMINISTIC NATURE OF BATTLES! AND OF MULTIPLE ATTACKS PER TURN FOR PLAYERS
 
-MODEL PROBLEM - MODEL HAS BEEN BUILT NOT TAKING THE EFFECTS OF OTHER PLAYERS INTO ACCOUNT AS WELL
+MODEL PROBLEM - MODEL HAS BEEN BUILT NOT TAKING THE EFFECTS OF OTHER PLAYERS INTO ACCOUNT EFFECTIVELY
 
 MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTENT ACTION
 
@@ -1035,6 +1055,14 @@ MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAK
 MODEL PROBLEM - ATTACK, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
 
 MODEL PROBLEM - Talk about other players using a players own territory as a blocking mechanism to prevent another player attacking.
+
+PROBLEM - DUE TO NORMALIZING OTHER EXPLANATIONS BECOME MORE LIKELY AS A BI-PRODUCT, TRIED TO AVOID THIS BY MAKING PROBABILITIES MULTIPLICATIONS MINIMAL.
+
+PROBLEM - MODEL NEGLECTS THE MULTI-ATTACK NATURE OF THE GAME, SUCCESSFUL DEFENCE MODEL REALLY ONLY APPLIES FOR SINGLE ATTACKS PER TURN
+
+MODEL IS TOO LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
+
+Augmentation possibility - look at where player has already placed armies and figure out a probability based on what they placing tells you.
 
 A platform has been setup for further improvements of the model.
 
