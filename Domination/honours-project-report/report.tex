@@ -46,6 +46,8 @@ This paper presents the design and implementation of a plan recognition agent ba
 
 \section*{Acknowledgements}
 
+Supervisor, parents, C.Geib, friends, people who helped with results
+
 (Distinguish between academic and non-academic work.)
 
 \tableofcontents
@@ -65,13 +67,11 @@ John David Funge, Artificial Intelligence for Computer Games
 
 \subsection{What is game AI}
 
-Termed game Artificial Intelligence I.the application of A.I. techniques to games has been an area of research ever since the beginning of significant work on A.I. 
-
-Game A.I. is a term used used to differentiate A.I. applied in games from academic AI, and though the techniques have typically come from academia it is significantly different in both its scope and application.
+Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. since the 1940's. It is different from academic in a number of ways and though the techniques for game A.I. have typically come from academia it is significantly different in both its scope and application.
 
 \subsection{Difference between academic and game AI}
 
-As the primary goal of academia is to further human understanding the scope of developed A.I. techniques are preferably general in application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as general and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
+As the primary goal of academia is to further human understanding or solve a particuarily complex problem and so the scope of developed A.I. techniques from academia are usually general in their application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as general and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
 
 Reference - difference between academic and game A.I [AI and computer games]
 
@@ -307,7 +307,7 @@ Reinforcement
 \item
 Attack
 \item
-Movement
+Army Movement
 \newline
 \end{enumerate}
 
@@ -431,13 +431,13 @@ Moving armies into a Territory.
 Moving armies out of a Territory.
 \end{itemize}
 
-Each action must be modelled in a manner that contributes towards explanations of a player's behaviour.
+Each of these action must be modelled in a manner that contributes towards explanations of a player's behaviour.
 
 \subsubsection{Attacking and Defending}
 
-Though players can perform several attacks per turn, they can only attack one territory at a time. This therefore means that players must choose what to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. This choice provides the opportunity of insight into a players plan.
+Though players can perform several attacks per turn, they can only attack one territory at a time. This means that players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. Being able to observer these choices provides the opportunity of insight into a players plan.
 
-The attack action is thus modelled as a singular event that is either \texti{consistent} or \textit{inconsistent} with explanations of a player behaviour.
+The attack action is thus modelled as a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour.
 
 For example, given three explanations:
 
@@ -450,7 +450,7 @@ Occupy North America and Africa.
 Occupy Asia and South America.
 \end{enumerate}
 
-The event of successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3.
+Successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3.
 
 Defence can be seen as a 'passive' action, this is because an attack is required before a defence can occur. In that way it is modelled as only inconsistent with the explanations it is directly related to.
 
@@ -497,7 +497,8 @@ Territories form a vital part of the RISK environment and so are necessary model
 
 The set of actions for all territories are:
 
-successfulAttack - occupying the territory failedAttack,
+successfulAttack - occupying the territory
+failedAttack - occupy 
 successfulDefence - successfully defending $T$
 failedDefence - failing to defend $T$
 movement - moving armies in to $T$
@@ -594,9 +595,7 @@ Eliminate a player.
 \newline
 \end{itemize}
 
-The above list all the mission cards from the RISK environment, due to the modelling choices which will be presented later, a subset where the mission involved conquering continents were focused on as due to the high level of overlap other missions which would likely hamper predictions.
-
-As mission cards are handed out to players' at random, the prior probability of each root goal is 1/\textit{N} where \textit{N} is the number of mission cards.
+The above list all the mission cards from the RISK environment, a subset of these where the mission involved occupying continents were focused on.
 
 \subsubsection{Sub Goals}
 
@@ -766,6 +765,8 @@ Write up explanation of new method of probability distribution.
 \subsubsection{Example of Operation}
 
 These concepts can be tied together with an arbitrary example.
+
+As mission cards are handed out to players' at random, the prior probability of each root goal is 1/\textit{N} where \textit{N} is the number of mission cards.
 
 As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
 

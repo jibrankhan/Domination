@@ -18,7 +18,7 @@
 \contentsline {section}{\numberline {2.2}Introduction to RISK}{10}
 \contentsline {subsection}{\numberline {2.2.1}Equipment}{10}
 \contentsline {subsection}{\numberline {2.2.2}Rules}{10}
-\contentsline {subsubsection}{\numberline {2.2.2.1}Initial Setup}{11}
+\contentsline {subsubsection}{\numberline {2.2.2.1}Initial Setup}{12}
 \contentsline {subsubsection}{\numberline {2.2.2.2}Reinforcement Phase}{12}
 \contentsline {subsubsection}{\numberline {2.2.2.3}Attack Phase}{12}
 \contentsline {subsubsection}{\numberline {2.2.2.4}Army Movement Phase}{13}
@@ -28,7 +28,7 @@
 \contentsline {subsection}{\numberline {3.1.1}Actions}{15}
 \contentsline {subsubsection}{\numberline {3.1.1.1}Attacking and Defending}{15}
 \contentsline {subsubsection}{\numberline {3.1.1.2}Reinforce}{16}
-\contentsline {subsubsection}{\numberline {3.1.1.3}Movement}{16}
+\contentsline {subsubsection}{\numberline {3.1.1.3}Movement}{17}
 \contentsline {subsection}{\numberline {3.1.2}Territory}{17}
 \contentsline {subsection}{\numberline {3.1.3}Continent}{17}
 \contentsline {subsection}{\numberline {3.1.4}Player}{17}
@@ -65,11 +65,11 @@
 \contentsline {section}{\numberline {5.2}Experimental Format}{30}
 \contentsline {section}{\numberline {5.3}Data Collection}{30}
 \contentsline {section}{\numberline {5.4}Experimental Findings}{31}
-\contentsline {section}{\numberline {5.5}Outcomes}{31}
-\contentsline {section}{\numberline {5.6}Critism}{32}
+\contentsline {section}{\numberline {5.5}Outcomes}{32}
+\contentsline {section}{\numberline {5.6}Criticism}{32}
 \contentsline {chapter}{\numberline {6}Conclusions}{33}
 \contentsline {section}{\numberline {6.1}Future Work}{33}
-\contentsline {section}{\numberline {6.2}Final}{33}
+\contentsline {section}{\numberline {6.2}Final}{34}
 \contentsline {chapter}{\numberline {7}Appendix}{35}
 \contentsline {section}{\numberline {7.1}Class Diagram}{35}
 \contentsline {section}{\numberline {7.2}Experimental Results}{35}
