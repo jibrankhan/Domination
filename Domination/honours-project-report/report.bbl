@@ -1,3 +1,9 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{Geib:2009:PPR:1550966.1551246}
+Christopher~W. Geib and Robert~P. Goldman.
+\newblock A probabilistic plan recognition algorithm based on plan tree
+  grammars.
+\newblock {\em Artif. Intell.}, 173(11):1101--1132, July 2009.
 
 \end{thebibliography}

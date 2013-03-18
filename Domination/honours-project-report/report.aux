@@ -1,28 +1,28 @@
 \relax 
+\citation{Geib:2009:PPR:1550966.1551246}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivations}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}What is game AI}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Difference between academic and game AI}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Computer Graphics previously getting more attention}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}AI getting more attention now}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.5}Plan Recognition}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.6}Applications of Plan Recognition}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.7}Application of plan recognition algorithms to games}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Difference between academic and game AI}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Computer Graphics previously getting more attention}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}AI getting more attention now}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}Plan Recognition}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.5}Applications of Plan Recognition}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.6}Application of plan recognition algorithms to games}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Artificial Intelligence and Board Games}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Aims}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.4}Objectives}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.5}Hypothesis}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.6}Paper Structure}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}Paper Structure}{5}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Previous Work in Plan Recognition}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}An Example of Plan Recognition}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Root goals are nodes that have no parent nodes, sub goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children, or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.REPHRASE}}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Root goals are nodes that have no parent nodes. Sub-goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children. Or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}}{9}}
 \newlabel{fig:example-plan-library}{{2.1}{9}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Introduction to RISK}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Equipment}{10}}
@@ -34,75 +34,78 @@
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Occupied Continent Army Reinforcement Bonus}}{12}}
 \newlabel{table:continent-bonus}{{2.1}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2.3}Attack Phase}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2.4}Army Movement Phase}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2.4}Movement Phase}{13}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Why Plan Recognition in Board Games}{14}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Design}{15}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Environment Modelling}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Actions}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1.1}Attacking and Defending}{15}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Modelling Attack and Defence Actions}}{16}}
-\newlabel{table:attack-defend-modelling}{{3.1}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1.2}Reinforce}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1.3}Movement}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Territory}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Continent}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Player}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}PHATT Modelling}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Computing an Explanation's Probability}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}RISK Explanation Modelling}{19}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2.1}Root Goals}{19}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2.2}Sub Goals}{20}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2.3}Explanation Modelling}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Prediction Agent Pseudo Code}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.1}Building the Set of Explanations}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.2}Explanation Computation}{22}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.3}Equal Distribution}{23}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.4}Simple Weighted Distribution}{23}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.5}Proportional Weighted Distribution}{24}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.6}Example of Operation}{24}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Conceptual Issues}{24}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4.1}Probability Assignment}{25}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Summary}{25}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction to PHATT}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Environment Modelling}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Root Goals}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Sub-Goals}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Actions}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.1}Attacking}{17}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Modelling Attack Actions}}{19}}
+\newlabel{table:attack-defend-modelling}{{3.1}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.2}Defending}{20}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Modelling Defence Actions}}{20}}
+\newlabel{table:attack-defend-modelling}{{3.2}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.3}Reinforce}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3.4}Movement}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Continent}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Territory}{21}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Territory Action Set}}{21}}
+\newlabel{table:continent-bonus}{{3.3}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}Player}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Explanations}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Pseudo Code}{23}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{23}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.2}Explanation Computation}{24}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.3}Method of Action Weighting}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.4}Example of Operation}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Conceptual Issues}{26}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.1}Probability Assignment}{26}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Summary}{27}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation}{29}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Modifications to Open Source Project}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}System Construction}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}System Architecture Concepts}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Event Driven System}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Component Based Class Architecture}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Google Guava Libraries}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Replaying Games}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Summary}{28}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Evaluation}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Modifications to Open Source Project}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}System Construction}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}System Architecture Concepts}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Event Driven System}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Component Based Class Architecture}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Google Guava Libraries}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Replaying Games}{30}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Summary}{30}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Evaluation}{31}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Experiments}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}AI Games}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Constrained Play}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Free Play}{30}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Experimental Format}{30}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Data Collection}{30}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Experimental Findings}{31}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Outcomes}{32}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Criticism}{32}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusions}{33}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Experiments}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}AI Games}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Constrained Play}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Free Play}{32}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Experimental Format}{32}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Data Collection}{32}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Experimental Findings}{33}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Outcomes}{34}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Criticism}{34}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusions}{35}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Future Work}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Final}{34}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Future Work}{35}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Final}{36}}
 \bibstyle{plain}
 \bibdata{mybibfile}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Appendix}{35}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Appendix}{37}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Class Diagram}{35}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Experimental Results}{35}}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{37}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Class Diagram}{37}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Experimental Results}{37}}
+\bibcite{Geib:2009:PPR:1550966.1551246}{1}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{39}}

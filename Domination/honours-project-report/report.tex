@@ -39,14 +39,14 @@
 \date{\today}
 
 \abstract{
-This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009[ref to work] called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agents goal is to attempt to infer the unknown plan of a player from observations of their behaviour in the RISK environment.
+This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agents goal is to attempt to infer the unknown plan of a hostile agent from observations of their behaviour in the RISK environment.
 }
 
 \maketitle
 
 \section*{Acknowledgements}
 
-Supervisor, parents, C.Geib, friends, people who helped with results
+Michael for agreeing to supervise project, parents, family for support, C.Geib for advice and taking his time to meet with me, friends, people who helped with results
 
 (Distinguish between academic and non-academic work.)
 
@@ -60,18 +60,16 @@ Supervisor, parents, C.Geib, friends, people who helped with results
 \textit{AI has the potential to become the new driving force behind computer game innovation.}
 \end{flushleft}
 \begin{flushleft}
-John David Funge, Artificial Intelligence for Computer Games
+John David Funge, Artificial Intelligence for Computer Games, An Introduction
 \end{flushleft}
 
 \section{Motivations}
 
-\subsection{What is game AI}
-
-Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. since the 1940's. It is different from academic in a number of ways and though the techniques for game A.I. have typically come from academia it is significantly different in both its scope and application.
+Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia it is notably different in both its scope and application.
 
 \subsection{Difference between academic and game AI}
 
-As the primary goal of academia is to further human understanding or solve a particularly complex problem and so the scope of developed A.I. techniques from academia are usually general in their application. Game A.I. on the other hand is built to create the illusion of intelligence and provide good game play for those playing the game, it therefore needs not be as general and is built with a singular purpose in mind which is usually considered to be any kind of control problem in a game.
+The primary goal of academia is to further human understanding often by solving particularly complex problems and as a result the scope of developed A.I. techniques from academia are usually more general in their application. On the other hand game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
 
 Reference - difference between academic and game A.I [AI and computer games]
 
@@ -83,29 +81,35 @@ Companies in the games industry who utilize game A.I. (which today is the vast m
 
 Emerging though is the idea that as users become accustomed to high quality graphics, developers will need something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
 
-There has already been some notable examples such as the (name of the A.I technique from F.E.A.R) from F.E.A.R which used (describe the A.I. technique briefly), the game gained much acclaim and is referenced as a good example of game A.I. by the industry and others.
+There has already been some examples of successful games such as F.E.A.R which Goal-Oriented Action Planning which utilized STRIPS style planning techniques[ref], the game gained much acclaim and is referenced as a good example of game A.I. by the industry and others.
 
-With this shift in focus, there is a greater incentive for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
+With this shift in focus, there grows greater incentives and more opportunities for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
 
 \subsection{Plan Recognition}
 
-Plan recognition definition - plan recognition is the problem of inferring an agents plans from observations. Charniak, Goldman 1992
+Plan recognition is the problem of inferring an agents plans from observations. [Charniak, Goldman 1992]
 
-Research in plan recognition began in the (find out)
+Research in plan recognition began in the 
 
 \subsection{Applications of Plan Recognition}
 
-According to Nate Blaylock a few of the most prominent of the application of plan recognition 
+In Nate Blaylock paper he highlighted a few of the most prominent applications of plan recognition:
 
-User modelling, multi agent interaction and natural language processing
+User modelling, 
 
-Currently plan recognition applications range from computer security to help systems (more detail).
+Multi agent interaction 
+
+natural language processing
 
 \subsection{Application of plan recognition algorithms to games}
 
+Plan recognition has received attention due to its potential to provide personalized responses across the various filed of its application and game are no different.
+
 Plan recognition can perform automated game analysis which can be used by players to improve their performance. 
 
-Plan recognition can lead to AI responses that are personalized.
+(FIND AN EXAMPLE) Although not the case yet plan recognition could be potentially be applied to games, leading to responses that are personalized based on for example a players strategy preferences.
+
+Combination with planner systems. To ideally recognise a plan and create a counter plan. The applications for such systems are endless.
 
 \section{Artificial Intelligence and Board Games}
 
@@ -188,7 +192,7 @@ They defined each as:
 \newline
 \end{itemize}
 
-In 1986 Kautz and Allen published a paper titled "Generalized Plan Recognition"[ref] which set the frame work of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
+In 1986 Kautz and Allen published a paper titled "Generalized Plan Recognition"[ref] which set the frame work of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
 
 It was Charniak and Goldman[ref - 1991 paper] who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic rather than logic based approach to  plan recognition using a Bayesian model. Their research continues to be popular (check statement?) in many avenues of research including its application in games.
 
@@ -200,11 +204,11 @@ More recently Synnaeve and Bessiere [ref - RTS Bayesian model plan recognition i
 
 We can introduce common concepts, assumptions and the process of plan recognition with an example of an agent attempting to infer the plan of another agent in a non-adversarial environment. 
 
-Person A is cooking a meal for Person B, in other words A has a single \textit{root goal} (a state they wish to reach), such as cooked beef hamburgers. This root goal can be decomposed into a number \textit{sub goals} of such as cook meat patties or \textit{actions} such as make meat patties  which can be further decomposed into single actions
+Person A is cooking a meal for Person B, in other words A has a single \textit{root goal} (a state they wish to reach), such as cooked beef hamburgers. This root goal can be decomposed into a number \textit{sub-goals} of such as cook meat patties or \textit{actions} such as make meat patties  which can be further decomposed into single actions
 
 A wanting to surprise B, will not tell B what his root goal is. B cannot know what A is thinking but B must then somehow infer what A's root goal is likely to be by \textit{observing} A cook in this way A's behaviour can be modelled as a Hidden Markov Model. Person B then models A's plan as follows. 
 
-Person B assumes A is a rational person, and that A has a \textit{plan} to achieve this root goal. Whatever A's root goal is, it can likely be decomposed into \textit{sub goals} such as cook hamburger meat. These sub goals can then be broken down into basic \textit{actions} to achieve those sub goals, such as take hamburger meat out of packet. An important point to note is that these basic actions are not limited to only being part of a sub goal.
+Person B assumes A is a rational person, and that A has a \textit{plan} to achieve this root goal. Whatever A's root goal is, it can likely be decomposed into \textit{sub-goals} such as cook hamburger meat. These sub-goals can then be broken down into basic \textit{actions} to achieve those sub-goals, such as take hamburger meat out of packet. An important point to note is that these basic actions are not limited to only being part of a sub goal.
 
 To simplify this example, let us make some assumptions:
 
@@ -227,22 +231,26 @@ A has no preferences of what to cook, in other words given a choice the probabil
 One A does not change cooking plan.
 \end{itemize}
 
-Given these assumptions and B's knowledge of A's cooking abilities we can model a \textit{plan library}, which is the set of all of A's possible cooking plans in the decomposed form that was previously detailed.
+Given these assumptions and B's knowledge of A's cooking abilities we can model the set of all of As plans, following the notation set by Geib and Goldman in their paper on PHATT.
 
 \begin{figure}[h]
 \centering
 \includegraphics{images/example-plan-recognition}
-\caption{Root goals are nodes that have no parent nodes, sub goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children, or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.REPHRASE}
+\caption{Root goals are nodes that have no parent nodes. Sub-goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children. Or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}
 \label{fig:example-plan-library}
 \end{figure} 
 
-The top level goals or root goals are cooked vegetarian (veg) burgers and cooked beef burger. These root goals can be broken down into sub goals, for the case of cooked veg burger the sub goals are cooked veg pattie mix and prepare burger buns.
+A top level or root goal is cooked vegetarian (veg) burgers, if it is an and node then its children represent what needs to done to accomplish that root goal. So inorder for the cooked veg burgers to be accomplished its sub-goals, cooked veg pattie mix and prepare burger buns need to have been accomplished. 
+
+CREATE AN OR OPTION BY ADDING TAKE CHICKEN FILLET
+
+The sub-goal prepare burger buns has various actions that are required to be performed in-order to achieve the sub-goal.
 
 A takes bread out of its packet and toasts the burger bun, looking at the plan library we have two possible \textit{explanations} for As behaviour, cooked veg burger or cooked beef hamburger.
 
 Each of these explanations are equally likely at this point.
 
-A takes the meat of the packet, now given our assumptions we can conclude that A's plan is to cook beef hamburgers as A does not change his plan. In this way B has recognised A's plan.
+A takes the meat of the packet, now given our assumptions we can conclude that A's plan is to cook beef hamburgers as A does not change his plan. In this way B has recognised A's plan thus performed the process of plan recognition.
 
 \newpage
 
@@ -307,7 +315,7 @@ Reinforcement
 \item
 Attack
 \item
-Army Movement
+Movement
 \newline
 \end{enumerate}
 
@@ -379,7 +387,7 @@ A \textit{successfulAttack} by the attacker who occupies the territory and a \te
 
 A player can perform any number of attacks from any territory they own during their turn, provided they have more than one army in the territory they choose to attack from.
 
-\subsubsection{Army Movement Phase}
+\subsubsection{Movement Phase}
 
 When either the player chooses to end the attacking phase or can no longer attack because they do not occupy a territory which contains more than one army their movement phase begins.
 
@@ -408,7 +416,92 @@ Using these algorithms people like Kabanza are starting to be able to tackle cer
 
 \chapter{Design}
 
+\section{Introduction to PHATT}
+
+PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of the PHATT approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
+
+They went on to introduce a model of plan execution based on the notion of \textit{pending sets} of actions. They defined a pending set as the actions an agent could take based on the actions that the agent had already performed, calling it "actions that are pending execution by the agent".
+
+In summary, plan execution according to PHATT was modelled as the following. An agent would first choose a root goal, then a set of plans to achieve that root goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set. This would result in some actions being added to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as the the agent concluding the root goal had been achieved.
+
+From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
+
+Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
+
+\centerline{
+\textit{Pr(exp}|\textit{obs)} = \textit{Pr(exp} $\wedge$ \textit{obs)} / \textit{Pr(obs)}
+}
+
+They then (as other practical Bayesian systems do) exploited the equivalent formulae\newline
+
+\centerline{
+\textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
+}
+
+This they described as the conditional probability of the explanation $exp_0$ being computed by dividing the conditional probability of that explanation by the sum of the probability mass associated with all possible explanations.
+
+\subsection{Computing an Explanation's Probability}
+
+To compute \textit{Pr(exp} $\wedge$ \textit{obs)} requires three probabilistic features:\newline
+
+\begin{itemize}
+\item
+The probability of the root goal.
+\item
+The respective probabilities of choosing any sub-goals.
+\item
+The probabilities of picking actions from the agents pending set.\newline
+\end{itemize}
+
+The probability of an explanation is then calculated by multiplying together the probability of the root goal, the probabilities of each sub goal, and the probability of the observed actions being chosen as follows: REPHRASE\newline
+
+\centerline{
+\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{P}(\textit{goals})\textit{P}(\textit{plans}|\textit{goals})\textit{P}(\textit{obs}|\textit{exp})
+}
+
 \section{Environment Modelling}
+
+\subsection{Root Goals}
+
+The root goals of the RISK environment are the mission cards, these are:
+
+\begin{itemize}
+\item
+Occupy Europe, Australia and one other continent.
+\item
+Occupy Europe, South America and one other continent.
+\item
+Occupy North America and Africa.
+\item
+Occupy North America and Australia.
+\item
+Occupy Asia and South America.
+\item
+Occupy Asia and Africa.
+\item
+Occupy 24 territories.
+\item
+Occupy 18 territories and occupy each with atleast two troops.
+\item
+Eliminate a player.
+\newline
+\end{itemize}
+
+A subset of these where the mission involved occupying continents were chosen to be the focus of this paper. These mission cards are of two types:
+
+\textit{Two-Continent}: Players must occupy two explicitly named continents.
+
+\textit{Two-Continent+1}: Players must occupy two explicitly named continents and another of their choice.
+
+\subsection{Sub-Goals}
+
+The root goals of the RISK environment can be decomposed to form a set of sub-goals. 
+
+For \textit{Two-Continent} root goals, the sub-goals of that root goal are occupying each continent. 
+
+For \textit{Two-Continent+1} root goals which requires players to allow an option to occupy a continent of choice, provided they also occupy two explicitly named continents. 
+
+These two types of root goals therefore make the occupation of any single continent a sub goal of atleast one root goal.
 
 \subsection{Actions}
 
@@ -437,7 +530,7 @@ Each of these action must be modelled in a manner that contributes towards expla
 
 Though players can perform several attacks during their turn, they can only attack one territory at a time. This means that players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. By modelling these choices, it provides an avenue to infer a players plan.
 
-The attack pending set of a players' attack actions for any turn $t$ is to either successfully or unsuccessfully attack territories they do not own that are adjacent to atleast one territory that they own which also contains atleast two armies.
+The pending set of a players' attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own that are adjacent to atleast one territory that they own which also contains atleast two armies.
 
 If a player successfully attacks a territory then the adjacent territories that they do not own of that territory are added to their attack pending set.
 
@@ -460,21 +553,23 @@ Successfully occupying a territory in North America would be consistent with the
 
 Given the consistent attack actions of each explanation and a list of the territories a player owns one can collect a set of the territories that a player can attack and a set of territories a player can attack that is also consistent with that explanation.
 
-Therefore one can compute the probability of choosing the attack action as follows:
+Therefore one can compute the probability of choosing an attack action as follows:
+
+CONSISTENT ACTIONS ARE SLIGHTLY WEIGHTED MORE THAN INCONSISTENT DESCRIBE SIMPLE WEIGHTING MECHANISM
 
 (Look up in code how I did it)
 
 Applying this formulae to each explanation respectively, the number computed is then multiplied by the probability of the explanation.
 
-The formulae makes the assumption that any territories including ones that only contain one army can attack and though this is not technically true due to the nature of RISK where players are not restricted in any way on where they may place their armies a player could easily place an army on a territory that contained only a single army and attack another territory.
+This formulae makes three assumptions:
 
-\subsubsection{Defending}
+That any territories including ones that only contain one army can attack. Though this is not technically true, due to the nature of RISK where players are not restricted in any way on where they may place their armies during the reinforcement phase a player can practically attack any territory they do not own but have a territory they own adjacent to it at the start of their turn.
 
-Defending as opposed to attacking can be seen as a 'passive' action, as an attack is required before a defence can occur. In that way it is modelled rather as only inconsistent with the explanations it is directly related to and inconsequential to those it is not.
+That the likelihood of consistent attack actions are uniformly distributed.
 
-Given the three explanations from the previous section. If a defence were to occur in a territory in North America, this would not have any effect on the probability of explanation 3. 
+That the likelihood of inconsistent attack actions are uniformly distributed.
 
-The actions of attacking and defending a territory only ever occur together and so given the outcomes of a battle, the actions of attack and defence can be decomposed into the following:
+Having defined the outcome of attacks as either successful or unsuccessful this means that attacks can also be decomposed into the following: 
 
 \begin{table}[ht]
 \centering
@@ -485,50 +580,89 @@ The actions of attacking and defending a territory only ever occur together and 
 SuccessfulAttack & Yes & Arguably the best indication of a players plan is the territories they attack and successful attacks is in itself the best outcome. \\ 
 \hline 
 FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indicative of a players intention to occupy that territory and therefore is a consistent action.\\ 
+\hline
+\end{tabular}
+\caption{Modelling Attack Actions}
+\label{table:attack-defend-modelling}
+\end{table}
+
+Failed consistent attacks will have a lower weighting than successful consistent attacks
+
+\newpage
+
+\subsubsection{Defending}
+
+Defending as opposed to attacking can be seen as a 'passive' action, an attack is required before a defence can occur. In that way it can be modelled rather as only inconsistent with the explanations it is directly related to and, as an act in itself, near inconsequential to those it is not.
+
+For example, given the three explanations from the previous section. If a defence were to occur in a territory in North America, this should have minimal effect on the likelihood of explanation 3. 
+
+Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can also be decomposed into the following: 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|p{8cm}|}
+\hline 
+\textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
 SuccessfulDefence & Yes & A successful defence of a territory may be purely based on chance, but is more likely when a player has invested armies in the defence of that territory and so provides a good sign that they have an plan involving that territory. \\ 
 \hline 
 FailedDefence & No & This is an inconsistent action because a player would not allow a territory to be lost of it is important to their plan. \\ 
 \hline
 \end{tabular}
-\caption{Modelling Attack and Defence Actions}
+\caption{Modelling Defence Actions}
 \label{table:attack-defend-modelling}
 \end{table}
 
 \subsubsection{Reinforce}
 
-To \textit{reinforce} a territory is the act of placing an army in that territory. The reinforce actions that a particular player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
+The reinforce actions that a player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
 
-For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{lost}$ is lost by $p$ (it is attacked and then occupied by another player), its corresponding reinforce action is removed from the players pending set for turn $t+1$. Conversely if another territory $T_{occupied}$ is occupied by $P$ then a reinforce action for $T_{occupied}$ is added to the players pending set at turn $t+1$
+For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{l}$ is lost by $p$ (it is attacked then occupied by another player), its corresponding reinforce action is removed from the players pending set for the players turn at $t+1$. Conversely if another territory $T_{o}$ is occupied by $p$ then a reinforce action for $T_{o}$ is added to the players pending set at turn $t$.
 
 \subsubsection{Movement}
 
-Movement is the action of a player $p$ moving armies from one territory $T_{1}$ that they occupy, to another adjacent territory $T_{2}$ they occupy.
-
-The pending set actions is neighbouring countries where a player has more than one army.
-
-Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
-
-\subsection{Territory}
-
-Territories form a vital part of the RISK environment and so are necessary model. Each Territory is modelled as an entity and by owning a territory one gains access to a set of actions which together form that territories associated action set.
-
-The set of actions for all territories are:
-
-successfulAttack - occupying the territory
-failedAttack - occupy 
-successfulDefence - successfully defending $T$
-failedDefence - failing to defend $T$
-movement - moving armies in to $T$
-reinforce - placing armies in $T$
-
-A key concept in the design of this agent, is that by combining the action sets the current pending set of a player is decided \textit{a priori} based on the territories a player owns.
+The pending set of movement actions of player $p$ is the set of territories a player owns that are adjacent to a territory where player $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory is directly related to.
 
 \subsection{Continent}
 
-Each continent $C$ contain's atleast two territories $T$ and so can be modelled simply as a tuple of the name of the continent and the set of territories that are contained in that continent.
+Each continent contains atleast two territories and so can be modelled simply as a tuple of the name of the continent and the set of territories that are contained in that continent.
 
 $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
+
+\subsection{Territory}
+
+Each territory is modelled as an entity. When a player occupies a territory, the player gains access to a set of actions which together form that territories associated action set.
+
+The set of any territory is:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Action} & \textbf{Description} \\ 
+\hline 
+SuccessfulAttack & Attacking and gaining the territory.\\ 
+\hline 
+FailedAttack & Attacking and failing to gain the territory.\\ 
+\hline 
+SuccessfulDefence & Retaining a territory after an attack.\\ 
+\hline 
+FailedDefence & Losing the territory.\\
+\hline
+Movement & Moving armies in to the territory.\\
+\hline  
+Reinforce & Placing armies in the territory.\\
+\hline 
+\end{tabular}
+\caption{Territory Action Set}
+\label{table:continent-bonus}
+\end{table}
+
+TA is a set of territory actions.
+
+The data structure of a territory therefore is $T$ = \{ territoryName, TA \}
+
+A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} based on the territories a player owns because by combining the action sets of each territory a player owns all the actions a player can do can be captured.
 
 \subsection{Player}
 
@@ -542,104 +676,28 @@ Each player must maintain a list of explanations that has been assigned to them.
 
 Each player must be manageable.
 
-\section{PHATT Modelling}
-
-PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of the PHATT approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
-
-They went on to introduce a model of plan execution based on the notion of \textit{pending sets} of actions. They defined a pending set as the actions an agent could take based on the actions that the agent had already performed, calling it "actions that are pending execution by the agent".
-
-In summary, plan execution according to PHATT was modelled as the following. An agent would first choose a root goal, then a set of plans to achieve that root goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set. This would result in some actions being added to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as the the agent concluding the root goal had been achieved.
-
-From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
-
-Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
-
-\centerline{
-\textit{Pr(exp}|\textit{obs)} = \textit{Pr(exp} $\wedge$ \textit{obs)} / \textit{Pr(obs)}
-}
-
-They then (as other practical Bayesian systems do) exploited the equivalent formulae\newline
-
-\centerline{
-\textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
-}
-
-This they described as the conditional probability of the specific explanation $exp_0$ being computed by dividing the probability of that explanation and the observations by the sum of the probability mass associated with all possible explanations.
-
-\subsection{Computing an Explanation's Probability}
-
-To go on to compute \textit{Pr(exp} $\wedge$ \textit{obs)} requires three probabilistic features:\newline
-
-\begin{itemize}
-\item
-The probability of the root goal.
-\item
-The respective probabilities of choosing any sub goals.
-\item
-The probabilities of picking actions from the agents pending set.\newline
-\end{itemize}
-
-The probability of a given explanation is then calculated by multiplying together the priors for each goal, the probabilities of each of the sub goals, and the probability of the observed actions being chosen as follows:\newline
-
-\centerline{
-\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{P}(\textit{goals})\textit{P}(\textit{plans}|\textit{goals})\textit{P}(\textit{obs}|\textit{exp})
-}
-
-\subsection{RISK Explanation Modelling}
-
-\subsubsection{Root Goals}
-
-The root goals of this environment are the mission cards, these are:
-
-\begin{itemize}
-\item
-Occupy Europe, Australia and one other continent.
-\item
-Occupy Europe, South America and one other continent.
-\item
-Occupy North America and Africa.
-\item
-Occupy North America and Australia.
-\item
-Occupy Asia and South America.
-\item
-Occupy Asia and Africa.
-\item
-Occupy 24 territories.
-\item
-Occupy 18 territories and occupy each with atleast two troops.
-\item
-Eliminate a player.
-\newline
-\end{itemize}
-
-The above list all the mission cards from the RISK environment, a subset of these where the mission involved occupying continents were focused on.
-
-\subsubsection{Sub Goals}
-
-For root goals that involve occupying atleast two continents it follows by definition that the sub goals of that root goal is occupying each continent. Two root goals allow an option to occupy a continent of choice provided they also occupy two particular continents. These two types of root goals therefore make the occupation of any single continent part of atleast one mission card.
-
-\subsubsection{Explanation Modelling}
+\section{Explanations}
 
 An explanation must be designed to contain all the necessary data required to compute its probability.
 
-It therefore must contain these features:
+It therefore contains these features:
 
-A name
-A list of root goals
-A list of method choices
-A list of consistent actions
-A list of inconsistent actions
+The explanation name
+A root goal
+A set of sub-goals
+A set of consistent actions
+A set of inconsistent actions
 
-One may ask that why store inconsistent actions, the model, some actions are not defence actions of a territory that is not in the mission is not inconsistent but would be if we where to use a blank if not consistent then inconsistent AND why include inconsistent actions because there is less overhead than having to search through an entire list of actions
+One might wonder why store inconsistent actions as by definition if an action is not consistent then it is inconsistent. But this is not always the case due to the model. defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions.
 
 RG is the root goal
-MC is method choice
-CA is consistent action
+SG is method choice
+ECA is explanation consistent action
+EIA is explanation inconsistent actions
 
 Explanation data structure is $E$ = \{ explanationName, RL, ML, CA \}
 
-Given the list of root goals and sub goals, the full list of explanations that will be considered are:
+Given the list of root goals and sub-goals, the full list of explanations that will be considered are:
 
 \begin{itemize}
 \item
@@ -666,7 +724,6 @@ Occupy North America and Australia.
 Occupy Asia and South America.
 \item
 Occupy Asia and Africa.
-\newline
 \end{itemize}
 
 Each of these are considered as possible explanations of a players behaviour.
@@ -760,50 +817,41 @@ Using the method computeObservationProbability, the last loop computes the proba
 
 The computeObservationProbability method is a vitally important operation as it computes one of the three probabilistic features required by the algorithm.
 
-Normalizing the explanation probability at the end of each operation is also vital as this prevents the probability of any explanation from dropping to zero at a near exponential rate.
+Normalizing the explanation probability at the end of each operation is also vital as this prevents the probability of any explanation from dropping to zero at a near exponential rate. 
 
-\subsubsection{Equal Distribution}
-
-NOT COMPLETE
-
-This is where each feature of an explanation is modelled as equally likely amongst its alternatives. 
-
-\subsubsection{Simple Weighted Distribution}
-
-NOT COMPLETE
+\subsubsection{Method of Action Weighting}
 
 Following an idea found from an earlier paper by Geib[ref] which proposes a weighting towards consistent actions [ref - new model of plan recognition] that contribute to a plan. A different method of assigning probabilities to pending set actions was deduced.
 
-Actions are separated into consistent and inconsistent actions. A hard coded weight is then equally distributed between each action.
+Actions are separated into consistent and inconsistent actions. 
 
-\subsubsection{Proportional Weighted Distribution}
-
-NOT COMPLETE
-
-Write up explanation of new method of probability distribution.
+WRITE UP SECTION
 
 \subsubsection{Example of Operation}
 
 These concepts can be tied together with an arbitrary example.
 
-As mission cards are handed out to players' at random, the prior probability of each root goal is 1/\textit{N} where \textit{N} is the number of mission cards.
+As mission cards are handed out to players' at random, the prior probability of each root goal is 1/\textit{n} where \textit{n} is the number of mission cards.
 
-As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
+As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Therefore the probability of a single explanation is 1/12 by doing this sub goal probabilities are removed as at all times we consider the full set of explanations.
 
-There are no method choice probabilities as at all times we consider the full set of explanations.
+Introducing some other assumptions:
 
-Imagine the risk map every territory has a border with every other territory
-
-That the probability of a player choosing to attack any territory is uniform.
+The probability of a player choosing to attack any territory is uniform.
+The probability of a player choosing to occupy a continent as a sub-goal is uniform.
+The RISK map has every territory having a border with every other territory.
 
 \subsection{Conceptual Issues}
 
-Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
-
 Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
 
-Narrowing large search space
-Initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions?
+Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
+
+Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
+
+Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
+
+\subsubsection{Probability Assignment}
 
 Calibrating Mechanisms of algorithm
 Uniform distribution
@@ -812,10 +860,6 @@ Weighting based on number of consistent and inconsistent actions available to a 
 
 Manual Simple Weighting
 Positively weighted probabilities towards consistent actions and negatively towards inconsistent actions
-
-Initially had a simple system of choosing a weight to distribute
-
-\subsubsection{Probability Assignment}
 
 Finding
 Equal Distribution does not work very well for simple explanations
@@ -1035,8 +1079,6 @@ Only attack actions have been modelled in a matter
 Probability model changed to proportion of consistent actions * 0.1 
 0.9 - proportion for consistent probability
 1 - proportion for inconsistent probability
-
-Due to time constraints did not use it. Why?
 
 MODEL AUGMENTATION
 
