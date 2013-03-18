@@ -718,8 +718,6 @@ Each of these are considered as possible explanations of a players behaviour.
 
 \subsection{Prediction Agent Pseudo Code}
 
-In this section is presented the pseudo code of the most significant operations of the plan recognition agent.
-
 \subsubsection{Building the Set of Explanations}
 
 During the initialisation of the map, a set of explanations must be built for the environment. This will first require a specification of root goals and sub goals for all the explanations in the environment.
@@ -810,9 +808,45 @@ Filter from totalAttackActions any inconsistent attack actions.
 
 Decide on a \textit{weight} you want to give actions.
 
+\begin{pseudocode}[ruled]{computeObsProb}{weight, }
+\begin{algorithm}[H]
+\textit{playerPendingSet} = \textit{generatePendingSet()}
+
+\textit{playerActionTypeSet} = \textit{filerPendingSet}(playerPendingSet, actionType)
+
+\textit{consistentActionSet} = \textit{
+
+totalActionsCount = size of playerPendingSet
+consistent
+
+\ForAll {T $\in$ AT}{
+
+	\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
+	\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
+	\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
+
+	\ForAll{N $\in$ T}{
+			
+		\eIf {playerOwnsN}{
+
+			\textit{addAction}(MovementT) to \textit{playerPendingSet}
+		}{
+
+			\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
+			\textit{addAction}(SucessfulAttackT) to \textit{playerPendingSet}
+		}
+	}
+
+	\Return{newPendingSet}
+}
+\end{algorithm}
+\end{pseudocode}
+
 \begin{pseudocode}[ruled]{ComputeBaseWeight}{weight, }
 \begin{algorithm}[H]
-\textit{playerPendingSet} = $\emptyset$
+\textit{playerPendingSet} = \textit{generatePendingSet()}
+
+\textit{playerActionTypeSet} = \textit{filerPendingSet}(playerPendingSet, actionType)
 
 \ForAll {T $\in$ AT}{
 
@@ -849,7 +883,7 @@ That the likelihood of inconsistent attack actions are uniformly distributed.
 
 \subsubsection{Computing Explanation Probabilities}
 
-\begin{pseudocode}[ruled]{ComputeExplanation}{Obs}
+\begin{pseudocode}[ruled]{computeExpProb}{Obs}
 \begin{algorithm}[H]
 
 \If{\textbf{not} alreadyIni}{ 
