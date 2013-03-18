@@ -240,17 +240,17 @@ Given these assumptions and B's knowledge of A's cooking abilities we can model 
 \label{fig:example-plan-library}
 \end{figure} 
 
-A top level or root goal is cooked vegetarian (veg) burgers, if it is an and node then its children represent what needs to done to accomplish that root goal. So inorder for the cooked veg burgers to be accomplished its sub-goals, cooked veg pattie mix and prepare burger buns need to have been accomplished. 
+A top level or root goal is cooked vegetarian (veg) burgers, it is an and-node and this means that its children represent what needs to be done by A to accomplish that root goal. 
 
-CREATE AN OR OPTION BY ADDING TAKE CHICKEN FILLET
+Children of or-nodes such as cooked meat patties represent options available to A to accomplish the goal. For example to achieve the goal cook meat patties A could either accomplish cooked chicken patties or cooked beef patties.
 
-The sub-goal prepare burger buns has various actions that are required to be performed in-order to achieve the sub-goal.
+Arrows represent dependencies between nodes. For example to be able to accomplish the action cook beef patties, A must first perform the action Take Beef Patties out of packet.
 
-A takes bread out of its packet and toasts the burger bun, looking at the plan library we have two possible \textit{explanations} for As behaviour, cooked veg burger or cooked beef hamburger.
+Now A first performs the action \textit{Take Burger Bun out of Packet}, then proceeds to \textit{Toast Burger Buns}. At this point looking at the plan library we have two possible \textit{explanations} for As behaviour, cooked veg burger or cooked meat hamburger.
 
-Each of these explanations are equally likely at this point.
+Each of these explanations are equally likely at this point because the actions that have occured so far could be part of either plan.
 
-A takes the meat of the packet, now given our assumptions we can conclude that A's plan is to cook beef hamburgers as A does not change his plan. In this way B has recognised A's plan thus performed the process of plan recognition.
+A then takes the Chicken Patties of the packet now, given our assumptions, we can conclude that A's plan is to cook beef hamburgers as A does not change his plan. In this way B has recognised A's plan thus performed the process of plan recognition.
 
 \newpage
 
@@ -549,25 +549,7 @@ Occupy North America and Africa.
 Occupy Asia and South America.
 \end{enumerate}
 
-Successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3 or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall. The likelihood of each explanation is lowered or raised by the following means. 
-
-Given the consistent attack actions of each explanation and a list of the territories a player owns one can collect a set of the territories that a player can attack and a set of territories a player can attack that is also consistent with that explanation.
-
-Therefore one can compute the probability of choosing an attack action as follows:
-
-CONSISTENT ACTIONS ARE SLIGHTLY WEIGHTED MORE THAN INCONSISTENT DESCRIBE SIMPLE WEIGHTING MECHANISM
-
-(Look up in code how I did it)
-
-Applying this formulae to each explanation respectively, the number computed is then multiplied by the probability of the explanation.
-
-This formulae makes three assumptions:
-
-That any territories including ones that only contain one army can attack. Though this is not technically true, due to the nature of RISK where players are not restricted in any way on where they may place their armies during the reinforcement phase a player can practically attack any territory they do not own but have a territory they own adjacent to it at the start of their turn.
-
-That the likelihood of consistent attack actions are uniformly distributed.
-
-That the likelihood of inconsistent attack actions are uniformly distributed.
+Successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3 or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall.
 
 Having defined the outcome of attacks as either successful or unsuccessful this means that attacks can also be decomposed into the following: 
 
@@ -695,7 +677,7 @@ SG is method choice
 ECA is explanation consistent action
 EIA is explanation inconsistent actions
 
-Explanation data structure is $E$ = \{ explanationName, RL, ML, CA \}
+Explanation data structure is $E$ = \{ explanationName, RG, SG, ECA, EIA \}
 
 Given the list of root goals and sub-goals, the full list of explanations that will be considered are:
 
@@ -734,22 +716,25 @@ In this section is presented the pseudo code of the most significant operations 
 
 \subsubsection{Building the Set of Explanations}
 
+During the initialisation of the map, a set of explanations must be built for the environment. This is done by the following operation: 
+
 \begin{pseudocode}[ruled]{GenerateExplanationList}{-}
 \begin{algorithm}[H]
 \ForAll {C $\in$ CL}{
 
 	\ForAll{E $\in$ EL}{
 
-		\If{C \textbf{is} subGoal $of$ E}{
+		\If{C \textit{isSubGoal} $of$ E}{
 
-			\ForAll{T $\in$ CT}{
+			\ForAll{T $\in$ C}{
 
-				\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
-				\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
-				\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
-				\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
+				\textit{addAction}(ReinforceT) to \textit{ECA}
 
-				\textit{addAction}(MovementT) to \textit{playerPendingSet}
+				\textit{addAction}(MovementT) to \textit{ECA}
+				\textit{addAction}(SuccessfulDefence) to \textit{ECA}
+				\textit{addAction}(FailedAttackT) to \textit{ECA}
+
+				\textit{addAction}(FailedDefenceT) to \textit{EIA}
 			}
 		}
 	}
@@ -757,7 +742,13 @@ In this section is presented the pseudo code of the most significant operations 
 \end{algorithm}
 \end{pseudocode}
 
-Though this is an n operation, it only needs to be done once at the beginning of the game after the map has been loaded.
+isSubGoal is an operation which checks the list of sub-goals and if the name of the current continent of loop is contained in the names of the sub goals of the current explanation then it returns true.
+
+addAction is an operation which adds the action for the respective $T$ to a specified set.
+
+CL is simple list of all continents for the RISK map.
+
+EL is a list of all explanations for the RISK map.
 
 \subsubsection{Explanation Computation}
 
@@ -790,6 +781,64 @@ Given a list of all environment explanations \textit{EL} each player is simply a
 \end{algorithm}
 \end{pseudocode}
 
+\subsubsection{Computing Action Probabilities}
+
+Following an idea found from a paper by Geib which proposes a weighting towards consistent actions [ref - new model of plan recognition] that contribute to a plan. A method of assigning probabilities to pending set actions was deduced.
+
+Given the consistent actions of each explanation and a list of the territories a player owns one can create a set of actions of any type that a player can perform as well as a sub-set of those actions are consistent or inconsistent with any explanation. To do this is as follows:
+
+Use the generatePendingSet operation to build a complete pending set of actions for a player.
+
+Filter the list of all actions a player can perform to be the set of all attack actions = totalActions
+
+Make a count of the number of actions in totalActions
+Make a count of the number of consistent actions in the filtered set.
+
+Filter from totalAttackActions any inconsistent attack actions.
+
+Decide on a \textit{weight} you want to give actions.
+
+\begin{pseudocode}[ruled]{ComputeBaseWeight}{weight, }
+\begin{algorithm}[H]
+\textit{playerPendingSet} = $\emptyset$
+
+\ForAll {T $\in$ AT}{
+
+	\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
+	\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
+	\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
+
+	\ForAll{N $\in$ T}{
+			
+		\eIf {playerOwnsN}{
+
+			\textit{addAction}(MovementT) to \textit{playerPendingSet}
+		}{
+
+			\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
+			\textit{addAction}(SucessfulAttackT) to \textit{playerPendingSet}
+		}
+	}
+
+	\Return{newPendingSet}
+}
+\end{algorithm}
+\end{pseudocode}
+
+CONSISTENT ACTIONS ARE SLIGHTLY WEIGHTED MORE THAN INCONSISTENT DESCRIBE SIMPLE WEIGHTING MECHANISM
+
+Applying this formulae to each explanation respectively, the number computed is then multiplied by the probability of the explanation.
+
+This formulae makes three assumptions:
+
+That any territories including ones that only contain one army can attack. Though this is not technically true, due to the nature of RISK where players are not restricted in any way on where they may place their armies during the reinforcement phase a player can practically attack any territory they do not own but have a territory they own adjacent to it at the start of their turn.
+
+That the likelihood of consistent attack actions are uniformly distributed.
+
+That the likelihood of inconsistent attack actions are uniformly distributed.
+
+\subsubsection{Computing Explanation Probabilities}
+
 After initializing an empty \textit{newPendingSet} which is a data structure that can only contain performable actions in the environment. The above pseudo first loops through each territory \textit{T} in the list of all the territories \textit{AT} that a player owns. For each territory a \textit{ReinforceT} action and a \textit{LoseT} action is added to the newPendingSet. 
 
 Before proceeding onto the next territory another loop is done through the list of neighbours \textit{N} of that territory with a simple if-then-else statement. If the player owns that territory a \textit{MovementT} action is added to the newPendingSet, if not then a \textit{OccupyT} action is added to the newPendingSet, at the end the newPendingSet is returned and can be cached if necessary.
@@ -818,14 +867,6 @@ Using the method computeObservationProbability, the last loop computes the proba
 The computeObservationProbability method is a vitally important operation as it computes one of the three probabilistic features required by the algorithm.
 
 Normalizing the explanation probability at the end of each operation is also vital as this prevents the probability of any explanation from dropping to zero at a near exponential rate. 
-
-\subsubsection{Method of Action Weighting}
-
-Following an idea found from an earlier paper by Geib[ref] which proposes a weighting towards consistent actions [ref - new model of plan recognition] that contribute to a plan. A different method of assigning probabilities to pending set actions was deduced.
-
-Actions are separated into consistent and inconsistent actions. 
-
-WRITE UP SECTION
 
 \subsubsection{Example of Operation}
 
@@ -956,7 +997,7 @@ Three types of games to test the algorithm in:
 
 \section{Experiments}
 
-\subsection{AI Games}
+\subsection{AI Play}
 
 The open source project has built in AI to play for the mission game mode. This provided an opportunity for the collection of a large number of data samples to test the performance of the plan recognition agent.
 
@@ -1066,7 +1107,7 @@ Using genetic algorithms to optimize this by looking at the numbers returned by 
 
 \section{Criticism}
 
-Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. This attack is the most significant action in the environment and this we can intuitively tell is not true.
+Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. Thus attack has been modelled as the most significant action in the environment and this we can intuitively tell is not the case.
 
 \chapter{Conclusions}
 

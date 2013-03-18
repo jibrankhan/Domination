@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.12)  18 MAR 2013 00:19
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.12)  18 MAR 2013 02:14
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -278,11 +278,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--193
 
  []
 
-[7] [8] <images/example-plan-recognition.pdf, id=56, 441.85077pt x 84.40533pt>
+[7] [8] <images/example-plan-recognition.pdf, id=56, 445.86577pt x 91.44162pt>
 File: images/example-plan-recognition.pdf Graphic file (type pdf)
 
 <use images/example-plan-recognition.pdf>
-Overfull \hbox (29.91092pt too wide) in paragraph at lines 238--239
+Overfull \hbox (33.9259pt too wide) in paragraph at lines 238--239
  [][] 
  []
 
@@ -294,17 +294,17 @@ usion: Page Group detected which pdfTeX can't handle. Ignoring it.
 File: images/risk-board.jpg Graphic file (type jpg)
 
 <use images/risk-board.jpg> [10 <./images/risk-board.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 290--292
+Underfull \hbox (badness 10000) in paragraph at lines 292--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--305
+Underfull \hbox (badness 10000) in paragraph at lines 295--307
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--318
+Underfull \hbox (badness 10000) in paragraph at lines 318--320
 
  []
 
@@ -312,90 +312,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 316--318
 Underfull \vbox (badness 3930) has occurred while \output is active []
 
  [11]
-Underfull \hbox (badness 10000) in paragraph at lines 339--341
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
 
  []
 
 [12] [13] [14]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--428
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 443--444
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
 
  []
 
 [15
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 451--452
+Underfull \hbox (badness 10000) in paragraph at lines 453--454
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--455
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 484--486
+Underfull \hbox (badness 10000) in paragraph at lines 486--488
 
  []
 
 [16] [17]
-Overfull \hbox (2.16931pt too wide) in paragraph at lines 564--565
-[]\T1/cmr/m/n/12 That any ter-ri-to-ries in-clud-ing ones that only con-tain on
-e army can at-tack. Though
- []
-
-[18]
-Overfull \hbox (1.39836pt too wide) in paragraph at lines 574--583
+Overfull \hbox (1.39836pt too wide) in paragraph at lines 558--567
  [][] 
  []
 
-[19]
-Overfull \hbox (6.7846pt too wide) in paragraph at lines 601--610
+[18]
+Overfull \hbox (6.7846pt too wide) in paragraph at lines 585--594
  [][] 
  []
 
 
 Underfull \vbox (badness 2020) has occurred while \output is active []
 
- [20]
-[21] [22]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 735--756
+ [19]
+[20] [21]
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 721--743
+[]$ 
+ []
+
+[22]
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 757--782
 []$ 
  []
 
 [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 764--789
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 801--826
 []$ 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 795--810
+Overfull \hbox (2.16931pt too wide) in paragraph at lines 834--835
+[]\T1/cmr/m/n/12 That any ter-ri-to-ries in-clud-ing ones that only con-tain on
+e army can at-tack. Though
+ []
+
+[24]
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 846--861
 []$ 
  []
 
-
-Underfull \vbox (badness 7168) has occurred while \output is active []
-
- [24]
-[25]
-Overfull \hbox (3.05284pt too wide) in paragraph at lines 854--858
+[25] [26]
+Overfull \hbox (3.05284pt too wide) in paragraph at lines 897--901
 \T1/cmr/m/n/12 Calibrating Mech-a-nisms of al-go-rithm Uni-form dis-tri-bu-tion
  Sim-ple weight-ing based
  []
 
-[26] [27] [28
+[27] [28
 
 ]
  4.
@@ -419,35 +420,34 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3503 strings out of 256216
- 43333 string characters out of 1917072
+ 3501 strings out of 256216
+ 43310 string characters out of 1917072
  122157 words of memory out of 1500000
- 6762 multiletter control sequences out of 10000+200000
- 16103 words of font info for 38 fonts, out of 1200000 for 2000
+ 6761 multiletter control sequences out of 10000+200000
+ 15404 words of font info for 37 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 27i,26n,24p,605b,546s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 27i,26n,22p,605b,544s stack positions out of 5000i,500n,6000p,200000b,15000s
  </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/
-jknappen/ec/ecbi1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/t
-exmf-var/fonts/pk/ljfour/jknappen/ec/eccc1200.600pk> </afs/inf.ed.ac.uk/user/s0
-9/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1200.600pk> <
+jknappen/ec/eccc1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/t
+exmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1200.600pk> </afs/inf.ed.ac.uk/user/s0
+9/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <
 /afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecbx1440.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf
--var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0
-914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </afs
+ppen/ec/ecti1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </afs/inf.ed.ac.uk/user/s09/s0
+914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </afs
 /inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen
-/ec/ecbx1728.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </afs/inf.ed.ac.uk/user/s09/s09140
-07/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </afs/inf
+/ec/ecbx1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var
+/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </afs/inf.ed.ac.uk/user/s09/s09140
+07/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </afs/inf
 .ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm1440.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fon
-ts/pk/ljfour/jknappen/ec/ecrm2488.600pk></usr/share/texmf/fonts/type1/bluesky/c
-m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/te
-xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
-mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
-nts/type1/bluesky/cm/cmsy10.pfb>
-Output written on report.pdf (45 pages, 523750 bytes).
+ecrm2488.600pk></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/
+texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texm
+f/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy
+10.pfb>
+Output written on report.pdf (45 pages, 526148 bytes).
 PDF statistics:
- 635 PDF objects out of 1000 (max. 8388607)
+ 632 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
