@@ -568,13 +568,13 @@ FailedAttack & Yes & Though less significant than a successful attack, attacking
 \label{table:attack-defend-modelling}
 \end{table}
 
-Failed consistent attacks will have a lower weighting than successful consistent attacks
+FailedAttacks will have a lower weighting than SuccessfulAttacks.
 
 \newpage
 
 \subsubsection{Defending}
 
-Defending as opposed to attacking can be seen as a 'passive' action, an attack is required before a defence can occur. In that way it can be modelled rather as only inconsistent with the explanations it is directly related to and, as an act in itself, near inconsequential to those it is not.
+Defending as opposed to attacking can be seen as a 'passive' action, an attack is required before a defence can occur. In that way it can be modelled rather as only inconsistent with the explanations it is directly related to and, as an act in itself, not related to those it is not.
 
 For example, given the three explanations from the previous section. If a defence were to occur in a territory in North America, this should have minimal effect on the likelihood of explanation 3. 
 
@@ -615,7 +615,7 @@ $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
 
 Each territory is modelled as an entity. When a player occupies a territory, the player gains access to a set of actions which together form that territories associated action set.
 
-The set of any territory is:
+The action set of any territory is:
 
 \begin{table}[ht]
 \centering
@@ -640,23 +640,22 @@ Reinforce & Placing armies in the territory.\\
 \label{table:continent-bonus}
 \end{table}
 
-TA is a set of territory actions.
+The data structure of a territory therefore is $T$ = \{ territoryName, $TA$, $N$ \} where $TA$ is a set of territory action and $N$ is a set of references to neighbouring territories.
 
-The data structure of a territory therefore is $T$ = \{ territoryName, TA \}
-
-A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} based on the territories a player owns because by combining the action sets of each territory a player owns all the actions a player can do can be captured.
+A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori}, as it is based on the territories a player owns. By combining the action sets of each territory a player owns into a single set, all the actions a player can perform can be captured.
 
 \subsection{Player}
 
-The term \textit{Player} can be used inter changeably with the term agent that was introduced in previous descriptions. A data structure of a player must contain a number of things:
+The term \textit{player} has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain these features:
 
-Each player has a list of countries they own.
-Each player has a name.
-Each player must have a history of active pending sets.
-Each player must have a list of actions they have taken.
-Each player must maintain a list of explanations that has been assigned to them.
-
-Each player must be manageable.
+\begin{itemize}
+\item
+A player ID
+\item
+A list of territories they own.
+\item
+A list of explanations.
+\end{itemize}
 
 \section{Explanations}
 
@@ -664,22 +663,29 @@ An explanation must be designed to contain all the necessary data required to co
 
 It therefore contains these features:
 
-The explanation name
-A root goal
-A set of sub-goals
-A set of consistent actions
-A set of inconsistent actions
+\begin{itemize}
+\item
+The explanation name.
+\item
+A root goal.
+\item
+A set of sub-goals.
+\item
+A set of consistent actions.
+\item
+A set of inconsistent actions.
+\end{itemize}
 
 One might wonder why store inconsistent actions as by definition if an action is not consistent then it is inconsistent. But this is not always the case due to the model. defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions.
 
+Explanation data structure is $E$ = \{ explanationName, RG, SG, ECA, EIA \}
+
 RG is the root goal
-SG is method choice
+SG is a list of sub goals
 ECA is explanation consistent action
 EIA is explanation inconsistent actions
 
-Explanation data structure is $E$ = \{ explanationName, RG, SG, ECA, EIA \}
-
-Given the list of root goals and sub-goals, the full list of explanations that will be considered are:
+Given the list of root goals and sub-goals, the full list of explanations is:
 
 \begin{itemize}
 \item
@@ -716,9 +722,11 @@ In this section is presented the pseudo code of the most significant operations 
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the map, a set of explanations must be built for the environment. This is done by the following operation: 
+During the initialisation of the map, a set of explanations must be built for the environment. This will first require a specification of root goals and sub goals for all the explanations in the environment.
 
-\begin{pseudocode}[ruled]{GenerateExplanationList}{-}
+Then populating each explanation with consistent and inconsistent actions can be done by the following operation: 
+
+\begin{pseudocode}[ruled]{generateExplanationList}{-}
 \begin{algorithm}[H]
 \ForAll {C $\in$ CL}{
 
@@ -750,11 +758,15 @@ CL is simple list of all continents for the RISK map.
 
 EL is a list of all explanations for the RISK map.
 
-\subsubsection{Explanation Computation}
+\subsubsection{Generating Pending Sets}
 
 Given a list of all environment explanations \textit{EL} each player is simply allocated a single instance of each explanation. Since we know that the computation of the probability of an explanation requires three features two of which we have already, we then require a function that generates all the available actions a player can perform to facilitate computing the probability of a player choosing that action.
 
-\begin{pseudocode}[ruled]{GeneratePendingSet}{AT}
+After initializing an empty \textit{newPendingSet} which is a data structure that can only contain performable actions in the environment. The above pseudo first loops through each territory \textit{T} in the list of all the territories \textit{AT} that a player owns. For each territory a \textit{ReinforceT} action and a \textit{LoseT} action is added to the newPendingSet. 
+
+Before proceeding onto the next territory another loop is done through the list of neighbours \textit{N} of that territory with a simple if-then-else statement. If the player owns that territory a \textit{MovementT} action is added to the newPendingSet, if not then a \textit{OccupyT} action is added to the newPendingSet, at the end the newPendingSet is returned and can be cached if necessary.
+
+\begin{pseudocode}[ruled]{generatePendingSet}{AT}
 \begin{algorithm}[H]
 \textit{playerPendingSet} = $\emptyset$
 
@@ -825,8 +837,6 @@ Decide on a \textit{weight} you want to give actions.
 \end{algorithm}
 \end{pseudocode}
 
-CONSISTENT ACTIONS ARE SLIGHTLY WEIGHTED MORE THAN INCONSISTENT DESCRIBE SIMPLE WEIGHTING MECHANISM
-
 Applying this formulae to each explanation respectively, the number computed is then multiplied by the probability of the explanation.
 
 This formulae makes three assumptions:
@@ -839,32 +849,29 @@ That the likelihood of inconsistent attack actions are uniformly distributed.
 
 \subsubsection{Computing Explanation Probabilities}
 
-After initializing an empty \textit{newPendingSet} which is a data structure that can only contain performable actions in the environment. The above pseudo first loops through each territory \textit{T} in the list of all the territories \textit{AT} that a player owns. For each territory a \textit{ReinforceT} action and a \textit{LoseT} action is added to the newPendingSet. 
-
-Before proceeding onto the next territory another loop is done through the list of neighbours \textit{N} of that territory with a simple if-then-else statement. If the player owns that territory a \textit{MovementT} action is added to the newPendingSet, if not then a \textit{OccupyT} action is added to the newPendingSet, at the end the newPendingSet is returned and can be cached if necessary.
-
-\begin{pseudocode}[ruled]{ComputeExplanation}{-}
+\begin{pseudocode}[ruled]{ComputeExplanation}{Obs}
 \begin{algorithm}[H]
 
-\textit{expProbability} = 1.0
+\If{\textbf{not} alreadyIni}{ 
 
-\textit{expProbability} = \textit{R} * \textit{expProbability}	
-
-\ForAll {O $\in$ OL}{
-	\textit{expProbability} = \textit{computeObservationProbability(O)} * \textit{expProbability}
+	\textit{expProb} = 1.0
 }
 
-explanationProbability = normalized{explanationProbability}
+\textit{expProb} = \textit{R} * \textit{expProb}	
 
-\Return{explanationProbability}
+\textit{expProb} = \textit{computeObsProb(Obs)} * \textit{expProb}
+
+\textit{expProb} = normalized{expProb}
+
+\Return{expProb}
 \end{algorithm}
 \end{pseudocode}
 
-The above pseudo code details the computation of an explanation. After initialising the float \textit{explanationProbability} we multiply the explanation by the root probability. Now according to the specifications of PHATT we would normally multiply the method choice probabilities next but since each player has the full set of explanations we have eliminated the need for this term as we measure each explanation against the observations.
+The above pseudo code details the computation of an explanation. After initialising the float \textit{expProb} we multiply the explanation by the root probability. Now according to the specifications of PHATT we would normally multiply the method choice probabilities next but since each player has the full set of explanations we have eliminated the need for this term as we measure each explanation against the observations.
 
-Using the method computeObservationProbability, the last loop computes the probability of choosing each observation $O$ by the player from the list of observations $OL$.
+Using the method computeObsPro, the last loop computes the probability of choosing each observation $O$ by the player from the list of observations $OL$.
 
-The computeObservationProbability method is a vitally important operation as it computes one of the three probabilistic features required by the algorithm.
+The computeObsProb method is a vitally important operation as it computes one of the three probabilistic features required by the algorithm.
 
 Normalizing the explanation probability at the end of each operation is also vital as this prevents the probability of any explanation from dropping to zero at a near exponential rate. 
 
@@ -880,13 +887,17 @@ Introducing some other assumptions:
 
 The probability of a player choosing to attack any territory is uniform.
 The probability of a player choosing to occupy a continent as a sub-goal is uniform.
-The RISK map has every territory having a border with every other territory.
+The RISK map has every territory connected a with every other territory.
 
 \subsection{Conceptual Issues}
 
 Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
 
 Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
+
+Another difference is I have removed the need for sub goal probabilites because of working with the full derivative tree.
+
+Normalising after each observation computation rather than only when a probability needs to be computed.
 
 Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
 
@@ -1033,19 +1044,19 @@ Explained to players the rules of the game
 
 How did I get the data?
 
-After the game is finished I automatically generate a log file that allows me to reply a game exactly and a csv file recording features such as:
+After the game is finished I automatically generate a log file that allows me to replay a game exactly and a csv file recording significant features such as:
 
 a players actual mission
 player explanation probabilities over time
 which player won and lost
 
+The data collection for AI play could be automated using a program called Autohotkey which allowed the creation of macros which automated the data collection process. 
+
+Then used python scripts to analyse the csv files.
+
 Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
 
-For games of A.I. players used a program called Autohotkey which allowed me to create macros which automated the data collection process.
-
 Using an system built by the original developers was able to easily reproduce a game if necessary for the purposes of evaluating the algorithm under different conditions.
-
-Used python scripts to analyse the csv files.
 
 Questions to answer:
 
@@ -1053,7 +1064,7 @@ What did I tell players?
 
 Explained to players the rules of the game and that there were two primary methods of winning in mission risk either by eliminating their opponents or by completing their mission card player were instructed to "Play to Win"
 
-\textbf{Experimental De-briefing}
+\subsection{Experimental De-briefing}
 
 At the end of the experiment I asked players to give a short high-level summary of their plan, this included when their plan
 
@@ -1147,11 +1158,26 @@ MODEL IS TOO LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES
 
 Augmentation possibility - look at where player has already placed armies and figure out a probability based on what they placing tells you.
 
+CRITICISM, DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT.
+
 A platform has been setup for further improvements of the model.
+
+IMPROVEMENTS TO MODEL
+
+CAPTURING THE CONNECTIONS BETWEEN CONTINENTS
+
+MAKING A TIERED WEIGHTING SYSTEM FOR THE CURRENT METHOD OF COMPUTING PROBABILITIES
+
+E.G 
+
+0.1 WEIGHT FOR MORE THAN HALF THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
+0.2 WEIGHT FOR HALF THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
+0.3 WEIGHT FOR 1/4 THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
+0.4 WEIGHT FOR 1/10 THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
 
 \section{Final}
 
-I would dare to say that I believe that the benefit of such systems would be to such an extent that it would be considering cheating if used in events such as official tournaments.
+the benefit of such systems would be to such an extent that it would be considering an unfair advantage if used in events such as official tournaments.
 
 \chapter{Appendix}
 
