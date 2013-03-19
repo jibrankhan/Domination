@@ -208,9 +208,9 @@ Person A is cooking a meal for Person B, in other words A has a single \textit{r
 
 A wanting to surprise B, will not tell B what his root goal is. B cannot know what A is thinking but B must then somehow infer what A's root goal is likely to be by \textit{observing} A cook in this way A's behaviour can be modelled as a Hidden Markov Model. Person B then models A's plan as follows. 
 
-Person B assumes A is a rational person, and that A has a \textit{plan} to achieve this root goal. Whatever A's root goal is, it can likely be decomposed into \textit{sub-goals} such as cook hamburger meat. These sub-goals can then be broken down into basic \textit{actions} to achieve those sub-goals, such as take hamburger meat out of packet. An important point to note is that these basic actions are not limited to only being part of a sub goal.
+Person B assumes A is rational and that A has a \textit{plan} to achieve their root goal. Whatever A's root goal is, it can likely be decomposed into \textit{sub-goals} such as prepare burger buns or cook beef patties. These sub-goals can then be broken down into basic \textit{actions} to achieve those sub-goals, such as take beef patties out of packet. An important point to note is that these basic actions are not limited to only being part of a sub-goal.
 
-To simplify this example, let us make some assumptions:
+To simplify the example, we introduce various assumptions:
 
 \begin{itemize}
 \item
@@ -250,7 +250,7 @@ Now A first performs the action \textit{Take Burger Bun out of Packet}, then pro
 
 Each of these explanations are equally likely at this point because the actions that have occured so far could be part of either plan.
 
-A then takes the Chicken Patties of the packet now, given our assumptions, we can conclude that A's plan is to cook beef hamburgers as A does not change his plan. In this way B has recognised A's plan thus performed the process of plan recognition.
+A then takes the Chicken Patties of the packet, now given our assumptions we can conclude that A's plan is to cook Meat burgers. In this way B has recognised A's plan thus performing the process of plan recognition.
 
 \newpage
 
@@ -623,7 +623,7 @@ The pending set of movement actions of player $p$ is the set of territories a pl
 
 \subsection{Territory}
 
-Each territory is modelled as an entity. When a player occupies a territory, the player gains access to a set of actions which together form that territories associated action set.
+Each territory is modelled as an entity. When a player occupies a territory the player gains access to a set of actions which together form that territories action set.
 
 The action set of any territory is:
 
@@ -637,9 +637,9 @@ SuccessfulAttack & Attacking and occupying the territory.\\
 \hline 
 FailedAttack & Attacking and failing to occupy the territory.\\ 
 \hline 
-SuccessfulDefence & Retaining a territory after an attack.\\ 
+SuccessfulDefence & Retaining the territory after an attack.\\ 
 \hline 
-FailedDefence & Losing the territory.\\
+FailedDefence & Losing the territory due to an attack.\\
 \hline
 Movement & Moving armies in to the territory.\\
 \hline  
@@ -652,7 +652,7 @@ Reinforce & Placing armies in the territory.\\
 
 \newpage
 
-The data structure of a territory therefore is a triple containing the name of the territory the set of territory actions  $TA$ and a set of references to the territories neighbours  $TN$ .
+The data structure of a territory therefore is a triple containing the name of the territory the set of territory actions  $TA$ and a set of references to the territories neighbours $TN$.
 
 \centerline{
 $T$ = \{ territoryName, $TA$, $TN$ \} 
@@ -678,9 +678,7 @@ $P$ = \{playerName, $PT$, $PE$\}
 
 \section{Explanations}
 
-Explanations must be designed to contain all the necessary data required to compute its probability.
-
-It therefore contains these features:
+Explanations must be designed to contain all the necessary data required to compute its probability, it therefore contains these features:
 
 \begin{itemize}
 \item
@@ -701,10 +699,9 @@ The resulting data structure is:\newline
 $E$ = \{ explanationName, RG, SGS, ECA, EIA \}
 }
 
+Inconsistent actions are stored in explanations due to modelling deciesions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
 
-Inconsistent actions are stored in explanations due to a modelling deciesion. If it was the case that, if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
-
-Explanations of the form Two-Continent+1 have four forms. For example the root goal Occupy Europe, South America and one other continent can be any of the following:
+Explanations of the form Two-Continent+1 have four alternate forms. For example the root goal Occupy Europe, South America and one other continent can be any of the following:
 
 \begin{itemize}
 \item
@@ -717,7 +714,7 @@ Occupy Europe, South America and North America.
 Occupy Europe, South America and Australia.
 \end{itemize}
 
-Each is a valid explanation in itself, but still falls under its parent mission card. Therefore the assumption is made that if the plan recognition agent predicts one of the four children when it is known the players mission card is the parent, it will be classified as a correct prediction.
+Each is a valid explanation in itself, but still falls under its parent mission card. Therefore the assumption is made that if the plan recognition agent predicts one of the four children when it is known the players mission card is the parent, it is classified as a correct prediction.
 
 Given the list of root goals and sub-goals, the complete list of explanations is:
 
@@ -748,13 +745,13 @@ Occupy Asia and South America.
 Occupy Asia and Africa.
 \end{itemize}
 
-Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. What is then measured is the probability of each seperate explanation of a players behaviour and the highest final probability is chosen as the predicted mission card.
+Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation, then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. What is then measured is the probability of each seperate explanation of a players behaviour over the course of the game and the highest final probability is chosen as the predicted mission card.
 
 \subsection{Prediction Agent Pseudo Code}
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root goal and sub-goals for each explanation in the environment. To complete the process of building the explanation, then requires populating each explanation with a set of consistent and inconsistent actions. This can be done by the following operation: 
+During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root goal and sub-goals for each explanation in the environment. In addition it also requires populating each explanation with a set of consistent and inconsistent actions. This can be done by the following operation:
 
 \begin{pseudocode}[ruled]{generateExplanationList}{-}
 \begin{algorithm}[H]
@@ -780,19 +777,19 @@ During the initialisation of the RISK map, a set of explanations must be built f
 \end{algorithm}
 \end{pseudocode}
 
-The above operation loops through the data structure of each continent $C$ in a set of continents $CS$ of the RISK map, against each explanation $E$ in a set of the environments explanation $ES$. Each continent is checked for whether its name is contained in the set of sub-goals of each $E$ by the \textit{isSubGoalOf} operation. If the name of the loops current continent is contained in the names of set of sub-goals of the loops current explanation then it returns true resulting in an If statement firing. 
+The above operation loops through the data structure of each continent $C$ in the set of continents $CS$. Each continent is checked against each explanation $E$ from the set of explanation $ES$, for whether its name is contained in the set of sub-goals of each $E$ by the \textit{isSubGoalOf} operation. If the name of the loops current continent is contained in the names of the set of sub-goals of the loops current explanation then it returns true resulting in an If statement firing. 
 
-The if statment contains a loop which iterates over the set territories in the continent and using the \textit{addAction} operation, adds each territories action set to the explanations consistent action \textit{ECA} set or inconsistent action set {EIA}.
+The If statment contains a loop which iterates over the set territories in the current loops continent and using the \textit{addAction} operation, adds each territories action set to the explanations to either the explanations consistent action \textit{ECA} set or inconsistent action set {EIA}.
 
 \subsubsection{Generating Pending Sets}
 
-With a now built set of all environment explanations $ES$ each player is allocated a unique instance of each explanation. Since the computation of the probability of an explanation requires the probability of choosing an action, a function is required which generates a complete set of the available actions a player can perform.
+With the set of environment explanations $ES$, each player is allocated a unique instance of each explanation. Since the computation of the probability of an explanation requires the probability of choosing an action, a function is required which generates a complete set of the available actions a player can perform.
 
 \begin{pseudocode}[ruled]{generatePendingSet}{PT}
 \begin{algorithm}[H]
 \textit{playerPS} = $\emptyset$
 
-\ForAll {T $\in$ AT}{
+\ForAll {T $\in$ PT}{
 
 	\textit{addAction}(ReinforceT) to \textit{playerPS}
 
@@ -812,14 +809,14 @@ With a now built set of all environment explanations $ES$ each player is allocat
 		}
 	}
 
-	\Return{playerPendingSet}
+	\Return{playerPS}
 }
 \end{algorithm}
 \end{pseudocode}
 
-After initializing an empty pending set $playerPS$. The above pseudo first loops through each territory $T$ in the list of all the territories that a player owns $PT$. For each territory a $ReinforceT$ action and a $LoseT$ action is added to $playerPS$. 
+After initializing an empty pending set $playerPS$. The above pseudo code first loops through each territory $T$ in the list of all the territories that a player owns $PT$. For each territory a $ReinforceT$ action and a $LoseT$ action is added to $playerPS$. 
 
-Before proceeding onto the next territory in $PT$ another loop is done through the list of neighbouring territories $N$ of that territory with a simple if-then-else statement. If the player owns that territory a $MovementT$ action is added to $playerPS$, if not then a $OccupyT$ action is added to $playerPS$, at the end the $playerPS$ is returned and can be cached if necessary.
+Before proceeding onto the next territory in $PT$ another loop is performed through the set of neighbouring territories $TN$ of that territory with an if-then-else statement. If the player owns that territory a $MovementT$ action is added to $playerPS$, if not then a $OccupyT$ action is added to $playerPS$. After the operation the $playerPS$ is returned and can be cached if necessary.
 
 \newpage
 
@@ -840,11 +837,11 @@ $base$ = $leftOver$ / $totalNumAct$
 \end{algorithm}
 \end{pseudocode}
 
-Given a predefined weight $w$, the total number of actions in a players pending set $playerTotalActNum$ and the consistent actions with an explanation $playerConsActNum$, each set must a count of sets containing only actions of the same type. 
+Given a predefined weight $w$, the total number of actions in a players pending set $playerTotalActNum$ and the consistent actions with an explanation $playerConsActNum$. EXPLAIN HOW THIS OPERATION WORKS!
 
 Given the nature of the environment where the number of actions players can perform are relatively small, this method is suitable provided the weight difference is kept small. For environments where the number of consistent or inconsistent actions a player can perform are large, this may result in the value of \textit{sumWeight} becoming greater than one making \textit{leftOver} negative, breaking the next calculation. Therefore a scalable method of controlling the weights between actions would be necessary in the design of such an agent for a larger action environment.
 
-The operation $ComputeBaseWeight$ is a part of a larger function which prepares the values  $ComputeBaseWeight$ requires.
+The operation $ComputeBaseWeight$ is part of a larger function which prepares the values which $ComputeBaseWeight$ requires.
 
 \begin{pseudocode}[ruled]{ComputeObsProb}{playerPS, totalExpConAct , obs}
 \begin{algorithm}[H]
@@ -871,7 +868,7 @@ base = \textit{computeBaseWeight}(w, playerTotalActNum, playerConsActNum)\newlin
 \end{algorithm}
 \end{pseudocode}
 
-Given the players pending set \textit{playerPS} generated by the function $generatePendingSet$, and the set of all consistent actions for an explanation $totalExpConAct$. Both the set of actions (of the type $obs$)  a player can currently perform $playerTotalAct$  and the consistent actions of the explanation can be be filtered using the $filterPS$ operation. 
+Given the players pending set $playerPS$ generated by the function $generatePendingSet$, and the set of all consistent actions for an explanation $totalExpConAct$. Both the set of actions (must be of the type $obs$) a player can currently perform $playerTotalAct$ and the consistent actions of the explanation can be be filtered using the $filterPS$ operation which given an action type ad a set, removes all other action types from the given set except for actions of the type specified. 
 
 The set of $playerTotalAct$ is then further filtered down into another set $playerConsAct$ which contains only the consistent actions with the explanation. The sizes of $playerConsAct$ and $playerTotalAct$ are saved in two respective variables $playerConsActNum$ and $playerTotalActNum$.
 

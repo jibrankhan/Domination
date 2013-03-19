@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  19 MAR 2013 09:28
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  19 MAR 2013 13:48
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -404,52 +404,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 673--674
 Underfull \vbox (badness 3568) has occurred while \output is active []
 
  [21]
-Underfull \hbox (badness 10000) in paragraph at lines 698--699
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
 
  []
 
 [22]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 759--781
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 756--778
 $[]$ 
  []
 
 
-Underfull \vbox (badness 6110) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 791--818
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 788--815
 $[]$ 
  []
 
 
-Underfull \vbox (badness 6944) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [24]
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 819--820
+[]\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
+t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
+ []
+
 [25]
-Overfull \hbox (98.75308pt too wide) in paragraph at lines 830--841
+Overfull \hbox (98.75308pt too wide) in paragraph at lines 827--838
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; player
 TotalActNum; playerConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 830--841
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 827--838
 $[]$ 
  []
 
 
-Overfull \hbox (42.4637pt too wide) in paragraph at lines 843--844
+Overfull \hbox (42.4637pt too wide) in paragraph at lines 840--841
 $\OML/cmm/m/it/12 playerTotalActNum$ \T1/cmr/m/n/12 and the con-sis-tent ac-tio
-ns with an ex-pla-na-tion $\OML/cmm/m/it/12 playerConsActNum$\T1/cmr/m/n/12 ,
+ns with an ex-pla-na-tion $\OML/cmm/m/it/12 playerConsActNum$\T1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (6.78886pt too wide) in paragraph at lines 849--872
+Overfull \hbox (6.78886pt too wide) in paragraph at lines 846--869
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 849--872
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 846--869
 $[]$ 
  []
 
@@ -457,39 +462,39 @@ $[]$
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26]
-Overfull \hbox (30.05045pt too wide) in paragraph at lines 874--875
-[]\T1/cmr/m/n/12 Given the play-ers pend-ing set \T1/cmr/m/it/12 play-erPS \T1/
-cmr/m/n/12 gen-er-ated by the func-tion $\OML/cmm/m/it/12 generatePendingSet$\T
-1/cmr/m/n/12 ,
+Overfull \hbox (33.18848pt too wide) in paragraph at lines 871--872
+[]\T1/cmr/m/n/12 Given the play-ers pend-ing set $\OML/cmm/m/it/12 playerPS$ \T
+1/cmr/m/n/12 gen-er-ated by the func-tion $\OML/cmm/m/it/12 generatePendingSet$
+\T1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (24.40811pt too wide) in paragraph at lines 876--877
+Overfull \hbox (24.40811pt too wide) in paragraph at lines 873--874
 []\T1/cmr/m/n/12 The set of $\OML/cmm/m/it/12 playerTotalAct$ \T1/cmr/m/n/12 is
  then fur-ther fil-tered down into an-other set $\OML/cmm/m/it/12 playerConsAct
 $
  []
 
 
-Overfull \hbox (61.81354pt too wide) in paragraph at lines 876--877
+Overfull \hbox (61.81354pt too wide) in paragraph at lines 873--874
 $\OML/cmm/m/it/12 playerConsAct$ \T1/cmr/m/n/12 and $\OML/cmm/m/it/12 playerTot
 alAct$ \T1/cmr/m/n/12 are saved in two re-spec-tive vari-ables $\OML/cmm/m/it/1
 2 playerConsActNum$
  []
 
 [27]
-Overfull \hbox (24.7325pt too wide) in paragraph at lines 893--928
+Overfull \hbox (24.7325pt too wide) in paragraph at lines 890--925
 \T1/cmr/bx/n/12 Algorithm 3.3.5:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 explanati
 on; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 893--928
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 890--925
 $[]$ 
  []
 
 [28]
-Overfull \hbox (3.05284pt too wide) in paragraph at lines 966--970
+Overfull \hbox (3.05284pt too wide) in paragraph at lines 963--967
 \T1/cmr/m/n/12 Calibrating Mech-a-nisms of al-go-rithm Uni-form dis-tri-bu-tion
  Sim-ple weight-ing based
  []
@@ -505,14 +510,14 @@ Overfull \hbox (3.05284pt too wide) in paragraph at lines 966--970
 ] [34] [35] [36]
  6.
 
-Overfull \hbox (3.0787pt too wide) in paragraph at lines 1211--1212
+Overfull \hbox (3.0787pt too wide) in paragraph at lines 1208--1209
 \T1/cmr/m/n/12 MORE LIKELY AS A BI-PRODUCT EVEN WHEN TAK-ING INTO AC-COUNT
  []
 
 [37
 
 ]
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1227--1228
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1224--1225
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
@@ -558,7 +563,7 @@ fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb>
-Output written on report.pdf (47 pages, 573293 bytes).
+Output written on report.pdf (47 pages, 573426 bytes).
 PDF statistics:
  649 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
