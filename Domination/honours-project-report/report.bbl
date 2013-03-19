@@ -1,9 +1,44 @@
 \begin{thebibliography}{1}
 
+\bibitem{Albrecht98bayesianmodels}
+David~W. Albrecht, Ingrid Zukerman, and Ann~E. Nicholson.
+\newblock Bayesian models for keyhole plan recognition in an adventure game.
+\newblock pages 5--47, 1998.
+
+\bibitem{journals/ai/CharniakG93}
+Eugene Charniak and Robert~P. Goldman.
+\newblock A bayesian model of plan recognition.
+\newblock {\em Artif. Intell}, 64(1):53--79, 1993.
+
+\bibitem{Cohen82a}
+Philip~R. Cohen, C.~Raymond Perrault, and James~F. Allen.
+\newblock Beyond question answering.
+\newblock In Wendy~G. Lehnert and Martin~H. Ringle, editors, {\em Strategies
+  for Natural Language Processing}, pages 245--274. Erlbaum, Hillsdale, 1982.
+
 \bibitem{Geib:2009:PPR:1550966.1551246}
 Christopher~W. Geib and Robert~P. Goldman.
 \newblock A probabilistic plan recognition algorithm based on plan tree
   grammars.
 \newblock {\em Artif. Intell.}, 173(11):1101--1132, July 2009.
+
+\bibitem{conf/aaai/KautzA86}
+Henry~A. Kautz and James~F. Allen.
+\newblock Generalized plan recognition.
+\newblock In Tom Kehler, editor, {\em AAAI}, pages 32--37. Morgan Kaufmann,
+  1986.
+
+\bibitem{journals/ai/SchmidtSG78}
+Charles~F. Schmidt, N.~S. Sridharan, and John~L. Goodson.
+\newblock The plan recognition problem: An intersection of psychology and
+  artificial intelligence.
+\newblock {\em Artif. Intell}, 11(1-2):45--83, 1978.
+
+\bibitem{conf/aiide/SynnaeveB11}
+Gabriel Synnaeve and Pierre Bessi{\`e}re.
+\newblock A bayesian model for plan recognition in {RTS} games applied to
+  starcraft.
+\newblock In Vadim Bulitko and Mark~O. Riedl, editors, {\em AIIDE}. The AAAI
+  Press, 2011.
 
 \end{thebibliography}
