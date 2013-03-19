@@ -7,45 +7,45 @@ Warning--I'm ignoring conf/aaai/KautzA86's extra "booktitle" field
 Warning--I'm ignoring conf/aiide/SynnaeveB11's extra "booktitle" field
 --line 127 of file mybibfile.bib
 Warning--empty booktitle in Albrecht98bayesianmodels
-You've used 7 entries,
+You've used 10 entries,
             2118 wiz_defined-function locations,
-            558 strings with 5621 characters,
-and the built_in function-call counts, 2771 in all, are:
-= -- 276
-> -- 126
+            577 strings with 6054 characters,
+and the built_in function-call counts, 3530 in all, are:
+= -- 347
+> -- 158
 < -- 3
-+ -- 50
-- -- 39
-* -- 191
-:= -- 447
-add.period$ -- 24
-call.type$ -- 7
-change.case$ -- 38
++ -- 64
+- -- 49
+* -- 233
+:= -- 578
+add.period$ -- 32
+call.type$ -- 10
+change.case$ -- 51
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 110
-empty$ -- 224
-format.name$ -- 39
-if$ -- 595
+cite$ -- 11
+duplicate$ -- 140
+empty$ -- 292
+format.name$ -- 49
+if$ -- 752
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 7
-newline$ -- 38
-num.names$ -- 20
-pop$ -- 43
+int.to.str$ -- 10
+missing$ -- 10
+newline$ -- 52
+num.names$ -- 26
+pop$ -- 64
 preamble$ -- 1
-purify$ -- 31
+purify$ -- 42
 quote$ -- 0
-skip$ -- 81
+skip$ -- 101
 stack$ -- 0
-substring$ -- 183
-swap$ -- 30
+substring$ -- 218
+swap$ -- 33
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
+type$ -- 38
 warning$ -- 1
-while$ -- 32
-width$ -- 8
-write$ -- 81
+while$ -- 40
+width$ -- 12
+write$ -- 110
 (There were 3 warnings)

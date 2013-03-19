@@ -1,75 +1,70 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Motivations}{1}
-\contentsline {subsection}{\numberline {1.1.1}Difference between academic and game AI}{1}
-\contentsline {subsection}{\numberline {1.1.2}Computer Graphics previously getting more attention}{1}
-\contentsline {subsection}{\numberline {1.1.3}AI getting more attention now}{2}
-\contentsline {subsection}{\numberline {1.1.4}Plan Recognition}{2}
-\contentsline {subsection}{\numberline {1.1.5}Applications of Plan Recognition}{2}
-\contentsline {subsection}{\numberline {1.1.6}Application of plan recognition algorithms to games}{2}
-\contentsline {section}{\numberline {1.2}Artificial Intelligence and Board Games}{3}
+\contentsline {section}{\numberline {1.2}Artificial Intelligence and Board Games}{2}
 \contentsline {section}{\numberline {1.3}Aims}{3}
-\contentsline {section}{\numberline {1.4}Objectives}{4}
-\contentsline {section}{\numberline {1.5}Hypothesis}{4}
-\contentsline {section}{\numberline {1.6}Paper Structure}{5}
-\contentsline {chapter}{\numberline {2}Background}{7}
-\contentsline {section}{\numberline {2.1}Previous Work in Plan Recognition}{7}
-\contentsline {subsection}{\numberline {2.1.1}An Example of Plan Recognition}{8}
-\contentsline {section}{\numberline {2.2}Introduction to RISK}{10}
-\contentsline {subsection}{\numberline {2.2.1}Equipment}{10}
-\contentsline {subsection}{\numberline {2.2.2}Rules}{10}
-\contentsline {subsubsection}{\numberline {2.2.2.1}Initial Setup}{12}
-\contentsline {subsubsection}{\numberline {2.2.2.2}Reinforcement Phase}{12}
-\contentsline {subsubsection}{\numberline {2.2.2.3}Attack Phase}{12}
-\contentsline {subsubsection}{\numberline {2.2.2.4}Movement Phase}{13}
-\contentsline {section}{\numberline {2.3}Why Plan Recognition in Board Games}{14}
-\contentsline {chapter}{\numberline {3}Design}{15}
-\contentsline {section}{\numberline {3.1}Introduction to PHATT}{15}
-\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{16}
-\contentsline {section}{\numberline {3.2}Environment Modelling}{16}
-\contentsline {subsection}{\numberline {3.2.1}Root Goals}{16}
-\contentsline {subsection}{\numberline {3.2.2}Sub-Goals}{17}
-\contentsline {subsection}{\numberline {3.2.3}Actions}{17}
-\contentsline {subsubsection}{\numberline {3.2.3.1}Attacking}{18}
-\contentsline {subsubsection}{\numberline {3.2.3.2}Defending}{19}
-\contentsline {subsubsection}{\numberline {3.2.3.3}Reinforce}{20}
-\contentsline {subsubsection}{\numberline {3.2.3.4}Movement}{20}
-\contentsline {subsection}{\numberline {3.2.4}Territory}{20}
-\contentsline {subsection}{\numberline {3.2.5}Continent}{21}
-\contentsline {subsection}{\numberline {3.2.6}Player}{21}
-\contentsline {section}{\numberline {3.3}Explanations}{22}
-\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Pseudo Code}{23}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{23}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Generating Pending Sets}{24}
-\contentsline {subsubsection}{\numberline {3.3.1.3}Computing Action Probabilities}{26}
-\contentsline {subsubsection}{\numberline {3.3.1.4}Computing Explanation Probabilities}{28}
-\contentsline {subsection}{\numberline {3.3.2}Example of Operation}{29}
-\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{29}
-\contentsline {subsubsection}{\numberline {3.3.3.1}Probability Assignment}{30}
-\contentsline {subsection}{\numberline {3.3.4}Summary}{30}
-\contentsline {chapter}{\numberline {4}Implementation}{31}
-\contentsline {section}{\numberline {4.1}Modifications to Open Source Project}{31}
-\contentsline {section}{\numberline {4.2}System Construction}{31}
-\contentsline {section}{\numberline {4.3}System Architecture Concepts}{32}
-\contentsline {subsection}{\numberline {4.3.1}Event Driven System}{32}
-\contentsline {subsection}{\numberline {4.3.2}Component Based Class Architecture}{32}
-\contentsline {subsection}{\numberline {4.3.3}Google Guava Libraries}{32}
-\contentsline {subsection}{\numberline {4.3.4}Replaying Games}{32}
-\contentsline {section}{\numberline {4.4}Summary}{32}
-\contentsline {chapter}{\numberline {5}Evaluation}{33}
-\contentsline {section}{\numberline {5.1}Experiments}{33}
-\contentsline {subsection}{\numberline {5.1.1}AI Play}{33}
-\contentsline {subsection}{\numberline {5.1.2}Constrained Play}{33}
-\contentsline {subsection}{\numberline {5.1.3}Free Play}{34}
-\contentsline {section}{\numberline {5.2}Experimental Format}{34}
-\contentsline {section}{\numberline {5.3}Data Collection}{34}
-\contentsline {subsection}{\numberline {5.3.1}Experimental De-briefing}{35}
-\contentsline {section}{\numberline {5.4}Experimental Findings}{35}
-\contentsline {section}{\numberline {5.5}Outcomes}{36}
-\contentsline {section}{\numberline {5.6}Criticism}{36}
-\contentsline {chapter}{\numberline {6}Conclusions}{37}
-\contentsline {section}{\numberline {6.1}Future Work}{37}
-\contentsline {section}{\numberline {6.2}Final}{38}
-\contentsline {chapter}{\numberline {7}Appendix}{39}
-\contentsline {section}{\numberline {7.1}Class Diagram}{39}
-\contentsline {section}{\numberline {7.2}Experimental Results}{39}
-\contentsline {chapter}{Bibliography}{41}
+\contentsline {section}{\numberline {1.4}Objectives}{3}
+\contentsline {section}{\numberline {1.5}Hypothesis}{3}
+\contentsline {section}{\numberline {1.6}Paper Structure}{4}
+\contentsline {chapter}{\numberline {2}Background}{5}
+\contentsline {section}{\numberline {2.1}Previous Work in Plan Recognition}{5}
+\contentsline {subsection}{\numberline {2.1.1}An Example of Plan Recognition}{6}
+\contentsline {section}{\numberline {2.2}Introduction to RISK}{8}
+\contentsline {subsection}{\numberline {2.2.1}Equipment}{8}
+\contentsline {subsection}{\numberline {2.2.2}Rules}{8}
+\contentsline {subsubsection}{\numberline {2.2.2.1}Initial Setup}{10}
+\contentsline {subsubsection}{\numberline {2.2.2.2}Reinforcement Phase}{10}
+\contentsline {subsubsection}{\numberline {2.2.2.3}Attack Phase}{10}
+\contentsline {subsubsection}{\numberline {2.2.2.4}Movement Phase}{11}
+\contentsline {section}{\numberline {2.3}Why Plan Recognition in Board Games}{12}
+\contentsline {section}{\numberline {2.4}Summary}{12}
+\contentsline {chapter}{\numberline {3}Design}{13}
+\contentsline {section}{\numberline {3.1}Introduction to PHATT}{13}
+\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{14}
+\contentsline {section}{\numberline {3.2}Environment Modelling}{14}
+\contentsline {subsection}{\numberline {3.2.1}Root Goals}{14}
+\contentsline {subsection}{\numberline {3.2.2}Sub-Goals}{15}
+\contentsline {subsection}{\numberline {3.2.3}Actions}{15}
+\contentsline {subsubsection}{\numberline {3.2.3.1}Attacking}{16}
+\contentsline {subsubsection}{\numberline {3.2.3.2}Defending}{17}
+\contentsline {subsubsection}{\numberline {3.2.3.3}Reinforce}{18}
+\contentsline {subsubsection}{\numberline {3.2.3.4}Movement}{18}
+\contentsline {subsection}{\numberline {3.2.4}Territory}{18}
+\contentsline {subsection}{\numberline {3.2.5}Continent}{19}
+\contentsline {subsection}{\numberline {3.2.6}Player}{19}
+\contentsline {section}{\numberline {3.3}Explanations}{20}
+\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Pseudo Code}{21}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{21}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Generating Pending Sets}{22}
+\contentsline {subsubsection}{\numberline {3.3.1.3}Computing Action Probabilities}{24}
+\contentsline {subsubsection}{\numberline {3.3.1.4}Computing Explanation Probabilities}{26}
+\contentsline {subsection}{\numberline {3.3.2}Example of Operation}{27}
+\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{27}
+\contentsline {subsubsection}{\numberline {3.3.3.1}Probability Assignment}{28}
+\contentsline {subsection}{\numberline {3.3.4}Summary}{28}
+\contentsline {chapter}{\numberline {4}Implementation}{29}
+\contentsline {section}{\numberline {4.1}Modifications to Open Source Project}{29}
+\contentsline {section}{\numberline {4.2}System Construction}{29}
+\contentsline {section}{\numberline {4.3}System Architecture Concepts}{30}
+\contentsline {subsection}{\numberline {4.3.1}Event Driven System}{30}
+\contentsline {subsection}{\numberline {4.3.2}Component Based Class Architecture}{30}
+\contentsline {subsection}{\numberline {4.3.3}Google Guava Libraries}{30}
+\contentsline {subsection}{\numberline {4.3.4}Replaying Games}{30}
+\contentsline {section}{\numberline {4.4}Summary}{30}
+\contentsline {chapter}{\numberline {5}Evaluation}{31}
+\contentsline {section}{\numberline {5.1}Experiments}{31}
+\contentsline {subsection}{\numberline {5.1.1}AI Play}{31}
+\contentsline {subsection}{\numberline {5.1.2}Constrained Play}{31}
+\contentsline {subsection}{\numberline {5.1.3}Free Play}{32}
+\contentsline {section}{\numberline {5.2}Experimental Format}{32}
+\contentsline {section}{\numberline {5.3}Data Collection}{32}
+\contentsline {subsection}{\numberline {5.3.1}Experimental De-briefing}{33}
+\contentsline {section}{\numberline {5.4}Experimental Findings}{33}
+\contentsline {section}{\numberline {5.5}Outcomes}{34}
+\contentsline {section}{\numberline {5.6}Criticism}{34}
+\contentsline {chapter}{\numberline {6}Conclusions}{35}
+\contentsline {section}{\numberline {6.1}Future Work}{35}
+\contentsline {section}{\numberline {6.2}Final}{36}
+\contentsline {chapter}{\numberline {7}Appendix}{37}
+\contentsline {section}{\numberline {7.1}Class Diagram}{37}
+\contentsline {section}{\numberline {7.2}Experimental Results}{37}
+\contentsline {chapter}{Bibliography}{39}

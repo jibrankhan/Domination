@@ -1,9 +1,14 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Albrecht98bayesianmodels}
 David~W. Albrecht, Ingrid Zukerman, and Ann~E. Nicholson.
 \newblock Bayesian models for keyhole plan recognition in an adventure game.
 \newblock pages 5--47, 1998.
+
+\bibitem{oai:CiteSeerPSU:538953}
+Nate Blaylock.
+\newblock Retroactive recognition of interleaved plans for natural language
+  dialogue, December~11 2001.
 
 \bibitem{journals/ai/CharniakG93}
 Eugene Charniak and Robert~P. Goldman.
@@ -16,11 +21,21 @@ Philip~R. Cohen, C.~Raymond Perrault, and James~F. Allen.
 \newblock In Wendy~G. Lehnert and Martin~H. Ringle, editors, {\em Strategies
   for Natural Language Processing}, pages 245--274. Erlbaum, Hillsdale, 1982.
 
+\bibitem{JohnFunge:AIForComp}
+John~David Funge.
+\newblock {\em Artificial Intelligence for Computer Games: An Introduction}.
+\newblock A K Peters, 2004.
+
 \bibitem{Geib:2009:PPR:1550966.1551246}
 Christopher~W. Geib and Robert~P. Goldman.
 \newblock A probabilistic plan recognition algorithm based on plan tree
   grammars.
 \newblock {\em Artif. Intell.}, 173(11):1101--1132, July 2009.
+
+\bibitem{Goldman99anew}
+Robert~P. Goldman, Christopher~W. Geib, and Christopher~A. Miller.
+\newblock A new model of plan recognition.
+\newblock {\em Artificial Intelligence}, 64:53--79, 1999.
 
 \bibitem{conf/aaai/KautzA86}
 Henry~A. Kautz and James~F. Allen.

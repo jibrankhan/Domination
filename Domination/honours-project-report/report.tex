@@ -65,51 +65,46 @@ John David Funge, Artificial Intelligence for Computer Games, An Introduction
 
 \section{Motivations}
 
-Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia it is notably different in both its scope and application.
+Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia and as John Funge argues \cite{JohnFunge:AIForComp} is notably different in both scope and application.
 
-\subsection{Difference between academic and game AI}
+The primary goal of academia is to further human understanding often by solving particularly complex problems,as a result the scope of developed A.I. techniques from academia are usually more general in their application.
 
-The primary goal of academia is to further human understanding often by solving particularly complex problems and as a result the scope of developed A.I. techniques from academia are usually more general in their application. On the other hand game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
-
-Reference - difference between academic and game A.I [AI and computer games]
-
-\subsection{Computer Graphics previously getting more attention}
+On the other hand game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
 
 Companies in the games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
 
-\subsection{AI getting more attention now}
-
-Emerging though is the idea that as users become accustomed to high quality graphics, developers will need something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
+Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
 
 There has already been some examples of successful games such as F.E.A.R which Goal-Oriented Action Planning which utilized STRIPS style planning techniques[ref], the game gained much acclaim and is referenced as a good example of game A.I. by the industry and others.
 
 With this shift in focus, there grows greater incentives and more opportunities for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
 
-\subsection{Plan Recognition}
+Plan recognition is the problem of inferring an agents plans from observations. Research in plan recognition began in the . The results of which have been numerous applications to a variety of fields.
 
-Plan recognition is the problem of inferring an agents plans from observations. [Charniak, Goldman 1992]
+In Nate Blaylock paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlighted a few of the most prominent applications of plan recognition as being:
 
-Research in plan recognition began in the 
+\begin{tabular}{|l|p{8cm}|}
+\hline 
+\textbf{Field} & \textbf{Some Applications} \\ 
+\hline 
+User Modelling & Operating Systems, Intelligent Help Systems, Intelligent Tutoring \\ 
+\hline 
+Multi Agent Interaction & Military Tactical Defence, Multi Agent Coordination \\ 
+\hline 
+Natural Language Processing & Story Understanding, Machine Translation, Dialogue Systems \\ 
+\hline
+\end{tabular} 
+\newline
 
-\subsection{Applications of Plan Recognition}
+WRITE THIS SECTION!!!!!
 
-In Nate Blaylock paper he highlighted a few of the most prominent applications of plan recognition:
-
-User modelling, 
-
-Multi agent interaction 
-
-natural language processing
-
-\subsection{Application of plan recognition algorithms to games}
-
-Plan recognition has received attention due to its potential to provide personalized responses across the various filed of its application and game are no different.
+Plan recognition has received a great deal of attention due to its ability to provide personalized responses. Applying plan recognition to games are no different.
 
 Plan recognition can perform automated game analysis which can be used by players to improve their performance. 
 
-(FIND AN EXAMPLE) Although not the case yet plan recognition could be potentially be applied to games, leading to responses that are personalized based on for example a players strategy preferences.
+Plan recognition could be potentially be applied to games, leading to responses that are personalized based on for example a players strategy preferences.
 
-Combination with planner systems. To ideally recognise a plan and create a counter plan. The applications for such systems are endless.
+Combined with planner systems one could imagine and A.I. capable of recognising a plan and building a counter plan.
 
 \section{Artificial Intelligence and Board Games}
 
@@ -132,8 +127,6 @@ Some academic work done on RISK in particular. Development of an Intelligent Art
 
 What do we want to achieve?
 
-An aim is a general statement of intent. It describes the direction in which the learner will go in terms of what they might learn or what the teacher/training will deliver.
-
 To design a plan recognition agent for the board game RISK based on the PHATT algorithm developer by Geib and Goldman.
 
 To implement a plan recognition agent for the board game RISK that can make successful predictions.
@@ -142,11 +135,9 @@ To further understanding of the complexities of performing plan recognition in t
 
 \section{Objectives}
 
-An objective is a more specific statement about what the learner should or will be able to do after the training experience.
-
 To show plan recognition algorithms can be used successfully to predict an agent's plan in the board game RISK with an accuracy better than randomly picking a mission card.
 
-To provide insight into the complexities of creating a plan recognition models for the RISK environment.
+To provide insight into the complexities of creating plan recognition models for the RISK environment.
 
 To provide insight into the nature of making plans in RISK. 
 
@@ -156,9 +147,9 @@ What do you want to answer?
 
 Are plan recognition algorithms beneficial in games? Specifically RISK?
 
-If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
+If the player is a winner, then the prediction accuracy will be better.
 
-The predictions of the winners will be better than that of lowers.
+If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
 
 Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
 
@@ -413,6 +404,8 @@ Main benefit is that responses can be personalized.
 This issue prompted research into the development of variants of the original algorithms that could cope but this 
 
 Using these algorithms people like Kabanza are starting to be able to tackle certain aspects which are harder to model?
+
+\section{Summary}
 
 \chapter{Design}
 
@@ -699,7 +692,7 @@ The resulting data structure is:\newline
 $E$ = \{ explanationName, RG, SGS, ECA, EIA \}
 }
 
-Inconsistent actions are stored in explanations due to modelling deciesions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
+Inconsistent actions are stored in explanations due to modelling decisions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
 
 Explanations of the form Two-Continent+1 have four alternate forms. For example the root goal Occupy Europe, South America and one other continent can be any of the following:
 
@@ -747,7 +740,7 @@ Occupy Asia and Africa.
 
 Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation, then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. 
 
-What is then measured is the probability of each seperate explanation of a players behaviour over the course of the game.
+What is then measured is the probability of each separate explanation of a players behaviour over the course of the game.
 
 \subsection{Prediction Agent Pseudo Code}
 
@@ -781,7 +774,7 @@ During the initialisation of the RISK map, a set of explanations must be built f
 
 The above pseudo code loops through the data structure of each continent $C$ in the set of continents $CS$. Each continent is checked against each explanation $E$ from the set of explanation $ES$, for whether its name is contained in the set of sub-goals of each $E$ by the \textit{isSubGoalOf} operation. If true then the result is in an If statement firing. 
 
-The If statment contains a loop which iterates over the set territories in the current loops continent and using the \textit{addAction} operation, adds each territories action set to the explanations to either the explanations consistent action \textit{ECA} set or inconsistent action set {EIA}.
+The If statement contains a loop which iterates over the set territories in the current loops continent and using the \textit{addAction} operation, adds each territories action set to the explanations to either the explanations consistent action \textit{ECA} set or inconsistent action set {EIA}.
 
 \subsubsection{Generating Pending Sets}
 
@@ -824,7 +817,7 @@ Before proceeding onto the next territory in $PT$ another loop is performed thro
 
 \subsubsection{Computing Action Probabilities}
 
-Following an idea from a paper by Goldman, Geib and Miller [ref - new model of plan recognition] which proposes weighting actions, a method for assigning probabilities to pending set actions generated by the $generatePendingSet$ operation was used. It required an operation that would allow greater control over weighting between consistent and inconsistent actions.
+Following an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting actions, a method for assigning probabilities to pending set actions generated by the $generatePendingSet$ operation was used. It required an operation that would allow greater control over weighting between consistent and inconsistent actions.
 
 \begin{pseudocode}[ruled]{ComputeBaseWeight}{w, playerTotalActNum, playerConsActNum}
 \begin{algorithm}[H]
@@ -908,7 +901,7 @@ $base$ = $computeObsProb$(playerPS, totalExpConsAct, obs)\newline
 $conActProb$ = $base$ + $weight$
 
 $inConActProb$ = $base$ \newline
-
+Investment
 \uIf{obs is consistent }{
 
 	\textit{expProb} = $conActProb$ * \textit{expProb}	
@@ -926,7 +919,7 @@ $inConActProb$ = $base$ \newline
 \end{algorithm}
 \end{pseudocode}
 
-After initialising the float $expProb$ the explanation is multiplied by the root goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probab is multiplied with $expProb$ .
+After initialising the float $expProb$ the explanation is multiplied by the root goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
 
 Normalizing the explanation probability at the end of each operation is vital as this prevents the probability of any explanation from dropping to zero very quickly. 
 
@@ -952,7 +945,7 @@ Main change is that PHATT works in an action space whereas I have had to adapt t
 
 Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
 
-Another difference is I have removed the need for sub goal probabilites because of working with the full derivative tree.
+Another difference is I have removed the need for sub goal probabilities because of working with the full derivative tree.
 
 Normalising after each observation computation rather than only when a probability needs to be computed.
 
@@ -1025,9 +1018,15 @@ The reason for this choice was the simplicity of its implementation at the time.
 
 Adding data to this hard coded data structure proved to be overly time consuming and therefore was changed to an automated system of the generation of a data structure allowing the plan recognition agent to work on any RISK map that could be successfully played in the open source game.
 
-Through the modelling process the realization that I could utilize the data structures of the developer rather than storing a copy within the plan recognition agent advantage is less overhead, disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
+Through the modelling process it is apparent that there is no need for the plan recognition agent to hold its own copy of the game state which is update via registration of events in the original code.
 
- was could use mirrored those that had already been defined by the developers of the open source game.
+It could utilize the data structures of the game itself rather than storing a copy within the plan recognition agent.
+
+This gives advantages such as is less overhead and eliminating the possibility of the plan recognition agents local copy to lose sync with the actual game state. The disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
+
+was could use mirrored those that had already been defined by the developers of the open source game.
+
+Implementation was done almost completely separately from the game. Piggybacked off the games data structures and just inserted code into the project which registered events occurring in the main game.
 
 \section{System Architecture Concepts}
 
