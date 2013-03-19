@@ -1,0 +1,16 @@
+General Winner Accuracy
+Occupy-Europe-Australia-One,1,1
+Occupy-Asia-South-America,1,1
+Occupy-Europe-South-America-One,0,1
+Occupy-North-America-Africa,3,1
+Occupy-Asia-Africa,0,1
+Occupy-North-America-Australia,2,1
+ 
+General Loser Accuracy
+Occupy-Europe-Australia-One,1,5
+Occupy-Asia-South-America,3,1
+Occupy-Europe-South-America-One,3,7
+Occupy-North-America-Africa,0,3
+Occupy-Asia-Africa,2,3
+Occupy-North-America-Australia,1,1
+ 

@@ -795,7 +795,23 @@ Before proceeding onto the next territory another loop is done through the list 
 
 Following an idea found from a paper by Geib which proposes a weighting towards consistent actions [ref - new model of plan recognition] that contribute to a plan. A method of assigning probabilities to pending set actions was deduced.
 
-Given the consistent actions of each explanation and a list of the territories a player owns one can create a set of actions of any type that a player can perform as well as a sub-set of those actions are consistent or inconsistent with any explanation. To do this is as follows:
+Required a simple operation that would allow weighting between actions.
+
+\begin{pseudocode}[ruled]{ComputeBaseWeight}{weight, totalActionSetSize, consActionSetSize}
+\begin{algorithm}[H]
+
+sumWeight = weight * consActionSetSize
+
+leftOver = 1.0 - sumWeight
+
+base = leftOver / numActions
+
+\Return base
+
+\end{algorithm}
+\end{pseudocode}
+
+Retreiving the consistent actions \textit{expConsActions} of each explanation and a list of the territories a player owns one can create a set of actions of any type that a player can perform as well as a sub-set of those actions are consistent or inconsistent with any explanation. To do this is as follows:
 
 Use the generatePendingSet operation to build a complete pending set of actions for a player.
 
@@ -808,68 +824,39 @@ Filter from totalAttackActions any inconsistent attack actions.
 
 Decide on a \textit{weight} you want to give actions.
 
-\begin{pseudocode}[ruled]{computeObsProb}{weight, }
+\begin{pseudocode}[ruled]{computeObsProb}{weight}
 \begin{algorithm}[H]
-\textit{playerPendingSet} = \textit{generatePendingSet()}
+\textit{playerPendingSet} = \textit{generatePendingSet()}\newline
+
+\textit{allExpConsActions} = set of all of explanations consistent actions
+\textit{expConsActions} = \textit{filerPendingSet}(allExpConsActions, actionType) \newline
 
 \textit{playerActionTypeSet} = \textit{filerPendingSet}(playerPendingSet, actionType)
+totalActionsCount = size of playerActionTypeSet \newline
 
-\textit{consistentActionSet} = \textit{
+\textit{playerConsActionSet} = $\emptyset$ \newline
 
-totalActionsCount = size of playerPendingSet
-consistent
-
-\ForAll {T $\in$ AT}{
-
-	\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
-	\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
-	\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
-
-	\ForAll{N $\in$ T}{
+\ForAll{A $\in$ \textit{playerActionTypeSet}}{
 			
-		\eIf {playerOwnsN}{
+	\If {A $\in$ \textit{expConsActions}}{
 
-			\textit{addAction}(MovementT) to \textit{playerPendingSet}
-		}{
-
-			\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
-			\textit{addAction}(SucessfulAttackT) to \textit{playerPendingSet}
-		}
+		\textit{addAction}(A) to \textit{playerConsActionSet}
 	}
-
-	\Return{newPendingSet}
 }
+playerConsActionNum = size of playerConsActionSet\newline
+
+base = \textit{computeBaseWeight}(weight, totalActionsCount, playerConsActionNum)\newline
+
+conActionProb = base + weight
+
+inConActionProb = base \newline
+
+\Return conActionProb, inConActionProb
+
 \end{algorithm}
 \end{pseudocode}
 
-\begin{pseudocode}[ruled]{ComputeBaseWeight}{weight, }
-\begin{algorithm}[H]
-\textit{playerPendingSet} = \textit{generatePendingSet()}
-
-\textit{playerActionTypeSet} = \textit{filerPendingSet}(playerPendingSet, actionType)
-
-\ForAll {T $\in$ AT}{
-
-	\textit{addAction}(ReinforceT) to \textit{playerPendingSet}
-	\textit{addAction}(FailedDefenceT) to \textit{playerPendingSet}
-	\textit{addAction}(SuccessfulDefence) to \textit{playerPendingSet}
-
-	\ForAll{N $\in$ T}{
-			
-		\eIf {playerOwnsN}{
-
-			\textit{addAction}(MovementT) to \textit{playerPendingSet}
-		}{
-
-			\textit{addAction}(FailedAttackT) to \textit{playerPendingSet}
-			\textit{addAction}(SucessfulAttackT) to \textit{playerPendingSet}
-		}
-	}
-
-	\Return{newPendingSet}
-}
-\end{algorithm}
-\end{pseudocode}
+MAKE NOTE THAT PSEUDO CODE CAN BE APPLIED TO INCONSISTENT PROBABILITIES AS EASILY.
 
 Applying this formulae to each explanation respectively, the number computed is then multiplied by the probability of the explanation.
 

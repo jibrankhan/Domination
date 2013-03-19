@@ -42,9 +42,9 @@
 \contentsline {subsubsection}{\numberline {3.3.1.2}Generating Pending Sets}{23}
 \contentsline {subsubsection}{\numberline {3.3.1.3}Computing Action Probabilities}{24}
 \contentsline {subsubsection}{\numberline {3.3.1.4}Computing Explanation Probabilities}{26}
-\contentsline {subsubsection}{\numberline {3.3.1.5}Example of Operation}{26}
+\contentsline {subsubsection}{\numberline {3.3.1.5}Example of Operation}{27}
 \contentsline {subsection}{\numberline {3.3.2}Conceptual Issues}{27}
-\contentsline {subsubsection}{\numberline {3.3.2.1}Probability Assignment}{27}
+\contentsline {subsubsection}{\numberline {3.3.2.1}Probability Assignment}{28}
 \contentsline {subsection}{\numberline {3.3.3}Summary}{28}
 \contentsline {chapter}{\numberline {4}Implementation}{29}
 \contentsline {section}{\numberline {4.1}Modifications to Open Source Project}{29}
