@@ -368,7 +368,7 @@ South America & 2 \\
 
 Once a player has distributed their armies from the reinforcement phase, they can choose to \textit{attack}. 
 
-Territories occupied by a player that contain more than one army can attack adjacent territories occupied by any other player. An attack consists of several \textit{battles}. The outcome of a battle is decided by means of rolling two sets of dice, thus making it a stochastic environment. One set is rolled for the \textit{defender} of the territory and the other for the \textit{attacker}. 
+Territories occupied by a player that contain more than one army can attack neighbouring territories occupied by any other player. An attack consists of several \textit{battles}. The outcome of a battle is decided by means of rolling two sets of dice, thus making it a stochastic environment. One set is rolled for the \textit{defender} of the territory and the other for the \textit{attacker}. 
 
 The number of dice each player receives for a battle is dependant on the number of armies placed in each of the players respective territories. The defender receives a die per army up to two armies. The attacker receives a die per army upto three armies not including the single army they are required to have in that territory while occupying it. 
 
@@ -391,7 +391,7 @@ A player can perform any number of attacks from any territory they own during th
 
 When either the player chooses to end the attacking phase or can no longer attack because they do not occupy a territory which contains more than one army their movement phase begins.
 
-During their movement phase a player may move armies from one territory to an adjacent territory they own, provided they leave atleast one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
+During their movement phase a player may move armies from one territory to an neighbouring territory they own, provided they leave atleast one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
 
 After the movement phase has been completed the players turn ends and another players reinforcement phase begins.
 \newpage
@@ -418,11 +418,11 @@ Using these algorithms people like Kabanza are starting to be able to tackle cer
 
 \section{Introduction to PHATT}
 
-PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of the PHATT approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
+PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of PHATT's approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
 
-They went on to introduce a model of plan execution based on the notion of \textit{pending sets} of actions. They defined a pending set as the actions an agent could take based on the actions that the agent had already performed, calling it "actions that are pending execution by the agent".
+They introduced a model of plan execution based on the notion of \textit{pending sets} of actions. A pending set is what actions an agent can take based on actions it had already performed, calling it "actions that are pending execution by the agent".
 
-In summary, plan execution according to PHATT was modelled as the following. An agent would first choose a root goal, then a set of plans to achieve that root goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set. This would result in some actions being added to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as the the agent concluding the root goal had been achieved.
+Plan execution according to PHATT was modelled as the following. An agent would first choose a root goal, then a set of plans to achieve that root goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set and this would result in some actions being appended to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as, the agent concluding the root goal had been achieved.
 
 From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
 
@@ -438,22 +438,22 @@ They then (as other practical Bayesian systems do) exploited the equivalent form
 \textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
 }
 
-This they described as the conditional probability of the explanation $exp_0$ being computed by dividing the conditional probability of that explanation by the sum of the probability mass associated with all possible explanations.
+This they described as the conditional probability of the explanation $exp_0$ being computed by dividing the conditional probability of $exp_0$  by the sum of the probability mass associated with all possible explanations.
 
 \subsection{Computing an Explanation's Probability}
 
-To compute \textit{Pr(exp} $\wedge$ \textit{obs)} requires three probabilistic features:\newline
+To compute the term \textit{Pr(exp} $\wedge$ \textit{obs)} requires the plan library to be augmented with three probabilistic features:\newline
 
-\begin{itemize}
+\begin{enumerate}
 \item
-The probability of the root goal.
+The prior probability of the root goal.
 \item
 The respective probabilities of choosing any sub-goals.
 \item
 The probabilities of picking actions from the agents pending set.\newline
-\end{itemize}
+\end{enumerate}
 
-The probability of an explanation is then calculated by multiplying together the probability of the root goal, the probabilities of each sub goal, and the probability of the observed actions being chosen as follows: REPHRASE\newline
+The probability of an explanation is then calculated by multiplying each of the terms together in the following manner: \newline
 
 \centerline{
 \textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{P}(\textit{goals})\textit{P}(\textit{plans}|\textit{goals})\textit{P}(\textit{obs}|\textit{exp})
@@ -496,25 +496,28 @@ A subset of these where the mission involved occupying continents were chosen to
 \textit{Two-Continent+1}: Players must occupy two explicitly named continents and another of their choice.
 \end{enumerate}
 
-As mission cards are handed out at random, the assumption is made that the probability of a root goal is 1/$n$ where $n$ is the number of mission cards.
+As mission cards are handed out at random, the prior probability of a root goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is in the form of a tuple containing the name of the root goal and its prior probability.
 
-The data structure of a root-goal RG = { rootGoalName, 1/$n$} contains the name of the root goal and its prior probability.
-
-DATA STRUCTURE FOR ROOT GOAL
+\centerline{
+ $RG$ = \{ rootGoalName, 1/$n$\} .
+}
 
 \subsection{Sub-Goals}
 
 The root goals of the RISK environment can be decomposed to form a set of sub-goals. 
 
+\begin{itemize}
+\item
 For \textit{Two-Continent} root goals, the sub-goals of that root goal are occupying each continent. 
-
+\item
 For \textit{Two-Continent+1} root goals which requires players to allow an option to occupy a continent of choice, provided they also occupy two explicitly named continents. 
+\end{itemize}
 
-These two types of root goals therefore make the occupation of any single continent a sub goal of atleast one root goal.
+These two types of root goals therefore make the occupation of any single continent a sub-goal of atleast one root goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
 
-The data structure of a sub-goal is 
-
-The assumption is made that the probability of picking a sub-goal is uniformly distributed.
+\centerline{
+ $SG$ = \{ subGoalName, 1/$c$\} .
+}
 
 \subsection{Actions}
 
@@ -541,15 +544,13 @@ Each of these action must be modelled in a manner that contributes towards expla
 
 \subsubsection{Attacking}
 
-Though players can perform several attacks during their turn, they can only attack one territory at a time. This means that players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have adjacent territories and sufficient armies. By modelling these choices, it provides an avenue to infer a players plan.
+Though players can perform several attacks during their turn, they can only attack one territory at a time. Thus players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have neighbouring territories and sufficient armies. Modelling these choices provides an avenue to infer a players plan.
 
-The pending set of a players' attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own that are adjacent to atleast one territory that they own which also contains atleast two armies.
+The pending set of a player's attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own, that are neighbour to atleast one territory that they own which also contains atleast two armies.
 
-If a player successfully attacks a territory then the adjacent territories that they do not own of that territory are added to their attack pending set.
+If a player $p$ successfully occupies a territory $T_{o}$, then the attack actions of neighbouring territories of $T_{o}$ are added to $p$'s attack pending set. If they lose a territory $T_{l}$ due to another players successful attack, then any attack actions of neighbouring territories of $T_{l}$ are removed from their attack pending set for their next turn. 
 
-If they lose a territory due to another players successful attack then the attack actions of the adjacent territories that they do not own of that territory are removed from their attack pending set for their next turn. 
-
-The attack action thus modelled as a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour.
+The attack action is thus modelled as a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour.
 
 For example, given three explanations:
 
@@ -562,9 +563,9 @@ Occupy North America and Africa.
 Occupy Asia and South America.
 \end{enumerate}
 
-Successfully occupying a territory in North America would be consistent with the explanations 1 and 2 but inconsistent with 3 or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall.
+Successfully occupying a territory in North America would be consistent with explanations 1 and 2, but inconsistent with 3, or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall.
 
-Having defined the outcome of attacks as either successful or unsuccessful this means that attacks can also be decomposed into the following: 
+Having defined the outcome of attacks as either successful or unsuccessful, attacks can be decomposed into following two actions: 
 
 \begin{table}[ht]
 \centering
@@ -572,9 +573,9 @@ Having defined the outcome of attacks as either successful or unsuccessful this 
 \hline 
 \textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-SuccessfulAttack & Yes & Arguably the best indication of a players plan is the territories they attack and successful attacks is in itself the best outcome. \\ 
+SuccessfulAttack & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indicative of a players intention to occupy that territory and therefore is a consistent action.\\ 
+FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indictive of a players intention to occupy that territory and therefore a consistent action with an explanation.\\ 
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
@@ -585,9 +586,11 @@ FailedAttack & Yes & Though less significant than a successful attack, attacking
 
 \subsubsection{Defending}
 
-Defending as opposed to attacking can be seen as a 'passive' action, an attack is required before a defence can occur. In that way it can be modelled rather as only inconsistent with the explanations it is directly related to and, as an act in itself, not related to those it is not.
+Defending as opposed to attacking can be seen as a 'passive' action as an attack is required before a defence can occur. In that way defence can be modelled as only inconsistent with the explanations it is directly related to and, as an act in itself, not related to those it is not. 
 
-For example, given the three explanations from the previous section. If a defence were to occur in a territory in North America, this should have minimal effect on the likelihood of explanation 3. 
+Practically this is difficult to achieve given the nature of competing explanations, but by making the probability term of representing a defence action large then this effect can be atleast minimised.
+
+For example, given the three explanations from the previous section. If a successful defence were to occur in a territory in North America explanation one and two could be multipled by 1.01. If a failed defence were to occur then explanations one and two would be multiplied by 0.99. This would model a change in the likelihood of both explanations and should have a comparatively minimal effect on the likelihood of explanation 3. 
 
 Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can also be decomposed into the following: 
 
@@ -597,30 +600,26 @@ Defence in the same manner as attack can be either successful or unsuccessful, t
 \hline 
 \textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-SuccessfulDefence & Yes & A successful defence of a territory may be purely based on chance, but is more likely when a player has invested armies in the defence of that territory and so provides a good sign that they have an plan involving that territory. \\ 
+SuccessfulDefence & Yes & A successful defence of a territory may be purely based on chance, but is more likely when a player has invested armies in the defence of that territory and so observing the action provides a sign that they have an plan involving that territory. \\ 
 \hline 
-FailedDefence & No & This is an inconsistent action because a player would not allow a territory to be lost of it is important to their plan. \\ 
+FailedDefence & No & An inconsistent action because a player would not normally allow a territory to be lost if it is a part of their plan. \\ 
 \hline
 \end{tabular}
 \caption{Modelling Defence Actions}
 \label{table:attack-defend-modelling}
 \end{table}
 
+\newpage
+
 \subsubsection{Reinforce}
 
-The reinforce actions that a player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any player for the reinforce actions is therefore modelled as follows. 
+The reinforce actions that a player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any players reinforce actions is therefore modelled as follows. 
 
 For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{l}$ is lost by $p$ (it is attacked then occupied by another player), its corresponding reinforce action is removed from the players pending set for the players turn at $t+1$. Conversely if another territory $T_{o}$ is occupied by $p$ then a reinforce action for $T_{o}$ is added to the players pending set at turn $t$.
 
 \subsubsection{Movement}
 
-The pending set of movement actions of player $p$ is the set of territories a player owns that are adjacent to a territory where player $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory is directly related to.
-
-\subsection{Continent}
-
-Each continent contains atleast two territories and so can be modelled simply as a tuple of the name of the continent and the set of territories that are contained in that continent.
-
-$C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
+The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory that had armies moved into is directly related to.
 
 \subsection{Territory}
 
@@ -634,9 +633,9 @@ The action set of any territory is:
 \hline 
 \textbf{Action} & \textbf{Description} \\ 
 \hline 
-SuccessfulAttack & Attacking and gaining the territory.\\ 
+SuccessfulAttack & Attacking and occupying the territory.\\ 
 \hline 
-FailedAttack & Attacking and failing to gain the territory.\\ 
+FailedAttack & Attacking and failing to occupy the territory.\\ 
 \hline 
 SuccessfulDefence & Retaining a territory after an attack.\\ 
 \hline 
@@ -651,26 +650,35 @@ Reinforce & Placing armies in the territory.\\
 \label{table:continent-bonus}
 \end{table}
 
-The data structure of a territory therefore is $T$ = \{ territoryName, $TA$, $TN$ \} where $TA$ is a set of territory actions and $TN$ a set of references to the territories neighbours.
+\newpage
 
-A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori}, as it is based on the territories a player owns. By combining the action sets of each territory a player owns into a single set, all the actions a player can perform can be captured.
+The data structure of a territory therefore is a triple containing the name of the territory the set of territory actions  $TA$ and a set of references to the territories neighbours  $TN$ .
+
+\centerline{
+$T$ = \{ territoryName, $TA$, $TN$ \} 
+}
+
+A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} as it is based on the territories a player owns. By combining the action sets of each territory a player owns into a single set, all the actions a player can perform can be captured.
+
+\subsection{Continent}
+
+Each continent contains atleast two territories and so can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
+
+\centerline{
+$C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
+}
 
 \subsection{Player}
 
-The term \textit{player} has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain these features:
+The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain alteast three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
 
-\begin{itemize}
-\item
-A player ID
-\item
-A list of territories they own $PT$.
-\item
-A list of explanations $PE$.
-\end{itemize}
+\centerline{
+$P$ = \{playerName, $PT$, $PE$\}
+}
 
 \section{Explanations}
 
-An explanation must be designed to contain all the necessary data required to compute its probability.
+Explanations must be designed to contain all the necessary data required to compute its probability.
 
 It therefore contains these features:
 
@@ -680,18 +688,23 @@ The explanation name.
 \item
 A root goal $RG$.
 \item
-A set of sub-goals $SG$.
+A set of sub-goals $SGS$.
 \item
 A set of consistent actions $ECA$.
 \item
 A set of inconsistent actions $EIA$.
 \end{itemize}
 
-Storing inconsistent actions rather than defining that if an action is not consistent then it is inconsistent, is done because this rule is not always the case. Due to the model, defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions.
+The resulting data structure is:\newline
 
-Explanation data structure is $E$ = \{ explanationName, RG, SG, ECA, EIA \}
+\centerline{
+$E$ = \{ explanationName, RG, SGS, ECA, EIA \}
+}
 
-Explanations of the form Two-Continent+1 have four children forms. For example the root goal Occupy Europe, South America and one other continent could be unpacked as one of the following:
+
+Inconsistent actions are stored in explanations due to a modelling deciesion. If it was the case that, if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
+
+Explanations of the form Two-Continent+1 have four forms. For example the root goal Occupy Europe, South America and one other continent can be any of the following:
 
 \begin{itemize}
 \item
@@ -704,7 +717,7 @@ Occupy Europe, South America and North America.
 Occupy Europe, South America and Australia.
 \end{itemize}
 
-Each is a valid explanation in itself, but yet still fall under its parent mission card, therefore the assumption is made that if the plan recognition agent predicts one of the four children, when it is known the players mission card is the parent, will be classified as a correct prediction.
+Each is a valid explanation in itself, but still falls under its parent mission card. Therefore the assumption is made that if the plan recognition agent predicts one of the four children when it is known the players mission card is the parent, it will be classified as a correct prediction.
 
 Given the list of root goals and sub-goals, the complete list of explanations is:
 
@@ -735,19 +748,17 @@ Occupy Asia and South America.
 Occupy Asia and Africa.
 \end{itemize}
 
-Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking each explanation fully and generating the full set of explanations for each player from the start, the element of choice has been effectively removed. What will be measure is the probability of each seperate explanation 
+Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. What is then measured is the probability of each seperate explanation of a players behaviour and the highest final probability is chosen as the predicted mission card.
 
 \subsection{Prediction Agent Pseudo Code}
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require a specification of root goals and sub goals for each explanation in the environment, following the previously defined explanation data structure.
-
-Following this, to complete the process requires populating each explanation with consistent and inconsistent actions, which can be done by the following operation: 
+During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root goal and sub-goals for each explanation in the environment. To complete the process of building the explanation, then requires populating each explanation with a set of consistent and inconsistent actions. This can be done by the following operation: 
 
 \begin{pseudocode}[ruled]{generateExplanationList}{-}
 \begin{algorithm}[H]
-\ForAll {C $\in$ CL}{
+\ForAll {C $\in$ CS}{
 
 	\ForAll{E $\in$ ES}{
 
@@ -759,7 +770,7 @@ Following this, to complete the process requires populating each explanation wit
 
 				\textit{addAction}(MovementT) to \textit{ECA}
 				\textit{addAction}(SuccessfulDefence) to \textit{ECA}
-				\textit{addAction}(FailedAttackT) to \textit{ECA}
+				\textit{addAction}(FailedAttackT) to \textit{ECA} \newline
 
 				\textit{addAction}(FailedDefenceT) to \textit{EIA}
 			}
@@ -769,9 +780,9 @@ Following this, to complete the process requires populating each explanation wit
 \end{algorithm}
 \end{pseudocode}
 
-The above operation loops through the data structure of each continent $C$ in the list of continents $CL$ of the RISK map against each explanation $E$ in a set of the environments explanation $ES$. Each continent is checked whether its name is contained in the set of sub-goals by the \textit{isSubGoalOf} operation. If the name of the current continent of loop is contained in the names of set of sub-goals of the loops current explanation then it returns true. 
+The above operation loops through the data structure of each continent $C$ in a set of continents $CS$ of the RISK map, against each explanation $E$ in a set of the environments explanation $ES$. Each continent is checked for whether its name is contained in the set of sub-goals of each $E$ by the \textit{isSubGoalOf} operation. If the name of the loops current continent is contained in the names of set of sub-goals of the loops current explanation then it returns true resulting in an If statement firing. 
 
-This results in the if statemenet firing which contains a loop which iterates over the list of each territory $T$ in the continent, using the \textit{addAction} operation to add each territories action set to the explanations consistent action \textit{ECA} set or inconsistent action set {EIA} depending on the action.
+The if statment contains a loop which iterates over the set territories in the continent and using the \textit{addAction} operation, adds each territories action set to the explanations consistent action \textit{ECA} set or inconsistent action set {EIA}.
 
 \subsubsection{Generating Pending Sets}
 
@@ -870,7 +881,7 @@ This formulae makes three assumptions:
 
 \begin{enumerate}
 \item
-That any territories including ones that only contain one army can attack. Though this is not technically true, due to the nature of RISK where players are not restricted in any way on where they may place their armies during the reinforcement phase a player can practically attack any territory they do not own but have a territory they own adjacent to it at the start of their turn.
+That any territories including ones that only contain one army can attack. Though this is not technically true, due to the nature of RISK where players are not restricted in any way on where they may place their armies during the reinforcement phase a player can practically attack any territory they do not own but have a territory they own neighbour to it at the start of their turn.
 \item
 That the likelihood of consistent attack actions are uniformly distributed.
 \item
@@ -878,8 +889,6 @@ That the likelihood of inconsistent attack actions are uniformly distributed.
 \end{enumerate}
 
 \subsubsection{Computing Explanation Probabilities}
-
-FIX THIS SECTION
 
 \begin{pseudocode}[ruled]{ComputeExplanationProbability}{explanation, obs}
 \begin{algorithm}[H]
