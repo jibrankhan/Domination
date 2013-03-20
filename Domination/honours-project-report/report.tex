@@ -110,12 +110,11 @@ Combined with planner systems one could imagine and A.I. capable of recognising 
 
 In 1915 Leonardo Torres y Quevedo's built a chess automaton[ref]. It was considered the worlds first computer program and arguably the beginning of Artificial Intelligence and board games.
 
-Thirty five years later Alan Turing published a landmark paper[ref], marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College[ref]. He defined it as "the science and engineering of making intelligent machines"[ref].
+Thirty five years later Alan Turing published a landmark paper "Computing Machinery and Intelligence" where he establishing the Turing test, marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
-E.g
-There existed Christopher Stracheys Game AI for the board game draughts built in 1951[ref]. As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
+There existed Christopher Stracheys Game A.I. for the board game draughts built in 1951[ref]. As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
 
-Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 [ref] have continued to impress the public. 
+Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 has continued to impress the public. 
 
 From history it seems clear that AI and its application in games are intertwined becoming a growing area of interest in both commercial and academic fields.
 
@@ -241,7 +240,7 @@ Now A first performs the action \textit{Take Burger Bun out of Packet}, then pro
 
 Each of these explanations are equally likely at this point because the actions that have occured so far could be part of either plan.
 
-A then takes the Chicken Patties of the packet, now given our assumptions we can conclude that A's plan is to cook Meat burgers. In this way B has recognised A's plan thus performing the process of plan recognition.
+A then takes the Chicken Patties of their packet, now given our assumptions we can conclude that A's plan is to cook Meat burgers. In this way B has recognised A's plan thus performing the process of plan recognition.
 
 \newpage
 
@@ -982,15 +981,23 @@ The summary for this section is
 
 \chapter{Implementation}
 
-Built purely in the Java programming language, the plan recognition agent follows an \textit{event-driven} system architecture, with the following design.
+Built purely in the Java programming language, the plan recognition agent follows an \textit{event-driven} system architecture.
 
 Diagram 
 
-(Game -> Processing Class -> Plan Recognition Agent)
+(Game -> Processing -> Events -> Plan Recognition Agent)
 
 \textit{Game} represents an existing open source project of the board game RISK. Developed by Yura.Net, a team based in London headed by Yura Mamyrin the project is written in the Java programming language[ref - to website].
 
-\textit{Event} objects contain important data from the environment which the plan recognition agent requires to compute the likelihood of explanations. These events are fired from the \textit{Game} at the following key points:
+\textit{Event} objects contain important data from the environment which the plan recognition agent requires to compute the likelihood of explanations. 
+
+The plan recognition agent needs to simply be aware of when the game beings, the changes that occur in the game state and when the game is finished. These \textit{events} are registered by the processing class and sent to the plan recognition agent.
+
+Modifications to the project were minimal. Modifications such as:
+
+Initialising the plan recognition agent and processing class when the game begins.
+
+Statements that created events objects at the following key points in the \textit{Game}:
 
 \begin{itemize}
 \item
@@ -1005,42 +1012,16 @@ Attacks
 Army Movements
 \end{itemize}
 
-MORE DETAIL OF SPECIFIC IMPLEMENTATION REQUIRED
 Once fired these events are handled by a \textit{processing} class which (routes?) each event object to the plan recognition agent where it is handled in a manner depending on the event.
 
-In this way the implementation of the plan recognition agent is not as a dependant sub-component of the game but rather a component completely separate entity that operates in \textit{parallel} to the game.
+In this way the implementation of the plan recognition agent is not as a dependant sub-component of the game but rather a completely separate entity that operates in \textit{parallel} to the game.
 
-Initially the architecture was designed as a distributed system where the system would store its own subset of data structures from the RISK environment. Treated the game as a black box where only the changes in game state would be observable.
+Initially the plan recognition agent would store its own copy of the data structures from the RISK environment. Treated the game as a black box where only the changes in game state would be observable.
 
 Agent data was generated such as countries they owned.
 Agent explanations computed by the plan recognition agent based on events from the environment.
 
 The reason for this choice was the simplicity of its implementation at the time and to reduce the dependence on the implementation of the project.
-
-\section{Modifications to Open Source Project}
-
-Modifications to the open source project were minimal, modifications included:
-
-Initialising the plan recognition agent and processing class when the game begins.
-
-The plan recognition agent needs to simply be aware of when the game beings, the changes that occur in the game state and when the game is finished. These \textit{events} are registered by the processing class and sent to the plan recognition agent.
-
-Code that injected events into processing which passed it to the plan recognition agent in various places namely:
-
-\begin{itemize}
-\item
-Player Initialisation
-\item
-Player Removal
-\item
-Territory Occupation
-\item
-Attacks
-\item
-Army Movements
-\end{itemize}
-
-Also included code that generated csv files when the game was registered as being over.
 
 \section{System Construction}
 
@@ -1084,75 +1065,58 @@ Three types of games to test the algorithm in:
 
 \section{Experiments}
 
-\subsection{AI Play}
+\subsection{A.I. Play}
 
-The open source project has built in AI to play for the mission game mode. This provided an opportunity for the collection of a large number of data samples to test the performance of the plan recognition agent.
+The RISK project has a built in A.I. for various game modes in particular it has a hard A.I for the mission game mode. The A.I can be substituted for players to the point where a game can consist of upto six A.I. fighting each other completing a game in a fraction of the time compared to people. Monitoring these games provide an opportunity for the collection of a large number of data samples for testing the performance of the plan recognition agent.
 
 \subsection{Constrained Play}
 
-Where players are asked only to perform actions that are consistent with their root goal.
+In this form of play, players are asked only to perform actions that are directly consistent with their root goal. This means for example players may not break another players continent even though preventing other players from completing their mission is in-directly consistent with completing a players own mission.
 
-This is defined as given a situation a player only:
+More formally this is defined as. Given a set of actions a player will only either:
 
-Chooses to attack a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
-
-Reinforces a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
-
+\begin{itemize}
+\item
+Choose to attack a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+\item
+Reinforce a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+\item
 Moves armies to a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+\end{itemize}
 
-Why did I choose to do this?
-
-To establish that the algorithm works given that players behave only a consistent manner with the mission they have been given.
+By creating an artificially constructed form of play, this is clearly the easiest to perform plan recognition on and by establishing that the algorithm works given that players behave only a consistent manner with the mission they have been given.
 
 \subsection{Free Play}
 
-Where players are asked to play as normal.
+Free play can be easily described as players are simply "play to win". In this manner it should be exactly how players normally play mission RISK.
 
 \section{Experimental Format}
 
-Explained the rules then
+There were two experiment formats, one for constrained play, the other for free play. But before either the rules of the game were explained to participants. 
 
-There are two ways to win in mission RISK, one is to eliminate all the other players, the other is to complete your mission.
+For constricted play, the particular play style required was described to participants in detail
 
-Explained to players the rules of the game 
+For free play it was made clear to participants that there were two primary methods of winning in mission risk. Either by eliminating all other participants from the game or by completing their mission card. The mantra was "Play to Win".
+
+At the end of the game participants gave a short summary of their initial plan during the placement phase and any changes in plan from that during the course of the game.
 
 \section{Data Collection}
 
-How did I get the data?
+After a game has finished the system generates two files. One a log file which using a debug tool created by the developers allows an exact replay of the game. 
 
-After the game is finished I automatically generate a log file that allows me to replay a game exactly and a csv file recording significant features such as:
+This has significant implications in that the environment can be eliminated as a changing variable in the evaluation process. Since a game can be reproduced but with the plan recognition agent being implemented differently or with different probability calibrations. 
 
-a players actual mission
-player explanation probabilities over time
-which player won and lost
+The other is a csv file recording the significant features of the game such as who won and lost, each players actual mission and the probabilities of each players respective explanations over the course of the game.
 
-The data collection for AI play could be automated using a program called Autohotkey which allowed the creation of macros which automated the data collection process. 
+Collecting the high volume of A.I. play samples was done using an free macro program called \textit{AutoHotkey} which allowed a degree of the automation of the data samples. 
 
-Then used python scripts to analyse the csv files.
+Python scripts were used to analyse the set of csv files.
 
 Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
 
 Using an system built by the original developers was able to easily reproduce a game if necessary for the purposes of evaluating the algorithm under different conditions.
 
-Questions to answer:
-
-What did I tell players?
-
-Explained to players the rules of the game and that there were two primary methods of winning in mission risk either by eliminating their opponents or by completing their mission card player were instructed to "Play to Win"
-
-\subsection{Experimental De-briefing}
-
-At the end of the experiment I asked players to give a short high-level summary of their plan, this included when their plan
-
-asked players to give a summary of what they had done in the game, recorded this down to use for comparison purposes at a later point.
-
 \section{Experimental Findings}
-
-Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
-
-Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
-
-Misclassification by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations.
 
 Main questions to answer.
 
@@ -1163,6 +1127,28 @@ It does converge.
 How fast it converges?
 
 Converges quite quickly after the attacks begin - use data from average data over time.
+
+\subsection{Nature of Game}
+
+Essentially the problem is that due to the nature of the game and the high-level of overlap between missions, players often must perform actions that are not directly consistent with their plan in order to survive or prevent other players from winning.
+
+This to the algorithm looks consistent with whatever explanation that those actions \textit{are} directly related to.
+
+Solving this problem could be done in potentially two ways either:
+
+Identifying in some manner that those actions are in-directly consistent and modelling it to contribute to explanations that are related in such a way.
+ 
+Through the state of the game identifying actions that are clearly consistent more significant. For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is far more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another.
+
+The simplicity of the model 
+
+\subsection{Simplicity of Model}
+
+Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
+
+Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
+
+Misclassification by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations.
 
 Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
 

@@ -2,58 +2,61 @@
 
 \bibitem{Albrecht98bayesianmodels}
 David~W. Albrecht, Ingrid Zukerman, and Ann~E. Nicholson.
-\newblock Bayesian models for keyhole plan recognition in an adventure game.
+\newblock {Bayesian Models for Keyhole Plan Recognition in an Adventure Game}.
 \newblock pages 5--47, 1998.
 
 \bibitem{oai:CiteSeerPSU:538953}
 Nate Blaylock.
-\newblock Retroactive recognition of interleaved plans for natural language
-  dialogue, December~11 2001.
+\newblock {Retroactive Recognition of Interleaved Plans for Natural Language
+  Dialogue}, December~11 2001.
 
 \bibitem{journals/ai/CharniakG93}
 Eugene Charniak and Robert~P. Goldman.
-\newblock A bayesian model of plan recognition.
-\newblock {\em Artif. Intell}, 64(1):53--79, 1993.
+\newblock {A Bayesian Model of Plan Recognition}.
+\newblock 64(1):53--79, 1993.
 
 \bibitem{Cohen82a}
 Philip~R. Cohen, C.~Raymond Perrault, and James~F. Allen.
-\newblock Beyond question answering.
+\newblock {Beyond Question Answering}.
 \newblock In Wendy~G. Lehnert and Martin~H. Ringle, editors, {\em Strategies
   for Natural Language Processing}, pages 245--274. Erlbaum, Hillsdale, 1982.
 
 \bibitem{JohnFunge:AIForComp}
 John~David Funge.
-\newblock {\em Artificial Intelligence for Computer Games: An Introduction}.
+\newblock {\em {Artificial Intelligence for Computer Games: An Introduction}}.
 \newblock A K Peters, 2004.
 
 \bibitem{Geib:2009:PPR:1550966.1551246}
 Christopher~W. Geib and Robert~P. Goldman.
-\newblock A probabilistic plan recognition algorithm based on plan tree
-  grammars.
+\newblock {A Probabilistic Plan Recognition Algorithm Based on Plan Tree
+  Grammars}.
 \newblock {\em Artif. Intell.}, 173(11):1101--1132, July 2009.
 
 \bibitem{Goldman99anew}
 Robert~P. Goldman, Christopher~W. Geib, and Christopher~A. Miller.
-\newblock A new model of plan recognition.
+\newblock {A New Model of Plan Recognition}.
 \newblock {\em Artificial Intelligence}, 64:53--79, 1999.
 
 \bibitem{conf/aaai/KautzA86}
 Henry~A. Kautz and James~F. Allen.
-\newblock Generalized plan recognition.
-\newblock In Tom Kehler, editor, {\em AAAI}, pages 32--37. Morgan Kaufmann,
-  1986.
+\newblock {Generalized Plan Recognition}.
+\newblock In Tom Kehler, editor, {\em Proceedings of 1986 Conference of the
+  American Association for Artificial Intelligence}, pages 32--37. Morgan
+  Kaufmann, 1986.
 
 \bibitem{journals/ai/SchmidtSG78}
 Charles~F. Schmidt, N.~S. Sridharan, and John~L. Goodson.
-\newblock The plan recognition problem: An intersection of psychology and
-  artificial intelligence.
+\newblock {The Plan Recognition Problem: An Intersection of Psychology and
+  Artificial Intelligence}.
 \newblock {\em Artif. Intell}, 11(1-2):45--83, 1978.
 
 \bibitem{conf/aiide/SynnaeveB11}
 Gabriel Synnaeve and Pierre Bessi{\`e}re.
-\newblock A bayesian model for plan recognition in {RTS} games applied to
-  starcraft.
-\newblock In Vadim Bulitko and Mark~O. Riedl, editors, {\em AIIDE}. The AAAI
-  Press, 2011.
+\newblock {A Bayesian Model for Plan Recognition in {RTS} Games Applied to
+  StarCraft}.
+\newblock In Vadim Bulitko and Mark~O. Riedl, editors, {\em Proceedings of the
+  Seventh {AAAI} Conference on Artificial Intelligence and Interactive Digital
+  Entertainment, {AIIDE} 2011, October 10-14, 2011, Stanford, California,
+  {USA}}. The AAAI Press, 2011.
 
 \end{thebibliography}

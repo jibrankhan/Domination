@@ -2,50 +2,47 @@ This is BibTeX, Version 0.99c (Web2C 7.5.6)
 The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: mybibfile.bib
-Warning--I'm ignoring conf/aaai/KautzA86's extra "booktitle" field
---line 58 of file mybibfile.bib
-Warning--I'm ignoring conf/aiide/SynnaeveB11's extra "booktitle" field
---line 127 of file mybibfile.bib
 Warning--empty booktitle in Albrecht98bayesianmodels
+Warning--empty journal in journals/ai/CharniakG93
 You've used 10 entries,
             2118 wiz_defined-function locations,
-            577 strings with 6054 characters,
-and the built_in function-call counts, 3530 in all, are:
-= -- 347
+            575 strings with 6023 characters,
+and the built_in function-call counts, 3519 in all, are:
+= -- 346
 > -- 158
 < -- 3
-+ -- 64
++ -- 59
 - -- 49
 * -- 233
-:= -- 578
+:= -- 577
 add.period$ -- 32
 call.type$ -- 10
 change.case$ -- 51
 chr.to.int$ -- 0
-cite$ -- 11
+cite$ -- 12
 duplicate$ -- 140
 empty$ -- 292
 format.name$ -- 49
-if$ -- 752
+if$ -- 751
 int.to.chr$ -- 0
 int.to.str$ -- 10
 missing$ -- 10
 newline$ -- 52
 num.names$ -- 26
-pop$ -- 64
+pop$ -- 66
 preamble$ -- 1
 purify$ -- 42
 quote$ -- 0
 skip$ -- 101
 stack$ -- 0
-substring$ -- 218
-swap$ -- 33
+substring$ -- 213
+swap$ -- 32
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 38
-warning$ -- 1
+warning$ -- 2
 while$ -- 40
 width$ -- 12
-write$ -- 110
-(There were 3 warnings)
+write$ -- 109
+(There were 2 warnings)
