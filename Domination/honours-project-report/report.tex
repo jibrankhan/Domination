@@ -982,11 +982,48 @@ The summary for this section is
 
 \chapter{Implementation}
 
+Built purely in the Java programming language, the plan recognition agent follows an \textit{event-driven} system architecture, with the following design.
+
+Diagram 
+
+(Game -> Processing Class -> Plan Recognition Agent)
+
+\textit{Game} represents an existing open source project of the board game RISK. Developed by Yura.Net, a team based in London headed by Yura Mamyrin the project is written in the Java programming language[ref - to website].
+
+\textit{Event} objects contain important data from the environment which the plan recognition agent requires to compute the likelihood of explanations. These events are fired from the \textit{Game} at the following key points:
+
+\begin{itemize}
+\item
+Player Initialisation
+\item
+Player Removal
+\item
+Territory Occupation
+\item
+Attacks
+\item
+Army Movements
+\end{itemize}
+
+MORE DETAIL OF SPECIFIC IMPLEMENTATION REQUIRED
+Once fired these events are handled by a \textit{processing} class which (routes?) each event object to the plan recognition agent where it is handled in a manner depending on the event.
+
+In this way the implementation of the plan recognition agent is not as a dependant sub-component of the game but rather a component completely separate entity that operates in \textit{parallel} to the game.
+
+Initially the architecture was designed as a distributed system where the system would store its own subset of data structures from the RISK environment. Treated the game as a black box where only the changes in game state would be observable.
+
+Agent data was generated such as countries they owned.
+Agent explanations computed by the plan recognition agent based on events from the environment.
+
+The reason for this choice was the simplicity of its implementation at the time and to reduce the dependence on the implementation of the project.
+
 \section{Modifications to Open Source Project}
 
-Initialised plan recognition agent and processing class within 
+Modifications to the open source project were minimal, modifications included:
 
-Initialisation of plan recognition agent and processing class in risk game.
+Initialising the plan recognition agent and processing class when the game begins.
+
+The plan recognition agent needs to simply be aware of when the game beings, the changes that occur in the game state and when the game is finished. These \textit{events} are registered by the processing class and sent to the plan recognition agent.
 
 Code that injected events into processing which passed it to the plan recognition agent in various places namely:
 
@@ -1003,16 +1040,9 @@ Attacks
 Army Movements
 \end{itemize}
 
+Also included code that generated csv files when the game was registered as being over.
+
 \section{System Construction}
-
-The architecture of the plan recognition agent was built around an existing open source RISK game developed by Yura Mamyrin (verify name) and (anyone else) in (year?)[ref - to website?].
-
-Initially the architecture was designed as a distributed system where the system would store its own subset of data structures from the RISK environment.
-
-Agent data was generated such as countries they owned.
-Agent explanations computed by the plan recognition agent based on events from the environment.
-
-The reason for this choice was the simplicity of its implementation at the time.
 
 (Diagram of data structure of local copy)
 
@@ -1020,23 +1050,13 @@ Adding data to this hard coded data structure proved to be overly time consuming
 
 Through the modelling process it is apparent that there is no need for the plan recognition agent to hold its own copy of the game state which is update via registration of events in the original code.
 
-It could utilize the data structures of the game itself rather than storing a copy within the plan recognition agent.
+It could utilize the data structures from the game itself rather than storing a copy within the plan recognition agent.
 
 This gives advantages such as is less overhead and eliminating the possibility of the plan recognition agents local copy to lose sync with the actual game state. The disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
 
-was could use mirrored those that had already been defined by the developers of the open source game.
-
-Implementation was done almost completely separately from the game. Piggybacked off the games data structures and just inserted code into the project which registered events occurring in the main game.
+Implementation of the plan recognition agent was done completely separately from the game. Piggybacked off the games data structures and just inserted code into the project which registered events occurring in the main game.
 
 \section{System Architecture Concepts}
-
-\subsection{Event Driven System}
-
-Plan recognition agent receives event objects that are fired from the previously mentioned modifications to the original source code. These event objects contain important information from the environment which the plan recognition agent uses to compute the likelihood of explanations.
-
-\subsection{Component Based Class Architecture}
-
-Classes are modelled as an aggregation of components allowing
 
 \subsection{Google Guava Libraries}
 
