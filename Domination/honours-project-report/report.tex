@@ -983,6 +983,8 @@ The summary for this section is
 
 Built purely in the Java programming language, the plan recognition agent follows an \textit{event-driven} system architecture.
 
+THIS SECTION NEED TO BE LOOKED AT!
+
 Diagram 
 
 (Game -> Processing -> Events -> Plan Recognition Agent)
@@ -1033,15 +1035,15 @@ Through the modelling process it is apparent that there is no need for the plan 
 
 It could utilize the data structures from the game itself rather than storing a copy within the plan recognition agent.
 
-This gives advantages such as is less overhead and eliminating the possibility of the plan recognition agents local copy to lose sync with the actual game state. The disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
+This gives advantages such as less overhead and eliminating the possibility of the plan recognition agents local copy to lose sync with the actual game state. The disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
 
-Implementation of the plan recognition agent was done completely separately from the game. Piggybacked off the games data structures and just inserted code into the project which registered events occurring in the main game.
+Piggybacked off the games data structures and just inserted code into the project which registered events occurring in the main game.
 
 \section{System Architecture Concepts}
 
 \subsection{Google Guava Libraries}
 
-Extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
+The plan recognition agent makes extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
 
 \subsection{Replaying Games}
 
@@ -1067,7 +1069,7 @@ Three types of games to test the algorithm in:
 
 \subsection{A.I. Play}
 
-The RISK project has a built in A.I. for various game modes in particular it has a hard A.I for the mission game mode. The A.I can be substituted for players to the point where a game can consist of upto six A.I. fighting each other completing a game in a fraction of the time compared to people. Monitoring these games provide an opportunity for the collection of a large number of data samples for testing the performance of the plan recognition agent.
+The RISK project has a built in A.I. for various game modes in particular it has one mission game mode. The A.I can be substituted for players to the point where a game can consist of upto six A.I. fighting each other completing a game in a fraction of the time compared to people. Monitoring these games provide an opportunity for the collection of a large number of data samples for testing the performance of the plan recognition agent.
 
 \subsection{Constrained Play}
 
