@@ -1108,7 +1108,7 @@ This has significant implications in that the environment can be eliminated as a
 
 The other is a csv file recording the significant features of the game such as who won and lost, each players actual mission and the probabilities of each players respective explanations over the course of the game.
 
-Collecting the high volume of A.I. play samples was done using an free macro program called \textit{AutoHotkey} which allowed a degree of the automation of the data samples. 
+Collection of A.I. play data samples was automated using an free macro program called \textit{AutoHotkey}. 
 
 Python scripts were used to analyse the set of csv files.
 
@@ -1124,9 +1124,239 @@ Whether is converges?
 
 It does converge.
 
+SHOW LINE GRAPH SHOWING LINES CONVERGING, TALK ABOUT HOW DOING ACTIONS MAKE SOME EXPLANATIONS MORE LIKELY AND OTHERS LESS LIKELY
+
+THEN AMONGST A GROUP OF LIKELY EXPLANATIONS SOME BECOME MORE LIKELY AND OTHER LESS LIKELY
+
+It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
+
+SHOW AN EXAMPLE OF IT NOT CONVERGING
+
 How fast it converges?
 
-Converges quite quickly after the attacks begin - use data from average data over time.
+Converges quite quickly after the attacks begin
+
+ATTACKS BEGIN TURN ?? PROBABILITIES MOVE MUCH MORE SIGNIFICANTLY AFTER THIS TURN.
+
+why because model has been built giving attacks the most significance. use data from average data over time.
+
+Present table of general accuracy
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Game Type} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Free Play & 17 & 26 & 39.53 \\ 
+\hline 
+Constrained Play & 79 & 23 & 77.45 \\ 
+\hline 
+A.I. Play - Weight 100 & 390 & 714 & 35.33 \\ 
+\hline 
+A.I. Play - Weight 4 & 89 & 265 & 25.14 \\
+\hline 
+\end{tabular}
+\caption{General Game Accuracy}
+\label{table:continent-bonus}
+\end{table}
+
+Why is the accuracy of free play and A.I. play much lower than constrained play.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+\textbf{Game Type} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Free Play & Winner & 7 & 6 & 53.85 \\ 
+& Loser & 10 & 20 & 33.33 \\ 
+\hline 
+Constrained Play & Winner & 14 & 3 & 82.35 \\ 
+& Loser & 65 & 20 & 76.47 \\ 
+\hline
+A.I. Play - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
+& Loser & 310 & 610 & 33.70 \\  
+\hline
+A.I. Play - Weight 4 & Winner & 16 & 43 & 27.12 \\ 
+& Loser & 73 & 222 & 24.75 \\ 
+\hline
+\end{tabular}
+\caption{Winner-Loser Accuracy}
+\label{table:continent-bonus}
+\end{table}
+
+Present table of winner losers
+
+Why is the accuracy of winners better than losers?
+
+Some reasons for mis-predictions players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
+
+More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations.
+
+Present breakdown of explanations accuracy per game type
+
+\subsection{FREE PLAY}
+
+General Accuracy for each explanation
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\subsection{CONSTRAINED PLAY}
+
+General Accuracy for each explanation
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 11 & 6 & 64.71 \\  
+\hline 
+Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
+\hline
+Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
+\hline
+Occupy-North-America-Africa & 13 & 4 & 76.47 \\
+\hline
+Occupy-Asia-Africa & 15 & 2 & 88.24 \\
+\hline
+Occupy-North-America-Australia & 15 & 2 & 88.24 \\
+\hline
+\end{tabular}
+\caption{Constrained Play General Explanation Accuracy}
+\label{table:continent-bonus}
+\end{table}
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 1 & 1 & 50.00 \\  
+\hline 
+Occupy-Asia-South-America & 0 & 0 & 0.00 \\ 
+\hline
+Occupy-Europe-South-America-One & 4 & 0 & 100.00 \\
+\hline
+Occupy-North-America-Africa & 5 & 1 & 83.33 \\
+\hline
+Occupy-Asia-Africa & 0 & 0 & 0.00 \\
+\hline
+Occupy-North-America-Australia & 4 & 1 & 80.00 \\
+\hline
+\end{tabular}
+\caption{Constrained Play Winner Accuracy}
+\label{table:continent-bonus}
+\end{table}
+		
+\begin{table}[ht]
+\centering	
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 10 & 5 & 66.67 \\  
+\hline 
+Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
+\hline
+Occupy-Europe-South-America-One & 5 & 8 & 38.46 \\
+\hline
+Occupy-North-America-Africa & 8 & 3 & 72.73 \\
+\hline
+Occupy-Asia-Africa & 15 & 2 & 88.24 \\
+\hline
+Occupy-North-America-Australia & 11 & 1 & 91.67 \\
+\hline
+\end{tabular}
+\caption{Constrained Play Loser Accuracy}
+\label{table:continent-bonus}
+\end{table}			
+
+\newpage
+
+\subsection{AI PLAY}
+
+\subsubsection{AI - Weight 100}
+
+General Accuracy for each explanation
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 51 & 133 & 27.72 \\  
+\hline 
+Occupy-Asia-South-America & 50 & 134 & 27.17 \\ 
+\hline
+Occupy-Europe-South-America-One & 127 & 57 & 69.02 \\
+\hline
+Occupy-North-America-Africa & 58 & 126 & 31.52 \\
+\hline
+Occupy-Asia-Africa & 37 & 147 & 20.11 \\
+\hline
+Occupy-North-America-Australia & 67 & 117 & 36.41 \\
+\hline
+\end{tabular}
+\caption{AI Play General Explanation Accuracy - Weight 100}
+\label{table:continent-bonus}
+\end{table}
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 15 & 21 & 41.67 \\  
+\hline 
+Occupy-Asia-South-America & 9 & 9 & 50.00 \\ 
+\hline
+Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
+\hline
+Occupy-North-America-Africa & 15 & 21 & 41.67 \\
+\hline
+Occupy-Asia-Africa & 14 & 28 & 33.33 \\
+\hline
+Occupy-North-America-Australia & 18 & 17 & 51.43 \\
+\hline
+\end{tabular}
+\caption{AI Play Winner Accuracy}
+\label{table:continent-bonus}
+\end{table}
+			
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 36 & 112 & 24.32 \\  
+\hline 
+Occupy-Asia-South-America & 41 & 125 & 24.70 \\ 
+\hline
+Occupy-Europe-South-America-One & 118 & 49 & 70.66 \\
+\hline
+Occupy-North-America-Africa & 43 & 105 & 29.05 \\
+\hline
+Occupy-Asia-Africa & 23 & 119 & 16.20 \\
+\hline
+Occupy-North-America-Australia & 49 & 100 & 32.89 \\
+\hline
+\end{tabular}
+\caption{AI Play Loser Accuracy}
+\label{table:continent-bonus}
+\end{table}			
+
+\subsubsection{AI - Weight 4}
 
 \subsection{Nature of Game}
 
@@ -1152,13 +1382,40 @@ Misclassification by Association - Explanations appear likely because players do
 
 Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
 
+HOW TO FIX
+
+Use a system of tiered consistent actions!
+
+ExplanationProb = ExplanationProb * Weight
+
+The weight for each consistent action is flat at the moment.
+
+How about making a system of applying weights in a manner that is proportional to the state of the game e.g
+
+Weight = 0.1 * 1- (The proportion of consistent actions for that explanations) * (Proportion of territories a player owns of the continents) <- Proportion of reinforce actions available to the player.
+
+Best case = Low Number of consistent actions and high number of territories owned e.g
+
+Has 1 attack option out of 13 and owns 9 of the ten territories
+
+0.1 * 1-(1/13) * 9/10 
+
+Worst Case = Low number of consistent actions a
+
+0.1 * 1-(12/13) * 4/10 
+
+Has 12 attack options out of 13 and owns 4 of the ten territories
+
+What is the weight was computed in the normal manner but would be scaled up down by two factors in-order to make an action that appear
+Plans should consider not only consider what occurs in the action space but the state of the environment as well.
+
 \section{Outcomes}
 
 In evaluation DO NOT JUST RELY ON MEASUREMENTS! DISCUSS OUTCOMES! MAKE INFERENCES FROM DATA!
 
 THE WHOLE PURPOSE OF ACADEMIA IS TO LEARN, SHOW THAT YOU HAVE SOMETHING TO CONTRIBUTE TO THAT AIM TO LEARN!
 
-Like what did you find hard? What did you do that you found easy? What did you do that you found hard? 
+What did you do that you found easy? What did you do that you found hard? 
 
 Would you recommend doing something, what would you recommend not doing?
 
