@@ -73,15 +73,17 @@ On the other hand game A.I. is built to provide an enjoyable experience for thos
 
 Companies in the games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
 
-Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I.
+Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I. and indeed there has already been examples of successful games acclaimed for their game A.I, one such is F.E.A.R. 
 
-There has already been some examples of successful games such as F.E.A.R which Goal-Oriented Action Planning which utilized STRIPS style planning techniques[ref], the game gained much acclaim and is referenced as a good example of game A.I. by the industry and others.
+A First Person Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P. \textbf{[ref]}. \textbf{Talk briefly about what G.O.A.P. does.}
 
-With this shift in focus, there grows greater incentives and more opportunities for the continued development of more sophisticated game A.I. likely with techniques developed in academia. The application of plan recognition algorithms may provide such an opportunity. 
+The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
-Plan recognition is the problem of inferring an agents plans from observations. Research in plan recognition began in the . The results of which have been numerous applications to a variety of fields.
+With this shift in focus, there grows greater incentives for developers to  and as a result more opportunities for the continued development of game A.I. likely as in the past with techniques developed in academia. Plan recognition algorithms may provide such an opportunity. 
 
-In Nate Blaylock paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlighted a few of the most prominent applications of plan recognition as being:
+Plan recognition is the problem of inferring an agents plans from observations. Research in plan recognition began in the 1980's, the results of which have been numerous applications in a variety of fields.
+
+In Nate Blaylocks paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlighted a few of the most prominent applications of plan recognition as being:
 
 \begin{tabular}{|l|p{8cm}|}
 \hline 
@@ -96,23 +98,17 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \end{tabular} 
 \newline
 
-WRITE THIS SECTION!!!!!
+Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consquences of failing to recognise plans, can in some situations be dire. Though not so much the latter point as losing video games is argueably trivial, applying plan recognition to games are no different.
 
-Plan recognition has received a great deal of attention due to its ability to provide personalized responses. Applying plan recognition to games are no different.
-
-Plan recognition can perform automated game analysis which can be used by players to improve their performance. 
-
-Plan recognition could be potentially be applied to games, leading to responses that are personalized based on for example a players strategy preferences.
-
-Combined with planner systems one could imagine and A.I. capable of recognising a plan and building a counter plan.
+Plan recognition has been used to perform automated game analysis, which potentially could be used to improve player performance. More exiciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. The result could be A.I. capable of recognising plans and subsequently building counter plans.
 
 \section{Artificial Intelligence and Board Games}
 
-In 1915 Leonardo Torres y Quevedo's built a chess automaton[ref]. It was considered the worlds first computer program and arguably the beginning of Artificial Intelligence and board games.
+In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
-Thirty five years later Alan Turing published a landmark paper "Computing Machinery and Intelligence" where he establishing the Turing test, marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
+Thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship older than the term Artificial Intelligence itself. 
 
-There existed Christopher Stracheys Game A.I. for the board game draughts built in 1951[ref]. As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
+As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
 
 Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 has continued to impress the public. 
 
@@ -121,6 +117,8 @@ From history it seems clear that AI and its application in games are intertwined
 Games are often considered a good metric for testing the quality of an AI [Ref].. 
 
 Some academic work done on RISK in particular. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf[ref] claims RISK is generally well known but under recognised by academia.
+
+Work by two guys at Stanford on AI agent to play RISK, RISK as the intersection between traditional and modern board games.
 
 \section{Aims}
 
@@ -394,7 +392,7 @@ In the realm of board games such as chess, there have for many years dominated a
 
 Min-max Algorithm with Alpha-Beta Pruning
 
-Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], this has been said because the search space for such games is large and that finding the best move would take an unreasonable amount of time (Find a ref for this)
+Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], this has been said because the search space for such games is large and that finding the best move would take an unreasonable amount of time (Find a ref for this) Michael Wolf paper calculating state space for RISK is infinite.
 
 Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms one can weed out unlikely explanations before committing to a search of the 
 
@@ -954,26 +952,21 @@ Initially the movement model was based on the attack model where the smaller the
 
 \subsubsection{Probability Assignment}
 
-Calibrating Mechanisms of algorithm
-Uniform distribution
 Simple weighting based on reasoning about implications of an action to an explanation
-Weighting based on number of consistent and inconsistent actions available to a player when an action is performed.
 
-Manual Simple Weighting
 Positively weighted probabilities towards consistent actions and negatively towards inconsistent actions
 
-Finding
-Equal Distribution does not work very well for simple explanations
+Uniform distribution
 
-so made up:
+Weighting based on number of consistent and inconsistent actions available to a player when an action is performed.
 
-Weighted Distribution based on consistent and inconsistent actions
-
-Though question is How to assign weights to consistent and inconsistent actions?
+Question was how to assign weights to consistent and inconsistent actions?
 
 Total number of actions are counted, and are separated into inconsistent actions and consistent actions and a weight is split among inconsistent actions and consistent actions. Problem is that it seems this system is too sensitive.
 
 Because of sensitivity had to make up a more evenly weighted automatic system.
+
+Therefore made proportional weighted system
 
 \subsection{Summary}
 
@@ -1051,17 +1044,13 @@ Used an inbuilt tool by the developer of saying "Debug Logs" which could be used
 
 \section{Summary}
 
-\chapter{Evaluation}
-
-Two questions to answer, 
+\chapter{Evaluation} 
 
 1) Does it work?
 
 It performs better than randomly guessing but still at a low probability
 
 2) If not why?
-
-Nature of game, simplicity of model.
 
 Three types of games to test the algorithm in:
 
@@ -1362,9 +1351,13 @@ Occupy-North-America-Australia & 49 & 100 & 32.89 \\
 
 \subsection{Nature of Game}
 
-Essentially the problem is that due to the nature of the game and the high-level of overlap between missions, players often must perform actions that are not directly consistent with their plan in order to survive or prevent other players from winning.
+The nature of RISK is ultimately an adversarial environment and inorder to achieve ones own mission, players not only either directly or indirectly eliminiate each other, but must modify their own plan in order to survive or prevent other players from winning. and the high-level of overlap between missions.
 
-This to the algorithm looks consistent with whatever explanation that those actions \textit{are} directly related to.
+These actions can, and often are directly inconsistent with their own mission. This behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with.
+
+For example:
+
+
 
 Solving this problem could be done in potentially two ways either:
 
@@ -1381,8 +1374,6 @@ Sampling of probability needs to be more frequent rather than just at end of ter
 Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
 
 Misclassification by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations.
-
-Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
 
 HOW TO FIX
 
@@ -1412,6 +1403,8 @@ What is the weight was computed in the normal manner but would be scaled up down
 Plans should consider not only consider what occurs in the action space but the state of the environment as well.
 
 \section{Outcomes}
+
+Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
 
 In evaluation DO NOT JUST RELY ON MEASUREMENTS! DISCUSS OUTCOMES! MAKE INFERENCES FROM DATA!
 
@@ -1463,13 +1456,11 @@ MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTE
 
 MODEL PROBLEM - DOES NOT TAKE EFFECT OF TRADING CARDS INTO ACCOUNT
 
-MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY
+MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHE THAN MULTIPLYING CONSISTENT BY 1.02 AND INCON WITH 0.98
 
 MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAKE INTO ACCOUNT CONTINENT ENTRY TERRITORIES
 
-MODEL PROBLEM - ATTACK, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
-
-MODEL PROBLEM - Talk about other players using a players own territory as a blocking mechanism to prevent another player attacking.
+MODEL PROBLEM - ATTACK COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
 
 PROBLEM - DUE TO NORMALIZING OTHER EXPLANATIONS BECOME MORE LIKELY AS A BI-PRODUCT EVEN WHEN TAKING INTO ACCOUNT DEFENCE ACTIONS WHERE NON RELEVANT EXPLANATIONS SHOULD BE UNAFFECTED, TRIED TO AVOID THIS BY MAKING PROBABILITIES MULTIPLICATIONS MINIMAL.
 
@@ -1477,9 +1468,9 @@ PROBLEM - MODEL NEGLECTS THE MULTI-ATTACK NATURE OF THE GAME, SUCCESSFUL DEFENCE
 
 MODEL IS TOO LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
 
-Augmentation possibility - look at where player has already placed armies and figure out a probability based on what they placing tells you.
+Augmentation possibility - look at where player has already placed armies and figure out a probability based on where they place armies. Arguement though is placement is not restricted an form.
 
-CRITICISM, DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT.
+DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT. <- MODELLING DIFFERENCE
 
 A platform has been setup for further improvements of the model.
 
