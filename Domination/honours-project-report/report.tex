@@ -75,9 +75,7 @@ Companies in the games industry who utilize game A.I. (which today is the vast m
 
 Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I. and indeed there has already been examples of successful games acclaimed for their game A.I, one such is F.E.A.R. 
 
-A First Person Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P. \textbf{[ref]}. \textbf{Talk briefly about what G.O.A.P. does.}
-
-The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
+A First Person Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P. \textbf{[ref]}. \textbf{Talk briefly about what G.O.A.P. does.} The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
 With this shift in focus, there grows greater incentives for developers to  and as a result more opportunities for the continued development of game A.I. likely as in the past with techniques developed in academia. Plan recognition algorithms may provide such an opportunity. 
 
@@ -98,9 +96,9 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \end{tabular} 
 \newline
 
-Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consquences of failing to recognise plans, can in some situations be dire. Though not so much the latter point as losing video games is argueably trivial, applying plan recognition to games are no different.
+Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point as losing video games is arguably trivial, applying plan recognition to games are no different.
 
-Plan recognition has been used to perform automated game analysis, which potentially could be used to improve player performance. More exiciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. The result could be A.I. capable of recognising plans and subsequently building counter plans.
+Plan recognition has been used to perform automated game analysis, which potentially could be used to improve player performance. More exciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. The result could be A.I. capable of recognising plans and subsequently building counter plans.
 
 \section{Artificial Intelligence and Board Games}
 
@@ -114,9 +112,7 @@ Since then notable achievements such as Garry Kasparovs defeat to IBMs chess com
 
 From history it seems clear that AI and its application in games are intertwined becoming a growing area of interest in both commercial and academic fields.
 
-Games are often considered a good metric for testing the quality of an AI [Ref].. 
-
-Some academic work done on RISK in particular. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf[ref] claims RISK is generally well known but under recognised by academia.
+Games are often considered a good metric for testing the quality of an AI [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf[ref] claims RISK is generally well known but under recognised by academia.
 
 Work by two guys at Stanford on AI agent to play RISK, RISK as the intersection between traditional and modern board games.
 
@@ -124,9 +120,9 @@ Work by two guys at Stanford on AI agent to play RISK, RISK as the intersection 
 
 What do we want to achieve?
 
-To design a plan recognition agent for the board game RISK based on the PHATT algorithm developer by Geib and Goldman.
+To design and implement a plan recognition agent for the board game RISK based on the PHATT algorithm developed by Geib and Goldman.
 
-To implement a plan recognition agent for the board game RISK that can make successful predictions.
+For the plan recognition agent to be able to perform better than randomly guessing a mission card.
 
 To further understanding of the complexities of performing plan recognition in the board game RISK.
 
@@ -144,7 +140,7 @@ What do you want to answer?
 
 Are plan recognition algorithms beneficial in games? Specifically RISK?
 
-If the player is a winner, then the prediction accuracy will be better.
+If the player is a winner, then the prediction accuracy of that player will be better than the losers.
 
 If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
 
@@ -236,7 +232,7 @@ Arrows represent dependencies between nodes. For example to be able to accomplis
 
 Now A first performs the action \textit{Take Burger Bun out of Packet}, then proceeds to \textit{Toast Burger Buns}. At this point looking at the plan library we have two possible \textit{explanations} for As behaviour, cooked veg burger or cooked meat hamburger.
 
-Each of these explanations are equally likely at this point because the actions that have occured so far could be part of either plan.
+Each of these explanations are equally likely at this point because the actions that have occurred so far could be part of either plan.
 
 A then takes the Chicken Patties of their packet, now given our assumptions we can conclude that A's plan is to cook Meat burgers. In this way B has recognised A's plan thus performing the process of plan recognition.
 
@@ -580,7 +576,7 @@ Defending as opposed to attacking can be seen as a 'passive' action as an attack
 
 Practically this is difficult to achieve given the nature of competing explanations, but by making the probability term of representing a defence action large then this effect can be atleast minimised.
 
-For example, given the three explanations from the previous section. If a successful defence were to occur in a territory in North America explanation one and two could be multipled by 1.01. If a failed defence were to occur then explanations one and two would be multiplied by 0.99. This would model a change in the likelihood of both explanations and should have a comparatively minimal effect on the likelihood of explanation 3. 
+For example, given the three explanations from the previous section. If a successful defence were to occur in a territory in North America explanation one and two could be multiplied by 1.01. If a failed defence were to occur then explanations one and two would be multiplied by 0.99. This would model a change in the likelihood of both explanations and should have a comparatively minimal effect on the likelihood of explanation 3. 
 
 Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can also be decomposed into the following: 
 
@@ -660,7 +656,7 @@ $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
 
 \subsection{Player}
 
-The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain alteast three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
+The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain atleast three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
 
 \centerline{
 $P$ = \{playerName, $PT$, $PE$\}
@@ -1181,9 +1177,9 @@ Present table of winner losers
 
 Why is the accuracy of winners better than losers?
 
-Some reasons for mis-predictions players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
-
 More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations.
+
+Some reasons for incorrect predictions because of players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
 
 Present breakdown of explanations accuracy per game type
 
@@ -1351,7 +1347,7 @@ Occupy-North-America-Australia & 49 & 100 & 32.89 \\
 
 \subsection{Nature of Game}
 
-The nature of RISK is ultimately an adversarial environment and inorder to achieve ones own mission, players not only either directly or indirectly eliminiate each other, but must modify their own plan in order to survive or prevent other players from winning. and the high-level of overlap between missions.
+The nature of RISK is ultimately an adversarial environment and in-order to achieve ones own mission, players not only either directly or indirectly eliminate each other, but must modify their own plan in order to survive or prevent other players from winning. and the high-level of overlap between missions.
 
 These actions can, and often are directly inconsistent with their own mission. This behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with.
 
@@ -1381,7 +1377,9 @@ Use a system of tiered consistent actions!
 
 ExplanationProb = ExplanationProb * Weight
 
-The weight for each consistent action is flat at the moment.
+The weight for each consistent action is flat at the moment or more precisely actions are consistent in themselves but may not be consistent given the \textit{context} of the game state. To deal with this, we should introduce into our calculations data from the game state.
+
+For example
 
 How about making a system of applying weights in a manner that is proportional to the state of the game e.g
 
@@ -1456,7 +1454,7 @@ MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTE
 
 MODEL PROBLEM - DOES NOT TAKE EFFECT OF TRADING CARDS INTO ACCOUNT
 
-MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHE THAN MULTIPLYING CONSISTENT BY 1.02 AND INCON WITH 0.98
+MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHER THAN MULTIPLYING CONSISTENT BY 1.02 AND INCON WITH 0.98
 
 MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAKE INTO ACCOUNT CONTINENT ENTRY TERRITORIES
 
@@ -1468,7 +1466,7 @@ PROBLEM - MODEL NEGLECTS THE MULTI-ATTACK NATURE OF THE GAME, SUCCESSFUL DEFENCE
 
 MODEL IS TOO LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
 
-Augmentation possibility - look at where player has already placed armies and figure out a probability based on where they place armies. Arguement though is placement is not restricted an form.
+Augmentation possibility - look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
 
 DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT. <- MODELLING DIFFERENCE
 
