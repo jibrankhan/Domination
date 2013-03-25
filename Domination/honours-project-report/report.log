@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.12)  21 MAR 2013 15:22
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.13)  25 MAR 2013 17:09
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -215,33 +215,6 @@ Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
 \backup@length=\skip64
 ) (./report.aux
 
-LaTeX Warning: Label `table:attack-defend-modelling' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
 LaTeX Warning: Label `table:continent-bonus' multiply defined.
 
 
@@ -290,26 +263,26 @@ LaTeX Font Info:    ... okay on input line 10.
 
 
 ]
-Underfull \hbox (badness 1057) in paragraph at lines 90--91
+Underfull \hbox (badness 1057) in paragraph at lines 98--99
 []|\T1/cmr/m/n/12 Operating Sys-tems, In-tel-li-gent Help Sys-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--98
+Underfull \hbox (badness 10000) in paragraph at lines 94--106
 
  []
 
 [2] [3] [4]
  2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 179.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 183.
 
 (/usr/share/texmf/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 179.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 183.
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--183
+Underfull \hbox (badness 10000) in paragraph at lines 185--187
 
  []
 
@@ -319,7 +292,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--183
 File: images/example-plan-recognition.pdf Graphic file (type pdf)
 
 <use images/example-plan-recognition.pdf>
-Overfull \hbox (33.9259pt too wide) in paragraph at lines 228--229
+Overfull \hbox (33.9259pt too wide) in paragraph at lines 232--233
  [][] 
  []
 
@@ -331,17 +304,17 @@ usion: Page Group detected which pdfTeX can't handle. Ignoring it.
 File: images/risk-board.jpg Graphic file (type jpg)
 
 <use images/risk-board.jpg> [8 <./images/risk-board.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
+Underfull \hbox (badness 10000) in paragraph at lines 286--288
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--297
+Underfull \hbox (badness 10000) in paragraph at lines 289--301
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--310
+Underfull \hbox (badness 10000) in paragraph at lines 312--314
 
  []
 
@@ -349,66 +322,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 308--310
 Underfull \vbox (badness 3930) has occurred while \output is active []
 
  [9]
-Underfull \hbox (badness 10000) in paragraph at lines 331--333
+Underfull \hbox (badness 10000) in paragraph at lines 335--337
 
  []
 
 [10] [11] [12]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--428
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 437--438
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 448--449
+Underfull \hbox (badness 10000) in paragraph at lines 452--453
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--480
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+Underfull \hbox (badness 10000) in paragraph at lines 512--513
 
  []
 
 [15]
-Overfull \hbox (1.39836pt too wide) in paragraph at lines 564--573
+Overfull \hbox (1.39836pt too wide) in paragraph at lines 568--577
  [][] 
  []
 
 [16]
-Underfull \hbox (badness 1558) in paragraph at lines 597--598
+Underfull \hbox (badness 1558) in paragraph at lines 601--602
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (6.7846pt too wide) in paragraph at lines 591--600
+Overfull \hbox (6.7846pt too wide) in paragraph at lines 595--604
  [][] 
  []
 
 [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 665--666
+Underfull \hbox (badness 10000) in paragraph at lines 669--670
 
  []
 
@@ -416,12 +389,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 665--666
 Underfull \vbox (badness 3568) has occurred while \output is active []
 
  [19]
-Underfull \hbox (badness 10000) in paragraph at lines 688--689
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
 
  []
 
 [20]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 750--772
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 754--776
 []$ 
  []
 
@@ -429,7 +402,7 @@ Overfull \hbox (10.16542pt too wide) in paragraph at lines 750--772
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 782--809
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 786--813
 []$ 
  []
 
@@ -437,36 +410,36 @@ Overfull \hbox (10.16542pt too wide) in paragraph at lines 782--809
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22]
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 813--814
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 817--818
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [23]
-Overfull \hbox (98.75308pt too wide) in paragraph at lines 821--832
+Overfull \hbox (98.75308pt too wide) in paragraph at lines 825--836
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; player
 TotalActNum; playerConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 821--832
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 825--836
 []$ 
  []
 
 
-Overfull \hbox (42.4637pt too wide) in paragraph at lines 834--835
+Overfull \hbox (42.4637pt too wide) in paragraph at lines 838--839
 \OML/cmm/m/it/12 playerTotalActNum$ \T1/cmr/m/n/12 and the con-sis-tent ac-tion
 s with an ex-pla-na-tion $\OML/cmm/m/it/12 playerConsActNum$\T1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (6.78886pt too wide) in paragraph at lines 840--863
+Overfull \hbox (6.78886pt too wide) in paragraph at lines 844--867
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 840--863
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 844--867
 []$ 
  []
 
@@ -474,91 +447,95 @@ Overfull \hbox (10.16542pt too wide) in paragraph at lines 840--863
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [24]
-Overfull \hbox (33.18848pt too wide) in paragraph at lines 865--866
+Overfull \hbox (33.18848pt too wide) in paragraph at lines 869--870
 []\T1/cmr/m/n/12 Given the play-ers pend-ing set $\OML/cmm/m/it/12 playerPS$ \T
 1/cmr/m/n/12 gen-er-ated by the func-tion $\OML/cmm/m/it/12 generatePendingSet$
 \T1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (24.40811pt too wide) in paragraph at lines 867--868
+Overfull \hbox (24.40811pt too wide) in paragraph at lines 871--872
 []\T1/cmr/m/n/12 The set of $\OML/cmm/m/it/12 playerTotalAct$ \T1/cmr/m/n/12 is
  then fur-ther fil-tered down into an-other set $\OML/cmm/m/it/12 playerConsAct
 $
  []
 
 
-Overfull \hbox (61.81354pt too wide) in paragraph at lines 867--868
+Overfull \hbox (61.81354pt too wide) in paragraph at lines 871--872
 \OML/cmm/m/it/12 playerConsAct$ \T1/cmr/m/n/12 and $\OML/cmm/m/it/12 playerTota
 lAct$ \T1/cmr/m/n/12 are saved in two re-spec-tive vari-ables $\OML/cmm/m/it/12
  playerConsActNum$
  []
 
 [25]
-Overfull \hbox (24.7325pt too wide) in paragraph at lines 884--919
+Overfull \hbox (24.7325pt too wide) in paragraph at lines 888--923
 \T1/cmr/bx/n/12 Algorithm 3.3.5:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 explanati
 on; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 884--919
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 888--923
 []$ 
  []
 
-[26]
-Overfull \hbox (3.05284pt too wide) in paragraph at lines 957--961
-\T1/cmr/m/n/12 Calibrating Mech-a-nisms of al-go-rithm Uni-form dis-tri-bu-tion
- Sim-ple weight-ing based
- []
-
-[27] [28]
+[26] [27] [28]
  4.
 [29
 
-] [30] [31] [32
-
-]
+] [30]
  5.
-[33] [34]
-Overfull \hbox (2.6744pt too wide) in paragraph at lines 1129--1130
+[31
+
+] [32]
+Overfull \hbox (2.6744pt too wide) in paragraph at lines 1113--1114
 []\T1/cmr/m/n/12 SHOW LINE GRAPH SHOW-ING LINES CON-VERG-ING, TALK ABOUT HOW
  []
 
 
-Overfull \hbox (36.66107pt too wide) in paragraph at lines 1170--1187
+Overfull \hbox (36.66107pt too wide) in paragraph at lines 1154--1171
  [][] 
  []
 
-[35] [36] [37] [38] [39] [40] [41] [42
+[33] [34] [35] [36] [37] [38]
+Underfull \vbox (badness 1158) has occurred while \output is active []
 
-]
+ [39]
+[40]
  6.
 
-Overfull \hbox (3.0787pt too wide) in paragraph at lines 1474--1475
+Overfull \hbox (15.57954pt too wide) in paragraph at lines 1492--1493
+[]\T1/cmr/m/n/12 MODEL PROB-LEM - AT-TACK COM-PU-TA-TIONS, TREATS ANY NON OWNED
+
+ []
+
+
+Overfull \hbox (3.0787pt too wide) in paragraph at lines 1494--1495
 \T1/cmr/m/n/12 MORE LIKELY AS A BI-PRODUCT EVEN WHEN TAK-ING INTO AC-COUNT
  []
 
-[43]
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1490--1491
+[41
+
+]
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1510--1511
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
-[44]
+[42]
  7.
-(./report.bbl [45
+(./report.bbl [43
 
-] [46
+] [44
 
-]) [47] (./report.aux)
+]) [45] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3512 strings out of 256216
- 43523 string characters out of 1917072
- 125184 words of memory out of 1500000
- 6771 multiletter control sequences out of 10000+200000
+ 3523 strings out of 256216
+ 43836 string characters out of 1917072
+ 124272 words of memory out of 1500000
+ 6782 multiletter control sequences out of 10000+200000
  16103 words of font info for 38 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  27i,26n,22p,604b,550s stack positions out of 5000i,500n,6000p,200000b,15000s
@@ -581,9 +558,9 @@ m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/te
 xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
 mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
 nts/type1/bluesky/cm/cmsy10.pfb>
-Output written on report.pdf (53 pages, 560787 bytes).
+Output written on report.pdf (51 pages, 561457 bytes).
 PDF statistics:
- 684 PDF objects out of 1000 (max. 8388607)
+ 680 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

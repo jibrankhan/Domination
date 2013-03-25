@@ -11,7 +11,7 @@
 
 \title{Plan Recognition in RISK}
 
-\author{Jibran Abdus Zaahir Khan}
+\author{Jibran A.Z. Khan and Michael Rovatsos}
 
 % to choose your degree
 % please un-comment just one of the following
@@ -46,9 +46,17 @@ This paper presents the design and implementation of a plan recognition agent ba
 
 \section*{Acknowledgements}
 
-Michael for agreeing to supervise project, parents, family for support, C.Geib for advice and taking his time to meet with me, friends, people who helped with results
+A thank you my supervisor Michael Rovatsos for agreeing to supervise this project, your herculean efforts, the level of involvement and 
 
-(Distinguish between academic and non-academic work.)
+A thank you to my parents and family for their unending support in all matters both big and small. 
+
+A thank you to Christopher Geib for taking his time to meet with me and how he managed to decipher my cryptic blabbering to give his invaluable advice on plan recognition and the intricacy of his algorithm. 
+
+Yura.net for their on the RISK program, in particular Yura who also kindly took her time to explain the the various intricacies of the program, 
+
+Friends 
+
+All the people who helped with me collect many mountains of data.
 
 \tableofcontents
 
@@ -65,9 +73,9 @@ John David Funge, Artificial Intelligence for Computer Games, An Introduction
 
 \section{Motivations}
 
-Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia and as John Funge argues \cite{JohnFunge:AIForComp} is notably different in both scope and application.
+Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia, in his book Artificial Intelligence for Computer Games, An Introduction, John Funge argues \cite{JohnFunge:AIForComp} that academic A.I. and game A.I. are notably different in both scope and application.
 
-The primary goal of academia is to further human understanding often by solving particularly complex problems,as a result the scope of developed A.I. techniques from academia are usually more general in their application.
+Where the primary goal of academia is to further human understanding, often by solving particularly complex problems, the scope of developed A.I. techniques from academia tend to be usually more general in their application.
 
 On the other hand game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
 
@@ -96,11 +104,13 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \end{tabular} 
 \newline
 
-Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point as losing video games is arguably trivial, applying plan recognition to games are no different.
+Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point, applying plan recognition to video games are no different.
 
-Plan recognition has been used to perform automated game analysis, which potentially could be used to improve player performance. More exciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. The result could be A.I. capable of recognising plans and subsequently building counter plans.
+Applied to video games plan recognition has been used to perform automated game analysis, which can be used to improve player performance. More exciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. The result being A.I. capable of recognising plans and subsequently building counter plans.
 
 \section{Artificial Intelligence and Board Games}
+
+NOT COMPLETE
 
 In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
@@ -565,7 +575,7 @@ FailedAttack & Yes & Though less significant than a successful attack, attacking
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
-\label{table:attack-defend-modelling}
+\label{table:attack-modelling}
 \end{table}
 
 \newpage
@@ -633,7 +643,7 @@ Reinforce & Placing armies in the territory.\\
 \hline 
 \end{tabular}
 \caption{Territory Action Set}
-\label{table:continent-bonus}
+\label{table:territory-actions-bonus}
 \end{table}
 
 \newpage
@@ -976,19 +986,21 @@ THIS SECTION NEED TO BE LOOKED AT!
 
 Diagram 
 
-(Game -> Processing -> Events -> Plan Recognition Agent)
+(Domination Game -> Processing -> Events -> Plan Recognition Agent)
 
-\textit{Game} represents an existing open source project of the board game RISK. Developed by Yura.Net, a team based in London headed by Yura Mamyrin the project is written in the Java programming language[ref - to website].
+Events are fired from the game, are 
+
+\textit{Game} represents an existing open source project of the board game RISK. Developed by Yura.Net called Domination, a team based in London headed by Yura Mamyrin the project is written in the Java programming language[ref - to website].
 
 \textit{Event} objects contain important data from the environment which the plan recognition agent requires to compute the likelihood of explanations. 
 
-The plan recognition agent needs to simply be aware of when the game beings, the changes that occur in the game state and when the game is finished. These \textit{events} are registered by the processing class and sent to the plan recognition agent.
+The plan recognition agent needs be aware of when the game beings, the games initial state, any changes that occur in the game and when the game is finished. These \textit{events} are registered by the processing class and sent to the plan recognition agent.
 
-Modifications to the project were minimal. Modifications such as:
+Modifications to the project included:
 
-Initialising the plan recognition agent and processing class when the game begins.
+Initialising the plan recognition agent and processing class when a game begins.
 
-Statements that created events objects at the following key points in the \textit{Game}:
+Introducing statements that created events objects at the following key points in the \textit{Game}:
 
 \begin{itemize}
 \item
@@ -1003,30 +1015,19 @@ Attacks
 Army Movements
 \end{itemize}
 
-Once fired these events are handled by a \textit{processing} class which (routes?) each event object to the plan recognition agent where it is handled in a manner depending on the event.
+Once fired these events are handled by the \textit{processing} class which (routes?) each event object to the plan recognition agent where it is handled in a manner depending on the type of event.
 
-In this way the implementation of the plan recognition agent is not as a dependant sub-component of the game but rather a completely separate entity that operates in \textit{parallel} to the game.
-
-Initially the plan recognition agent would store its own copy of the data structures from the RISK environment. Treated the game as a black box where only the changes in game state would be observable.
-
-Agent data was generated such as countries they owned.
-Agent explanations computed by the plan recognition agent based on events from the environment.
-
-The reason for this choice was the simplicity of its implementation at the time and to reduce the dependence on the implementation of the project.
+In this way the implementation of the plan recognition agent is not as a dependant sub-component of the game but rather a separate entity that operates in parallel to the game which could be replaced by another plan recognition agent.
 
 \section{System Construction}
 
 (Diagram of data structure of local copy)
 
-Adding data to this hard coded data structure proved to be overly time consuming and therefore was changed to an automated system of the generation of a data structure allowing the plan recognition agent to work on any RISK map that could be successfully played in the open source game.
+The plan recognition agent makes use of the data structures from the game itself rather than the alternative of storing its own synchronized copy.
 
-Through the modelling process it is apparent that there is no need for the plan recognition agent to hold its own copy of the game state which is update via registration of events in the original code.
+The advantages of this approach is less overhead as well significantly reducing the possibility that the plan recognition agents copy loses sync with the actual game state. 
 
-It could utilize the data structures from the game itself rather than storing a copy within the plan recognition agent.
-
-This gives advantages such as less overhead and eliminating the possibility of the plan recognition agents local copy to lose sync with the actual game state. The disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
-
-Piggybacked off the games data structures and just inserted code into the project which registered events occurring in the main game.
+On the other hand the disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
 
 \section{System Architecture Concepts}
 
@@ -1034,7 +1035,7 @@ Piggybacked off the games data structures and just inserted code into the projec
 
 The plan recognition agent makes extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
 
-\subsection{Replaying Games}
+\subsection{Debug Tool}
 
 Used an inbuilt tool by the developer of saying "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
 
@@ -1042,25 +1043,23 @@ Used an inbuilt tool by the developer of saying "Debug Logs" which could be used
 
 \chapter{Evaluation} 
 
-1) Does it work?
-
-It performs better than randomly guessing but still at a low probability
-
-2) If not why?
-
-Three types of games to test the algorithm in:
-
 \section{Experiments}
 
 \subsection{A.I. Play}
 
-The RISK project has a built in A.I. for various game modes in particular it has one mission game mode. The A.I can be substituted for players to the point where a game can consist of upto six A.I. fighting each other completing a game in a fraction of the time compared to people. Monitoring these games provide an opportunity for the collection of a large number of data samples for testing the performance of the plan recognition agent.
+The RISK project has a built in A.I. for its various game modes which includes mission RISK. 
+
+The A.I can be substituted for human players to the point where a game can consist of upto six A.I. fighting each other and completing a game in a fraction of the time compared to people. 
+
+Automating the process of starting A.I. games provides an opportunity for the collection of a large number of data samples to evaluate.
+
+Keeping in mind though the evaluation of the A.I. may be at times problematic because it (find out more about how A.I. works?).
 
 \subsection{Constrained Play}
 
-In this form of play, players are asked only to perform actions that are directly consistent with their root goal. This means for example players may not break another players continent even though preventing other players from completing their mission is in-directly consistent with completing a players own mission.
+In this form of play, players are asked only to perform actions that are \textit{directly consistent} with their root goal. This is opposed to \textit{indirectly consistent} where for example players break other players continents because preventing other players from completing their mission makes completing your own mission more likely.
 
-More formally this is defined as. Given a set of actions a player will only either:
+More formally (excluding card related actions) given a set of actions a player will only either:
 
 \begin{itemize}
 \item
@@ -1071,19 +1070,19 @@ Reinforce a territory that is directly consistent with their plan or a territory
 Moves armies to a territory that is directly consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 \end{itemize}
 
-By creating an artificially constructed form of play, this is clearly the easiest to perform plan recognition on and by establishing that the algorithm works given that players behave only a consistent manner with the mission they have been given.
+This artificially constructed form of play is designed to be the comparatively easier to perform plan recognition on. By establishing that the algorithm works given that players behave only in a manner that is directly consistent with the mission they have been given, provides grounds to establish that the majority of incorrect classifications arise from players performing actions that are either indirectly consistent or inconsistent with the players mission.
 
 \subsection{Free Play}
 
-Free play can be easily described as players are simply "play to win". In this manner it should be exactly how players normally play mission RISK.
+Free play can be described as players simply "playing to win". In this manner it is how players normally play mission RISK.
 
 \section{Experimental Format}
 
-There were two experiment formats, one for constrained play, the other for free play. But before either the rules of the game were explained to participants. 
+There were two experiment formats, one for constrained play, the other for free play. Before any experiment the rules of the game were explained to participants. 
 
-For constricted play, the particular play style required was described to participants in detail
+For constricted play, the particular play style required was described to participants in detail.
 
-For free play it was made clear to participants that there were two primary methods of winning in mission risk. Either by eliminating all other participants from the game or by completing their mission card. The mantra was "Play to Win".
+For free play it was made clear to participants that there were two primary methods of winning in mission risk. Either by eliminating all other participants from the game, or by completing their mission card.
 
 At the end of the game participants gave a short summary of their initial plan during the placement phase and any changes in plan from that during the course of the game.
 
@@ -1145,7 +1144,7 @@ A.I. Play - Weight 4 & 89 & 265 & 25.14 \\
 \hline 
 \end{tabular}
 \caption{General Game Accuracy}
-\label{table:continent-bonus}
+\label{table:general-game-accuracy}
 \end{table}
 
 Why is the accuracy of free play and A.I. play much lower than constrained play.
@@ -1170,12 +1169,15 @@ A.I. Play - Weight 4 & Winner & 16 & 43 & 27.12 \\
 \hline
 \end{tabular}
 \caption{Winner-Loser Accuracy}
-\label{table:continent-bonus}
+\label{table:winner-loser-accuracy}
 \end{table}
 
 Present table of winner losers
 
 Why is the accuracy of winners better than losers?
+
+The results show on an average (calculate percentage difference across measures)
+
 
 More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations.
 
@@ -1183,13 +1185,13 @@ Some reasons for incorrect predictions because of players who lose can be elimin
 
 Present breakdown of explanations accuracy per game type
 
-\subsection{FREE PLAY}
+\subsection{Free Play}
 
 General Accuracy for each explanation
 
 General Accuracies for each explanation type separated into winners and losers.
 
-\subsection{CONSTRAINED PLAY}
+\subsection{Constrained Play}
 
 General Accuracy for each explanation
 
@@ -1216,6 +1218,8 @@ Occupy-North-America-Australia & 15 & 2 & 88.24 \\
 \label{table:continent-bonus}
 \end{table}
 
+Accuracy of two-continent missions appear in general to be better.
+
 General Accuracies for each explanation type separated into winners and losers.
 
 \begin{table}[ht]
@@ -1241,6 +1245,8 @@ Occupy-North-America-Australia & 4 & 1 & 80.00 \\
 \label{table:continent-bonus}
 \end{table}
 		
+The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder in some way?
+		
 \begin{table}[ht]
 \centering	
 \begin{tabular}{|c|c|c|c|}
@@ -1261,12 +1267,12 @@ Occupy-North-America-Australia & 11 & 1 & 91.67 \\
 \hline
 \end{tabular}
 \caption{Constrained Play Loser Accuracy}
-\label{table:continent-bonus}
+\label{table:constrained-lose-accuracy}
 \end{table}			
 
 \newpage
 
-\subsection{AI PLAY}
+\subsection{A.I. Play}
 
 \subsubsection{AI - Weight 100}
 
@@ -1292,8 +1298,10 @@ Occupy-North-America-Australia & 67 & 117 & 36.41 \\
 \hline
 \end{tabular}
 \caption{AI Play General Explanation Accuracy - Weight 100}
-\label{table:continent-bonus}
+\label{table:ai-100-general-accuracy}
 \end{table}
+
+Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
 
 General Accuracies for each explanation type separated into winners and losers.
 
@@ -1316,8 +1324,8 @@ Occupy-Asia-Africa & 14 & 28 & 33.33 \\
 Occupy-North-America-Australia & 18 & 17 & 51.43 \\
 \hline
 \end{tabular}
-\caption{AI Play Winner Accuracy}
-\label{table:continent-bonus}
+\caption{AI Play 100 Winner Accuracy}
+\label{table:ai-100-winner-accuracy}
 \end{table}
 			
 \begin{table}[ht]
@@ -1339,17 +1347,21 @@ Occupy-Asia-Africa & 23 & 119 & 16.20 \\
 Occupy-North-America-Australia & 49 & 100 & 32.89 \\
 \hline
 \end{tabular}
-\caption{AI Play Loser Accuracy}
-\label{table:continent-bonus}
+\caption{AI Play Weight 100 Loser Accuracy}
+\label{table:ai-100-loser-accuracy}
 \end{table}			
 
-\subsubsection{AI - Weight 4}
+\newpage
+
+\subsubsection{A.I. - Weight 4}
 
 \subsection{Nature of Game}
 
-The nature of RISK is ultimately an adversarial environment and in-order to achieve ones own mission, players not only either directly or indirectly eliminate each other, but must modify their own plan in order to survive or prevent other players from winning. and the high-level of overlap between missions.
+The nature of classic RISK is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
 
-These actions can, and often are directly inconsistent with their own mission. This behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with.
+Given the model these changes in behaviour are often directly inconsistent with their own mission. Instead this behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with.
+
+Given this environment and the high-level of overlap between missions the results are misclassification.
 
 For example:
 
@@ -1357,9 +1369,11 @@ For example:
 
 Solving this problem could be done in potentially two ways either:
 
-Identifying in some manner that those actions are in-directly consistent and modelling it to contribute to explanations that are related in such a way.
+Identifying actions are in-directly consistent and modelling them to accurately contribute to explanations.
  
-Through the state of the game identifying actions that are clearly consistent more significant. For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is far more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another.
+Giving greater weights to actions that are directly consistent through the state of the game  more significant.
+
+For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
 
 The simplicity of the model 
 
@@ -1369,7 +1383,14 @@ Sampling of probability needs to be more frequent rather than just at end of ter
 
 Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
 
-Misclassification by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations.
+Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
+
+Misclassification's occur due to three(keep looking in data) main reasons:
+
+
+by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations
+
+Misclassification by 
 
 HOW TO FIX
 
@@ -1391,7 +1412,7 @@ Has 1 attack option out of 13 and owns 9 of the ten territories
 
 0.1 * 1-(1/13) * 9/10 
 
-Worst Case = Low number of consistent actions a
+Worst Case = High number of consistent actions and low number of territories owned
 
 0.1 * 1-(12/13) * 4/10 
 
@@ -1402,7 +1423,17 @@ Plans should consider not only consider what occurs in the action space but the 
 
 \section{Outcomes}
 
+1) Does it work?
+
+It performs better than randomly guessing but still at a low probability
+
+2) If not why?
+
+Three types of games to test the algorithm in:
+
 Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
+
+Do the accuracy of missions with two continents appear on average to be better?
 
 In evaluation DO NOT JUST RELY ON MEASUREMENTS! DISCUSS OUTCOMES! MAKE INFERENCES FROM DATA!
 
@@ -1454,7 +1485,7 @@ MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTE
 
 MODEL PROBLEM - DOES NOT TAKE EFFECT OF TRADING CARDS INTO ACCOUNT
 
-MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHER THAN MULTIPLYING CONSISTENT BY 1.02 AND INCON WITH 0.98
+MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHER THAN MULTIPLYING CONSISTENT BY 1.02 AND inconsistent WITH 0.98
 
 MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAKE INTO ACCOUNT CONTINENT ENTRY TERRITORIES
 
@@ -1488,15 +1519,9 @@ E.G
 
 0.4 WEIGHT FOR 1/10 THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
 
-\section{Final}
-
 the benefit of such systems would be to such an extent that it would be considering an unfair advantage if used in events such as official tournaments.
 
 \chapter{Appendix}
-
-\section{Class Diagram}
-
-Write up class descriptions with a diagram here
 
 \section{Experimental Results}
 
