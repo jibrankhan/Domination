@@ -42,11 +42,10 @@
 \contentsline {subsubsection}{\numberline {3.3.3.1}Probability Assignment}{28}
 \contentsline {subsection}{\numberline {3.3.4}Summary}{28}
 \contentsline {chapter}{\numberline {4}Implementation}{29}
-\contentsline {section}{\numberline {4.1}System Construction}{30}
-\contentsline {section}{\numberline {4.2}System Architecture Concepts}{30}
-\contentsline {subsection}{\numberline {4.2.1}Google Guava Libraries}{30}
-\contentsline {subsection}{\numberline {4.2.2}Debug Tool}{30}
-\contentsline {section}{\numberline {4.3}Summary}{30}
+\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{30}
+\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{30}
+\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{30}
+\contentsline {section}{\numberline {4.2}Summary}{30}
 \contentsline {chapter}{\numberline {5}Evaluation}{31}
 \contentsline {section}{\numberline {5.1}Experiments}{31}
 \contentsline {subsection}{\numberline {5.1.1}A.I. Play}{31}
@@ -56,13 +55,13 @@
 \contentsline {section}{\numberline {5.3}Data Collection}{32}
 \contentsline {section}{\numberline {5.4}Experimental Findings}{33}
 \contentsline {subsection}{\numberline {5.4.1}Free Play}{34}
-\contentsline {subsection}{\numberline {5.4.2}Constrained Play}{34}
-\contentsline {subsection}{\numberline {5.4.3}A.I. Play}{35}
-\contentsline {subsubsection}{\numberline {5.4.3.1}AI - Weight 100}{35}
-\contentsline {subsubsection}{\numberline {5.4.3.2}A.I. - Weight 4}{36}
-\contentsline {subsection}{\numberline {5.4.4}Nature of Game}{36}
+\contentsline {subsection}{\numberline {5.4.2}Constrained Play}{35}
+\contentsline {subsection}{\numberline {5.4.3}A.I. Play}{36}
+\contentsline {subsubsection}{\numberline {5.4.3.1}AI - Weight 100}{36}
+\contentsline {subsubsection}{\numberline {5.4.3.2}A.I. - Weight 4}{37}
+\contentsline {subsection}{\numberline {5.4.4}Nature of Game}{37}
 \contentsline {subsection}{\numberline {5.4.5}Simplicity of Model}{37}
-\contentsline {section}{\numberline {5.5}Outcomes}{38}
+\contentsline {section}{\numberline {5.5}Outcomes}{39}
 \contentsline {section}{\numberline {5.6}Criticism}{40}
 \contentsline {chapter}{\numberline {6}Conclusions}{41}
 \contentsline {section}{\numberline {6.1}Future Work}{41}

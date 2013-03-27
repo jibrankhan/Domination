@@ -46,13 +46,13 @@ This paper presents the design and implementation of a plan recognition agent ba
 
 \section*{Acknowledgements}
 
-A thank you my supervisor Michael Rovatsos for agreeing to supervise this project, your herculean efforts, the level of involvement and 
+A thank you my supervisor Michael Rovatsos for agreeing to supervise this project, his herculean effort and level of involvement with his supervisees is inspirational.
 
-A thank you to my parents and family for their unending support in all matters both big and small. 
+A thank you to my parents and family for their unending support in matters big and small. 
 
-A thank you to Christopher Geib for taking his time to meet with me and how he managed to decipher my cryptic blabbering to give his invaluable advice on plan recognition and the intricacy of his algorithm. 
+A thank you to Christopher Geib for taking his time to meet with me and how he managed to decipher my cryptic blabbering to give his invaluable advice on plan recognition and the intricacies of his algorithm. 
 
-Yura.net for their on the RISK program, in particular Yura who also kindly took her time to explain the the various intricacies of the program, 
+Yura.net for their work on Domination, in particular Yura who kindly took her time to explain various aspects of the program.
 
 Friends 
 
@@ -85,9 +85,9 @@ Emerging though is the idea that as users become accustomed to high quality grap
 
 A First Person Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P. \textbf{[ref]}. \textbf{Talk briefly about what G.O.A.P. does.} The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
-With this shift in focus, there grows greater incentives for developers to  and as a result more opportunities for the continued development of game A.I. likely as in the past with techniques developed in academia. Plan recognition algorithms may provide such an opportunity. 
+With this shift in focus, there grows greater incentives for developers to create more sophisticated game A.I. likely as in the past, with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
 
-Plan recognition is the problem of inferring an agents plans from observations. Research in plan recognition began in the 1980's, the results of which have been numerous applications in a variety of fields.
+Plan recognition is the problem of inferring an agents plans from observations. Significant research in plan recognition began in the 1980's, the results of which have been numerous applications in a several fields.
 
 In Nate Blaylocks paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlighted a few of the most prominent applications of plan recognition as being:
 
@@ -106,7 +106,7 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 
 Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point, applying plan recognition to video games are no different.
 
-Applied to video games plan recognition has been used to perform automated game analysis, which can be used to improve player performance. More exciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. The result being A.I. capable of recognising plans and subsequently building counter plans.
+Applied to video games plan recognition has been used in performing dynamic analysis in game environments such as Real Time Strategy and Multi-User Dungeons. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. The desired result being A.I. capable of recognising plans and subsequently building counter plans.
 
 \section{Artificial Intelligence and Board Games}
 
@@ -114,7 +114,7 @@ NOT COMPLETE
 
 In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
-Thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship older than the term Artificial Intelligence itself. 
+Interestingly though thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship it appears older than the term Artificial Intelligence itself. 
 
 As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
 
@@ -409,6 +409,8 @@ This issue prompted research into the development of variants of the original al
 Using these algorithms people like Kabanza are starting to be able to tackle certain aspects which are harder to model?
 
 \section{Summary}
+
+The summary of the chapter is ...
 
 \chapter{Design}
 
@@ -859,7 +861,7 @@ $playerTotalActNum$ = size of playerTotalAct \newline
 
 playerConsActNum = size of playerConsAct\newline
 
-base = \textit{computeBaseWeight}(w, playerTotalActNum, playerConsActNum)\newline
+base = \textit{computeBaseWeight}(w, playerTotalActNum, playerConsActNum)\newline 
 
 \Return base
 
@@ -980,27 +982,13 @@ The summary for this section is
 
 \chapter{Implementation}
 
-Built purely in the Java programming language, the plan recognition agent follows an \textit{event-driven} system architecture.
-
-THIS SECTION NEED TO BE LOOKED AT!
+Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
 
 Diagram 
 
 (Domination Game -> Processing -> Events -> Plan Recognition Agent)
 
-Events are fired from the game, are 
-
-\textit{Game} represents an existing open source project of the board game RISK. Developed by Yura.Net called Domination, a team based in London headed by Yura Mamyrin the project is written in the Java programming language[ref - to website].
-
-\textit{Event} objects contain important data from the environment which the plan recognition agent requires to compute the likelihood of explanations. 
-
-The plan recognition agent needs be aware of when the game beings, the games initial state, any changes that occur in the game and when the game is finished. These \textit{events} are registered by the processing class and sent to the plan recognition agent.
-
-Modifications to the project included:
-
-Initialising the plan recognition agent and processing class when a game begins.
-
-Introducing statements that created events objects at the following key points in the \textit{Game}:
+In the game there are a number of key events that occur. These are:
 
 \begin{itemize}
 \item
@@ -1013,15 +1001,28 @@ Territory Occupation
 Attacks
 \item
 Army Movements
+\item
+Reinforcement
 \end{itemize}
 
-Once fired these events are handled by the \textit{processing} class which (routes?) each event object to the plan recognition agent where it is handled in a manner depending on the type of event.
+When these occur a distinct event object is fired which contains data pertaining to the event for example when an battle is concluded two events are fired, one for defender and the other for the attacker. These events are observed by the processing class which then routes them to the plan recognition agent. 
 
-In this way the implementation of the plan recognition agent is not as a dependant sub-component of the game but rather a separate entity that operates in parallel to the game which could be replaced by another plan recognition agent.
+The plan recognition agent looks at the received event object and depending on its type then handles in the following manner.
 
-\section{System Construction}
+Player Initialisation - Initialises a new agent data structure
+Player Removal - Destroys a specified agent data structure
+Territory Occupation - Fires an
+Battles - Depending on the outcome fires two events for example in the outcome of a battle is successfulAttack then two events are fired, one successfulAttack for the defender, the other a failedDefence for the defender.
 
-(Diagram of data structure of local copy)
+Army Movements - an event containing which territory armies are moved to.
+
+The plan recognition agent needs be aware of when the game begins, the games initial state, any changes that occur in the game and when the game is finished.
+
+The architecture is such that the implementation of the plan recognition agent is not as dependant sub-component of the game but rather a separate entity that operates in parallel to the game which if need be could be replaced by another plan recognition agent.
+
+\section{Additional Implementation Concepts}
+
+\subsection{Data Structure Re-Use}
 
 The plan recognition agent makes use of the data structures from the game itself rather than the alternative of storing its own synchronized copy.
 
@@ -1029,15 +1030,9 @@ The advantages of this approach is less overhead as well significantly reducing 
 
 On the other hand the disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
 
-\section{System Architecture Concepts}
-
 \subsection{Google Guava Libraries}
 
 The plan recognition agent makes extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
-
-\subsection{Debug Tool}
-
-Used an inbuilt tool by the developer of saying "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
 
 \section{Summary}
 
@@ -1047,13 +1042,13 @@ Used an inbuilt tool by the developer of saying "Debug Logs" which could be used
 
 \subsection{A.I. Play}
 
-The RISK project has a built in A.I. for its various game modes which includes mission RISK. 
+Domination has existing A.I. player implementations for its game modes. The A.I. players can be substituted for human players to the point where a game can consist of only A.I. who fight each other and can complete a game in a fraction of the time compared to human players. 
 
-The A.I can be substituted for human players to the point where a game can consist of upto six A.I. fighting each other and completing a game in a fraction of the time compared to people. 
+According to the developer the A.I. does not actually actively follow a plan but is r
 
-Automating the process of starting A.I. games provides an opportunity for the collection of a large number of data samples to evaluate.
+The AIHardMission or now just AIMission is a minimal extension of the core play.  Since the core logic is reasonably good at conquering continents and eliminating opponents it just needs to have it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly.  I've been meaning to update the logic that deals with territory goals (as we can do a better job of looking ahead), but haven't gotten around to it yet.  Beyond that, it needs logic to infer and interfere with the other player's goals.
 
-Keeping in mind though the evaluation of the A.I. may be at times problematic because it (find out more about how A.I. works?).
+Automating the process of initiating A.I. games provided an opportunity for the collection of a large number of data samples for evaluation purposes. 
 
 \subsection{Constrained Play}
 
@@ -1074,13 +1069,13 @@ This artificially constructed form of play is designed to be the comparatively e
 
 \subsection{Free Play}
 
-Free play can be described as players simply "playing to win". In this manner it is how players normally play mission RISK.
+Free play can be described simply as players "playing to win". In this manner it is how players normally play mission RISK.
 
 \section{Experimental Format}
 
 There were two experiment formats, one for constrained play, the other for free play. Before any experiment the rules of the game were explained to participants. 
 
-For constricted play, the particular play style required was described to participants in detail.
+For constricted play, the particular play style required was described to participants.
 
 For free play it was made clear to participants that there were two primary methods of winning in mission risk. Either by eliminating all other participants from the game, or by completing their mission card.
 
@@ -1088,17 +1083,23 @@ At the end of the game participants gave a short summary of their initial plan d
 
 \section{Data Collection}
 
-After a game has finished the system generates two files. One a log file which using a debug tool created by the developers allows an exact replay of the game. 
+After a game has finished the system generates two files. One a log file which using a debug tool created by the developers, allows a completely independent replay of the game. 
 
-This has significant implications in that the environment can be eliminated as a changing variable in the evaluation process. Since a game can be reproduced but with the plan recognition agent being implemented differently or with different probability calibrations. 
+This has significant implications in that the environment can be eliminated as a changing variable in the evaluation process since a game can be reproduced but with the plan recognition agent being implemented differently or with different probability calibrations. 
 
-The other is a csv file recording the significant features of the game such as who won and lost, each players actual mission and the probabilities of each players respective explanations over the course of the game.
+The other is a csv file recording the significant features of the game, namely:
+
+Who won and lost, 
+Each players actual mission
+the probabilities of each players respective explanations over the course of the game.
 
 Collection of A.I. play data samples was automated using an free macro program called \textit{AutoHotkey}. 
 
 Python scripts were used to analyse the set of csv files.
 
 Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
+
+Using tool created by the developer of saving "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
 
 Using an system built by the original developers was able to easily reproduce a game if necessary for the purposes of evaluating the algorithm under different conditions.
 
@@ -1365,8 +1366,6 @@ Given this environment and the high-level of overlap between missions the result
 
 For example:
 
-
-
 Solving this problem could be done in potentially two ways either:
 
 Identifying actions are in-directly consistent and modelling them to accurately contribute to explanations.
@@ -1386,7 +1385,6 @@ Players who spend a game fighting over a single continent raise the probability 
 Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
 
 Misclassification's occur due to three(keep looking in data) main reasons:
-
 
 by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations
 
