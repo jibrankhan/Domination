@@ -6,10 +6,11 @@
 \usepackage{amsmath}
 \usepackage{algorithm2e}
 \usepackage{array}
+\usepackage[labelfont=bf]{caption}
 
 \begin{document}
 
-\title{Plan Recognition in RISK}
+\title{Plan Recognition in R.I.S.K.}
 
 \author{Jibran A.Z. Khan and Michael Rovatsos}
 
@@ -39,14 +40,14 @@
 \date{\today}
 
 \abstract{
-This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agents goal is to attempt to infer the unknown plan of a hostile agent from observations of their behaviour in the RISK environment.
+This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal is to attempt to infer the unknown mission card of an agent from observations of their behaviour in the RISK environment.
 }
 
 \maketitle
 
 \section*{Acknowledgements}
 
-A thank you my supervisor Michael Rovatsos for agreeing to supervise this project, his herculean effort and level of involvement with his supervisees is inspirational.
+A thank you to my supervisor Michael Rovatsos for agreeing to supervise this project, his herculean effort and level of involvement with his supervisees is inspirational.
 
 A thank you to my parents and family for their unending support in matters big and small. 
 
@@ -77,19 +78,17 @@ Artificial Intelligence for games or commonly termed 'game A.I.' has been an are
 
 Where the primary goal of academia is to further human understanding, often by solving particularly complex problems, the scope of developed A.I. techniques from academia tend to be usually more general in their application.
 
-On the other hand game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
+On the other hand, game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
 
-Companies in the games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional to keep their customers interest. 
+Companies in the video games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional have kept their customers interested over the years. 
 
-Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I. and indeed there has already been examples of successful games acclaimed for their game A.I, one such is F.E.A.R. 
+Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I. and indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
 
-A First Person Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P. \textbf{[ref]}. \textbf{Talk briefly about what G.O.A.P. does.} The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
+A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P\textbf{[ref]}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
-With this shift in focus, there grows greater incentives for developers to create more sophisticated game A.I. likely as in the past, with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
+With this shift in focus, there are growing incentives for developers to create more sophisticated game A.I. likely, as in the past, with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
 
-Plan recognition is the problem of inferring an agents plans from observations. Significant research in plan recognition began in the 1980's, the results of which have been numerous applications in a several fields.
-
-In Nate Blaylocks paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlighted a few of the most prominent applications of plan recognition as being:
+Plan recognition is the problem of inferring an agent's plans from observations. Significant research in plan recognition began in the 1980's, the results of which have had numerous applications in several fields. In Nate Blaylocks paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlights a few of the most prominent as being:
 
 \begin{tabular}{|l|p{8cm}|}
 \hline 
@@ -104,7 +103,7 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \end{tabular} 
 \newline
 
-Plan recognition continues to receive attention by various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point, applying plan recognition to video games are no different.
+Plan recognition continues to receive attention from various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point, applying plan recognition to video games are no different.
 
 Applied to video games plan recognition has been used in performing dynamic analysis in game environments such as Real Time Strategy and Multi-User Dungeons. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. The desired result being A.I. capable of recognising plans and subsequently building counter plans.
 
@@ -116,15 +115,15 @@ In 1950 Alan Turing published a landmark paper "Computing Machinery and Intellig
 
 Interestingly though thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship it appears older than the term Artificial Intelligence itself. 
 
-As AI continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
+As A.I. continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
 
 Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 has continued to impress the public. 
 
 From history it seems clear that AI and its application in games are intertwined becoming a growing area of interest in both commercial and academic fields.
 
-Games are often considered a good metric for testing the quality of an AI [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf[ref] claims RISK is generally well known but under recognised by academia.
+Games are often considered a good metric for testing the quality of an A.I. [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf[ref] claims R.I.S.K. is generally well known but under recognised by academia.
 
-Work by two guys at Stanford on AI agent to play RISK, RISK as the intersection between traditional and modern board games.
+Work by two guys at Stanford on A.I. agent to play R.I.S.K, R.I.S.K. as the intersection between traditional and modern board games.
 
 \section{Aims}
 
@@ -160,9 +159,7 @@ Using more data from risk environment in the computation of the likelihood of ex
 
 \section{Paper Structure}
 
-The structure of the paper is as follows:
-
-The following chapter presents a background to the project where plan recognition and the board game RISK are introduced. Reasons for using plan recognition in board games are then discussed.
+The following chapter presents a background to the project where the process of plan recognition and the board game R.I.S.K. are introduced. Reasons for using plan recognition in board games are then discussed.
 
 Chapter 3 describes the methodology of the project, it is split into two sections. The first is design, in this section PHATT is introduced and the design of the plan recognition agent is detailed. The subsequent section is implementation. Code related issues such as modifications to the open source project and any relevant design concepts are discussed. 
 
@@ -186,7 +183,7 @@ They defined each as:
 \newline
 \end{itemize}
 
-In 1986 Kautz and Allen published a paper titled "Generalized Plan Recognition" \cite{conf/aaai/KautzA86} which set the frame work of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
+In 1986 Kautz and Allen published a paper titled "Generalized Plan Recognition" \cite{conf/aaai/KautzA86} which set the framework of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
 
 It was Charniak and Goldman \cite{journals/ai/CharniakG93} who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic rather than logic based approach to  plan recognition using a Bayesian model. Their research continues to be popular in many avenues of research including its application in games.
 
@@ -198,11 +195,11 @@ More recently Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a pa
 
 We can introduce common concepts, assumptions and the process of plan recognition with an example of an agent attempting to infer the plan of another agent in a non-adversarial environment. 
 
-Person A is cooking a meal for Person B, in other words A has a single \textit{root goal} (a state they wish to reach), such as cooked beef hamburgers. This root goal can be decomposed into a number \textit{sub-goals} of such as cook meat patties or \textit{actions} such as make meat patties  which can be further decomposed into single actions
+Person A is making a meal for Person B. For this meal A can cook only one of two kinds of burger, a meat burger or vegetarian (veg) burger. In other words A has two possible \textit{root-goals} (a state they wish to reach) either \textit{Cooked Veg Burger} or \textit{Cooked Meat Burger}. 
 
-A wanting to surprise B, will not tell B what his root goal is. B cannot know what A is thinking but B must then somehow infer what A's root goal is likely to be by \textit{observing} A cook in this way A's behaviour can be modelled as a Hidden Markov Model. Person B then models A's plan as follows. 
+A wanting to surprise B, will not tell B what his root-goal is but B wants to know what to expect for lunch. Since B cannot know what A is thinking, B must somehow infer what A's root-goal is likely to be by \textit{observing} A cook. In this way A's behavioural process is similar to a Hidden Markov Model to B. Person B thus models A's behaviour in the following manner. 
 
-Person B assumes A is rational and that A has a \textit{plan} to achieve their root goal. Whatever A's root goal is, it can likely be decomposed into \textit{sub-goals} such as prepare burger buns or cook beef patties. These sub-goals can then be broken down into basic \textit{actions} to achieve those sub-goals, such as take beef patties out of packet. An important point to note is that these basic actions are not limited to only being part of a sub-goal.
+Person B assumes A is rational and that A has a \textit{plan} to achieve their root-goal. Whatever A's root-goal is it can likely be decomposed into a number \textit{sub-goals} such as \textit{Cooked Beef Patties}. Sub-goals can then often be further decomposed into \textit{actions} to achieve them, such as \textit{Take Beef Patties out of packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal.
 
 To simplify the example, we introduce various assumptions:
 
@@ -225,16 +222,16 @@ A has no preferences of what to cook, in other words given a choice the probabil
 One A does not change cooking plan.
 \end{itemize}
 
-Given these assumptions and B's knowledge of A's cooking abilities we can model the set of all of As plans, following the notation set by Geib and Goldman in their paper on PHATT.
+Given these assumptions and B's knowledge of A's cooking abilities we can model the set of all of A's plans, following the notation set by Geib and Goldman in their paper presenting PHATT.
 
 \begin{figure}[h]
 \centering
 \includegraphics{images/example-plan-recognition}
-\caption{Root goals are nodes that have no parent nodes. Sub-goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children. Or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}
+\caption{Root-goals are nodes that have no parent nodes. Sub-goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children. Or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}
 \label{fig:example-plan-library}
 \end{figure} 
 
-A top level or root goal is cooked vegetarian (veg) burgers, it is an and-node and this means that its children represent what needs to be done by A to accomplish that root goal. 
+A top level or root-goal is cooked vegetarian (veg) burgers, it is an and-node and this means that its children represent what needs to be done by A to accomplish that root-goal. 
 
 Children of or-nodes such as cooked meat patties represent options available to A to accomplish the goal. For example to achieve the goal cook meat patties A could either accomplish cooked chicken patties or cooked beef patties.
 
@@ -250,7 +247,7 @@ A then takes the Chicken Patties of their packet, now given our assumptions we c
 
 \section{Introduction to RISK}
 
-Developed and released by french film director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. There exist many variations but the standard version, which this paper is concerned with, is an adversarial environment where players vie to control a fully observable board portraying a static geographical map of the Earth.
+Developed and released by french film director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. This paper is only concerned with the standard version of R.I.S.K. which is an adversarial environment where players' vie to control a fully observable board portraying a static geographical map of the Earth.
 
 \subsection{Equipment}
 
@@ -271,12 +268,12 @@ Different coloured tokens called \textit{armies}.
 \item
 Two sets of regular six-sided dice.
 \item
-A deck of forty four cards.
+A deck of forty-four cards.
 \end{itemize}
 
 \subsection{Rules}
 
-The board is divided into forty two \textit{territories}. Each territory is a representation of a real country on Earth. These territories are partitioned into six \textit{continents} usually corresponding to their real continent grouping.
+The board is divided into forty two \textit{territories}. Each territory is a partition of the land mass of the Earth. These territories are further partitioned into six \textit{continents} usually corresponding to their real continent grouping.
 
 For each territory is a corresponding card, in addition to the name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is then award a card and no more than one in that turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing.
 Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
@@ -292,7 +289,7 @@ How a player wins largely depends on the \textit{Game mode}. Game modes signific
 \hline 
 Domination & Players aim to conquer a certain number of territories, \\ 
 \hline 
-Mission & Each player is given a single unique mission card. A mission card describes a state they must reach e.g. Occupy North America and Africa, for the rest of the game this is their \textit{root goal} which only they know. In order to win they can either complete this root goal or eliminate all other players. \\ 
+Mission & Each player is given a single unique mission card. A mission card describes a state they must reach e.g. Occupy North America and Africa, for the rest of the game this is their \textit{root-goal} which only they know. In order to win they can either complete this root-goal or eliminate all other players. \\ 
 \hline 
 Capital Risk & Each player is given a Capital territory and to win a player must occupy all other Capital territories. \\ 
 \hline
@@ -420,9 +417,9 @@ PHATT was published by Christopher Geib and Robert Goldman in 2009. In their pap
 
 They introduced a model of plan execution based on the notion of \textit{pending sets} of actions. A pending set is what actions an agent can take based on actions it had already performed, calling it "actions that are pending execution by the agent".
 
-Plan execution according to PHATT was modelled as the following. An agent would first choose a root goal, then a set of plans to achieve that root goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set and this would result in some actions being appended to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as, the agent concluding the root goal had been achieved.
+Plan execution according to PHATT was modelled as the following. An agent would first choose a root-goal, then a set of plans to achieve that root-goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set and this would result in some actions being appended to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as, the agent concluding the root-goal had been achieved.
 
-From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root goal, given a set of observations \textit{obs}.
+From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root-goal, given a set of observations \textit{obs}.
 
 Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
 
@@ -444,7 +441,7 @@ To compute the term \textit{Pr(exp} $\wedge$ \textit{obs)} requires the plan lib
 
 \begin{enumerate}
 \item
-The prior probability of the root goal.
+The prior probability of the root-goal.
 \item
 The respective probabilities of choosing any sub-goals.
 \item
@@ -459,9 +456,9 @@ The probability of an explanation is then calculated by multiplying each of the 
 
 \section{Environment Modelling}
 
-\subsection{Root Goals}
+\subsection{Root-Goals}
 
-The root goals of the RISK environment are the mission cards, these are:
+The root-goals of the RISK environment are the mission cards, these are:
 
 \begin{itemize}
 \item
@@ -494,7 +491,7 @@ A subset of these where the mission involved occupying continents were chosen to
 \textit{Two-Continent+1}: Players must occupy two explicitly named continents and another of their choice.
 \end{enumerate}
 
-As mission cards are handed out at random, the prior probability of a root goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is in the form of a tuple containing the name of the root goal and its prior probability.
+As mission cards are handed out at random, the prior probability of a root-goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is in the form of a tuple containing the name of the root-goal and its prior probability.
 
 \centerline{
  $RG$ = \{ rootGoalName, 1/$n$\} .
@@ -502,16 +499,16 @@ As mission cards are handed out at random, the prior probability of a root goal 
 
 \subsection{Sub-Goals}
 
-The root goals of the RISK environment can be decomposed to form a set of sub-goals. 
+The root-goals of the RISK environment can be decomposed to form a set of sub-goals. 
 
 \begin{itemize}
 \item
-For \textit{Two-Continent} root goals, the sub-goals of that root goal are occupying each continent. 
+For \textit{Two-Continent} root-goals, the sub-goals of that root-goal are occupying each continent. 
 \item
-For \textit{Two-Continent+1} root goals which requires players to allow an option to occupy a continent of choice, provided they also occupy two explicitly named continents. 
+For \textit{Two-Continent+1} root-goals which requires players to allow an option to occupy a continent of choice, provided they also occupy two explicitly named continents. 
 \end{itemize}
 
-These two types of root goals therefore make the occupation of any single continent a sub-goal of atleast one root goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
+These two types of root-goals therefore make the occupation of any single continent a sub-goal of atleast one root-goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
 
 \centerline{
  $SG$ = \{ subGoalName, 1/$c$\} .
@@ -682,7 +679,7 @@ Explanations must be designed to contain all the necessary data required to comp
 \item
 The explanation name.
 \item
-A root goal $RG$.
+A root-goal $RG$.
 \item
 A set of sub-goals $SGS$.
 \item
@@ -699,7 +696,7 @@ $E$ = \{ explanationName, RG, SGS, ECA, EIA \}
 
 Inconsistent actions are stored in explanations due to modelling decisions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
 
-Explanations of the form Two-Continent+1 have four alternate forms. For example the root goal Occupy Europe, South America and one other continent can be any of the following:
+Explanations of the form Two-Continent+1 have four alternate forms. For example the root-goal Occupy Europe, South America and one other continent can be any of the following:
 
 \begin{itemize}
 \item
@@ -714,7 +711,7 @@ Occupy Europe, South America and Australia.
 
 Each is a valid explanation in itself, but still falls under its parent mission card. Therefore the assumption is made that if the plan recognition agent predicts one of the four children when it is known the players mission card is the parent, it is classified as a correct prediction.
 
-Given the list of root goals and sub-goals, the complete list of explanations is:
+Given the list of root-goals and sub-goals, the complete list of explanations is:
 
 \begin{itemize}
 \item
@@ -751,7 +748,7 @@ What is then measured is the probability of each separate explanation of a playe
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root goal and sub-goals for each explanation in the environment. In addition it also requires populating each explanation with a set of consistent and inconsistent actions, this can be done by the following operation:
+During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root-goal and sub-goals for each explanation in the environment. In addition it also requires populating each explanation with a set of consistent and inconsistent actions, this can be done by the following operation:
 
 \begin{pseudocode}[ruled]{generateExplanationList}{-}
 \begin{algorithm}[H]
@@ -924,7 +921,7 @@ Investment
 \end{algorithm}
 \end{pseudocode}
 
-After initialising the float $expProb$ the explanation is multiplied by the root goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
+After initialising the float $expProb$ the explanation is multiplied by the root-goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
 
 Normalizing the explanation probability at the end of each operation is vital as this prevents the probability of any explanation from dropping to zero very quickly. 
 
@@ -932,7 +929,7 @@ Normalizing the explanation probability at the end of each operation is vital as
 
 These concepts from this chapter can be tied together with an arbitrary example.
 
-As mission cards are handed out to players' at random, the prior probability of each root goal is 1/\textit{n} where \textit{n} is the number of mission cards.
+As mission cards are handed out to players' at random, the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards.
 
 As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
 
@@ -950,7 +947,7 @@ Main change is that PHATT works in an action space whereas I have had to adapt t
 
 Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
 
-Another difference is I have removed the need for sub goal probabilities because of working with the full derivative tree.
+Another difference is I have removed the need for sub-goal probabilities because of working with the full derivative tree.
 
 Normalising after each observation computation rather than only when a probability needs to be computed.
 
@@ -1052,7 +1049,7 @@ Automating the process of initiating A.I. games provided an opportunity for the 
 
 \subsection{Constrained Play}
 
-In this form of play, players are asked only to perform actions that are \textit{directly consistent} with their root goal. This is opposed to \textit{indirectly consistent} where for example players break other players continents because preventing other players from completing their mission makes completing your own mission more likely.
+In this form of play, players are asked only to perform actions that are \textit{directly consistent} with their root-goal. This is opposed to \textit{indirectly consistent} where for example players break other players continents because preventing other players from completing their mission makes completing your own mission more likely.
 
 More formally (excluding card related actions) given a set of actions a player will only either:
 

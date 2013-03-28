@@ -21,7 +21,7 @@
 \contentsline {section}{\numberline {3.1}Introduction to PHATT}{13}
 \contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{14}
 \contentsline {section}{\numberline {3.2}Environment Modelling}{14}
-\contentsline {subsection}{\numberline {3.2.1}Root Goals}{14}
+\contentsline {subsection}{\numberline {3.2.1}Root-Goals}{14}
 \contentsline {subsection}{\numberline {3.2.2}Sub-Goals}{15}
 \contentsline {subsection}{\numberline {3.2.3}Actions}{15}
 \contentsline {subsubsection}{\numberline {3.2.3.1}Attacking}{16}
@@ -60,7 +60,7 @@
 \contentsline {subsubsection}{\numberline {5.4.3.1}AI - Weight 100}{36}
 \contentsline {subsubsection}{\numberline {5.4.3.2}A.I. - Weight 4}{37}
 \contentsline {subsection}{\numberline {5.4.4}Nature of Game}{37}
-\contentsline {subsection}{\numberline {5.4.5}Simplicity of Model}{37}
+\contentsline {subsection}{\numberline {5.4.5}Simplicity of Model}{38}
 \contentsline {section}{\numberline {5.5}Outcomes}{39}
 \contentsline {section}{\numberline {5.6}Criticism}{40}
 \contentsline {chapter}{\numberline {6}Conclusions}{41}
