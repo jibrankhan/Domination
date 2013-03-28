@@ -12,7 +12,7 @@
 
 \title{Plan Recognition in R.I.S.K.}
 
-\author{Jibran A.Z. Khan and Michael Rovatsos}
+\author{Jibran A.Z. Khan \& Dr. Michael Rovatsos}
 
 % to choose your degree
 % please un-comment just one of the following
@@ -489,7 +489,7 @@ Mission cards are of two types:
 As mission cards are handed out at random, the prior probability of a root-goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is in the form of a tuple containing the name of the root-goal and its prior probability.
 
 \centerline{
- $RG$ = \{ rootGoalName, 1/$n$\} .
+ $RG = ( rootGoalName, 1/n)$
 }
 
 \subsection{Sub-Goals}
@@ -506,7 +506,7 @@ For \textit{Two-Continent+1} root-goals which requires players to allow an optio
 These two types of root-goals therefore make the occupation of any single continent a sub-goal of at least one root-goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
 
 \centerline{
- $SG$ = \{ subGoalName, 1/$c$\} .
+$SG = ( subGoalName, 1/c)$ 
 }
 
 \subsection{Actions}
@@ -515,19 +515,13 @@ Excluding card related actions, in RISK the only actions players perform are:
 
 \begin{itemize}
 \item
-Attacking a Territory.
+Attacking Territories.
 \item
-Defending a Territory.
+Defending Territories.
 \item
-Occupying a Territory.
+Reinforcing Territories.
 \item
-Losing a Territory.
-\item
-Reinforcing a Territory.
-\item
-Moving armies into a Territory.
-\item
-Moving armies out of a Territory.
+Moving armies.
 \item
 Trading Territory Cards.
 \end{itemize}
@@ -567,7 +561,7 @@ Having defined the outcome of attacks as either successful or unsuccessful, atta
 \hline 
 SuccessfulAttack & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action with an explanation.\\ 
+FailedAttack & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a failedAttack is in part due to a lack of armies which is suggestive that in cases the action has less significance than successfulAttack, as one could assume players would choose not to attack if their chances of winning were poor.\\ 
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
@@ -648,10 +642,10 @@ Reinforce & Placing armies in the territory.\\
 
 \newpage
 
-The data structure of a territory therefore is a triple containing the name of the territory the set of territory actions  $TA$ and a set of references to the territories neighbours $TN$.
+The data structure of a territory therefore is a triple containing the name of the territory the set of territory actions $TA$ and a set of references to the territories neighbours $TN$.
 
 \centerline{
-$T$ = $( territoryName, $TA$, $TN$ )$
+$T$ = $( territoryName, TN )$
 }
 
 A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} as it is based on the territories a player owns. By combining the action sets of each territory a player owns into a single set, all the actions a player can perform can be captured.
@@ -669,7 +663,7 @@ $C$ = $( continentName$, <$T_{1}$ ... $T_{n}$> $)$
 The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain at least three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
 
 \centerline{
-$P$ = $( playerName, PT, PE )$
+$P = ( playerName, PT, PE )$
 }
 
 \section{Explanations}
@@ -692,7 +686,7 @@ A set of inconsistent actions $EIA$.
 The resulting data structure is:\newline
 
 \centerline{
-$E$ = $( explanationName, RG, SGS, ECA, EIA )$
+$E = ( explanationName, RG, SGS, ECA, EIA )$
 }
 
 Inconsistent actions are stored in explanations due to modelling decisions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
@@ -794,7 +788,7 @@ $playerPS \gets $ $\emptyset$
 
 	\textit{addAction}(SuccessfulDefence) to \textit{playerPS}
 
-	\ForAll{N $\in$ T}{
+	\ForAll{N $\in$ TN}{
 			
 		\eIf {playerOwnN}{
 
@@ -1029,16 +1023,21 @@ RemovePlayer & Player Name & Destroys a specified agent data structure. \\
 \hline 
 SuccessfulAttack & Attacker Name, Territory Name & Models the SuccessfulAttack action. \\ 
 \hline
-Failed & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+FailedAttack & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+\hline
+SuccessfulDefence & Attacker Name, Territory Name & Models the SuccessfulAttack action. \\ 
+\hline
+FailedDefence & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+\hline
+Army Movement & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+\hline
+Reinforce & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
 \hline
 \end{tabular}
 \caption{Territory Action Set}
 \label{table:event-description}
 \end{table}
 
-failedAttack
-successfulDefence
-failedDefence
 armyMovement
 reinforce
 

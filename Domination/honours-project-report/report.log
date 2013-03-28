@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.13)  28 MAR 2013 12:56
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.13)  28 MAR 2013 14:32
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -407,65 +407,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 506--507
  []
 
 [15]
-Overfull \hbox (1.39836pt too wide) in paragraph at lines 564--573
+Overfull \hbox (1.39836pt too wide) in paragraph at lines 558--567
  [][] 
  []
 
 [16]
-Underfull \hbox (badness 1558) in paragraph at lines 597--598
+Underfull \hbox (badness 1558) in paragraph at lines 591--592
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (6.7846pt too wide) in paragraph at lines 591--600
+Overfull \hbox (6.7846pt too wide) in paragraph at lines 585--594
  [][] 
  []
 
 [17] [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 669--670
+Underfull \hbox (badness 10000) in paragraph at lines 663--664
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 692--693
+Underfull \hbox (badness 10000) in paragraph at lines 686--687
 
  []
 
 [20] [21]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 752--774
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 746--768
 []$ 
  []
 
 [22]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 784--812
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 778--806
 []$ 
  []
 
 
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 816--817
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 810--811
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [23] [24]
-Overfull \hbox (42.48602pt too wide) in paragraph at lines 824--835
+Overfull \hbox (42.48602pt too wide) in paragraph at lines 818--829
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; pTotal
 ActNum; pConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 824--835
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 818--829
 []$ 
  []
 
 
-Overfull \hbox (4.83934pt too wide) in paragraph at lines 843--866
+Overfull \hbox (4.83934pt too wide) in paragraph at lines 837--860
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 843--866
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 837--860
 []$ 
  []
 
@@ -474,7 +474,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
 [26]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 887--926
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 881--920
 []$ 
  []
 
@@ -486,12 +486,12 @@ Overfull \hbox (10.16542pt too wide) in paragraph at lines 887--926
 File: images/event-architecture_cropped.pdf Graphic file (type pdf)
 
 <use images/event-architecture_cropped.pdf>
-Overfull \hbox (33.93591pt too wide) in paragraph at lines 991--992
+Overfull \hbox (33.93591pt too wide) in paragraph at lines 985--986
  [][] 
  []
 
 
-Overfull \hbox (89.88239pt too wide) in paragraph at lines 1022--1035
+Overfull \hbox (89.88239pt too wide) in paragraph at lines 1016--1029
  [][] 
  []
 
@@ -504,12 +504,12 @@ clusion: Page Group detected which pdfTeX can't handle. Ignoring it.
 [33
 
 ] [34]
-Overfull \hbox (2.6744pt too wide) in paragraph at lines 1145--1146
+Overfull \hbox (2.6744pt too wide) in paragraph at lines 1139--1140
 []\T1/cmr/m/n/12 SHOW LINE GRAPH SHOW-ING LINES CON-VERG-ING, TALK ABOUT HOW
  []
 
 [35]
-Overfull \hbox (36.66107pt too wide) in paragraph at lines 1186--1203
+Overfull \hbox (36.66107pt too wide) in paragraph at lines 1180--1197
  [][] 
  []
 
@@ -518,13 +518,13 @@ Overfull \hbox (36.66107pt too wide) in paragraph at lines 1186--1203
 ]
  6.
 
-Overfull \hbox (15.57954pt too wide) in paragraph at lines 1603--1604
+Overfull \hbox (15.57954pt too wide) in paragraph at lines 1597--1598
 []\T1/cmr/m/n/12 MODEL PROB-LEM - AT-TACK COM-PU-TA-TIONS, TREATS ANY NON OWNED
 
  []
 
 [45]
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1619--1620
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1613--1614
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
@@ -566,9 +566,9 @@ m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/te
 xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
 mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
 nts/type1/bluesky/cm/cmsy10.pfb>
-Output written on report.pdf (55 pages, 579070 bytes).
+Output written on report.pdf (55 pages, 579044 bytes).
 PDF statistics:
- 701 PDF objects out of 1000 (max. 8388607)
+ 699 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
