@@ -11,10 +11,12 @@
 \contentsline {section}{\numberline {2.2}Introduction to RISK}{8}
 \contentsline {subsection}{\numberline {2.2.1}Equipment}{8}
 \contentsline {subsection}{\numberline {2.2.2}Rules}{8}
-\contentsline {subsubsection}{\numberline {2.2.2.1}Initial Setup}{10}
-\contentsline {subsubsection}{\numberline {2.2.2.2}Reinforcement Phase}{10}
-\contentsline {subsubsection}{\numberline {2.2.2.3}Attack Phase}{10}
-\contentsline {subsubsection}{\numberline {2.2.2.4}Movement Phase}{11}
+\contentsline {subsection}{\numberline {2.2.3}Turn Structure}{9}
+\contentsline {subsubsection}{\numberline {2.2.3.1}Initial Setup}{9}
+\contentsline {subsubsection}{\numberline {2.2.3.2}Reinforcement Phase}{10}
+\contentsline {subsubsection}{\numberline {2.2.3.3}Attack Phase}{10}
+\contentsline {subsubsection}{\numberline {2.2.3.4}Movement Phase}{11}
+\contentsline {subsection}{\numberline {2.2.4}Cards}{12}
 \contentsline {section}{\numberline {2.3}Why Plan Recognition in Board Games}{12}
 \contentsline {section}{\numberline {2.4}Summary}{12}
 \contentsline {chapter}{\numberline {3}Design}{13}
@@ -28,6 +30,7 @@
 \contentsline {subsubsection}{\numberline {3.2.3.2}Defending}{17}
 \contentsline {subsubsection}{\numberline {3.2.3.3}Reinforce}{18}
 \contentsline {subsubsection}{\numberline {3.2.3.4}Movement}{18}
+\contentsline {subsubsection}{\numberline {3.2.3.5}Trading Territory Cards}{18}
 \contentsline {subsection}{\numberline {3.2.4}Territory}{18}
 \contentsline {subsection}{\numberline {3.2.5}Continent}{19}
 \contentsline {subsection}{\numberline {3.2.6}Player}{19}
@@ -40,7 +43,7 @@
 \contentsline {subsection}{\numberline {3.3.2}Example of Operation}{27}
 \contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{27}
 \contentsline {subsubsection}{\numberline {3.3.3.1}Probability Assignment}{28}
-\contentsline {subsection}{\numberline {3.3.4}Summary}{28}
+\contentsline {section}{\numberline {3.4}Summary}{28}
 \contentsline {chapter}{\numberline {4}Implementation}{29}
 \contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{30}
 \contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{30}
@@ -65,6 +68,6 @@
 \contentsline {section}{\numberline {5.6}Criticism}{40}
 \contentsline {chapter}{\numberline {6}Conclusions}{41}
 \contentsline {section}{\numberline {6.1}Future Work}{41}
-\contentsline {chapter}{\numberline {7}Appendix}{43}
-\contentsline {section}{\numberline {7.1}Experimental Results}{43}
-\contentsline {chapter}{Bibliography}{45}
+\contentsline {chapter}{\numberline {7}Appendix}{45}
+\contentsline {section}{\numberline {7.1}Experimental Results}{45}
+\contentsline {chapter}{Bibliography}{47}

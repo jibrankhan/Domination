@@ -1,10 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{Albrecht98bayesianmodels}
-David~W. Albrecht, Ingrid Zukerman, and Ann~E. Nicholson.
-\newblock {Bayesian Models for Keyhole Plan Recognition in an Adventure Game}.
-\newblock pages 5--47, 1998.
-
 \bibitem{oai:CiteSeerPSU:538953}
 Nate Blaylock.
 \newblock {Retroactive Recognition of Interleaved Plans for Natural Language
@@ -20,6 +15,12 @@ Philip~R. Cohen, C.~Raymond Perrault, and James~F. Allen.
 \newblock {Beyond Question Answering}.
 \newblock In Wendy~G. Lehnert and Martin~H. Ringle, editors, {\em Strategies
   for Natural Language Processing}, pages 245--274. Erlbaum, Hillsdale, 1982.
+
+\bibitem{Albrecht:1998:BMK:598277.598308}
+{David W. Albrecht, Ingrid Zukerman and Ann E. Nicholson}.
+\newblock {Bayesian Models for Keyhole Plan Recognition in an Adventure Game}.
+\newblock {\em {User Modeling and User-Adapted Interaction}}, 8(1-2):5--47,
+  January 1998.
 
 \bibitem{JohnFunge:AIForComp}
 John~David Funge.
@@ -43,6 +44,13 @@ Henry~A. Kautz and James~F. Allen.
 \newblock In Tom Kehler, editor, {\em Proceedings of 1986 Conference of the
   American Association for Artificial Intelligence}, pages 32--37. Morgan
   Kaufmann, 1986.
+
+\bibitem{citeulike:5386647}
+Jeff Orkin.
+\newblock {Symbolic Representation of Game World State: Toward Real-Time
+  Planning in Games}.
+\newblock In Dan Fu and Jeff Orkin, editors, {\em Proc. of the 2004 AAAI
+  Workshop}, Menlo Park, CA, 2004. AAAI, AAAI Press.
 
 \bibitem{journals/ai/SchmidtSG78}
 Charles~F. Schmidt, N.~S. Sridharan, and John~L. Goodson.

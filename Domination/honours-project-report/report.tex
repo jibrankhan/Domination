@@ -84,7 +84,7 @@ Companies in the video games industry who utilize game A.I. (which today is the 
 
 Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I. and indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
 
-A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning, G.O.A.P\textbf{[ref]}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
+A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning \cite{citeulike:5386647}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
 With this shift in focus, there are growing incentives for developers to create more sophisticated game A.I. likely, as in the past, with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
 
@@ -103,9 +103,9 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \end{tabular} 
 \newline
 
-Plan recognition continues to receive attention from various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans, can in some situations be dire. Though not so much the latter point, applying plan recognition to video games are no different.
+Plan recognition continues to receive attention from various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans can in some situations be dire; though not so much the latter point, applying plan recognition to video games is no different.
 
-Applied to video games plan recognition has been used in performing dynamic analysis in game environments such as Real Time Strategy and Multi-User Dungeons. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. The desired result being A.I. capable of recognising plans and subsequently building counter plans.
+Plan recognition in video games has been used in performing dynamic analysis in game environments such as Real Time Strategy \cite{conf/aiide/SynnaeveB11} and Multi-User Dungeons\cite{Albrecht:1998:BMK:598277.598308}. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. The desired result being A.I. capable of recognising plans and subsequently building counter plans.
 
 \section{Artificial Intelligence and Board Games}
 
@@ -115,27 +115,38 @@ In 1950 Alan Turing published a landmark paper "Computing Machinery and Intellig
 
 Interestingly though thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship it appears older than the term Artificial Intelligence itself. 
 
-As A.I. continued to develop so did the complexity of the A.I's seen in computer games, first AI to appear which used enemies was arcade game [ref].
+As A.I. continued to develop so did the complexity of the A.I's seen in computer games, first A.I. to appear which used enemies was arcade game [ref].
 
 Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 has continued to impress the public. 
 
 From history it seems clear that AI and its application in games are intertwined becoming a growing area of interest in both commercial and academic fields.
 
-Games are often considered a good metric for testing the quality of an A.I. [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf[ref] claims R.I.S.K. is generally well known but under recognised by academia.
+Games are often considered a good metric for testing the quality of an A.I. [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf\textbf{[ref]} claims R.I.S.K. is generally well known but under recognised by academia.
 
-Work by two guys at Stanford on A.I. agent to play R.I.S.K, R.I.S.K. as the intersection between traditional and modern board games.
+Work by two guys at Stanford on A.I. \textbf{[ref]} agent to play R.I.S.K. They say R.I.S.K. is an intersection between traditional and modern board games.
 
 \section{Aims}
 
 What do we want to achieve?
 
-To design and implement a plan recognition agent for the board game RISK based on the PHATT algorithm developed by Geib and Goldman.
-
-For the plan recognition agent to be able to perform better than randomly guessing a mission card.
-
-To further understanding of the complexities of performing plan recognition in the board game RISK.
+\begin{itemize}
+\item
+To design and implement a plan recognition agent for the board game R.I.S.K.
+\item
+For the plan recognition agent to be able to perform better than a random guess.
+\item
+To further understanding in the complexities of performing plan recognition in R.I.S.K.
+\end{itemize}
 
 \section{Objectives}
+
+\begin{itemize}
+\item
+\textit{Keyhole plan recognition} is the recognition of an agent's plan through unobtrusive observation".
+\item
+\textit{Intended plan recognition} is the recognition of the plan of a cooperative agent who wishes to be understood.
+\newline
+\end{itemize}
 
 To show plan recognition algorithms can be used successfully to predict an agent's plan in the board game RISK with an accuracy better than randomly picking a mission card.
 
@@ -149,11 +160,13 @@ What do you want to answer?
 
 Are plan recognition algorithms beneficial in games? Specifically RISK?
 
+\begin{itemize}
+\item
 If the player is a winner, then the prediction accuracy of that player will be better than the losers.
-
+\item
 If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
-
-Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
+\newline
+\end{itemize}
 
 Using more data from risk environment in the computation of the likelihood of explanations, the better the prediction accuracy will be.
 
@@ -169,7 +182,7 @@ Finally an an evaluation plan and conclusion is presented. In these, the experim
 
 \section{Previous Work in Plan Recognition}
 
-Many consider one of the earliest projects on plan recognition to have been in 1978. Having identified plan recognition as a problem in itself, Schmidt et al \cite{journals/ai/SchmidtSG78} conducted experiments to determine whether or not people inferred the plans of other agents. From their results they created a rule based system called BELIEVER which attempted to capture the process of plan recognition. 
+Many consider one of the earliest major projects on plan recognition to have been in 1978. Having identified plan recognition as a problem in itself, Schmidt et al \cite{journals/ai/SchmidtSG78} conducted experiments to determine whether or not people inferred the plans of other agents. From their results they created a rule based system called BELIEVER which attempted to capture the process of plan recognition. 
 
 Three years later Cohen, Perrault and Allen identified two different types of plan recognition \textit{keyhole} and \textit{intended} \cite{Cohen82a}. 
 
@@ -187,9 +200,9 @@ In 1986 Kautz and Allen published a paper titled "Generalized Plan Recognition" 
 
 It was Charniak and Goldman \cite{journals/ai/CharniakG93} who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic rather than logic based approach to  plan recognition using a Bayesian model. Their research continues to be popular in many avenues of research including its application in games.
 
-Albrecht, Zukerman and Nicholson \cite{Albrecht98bayesianmodels} performed research on keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The result of their experiments they claimed "showed promise" for some domains. 
+Albrecht, Zukerman and Nicholson \cite{Albrecht:1998:BMK:598277.598308} performed research on keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The result of their experiments they claimed "showed promise" for some domains. 
 
-More recently Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a paper of the design and implementation of a plan recognition agent that through observations of building construction in the game Starcraft, can predict the types of units a player intends to produce based on what buildings they construct.
+More recently Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a paper of the design and implementation of a plan recognition agent in the Real-Time-Strategy game Starcraft, that through observations of building construction can predict the types of units a player intends to produce.
 
 \subsection{An Example of Plan Recognition}
 
@@ -275,9 +288,6 @@ A deck of forty-four cards.
 
 The board is divided into forty two \textit{territories}. Each territory is a partition of the land mass of the Earth. These territories are further partitioned into six \textit{continents} usually corresponding to their real continent grouping.
 
-For each territory is a corresponding card, in addition to the name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is then award a card and no more than one in that turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing.
-Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
-
 Armies are placed in territories. If a player places an army in a territory, this declares that the player \textit{occupies} that territory. Players must have at least one army placed in a territory they own at all times. Players can choose to place as many additional armies as they wish in that territory.
 
 How a player wins largely depends on the \textit{Game mode}. Game modes significantly impact the behaviour of players and is decided by players beforehand. In standard RISK they are:
@@ -310,7 +320,9 @@ Movement
 \newline
 \end{enumerate}
 
-In each phase a player performs atleast one discrete \textit{action} which helps to further the players goals, thus forming a sequential task environment.
+In each phase a player performs at least one discrete \textit{action} which helps to further the players goals, thus forming a sequential task environment.
+
+\subsection{Turn Structure}
 
 \subsubsection{Initial Setup}
 
@@ -363,7 +375,7 @@ Territories occupied by a player that contain more than one army can attack neig
 
 The number of dice each player receives for a battle is dependant on the number of armies placed in each of the players respective territories. The defender receives a die per army up to two armies. The attacker receives a die per army upto three armies not including the single army they are required to have in that territory while occupying it. 
 
-The general rules of engagement are, dice rolls of each player are compared on a one to one basis in descending order of values. The player with the lower value at each comparison loses a single army, if the die are equal the attacker loses an army. The number of comparisons per battle are set by the number of dice the defending player has rolled. The attacking player can commence as many battles as they wish during an attack provided they have more than one army in the attacking territory.
+The general rules of engagement are: dice rolls by each player are compared on a one-to-one basis in descending order of values. The player with the lower value at each comparison loses a single army though if the die are equal in value the attacker loses an army. The number of comparisons per battle are set by the number of dice the defending player has rolled. The attacking player can commence as many battles as they wish during an attack provided they have more than one army in the attacking territory.
 
 An attack of a territory has three outcomes:
 
@@ -373,7 +385,7 @@ A \textit{failedAttack} by the attacker as they have only one army remaining in 
 \item
 A \textit{failedAttack} by the attacker as they choose to retreat before having only one army remaining and a \textit{successfulDefence} by the defender who retains the territory.
 \item
-A \textit{successfulAttack} by the attacker who occupies the territory and a \textit{failedDefence} by the defender who has no armies remaining and so loses the territory. The attacking player, leaving atleast one army behind, must then move armies from the territory they attacked from into the newly occupied territory.
+A \textit{successfulAttack} by the attacker who occupies the territory and a \textit{failedDefence} by the defender who has no armies remaining and so loses the territory. The attacking player, leaving at least one army behind, must then move armies from the territory they attacked from into the newly occupied territory.
 \end{itemize}
 
 A player can perform any number of attacks from any territory they own during their turn, provided they have more than one army in the territory they choose to attack from.
@@ -382,10 +394,14 @@ A player can perform any number of attacks from any territory they own during th
 
 When either the player chooses to end the attacking phase or can no longer attack because they do not occupy a territory which contains more than one army their movement phase begins.
 
-During their movement phase a player may move armies from one territory to an neighbouring territory they own, provided they leave atleast one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
+During their movement phase a player may move armies from one territory to an neighbouring territory they own, provided they leave at least one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
 
 After the movement phase has been completed the players turn ends and another players reinforcement phase begins.
 \newpage
+
+\subsection{Cards}
+
+For each territory is a corresponding card. As well as name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is then awarded a card and no more than one in that turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing. Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
 
 \section{Why Plan Recognition in Board Games}
 
@@ -413,13 +429,13 @@ The summary of the chapter is ...
 
 \section{Introduction to PHATT}
 
-PHATT was published by Christopher Geib and Robert Goldman in 2009. In their paper they presented the central realization of PHATT's approach being "that plans are executed dynamically and the actions that an agent takes at each step depend critically on the actions that the agent has previously taken". 
+PHATT was published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246}. PHATT's approach is that plans are executed dynamically and the set of actions that an agent can take at each step, their \textit{pending set} depends critically on the actions that the agent has previously taken, this formed the basis of their model of plan execution.
 
-They introduced a model of plan execution based on the notion of \textit{pending sets} of actions. A pending set is what actions an agent can take based on actions it had already performed, calling it "actions that are pending execution by the agent".
+The model is as follows. An agent would first choose a root-goal, then a set of plans to achieve that root-goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set and this would result in some actions being appended to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as, the agent concluding the root-goal had been achieved.
 
-Plan execution according to PHATT was modelled as the following. An agent would first choose a root-goal, then a set of plans to achieve that root-goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set and this would result in some actions being appended to the pending set and others being removed to form a new pending set. The agent would then continue to perform actions until an outcome such as, the agent concluding the root-goal had been achieved.
+From this model, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. 
 
-From this model of plan execution, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. It computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a goal \textit{g} given a set of observations \textit{obs}, by computing \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} of the likelihood of an agent having that root-goal, given a set of observations \textit{obs}.
+The algorithm computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a root-goal \textit{g} given a set of observations \textit{obs} or its equivalent form \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} that the agent had a root-goal, given a set of observations \textit{obs}.
 
 Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
 
@@ -433,7 +449,7 @@ They then (as other practical Bayesian systems do) exploited the equivalent form
 \textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
 }
 
-This they described as the conditional probability of the explanation $exp_0$ being computed by dividing the conditional probability of $exp_0$  by the sum of the probability mass associated with all possible explanations.
+This is the conditional probability of the explanation $exp_0$ being computed by dividing the conditional probability of $exp_0$  by the sum of the probability mass associated with all possible explanations.
 
 \subsection{Computing an Explanation's Probability}
 
@@ -476,13 +492,14 @@ Occupy Asia and Africa.
 \item
 Occupy 24 territories.
 \item
-Occupy 18 territories and occupy each with atleast two troops.
+Occupy 18 territories and occupy each with at least two troops.
 \item
 Eliminate a player.
-\newline
 \end{itemize}
 
-A subset of these where the mission involved occupying continents were chosen to be the focus of this paper. These mission cards are of two types:
+A subset of these where the mission involved occupying continents were chosen to be the focus of this paper. This choice made due to project time constraints. 
+
+Mission cards are of two types:
 
 \begin{enumerate}
 \item
@@ -508,7 +525,7 @@ For \textit{Two-Continent} root-goals, the sub-goals of that root-goal are occup
 For \textit{Two-Continent+1} root-goals which requires players to allow an option to occupy a continent of choice, provided they also occupy two explicitly named continents. 
 \end{itemize}
 
-These two types of root-goals therefore make the occupation of any single continent a sub-goal of atleast one root-goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
+These two types of root-goals therefore make the occupation of any single continent a sub-goal of at least one root-goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
 
 \centerline{
  $SG$ = \{ subGoalName, 1/$c$\} .
@@ -533,17 +550,19 @@ Reinforcing a Territory.
 Moving armies into a Territory.
 \item
 Moving armies out of a Territory.
+\item
+Trading Territory Cards
 \end{itemize}
 
-Each of these action must be modelled in a manner that contributes towards explanations of a player's behaviour.
+Each of these action are modelled in a manner that contributes towards explanations of a player's behaviour.
 
 \subsubsection{Attacking}
 
-Though players can perform several attacks during their turn, they can only attack one territory at a time. Thus players' must choose what territory to attack and, if they wish to attack additional territories, in which order to attack provided they have neighbouring territories and sufficient armies. Modelling these choices provides an avenue to infer a players plan.
+Though players can perform several attacks during their turn, they can only attack one territory at a time. Thus players' must choose both which territories to attack and the order in which to attack them, provided they have neighbouring territories and sufficient armies. Modelling these choices provides an avenue to infer a players plan.
 
-The pending set of a player's attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own, that are neighbour to atleast one territory that they own which also contains atleast two armies.
+The pending set of a player's attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own, that are neighbour to atleast one territory that they own which also contains at least two armies.
 
-If a player $p$ successfully occupies a territory $T_{o}$, then the attack actions of neighbouring territories of $T_{o}$ are added to $p$'s attack pending set. If they lose a territory $T_{l}$ due to another players successful attack, then any attack actions of neighbouring territories of $T_{l}$ are removed from their attack pending set for their next turn. 
+If a player $p$ successfully occupies a territory $T_{o}$, then the attack actions of neighbouring territories of $T_{o}$ are added to $p$'s attack pending set. If they lose a territory $T_{l}$ due to another player's successful attack, then any attack actions of neighbouring territories of $T_{l}$ are removed from their attack pending set for their next turn. 
 
 The attack action is thus modelled as a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour.
 
@@ -570,7 +589,7 @@ Having defined the outcome of attacks as either successful or unsuccessful, atta
 \hline 
 SuccessfulAttack & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indictive of a players intention to occupy that territory and therefore a consistent action with an explanation.\\ 
+FailedAttack & Yes & Though less significant than a successful attack, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action with an explanation.\\ 
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
@@ -581,11 +600,9 @@ FailedAttack & Yes & Though less significant than a successful attack, attacking
 
 \subsubsection{Defending}
 
-Defending as opposed to attacking can be seen as a 'passive' action as an attack is required before a defence can occur. In that way defence can be modelled as only inconsistent with the explanations it is directly related to and, as an act in itself, not related to those it is not. 
+Defending as opposed to attacking can be seen as a 'passive' action as an attack is required before a defence can occur. In that way the defence action is modelled as consistent or inconsistent with only the explanations it is directly related to. 
 
-Practically this is difficult to achieve given the nature of competing explanations, but by making the probability term of representing a defence action large then this effect can be atleast minimised.
-
-For example, given the three explanations from the previous section. If a successful defence were to occur in a territory in North America explanation one and two could be multiplied by 1.01. If a failed defence were to occur then explanations one and two would be multiplied by 0.99. This would model a change in the likelihood of both explanations and should have a comparatively minimal effect on the likelihood of explanation 3. 
+For example, given the three explanations from the previous section. If a \textit{SuccessfulDefence} were to occur in a territory in North America explanation one and two would be multiplied by 1.01 whereas explanation three would not be multiplied by anything. In the case of a \textit{FailedDefence} occuring in a territory in North America the same would occur but with a probability of 0.99 instead. 
 
 Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can also be decomposed into the following: 
 
@@ -595,7 +612,7 @@ Defence in the same manner as attack can be either successful or unsuccessful, t
 \hline 
 \textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-SuccessfulDefence & Yes & A successful defence of a territory may be purely based on chance, but is more likely when a player has invested armies in the defence of that territory and so observing the action provides a sign that they have an plan involving that territory. \\ 
+SuccessfulDefence & Yes & A successful defence of a territory may be purely a product of chance, but is more likely when they have a plan involving that territory. \\ 
 \hline 
 FailedDefence & No & An inconsistent action because a player would not normally allow a territory to be lost if it is a part of their plan. \\ 
 \hline
@@ -615,6 +632,10 @@ For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set
 \subsubsection{Movement}
 
 The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory that had armies moved into is directly related to.
+
+\subsubsection{Trading Territory Cards}
+
+Actions related to trading territory cards were not modelled. This is due to trading sets of cards only giving players bonus armies and the end effect of a player placing any number of armies is already captured by the current model.
 
 \subsection{Territory}
 
@@ -657,7 +678,7 @@ A key concept in the design of the agent is that the pending set of a player is 
 
 \subsection{Continent}
 
-Each continent contains atleast two territories and so can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
+Each continent contains at least two territories and so can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
 
 \centerline{
 $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
@@ -665,7 +686,7 @@ $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
 
 \subsection{Player}
 
-The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain atleast three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
+The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain at least three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
 
 \centerline{
 $P$ = \{playerName, $PT$, $PE$\}
@@ -754,7 +775,7 @@ During the initialisation of the RISK map, a set of explanations must be built f
 \begin{algorithm}[H]
 \ForAll {C $\in$ CS}{
 
-	\ForAll{E $\in$ ES}{
+	\ForAll {E $\in$ ES}{
 
 		\If{C \textit{isSubGoalOf} E}{
 
@@ -799,7 +820,32 @@ With the set of environment explanations $ES$, each player is allocated a unique
 		\eIf {playerOwnsN}{
 
 			\textit{addAction}(MovementT) to \textit{playerPS}
-		}{
+		}{\begin{itemize}
+\item
+Occupy Europe, Australia and Africa.
+\item
+Occupy Europe, Australia and North America.
+\item
+Occupy Europe, Australia and South America.
+\item
+Occupy Europe, Australia and Asia.
+\item
+Occupy Europe, South America and Asia.
+\item
+Occupy Europe, South America and Africa.
+\item
+Occupy Europe, South America and North America.
+\item
+Occupy Europe, South America and Australia.
+\item
+Occupy North America and Africa.
+\item
+Occupy North America and Australia.
+\item
+Occupy Asia and South America.
+\item
+Occupy Asia and Africa.
+\end{itemize}
 
 			\textit{addAction}(FailedAttackT) to \textit{playerPS}
 			\textit{addAction}(SucessfulAttackT) to \textit{playerPS}
@@ -923,21 +969,22 @@ Investment
 
 After initialising the float $expProb$ the explanation is multiplied by the root-goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
 
-Normalizing the explanation probability at the end of each operation is vital as this prevents the probability of any explanation from dropping to zero very quickly. 
+Normalizing the explanation probability at the end of each operation is vital as this prevents the probability of any explanation from dropping to zero very quickly doing this though has a notable effect. Since defence actions are modelled as only explanations that are directly related being multiplied, when normalisation of the explanation probabilities occur, explanations that were not directly related decrease, but since the probability term is high, the change to not related explanations is minimal. 
 
 \subsection{Example of Operation}
 
-These concepts from this chapter can be tied together with an arbitrary example.
+The concepts from this chapter can be tied together with an arbitrary example.
 
-As mission cards are handed out to players' at random, the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards.
+Since mission cards are handed out to players' at random therefore the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. As we know there are six mission cards, two of those have four derivatives and so there are twelve explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
 
-As we know the probability of being a mission card is uniform and though there are six mission cards, two of those have four derivatives resulting in 12 explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
+Some other assumptions for this example:
 
-Introducing some other assumptions for this example:
-
-The probability of a player choosing to attack any territory is uniform.
-The probability of a player choosing to occupy a continent as a sub-goal is uniform.
-The RISK map has every territory connected a with every other territory.
+\begin{itemize}
+\item
+The probability of a player choosing a sub-goal is uniform.
+\item
+The R.I.S.K. map for this example has every territory connected with every other territory.
+\end{itemize}
 
 Follow example in slides.
 
@@ -973,7 +1020,7 @@ Because of sensitivity had to make up a more evenly weighted automatic system.
 
 Therefore made proportional weighted system
 
-\subsection{Summary}
+\section{Summary}
 
 The summary for this section is
 
@@ -1462,6 +1509,10 @@ Essentially attack has been modelled following PHATT but the rest of the actions
 
 \section{Future Work}
 
+Extension of the model to include other mission cards if possible. Due to the design, eliminating players could be modelled but occupy 24, 18 has such high overlap with everything it would be hard to model this.
+
+Eliminating players - some system where data of who is being consistently attacked is recorded and probabilities are multiplied by a number based on number of attack actions for a player and number of territories that player has remaining.
+
 The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
 
 Only attack actions have been modelled in a matter 
@@ -1515,6 +1566,8 @@ E.G
 0.4 WEIGHT FOR 1/10 THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
 
 the benefit of such systems would be to such an extent that it would be considering an unfair advantage if used in events such as official tournaments.
+
+Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
 
 \chapter{Appendix}
 
