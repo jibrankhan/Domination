@@ -72,7 +72,7 @@ All the people who helped with me collect many mountains of data.
 John David Funge, Artificial Intelligence for Computer Games, An Introduction
 \end{flushleft}
 
-\section{Motivations}
+\section{Motivation}
 
 Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia, in his book Artificial Intelligence for Computer Games, An Introduction, John Funge argues \cite{JohnFunge:AIForComp} that academic A.I. and game A.I. are notably different in both scope and application.
 
@@ -123,8 +123,6 @@ Work by two guys at Stanford on A.I. \textbf{[ref]} agent to play R.I.S.K. They 
 
 \section{Aims}
 
-What do we want to achieve?
-
 \begin{itemize}
 \item
 To design and implement a plan recognition agent for the board game R.I.S.K.
@@ -134,14 +132,6 @@ For the plan recognition agent to be able to perform better than a random guess.
 To further understanding in the complexities of performing plan recognition in R.I.S.K.
 \end{itemize}
 
-\section{Objectives}
-
-To show plan recognition algorithms can be used successfully to predict an agent's plan in the board game RISK with an accuracy better than randomly picking a mission card.
-
-To provide insight into the complexities of creating plan recognition models for the RISK environment.
-
-To provide insight into the nature of making plans in RISK. 
-
 \section{Hypothesis}
 
 What do you want to answer?
@@ -150,7 +140,7 @@ Are plan recognition algorithms beneficial in games? Specifically RISK?
 
 \begin{itemize}
 \item
-If the player is a winner, then the prediction accuracy of that player will be better than the losers.
+To determine whether the accuracy of predictions are the same for winners and losers.
 \item
 If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
 \newline
@@ -661,7 +651,7 @@ Reinforce & Placing armies in the territory.\\
 The data structure of a territory therefore is a triple containing the name of the territory the set of territory actions  $TA$ and a set of references to the territories neighbours $TN$.
 
 \centerline{
-$T$ = \{ territoryName, $TA$, $TN$ \} 
+$T$ = $( territoryName, $TA$, $TN$ )$
 }
 
 A key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} as it is based on the territories a player owns. By combining the action sets of each territory a player owns into a single set, all the actions a player can perform can be captured.
@@ -671,7 +661,7 @@ A key concept in the design of the agent is that the pending set of a player is 
 Each continent contains at least two territories and so can be modelled as a tuple of the name of the continent and the set of territories that are contained in that continent.
 
 \centerline{
-$C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
+$C$ = $( continentName$, <$T_{1}$ ... $T_{n}$> $)$
 }
 
 \subsection{Player}
@@ -679,7 +669,7 @@ $C$ = \{continentName, <$T_{1}$ ... $T_{n}$>\}
 The term player has been and can be used inter changeably with the term agent. A defined data structure for a player is essential to be able to separate the numerous explanations of one player from another. The data structure must contain at least three features. A player name or ID, a list of territories they own $PT$ and a list of explanations $PE$.\newline
 
 \centerline{
-$P$ = \{playerName, $PT$, $PE$\}
+$P$ = $( playerName, PT, PE )$
 }
 
 \section{Explanations}
@@ -702,12 +692,12 @@ A set of inconsistent actions $EIA$.
 The resulting data structure is:\newline
 
 \centerline{
-$E$ = \{ explanationName, RG, SGS, ECA, EIA \}
+$E$ = $( explanationName, RG, SGS, ECA, EIA )$
 }
 
 Inconsistent actions are stored in explanations due to modelling decisions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
 
-Explanations of the form Two-Continent+1 have four alternate forms. For example the root-goal Occupy Europe, South America and one other continent can be any of the following:
+Explanations of the form \textit{Two-Continent+1} have four alternate forms. For example the root-goal Occupy Europe, South America and one other continent can be any of the following:
 
 \begin{itemize}
 \item
@@ -751,17 +741,15 @@ Occupy Asia and South America.
 Occupy Asia and Africa.
 \end{itemize}
 
-Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation, then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. 
-
-What is then measured is the probability of each separate explanation of a players behaviour over the course of the game.
+Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation, then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. What is then measured is the probability of each separate explanation of a players behaviour over the course of the game.
 
 \subsection{Prediction Agent Pseudo Code}
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the RISK map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root-goal and sub-goals for each explanation in the environment. In addition it also requires populating each explanation with a set of consistent and inconsistent actions, this can be done by the following operation:
+During the initialisation of the R.I.S.K. map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root-goal and sub-goals for each explanation in the environment. In addition it also requires populating each explanation with a set of consistent and inconsistent actions, this can be done by the following operation:
 
-\begin{pseudocode}[ruled]{generateExplanationList}{-}
+\begin{pseudocode}[ruled]{generateExpList}{-}
 \begin{algorithm}[H]
 \ForAll {C $\in$ CS}{
 
@@ -785,17 +773,18 @@ During the initialisation of the RISK map, a set of explanations must be built f
 \end{algorithm}
 \end{pseudocode}
 
-The above pseudo code loops through the data structure of each continent $C$ in the set of continents $CS$. Each continent is checked against each explanation $E$ from the set of explanation $ES$, for whether its name is contained in the set of sub-goals of each $E$ by the \textit{isSubGoalOf} operation. If true then the result is in an If statement firing. 
+The above pseudo code loops through the data structure of each continent $C$ in the set of continents $CS$. Each continent is checked against each explanation $E$ from the set of explanation $ES$, for whether its name is contained in the set of sub-goals of each $E$ by the $isSubGoalOf$ operation. If true then the result is an if statement firing. 
 
-The If statement contains a loop which iterates over the set territories in the current loops continent and using the \textit{addAction} operation, adds each territories action set to the explanations to either the explanations consistent action \textit{ECA} set or inconsistent action set {EIA}.
+The if statement contains a loop which iterates over the set territories in the loops current continent and using the $addAction$ operation, adds each territories action set to either the explanations consistent action $ECA$ or inconsistent action set $EIA$.
 
 \subsubsection{Generating Pending Sets}
 
-With the set of environment explanations $ES$, each player is allocated a unique instance of each explanation. Since the computation of the probability of an explanation requires the probability of choosing an action, a function is required which generates a complete set of the available actions a player can perform.
+With the set of environment explanations $ES$, each player is allocated a unique instance of each explanation. Since the computation of the probability of an explanation requires the probability of choosing a single action from a player pending set, a function is required which generates a complete pending set of available actions a player can perform.
 
-\begin{pseudocode}[ruled]{generatePendingSet}{PT}
+\begin{pseudocode}[ruled]{generatePS}{PT}
 \begin{algorithm}[H]
-\textit{playerPS} = $\emptyset$
+
+$playerPS \gets $ $\emptyset$
 
 \ForAll {T $\in$ PT}{
 
@@ -807,7 +796,7 @@ With the set of environment explanations $ES$, each player is allocated a unique
 
 	\ForAll{N $\in$ T}{
 			
-		\eIf {playerOwnsN}{
+		\eIf {playerOwnN}{
 
 			\textit{addAction}(MovementT) to \textit{playerPS}
 		}{
@@ -824,40 +813,40 @@ With the set of environment explanations $ES$, each player is allocated a unique
 
 After initializing an empty pending set $playerPS$. The above pseudo code first loops through each territory $T$ in the list of all the territories that a player owns $PT$. For each territory a $ReinforceT$ action and a $LoseT$ action is added to $playerPS$. 
 
-Before proceeding onto the next territory in $PT$ another loop is performed through the set of neighbouring territories $TN$ of that territory with an if-then-else statement. If the player owns that territory a $MovementT$ action is added to $playerPS$, if not then a $OccupyT$ action is added to $playerPS$. After the operation the $playerPS$ is returned and can be cached if necessary.
+Before proceeding onto the next territory in $PT$ another loop is performed through the set of neighbouring territories $TN$ of that territory with an if-then-else statement. If the player owns that territory then the if condition $playerOwnN$ return true and a $MovementT$ action is added to $playerPS$, if not then a $OccupyT$ action is added to $playerPS$. After the operation the $playerPS$ is returned and can be cached if necessary.
 
 \newpage
 
 \subsubsection{Computing Action Probabilities}
 
-Following an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting actions, a method for assigning probabilities to pending set actions generated by the $generatePendingSet$ operation was used. It required an operation that would allow greater control over weighting between consistent and inconsistent actions.
+Following an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting actions, a method for assigning probabilities to pending set actions generated by the $generatePS$ operation was used. It required an operation that would allow greater control over weighting between consistent and inconsistent actions.
 
-\begin{pseudocode}[ruled]{ComputeBaseWeight}{w, playerTotalActNum, playerConsActNum}
+\begin{pseudocode}[ruled]{computeBaseWeight}{w, pTotalActNum, pConsActNum}
 \begin{algorithm}[H]
 
-$sumWeight$ = $w$ * $consActNum$
+$sumWeight \gets w * consActNum$
 
-$leftOver$ = 1.0 - $sumWeight$
+$leftOver \gets 1.0 - sumWeight$
 
-$base$ = $leftOver$ / $totalNumAct$
+$base \gets leftOver / totalNumAct$
 
-\Return base
+\Return{base}
 \end{algorithm}
 \end{pseudocode}
 
-Given a predefined weight $w$, the total number of actions in a players pending set $playerTotalActNum$ and the consistent actions with an explanation $playerConsActNum$. This operation computes a $base$ weight for all actions by subtracting the total weight of the desired actions from 1, then distributing equally the remainder amongst all the actions in the players action set. This operation could easily be replaced with another such similar method.
+Given a predefined weight $w$, the total number of actions in a players pending set $pTotalActNum$ and the total number of consistent actions with an explanation $pConsActNum$. This operation computes a $base$ weight for all actions in a pending set by subtracting the total weight of the desired actions from 1, then distributing equally the remainder amongst all the actions in the players action set. This operation could easily be replaced with another such similar method.
 
-Given the nature of the environment where the number of actions players can perform are relatively small, this method is suitable provided the weight difference is kept small. For environments where the number of consistent or inconsistent actions a player can perform are large, this may result in the value of \textit{sumWeight} becoming greater than one making \textit{leftOver} negative, breaking the next calculation. Therefore a scalable method of controlling the weights between actions would be necessary in the design of such an agent for a larger action environment.
+Given the nature of the environment where the number of actions players can perform are relatively small, this method is suitable provided the weight difference is kept small. For environments where the number of consistent or inconsistent actions a player can perform are large, this may result in the value of $sumWeight$ becoming greater than one making $leftOver$ negative, breaking the next calculation. Therefore a scalable method of controlling the weights between actions would be necessary in the design of such an agent for a larger action environment.
 
-The operation $ComputeBaseWeight$ is part of a larger function which prepares the values which $ComputeBaseWeight$ requires.
+The operation $computeBaseWeight$ is part of a larger function which computes a $base$ value which the following $computeExpProb$ operation requires.
 
-\begin{pseudocode}[ruled]{ComputeObsProb}{playerPS, totalExpConAct , obs}
+\begin{pseudocode}[ruled]{computeObsProb}{playerPS, totalExpConAct , obs}
 \begin{algorithm}[H]
-$expConsAct$ = \textit{filterPS}(totalExpConsAct, actType) \newline
-$playerTotalAct$ = \textit{filterPS}(playerPS, actType)\newline
-$playerTotalActNum$ = size of playerTotalAct \newline
+$expConAct \gets filterPS(totalExpConsAct, actType)$ \newline
+$pTotalAct \gets filterPS(playerPS, actType)$\newline
+$pTotalActNum \gets pTotalAct.size$ \newline
 
-\textit{playerConsAct} = $\emptyset$ \newline
+$pConsAct \gets $ $\emptyset$ \newline
 
 \ForAll{A $\in$ \textit{playerAct}}{
 			
@@ -867,18 +856,18 @@ $playerTotalActNum$ = size of playerTotalAct \newline
 	}
 }
 
-playerConsActNum = size of playerConsAct\newline
+$pConsActNum \gets pConsAct.size$\newline
 
-base = \textit{computeBaseWeight}(w, playerTotalActNum, playerConsActNum)\newline 
+$base \gets computeBaseWeight(w, pTotalActNum, pConsActNum)$\newline 
 
-\Return base
+\Return $base$
 
 \end{algorithm}
 \end{pseudocode}
 
-Given the players pending set $playerPS$ generated by the function $generatePendingSet$, and the set of all consistent actions for an explanation $totalExpConAct$. Both the set of actions (must be of the type $obs$) a player can currently perform $playerTotalAct$ and the consistent actions of the explanation can be be filtered using the $filterPS$ operation which given an action type ad a set, removes all other action types from the given set except for actions of the type specified. 
+Given the players pending set $playerPS$ generated by the function $generatePS$, and the set of all consistent actions for an explanation $totalExpConAct$. Both the set of actions (must be of the type $obs$) a player can currently perform $pTotalAct$ and the consistent actions of the explanation can be be filtered using the $filterPS$ operation which given an action type and a set, removes all other action types from the given set. 
 
-The set of $playerTotalAct$ is then further filtered down into another set $playerConsAct$ which contains only the consistent actions with the explanation. The sizes of $playerConsAct$ and $playerTotalAct$ are saved in two respective variables $playerConsActNum$ and $playerTotalActNum$.
+The set of $pTotalAct$ is then further filtered down into another set $pConsAct$ which contains only the consistent actions with the explanation. The sizes of $pConsAct$ and $pTotalAct$ are saved in two respective variables $pConsActNum$ and $pTotalActNum$.
 
 Dividing these two variables effectively gives the proportion of available actions that a player can perform that are inconsistent and this fact is exploited by the next operation which is passed a predetermined weight and each variable to the $computeBaseWeight$ operation which returns the $base$ weight of an action. This base weight can easily be used to weight either inconsistent actions or consistent actions.
 
@@ -895,44 +884,48 @@ That the likelihood of inconsistent attack actions are uniformly distributed.
 
 \subsubsection{Computing Explanation Probabilities}
 
-\begin{pseudocode}[ruled]{ComputeExplanationProbability}{explanation, obs}
+\begin{pseudocode}[ruled]{ComputeExpProb}{explanation, obs}
 \begin{algorithm}[H]
 
 \If{\textbf{not} alreadyIni}{ 
 
-	\textit{expProb} = 1.0
+	$expProb \gets 1.0$
 
-	\textit{expProb} = \textit{R} * \textit{expProb}	
+	$expProb \gets R * expProb$	
+	
+	$alreadyIni \gets true$
 }
 
-\textit{playerPS} = \textit{generatePendingSet()} \newline
+$playerPS \gets generatePS()$
 
-$weight$ = arbitrary number
+$totalExpConsAct \gets ECA$
 
-$base$ = $computeObsProb$(playerPS, totalExpConsAct, obs)\newline
+$weight \gets arbitraryNumber$ \newline
 
-$conActProb$ = $base$ + $weight$
+$base \gets computeObsProb(playerPS, totalExpConsAct, obs)$ 
 
-$inConActProb$ = $base$ \newline
-Investment
+$conActProb \gets base + weight$
+
+$inConActProb \gets base$ \newline
+
 \uIf{obs is consistent }{
 
-	\textit{expProb} = $conActProb$ * \textit{expProb}	
+	$expProb \gets conActProb * expProb$	
 
 	
 }\ElseIf{obs is inconsistent}{
 
-		\textit{expProb} = $inConActProb$ * \textit{expProb}
+		$expProb \gets inConActProb * expProb$
 
  }
 
-\textit{expProb} = $normalized$(expProb)
+$expProb \gets normalized(expProb)$
 
 \Return{expProb}
 \end{algorithm}
 \end{pseudocode}
 
-After initialising the float $expProb$ the explanation is multiplied by the root-goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
+After initialising the float $expProb$, the term is multiplied by the root-goal prior $R$, this is done only when the explanation is first initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
 
 At this point in the operation $expProb$ is normalized, doing this is a deviation to the design of PHATT. Normalisation in PHATT of an explanations probability is normally only done when sampling of an explanation probability is required, not at the end of every operation. This design choice significantly decelerated the probability of any explanation from dropping to zero very quickly. As if an explanation probability did reach zero, its value would propagate over the data sample and so even if a consistent action were to occur that would normally raise the probability it would be multiplied by zero and so nothing would happen. 
 
@@ -940,18 +933,20 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 The concepts from this chapter can be tied together with an arbitrary example.
 
-Since mission cards are handed out to players' at random therefore the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. As we know there are six mission cards, two of those have four derivatives and so there are twelve explanations of a players behaviour. Therefore the probability of a single explanation is 1/12.
+In this example R.I.S.K map there are two explanations, Occupy-North-America-South-America (O-NA-SA) and Occupy-South-America-Africa (O-SA-A). 
+
+Since mission cards are handed out to players' at random therefore the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. 
 
 Some other assumptions for this example:
 
 \begin{itemize}
 \item
 The probability of a player choosing a sub-goal is uniform.
-\item
-The R.I.S.K. map for this example has every territory connected with every other territory.
 \end{itemize}
 
-Follow example in slides.
+
+
+
 
 \subsection{Conceptual Issues}
 
@@ -991,7 +986,11 @@ The summary for this section is
 
 Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
 
-(Domination Game -> Processing -> Events -> Plan Recognition Agent)
+\begin{figure}[h]
+\centering
+\includegraphics{images/event-architecture_cropped}
+\caption{Event-Driven System Architecture}
+\end{figure} 
 
 To operate the plan recognition agent needs to be aware of several important aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
 
@@ -1071,9 +1070,7 @@ The plan recognition agent makes extensive use of the freely available Google Gu
 
 Domination has existing A.I. player implementations for its game modes. The A.I. players can be substituted for human players to the point where a game can consist of only A.I. who fight each other and can complete a game in a fraction of the time compared to human players. 
 
-According to the developer the A.I. does not actually actively follow a plan but is r
-
-The AIHardMission or now just AIMission is a minimal extension of the core play.  Since the core logic is reasonably good at conquering continents and eliminating opponents it just needs to have it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly.  I've been meaning to update the logic that deals with territory goals (as we can do a better job of looking ahead), but haven't gotten around to it yet.  Beyond that, it needs logic to infer and interfere with the other player's goals.
+According to the developer the A.I. does not actually actively follow a plan but according to the developer "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
 
 Automating the process of initiating A.I. games provided an opportunity for the collection of a large number of data samples for evaluation purposes. 
 
@@ -1114,11 +1111,16 @@ After a game has finished the system generates two files. One a log file which u
 
 This has significant implications in that the environment can be eliminated as a changing variable in the evaluation process since a game can be reproduced but with the plan recognition agent being implemented differently or with different probability calibrations. 
 
-The other is a csv file recording the significant features of the game, namely:
+The other is a csv file recording the significant features of the game namely:
 
-Who won and lost, 
-Each players actual mission
-the probabilities of each players respective explanations over the course of the game.
+\begin{itemize}
+\item
+Which player won and lost.
+\item
+Each players actual mission.
+\item
+The probabilities of each players respective explanations over the course of the game.
+\end{itemize}
 
 Collection of A.I. play data samples was automated using an free macro program called \textit{AutoHotkey}. 
 
@@ -1131,6 +1133,8 @@ Using tool created by the developer of saving "Debug Logs" which could be used t
 Using an system built by the original developers was able to easily reproduce a game if necessary for the purposes of evaluating the algorithm under different conditions.
 
 \section{Experimental Findings}
+
+Start with major insights and prove with data
 
 Main questions to answer.
 
@@ -1563,6 +1567,12 @@ Using genetic algorithms to optimize this by looking at the numbers returned by 
 Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. Thus attack has been modelled as the most significant action in the environment and this we can intuitively tell is not the case.
 
 \chapter{Conclusions}
+
+Summary of whole report
+
+Main insights and results
+
+Future Work
 
 \section{Future Work}
 
