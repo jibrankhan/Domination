@@ -32,12 +32,12 @@
 \contentsline {subsubsection}{\numberline {3.2.3.4}Movement}{18}
 \contentsline {subsubsection}{\numberline {3.2.3.5}Trading Territory Cards}{18}
 \contentsline {subsection}{\numberline {3.2.4}Territory}{18}
-\contentsline {subsection}{\numberline {3.2.5}Continent}{19}
-\contentsline {subsection}{\numberline {3.2.6}Player}{19}
+\contentsline {subsection}{\numberline {3.2.5}Continent}{20}
+\contentsline {subsection}{\numberline {3.2.6}Player}{20}
 \contentsline {section}{\numberline {3.3}Explanations}{20}
-\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Pseudo Code}{21}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{21}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Generating Pending Sets}{22}
+\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Pseudo Code}{22}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{22}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Generating Pending Sets}{23}
 \contentsline {subsubsection}{\numberline {3.3.1.3}Computing Action Probabilities}{24}
 \contentsline {subsubsection}{\numberline {3.3.1.4}Computing Explanation Probabilities}{26}
 \contentsline {subsection}{\numberline {3.3.2}Example of Operation}{27}
@@ -68,6 +68,6 @@
 \contentsline {section}{\numberline {5.6}Criticism}{41}
 \contentsline {chapter}{\numberline {6}Conclusions}{43}
 \contentsline {section}{\numberline {6.1}Future Work}{43}
-\contentsline {chapter}{\numberline {7}Appendix}{47}
-\contentsline {section}{\numberline {7.1}Experimental Results}{47}
-\contentsline {chapter}{Bibliography}{49}
+\contentsline {chapter}{\numberline {7}Appendix}{45}
+\contentsline {section}{\numberline {7.1}Experimental Results}{45}
+\contentsline {chapter}{Bibliography}{47}

@@ -590,9 +590,11 @@ FailedAttack & Yes & Though less significant than a successful attack, attacking
 
 Defending as opposed to attacking can be seen as a 'passive' action as an attack is required before a defence can occur. In that way the defence action is modelled as consistent or inconsistent with only the explanations it is directly related to. 
 
-For example, given the three explanations from the previous section. If a \textit{SuccessfulDefence} were to occur in a territory in North America explanation one and two would be multiplied by 1.01 whereas explanation three would not be multiplied by anything. In the case of a \textit{FailedDefence} occuring in a territory in North America the same would occur but with a probability of 0.99 instead. 
+For example, given the three explanations from the previous section. If a \textit{SuccessfulDefence} were to occur in a territory in North America explanation one and two would be multiplied by a term $x$ which would be greater than 1, whereas explanation three would not be multiplied by anything. In the case of a \textit{FailedDefence} occurring in a territory in North America the same would occur but with $x$ in the range 0.9 < $x$ < 1.0. This model results in an interesting side-effect.
 
-Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can also be decomposed into the following: 
+In PHATT at some point each explanations probability is normalised. The result is that explanations that were not multiplied by $x$ will inversely increase or decrease to explanations that were multiplied $x$. The more $x$ changes the value of an explanation the greater the difference will be in explanations that were not multiplied by $x$. To minimize this effect as big changes in explanation probabilities are undesirable for defence actions, the value of $x$ is kept in the range of 0.9 < $x$ < 1.1.
+
+Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can be decomposed into the following: 
 
 \begin{table}[ht]
 \centering
@@ -932,7 +934,7 @@ Investment
 
 After initialising the float $expProb$ the explanation is multiplied by the root-goal prior $R$, this is done only when the explanation is initialised and therefore the $alreadyIni$ flag is necessary. To complete the computation of an explanation, the operation $computeObsProb$ is applied to $obs$. Depending on whether $obs$ is consistent or not with the explanation, the appropriate action probability is multiplied with $expProb$ .
 
-Normalizing the explanation probability at the end of each operation is vital as this prevents the probability of any explanation from dropping to zero very quickly doing this though has a notable effect. Since defence actions are modelled as only explanations that are directly related being multiplied, when normalisation of the explanation probabilities occur, explanations that were not directly related decrease, but since the probability term is high, the change to not related explanations is minimal. 
+At this point in the operation $expProb$ is normalized, doing this is a deviation to the design of PHATT. Normalisation in PHATT of an explanations probability is normally only done when sampling of an explanation probability is required, not at the end of every operation. This design choice significantly decelerated the probability of any explanation from dropping to zero very quickly. As if an explanation probability did reach zero, its value would propagate over the data sample and so even if a consistent action were to occur that would normally raise the probability it would be multiplied by zero and so nothing would happen. 
 
 \subsection{Example of Operation}
 
@@ -958,8 +960,6 @@ Main change is that PHATT works in an action space whereas I have had to adapt t
 Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
 
 Another difference is I have removed the need for sub-goal probabilities because of working with the full derivative tree.
-
-Normalising after each observation computation rather than only when a probability needs to be computed.
 
 Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
 
@@ -991,30 +991,32 @@ The summary for this section is
 
 Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
 
-Diagram 
-
 (Domination Game -> Processing -> Events -> Plan Recognition Agent)
 
-In the game there are a number of key events that occur, these are:
+To operate the plan recognition agent needs to be aware of several important aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
 
 \begin{itemize}
+\item
+Start Game
 \item
 Player Initialisation
 \item
 Player Removal
 \item
-Territory Occupation
+Territory Placement
 \item
-Attacks
+Successful Occupation
 \item
-Army Movements
+Failed Occupation
+\item
+Army Movement
 \item
 Reinforcement
+\item
+End Game
 \end{itemize}
 
-When these occur a distinct event object is fired which contains data pertaining to the event. For example when a battle is concluded between two players two events are fired, in the case of a defender retaining their territory it would be a \textit{FailedDefence} event for the defender and a \textit{SuccessfulAttack} event for the attacker. 
-
-These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event objects and depending on the type of event object handles them appropriately. The types of events are:
+When these occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event objects and depending on the type of event object and the information held by them handles the object appropriately. The types of events are:
 
 \begin{table}[ht]
 \centering
@@ -1027,7 +1029,9 @@ NewPlayer & Player Name & Initialises a new agent data structure. \\
 RemovePlayer & Player Name & Destroys a specified agent data structure. \\ 
 \hline 
 SuccessfulAttack & Attacker Name, Territory Name & Models the SuccessfulAttack action. \\ 
-\hline 
+\hline
+Failed & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+\hline
 \end{tabular}
 \caption{Territory Action Set}
 \label{table:event-description}
@@ -1158,7 +1162,7 @@ Present table of general accuracy
 \hline 
 \textbf{Game Type} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
 \hline 
-Free Play & 17 & 26 & 39.53 \\ 
+Free Play & 29 & 32 & 47.54 \\ 
 \hline 
 Constrained Play & 79 & 23 & 77.45 \\ 
 \hline 
@@ -1179,8 +1183,8 @@ Why is the accuracy of free play and A.I. play much lower than constrained play.
 \hline 
 \textbf{Game Type} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
 \hline 
-Free Play & Winner & 7 & 6 & 53.85 \\ 
-& Loser & 10 & 20 & 33.33 \\ 
+Free Play & Winner & 11 & 7 & 61.11 \\ 
+& Loser & 18 & 25 & 41.86 \\ 
 \hline 
 Constrained Play & Winner & 14 & 3 & 82.35 \\ 
 & Loser & 65 & 20 & 76.47 \\ 
@@ -1270,7 +1274,9 @@ Occupy-North-America-Australia & 4 & 1 & 80.00 \\
 \label{table:continent-bonus}
 \end{table}
 		
-The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder in some way?
+The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder?
+
+Would make sense seeing as there is a trend in other data showing lower percentage accuracy for that mission.
 		
 \begin{table}[ht]
 \centering	
@@ -1459,27 +1465,21 @@ Occupy-North-America-Australia & 44 & 97 & 31.21 \\
 
 The nature of classic RISK is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
 
-Given the model these changes in behaviour are often directly inconsistent with their own mission. Instead this behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with.
+Given the model these changes in behaviour are often directly inconsistent with their own mission. Instead this behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with instead.
 
 Given this environment and the high-level of overlap between missions the results are misclassification.
 
 For example:
 
-Solving this problem could be done in potentially two ways either:
-
-Identifying actions are in-directly consistent and modelling them to accurately contribute to explanations.
- 
-Giving greater weights to actions that are directly consistent through the state of the game  more significant.
-
-For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
-
-The simplicity of the model 
+PRESENT EXAMPLE
 
 \subsection{Simplicity of Model}
 
 Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
 
 Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
+
+Inherent issues with PHATT is unable to deal with deception[ref] and often players must perform actions unrelated to a plan to be able to complete their plan e.g survive, have to conquer other non-relevant continents, this confuses the algorithm.
 
 Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
 
@@ -1490,6 +1490,14 @@ by Association - Explanations appear likely because players do things related to
 Misclassification by 
 
 HOW TO FIX
+
+Solving this problem could be done in potentially two ways either:
+
+Identifying actions are in-directly consistent and modelling them to accurately contribute to explanations.
+ 
+Giving greater weights to actions that are directly consistent through the state of the game  more significant.
+
+For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
 
 Use a system of tiered consistent actions!
 
@@ -1528,7 +1536,7 @@ It performs better than randomly guessing but still at a low probability
 
 Three types of games to test the algorithm in:
 
-Players don't ignore their mission card like I first thought, as long as the mission seems easier to complete than eliminating all other players then players will try achieve their mission.
+Players don't ignore their mission card like at first predicted, as long as the mission appears easier to complete than eliminating all other players, then players will try achieve their mission.
 
 Do the accuracy of missions with two continents appear on average to be better?
 
@@ -1541,12 +1549,6 @@ What did you do that you found easy? What did you do that you found hard?
 Would you recommend doing something, what would you recommend not doing?
 
 TALK ABOUT THE OUTCOMES OF YOUR WORK!
-
-NATURE OF GAME PROBLEM
-
-Inherent issues with PHATT is unable to deal with deception[ref] and often players must perform actions unrelated to a plan to be able to complete their plan e.g survive, have to conquer other non-relevant continents, this confuses the algorithm.
-
-The problem of prediction by association, this is where an explanation which involves a continent that a player has not done anything at all to becoming likely because the explanation contains two other continents that the algorithm has observed many things happen to.
 
 How to decide weighting of 
 
@@ -1578,13 +1580,11 @@ Probability model changed to proportion of consistent actions * 0.1
 
 MODEL AUGMENTATION
 
-CRITICISM - ASSUMPTIONS ARE NOT ALWAYS TRUE BECAUSE OF NON-DETERMINISTIC NATURE OF BATTLES! AND OF MULTIPLE ATTACKS PER TURN FOR PLAYERS
+Do not model indirectly consistent actions only directly consistent actions.
 
 MODEL PROBLEM - MODEL HAS BEEN BUILT NOT TAKING THE EFFECTS OF OTHER PLAYERS INTO ACCOUNT EFFECTIVELY
 
-MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY CANT PERFORM A CONSISTENT ACTION
-
-MODEL PROBLEM - DOES NOT TAKE EFFECT OF TRADING CARDS INTO ACCOUNT
+MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY cannot PERFORM A CONSISTENT ACTION
 
 MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHER THAN MULTIPLYING CONSISTENT BY 1.02 AND inconsistent WITH 0.98
 
@@ -1592,11 +1592,9 @@ MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAK
 
 MODEL PROBLEM - ATTACK COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
 
-PROBLEM - DUE TO NORMALIZING OTHER EXPLANATIONS BECOME MORE LIKELY AS A BI-PRODUCT EVEN WHEN TAKING INTO ACCOUNT DEFENCE ACTIONS WHERE NON RELEVANT EXPLANATIONS SHOULD BE UNAFFECTED, TRIED TO AVOID THIS BY MAKING PROBABILITIES MULTIPLICATIONS MINIMAL.
-
 PROBLEM - MODEL NEGLECTS THE MULTI-ATTACK NATURE OF THE GAME, SUCCESSFUL DEFENCE MODEL REALLY ONLY APPLIES FOR SINGLE ATTACKS PER TURN
 
-MODEL IS TOO LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
+MODEL IS LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
 
 Augmentation possibility - look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
 
