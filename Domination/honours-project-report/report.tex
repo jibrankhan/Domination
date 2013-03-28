@@ -109,17 +109,13 @@ Plan recognition in video games has been used in performing dynamic analysis in 
 
 \section{Artificial Intelligence and Board Games}
 
-NOT COMPLETE
-
-In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the 'birth of Artificial Intelligence'. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
+In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the birth of Artificial Intelligence as a field of research. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
 Interestingly though thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship it appears older than the term Artificial Intelligence itself. 
 
-As A.I. continued to develop so did the complexity of the A.I's seen in computer games, first A.I. to appear which used enemies was arcade game [ref].
+Since then famous events such as Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 continues to impress the public. 
 
-Since then notable achievements such as Garry Kasparovs defeat to IBMs chess computer Deep Blue in 1997 has continued to impress the public. 
-
-From history it seems clear that AI and its application in games are intertwined becoming a growing area of interest in both commercial and academic fields.
+From history it seems clear that A.I. and its application in games are intertwined becoming a growing area of interest in both commercial and academic fields.
 
 Games are often considered a good metric for testing the quality of an A.I. [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf\textbf{[ref]} claims R.I.S.K. is generally well known but under recognised by academia.
 
@@ -139,14 +135,6 @@ To further understanding in the complexities of performing plan recognition in R
 \end{itemize}
 
 \section{Objectives}
-
-\begin{itemize}
-\item
-\textit{Keyhole plan recognition} is the recognition of an agent's plan through unobtrusive observation".
-\item
-\textit{Intended plan recognition} is the recognition of the plan of a cooperative agent who wishes to be understood.
-\newline
-\end{itemize}
 
 To show plan recognition algorithms can be used successfully to predict an agent's plan in the board game RISK with an accuracy better than randomly picking a mission card.
 
@@ -411,7 +399,7 @@ In the realm of board games such as chess, there have for many years dominated a
 
 Min-max Algorithm with Alpha-Beta Pruning
 
-Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], this has been said because the search space for such games is large and that finding the best move would take an unreasonable amount of time (Find a ref for this) Michael Wolf paper calculating state space for RISK is infinite.
+Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], the search space for such games is so large and that finding the best move would take an unreasonable amount of time (Find a ref for this) Michael Wolf paper calculating state space for RISK is infinite.
 
 Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms one can weed out unlikely explanations before committing to a search of the 
 
@@ -551,7 +539,7 @@ Moving armies into a Territory.
 \item
 Moving armies out of a Territory.
 \item
-Trading Territory Cards
+Trading Territory Cards.
 \end{itemize}
 
 Each of these action are modelled in a manner that contributes towards explanations of a player's behaviour.
@@ -820,32 +808,7 @@ With the set of environment explanations $ES$, each player is allocated a unique
 		\eIf {playerOwnsN}{
 
 			\textit{addAction}(MovementT) to \textit{playerPS}
-		}{\begin{itemize}
-\item
-Occupy Europe, Australia and Africa.
-\item
-Occupy Europe, Australia and North America.
-\item
-Occupy Europe, Australia and South America.
-\item
-Occupy Europe, Australia and Asia.
-\item
-Occupy Europe, South America and Asia.
-\item
-Occupy Europe, South America and Africa.
-\item
-Occupy Europe, South America and North America.
-\item
-Occupy Europe, South America and Australia.
-\item
-Occupy North America and Africa.
-\item
-Occupy North America and Australia.
-\item
-Occupy Asia and South America.
-\item
-Occupy Asia and Africa.
-\end{itemize}
+		}{
 
 			\textit{addAction}(FailedAttackT) to \textit{playerPS}
 			\textit{addAction}(SucessfulAttackT) to \textit{playerPS}
@@ -1032,7 +995,7 @@ Diagram
 
 (Domination Game -> Processing -> Events -> Plan Recognition Agent)
 
-In the game there are a number of key events that occur. These are:
+In the game there are a number of key events that occur, these are:
 
 \begin{itemize}
 \item
@@ -1049,20 +1012,36 @@ Army Movements
 Reinforcement
 \end{itemize}
 
-When these occur a distinct event object is fired which contains data pertaining to the event for example when an battle is concluded two events are fired, one for defender and the other for the attacker. These events are observed by the processing class which then routes them to the plan recognition agent. 
+When these occur a distinct event object is fired which contains data pertaining to the event. For example when a battle is concluded between two players two events are fired, in the case of a defender retaining their territory it would be a \textit{FailedDefence} event for the defender and a \textit{SuccessfulAttack} event for the attacker. 
 
-The plan recognition agent looks at the received event object and depending on its type then handles in the following manner.
+These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event objects and depending on the type of event object handles them appropriately. The types of events are:
 
-Player Initialisation - Initialises a new agent data structure
-Player Removal - Destroys a specified agent data structure
-Territory Occupation - Fires an
-Battles - Depending on the outcome fires two events for example in the outcome of a battle is successfulAttack then two events are fired, one successfulAttack for the defender, the other a failedDefence for the defender.
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Event Type} & \textbf{Contains} & \textbf{Purpose} \\ 
+\hline 
+NewPlayer & Player Name & Initialises a new agent data structure. \\ 
+\hline 
+RemovePlayer & Player Name & Destroys a specified agent data structure. \\ 
+\hline 
+SuccessfulAttack & Attacker Name, Territory Name & Models the SuccessfulAttack action. \\ 
+\hline 
+\end{tabular}
+\caption{Territory Action Set}
+\label{table:event-description}
+\end{table}
 
-Army Movements - an event containing which territory armies are moved to.
+failedAttack
+successfulDefence
+failedDefence
+armyMovement
+reinforce
 
 The plan recognition agent needs be aware of when the game begins, the games initial state, any changes that occur in the game and when the game is finished.
 
-The architecture is such that the implementation of the plan recognition agent is not as dependant sub-component of the game but rather a separate entity that operates in parallel to the game which if need be could be replaced by another plan recognition agent.
+The architecture is such that the implementation of the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another plan recognition agent.
 
 \section{Additional Implementation Concepts}
 
@@ -1223,7 +1202,6 @@ Why is the accuracy of winners better than losers?
 
 The results show on an average (calculate percentage difference across measures)
 
-
 More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations.
 
 Some reasons for incorrect predictions because of players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
@@ -1235,6 +1213,8 @@ Present breakdown of explanations accuracy per game type
 General Accuracy for each explanation
 
 General Accuracies for each explanation type separated into winners and losers.
+
+\newpage
 
 \subsection{Constrained Play}
 
@@ -1396,9 +1376,84 @@ Occupy-North-America-Australia & 49 & 100 & 32.89 \\
 \label{table:ai-100-loser-accuracy}
 \end{table}			
 
+Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
+
 \newpage
 
 \subsubsection{A.I. - Weight 4}
+
+General Accuracy for each explanation
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 34 & 133 & 20.36 \\  
+\hline 
+Occupy-Asia-South-America & 27 & 140 & 16.17 \\ 
+\hline
+Occupy-Europe-South-America-One & 88 & 79 & 52.69 \\
+\hline
+Occupy-North-America-Africa & 28 & 139 & 16.77 \\
+\hline
+Occupy-Asia-Africa & 9 & 158 & 5.39 \\
+\hline
+Occupy-North-America-Australia & 49 & 118 & 29.34 \\
+\hline
+\end{tabular}
+\caption{AI Play General Explanation Accuracy - Weight 4}
+\label{table:ai-4-general-accuracy}
+\end{table}
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 6 & 27 & 18.18 \\  
+\hline 
+Occupy-Asia-South-America & 8 & 21 & 27.59 \\ 
+\hline
+Occupy-Europe-South-America-One & 14 & 20 & 41.18 \\
+\hline
+Occupy-North-America-Africa & 3 & 13 & 18.75 \\
+\hline
+Occupy-Asia-Africa & 1 & 28 & 3.45 \\
+\hline
+Occupy-North-America-Australia & 5 & 21 & 19.23 \\
+\hline
+\end{tabular}
+\caption{AI Play Winner Explanation Accuracy - Weight 4}
+\label{table:ai-4-winner-accuracy}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 28 & 106 & 20.90 \\  
+\hline 
+Occupy-Asia-South-America & 19 & 119 & 13.77 \\ 
+\hline
+Occupy-Europe-South-America-One & 74 & 59 & 55.64 \\
+\hline
+Occupy-North-America-Africa & 25 & 126 & 16.56 \\
+\hline
+Occupy-Asia-Africa & 8 & 130 & 5.80 \\
+\hline
+Occupy-North-America-Australia & 44 & 97 & 31.21 \\
+\hline
+\end{tabular}
+\caption{AI Play Winner Explanation Accuracy - Weight 4}
+\label{table:ai-4-loser-accuracy}
+\end{table}
 
 \subsection{Nature of Game}
 
