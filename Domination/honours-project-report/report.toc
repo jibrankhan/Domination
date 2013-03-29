@@ -53,7 +53,7 @@
 \contentsline {section}{\numberline {5.2}Experimental Format}{34}
 \contentsline {section}{\numberline {5.3}Data Collection}{34}
 \contentsline {section}{\numberline {5.4}Experimental Findings}{35}
-\contentsline {subsection}{\numberline {5.4.1}Free Play}{36}
+\contentsline {subsection}{\numberline {5.4.1}Free Play}{37}
 \contentsline {subsection}{\numberline {5.4.2}Constrained Play}{38}
 \contentsline {subsection}{\numberline {5.4.3}A.I. Play}{39}
 \contentsline {subsubsection}{\numberline {5.4.3.1}AI - Weight 100}{39}
@@ -64,6 +64,6 @@
 \contentsline {section}{\numberline {5.6}Criticism}{43}
 \contentsline {chapter}{\numberline {6}Conclusions}{45}
 \contentsline {section}{\numberline {6.1}Future Work}{45}
-\contentsline {chapter}{\numberline {7}Appendix}{47}
-\contentsline {section}{\numberline {7.1}Experimental Results}{47}
-\contentsline {chapter}{Bibliography}{49}
+\contentsline {chapter}{\numberline {7}Appendix}{49}
+\contentsline {section}{\numberline {7.1}Experimental Results}{49}
+\contentsline {chapter}{Bibliography}{51}
