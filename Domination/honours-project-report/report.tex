@@ -186,11 +186,11 @@ More recently Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a pa
 
 We can introduce common concepts, assumptions and the process of plan recognition with an example of an agent attempting to infer the plan of another agent in a non-adversarial environment. 
 
-Person A is making a meal for Person B. For this meal A can cook only one of two kinds of burger, a meat burger or vegetarian (veg) burger. In other words A has two possible \textit{root-goals} (a state they wish to reach) either \textit{Cooked Veg Burger} or \textit{Cooked Meat Burger}. 
+Person A is making a meal for Person B. For this meal A can cook only one of two kinds of burger, a meat burger or vegetarian (veg) burger. In other words A has two possible \textit{root-goals} (a state they wish to reach) either \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. 
 
 A wanting to surprise B, will not tell B what his root-goal is but B wants to know what to expect for lunch. Since B cannot know what A is thinking, B must somehow infer what A's root-goal is likely to be by \textit{observing} A cook. In this way A's behavioural process is similar to a Hidden Markov Model to B. Person B thus models A's behaviour in the following manner. 
 
-Person B assumes A is rational and that A has a \textit{plan} to achieve their root-goal. Whatever A's root-goal is it can likely be decomposed into a number \textit{sub-goals} such as \textit{Cooked Beef Patties}. Sub-goals can then often be further decomposed into \textit{actions} to achieve them, such as \textit{Take Beef Patties out of packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal.
+Person B assumes A is rational and that A has a \textit{plan} to achieve their root-goal. Whatever A's root-goal is it can likely be decomposed into a number \textit{sub-goals} such as \textit{Cooked-Beef-Patties}. Sub-goals can then often be further decomposed into \textit{actions} to achieve them, such as \textit{Take-Beef-Patties-Out-Of-Packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal.
 
 To simplify the example, we introduce various assumptions:
 
@@ -222,21 +222,21 @@ Given these assumptions and B's knowledge of A's cooking abilities we can model 
 \label{fig:example-plan-library}
 \end{figure} 
 
-A top level or root-goal is cooked vegetarian (veg) burgers, it is an and-node and this means that its children represent what needs to be done by A to accomplish that root-goal. 
+To elaborate on the above diagram one of A's top level or root-goals is \textit{Cooked-Veg-Burgers} it is an And-node and so means to accomplish it, requires successfully performing all of its children nodes. 
 
-Children of or-nodes such as cooked meat patties represent options available to A to accomplish the goal. For example to achieve the goal cook meat patties A could either accomplish cooked chicken patties or cooked beef patties.
+Children of Or-nodes such as \textit{Cooked-Meat-Patties} represent choices available to A to accomplish the root-goal. For example to achieve \textit{Cook-Meat-Patties} A could either accomplish \textit{Cooked-Chicken-Patties} or \textit{Cooked-Beef-Patties}.
 
-Arrows represent dependencies between nodes. For example to be able to accomplish the action cook beef patties, A must first perform the action Take Beef Patties out of packet.
+Arrows represent dependencies between nodes. For example to be able to accomplish the action \textit{Cook-Beef-Patties}, A must first perform the action \textit{Take-Beef-Patties-Out-Of-Packet}.
 
-Now A first performs the action \textit{Take Burger Bun out of Packet}, then proceeds to \textit{Toast Burger Buns}. At this point looking at the plan library we have two possible \textit{explanations} for As behaviour, cooked veg burger or cooked meat hamburger.
+Beginning the example, A first performs the action \textit{Take-Burger-Bun-Out-Of-Packet}, then proceeds to \textit{Toast-Burger-Buns}. At this point looking at the plan library we have two possible \textit{explanations} for A's behaviour, \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}.
 
 Each of these explanations are equally likely at this point because the actions that have occurred so far could be part of either plan.
 
-A then takes the Chicken Patties of their packet, now given our assumptions we can conclude that A's plan is to cook Meat burgers. In this way B has recognised A's plan thus performing the process of plan recognition.
+A then performs the action \textit{Take-Chicken-Patties-Out-Of-Packet}, given our assumptions we can conclude that A's root-goal is \textit{Cooked-Meat-Burger} and not \textit{Cooked-Veg-Burger}. In this way B has recognised A's plan thus performing the process of plan recognition.
 
 \newpage
 
-\section{Introduction to RISK}
+\section{Introduction to R.I.S.K.}
 
 Developed and released by french film director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. This paper is only concerned with the standard version of R.I.S.K. which is an adversarial environment where players' vie to control a fully observable board portraying a static geographical map of the Earth.
 
@@ -391,7 +391,7 @@ Min-max Algorithm with Alpha-Beta Pruning
 
 Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], the search space for such games is so large and that finding the best move would take an unreasonable amount of time (Find a ref for this) Michael Wolf paper calculating state space for RISK is infinite.
 
-Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms one can weed out unlikely explanations before committing to a search of the 
+Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms we can weed out unlikely explanations before committing to a search of the 
 
 Main benefit is that responses can be personalized.
 
@@ -445,14 +445,14 @@ The probabilities of picking actions from the agents pending set.\newline
 The probability of an explanation is then calculated by multiplying each of the terms together in the following manner: \newline
 
 \centerline{
-\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{P}(\textit{goals})\textit{P}(\textit{plans}|\textit{goals})\textit{P}(\textit{obs}|\textit{exp})
+\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{Pr}(\textit{goals})\textit{Pr}(\textit{plans}|\textit{goals})\textit{Pr}(\textit{obs}|\textit{exp})
 }
 
-\section{Environment Modelling}
+\section{Environment Modelling and Design}
 
 \subsection{Root-Goals}
 
-The root-goals of the RISK environment are the mission cards, these are:
+The mission cards of the R.I.S.K. environment are the root-goals, these are:
 
 \begin{itemize}
 \item
@@ -475,9 +475,17 @@ Occupy 18 territories and occupy each with at least two troops.
 Eliminate a player.
 \end{itemize}
 
-A subset of these where the mission involved occupying continents were chosen to be the focus of this paper. This choice made due to project time constraints. 
+As mission cards are handed out at random, the prior probability of a root-goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is therefore in the form of a tuple containing the name of the root-goal and its prior probability.
 
-Mission cards are of two types:
+\centerline{
+ $RG = ( rootGoalName, 1/n)$\newline
+}
+
+The collection of these data structures form the basis of the term \textit{Pr}(\textit{goals}) in the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}.
+
+A subset of these where the root-goal involved occupying continents only were chosen to be the focus of this paper. This choice was made due to time constraints and remains a definite avenue for future work. 
+
+Root-goals involving occupying continents can be defined as one of two types:
 
 \begin{enumerate}
 \item
@@ -486,28 +494,24 @@ Mission cards are of two types:
 \textit{Two-Continent+1}: Players must occupy two explicitly named continents and another of their choice.
 \end{enumerate}
 
-As mission cards are handed out at random, the prior probability of a root-goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is in the form of a tuple containing the name of the root-goal and its prior probability.
-
-\centerline{
- $RG = ( rootGoalName, 1/n)$
-}
-
-\subsection{Sub-Goals}
-
-The root-goals of the RISK environment can be decomposed to form a set of sub-goals. 
+\textit{Two-Continent} are explicit in their sub-goals, but \textit{Two-Continent+1} type root-goals can be decomposed into \textit{children-root-goals}. Children-root-goals of a \textit{parent-root-goal} are a result of a different choice of sub-goals. The number of children-root-goals of a parent-root-goal depends on the environment. For example the root-goal Occupy Europe, South America and one other continent can be expressed as any of the following children-root-goals:
 
 \begin{itemize}
 \item
-For \textit{Two-Continent} root-goals, the sub-goals of that root-goal are occupying each continent. 
+Occupy Europe, South America and Asia.
 \item
-For \textit{Two-Continent+1} root-goals which requires players to allow an option to occupy a continent of choice, provided they also occupy two explicitly named continents. 
+Occupy Europe, South America and Africa.
+\item
+Occupy Europe, South America and North America.
+\item
+Occupy Europe, South America and Australia.\newline
 \end{itemize}
 
-These two types of root-goals therefore make the occupation of any single continent a sub-goal of at least one root-goal. The prior probability of a sub-goal is modelled as 1/$c$ where $c$ is the number of alternate sub-goals available in an explanation. The data structure of a sub-goal is a tuple containing the name of the sub-goal and the probability associated with choosing that sub-goal.\newline
+Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction. This modelling choice has significant implications as a design modification to the PHATT algorithm and thus the plan recognition agent.
 
-\centerline{
-$SG = ( subGoalName, 1/c)$ 
-}
+As PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together, choosing to operate on a fully enumerated set of root-goals effectively removes the term \textit{Pr}(\textit{plans}|\textit{goals}), the probability of choosing a sub-goal, from the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}.
+
+By modelling every root-goal as an explanation of a players behaviour, then assigning that full set of explanations to each player from the start of the game. What is measured over the course of the game is the probability of each explanation of a players behaviour and the highest probability by the end of the game is the plan recognition agents prediction.
 
 \subsection{Actions}
 
@@ -526,7 +530,7 @@ Moving armies.
 Trading Territory Cards.
 \end{itemize}
 
-Each of these action are modelled in a manner that contributes towards explanations of a player's behaviour.
+Each of these action must be modelled in a manner that contributes towards explanations of a player's behaviour.
 
 \subsubsection{Attacking}
 
@@ -549,7 +553,9 @@ Occupy North America and Africa.
 Occupy Asia and South America.
 \end{enumerate}
 
-Successfully occupying a territory in North America would be consistent with explanations 1 and 2, but inconsistent with 3, or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall.
+Successfully occupying a territory in North America would be \textit{consistent} with explanations 1 and 2, but \textit{inconsistent} with 3, or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall.
+
+TALK ABOUT DIRECTLY AND INDIRECTLY CONSISTENT ACTIONS!
 
 Having defined the outcome of attacks as either successful or unsuccessful, attacks can be decomposed into following two actions: 
 
@@ -561,7 +567,7 @@ Having defined the outcome of attacks as either successful or unsuccessful, atta
 \hline 
 SuccessfulAttack & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a failedAttack is in part due to a lack of armies which is suggestive that in cases the action has less significance than successfulAttack, as one could assume players would choose not to attack if their chances of winning were poor.\\ 
+FailedAttack & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a failedAttack is in part due to a lack of armies which is suggestive that in cases the action has less significance than successfulAttack, as we could assume that players would choose not to attack if their chances of winning were poor.\\ 
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
@@ -691,21 +697,6 @@ $E = ( explanationName, RG, SGS, ECA, EIA )$
 
 Inconsistent actions are stored in explanations due to modelling decisions as if it was the case that that if an action is not consistent then it is inconsistent then defence actions would be modelled incorrectly. Defence actions are not considered inconsistent to explanations that they are not directly related to, but would be if any actions not in the set of consistent actions are classified as inconsistent actions to an explanation.
 
-Explanations of the form \textit{Two-Continent+1} have four alternate forms. For example the root-goal Occupy Europe, South America and one other continent can be any of the following:
-
-\begin{itemize}
-\item
-Occupy Europe, South America and Asia.
-\item
-Occupy Europe, South America and Africa.
-\item
-Occupy Europe, South America and North America.
-\item
-Occupy Europe, South America and Australia.
-\end{itemize}
-
-Each is a valid explanation in itself, but still falls under its parent mission card. Therefore the assumption is made that if the plan recognition agent predicts one of the four children when it is known the players mission card is the parent, it is classified as a correct prediction.
-
 Given the list of root-goals and sub-goals, the complete list of explanations is:
 
 \begin{itemize}
@@ -735,13 +726,11 @@ Occupy Asia and South America.
 Occupy Asia and Africa.
 \end{itemize}
 
-Each of these are considered as possible explanations of a players behaviour. A design modification to PHATT follows this modelling choice. By unpacking (fully enumerating) each explanation, then assigning the full set of explanations to each player from the start of the game, the element of choice has been effectively removed. What is then measured is the probability of each separate explanation of a players behaviour over the course of the game.
-
-\subsection{Prediction Agent Pseudo Code}
+\subsection{Prediction Agent Design}
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the R.I.S.K. map, a set of explanations must be built for the environment to be later assigned to players. This require the explicit specification of a root-goal and sub-goals for each explanation in the environment. In addition it also requires populating each explanation with a set of consistent and inconsistent actions, this can be done by the following operation:
+During the initialisation of the R.I.S.K. map, a set of explanations must be built for the environment to be later assigned to players. This first required the explicit specification of a root-goal and of sub-goals for each respective explanation in the environment, or in this context the Domination program. In addition it also required populating of each explanation with a set of consistent and inconsistent actions. This is done by the following operation:
 
 \begin{pseudocode}[ruled]{generateExpList}{-}
 \begin{algorithm}[H]
@@ -767,13 +756,17 @@ During the initialisation of the R.I.S.K. map, a set of explanations must be bui
 \end{algorithm}
 \end{pseudocode}
 
-The above pseudo code loops through the data structure of each continent $C$ in the set of continents $CS$. Each continent is checked against each explanation $E$ from the set of explanation $ES$, for whether its name is contained in the set of sub-goals of each $E$ by the $isSubGoalOf$ operation. If true then the result is an if statement firing. 
+The above pseudo code loops through the data structure of each continent $C$ in the set of continents $CS$. Each continent is checked against each explanation $E$ from the set of explanations' $ES$, for whether its name is contained in the set of sub-goals of each $E$ by the $isSubGoalOf$ operation. If true then the result is an if statement firing. 
 
 The if statement contains a loop which iterates over the set territories in the loops current continent and using the $addAction$ operation, adds each territories action set to either the explanations consistent action $ECA$ or inconsistent action set $EIA$.
 
-\subsubsection{Generating Pending Sets}
+With a complete set of environment explanations $ES$, each player then allocated a unique instance of every explanation at the start of every game. 
 
-With the set of environment explanations $ES$, each player is allocated a unique instance of each explanation. Since the computation of the probability of an explanation requires the probability of choosing a single action from a player pending set, a function is required which generates a complete pending set of available actions a player can perform.
+\subsubsection{Computing Action Probabilities}
+
+Since the sub-goal probabilities were removed and the root-goal prior probabilities are uniform, finding an appropriate method of computing \textit{Pr}(\textit{obs}|\textit{exp}), the probability of a player choosing an action from their pending set, was critical in the design of the plan recognition agent. 
+
+To achieve this of course first presumes that we know what actions a player can perform and for that we require a method of generating a pending set of the available actions a player can perform. This is done by the following operation:
 
 \begin{pseudocode}[ruled]{generatePS}{PT}
 \begin{algorithm}[H]
@@ -809,11 +802,25 @@ After initializing an empty pending set $playerPS$. The above pseudo code first 
 
 Before proceeding onto the next territory in $PT$ another loop is performed through the set of neighbouring territories $TN$ of that territory with an if-then-else statement. If the player owns that territory then the if condition $playerOwnN$ return true and a $MovementT$ action is added to $playerPS$, if not then a $OccupyT$ action is added to $playerPS$. After the operation the $playerPS$ is returned and can be cached if necessary.
 
-\newpage
+With the $generatePS$ operation and an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting action probabilities towards consistent actions, a method of weighting actions was then required. This was based on reasoning about the implications of an action to an explanation where consistent actions were positively weighted and inconsistent negatively weighted.
 
-\subsubsection{Computing Action Probabilities}
+THIS SECTION NEEDS WORK
 
-Following an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting actions, a method for assigning probabilities to pending set actions generated by the $generatePS$ operation was used. It required an operation that would allow greater control over weighting between consistent and inconsistent actions.
+Uniform distribution
+
+Uniform-Weighting based on number of consistent and inconsistent actions available to a player when an action is performed.
+
+Question was how to assign weights to consistent and inconsistent actions?
+
+Total number of actions are counted, and are separated into inconsistent actions and consistent actions and a weight is split among inconsistent actions and consistent actions. Problem is that it seems this system is too sensitive.
+
+Because of sensitivity had to make up a more evenly weighted automatic system.
+
+It required an operation that would allow greater control over weighting between consistent and inconsistent actions.
+
+Therefore made proportional weighted system
+
+THIS SECTION NEEDS WORK
 
 \begin{pseudocode}[ruled]{computeBaseWeight}{w, pTotalActNum, pConsActNum}
 \begin{algorithm}[H]
@@ -830,7 +837,7 @@ $base \gets leftOver / totalNumAct$
 
 Given a predefined weight $w$, the total number of actions in a players pending set $pTotalActNum$ and the total number of consistent actions with an explanation $pConsActNum$. This operation computes a $base$ weight for all actions in a pending set by subtracting the total weight of the desired actions from 1, then distributing equally the remainder amongst all the actions in the players action set. This operation could easily be replaced with another such similar method.
 
-Given the nature of the environment where the number of actions players can perform are relatively small, this method is suitable provided the weight difference is kept small. For environments where the number of consistent or inconsistent actions a player can perform are large, this may result in the value of $sumWeight$ becoming greater than one making $leftOver$ negative, breaking the next calculation. Therefore a scalable method of controlling the weights between actions would be necessary in the design of such an agent for a larger action environment.
+Given the nature of the environment where the number of actions players can perform are relatively small, this method is suitable provided the weight difference is kept small. For environments where the number of consistent or inconsistent actions a player can perform are large, this may result in the value of $sumWeight$ becoming greater than one, making $leftOver$ negative, breaking the next calculation. Therefore a scalable method of controlling the weights between actions would be necessary in the design of such an agent for a larger action environment.
 
 The operation $computeBaseWeight$ is part of a larger function which computes a $base$ value which the following $computeExpProb$ operation requires.
 
@@ -938,9 +945,9 @@ Some other assumptions for this example:
 The probability of a player choosing a sub-goal is uniform.
 \end{itemize}
 
+Probabilities for each of the explanations = 1 / no of explanations
 
-
-
+Player one attacks a territory 
 
 \subsection{Conceptual Issues}
 
@@ -953,24 +960,6 @@ Another difference is I have removed the need for sub-goal probabilities because
 Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
 
 Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
-
-\subsubsection{Probability Assignment}
-
-Simple weighting based on reasoning about implications of an action to an explanation
-
-Positively weighted probabilities towards consistent actions and negatively towards inconsistent actions
-
-Uniform distribution
-
-Weighting based on number of consistent and inconsistent actions available to a player when an action is performed.
-
-Question was how to assign weights to consistent and inconsistent actions?
-
-Total number of actions are counted, and are separated into inconsistent actions and consistent actions and a weight is split among inconsistent actions and consistent actions. Problem is that it seems this system is too sensitive.
-
-Because of sensitivity had to make up a more evenly weighted automatic system.
-
-Therefore made proportional weighted system
 
 \section{Summary}
 
@@ -1134,6 +1123,14 @@ Using an system built by the original developers was able to easily reproduce a 
 \section{Experimental Findings}
 
 Start with major insights and prove with data
+
+Experiments with the plan recognition revealed several insights into the data:
+
+The prediction accuracy for winners is better than losers
+
+The difficulty of a mission has an affect on the prediction accuracy of the agent
+
+People perform better than the games A.I.
 
 Main questions to answer.
 
@@ -1466,7 +1463,7 @@ Occupy-North-America-Australia & 44 & 97 & 31.21 \\
 
 \subsection{Nature of Game}
 
-The nature of classic RISK is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
+The nature of R.I.S.K. is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
 
 Given the model these changes in behaviour are often directly inconsistent with their own mission. Instead this behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with instead.
 
@@ -1553,14 +1550,6 @@ Would you recommend doing something, what would you recommend not doing?
 
 TALK ABOUT THE OUTCOMES OF YOUR WORK!
 
-How to decide weighting of 
-
-How to deal with this problem?
-
-Using the plan recognition software given a programs a plan to detect how well a program performs a plan. 
-
-Using genetic algorithms to optimize this by looking at the numbers returned by the plan recognition algorithm and choosing the best configuration that survived and won.
-
 \section{Criticism}
 
 Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. Thus attack has been modelled as the most significant action in the environment and this we can intuitively tell is not the case.
@@ -1571,17 +1560,21 @@ Summary of whole report
 
 Main insights and results
 
-Future Work
-
 \section{Future Work}
 
 Extension of the model to include other mission cards if possible. Due to the design, eliminating players could be modelled but occupy 24, 18 has such high overlap with everything it would be hard to model this.
 
-Eliminating players - some system where data of who is being consistently attacked is recorded and probabilities are multiplied by a number based on number of attack actions for a player and number of territories that player has remaining.
+Eliminating player mission cards - some system where data of who is being consistently attacked is recorded and probabilities are multiplied by a number based on number of attack actions for a player and number of territories that player has remaining.
 
 The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
 
-Only attack actions have been modelled in a matter 
+Only attack actions have been modelled in a manner other than scaling up and down explanation probability
+
+Using the plan recognition software given a programs a plan to detect how well a program performs a plan. 
+
+Using genetic algorithms to perform meta optimisation this is done by randomly assigning a choice weight to the ai then looking at the numbers returned by the plan recognition algorithm and choosing the best configuration that survived and won.
+
+Allow for method choice probabilities again and use machine learning to computer better sub-goal choice probabilities based on preferences shown in training data.
 
 Probability model changed to proportion of consistent actions * 0.1 
 0.9 - proportion for consistent probability

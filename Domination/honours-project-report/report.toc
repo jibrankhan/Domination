@@ -7,7 +7,7 @@
 \contentsline {chapter}{\numberline {2}Background}{5}
 \contentsline {section}{\numberline {2.1}Previous Work in Plan Recognition}{5}
 \contentsline {subsection}{\numberline {2.1.1}An Example of Plan Recognition}{6}
-\contentsline {section}{\numberline {2.2}Introduction to RISK}{8}
+\contentsline {section}{\numberline {2.2}Introduction to R.I.S.K.}{8}
 \contentsline {subsection}{\numberline {2.2.1}Equipment}{8}
 \contentsline {subsection}{\numberline {2.2.2}Rules}{8}
 \contentsline {subsection}{\numberline {2.2.3}Turn Structure}{9}
@@ -21,33 +21,30 @@
 \contentsline {chapter}{\numberline {3}Design}{13}
 \contentsline {section}{\numberline {3.1}Introduction to PHATT}{13}
 \contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{14}
-\contentsline {section}{\numberline {3.2}Environment Modelling}{14}
+\contentsline {section}{\numberline {3.2}Environment Modelling and Design}{14}
 \contentsline {subsection}{\numberline {3.2.1}Root-Goals}{14}
-\contentsline {subsection}{\numberline {3.2.2}Sub-Goals}{15}
-\contentsline {subsection}{\numberline {3.2.3}Actions}{15}
-\contentsline {subsubsection}{\numberline {3.2.3.1}Attacking}{16}
-\contentsline {subsubsection}{\numberline {3.2.3.2}Defending}{17}
-\contentsline {subsubsection}{\numberline {3.2.3.3}Reinforce}{18}
-\contentsline {subsubsection}{\numberline {3.2.3.4}Movement}{18}
-\contentsline {subsubsection}{\numberline {3.2.3.5}Trading Territory Cards}{18}
-\contentsline {subsection}{\numberline {3.2.4}Territory}{18}
-\contentsline {subsection}{\numberline {3.2.5}Continent}{20}
-\contentsline {subsection}{\numberline {3.2.6}Player}{20}
-\contentsline {section}{\numberline {3.3}Explanations}{20}
-\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Pseudo Code}{22}
+\contentsline {subsection}{\numberline {3.2.2}Actions}{16}
+\contentsline {subsubsection}{\numberline {3.2.2.1}Attacking}{16}
+\contentsline {subsubsection}{\numberline {3.2.2.2}Defending}{18}
+\contentsline {subsubsection}{\numberline {3.2.2.3}Reinforce}{19}
+\contentsline {subsubsection}{\numberline {3.2.2.4}Movement}{19}
+\contentsline {subsubsection}{\numberline {3.2.2.5}Trading Territory Cards}{19}
+\contentsline {subsection}{\numberline {3.2.3}Territory}{19}
+\contentsline {subsection}{\numberline {3.2.4}Continent}{20}
+\contentsline {subsection}{\numberline {3.2.5}Player}{20}
+\contentsline {section}{\numberline {3.3}Explanations}{21}
+\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Design}{22}
 \contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{22}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Generating Pending Sets}{23}
-\contentsline {subsubsection}{\numberline {3.3.1.3}Computing Action Probabilities}{25}
-\contentsline {subsubsection}{\numberline {3.3.1.4}Computing Explanation Probabilities}{27}
-\contentsline {subsection}{\numberline {3.3.2}Example of Operation}{28}
-\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{28}
-\contentsline {subsubsection}{\numberline {3.3.3.1}Probability Assignment}{29}
-\contentsline {section}{\numberline {3.4}Summary}{29}
-\contentsline {chapter}{\numberline {4}Implementation}{31}
-\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{32}
-\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{32}
-\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{32}
-\contentsline {section}{\numberline {4.2}Summary}{32}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Computing Action Probabilities}{23}
+\contentsline {subsubsection}{\numberline {3.3.1.3}Computing Explanation Probabilities}{26}
+\contentsline {subsection}{\numberline {3.3.2}Example of Operation}{27}
+\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{27}
+\contentsline {section}{\numberline {3.4}Summary}{28}
+\contentsline {chapter}{\numberline {4}Implementation}{29}
+\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{30}
+\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{30}
+\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{30}
+\contentsline {section}{\numberline {4.2}Summary}{31}
 \contentsline {chapter}{\numberline {5}Evaluation}{33}
 \contentsline {section}{\numberline {5.1}Experiments}{33}
 \contentsline {subsection}{\numberline {5.1.1}A.I. Play}{33}
