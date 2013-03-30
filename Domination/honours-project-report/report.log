@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  30 MAR 2013 18:57
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  30 MAR 2013 20:42
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -514,7 +514,7 @@ File: images/example-good-convergence.pdf Graphic file (type pdf)
 
 <use images/example-good-convergence.pdf>
 Package pdftex.def Info: images/example-good-convergence.pdf used on input line
- 1154.
+ 1156.
 (pdftex.def)             Requested size: 754.63748pt x 265.12988pt.
 
 
@@ -525,24 +525,18 @@ Overfull \hbox (11.89449pt too wide) in paragraph at lines 1163--1164
 []\T1/cmr/m/n/12 TALK ABOUT HOW DO-ING AC-TIONS MAKE SOME EX-PLA-NA-TIONS MORE
  []
 
-[37] [38 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-proj
-ect-report/images/example-good-convergence.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1191--1192
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1194
 
  []
 
-[39] [40] [41] [42] [43] [44
+[38 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+eport/images/example-good-convergence.pdf>] [39] [40] [41] [42] [43] [44
 
 ]
  6.
-[45]
-Overfull \hbox (15.57954pt too wide) in paragraph at lines 1369--1370
-[]\T1/cmr/m/n/12 MODEL PROB-LEM - AT-TACK COM-PU-TA-TIONS, TREATS ANY NON OWNED
-
- []
-
-[46]
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1383--1384
+[45] [46]
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1389--1390
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
@@ -584,7 +578,7 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (61 pages, 967605 bytes).
+Output written on report.pdf (61 pages, 967779 bytes).
 PDF statistics:
  743 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
