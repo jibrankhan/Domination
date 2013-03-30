@@ -144,6 +144,12 @@ What do you want to answer?
 
 Are plan recognition algorithms beneficial in games? Specifically RISK?
 
+Do certain explanations perform better? Why?
+
+In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
+
+Are there any common explanation misclassification occurences and why?
+
 \begin{itemize}
 \item
 To determine whether the accuracy of predictions are the same for winners and losers.
@@ -222,11 +228,12 @@ One A does not change cooking plan.
 Given these assumptions and B's knowledge of A's cooking abilities we can model the set of all of A's plans, following the notation set by Geib and Goldman in their paper presenting PHATT.
 
 \begin{figure}[h]
-\centering
-\includegraphics{images/example-plan-recognition}
+\centerline{
+	\includegraphics{images/example-plan-library}
+}
 \caption{Root-goals are nodes that have no parent nodes. Sub-goals are nodes that have both a parent and children and actions are nodes that have no children. And-nodes are represented by an undirected arc across the lines connecting the parent node to its children. Or-nodes do not have this arc. Actions or goals that are dependant on a previous action are represented by an arc with an arrow.}
 \label{fig:example-plan-library}
-\end{figure} 
+\end{figure}
 
 To elaborate on the above diagram one of A's top level or root-goals is \textit{Cooked-Veg-Burgers} it is an And-node and so means to accomplish it, requires successfully performing all of its children nodes. 
 
@@ -936,7 +943,14 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 \subsection{Example of Operation}
 
 NOT COMPLETE
-
+\begin{figure}[h]
+\fbox{
+	\centerline{
+		\includegraphics{images/risk-plan-library}
+	}
+}
+\caption{Risk Plan Library}
+\end{figure}
 The concepts from this chapter can be tied together with an arbitrary example.
 
 In this example R.I.S.K map there are two explanations, Occupy-North-America-South-America (O-NA-SA) and Occupy-South-America-Africa (O-SA-A). 
@@ -979,9 +993,10 @@ The summary for this section is
 Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
 
 \begin{figure}[h]
-\centering
-\includegraphics{images/event-architecture_cropped}
-\caption{Event-Driven System Architecture}
+\centerline{
+\includegraphics{images/event-driven-architecture}
+}
+\caption{Event-Driven Architecture}
 \end{figure} 
 
 To operate the plan recognition agent needs to be aware of several important aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
@@ -1010,7 +1025,7 @@ End Game
 When these occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event objects and depending on the type of event object and the information held by them handles the object appropriately. The types of events are:
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|}
 \hline 
 \textbf{Event Type} & \textbf{Contains} & \textbf{Purpose} \\ 
@@ -1032,6 +1047,7 @@ Army Movement & Attacker Name, Territory Name & Models the FailedAttack action. 
 Reinforce & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
 \hline
 \end{tabular}
+}
 \caption{Territory Action Set}
 \label{table:event-description}
 \end{table}
@@ -1067,17 +1083,15 @@ NOT COMPLETE
 
 \subsection{A.I. Play}
 
-Domination has existing A.I. player implementations for its game modes. The A.I. players can be substituted for human players to the point where a game can consist of only A.I. who fight each other and can complete a game in a fraction of the time compared to human players. 
+Domination has existing A.I. player implementations for its various game modes. The A.I. players can be substituted for human players to the point where a game can consist of only A.I. players' fighting each other and so can complete a game in a fraction of the time that human players do. 
 
-According to the developer the A.I. does not actually actively follow a plan but according to the developer "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
+The inner workings of the A.I. player for mission game type according to the developer is that the A.I. does not actually actively follow a plan but that "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
 
 The collection of A.I. play data samples was automated using an free macro program called \textit{AutoHotkey}. By automating the process of initiating A.I. games, it provided an opportunity for the collection of a large number of data samples for evaluation purposes. 
 
 \subsection{Constrained Play}
 
-In this form of play, players are asked only to perform actions that are \textit{directly-consistent} with their root-goal. This is opposed to \textit{indirectly-consistent} where for example players break other players continents because preventing other players from completing their mission makes completing ones own mission more likely.
-
-More formally (excluding card related actions) given a set of actions a player will only either:
+In this form of play, players are asked only to perform actions that are \textit{directly-consistent} with their root-goal.  More formally (excluding card related actions) given a set of actions a player will only either:
 
 \begin{itemize}
 \item
@@ -1106,28 +1120,28 @@ At the end of the game participants were asked to give a short summary of their 
 
 \section{Data Collection}
 
-After a game was finished the system generated two files. One a log file which using a debug tool created by the developers, allows a completely independent replay of the game. 
+After a game was finished the program would generate a log file which when loaded through a debug user interface created by the developers, allowed a completely-independent and perfect replay of a full game. 
+
+PICTURE OF DEBUG USER INTERFACE
 
 This has significant implications in that the environment can be eliminated as a changing variable in the evaluation process since a game can be reproduced but with the plan recognition agent being implemented differently or with different probability calibrations. 
 
-The other is a csv file recording the significant features of the game namely:
+the other a debug user interface created by the developers which allowed the replay of games perfectly. Using this tool meant it was possible to re-observe games and potentially test the plan recongition agent with different models and/or calibrations.
+
+Using tool created by the developer of saving "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
+
+The plan recognition agent similtaenously would also generate a csv recording the significant features of a game namely:
 
 \begin{itemize}
 \item
 Which player won and lost.
 \item
-Each players actual mission.
+Each players actual mission card.
 \item
-The probabilities of each players respective explanations over the course of the game.
+The names and probabilities of each players respective explanations over the course of the game.
 \end{itemize}
 
-Python scripts were used to analyse the set of csv files.
-
-Used a tool created by developers to replay games in-order to be able to re-test the algorithm with changes in modelling/calibration.
-
-Using tool created by the developer of saving "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
-
-Using an system built by the original developers was able to easily reproduce a game if necessary for the purposes of evaluating the algorithm under different conditions.
+Python scripts were then used to automate the analysis of the generated csv files, the following section is the findings of that analysis. 
 
 \section{Experimental Findings}
 
@@ -1135,9 +1149,19 @@ Using an system built by the original developers was able to easily reproduce a 
 
 Whether is converges?
 
-It does converge.
+\begin{figure}[h]
+\centerline{
+\includegraphics{images/example-good-convergence}
+}
+\caption{Example Convergence}
+\label{fig:example-good-convergence}
+\end{figure} 
 
-SHOW LINE GRAPH SHOWING LINES CONVERGING, TALK ABOUT HOW DOING ACTIONS MAKE SOME EXPLANATIONS MORE LIKELY AND OTHERS LESS LIKELY
+Please not that the correct explanation is Asia, South America and has been correctly predicted.
+
+It does converge. This particular example has initally player placing reinforcements in SA and Asia hence the slow rise of probabilites containing those continents. Then at the start of the players attack phase their attack goes badly in SA. Then attack goes well in one turn to take asia, then player is wiped out before their next turn, hence no change in their explanation probabilities.
+
+TALK ABOUT HOW DOING ACTIONS MAKE SOME EXPLANATIONS MORE LIKELY AND OTHERS LESS LIKELY
 
 THEN AMONGST A GROUP OF LIKELY EXPLANATIONS SOME BECOME MORE LIKELY AND OTHER LESS LIKELY
 
@@ -1153,7 +1177,11 @@ How fast it converges?
 
 \textbf{Start with major insights and prove with data}
 
+Experiments with the plan recognition revealed several insights into the data:
+
 \begin{enumerate}
+\item
+Constrained play has the best accuracy. 
 \item
 The prediction accuracy for winners is better than losers.
 \item
@@ -1161,68 +1189,88 @@ The difficulty of a mission has an affect on the prediction accuracy of the agen
 \item
 People perform better than the games A.I.
 \item
-Plan recognition detects that A.I. performs worse. 
+Plan recognition detects that A.I. performs worse.\newline
 \end{enumerate}
 
-Experiments with the plan recognition revealed several insights into the data:
+Do certain explanations perform better? Why?
+
+In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
+
+\subsubsection{Insight One}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Type of Play} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Free & 29 & 32 & 47.54 \\ 
+\hline 
+Constrained & 79 & 23 & 77.45 \\ 
+\hline 
+A.I. - Weight 100 & 390 & 714 & 35.33 \\ 
+\hline 
+A.I. - Weight 4 & 89 & 265 & 25.14 \\
+\hline 
+\end{tabular}
+}
+\caption{General Game Accuracy}
+\label{table:general-game-accuracy}
+\end{table}
+
+From Table 5.1 we see that \textit{constrained play has a significantly higher accuracy than other types of play}. This finding is unsurprising as players only performed directly-consistent actions due to the artificial nature of constrained play. 
+
+What is a much more interesting though, is that if this should indeed be the ideal scenerio to detect explanations, then what was the cause for 22.55 \% to be incorrectly predicted?
+
+\subsubsection{Insight Two}
+
+If we further break down each of the plays into winners and losers then the picture becomes a little clearer.
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+\textbf{Type of Play} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Free & Winner & 11 & 7 & 61.11 \\ 
+& Loser & 18 & 25 & 41.86 \\ 
+\hline 
+Constrained & Winner & 14 & 3 & 82.35 \\ 
+& Loser & 65 & 20 & 76.47 \\ 
+\hline
+A.I. - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
+& Loser & 310 & 610 & 33.70 \\  
+\hline
+A.I. - Weight 4 & Winner & 16 & 43 & 27.12 \\ 
+& Loser & 73 & 222 & 24.75 \\ 
+\hline
+\end{tabular}
+}
+\caption{Winner-Loser Accuracy}
+\label{table:winner-loser-accuracy}
+\end{table}
+
+First we notice that in every type of play \textit{the accuracy of winners are better then losers}. This is primarily due to the success of the winner, 
+
+Winners successfully perform their mission
+
+More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations BUT winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
+
+Winners may occupy a continent in one turn and since sampling is done on a turn by turn basis it may miss a significant change in probabilities as the turn they occupied the continent was the last turn.
+
+Some reasons for incorrect predictions because of players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
 
 Does it perform better on certain explanations? Why?
 
 Present table of general accuracy
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Game Type} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Free Play & 29 & 32 & 47.54 \\ 
-\hline 
-Constrained Play & 79 & 23 & 77.45 \\ 
-\hline 
-A.I. Play - Weight 100 & 390 & 714 & 35.33 \\ 
-\hline 
-A.I. Play - Weight 4 & 89 & 265 & 25.14 \\
-\hline 
-\end{tabular}
-\caption{General Game Accuracy}
-\label{table:general-game-accuracy}
-\end{table}
-
 Why is the accuracy of free play and A.I. play much lower than constrained play.
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline 
-\textbf{Game Type} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Free Play & Winner & 11 & 7 & 61.11 \\ 
-& Loser & 18 & 25 & 41.86 \\ 
-\hline 
-Constrained Play & Winner & 14 & 3 & 82.35 \\ 
-& Loser & 65 & 20 & 76.47 \\ 
-\hline
-A.I. Play - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
-& Loser & 310 & 610 & 33.70 \\  
-\hline
-A.I. Play - Weight 4 & Winner & 16 & 43 & 27.12 \\ 
-& Loser & 73 & 222 & 24.75 \\ 
-\hline
-\end{tabular}
-\caption{Winner-Loser Accuracy}
-\label{table:winner-loser-accuracy}
-\end{table}
 
 Present table of winner losers
 
 Why is the accuracy of winners better than losers?
 
 The results show on an average (calculate percentage difference across measures)
-
-More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations.
-
-Some reasons for incorrect predictions because of players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
 
 Present breakdown of explanations accuracy per game type
 
@@ -1239,7 +1287,7 @@ General Accuracies for each explanation type separated into winners and losers.
 General Accuracy for each explanation
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1257,6 +1305,7 @@ Occupy-Asia-Africa & 15 & 2 & 88.24 \\
 Occupy-North-America-Australia & 15 & 2 & 88.24 \\
 \hline
 \end{tabular}
+}
 \caption{Constrained Play General Explanation Accuracy}
 \label{table:continent-bonus}
 \end{table}
@@ -1266,7 +1315,7 @@ Accuracy of two-continent missions appear in general to be better.
 General Accuracies for each explanation type separated into winners and losers.
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1284,6 +1333,7 @@ Occupy-Asia-Africa & 0 & 0 & 0.00 \\
 Occupy-North-America-Australia & 4 & 1 & 80.00 \\
 \hline
 \end{tabular}
+}
 \caption{Constrained Play Winner Accuracy}
 \label{table:continent-bonus}
 \end{table}
@@ -1293,7 +1343,7 @@ The number of data samples are quite small.	Why is it that there are no winners 
 Would make sense seeing as there is a trend in other data showing lower percentage accuracy for that mission.
 		
 \begin{table}[ht]
-\centering	
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1311,6 +1361,7 @@ Occupy-Asia-Africa & 15 & 2 & 88.24 \\
 Occupy-North-America-Australia & 11 & 1 & 91.67 \\
 \hline
 \end{tabular}
+}
 \caption{Constrained Play Loser Accuracy}
 \label{table:constrained-lose-accuracy}
 \end{table}			
@@ -1324,7 +1375,7 @@ Occupy-North-America-Australia & 11 & 1 & 91.67 \\
 General Accuracy for each explanation
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1342,7 +1393,8 @@ Occupy-Asia-Africa & 37 & 147 & 20.11 \\
 Occupy-North-America-Australia & 67 & 117 & 36.41 \\
 \hline
 \end{tabular}
-\caption{AI Play General Explanation Accuracy - Weight 100}
+}
+\caption{A.I. Play General Explanation Accuracy - Weight 100}
 \label{table:ai-100-general-accuracy}
 \end{table}
 
@@ -1351,7 +1403,7 @@ Why is it that Europe-South-America-One is better than the rest when trend is no
 General Accuracies for each explanation type separated into winners and losers.
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1369,12 +1421,13 @@ Occupy-Asia-Africa & 14 & 28 & 33.33 \\
 Occupy-North-America-Australia & 18 & 17 & 51.43 \\
 \hline
 \end{tabular}
-\caption{AI Play 100 Winner Accuracy}
+}
+\caption{A.I. Play 100 Winner Accuracy}
 \label{table:ai-100-winner-accuracy}
 \end{table}
 			
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1392,7 +1445,8 @@ Occupy-Asia-Africa & 23 & 119 & 16.20 \\
 Occupy-North-America-Australia & 49 & 100 & 32.89 \\
 \hline
 \end{tabular}
-\caption{AI Play Weight 100 Loser Accuracy}
+}
+\caption{A.I. Play Weight 100 Loser Accuracy}
 \label{table:ai-100-loser-accuracy}
 \end{table}			
 
@@ -1405,7 +1459,7 @@ Why is it that Europe-South-America-One is better than the rest when trend is no
 General Accuracy for each explanation
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1423,6 +1477,7 @@ Occupy-Asia-Africa & 9 & 158 & 5.39 \\
 Occupy-North-America-Australia & 49 & 118 & 29.34 \\
 \hline
 \end{tabular}
+}
 \caption{AI Play General Explanation Accuracy - Weight 4}
 \label{table:ai-4-general-accuracy}
 \end{table}
@@ -1430,7 +1485,7 @@ Occupy-North-America-Australia & 49 & 118 & 29.34 \\
 General Accuracies for each explanation type separated into winners and losers.
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1448,12 +1503,13 @@ Occupy-Asia-Africa & 1 & 28 & 3.45 \\
 Occupy-North-America-Australia & 5 & 21 & 19.23 \\
 \hline
 \end{tabular}
+}
 \caption{AI Play Winner Explanation Accuracy - Weight 4}
 \label{table:ai-4-winner-accuracy}
 \end{table}
 
 \begin{table}[ht]
-\centering
+\centerline{
 \begin{tabular}{|c|c|c|c|}
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
@@ -1471,6 +1527,7 @@ Occupy-Asia-Africa & 8 & 130 & 5.80 \\
 Occupy-North-America-Australia & 44 & 97 & 31.21 \\
 \hline
 \end{tabular}
+}
 \caption{AI Play Winner Explanation Accuracy - Weight 4}
 \label{table:ai-4-loser-accuracy}
 \end{table}
