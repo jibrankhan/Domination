@@ -39,11 +39,11 @@
 
 \date{\today}
 
-\maketitle
-
 \abstract{
-This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal is to attempt to infer the unknown mission card of an agent from observations of their behaviour in the RISK environment.
+This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal is to attempt to infer the unknown mission card of an agent from observations of their behaviour in the R.I.S.K. environment. EXTEND TO SUMMARISE CONTENTS OF YOUR REPORT/
 }
+
+\maketitle
 
 \section*{Acknowledgements}
 
@@ -419,6 +419,8 @@ Using these algorithms people like Kabanza are starting to be able to tackle cer
 The summary of the chapter is ...
 
 \chapter{Design}
+
+NEED MORE MATH EXAMPLES
 
 \section{Introduction to PHATT}
 
@@ -1022,38 +1024,35 @@ Reinforcement
 End Game
 \end{itemize}
 
-When these occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event objects and depending on the type of event object and the information held by them handles the object appropriately. The types of events are:
+When these occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event object(s) and depending on the type of event object and the information held by it handles the object appropriately. The types of events, what they contain and their purpose are:
 
 \begin{table}[ht]
 \centerline{
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|p{10cm}|}
 \hline 
-\textbf{Event Type} & \textbf{Contains} & \textbf{Purpose} \\ 
+\textbf{Event Type} & \textbf{Contains Variables} & \textbf{Purpose} \\ 
 \hline 
-NewPlayer & Player Name & Initialises a new agent data structure. \\ 
+NewPlayer & playerName & Initialises a new player data structure with ID \textit{playerName}. \\ 
 \hline 
-RemovePlayer & Player Name & Destroys a specified agent data structure. \\ 
+RemovePlayer & playerName & Destroys the player data structure with ID \textit{playerName}. \\ 
 \hline 
-SuccessfulAttack & Attacker Name, Territory Name & Models the SuccessfulAttack action. \\ 
+SuccessfulAttack & attackerName, continentName, territoryName & Signals that the player named \textit{attackerName} has performed a SuccessfulAttack. \\ 
 \hline
-FailedAttack & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+FailedAttack & attackeName, continentName, territoryName & Signals that the player named \textit{attackerName} has performed a FailedAttack. \\ 
 \hline
-SuccessfulDefence & Attacker Name, Territory Name & Models the SuccessfulAttack action. \\ 
+SuccessfulDefence & defenderName, continentName, territoryName & Signals that the player named \textit{defenderName} has performed a FailedDefence. \\ 
 \hline
-FailedDefence & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+FailedDefence & defenderName, continentName, territoryName & Signals that the player named \textit{defenderName} has performed a FailedDefence. \\ 
 \hline
-Army Movement & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+ArmyMovement & playerName, continentName, territoryName & Signals that the player named \textit{playerName} has performed an ArmyMovement. \\ 
 \hline
-Reinforce & Attacker Name, Territory Name & Models the FailedAttack action. \\ 
+Reinforce & playerName, continentName, territoryName & Signals that the player named \textit{playerName} has performed a Reinforce action. \\ 
 \hline
 \end{tabular}
 }
-\caption{Territory Action Set}
+\caption{Event Object Specification}
 \label{table:event-description}
 \end{table}
-
-armyMovement
-reinforce
 
 The plan recognition agent needs be aware of when the game begins, the games initial state, any changes that occur in the game and when the game is finished.
 
@@ -1177,7 +1176,7 @@ How fast it converges?
 
 \textbf{Start with major insights and prove with data}
 
-Experiments with the plan recognition revealed several insights into the data:
+Experiments with the plan recognition revealed the following insights into the data:
 
 \begin{enumerate}
 \item
@@ -1194,31 +1193,13 @@ Plan recognition detects that A.I. performs worse.\newline
 
 Do certain explanations perform better? Why?
 
+Why is the accuracy of winners better than losers?
+
 In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
 
 \subsubsection{Insight One}
 
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Type of Play} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Free & 29 & 32 & 47.54 \\ 
-\hline 
-Constrained & 79 & 23 & 77.45 \\ 
-\hline 
-A.I. - Weight 100 & 390 & 714 & 35.33 \\ 
-\hline 
-A.I. - Weight 4 & 89 & 265 & 25.14 \\
-\hline 
-\end{tabular}
-}
-\caption{General Game Accuracy}
-\label{table:general-game-accuracy}
-\end{table}
-
-From Table 5.1 we see that \textit{constrained play has a significantly higher accuracy than other types of play}. This finding is unsurprising as players only performed directly-consistent actions due to the artificial nature of constrained play. 
+From Table 7.1 we see that \textit{constrained play has a significantly higher accuracy than other types of play}. This finding is unsurprising as players only performed directly-consistent actions due to the artificial nature of constrained play. 
 
 What is a much more interesting though, is that if this should indeed be the ideal scenerio to detect explanations, then what was the cause for 22.55 \% to be incorrectly predicted?
 
@@ -1226,311 +1207,33 @@ What is a much more interesting though, is that if this should indeed be the ide
 
 If we further break down each of the plays into winners and losers then the picture becomes a little clearer.
 
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|c|}
-\hline 
-\textbf{Type of Play} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Free & Winner & 11 & 7 & 61.11 \\ 
-& Loser & 18 & 25 & 41.86 \\ 
-\hline 
-Constrained & Winner & 14 & 3 & 82.35 \\ 
-& Loser & 65 & 20 & 76.47 \\ 
-\hline
-A.I. - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
-& Loser & 310 & 610 & 33.70 \\  
-\hline
-A.I. - Weight 4 & Winner & 16 & 43 & 27.12 \\ 
-& Loser & 73 & 222 & 24.75 \\ 
-\hline
-\end{tabular}
-}
-\caption{Winner-Loser Accuracy}
-\label{table:winner-loser-accuracy}
-\end{table}
+From Table 7.2 we notice that in every type of play \textit{the accuracy of winners are better then losers}. This is primarily due to a number of reasons:
 
-First we notice that in every type of play \textit{the accuracy of winners are better then losers}. This is primarily due to the success of the winner, 
+\textbf{Why we get winners right}
 
 Winners successfully perform their mission
 
+EXAMPLE
+
 More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations BUT winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
+
+EXAMPLE
 
 Winners may occupy a continent in one turn and since sampling is done on a turn by turn basis it may miss a significant change in probabilities as the turn they occupied the continent was the last turn.
 
+EXAMPLE
+
+\textbf{Why we get winners wrong}
+
+\textbf{Why we get losers right}
+
+\textbf{why we get losers wrong}
+
 Some reasons for incorrect predictions because of players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
-
-Does it perform better on certain explanations? Why?
-
-Present table of general accuracy
 
 Why is the accuracy of free play and A.I. play much lower than constrained play.
 
-Present table of winner losers
-
-Why is the accuracy of winners better than losers?
-
-The results show on an average (calculate percentage difference across measures)
-
 Present breakdown of explanations accuracy per game type
-
-\subsection{Free Play}
-
-General Accuracy for each explanation
-
-General Accuracies for each explanation type separated into winners and losers.
-
-\newpage
-
-\subsection{Constrained Play}
-
-General Accuracy for each explanation
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 11 & 6 & 64.71 \\  
-\hline 
-Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
-\hline
-Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
-\hline
-Occupy-North-America-Africa & 13 & 4 & 76.47 \\
-\hline
-Occupy-Asia-Africa & 15 & 2 & 88.24 \\
-\hline
-Occupy-North-America-Australia & 15 & 2 & 88.24 \\
-\hline
-\end{tabular}
-}
-\caption{Constrained Play General Explanation Accuracy}
-\label{table:continent-bonus}
-\end{table}
-
-Accuracy of two-continent missions appear in general to be better.
-
-General Accuracies for each explanation type separated into winners and losers.
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 1 & 1 & 50.00 \\  
-\hline 
-Occupy-Asia-South-America & 0 & 0 & 0.00 \\ 
-\hline
-Occupy-Europe-South-America-One & 4 & 0 & 100.00 \\
-\hline
-Occupy-North-America-Africa & 5 & 1 & 83.33 \\
-\hline
-Occupy-Asia-Africa & 0 & 0 & 0.00 \\
-\hline
-Occupy-North-America-Australia & 4 & 1 & 80.00 \\
-\hline
-\end{tabular}
-}
-\caption{Constrained Play Winner Accuracy}
-\label{table:continent-bonus}
-\end{table}
-		
-The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder?
-
-Would make sense seeing as there is a trend in other data showing lower percentage accuracy for that mission.
-		
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 10 & 5 & 66.67 \\  
-\hline 
-Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
-\hline
-Occupy-Europe-South-America-One & 5 & 8 & 38.46 \\
-\hline
-Occupy-North-America-Africa & 8 & 3 & 72.73 \\
-\hline
-Occupy-Asia-Africa & 15 & 2 & 88.24 \\
-\hline
-Occupy-North-America-Australia & 11 & 1 & 91.67 \\
-\hline
-\end{tabular}
-}
-\caption{Constrained Play Loser Accuracy}
-\label{table:constrained-lose-accuracy}
-\end{table}			
-
-\newpage
-
-\subsection{A.I. Play}
-
-\subsubsection{AI - Weight 100}
-
-General Accuracy for each explanation
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 51 & 133 & 27.72 \\  
-\hline 
-Occupy-Asia-South-America & 50 & 134 & 27.17 \\ 
-\hline
-Occupy-Europe-South-America-One & 127 & 57 & 69.02 \\
-\hline
-Occupy-North-America-Africa & 58 & 126 & 31.52 \\
-\hline
-Occupy-Asia-Africa & 37 & 147 & 20.11 \\
-\hline
-Occupy-North-America-Australia & 67 & 117 & 36.41 \\
-\hline
-\end{tabular}
-}
-\caption{A.I. Play General Explanation Accuracy - Weight 100}
-\label{table:ai-100-general-accuracy}
-\end{table}
-
-Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
-
-General Accuracies for each explanation type separated into winners and losers.
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 15 & 21 & 41.67 \\  
-\hline 
-Occupy-Asia-South-America & 9 & 9 & 50.00 \\ 
-\hline
-Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
-\hline
-Occupy-North-America-Africa & 15 & 21 & 41.67 \\
-\hline
-Occupy-Asia-Africa & 14 & 28 & 33.33 \\
-\hline
-Occupy-North-America-Australia & 18 & 17 & 51.43 \\
-\hline
-\end{tabular}
-}
-\caption{A.I. Play 100 Winner Accuracy}
-\label{table:ai-100-winner-accuracy}
-\end{table}
-			
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 36 & 112 & 24.32 \\  
-\hline 
-Occupy-Asia-South-America & 41 & 125 & 24.70 \\ 
-\hline
-Occupy-Europe-South-America-One & 118 & 49 & 70.66 \\
-\hline
-Occupy-North-America-Africa & 43 & 105 & 29.05 \\
-\hline
-Occupy-Asia-Africa & 23 & 119 & 16.20 \\
-\hline
-Occupy-North-America-Australia & 49 & 100 & 32.89 \\
-\hline
-\end{tabular}
-}
-\caption{A.I. Play Weight 100 Loser Accuracy}
-\label{table:ai-100-loser-accuracy}
-\end{table}			
-
-Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
-
-\newpage
-
-\subsubsection{A.I. - Weight 4}
-
-General Accuracy for each explanation
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 34 & 133 & 20.36 \\  
-\hline 
-Occupy-Asia-South-America & 27 & 140 & 16.17 \\ 
-\hline
-Occupy-Europe-South-America-One & 88 & 79 & 52.69 \\
-\hline
-Occupy-North-America-Africa & 28 & 139 & 16.77 \\
-\hline
-Occupy-Asia-Africa & 9 & 158 & 5.39 \\
-\hline
-Occupy-North-America-Australia & 49 & 118 & 29.34 \\
-\hline
-\end{tabular}
-}
-\caption{AI Play General Explanation Accuracy - Weight 4}
-\label{table:ai-4-general-accuracy}
-\end{table}
-
-General Accuracies for each explanation type separated into winners and losers.
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 6 & 27 & 18.18 \\  
-\hline 
-Occupy-Asia-South-America & 8 & 21 & 27.59 \\ 
-\hline
-Occupy-Europe-South-America-One & 14 & 20 & 41.18 \\
-\hline
-Occupy-North-America-Africa & 3 & 13 & 18.75 \\
-\hline
-Occupy-Asia-Africa & 1 & 28 & 3.45 \\
-\hline
-Occupy-North-America-Australia & 5 & 21 & 19.23 \\
-\hline
-\end{tabular}
-}
-\caption{AI Play Winner Explanation Accuracy - Weight 4}
-\label{table:ai-4-winner-accuracy}
-\end{table}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 28 & 106 & 20.90 \\  
-\hline 
-Occupy-Asia-South-America & 19 & 119 & 13.77 \\ 
-\hline
-Occupy-Europe-South-America-One & 74 & 59 & 55.64 \\
-\hline
-Occupy-North-America-Africa & 25 & 126 & 16.56 \\
-\hline
-Occupy-Asia-Africa & 8 & 130 & 5.80 \\
-\hline
-Occupy-North-America-Australia & 44 & 97 & 31.21 \\
-\hline
-\end{tabular}
-}
-\caption{AI Play Winner Explanation Accuracy - Weight 4}
-\label{table:ai-4-loser-accuracy}
-\end{table}
 
 \subsection{Nature of Game}
 
@@ -1699,7 +1402,309 @@ Why because they are an artificially derived benefit which can be used by a play
 
 \chapter{Appendix}
 
-\section{Experimental Results}
+\section{Accuracy Count Measurements}
+
+\subsection{General Accuracy}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Type of Play} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Free & 29 & 32 & 47.54 \\ 
+\hline 
+Constrained & 79 & 23 & 77.45 \\ 
+\hline 
+A.I. - Weight 100 & 390 & 714 & 35.33 \\ 
+\hline 
+A.I. - Weight 4 & 89 & 265 & 25.14 \\
+\hline 
+\end{tabular}
+}
+\caption{General Game Accuracy}
+\label{table:general-game-accuracy}
+\end{table}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+\textbf{Type of Play} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Free & Winner & 11 & 7 & 61.11 \\ 
+& Loser & 18 & 25 & 41.86 \\ 
+\hline 
+Constrained & Winner & 14 & 3 & 82.35 \\ 
+& Loser & 65 & 20 & 76.47 \\ 
+\hline
+A.I. - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
+& Loser & 310 & 610 & 33.70 \\  
+\hline
+A.I. - Weight 4 & Winner & 16 & 43 & 27.12 \\ 
+& Loser & 73 & 222 & 24.75 \\ 
+\hline
+\end{tabular}
+}
+\caption{Winner-Loser Accuracy}
+\label{table:winner-loser-accuracy}
+\end{table}
+
+\newpage
+
+\subsection{Free Play}
+
+\newpage
+
+\subsection{Constrained Play}
+
+General Accuracy for each explanation
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 11 & 6 & 64.71 \\  
+\hline 
+Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
+\hline
+Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
+\hline
+Occupy-North-America-Africa & 13 & 4 & 76.47 \\
+\hline
+Occupy-Asia-Africa & 15 & 2 & 88.24 \\
+\hline
+Occupy-North-America-Australia & 15 & 2 & 88.24 \\
+\hline
+\end{tabular}
+}
+\caption{Constrained Play General Explanation Accuracy}
+\label{table:cons-general-accuracy}
+\end{table}
+
+Accuracy of two-continent missions appear in general to be better.
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 1 & 1 & 50.00 \\  
+\hline 
+Occupy-Asia-South-America & 0 & 0 & 0.00 \\ 
+\hline
+Occupy-Europe-South-America-One & 4 & 0 & 100.00 \\
+\hline
+Occupy-North-America-Africa & 5 & 1 & 83.33 \\
+\hline
+Occupy-Asia-Africa & 0 & 0 & 0.00 \\
+\hline
+Occupy-North-America-Australia & 4 & 1 & 80.00 \\
+\hline
+\end{tabular}
+}
+\caption{Constrained Play Winner Accuracy}
+\label{table:cons-winner-accuracy}
+\end{table}
+		
+The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder?
+
+Would make sense seeing as there is a trend in other data showing lower percentage accuracy for that mission.
+		
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 10 & 5 & 66.67 \\  
+\hline 
+Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
+\hline
+Occupy-Europe-South-America-One & 5 & 8 & 38.46 \\
+\hline
+Occupy-North-America-Africa & 8 & 3 & 72.73 \\
+\hline
+Occupy-Asia-Africa & 15 & 2 & 88.24 \\
+\hline
+Occupy-North-America-Australia & 11 & 1 & 91.67 \\
+\hline
+\end{tabular}
+}
+\caption{Constrained Play Loser Accuracy}
+\label{table:constrained-lose-accuracy}
+\end{table}	
+
+\newpage
+
+\subsection{A.I. Play - Weight 100}
+
+General Accuracy for each explanation
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 51 & 133 & 27.72 \\  
+\hline 
+Occupy-Asia-South-America & 50 & 134 & 27.17 \\ 
+\hline
+Occupy-Europe-South-America-One & 127 & 57 & 69.02 \\
+\hline
+Occupy-North-America-Africa & 58 & 126 & 31.52 \\
+\hline
+Occupy-Asia-Africa & 37 & 147 & 20.11 \\
+\hline
+Occupy-North-America-Australia & 67 & 117 & 36.41 \\
+\hline
+\end{tabular}
+}
+\caption{A.I. Play General Explanation Accuracy - Weight 100}
+\label{table:ai-100-general-accuracy}
+\end{table}
+
+Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 15 & 21 & 41.67 \\  
+\hline 
+Occupy-Asia-South-America & 9 & 9 & 50.00 \\ 
+\hline
+Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
+\hline
+Occupy-North-America-Africa & 15 & 21 & 41.67 \\
+\hline
+Occupy-Asia-Africa & 14 & 28 & 33.33 \\
+\hline
+Occupy-North-America-Australia & 18 & 17 & 51.43 \\
+\hline
+\end{tabular}
+}
+\caption{A.I. Play 100 Winner Accuracy}
+\label{table:ai-100-winner-accuracy}
+\end{table}
+			
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 36 & 112 & 24.32 \\  
+\hline 
+Occupy-Asia-South-America & 41 & 125 & 24.70 \\ 
+\hline
+Occupy-Europe-South-America-One & 118 & 49 & 70.66 \\
+\hline
+Occupy-North-America-Africa & 43 & 105 & 29.05 \\
+\hline
+Occupy-Asia-Africa & 23 & 119 & 16.20 \\
+\hline
+Occupy-North-America-Australia & 49 & 100 & 32.89 \\
+\hline
+\end{tabular}
+}
+\caption{A.I. Play Weight 100 Loser Accuracy}
+\label{table:ai-100-loser-accuracy}
+\end{table}			
+
+Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
+
+\newpage
+
+\subsection{A.I. Play - Weight 4}
+
+General Accuracy for each explanation
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 34 & 133 & 20.36 \\  
+\hline 
+Occupy-Asia-South-America & 27 & 140 & 16.17 \\ 
+\hline
+Occupy-Europe-South-America-One & 88 & 79 & 52.69 \\
+\hline
+Occupy-North-America-Africa & 28 & 139 & 16.77 \\
+\hline
+Occupy-Asia-Africa & 9 & 158 & 5.39 \\
+\hline
+Occupy-North-America-Australia & 49 & 118 & 29.34 \\
+\hline
+\end{tabular}
+}
+\caption{AI Play General Explanation Accuracy - Weight 4}
+\label{table:ai-4-general-accuracy}
+\end{table}
+
+General Accuracies for each explanation type separated into winners and losers.
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 6 & 27 & 18.18 \\  
+\hline 
+Occupy-Asia-South-America & 8 & 21 & 27.59 \\ 
+\hline
+Occupy-Europe-South-America-One & 14 & 20 & 41.18 \\
+\hline
+Occupy-North-America-Africa & 3 & 13 & 18.75 \\
+\hline
+Occupy-Asia-Africa & 1 & 28 & 3.45 \\
+\hline
+Occupy-North-America-Australia & 5 & 21 & 19.23 \\
+\hline
+\end{tabular}
+}
+\caption{AI Play Winner Explanation Accuracy - Weight 4}
+\label{table:ai-4-winner-accuracy}
+\end{table}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\hline 
+Occupy-Europe-Australia-One & 28 & 106 & 20.90 \\  
+\hline 
+Occupy-Asia-South-America & 19 & 119 & 13.77 \\ 
+\hline
+Occupy-Europe-South-America-One & 74 & 59 & 55.64 \\
+\hline
+Occupy-North-America-Africa & 25 & 126 & 16.56 \\
+\hline
+Occupy-Asia-Africa & 8 & 130 & 5.80 \\
+\hline
+Occupy-North-America-Australia & 44 & 97 & 31.21 \\
+\hline
+\end{tabular}
+}
+\caption{AI Play Winner Explanation Accuracy - Weight 4}
+\label{table:ai-4-loser-accuracy}
+\end{table}
+
+\subsection{Graphs}
 
 Table of correct predictions and incorrect predictions in each game type.
 

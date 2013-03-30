@@ -43,7 +43,7 @@
 \contentsline {chapter}{\numberline {4}Implementation}{31}
 \contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{32}
 \contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{32}
-\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{32}
+\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{33}
 \contentsline {section}{\numberline {4.2}Summary}{33}
 \contentsline {chapter}{\numberline {5}Evaluation}{35}
 \contentsline {section}{\numberline {5.1}Experiments}{35}
@@ -57,17 +57,18 @@
 \contentsline {subsection}{\numberline {5.4.2}Insights}{38}
 \contentsline {subsubsection}{\numberline {5.4.2.1}Insight One}{39}
 \contentsline {subsubsection}{\numberline {5.4.2.2}Insight Two}{39}
-\contentsline {subsection}{\numberline {5.4.3}Free Play}{40}
-\contentsline {subsection}{\numberline {5.4.4}Constrained Play}{41}
-\contentsline {subsection}{\numberline {5.4.5}A.I. Play}{42}
-\contentsline {subsubsection}{\numberline {5.4.5.1}AI - Weight 100}{42}
-\contentsline {subsubsection}{\numberline {5.4.5.2}A.I. - Weight 4}{43}
-\contentsline {subsection}{\numberline {5.4.6}Nature of Game}{43}
-\contentsline {subsection}{\numberline {5.4.7}Simplicity of Model}{44}
-\contentsline {section}{\numberline {5.5}Outcomes}{45}
-\contentsline {section}{\numberline {5.6}Criticism}{46}
-\contentsline {chapter}{\numberline {6}Conclusions}{47}
-\contentsline {section}{\numberline {6.1}Future Work}{47}
-\contentsline {chapter}{\numberline {7}Appendix}{51}
-\contentsline {section}{\numberline {7.1}Experimental Results}{51}
-\contentsline {chapter}{Bibliography}{53}
+\contentsline {subsection}{\numberline {5.4.3}Nature of Game}{40}
+\contentsline {subsection}{\numberline {5.4.4}Simplicity of Model}{40}
+\contentsline {section}{\numberline {5.5}Outcomes}{42}
+\contentsline {section}{\numberline {5.6}Criticism}{42}
+\contentsline {chapter}{\numberline {6}Conclusions}{45}
+\contentsline {section}{\numberline {6.1}Future Work}{45}
+\contentsline {chapter}{\numberline {7}Appendix}{49}
+\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{49}
+\contentsline {subsection}{\numberline {7.1.1}General Accuracy}{49}
+\contentsline {subsection}{\numberline {7.1.2}Free Play}{50}
+\contentsline {subsection}{\numberline {7.1.3}Constrained Play}{51}
+\contentsline {subsection}{\numberline {7.1.4}A.I. Play - Weight 100}{52}
+\contentsline {subsection}{\numberline {7.1.5}A.I. Play - Weight 4}{53}
+\contentsline {subsection}{\numberline {7.1.6}Graphs}{53}
+\contentsline {chapter}{Bibliography}{55}

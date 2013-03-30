@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  30 MAR 2013 15:00
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  30 MAR 2013 16:16
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -247,14 +247,7 @@ Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
 \c@ContinuedFloat=\count107
 )
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
-t\report.aux
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-
-LaTeX Warning: Label `table:continent-bonus' multiply defined.
-
-)
+t\report.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
@@ -267,7 +260,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
- (C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+
+(C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count108
 \scratchdimen=\dimen130
@@ -283,9 +277,7 @@ LaTeX Font Info:    ... okay on input line 11.
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-
-*** Warning: CS4 report regulations require an abstract.
-[1
+ [1
 
 {C:/Users/s0914007/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [2
@@ -384,55 +376,52 @@ Underfull \vbox (badness 1895) has occurred while \output is active []
 ]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--440
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15]
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 522--523
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
 
  []
 
 [17] [18]
-Overfull \hbox (1.39836pt too wide) in paragraph at lines 577--586
+Overfull \hbox (1.39836pt too wide) in paragraph at lines 579--588
  [][] 
  []
 
 [19]
-Underfull \hbox (badness 1558) in paragraph at lines 610--611
+Underfull \hbox (badness 1558) in paragraph at lines 612--613
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (6.7846pt too wide) in paragraph at lines 604--613
+Overfull \hbox (6.7846pt too wide) in paragraph at lines 606--615
  [][] 
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 682--683
+Underfull \hbox (badness 10000) in paragraph at lines 684--685
 
  []
 
@@ -440,50 +429,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 682--683
 Underfull \vbox (badness 3199) has occurred while \output is active []
 
  [22]
-Underfull \hbox (badness 10000) in paragraph at lines 705--706
+Underfull \hbox (badness 10000) in paragraph at lines 707--708
 
  []
 
 [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 748--770
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 750--772
 $[]$ 
  []
 
 [24]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 784--812
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 786--814
 $[]$ 
  []
 
 
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 816--817
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 818--819
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [25]
-Overfull \hbox (42.48602pt too wide) in paragraph at lines 835--846
+Overfull \hbox (42.48602pt too wide) in paragraph at lines 837--848
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; pTotal
 ActNum; pConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 835--846
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 837--848
 $[]$ 
  []
 
 [26]
-Overfull \hbox (4.83934pt too wide) in paragraph at lines 854--877
+Overfull \hbox (4.83934pt too wide) in paragraph at lines 856--879
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 854--877
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 856--879
 $[]$ 
  []
 
 [27]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 898--937
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 900--939
 $[]$ 
  []
 
@@ -491,10 +480,10 @@ $[]$
 File: images/risk-plan-library.pdf Graphic file (type pdf)
 
 <use images/risk-plan-library.pdf>
-Package pdftex.def Info: images/risk-plan-library.pdf used on input line 951.
+Package pdftex.def Info: images/risk-plan-library.pdf used on input line 953.
 (pdftex.def)             Requested size: 376.40532pt x 129.48341pt.
 
-Overfull \hbox (14.63141pt too wide) in paragraph at lines 951--952
+Overfull \hbox (14.63141pt too wide) in paragraph at lines 953--954
 [][] 
  []
 
@@ -506,12 +495,16 @@ File: images/event-driven-architecture.pdf Graphic file (type pdf)
 
 <use images/event-driven-architecture.pdf>
 Package pdftex.def Info: images/event-driven-architecture.pdf used on input lin
-e 998.
+e 1000.
 (pdftex.def)             Requested size: 445.87468pt x 75.36136pt.
  [31
 
  <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
-rt/images/event-driven-architecture.pdf>] [32] [33] [34
+rt/images/event-driven-architecture.pdf>]
+Underfull \vbox (badness 4713) has occurred while \output is active []
+
+ [32]
+[33] [34
 
 ]
  5.
@@ -521,83 +514,79 @@ File: images/example-good-convergence.pdf Graphic file (type pdf)
 
 <use images/example-good-convergence.pdf>
 Package pdftex.def Info: images/example-good-convergence.pdf used on input line
- 1155.
+ 1154.
 (pdftex.def)             Requested size: 754.63748pt x 265.12988pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (11.89449pt too wide) in paragraph at lines 1164--1165
+Overfull \hbox (11.89449pt too wide) in paragraph at lines 1163--1164
 []\T1/cmr/m/n/12 TALK ABOUT HOW DO-ING AC-TIONS MAKE SOME EX-PLA-NA-TIONS MORE
  []
 
 [37] [38 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-proj
 ect-report/images/example-good-convergence.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1192--1193
+Underfull \hbox (badness 10000) in paragraph at lines 1191--1192
 
  []
 
-[39] [40] [41] [42] [43] [44] [45] [46]
- 6.
-[47
+[39] [40] [41] [42] [43] [44
 
 ]
-Overfull \hbox (15.57954pt too wide) in paragraph at lines 1668--1669
+ 6.
+[45]
+Overfull \hbox (15.57954pt too wide) in paragraph at lines 1371--1372
 []\T1/cmr/m/n/12 MODEL PROB-LEM - AT-TACK COM-PU-TA-TIONS, TREATS ANY NON OWNED
 
  []
 
 
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1684--1685
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1387--1388
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
-[48] [49] [50
+[46] [47] [48
 
 ]
  7.
-
+[49] [50] [51] [52] [53]
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
-t\report.bbl [51] [52
+t\report.bbl [54]) [55
 
-]) [53]
+]
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
-t\report.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+t\report.aux) ) 
 Here is how much of TeX's memory you used:
- 4825 strings out of 493921
- 68985 string characters out of 3147273
+ 4827 strings out of 493921
+ 69042 string characters out of 3147273
  156008 words of memory out of 3000000
- 8076 multiletter control sequences out of 15000+200000
+ 8078 multiletter control sequences out of 15000+200000
  16103 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,26n,38p,731b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
-00\ecbi1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
-appen\ec\dpi600\eccc1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\
-pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\s0914007\AppData\Local\MiKT
-eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\s0914007\AppDa
-ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Users\s
-0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk
+ <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\ecbi1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\eccc1200.pk> <C:\Users\s0914007\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\s0914007\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\s
+0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
 > <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
 0\ecbx2488.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
 ppen\ec\dpi600\ecbx1728.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\p
-k\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\s0914007\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\s0914007\AppDat
-a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk><D:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb>
-Output written on report.pdf (59 pages, 964270 bytes).
+k\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\s0914007\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\s0914007\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\s0
+914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk>
+<D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (61 pages, 966787 bytes).
 PDF statistics:
- 733 PDF objects out of 1000 (max. 8388607)
+ 742 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
