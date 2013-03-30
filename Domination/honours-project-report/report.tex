@@ -1158,9 +1158,7 @@ Whether is converges?
 \label{fig:example-good-convergence}
 \end{figure} 
 
-Please not that the correct explanation is Asia, South America and has been correctly predicted.
-
-It does converge. This particular example has initally player placing reinforcements in SA and Asia hence the slow rise of probabilites containing those continents. Then at the start of the players attack phase their attack goes badly in SA. Then attack goes well in one turn to take asia, then player is wiped out before their next turn, hence no change in their explanation probabilities.
+Find a more complicated graph
 
 TALK ABOUT HOW DOING ACTIONS MAKE SOME EXPLANATIONS MORE LIKELY AND OTHERS LESS LIKELY
 
@@ -1172,7 +1170,9 @@ SHOW AN EXAMPLE OF IT NOT CONVERGING
 
 How fast it converges?
 
-42 turns are required for the distribution of armies over the R.I.S.K map. After the remaining starting armies are distributed during this the probability of each explanation shifts by a small amount depending on whether the action was consistent or not. Once the distribution of armies is complete, which could be from 80 to 120 turns depending on the number of players, the probabilities move much more rapidly this is because the prediction agents model has been built to give attacks the most significance.
+At the start of the game fourty-two turns are required before one army is placed on each territory of the R.I.S.K map. After this the remaining initial armies are distributed. During this time the probability of associated explanations will slowly converge upwards or downwards by a small amount depending on whether the reinforcement was consistent or inconsistent.
+
+Once the initial setup is complete, which could be from 80 to 120 turns depending on the number of players, the probabilities move much more rapidly because the prediction agents model has been built to give attack actions the most significance.
 
 \subsection{Insights}
 
@@ -1227,11 +1227,17 @@ EXAMPLE
 
 \textbf{Why we get winners wrong}
 
+Winners may get stuck in situations where they perform inconsistent actions because they are prevented by other players from reaching their goal.
+
 \textbf{Why we get losers right}
+
+Losers 
 
 \textbf{why we get losers wrong}
 
 Some reasons for incorrect predictions because of players who lose can be eliminated early, so predictions may be wrong because of a lack of data.
+
+Losers are often prevented from successfully achieving their goal.
 
 Why is the accuracy of free play and A.I. play much lower than constrained play.
 
