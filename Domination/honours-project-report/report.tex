@@ -40,7 +40,7 @@
 \date{\today}
 
 \abstract{
-This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal is to attempt to infer the unknown mission card of an agent from observations of their behaviour in the R.I.S.K. environment. EXTEND TO SUMMARISE CONTENTS OF YOUR REPORT/
+This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal is to attempt to infer the unknown mission card of an agent from observations of their behaviour in the R.I.S.K. environment. EXTEND TO SUMMARISE CONTENTS OF YOUR REPORT.
 }
 
 \maketitle
@@ -121,7 +121,7 @@ From history it seems clear that A.I. and its application in games are intertwin
 
 Games are often considered a good metric for testing the quality of an A.I. [Ref]. There has been some academic work done on RISK. Development of an Intelligent Artificial Player for the Game of Risk[ref]. The author Michael Wolf\textbf{[ref]} claims R.I.S.K. is generally well known but under recognised by academia.
 
-Work by two guys at Stanford on A.I. \textbf{[ref]} agent to play R.I.S.K. They say R.I.S.K. is an intersection between traditional and modern board games.
+Work by undergraduate/graduates at Stanford on A.I. \textbf{[ref]} agent to play R.I.S.K. They say R.I.S.K. is an intersection between traditional and modern board games.
 
 \section{Aims}
 
@@ -1101,7 +1101,9 @@ Reinforce a territory that is directly-consistent with their plan or a territory
 Moves armies to a territory that is directly-consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 \end{itemize}
 
-This artificially constructed form of play is designed to be the comparatively easier to perform plan recognition on. By establishing that the algorithm works given that players behave only in a manner that is directly consistent with the mission they have been given, provides grounds to establish that the majority of incorrect classifications arise from players performing actions that are either indirectly consistent or inconsistent with the players mission.
+RETHINK THIS SECTION?
+
+This artificially constructed form of play is designed to be the comparatively easier to perform plan recognition on. By establishing that the algorithm works given that players behave only in a manner that is directly consistent with the mission they have been given, provides grounds to establish that the majority of incorrect classifications arise from players performing actions that are either indirectly-consistent or inconsistent with the players mission.
 
 \subsection{Free Play}
 
@@ -1233,7 +1235,7 @@ Some reasons for incorrect predictions because of players who lose can be elimin
 
 Why is the accuracy of free play and A.I. play much lower than constrained play.
 
-Present breakdown of explanations accuracy per game type
+Well in free play players there is no requiement for players to be performing directly consistent actons only. Players can be performing actions that are indirectly-consistent which are seen by the plan recognition agent as inconsistent and actions that are actually inconsistent, either reduces the prediction of the correct explanation.
 
 \subsection{Nature of Game}
 
@@ -1260,8 +1262,6 @@ Calculation problems, give example of a explanation with more territories being 
 Misclassification's occur due to three(keep looking in data) main reasons:
 
 by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations
-
-Misclassification by 
 
 HOW TO FIX
 
@@ -1328,11 +1328,19 @@ TALK ABOUT THE OUTCOMES OF YOUR WORK!
 
 Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. Thus attack has been modelled as the most significant action in the environment and this we can intuitively tell is not the case.
 
+MODEL IS LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
+
+ATTACK probability COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
+
 \chapter{Conclusions}
 
-Summary of whole report
+\section{Summary of whole report}
 
-Main insights and results
+A platform has been setup for further improvements of the model.
+
+Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
+
+\section{Main insights and results}
 
 \section{Future Work}
 
@@ -1342,9 +1350,15 @@ Eliminating player mission cards - some system where data of who is being consis
 
 The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
 
-Only attack actions have been modelled in a manner other than scaling up and down explanation probability
+The model can be augmented further as any action could in fact be further decomposed into two types,\textit{directly-consistent} or \textit{indirectly-inconsistent}. For example a directly-consistent action would be to occupy a territory of an explanation, where as an indirectly-consistent action would be a player breaking another players continent by occupying a territory in that continent, as preventing other players from completing their mission makes completing ones own mission more likely. This distinction has not been taken into account as any action that is not directly-consistent is classified as an inconsistent action in the model and investigation into the effects of doing some may yield improvements.
 
-Model can be augmented as any action could in fact be further decomposed into two types,\textit{directly-consistent} or \textit{indirectly-inconsistent}. For example a directly-consistent action would be to occupy a territory of an explanation, where as an indirectly-consistent action would be a player breaking another players continent by occupying a territory in that continent, as preventing other players from completing their mission makes completing ones own mission more likely. This distinction has not been taken into account in the model and investigation into the effects of doing some may yield improvements.
+Only attack actions have been modelled in a manner other than scalin up by 1.02 and down by 0.98 to simulate the effects of small decreases and increases in likelihood. More sophisticated computation models of action probabilities could be investigated to capture the state of the game to a greater degree in each calculation rather than scaling.
+
+Other than modelling attacks as two events where the result affect both involved players, the model does not considered the effects. This could be improved by
+
+Model does not take into account situations where players cannot perform any consistent actions and therefore any action that a player performs is considered inconsistent but actually could be indirectly-consistent. This could be improved by
+
+The model does not take into account the importance of territories. Each continent has a number of terriories which control entry into the continent. To elaborate each continent has a fixed number of these entry territories and if it were possible for a player to perfectly defend only the entry territories and occupy the remaining terriotries of the continent they would in theory never lose the continent as players must occupy the entry territory to be able to occupy other territories in that continent. The model does not take into consideration this.
 
 Using the plan recognition software given a programs a plan to detect how well a program performs a plan. 
 
@@ -1358,31 +1372,13 @@ Probability model changed to proportion of consistent actions * 0.1
 
 MODEL AUGMENTATION
 
-Do not model indirectly consistent actions only directly consistent actions.
-
-MODEL PROBLEM - MODEL HAS BEEN BUILT NOT TAKING THE EFFECTS OF OTHER PLAYERS INTO ACCOUNT EFFECTIVELY
-
-MODEL PROBLEM - PLAYERS MAY BE IN A SITUATION WHERE THEY cannot PERFORM A CONSISTENT ACTION
-
-MODEL PROBLEM - DID NOT MODEL MOVING ARMIES INTO A TERRITORY IN A MANNER OTHER THAN MULTIPLYING CONSISTENT BY 1.02 AND inconsistent WITH 0.98
-
-MODEL PROBLEM - DID NOT MODEL BASED ON IMPORTANCE OF TERRITORIES E.G DID NOT TAKE INTO ACCOUNT CONTINENT ENTRY TERRITORIES
-
-MODEL PROBLEM - ATTACK COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
-
 PROBLEM - MODEL NEGLECTS THE MULTI-ATTACK NATURE OF THE GAME, SUCCESSFUL DEFENCE MODEL REALLY ONLY APPLIES FOR SINGLE ATTACKS PER TURN
-
-MODEL IS LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
 
 Augmentation possibility - look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
 
 DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT. <- MODELLING DIFFERENCE
 
-A platform has been setup for further improvements of the model.
-
 IMPROVEMENTS TO MODEL
-
-CAPTURING THE CONNECTIONS BETWEEN CONTINENTS
 
 MAKING A TIERED WEIGHTING SYSTEM FOR THE CURRENT METHOD OF COMPUTING PROBABILITIES
 
@@ -1396,15 +1392,11 @@ E.G
 
 0.4 WEIGHT FOR 1/10 THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
 
-the benefit of such systems would be to such an extent that it would be considering an unfair advantage if used in events such as official tournaments.
-
-Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
-
 \chapter{Appendix}
 
 \section{Accuracy Count Measurements}
 
-\subsection{General Accuracy}
+\subsection{General Prediction Accuracy}
 
 \begin{table}[ht]
 \centerline{
@@ -1446,7 +1438,7 @@ A.I. - Weight 4 & Winner & 16 & 43 & 27.12 \\
 \hline
 \end{tabular}
 }
-\caption{Winner-Loser Accuracy}
+\caption{General Winner-Loser Accuracy}
 \label{table:winner-loser-accuracy}
 \end{table}
 
