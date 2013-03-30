@@ -125,13 +125,11 @@ Work by undergraduate/graduates at Stanford on A.I. \textbf{[ref]} agent to play
 
 \section{Aims}
 
-NOT COMPLETE
-
 \begin{itemize}
 \item
 To design and implement a plan recognition agent for the board game R.I.S.K.
 \item
-For the plan recognition agent to be able to perform better than a random guess.
+For the plan recognition agent to be able to perform atleast double the accuracy of a random guess.
 \item
 To further understanding in the complexities of performing plan recognition in R.I.S.K.
 \end{itemize}
@@ -141,8 +139,6 @@ To further understanding in the complexities of performing plan recognition in R
 NOT COMPLETE
 
 What do you want to answer?
-
-Are plan recognition algorithms beneficial in games? Specifically RISK?
 
 Do certain explanations perform better? Why?
 
@@ -156,6 +152,7 @@ To determine whether the accuracy of predictions are the same for winners and lo
 \item
 If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
 \newline
+To determine whehter plan recongition algorihtms are beneficial in games, specifically R.I.S.K.
 \end{itemize}
 
 Using more data from risk environment in the computation of the likelihood of explanations, the better the prediction accuracy will be.
@@ -525,6 +522,8 @@ Occupy Europe, South America and Australia.\newline
 \end{itemize}
 
 Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction. This modelling choice has significant implications as a design modification to the PHATT algorithm and thus the plan recognition agent.
+
+ADD IN THAT NO NEED TO STORE DERIVATIVE TREES AS THEY ARE ALL HARDCODED INTO EXPLANATIONS
 
 As PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together, choosing to operate on a fully enumerated set of root-goals effectively removes the term \textit{Pr}(\textit{plans}|\textit{goals}), the probability of choosing a sub-goal, from the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}.
 
@@ -978,8 +977,6 @@ Main change is that PHATT works in an action space whereas I have had to adapt t
 
 Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
 
-Another difference is I have removed the need for sub-goal probabilities because of working with the full derivative tree.
-
 Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
 
 Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
@@ -1028,7 +1025,7 @@ When these occur a distinct event object is fired, these even objects contains i
 
 \begin{table}[ht]
 \centerline{
-\begin{tabular}{|c|c|p{10cm}|}
+\begin{tabular}{|c|c|p{8cm}|}
 \hline 
 \textbf{Event Type} & \textbf{Contains Variables} & \textbf{Purpose} \\ 
 \hline 
@@ -1036,17 +1033,17 @@ NewPlayer & playerName & Initialises a new player data structure with ID \textit
 \hline 
 RemovePlayer & playerName & Destroys the player data structure with ID \textit{playerName}. \\ 
 \hline 
-SuccessfulAttack & attackerName, continentName, territoryName & Signals that the player named \textit{attackerName} has performed a SuccessfulAttack. \\ 
+SuccessfulAttack & attackerName, continentName, territoryName & Signals that the player named \textit{attackerName}  performed a SuccessfulAttack. \\ 
 \hline
-FailedAttack & attackeName, continentName, territoryName & Signals that the player named \textit{attackerName} has performed a FailedAttack. \\ 
+FailedAttack & attackeName, continentName, territoryName & Signals that player \textit{attackerName} performed a FailedAttack. \\ 
 \hline
-SuccessfulDefence & defenderName, continentName, territoryName & Signals that the player named \textit{defenderName} has performed a FailedDefence. \\ 
+SuccessfulDefence & defenderName, continentName, territoryName & Signals that player \textit{defenderName} performed a SuccesfulDefence. \\ 
 \hline
-FailedDefence & defenderName, continentName, territoryName & Signals that the player named \textit{defenderName} has performed a FailedDefence. \\ 
+FailedDefence & defenderName, continentName, territoryName & Signals that player \textit{defenderName} performed a FailedDefence. \\ 
 \hline
-ArmyMovement & playerName, continentName, territoryName & Signals that the player named \textit{playerName} has performed an ArmyMovement. \\ 
+ArmyMovement & playerName, continentName, territoryName & Signals that player \textit{playerName} performed an ArmyMovement. \\ 
 \hline
-Reinforce & playerName, continentName, territoryName & Signals that the player named \textit{playerName} has performed a Reinforce action. \\ 
+Reinforce & playerName, continentName, territoryName & Signals that player \textit{playerName} performed a Reinforce action. \\ 
 \hline
 \end{tabular}
 }
@@ -1182,6 +1179,8 @@ Experiments with the plan recognition revealed the following insights into the d
 
 \begin{enumerate}
 \item
+Insights onto why players win and lose in the various modes.
+\item
 Constrained play has the best accuracy. 
 \item
 The prediction accuracy for winners is better than losers.
@@ -1199,37 +1198,45 @@ Why is the accuracy of winners better than losers?
 
 In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
 
+Do the accuracy of missions with two continents appear on average to be better?
+
 \subsubsection{Insight One}
 
-From Table 7.1 we see that \textit{constrained play has a significantly higher accuracy than other types of play}. This finding is unsurprising as players only performed directly-consistent actions due to the artificial nature of constrained play. 
+From Table 7.1 we see that \textit{constrained play has a significantly higher accuracy than the other types of play}. This finding is unsurprising as players only performed directly-consistent actions due to the artificial nature of constrained play. 
 
-What is a much more interesting though, is that if this should indeed be the ideal scenerio to detect explanations, then what was the cause for 22.55 \% to be incorrectly predicted?
+Whereas in free play and A.I. play there is no requiement for players to be performing directly consistent actons only. Most definitely a more natural and superior method of playing players perform actions that are either indirectly-consistent (which actually be seen by the plan recognition agent as inconsistent) or actions that are actually inconsistent because their plan at that point is different to that of their mission. Either actions reduce the predicted probability of the correct explanation.
+
+This type of play was designed to be ideal for correctly predicting explanations. Then what was the cause for 19.61\% to be incorrectly predicted? Looking at a break down of players who won (winners) and lost (losers) sheds more light on to this question. 
+
+Table 7.4 shows two incorrect predictions, both \textit{Two-Continent+1} mission types, from analysis of eachs respective csv file both are shown to be incorrect for the same reason. 
+
+Mission Occupy-Europe-Australia-One
+
+INCLUDE TABLE OF TWO EQUAL FINAL PROBABILITIES
+
+Mission Occupy-Europe-South-America-One
+
+INCLUDE TABLE OF TWO EQUAL FINAL PROBABILITIES
+
+The final prediction probabilities of both were split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an \textit{inconclusive} prediction.
+
+More interestingly though are the losers for constrained play.
+
+TALK ABOUT THE LOSERS AND WHY THEY ARE WRONG
 
 \subsubsection{Insight Two}
 
-If we further break down each of the plays into winners and losers then the picture becomes a little clearer.
+Table 7.2 shows that in every type of play \textit{the accuracy of winners has shown to be better then losers}. This though due to a number of reasons:
 
-From Table 7.2 we notice that in every type of play \textit{the accuracy of winners are better then losers}. This is primarily due to a number of reasons:
+Winners successfully perform their mission therefore they are the most likely to have performed the most consistent actions but this is not necessarily true  winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
 
-\textbf{Why we get winners right}
+In the context of constrained play, as players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not intefere.
 
-Winners successfully perform their mission
-
-EXAMPLE
-
-More data for winners, winners also achieve their plan with a greater degree of success meaning more consistent observations BUT winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
-
-EXAMPLE
+SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES
 
 Winners may occupy a continent in one turn and since sampling is done on a turn by turn basis it may miss a significant change in probabilities as the turn they occupied the continent was the last turn.
 
 EXAMPLE
-
-\textbf{Why we get winners wrong}
-
-Winners may get stuck in situations where they perform inconsistent actions because they are prevented by other players from reaching their goal.
-
-Winners make mistakes, in constrained play participant attacked wrong continent was then pushed out of both their mission continents and spent the rest of game trying to get back to them.
 
 \textbf{Why we get losers right}
 
@@ -1241,9 +1248,13 @@ Some reasons for incorrect predictions because of players who lose can be elimin
 
 Losers are often prevented from successfully achieving their goal.
 
-Why is the accuracy of free play and A.I. play much lower than constrained play.
-
 Well in free play players there is no requiement for players to be performing directly consistent actons only. Players can be performing actions that are indirectly-consistent which are seen by the plan recognition agent as inconsistent and actions that are actually inconsistent, either reduces the prediction of the correct explanation.
+
+\subsubsection{Insight Three}
+
+Asia-Africa appear to be lower prediction accuracy on average the A.I. play type, Asia is the hardest continent to conquer and therefore this might be causing the prediction accuracy to be the lowest, as players do not often choose to take asia first even if it is in their mission.
+
+INCLUDE BREAK DOWN FOR EACH TYPE OF EXPLANATION PREDICTION FOR TWO CONTINENT + 1 MISSIONS
 
 \subsection{Nature of Game}
 
@@ -1258,6 +1269,8 @@ For example:
 PRESENT EXAMPLE
 
 \subsection{Simplicity of Model}
+
+How to differentiate between two identifical alternates? E.g predicton is equal between EU SA AU and EU AU SA 
 
 Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
 
@@ -1310,17 +1323,7 @@ Plans should consider not only consider what occurs in the action space but the 
 
 \section{Outcomes}
 
-1) Does it work?
-
-It performs better than randomly guessing but still at a low probability
-
-2) If not why?
-
-Three types of games to test the algorithm in:
-
 Players don't ignore their mission card like at first predicted, as long as the mission appears easier to complete than eliminating all other players, then players will try achieve their mission.
-
-Do the accuracy of missions with two continents appear on average to be better?
 
 In evaluation DO NOT JUST RELY ON MEASUREMENTS! DISCUSS OUTCOMES! MAKE INFERENCES FROM DATA!
 
@@ -1339,6 +1342,8 @@ Essentially attack has been modelled following PHATT but the rest of the actions
 MODEL IS LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
 
 ATTACK probability COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
+
+Small number of free play and constrained winners, therefore may have not likely covered all the cases.
 
 \chapter{Conclusions}
 
@@ -1414,7 +1419,7 @@ E.G
 \hline 
 Free & 29 & 32 & 47.54 \\ 
 \hline 
-Constrained & 79 & 23 & 77.45 \\ 
+Constrained & 82 & 20 & 80.39 \\ 
 \hline 
 A.I. - Weight 100 & 390 & 714 & 35.33 \\ 
 \hline 
@@ -1435,8 +1440,8 @@ A.I. - Weight 4 & 89 & 265 & 25.14 \\
 Free & Winner & 11 & 7 & 61.11 \\ 
 & Loser & 18 & 25 & 41.86 \\ 
 \hline 
-Constrained & Winner & 14 & 3 & 82.35 \\ 
-& Loser & 65 & 20 & 76.47 \\ 
+Constrained & Winner & 15 & 2 & 82.24 \\ 
+& Loser & 67 & 18 & 78.82 \\ 
 \hline
 A.I. - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
 & Loser & 310 & 610 & 33.70 \\  
@@ -1466,17 +1471,17 @@ General Accuracy for each explanation
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
 \hline 
-Occupy-Europe-Australia-One & 11 & 6 & 64.71 \\  
+Occupy-Europe-Australia-One & 13 & 4 & 76.47 \\  
 \hline 
 Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
 \hline
-Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
+Occupy-Europe-South-America-One & 10 & 7 & 58.82 \\
 \hline
-Occupy-North-America-Africa & 13 & 4 & 76.47 \\
+Occupy-North-America-Africa & 12 & 5 & 70.59 \\
 \hline
 Occupy-Asia-Africa & 15 & 2 & 88.24 \\
 \hline
-Occupy-North-America-Australia & 15 & 2 & 88.24 \\
+Occupy-North-America-Australia & 16 & 1 & 94.12 \\
 \hline
 \end{tabular}
 }
@@ -1498,13 +1503,13 @@ Occupy-Europe-Australia-One & 1 & 1 & 50.00 \\
 \hline 
 Occupy-Asia-South-America & 0 & 0 & 0.00 \\ 
 \hline
-Occupy-Europe-South-America-One & 4 & 0 & 100.00 \\
+Occupy-Europe-South-America-One & 4 & 1 & 80.00 \\
 \hline
-Occupy-North-America-Africa & 5 & 1 & 83.33 \\
+Occupy-North-America-Africa & 5 & 0 & 100.00 \\
 \hline
 Occupy-Asia-Africa & 0 & 0 & 0.00 \\
 \hline
-Occupy-North-America-Australia & 4 & 1 & 80.00 \\
+Occupy-North-America-Australia & 5 & 0 & 100.00 \\
 \hline
 \end{tabular}
 }
@@ -1522,13 +1527,13 @@ Would make sense seeing as there is a trend in other data showing lower percenta
 \hline 
 \textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
 \hline 
-Occupy-Europe-Australia-One & 10 & 5 & 66.67 \\  
+Occupy-Europe-Australia-One & 12 & 3 & 80.00 \\  
 \hline 
 Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
 \hline
-Occupy-Europe-South-America-One & 5 & 8 & 38.46 \\
+Occupy-Europe-South-America-One & 6 & 6 & 50.00 \\
 \hline
-Occupy-North-America-Africa & 8 & 3 & 72.73 \\
+Occupy-North-America-Africa & 7 & 5 & 58.33 \\
 \hline
 Occupy-Asia-Africa & 15 & 2 & 88.24 \\
 \hline
