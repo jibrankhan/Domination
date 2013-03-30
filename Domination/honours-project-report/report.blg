@@ -3,45 +3,47 @@ The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: mybibfile.bib
 Warning--empty journal in journals/ai/CharniakG93
-You've used 11 entries,
+Warning--empty journal in riskimage
+Warning--empty year in riskimage
+You've used 12 entries,
             2118 wiz_defined-function locations,
-            587 strings with 6318 characters,
-and the built_in function-call counts, 3679 in all, are:
-= -- 364
-> -- 162
+            590 strings with 6380 characters,
+and the built_in function-call counts, 3878 in all, are:
+= -- 381
+> -- 169
 < -- 2
-+ -- 60
-- -- 49
-* -- 246
-:= -- 616
-add.period$ -- 36
-call.type$ -- 11
-change.case$ -- 53
++ -- 63
+- -- 51
+* -- 257
+:= -- 652
+add.period$ -- 38
+call.type$ -- 12
+change.case$ -- 57
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 147
-empty$ -- 309
-format.name$ -- 49
-if$ -- 780
+cite$ -- 15
+duplicate$ -- 157
+empty$ -- 326
+format.name$ -- 51
+if$ -- 818
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 11
-newline$ -- 57
-num.names$ -- 30
-pop$ -- 64
+int.to.str$ -- 12
+missing$ -- 12
+newline$ -- 61
+num.names$ -- 32
+pop$ -- 72
 preamble$ -- 1
-purify$ -- 43
+purify$ -- 46
 quote$ -- 0
-skip$ -- 100
+skip$ -- 106
 stack$ -- 0
-substring$ -- 215
+substring$ -- 220
 swap$ -- 28
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 42
-warning$ -- 1
-while$ -- 42
-width$ -- 13
-write$ -- 123
-(There was 1 warning)
+type$ -- 46
+warning$ -- 3
+while$ -- 44
+width$ -- 14
+write$ -- 130
+(There were 3 warnings)

@@ -39,11 +39,11 @@
 
 \date{\today}
 
+\maketitle
+
 \abstract{
 This paper presents the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal is to attempt to infer the unknown mission card of an agent from observations of their behaviour in the RISK environment.
 }
-
-\maketitle
 
 \section*{Acknowledgements}
 
@@ -109,6 +109,8 @@ Plan recognition in video games has been used in performing dynamic analysis in 
 
 \section{Artificial Intelligence and Board Games}
 
+NOT COMPLETE
+
 In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the birth of Artificial Intelligence as a field of research. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
 Interestingly though thirty five years earlier Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton[ref] capable of playing a king and rook endgame against a king from any position. It was considered the worlds first computer game and arguably the beginning of Artificial Intelligence and board games a relationship it appears older than the term Artificial Intelligence itself. 
@@ -123,6 +125,8 @@ Work by two guys at Stanford on A.I. \textbf{[ref]} agent to play R.I.S.K. They 
 
 \section{Aims}
 
+NOT COMPLETE
+
 \begin{itemize}
 \item
 To design and implement a plan recognition agent for the board game R.I.S.K.
@@ -133,6 +137,8 @@ To further understanding in the complexities of performing plan recognition in R
 \end{itemize}
 
 \section{Hypothesis}
+
+NOT COMPLETE
 
 What do you want to answer?
 
@@ -245,11 +251,9 @@ Developed and released by french film director Albert Lamorisse in 1957 as La Co
 \begin{figure}[h]
 \centering
 \includegraphics{images/risk-board}
-\caption{Risk Equipment}
+\caption{Risk Equipment \cite{riskimage}}
 \label{fig:risk-equipment}
 \end{figure}
-
-REFERENCE WHERE YOU GOT THIS FROM!
 
 The game consists of three pieces of equipment:
 
@@ -384,6 +388,8 @@ After the movement phase has been completed the players turn ends and another pl
 For each territory is a corresponding card. As well as name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is then awarded a card and no more than one in that turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing. Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
 
 \section{Why Plan Recognition in Board Games}
+
+NOT COMPLETE
 
 Algorithmic landmark - such as the solution of the game of checkers 
 
@@ -804,20 +810,20 @@ Before proceeding onto the next territory in $PT$ another loop is performed thro
 
 With the $generatePS$ operation and an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting action probabilities towards consistent actions, a technique of doing so in the R.I.S.K. environment was required. Based on reasoning about the implications of an action to an explanation, consistent actions were positively weighted and inconsistent negatively weighted, but by how much is the crucial question?
 
-SECTION NEEDS MORE WORK!
-
 The first approach to answer this was given a players pending set, the total number of actions are counted, these actions are then separated into consistent and inconsistent actions then a manually defined total weight is split among consistent and inconsistent respectively. For example out of a total action probability of 1.0, 0.5 would be distributed among consistent actions and 0.5 inconsistent actions. The idea behind this approach was that as the number of consistent actions decreased the likelihood of the them choosing the action given an explanation would in theory increase.
 
 Unfortunately this approach proved to be problematic in cases where the number of consistent and inconsistent probabilities were significantly different and even detrimental in cases where the number of inconsistent actions were greater. 
 
 For example, if there are:
 
-Case 1: 2 consistent actions and 4 inconsistent actions, Pr(cons) = 0.5 / 2 = 0.25 , Pr(incons) = 0.5 / 4 = 0.125 
-Case 2: 4 consistent actions and 2 inconsistent actions. Pr(cons) = 0.5 / 4 = 0.125, Pr(incons) = 0.5 / 2 = 0.25
+\begin{itemize}
+\item
+2 Consistent actions and 4 Inconsistent actions, $Pr(cons)$ = 0.5 / 2 = 0.25 , $Pr(incons)$ = 0.5 / 4 = 0.125 
+\item
+4 Consistent actions and 2 Inconsistent actions. $Pr(cons)$ = 0.5 / 4 = 0.125, $Pr(incons)$ = 0.5 / 2 = 0.25
+\end{itemize}
 
-These significant differences in probabilities resulted in large changes in the probability of an explanation, because of these issues it required an operation that would allow greater control over the weighting between consistent and inconsistent actions. The following pseudo-code details the operation:
-
-SECTION NEEDS MORE WORK!
+These significant differences in probabilities between actions resulted in large changes in the probability of an explanation, therefore it required an operation that would allow greater control over the weighting between consistent and inconsistent actions. The following pseudo-code details the operation:
 
 \begin{pseudocode}[ruled]{computeBaseWeight}{w, pTotalActNum, pConsActNum}
 \begin{algorithm}[H]
@@ -929,6 +935,8 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 \subsection{Example of Operation}
 
+NOT COMPLETE
+
 The concepts from this chapter can be tied together with an arbitrary example.
 
 In this example R.I.S.K map there are two explanations, Occupy-North-America-South-America (O-NA-SA) and Occupy-South-America-Africa (O-SA-A). 
@@ -948,6 +956,8 @@ Player one attacks a territory
 
 \subsection{Conceptual Issues}
 
+NOT COMPLETE
+
 Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
 
 Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
@@ -959,6 +969,8 @@ Using the constraints in the environment initially the model was based on the pl
 Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
 
 \section{Summary}
+
+NOT COMPLETE
 
 The summary for this section is
 
@@ -1047,6 +1059,8 @@ The plan recognition agent makes extensive use of the freely available Google Gu
 
 \section{Summary}
 
+NOT COMPLETE
+
 \chapter{Evaluation} 
 
 \section{Experiments}
@@ -1088,7 +1102,7 @@ For constricted play, the particular play style required was described to partic
 
 For free play it was made clear to participants that there were two primary methods of winning in mission risk. Either by eliminating all other participants from the game, or by completing their mission card.
 
-At the end of the game participants gave a short summary of their initial plan during the placement phase and any changes in plan from that during the course of the game.
+At the end of the game participants were asked to give a short summary of their initial plan and any changes to their plan during the course of the game.
 
 \section{Data Collection}
 
@@ -1117,17 +1131,7 @@ Using an system built by the original developers was able to easily reproduce a 
 
 \section{Experimental Findings}
 
-\textbf{Start with major insights and prove with data}
-
-Experiments with the plan recognition revealed several insights into the data:
-
-The prediction accuracy for winners is better than losers
-
-The difficulty of a mission has an affect on the prediction accuracy of the agent
-
-People perform better than the games A.I.
-
-Does it perform better on certain explanations? Why?
+\subsection{Explanation Convergence}
 
 Whether is converges?
 
@@ -1144,6 +1148,25 @@ SHOW AN EXAMPLE OF IT NOT CONVERGING
 How fast it converges?
 
 42 turns are required for the distribution of armies over the R.I.S.K map. After the remaining starting armies are distributed during this the probability of each explanation shifts by a small amount depending on whether the action was consistent or not. Once the distribution of armies is complete, which could be from 80 to 120 turns depending on the number of players, the probabilities move much more rapidly this is because the prediction agents model has been built to give attacks the most significance.
+
+\subsection{Insights}
+
+\textbf{Start with major insights and prove with data}
+
+\begin{enumerate}
+\item
+The prediction accuracy for winners is better than losers.
+\item
+The difficulty of a mission has an affect on the prediction accuracy of the agent.
+\item
+People perform better than the games A.I.
+\item
+Plan recognition detects that A.I. performs worse. 
+\end{enumerate}
+
+Experiments with the plan recognition revealed several insights into the data:
+
+Does it perform better on certain explanations? Why?
 
 Present table of general accuracy
 

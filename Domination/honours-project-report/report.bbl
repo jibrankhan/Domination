@@ -38,6 +38,10 @@ Robert~P. Goldman, Christopher~W. Geib, and Christopher~A. Miller.
 \newblock {A New Model of Plan Recognition}.
 \newblock {\em Artificial Intelligence}, 64:53--79, 1999.
 
+\bibitem{riskimage}
+{Image taken from}.
+\newblock {$http://www.insurgencygaming.com$}.
+
 \bibitem{conf/aaai/KautzA86}
 Henry~A. Kautz and James~F. Allen.
 \newblock {Generalized Plan Recognition}.
