@@ -144,7 +144,7 @@ Do certain explanations perform better? Why?
 
 In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
 
-Are there any common explanation misclassification occurences and why?
+Are there any common explanation misclassification occurrences and why?
 
 \begin{itemize}
 \item
@@ -152,7 +152,7 @@ To determine whether the accuracy of predictions are the same for winners and lo
 \item
 If the probability of a mission card is the highest among all the other mission cards of an agent, then it will be the correct mission card.
 \newline
-To determine whehter plan recongition algorihtms are beneficial in games, specifically R.I.S.K.
+To determine whether plan recognition algorithms are beneficial in games, specifically R.I.S.K.
 \end{itemize}
 
 Using more data from risk environment in the computation of the likelihood of explanations, the better the prediction accuracy will be.
@@ -523,7 +523,7 @@ Occupy Europe, South America and Australia.\newline
 
 Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction. This modelling choice has significant implications as a design modification to the PHATT algorithm and thus the plan recognition agent.
 
-ADD IN THAT NO NEED TO STORE DERIVATIVE TREES AS THEY ARE ALL HARDCODED INTO EXPLANATIONS
+ADD IN THAT NO NEED TO STORE DERIVATIVE TREES AS THEY ARE ALL HARD CODED INTO EXPLANATIONS
 
 DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT. <- MODELLING DIFFERENCE
 
@@ -583,7 +583,7 @@ Having defined the outcome of attacks as either successful or unsuccessful, atta
 \hline 
 SuccessfulAttack & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a failedAttack is in part due to a lack of armies which is suggestive that in cases the action has less significance than successfulAttack, as we could assume that players would choose not to attack if their chances of winning were poor.\\ 
+FailedAttack & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a FailedAttack is in part due to a lack of armies which is suggestive that in cases the action has less significance than SuccessfulAttack, as we could assume that players would choose not to attack if their chances of winning were poor.\\ 
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
@@ -898,7 +898,7 @@ That the likelihood of inconsistent attack actions are uniformly distributed.
 
 \subsubsection{Computing Explanation Probabilities}
 
-\begin{pseudocode}[ruled]{ComputeExpProb}{explanation, obs}
+\begin{pseudocode}[ruled]{computeExpProb}{explanation, obs}
 \begin{algorithm}[H]
 
 \If{\textbf{not} alreadyIni}{ 
@@ -1103,7 +1103,7 @@ Moves armies to a territory that is directly-consistent with their plan, or a te
 
 This artificially constructed form of play is designed to be a simple-working-example and should in theory be the easiest to perform plan recognition on. In doing so a high correct prediction accuracy is expected. If this is not the case then the resulting experiments should provide clear indication into why.
 
-\textit{A.I. Play} is done using the Domination programs existing implementationg of A.I. players for its various game modes. Domination A.I. players can be substituted for human players to the point where a game can consist of only Domination A.I. players' fighting each other, and by doing so can complete a game in a fraction of the time that human players do. By automating the collection of this plays data samples using an free macro program called AutoHotkey \textbf{[ref to autohotkey]}, provided an opportunity for the collection of a large number of data samples to analyse. 
+\textit{A.I. Play} is done using the Domination programs existing implementations of A.I. players for its various game modes. Domination A.I. players can be substituted for human players to the point where a game can consist of only Domination A.I. players' fighting each other, and by doing so can complete a game in a fraction of the time that human players do. By automating the collection of this plays data samples using an free macro program called AutoHotkey \textbf{[ref to autohotkey]}, provided an opportunity for the collection of a large number of data samples to analyse. 
 
 \section{Experimental Format}
 
@@ -1136,9 +1136,9 @@ After a game had finished the Domination program would generate a replay file, w
 \label{fig:dom-debug-gui}
 \end{figure} 
 
-Using this had significant implications, in that it would possible to re-observe games and so be a tool to assist with evaluation. It would also allow for testing the plan recongition agent again with different modelling and/or calibrations but in the exact same game and by doing so eliminate the environment as a variable between comparisons.
+Using this had significant implications, in that it would possible to re-observe games and so be a tool to assist with evaluation. It would also allow for testing the plan recognition agent again with different modelling and/or calibrations but in the exact same game and by doing so eliminate the environment as a variable between comparisons.
 
-In addition to Dominations replay file the plan recognition agent would similtaenously also generate a csv file recording the significant features of a game namely:
+In addition to Dominations replay file the plan recognition agent would simultaneously also generate a csv file recording the significant features of a game namely:
 
 \begin{itemize}
 \item
@@ -1199,7 +1199,7 @@ The difficulty of a mission has an affect on the prediction accuracy of the agen
 \item
 Human players are significantly better at completing missions than the Domination A.I.
 \item
-The plan recognition agent can detect when the Domination A.I. is giving less attentiong to completing its missions.\newline
+The plan recognition agent can detect when the Domination A.I. is giving less attention to completing its missions.\newline
 \end{enumerate}
 
 \subsubsection{Insight One}
@@ -1210,7 +1210,7 @@ From Table 7.1 we see that \textit{constrained play has a significantly higher a
 
 Most definitely a more natural and superior method of playing, players in Free and A.I. play perform actions that are either indirectly-consistent (which actually be seen by the plan recognition agent as inconsistent) or actions that are actually inconsistent, because their plan at that point is different to that of their mission. Either actions reduce the predicted probability of the correct explanation given the current model.
 
-In the context of constrained play, as players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not intefere.
+In the context of constrained play, as players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
 
 SUPPORT THIS CLAIM WITH DATA
 
@@ -1246,7 +1246,7 @@ Winners may occupy a continent in one turn and since sampling is done on a turn 
 
 WINNERS CONSTRAINED PLAY
 
-Table 7.4 shows two incorrect predictions, both \textit{Two-Continent+1} mission types, from analysis of eachs respective csv file both are shown to be incorrect for the same reason. 
+Table 7.4 shows two incorrect predictions, both \textit{Two-Continent+1} mission types, from analysis of each respective csv file both are shown to be incorrect for the same reason. 
 
 Mission Occupy-Europe-Australia-One
 
@@ -1272,7 +1272,7 @@ Losers who:
 
 \begin{itemize}
 \item
-are not eliminiated and partially complete their mission quickly.
+are not eliminated and partially complete their mission quickly.
 \item
 are not eliminated and partially complete their mission slowly
 \item
@@ -1301,11 +1301,11 @@ Would make sense seeing as there is a trend in other data showing lower percenta
 
 Accuracy of two-continent missions appear in general to be better.
 
-Asia-Africa appear to be lower prediction accuracy on average the A.I. play type, Asia is the hardest continent to conquer and therefore this might be causing the prediction accuracy to be the lowest, as players do not often choose to take asia first even if it is in their mission.
+Asia-Africa appear to be lower prediction accuracy on average the A.I. play type, Asia is the hardest continent to conquer and therefore this might be causing the prediction accuracy to be the lowest, as players do not often choose to take Asia first even if it is in their mission.
 
 INCLUDE BREAK DOWN FOR EACH TYPE OF EXPLANATION PREDICTION FOR TWO CONTINENT + 1 MISSIONS
 
-Is the prediction accuracy of any continent with asia in it worse? Could get a good indication of frequency of losers to winners with missions involving asia.Do a total across all plays of number of winners and losers.
+Is the prediction accuracy of any continent with Asia in it worse? Could get a good indication of frequency of losers to winners with missions involving Asia.Do a total across all plays of number of winners and losers.
 
 \subsubsection{Insight Four - Players better than A.I}
 
@@ -1317,22 +1317,22 @@ The inner workings of the A.I. player for mission game type according to the dev
 
 \subsubsection{Insight Five - Plan Recognition Agent successfully detects a change in the calibration of the Domination A.I.}
 
-The A.I. for the game has its deciesions skewed and varying this should in theory cause the A.I. to perform either better or worse depending on whether deciesions are skewed towards deciesions that are more consistent with the mission or away from deciesions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
+The A.I. for the game has its decisions skewed and varying this should in theory cause the A.I. to perform either better or worse depending on whether decisions are skewed towards decisions that are more consistent with the mission or away from decisions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
 
-The variable that deciedes this to what degree deciesions are skewed we will refer to as $w$.
+The variable that decides this to what degree decisions are skewed we will refer to as $w$.
 
 Two experiments were performed with different values of $w$, 4 its normal setting and 100 a significantly higher value.
 
 The prediction accuracies were in tables ....
 
-Now we could make the arguement that, 
+Now we could make the argument that, 
 
 Look at the length of the game, if length of the game is generally longer for weight 4 than weight 100, then we can propose that on weight 4
 
 Each A.I. is better and therefore game is longer
 Each A.I is worse and therefore game is longer
 
-Even accounting for the prediction agent not being highly accurate there is a significant noticable improvments in the prediction accuracy of the plan recognition agent and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
+Even accounting for the prediction agent not being highly accurate there is a significant noticeable improvements in the prediction accuracy of the plan recognition agent and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
 
 \subsection{Nature of Game}
 
@@ -1348,7 +1348,7 @@ PRESENT EXAMPLE
 
 \subsection{Simplicity of Model}
 
-How to differentiate between two identifical alternates? E.g predicton is equal between EU SA AU and EU AU SA 
+How to differentiate between two identical alternates? E.g prediction is equal between EU SA AU and EU AU SA 
 
 Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
 
@@ -1437,7 +1437,7 @@ The main insights and results from this...
 
 Allow for method choice probabilities again and use machine learning to computer better sub-goal choice probabilities based on preferences shown in training data.
 
-\subsubsection{More Sohisticated Action Probability Computations}
+\subsubsection{More Sophisticated Action Probability Computations}
 
 The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
 
@@ -1467,13 +1467,13 @@ Other than modelling attacks as two events where the result affect both involved
 
 Model does not take into account situations where players cannot perform any consistent actions and therefore any action that a player performs is considered inconsistent but actually could be indirectly-consistent. This could be improved by
 
-The model does not take into account the importance of territories. Each continent has a number of terriories which control entry into the continent. To elaborate each continent has a fixed number of these entry territories and if it were possible for a player to perfectly defend only the entry territories and occupy the remaining terriotries of the continent they would in theory never lose the continent as players must occupy the entry territory to be able to occupy other territories in that continent. The model does not take into consideration this.
+The model does not take into account the importance of territories. Each continent has a number of territories which control entry into the continent. To elaborate each continent has a fixed number of these entry territories and if it were possible for a player to perfectly defend only the entry territories and occupy the remaining territories of the continent they would in theory never lose the continent as players must occupy the entry territory to be able to occupy other territories in that continent. The model does not take into consideration this.
 
 Look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
 
 \subsubsection{Extension to Include Other Types of Mission Cards}
 
-Extension of the model to include other mission cards. Due to the design, eliminating players could be modelled but modelling Occupy 24, 18 due to design deciesion has such high overlap with all other missions it would be hard to model this.
+Extension of the model to include other mission cards. Due to the design, eliminating players could be modelled but modelling Occupy 24, 18 due to design decision has such high overlap with all other missions it would be hard to model this.
 
 A proposed method of modelling eliminating player missions
 
