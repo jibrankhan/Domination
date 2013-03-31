@@ -1077,34 +1077,33 @@ NOT COMPLETE
 
 \chapter{Evaluation} 
 
-\section{Experiments}
+The evaluation for this project consisted of evaluating the accuracy of the plan recognition agent in three experiments:
 
-\subsection{A.I. Play}
+\begin{enumerate}
+\item
+Free Play
+\item
+Constrained Play
+\item
+A.I Play
+\end{enumerate}
 
-Domination has existing A.I. player implementations for its various game modes. The A.I. players can be substituted for human players to the point where a game can consist of only A.I. players' fighting each other and so can complete a game in a fraction of the time that human players do. 
+\textit{Free Play} can simply be described players "playing to win". In this manner it is how human players normally play mission R.I.S.K.
 
-The collection of A.I. play data samples was automated using an free macro program called \textit{AutoHotkey}. By automating the process of initiating A.I. games, it provided an opportunity for the collection of a large number of data samples for evaluation purposes. 
-
-\subsection{Constrained Play}
-
-In this form of play, players are asked only to perform actions that are \textit{directly-consistent} with their root-goal.  More formally (excluding card related actions) given a set of actions a player will only either:
+\textit{Constrained Play} consists of players only performing actions that are directly-consistent with their root-goal.  More formally (excluding card related actions) given a set of actions, a player will only either:
 
 \begin{itemize}
 \item
-Choose to attack a territory that is directly-consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+Choose to attack a territory that is directly-consistent with their plan, or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 \item
-Reinforce a territory that is directly-consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+Reinforce a territory that is directly-consistent with their plan, or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 \item
-Moves armies to a territory that is directly-consistent with their plan or a territory that is on the shortest route to a territory that is directly consistent with their plan.
+Moves armies to a territory that is directly-consistent with their plan, or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 \end{itemize}
 
-RETHINK THIS SECTION?
+This artificially constructed form of play is designed to be a simple-working-example and should in theory be the easiest to perform plan recognition on. In doing so a high correct prediction accuracy is expected. If this is not the case then the resulting experiments should provide clear indication into why.
 
-This artificially constructed form of play is designed to be the comparatively easier to perform plan recognition on. By establishing that the algorithm works given that players behave only in a manner that is directly consistent with the mission they have been given, provides grounds to establish that the majority of incorrect classifications arise from players performing actions that are either indirectly-consistent or inconsistent with the players mission.
-
-\subsection{Free Play}
-
-Free play can be described simply as players "playing to win". In this manner it is how players normally play mission RISK.
+\textit{A.I. Play} is done using the Domination programs existing implementationg of A.I. players for its various game modes. Domination A.I. players can be substituted for human players to the point where a game can consist of only Domination A.I. players' fighting each other, and by doing so can complete a game in a fraction of the time that human players do. By automating the collection of this plays data samples using an free macro program called AutoHotkey \textbf{[ref to autohotkey]}, provided an opportunity for the collection of a large number of data samples to analyse. 
 
 \section{Experimental Format}
 
@@ -1112,34 +1111,47 @@ There were two experiment formats, one for constrained play, the other for free 
 
 For constricted play, the particular play style required was described to participants.
 
-For free play it was made clear to participants that there were two primary methods of winning in mission risk. Either by eliminating all other participants from the game, or by completing their mission card.
+For free play it was made clear to participants that there were two primary methods of winning in mission R.I.S.K. either by:
 
-At the end of the game participants were asked to give a short summary of their initial plan and any changes to their plan during the course of the game.
+\begin{enumerate}
+\item
+Eliminating all other players from the game.
+\item
+Completing their mission card.\newline
+\end{enumerate}
+
+At the end of the game participants were asked to give a short summary of their initial plan and any changes to that plan during the course of the game.
+
+\newpage
 
 \section{Data Collection}
 
-After a game was finished the program would generate a log file which when loaded through a debug user interface created by the developers, allowed a completely-independent and perfect replay of a full game. 
+After a game had finished the Domination program would generate a replay file, which if saved could be loaded at a later point through a specialised user interface for debugging created by the developers allowing a completely-independent and exact replay of the game.
 
-PICTURE OF DEBUG USER INTERFACE
+\begin{figure}[h]
+\centerline{
+\includegraphics{images/domination-debug-gui.png}
+}
+\caption{Domination Debug Graphical User Interface}
+\label{fig:dom-debug-gui}
+\end{figure} 
 
-This has significant implications in that the environment can be eliminated as a changing variable in the evaluation process since a game can be reproduced but with the plan recognition agent being implemented differently or with different probability calibrations. 
+Using this had significant implications, in that it would possible to re-observe games and so be a tool to assist with evaluation. It would also allow for testing the plan recongition agent again with different modelling and/or calibrations but in the exact same game and by doing so eliminate the environment as a variable between comparisons.
 
-the other a debug user interface created by the developers which allowed the replay of games perfectly. Using this tool meant it was possible to re-observe games and potentially test the plan recongition agent with different models and/or calibrations.
-
-Using tool created by the developer of saving "Debug Logs" which could be used to reproduce a game exactly, this allows the algorithm to be tested with different parameters on the exact same game thus ruling out any environmental difference when analysing data.
-
-The plan recognition agent similtaenously would also generate a csv recording the significant features of a game namely:
+In addition to Dominations replay file the plan recognition agent would similtaenously also generate a csv file recording the significant features of a game namely:
 
 \begin{itemize}
 \item
-Which player won and lost.
+Which player won and which players' lost.
 \item
 Each players actual mission card.
 \item
 The names and probabilities of each players respective explanations over the course of the game.
 \end{itemize}
 
-Python scripts were then used to automate the analysis of the generated csv files, the following section is the findings of that analysis. 
+Scripts written in the Python programming language were then used to automate the analysis of these generated csv files.
+
+\newpage
 
 \section{Experimental Findings}
 
@@ -1179,42 +1191,40 @@ Experiments with the plan recognition agent revealed the following insights into
 
 \begin{enumerate}
 \item
-Insights onto why players win and lose in the various modes.
-\item
 Constrained play has the best accuracy. 
 \item
 The prediction accuracy for winners is better than losers.
 \item
 The difficulty of a mission has an affect on the prediction accuracy of the agent.
 \item
-People perform better than the games A.I.
+Human players are significantly better at completing missions than the Domination A.I.
 \item
-Plan recognition detects that A.I. performs worse.\newline
+The plan recognition agent can detect when the Domination A.I. is giving less attentiong to completing its missions.\newline
 \end{enumerate}
-
-Do certain explanations perform better? Why?
-
-Why is the accuracy of winners better than losers?
-
-In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
-
-Do the accuracy of missions with two continents appear on average to be better?
 
 \subsubsection{Insight One}
 
-From Table 7.1 we see that \textit{constrained play has a significantly higher accuracy than the other types of play}. This finding is unsurprising as players only performed directly-consistent actions due to the artificial nature of constrained play. 
+From Table 7.1 we see that \textit{constrained play has a significantly higher accuracy than the other types of play}. This finding is unsurprising as due to the artificial nature of constrained play, players only performed directly-consistent actions and in the case of 
 
-Whereas in free play and A.I. play there is no requiement for players to be performing directly consistent actons only. Most definitely a more natural and superior method of playing players perform actions that are either indirectly-consistent (which actually be seen by the plan recognition agent as inconsistent) or actions that are actually inconsistent because their plan at that point is different to that of their mission. Either actions reduce the predicted probability of the correct explanation.
+ whereas in Free and A.I. play, players did not. 
 
-This type of play was designed to be ideal for correctly predicting explanations. Then what was the cause for 19.61\% to be incorrectly predicted? Looking at a break down of players who won (winners) and lost (losers) sheds more light on to this question. 
+Most definitely a more natural and superior method of playing, players in Free and A.I. play perform actions that are either indirectly-consistent (which actually be seen by the plan recognition agent as inconsistent) or actions that are actually inconsistent, because their plan at that point is different to that of their mission. Either actions reduce the predicted probability of the correct explanation given the current model.
 
 In the context of constrained play, as players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not intefere.
 
+SUPPORT THIS CLAIM WITH DATA
+
 SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES
+
+Constrained play was designed to be ideal for correctly predicting explanations. Then what was the cause for 19.61\% to be incorrectly predicted? Looking at a break down of players who won (winners) and lost (losers) sheds more light on to this question. 
 
 \subsubsection{Insight Two - Winner Losers}
 
+Why is the accuracy of winners better than losers?
+
 Table 7.2 shows that in every type of play \textit{the accuracy of winners has shown to be better then losers}. This though due to a number of reasons:
+
+Insights onto why players win and lose in the various modes.
 
 Different Categories of Winners and Losers
 
@@ -1276,7 +1286,13 @@ who are eliminated late
 \end{itemize}
 
 \subsubsection{Insight Three - Explanation Accuracy Analysis}
+
+In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
+
+Do certain explanations perform better? Why?
  
+Do the accuracy of missions with two continents appear on average to be better?
+
 For A.I. Play, winner and loser - Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
 
 The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder?
@@ -1309,7 +1325,14 @@ Two experiments were performed with different values of $w$, 4 its normal settin
 
 The prediction accuracies were in tables ....
 
-Even accounting for the prediction agent not being highly accurate there is a significant noticable improvment in the prediction accuracy of the plan recognition agent. But this infact tells us more about the Domination A.I. than the prediction agent, which has interesting implications.
+Now we could make the arguement that, 
+
+Look at the length of the game, if length of the game is generally longer for weight 4 than weight 100, then we can propose that on weight 4
+
+Each A.I. is better and therefore game is longer
+Each A.I is worse and therefore game is longer
+
+Even accounting for the prediction agent not being highly accurate there is a significant noticable improvments in the prediction accuracy of the plan recognition agent and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
 
 \subsection{Nature of Game}
 
@@ -1404,6 +1427,8 @@ Small number of data samples for free play and constrained winners, therefore an
 
 \section{Main insights and results}
 
+The main insights and results from this...
+
 \section{Future Work}
 
 \subsection{Model Augmentation}
@@ -1436,7 +1461,7 @@ E.G
 
 The model can be augmented further as any action could in fact be further decomposed into two types,\textit{directly-consistent} or \textit{indirectly-inconsistent}. For example a directly-consistent action would be to occupy a territory of an explanation, where as an indirectly-consistent action would be a player breaking another players continent by occupying a territory in that continent, as preventing other players from completing their mission makes completing ones own mission more likely. This distinction has not been taken into account as any action that is not directly-consistent is classified as an inconsistent action in the model and investigation into the effects of doing some may yield improvements.
 
-Only attack actions have been modelled in a manner other than scalin up by 1.02 and down by 0.98 to simulate the effects of small decreases and increases in likelihood. More sophisticated computation models of action probabilities could be investigated to capture the state of the game to a greater degree in each calculation rather than scaling.
+Only attack actions have been modelled in a manner other than scaling up by 1.02 and down by 0.98 to simulate the effects of small decreases and increases in likelihood. More sophisticated computation models of action probabilities could be investigated to capture the state of the game to a greater degree in each calculation rather than scaling.
 
 Other than modelling attacks as two events where the result affect both involved players, the model does not considered the effects. This could be improved by
 
@@ -1444,7 +1469,7 @@ Model does not take into account situations where players cannot perform any con
 
 The model does not take into account the importance of territories. Each continent has a number of terriories which control entry into the continent. To elaborate each continent has a fixed number of these entry territories and if it were possible for a player to perfectly defend only the entry territories and occupy the remaining terriotries of the continent they would in theory never lose the continent as players must occupy the entry territory to be able to occupy other territories in that continent. The model does not take into consideration this.
 
-Augmentation possibility - look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
+Look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
 
 \subsubsection{Extension to Include Other Types of Mission Cards}
 

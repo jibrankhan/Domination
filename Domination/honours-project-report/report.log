@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  31 MAR 2013 10:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  31 MAR 2013 12:03
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -503,40 +503,53 @@ Underfull \vbox (badness 2343) has occurred while \output is active []
 
 ]
  5.
-[35] [36]
-<images/example-good-convergence.pdf, id=176, 754.63933pt x 265.13054pt>
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 1120--1121
+
+ []
+
+[36] <images/domination-debug-gui.png, id=176, 262.73157pt x 236.38312pt>
+File: images/domination-debug-gui.png Graphic file (type png)
+
+<use images/domination-debug-gui.png>
+Package pdftex.def Info: images/domination-debug-gui.png used on input line 113
+4.
+(pdftex.def)             Requested size: 262.73091pt x 236.38254pt.
+ [37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/domination-debug-gui.png>]
+<images/example-good-convergence.pdf, id=183, 754.63933pt x 265.13054pt>
 File: images/example-good-convergence.pdf Graphic file (type pdf)
 
 <use images/example-good-convergence.pdf>
 Package pdftex.def Info: images/example-good-convergence.pdf used on input line
- 1153.
+ 1165.
 (pdftex.def)             Requested size: 754.63748pt x 265.12988pt.
 
-Overfull \hbox (11.89449pt too wide) in paragraph at lines 1160--1161
+Overfull \hbox (11.89449pt too wide) in paragraph at lines 1172--1173
 []\T1/cmr/m/n/12 TALK ABOUT HOW DO-ING AC-TIONS MAKE SOME EX-PLA-NA-TIONS MORE
  []
 
-[37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+[38 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
 eport/images/example-good-convergence.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1192--1193
+Underfull \hbox (badness 10000) in paragraph at lines 1202--1203
 
  []
 
-[38]
-Overfull \hbox (2.19412pt too wide) in paragraph at lines 1213--1214
+[39]
+Overfull \hbox (2.19412pt too wide) in paragraph at lines 1217--1218
 []\T1/cmr/m/n/12 SHOW THAT CON-STRAINED PLAY GAMES ARE ON AV-ER-AGE SHORTER
  []
 
-[39] [40] [41] [42] [43] [44] [45] [46
-
-]
+[40] [41] [42] [43] [44] [45] [46]
  6.
 
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1423--1424
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1448--1449
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
-[47] [48] [49] [50
+[47
+
+] [48] [49] [50
 
 ]
  7.
@@ -548,10 +561,10 @@ t\report.bbl [55] [56
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
 t\report.aux) ) 
 Here is how much of TeX's memory you used:
- 4830 strings out of 493921
- 69134 string characters out of 3147273
+ 4836 strings out of 493921
+ 69320 string characters out of 3147273
  156008 words of memory out of 3000000
- 8081 multiletter control sequences out of 15000+200000
+ 8086 multiletter control sequences out of 15000+200000
  16103 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,26n,38p,828b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -574,9 +587,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (63 pages, 974017 bytes).
+Output written on report.pdf (63 pages, 1120667 bytes).
 PDF statistics:
- 753 PDF objects out of 1000 (max. 8388607)
+ 755 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
