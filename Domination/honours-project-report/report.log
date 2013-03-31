@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  31 MAR 2013 12:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  31 MAR 2013 17:39
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -304,65 +304,44 @@ Underfull \hbox (badness 1057) in paragraph at lines 97--98
 []|\T1/cmr/m/n/12 Operating Sys-tems, In-tel-li-gent Help Sys-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 93--105
-
- []
-
 [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 130.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 131.
 
  ("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 131.
  [3] [4]
  2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
-
- []
-
 [5
 
 ] <images/example-plan-library.pdf, id=45, 451.6875pt x 105.39375pt>
 File: images/example-plan-library.pdf Graphic file (type pdf)
 
 <use images/example-plan-library.pdf>
-Package pdftex.def Info: images/example-plan-library.pdf used on input line 230
+Package pdftex.def Info: images/example-plan-library.pdf used on input line 220
 .
 (pdftex.def)             Requested size: 451.68639pt x 105.39348pt.
- [6] [7 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-proje
-ct-report/images/example-plan-library.pdf, page is rotated 90 degrees>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] [7 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-projec
+t-report/images/example-plan-library.pdf, page is rotated 90 degrees>]
 <images/risk-board.jpg, id=61, 192.72pt x 192.72pt>
 File: images/risk-board.jpg Graphic file (type jpg)
 
 <use images/risk-board.jpg>
-Package pdftex.def Info: images/risk-board.jpg used on input line 257.
+Package pdftex.def Info: images/risk-board.jpg used on input line 247.
 (pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
  [8 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
 eport/images/risk-board.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 281--283
+Underfull \hbox (badness 10000) in paragraph at lines 271--273
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 284--296
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 307--309
-
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
-
- []
-
-[10] [11]
+[9] [10] [11]
 Underfull \vbox (badness 1895) has occurred while \output is active []
 
  [12]
@@ -371,52 +350,47 @@ Underfull \vbox (badness 1895) has occurred while \output is active []
 ]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 448--449
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 459--460
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 521--522
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
 
  []
 
 [17] [18]
-Overfull \hbox (1.39836pt too wide) in paragraph at lines 580--589
+Overfull \hbox (1.39836pt too wide) in paragraph at lines 569--578
  [][] 
  []
 
 [19]
-Underfull \hbox (badness 1558) in paragraph at lines 613--614
+Underfull \hbox (badness 1558) in paragraph at lines 602--603
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (6.7846pt too wide) in paragraph at lines 607--616
+Overfull \hbox (6.7846pt too wide) in paragraph at lines 596--605
  [][] 
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 685--686
+Underfull \hbox (badness 10000) in paragraph at lines 674--675
 
  []
 
@@ -424,50 +398,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 685--686
 Underfull \vbox (badness 3199) has occurred while \output is active []
 
  [22]
-Underfull \hbox (badness 10000) in paragraph at lines 708--709
+Underfull \hbox (badness 10000) in paragraph at lines 697--698
 
  []
 
 [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 751--773
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 740--762
 $[]$ 
  []
 
 [24]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 787--815
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 776--804
 $[]$ 
  []
 
 
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 819--820
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 808--809
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [25]
-Overfull \hbox (42.48602pt too wide) in paragraph at lines 838--849
+Overfull \hbox (42.48602pt too wide) in paragraph at lines 827--838
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; pTotal
 ActNum; pConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 838--849
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 827--838
 $[]$ 
  []
 
 [26]
-Overfull \hbox (4.83934pt too wide) in paragraph at lines 857--880
+Overfull \hbox (4.83934pt too wide) in paragraph at lines 846--869
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 857--880
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 846--869
 $[]$ 
  []
 
 [27]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 901--940
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 890--929
 $[]$ 
  []
 
@@ -475,10 +449,10 @@ $[]$
 File: images/risk-plan-library.pdf Graphic file (type pdf)
 
 <use images/risk-plan-library.pdf>
-Package pdftex.def Info: images/risk-plan-library.pdf used on input line 954.
+Package pdftex.def Info: images/risk-plan-library.pdf used on input line 946.
 (pdftex.def)             Requested size: 376.40532pt x 129.48341pt.
 
-Overfull \hbox (14.63141pt too wide) in paragraph at lines 954--955
+Overfull \hbox (14.63141pt too wide) in paragraph at lines 946--947
 [][] 
  []
 
@@ -490,9 +464,47 @@ File: images/event-driven-architecture.pdf Graphic file (type pdf)
 
 <use images/event-driven-architecture.pdf>
 Package pdftex.def Info: images/event-driven-architecture.pdf used on input lin
-e 999.
+e 991.
 (pdftex.def)             Requested size: 445.87468pt x 75.36136pt.
- [31
+
+Underfull \hbox (badness 10000) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 attackerName, con-ti-nent-Name,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 attackerName, con-ti-nent-Name,
+ []
+
+
+Underfull \hbox (badness 3179) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 at-tack-er-Name \T1/cmr/m/n/12 p
+er-formed a
+ []
+
+
+Underfull \hbox (badness 6510) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 defenderName, con-ti-nent-Name,
+ []
+
+
+Underfull \hbox (badness 6510) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 defenderName, con-ti-nent-Name,
+ []
+
+
+Underfull \hbox (badness 2343) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 de-fend-er-Name \T1/cmr/m/n/12 p
+er-formed a
+ []
+
+
+Underfull \hbox (badness 4660) in paragraph at lines 1043--1043
+[]|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 play-er-Name \T1/cmr/m/n/12 per-
+formed an
+ []
+
+[31
 
  <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/images/event-driven-architecture.pdf>]
@@ -503,17 +515,12 @@ Underfull \vbox (badness 2343) has occurred while \output is active []
 
 ]
  5.
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 1120--1121
-
- []
-
-[36] <images/domination-debug-gui.png, id=176, 262.73157pt x 236.38312pt>
+[35] [36] <images/domination-debug-gui.png, id=176, 262.73157pt x 236.38312pt>
 File: images/domination-debug-gui.png Graphic file (type png)
 
 <use images/domination-debug-gui.png>
-Package pdftex.def Info: images/domination-debug-gui.png used on input line 113
-4.
+Package pdftex.def Info: images/domination-debug-gui.png used on input line 112
+6.
 (pdftex.def)             Requested size: 262.73091pt x 236.38254pt.
  [37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/domination-debug-gui.png>]
@@ -522,28 +529,23 @@ File: images/example-good-convergence.pdf Graphic file (type pdf)
 
 <use images/example-good-convergence.pdf>
 Package pdftex.def Info: images/example-good-convergence.pdf used on input line
- 1165.
+ 1157.
 (pdftex.def)             Requested size: 754.63748pt x 265.12988pt.
 
-Overfull \hbox (11.89449pt too wide) in paragraph at lines 1172--1173
+Overfull \hbox (11.89449pt too wide) in paragraph at lines 1164--1165
 []\T1/cmr/m/n/12 TALK ABOUT HOW DO-ING AC-TIONS MAKE SOME EX-PLA-NA-TIONS MORE
  []
 
 [38 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
-eport/images/example-good-convergence.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1202--1203
-
- []
-
-[39]
-Overfull \hbox (2.19412pt too wide) in paragraph at lines 1217--1218
+eport/images/example-good-convergence.pdf>] [39]
+Overfull \hbox (2.19412pt too wide) in paragraph at lines 1213--1214
 []\T1/cmr/m/n/12 SHOW THAT CON-STRAINED PLAY GAMES ARE ON AV-ER-AGE SHORTER
  []
 
 [40] [41] [42] [43] [44] [45] [46]
  6.
 
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1448--1449
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1445--1446
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
@@ -563,7 +565,7 @@ t\report.aux) )
 Here is how much of TeX's memory you used:
  4836 strings out of 493921
  69320 string characters out of 3147273
- 156008 words of memory out of 3000000
+ 157008 words of memory out of 3000000
  8086 multiletter control sequences out of 15000+200000
  16103 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -587,9 +589,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (63 pages, 1120667 bytes).
+Output written on report.pdf (63 pages, 1122595 bytes).
 PDF statistics:
- 755 PDF objects out of 1000 (max. 8388607)
+ 754 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
