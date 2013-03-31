@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  31 MAR 2013 17:39
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  31 MAR 2013 19:52
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -350,47 +350,50 @@ Underfull \vbox (badness 1895) has occurred while \output is active []
 ]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 419--420
+Underfull \hbox (badness 10000) in paragraph at lines 417--418
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 433--434
 
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+
+Underfull \vbox (badness 4266) has occurred while \output is active []
+
+ [15]
+Underfull \hbox (badness 10000) in paragraph at lines 444--445
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+Underfull \hbox (badness 10000) in paragraph at lines 506--507
 
  []
 
 [17] [18]
-Overfull \hbox (1.39836pt too wide) in paragraph at lines 569--578
+Overfull \hbox (1.39836pt too wide) in paragraph at lines 565--574
  [][] 
  []
 
 [19]
-Underfull \hbox (badness 1558) in paragraph at lines 602--603
+Underfull \hbox (badness 1558) in paragraph at lines 598--599
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (6.7846pt too wide) in paragraph at lines 596--605
+Overfull \hbox (6.7846pt too wide) in paragraph at lines 592--601
  [][] 
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 674--675
+Underfull \hbox (badness 10000) in paragraph at lines 670--671
 
  []
 
@@ -398,50 +401,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 674--675
 Underfull \vbox (badness 3199) has occurred while \output is active []
 
  [22]
-Underfull \hbox (badness 10000) in paragraph at lines 697--698
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
 
  []
 
 [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 740--762
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 736--758
 $[]$ 
  []
 
 [24]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 776--804
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 772--800
 $[]$ 
  []
 
 
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 808--809
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 804--805
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [25]
-Overfull \hbox (42.48602pt too wide) in paragraph at lines 827--838
+Overfull \hbox (42.48602pt too wide) in paragraph at lines 823--834
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; pTotal
 ActNum; pConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 827--838
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 823--834
 $[]$ 
  []
 
 [26]
-Overfull \hbox (4.83934pt too wide) in paragraph at lines 846--869
+Overfull \hbox (4.83934pt too wide) in paragraph at lines 842--865
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 846--869
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 842--865
 $[]$ 
  []
 
 [27]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 890--929
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 886--925
 $[]$ 
  []
 
@@ -449,10 +452,10 @@ $[]$
 File: images/risk-plan-library.pdf Graphic file (type pdf)
 
 <use images/risk-plan-library.pdf>
-Package pdftex.def Info: images/risk-plan-library.pdf used on input line 946.
+Package pdftex.def Info: images/risk-plan-library.pdf used on input line 942.
 (pdftex.def)             Requested size: 376.40532pt x 129.48341pt.
 
-Overfull \hbox (14.63141pt too wide) in paragraph at lines 946--947
+Overfull \hbox (14.63141pt too wide) in paragraph at lines 942--943
 [][] 
  []
 
@@ -464,42 +467,42 @@ File: images/event-driven-architecture.pdf Graphic file (type pdf)
 
 <use images/event-driven-architecture.pdf>
 Package pdftex.def Info: images/event-driven-architecture.pdf used on input lin
-e 991.
+e 987.
 (pdftex.def)             Requested size: 445.87468pt x 75.36136pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1043--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 attackerName, con-ti-nent-Name,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1043--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 attackerName, con-ti-nent-Name,
  []
 
 
-Underfull \hbox (badness 3179) in paragraph at lines 1043--1043
+Underfull \hbox (badness 3179) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 at-tack-er-Name \T1/cmr/m/n/12 p
 er-formed a
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 1043--1043
+Underfull \hbox (badness 6510) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 defenderName, con-ti-nent-Name,
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 1043--1043
+Underfull \hbox (badness 6510) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 defenderName, con-ti-nent-Name,
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 1043--1043
+Underfull \hbox (badness 2343) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 de-fend-er-Name \T1/cmr/m/n/12 p
 er-formed a
  []
 
 
-Underfull \hbox (badness 4660) in paragraph at lines 1043--1043
+Underfull \hbox (badness 4660) in paragraph at lines 1039--1039
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 play-er-Name \T1/cmr/m/n/12 per-
 formed an
  []
@@ -520,32 +523,24 @@ File: images/domination-debug-gui.png Graphic file (type png)
 
 <use images/domination-debug-gui.png>
 Package pdftex.def Info: images/domination-debug-gui.png used on input line 112
-6.
+2.
 (pdftex.def)             Requested size: 262.73091pt x 236.38254pt.
  [37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/domination-debug-gui.png>]
-<images/example-good-convergence.pdf, id=183, 754.63933pt x 265.13054pt>
-File: images/example-good-convergence.pdf Graphic file (type pdf)
-
-<use images/example-good-convergence.pdf>
-Package pdftex.def Info: images/example-good-convergence.pdf used on input line
- 1157.
-(pdftex.def)             Requested size: 754.63748pt x 265.12988pt.
-
-Overfull \hbox (11.89449pt too wide) in paragraph at lines 1164--1165
-[]\T1/cmr/m/n/12 TALK ABOUT HOW DO-ING AC-TIONS MAKE SOME EX-PLA-NA-TIONS MORE
+Overfull \hbox (2.53506pt too wide) in paragraph at lines 1165--1166
+[]\T1/cmr/m/n/12 Keeping in mind the ini-tial hy-poth-e-sis, we pri-mar-ily at-
+tempt to de-ter-mine whether
  []
 
-[38 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
-eport/images/example-good-convergence.pdf>] [39]
-Overfull \hbox (2.19412pt too wide) in paragraph at lines 1213--1214
+[38] [39] [40] [41] [42]
+Overfull \hbox (2.19412pt too wide) in paragraph at lines 1338--1339
 []\T1/cmr/m/n/12 SHOW THAT CON-STRAINED PLAY GAMES ARE ON AV-ER-AGE SHORTER
  []
 
-[40] [41] [42] [43] [44] [45] [46]
+[43] [44] [45] [46]
  6.
 
-Overfull \hbox (1.61784pt too wide) in paragraph at lines 1445--1446
+Overfull \hbox (1.61784pt too wide) in paragraph at lines 1455--1456
 []\T1/cmr/m/n/12 MAKING A TIERED WEIGHT-ING SYS-TEM FOR THE CUR-RENT METHOD
  []
 
@@ -563,10 +558,10 @@ t\report.bbl [55] [56
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
 t\report.aux) ) 
 Here is how much of TeX's memory you used:
- 4836 strings out of 493921
- 69320 string characters out of 3147273
+ 4830 strings out of 493921
+ 69103 string characters out of 3147273
  157008 words of memory out of 3000000
- 8086 multiletter control sequences out of 15000+200000
+ 8081 multiletter control sequences out of 15000+200000
  16103 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,26n,38p,828b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -589,9 +584,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (63 pages, 1122595 bytes).
+Output written on report.pdf (63 pages, 799494 bytes).
 PDF statistics:
- 754 PDF objects out of 1000 (max. 8388607)
+ 751 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

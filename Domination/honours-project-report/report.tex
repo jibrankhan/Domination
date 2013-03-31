@@ -404,8 +404,6 @@ The summary of the chapter is ...
 
 \chapter{Design}
 
-NEED MORE MATH EXAMPLES
-
 \section{Introduction to PHATT}
 
 PHATT was published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246}. PHATT's approach is that plans are executed dynamically and the set of actions that an agent can take at each step, their \textit{pending set} depends critically on the actions that the agent has previously taken, this formed the basis of their model of plan execution.
@@ -508,15 +506,13 @@ Occupy Europe, South America and North America.
 Occupy Europe, South America and Australia.\newline
 \end{itemize}
 
-Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction. This modelling choice has significant implications as a design modification to the PHATT algorithm and thus the plan recognition agent.
+Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction.
 
-ADD IN THAT NO NEED TO STORE DERIVATIVE TREES AS THEY ARE ALL HARD CODED INTO EXPLANATIONS
+As PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together, choosing to operate on a fully enumerated set of root-goals effectively removes the term \textit{Pr}(\textit{plans}|\textit{goals}), the probability of choosing a sub-goal, from the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}. This modelling choice is thus a design modification to the PHATT algorithm and so the plan recognition agent.
 
-DO NO COMPUTATION OF NEW EXPLANATIONS AS AN INSTANCE OF THEM ARE ASSIGNED AT THE START. MEANING ACCORDING TO PHATT A LIST OF PENDING SETS SHOULD BE SAVED AND A LIST OF ACTIONS AN AGENT HAS TAKEN, BUT I HAVE NOT DONE THAT. <- MODELLING DIFFERENCE
+By hard coding every root-goal as explanations of a players behaviour; then assigning that full set of explanations to each player from the start of the game, provided action probabilties are computed, multipled with each explanation then stored immediatly as soon as they occur. There is no need to store a history of pending sets, to save a list of actions a player has taken or to create and calculate new instances of explanations. This method is similar to that of the 'Test and Generate' algorithm propsed in PHATTs paper rather than the dynamic algorithm proposed at the end of the paper.
 
-As PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together, choosing to operate on a fully enumerated set of root-goals effectively removes the term \textit{Pr}(\textit{plans}|\textit{goals}), the probability of choosing a sub-goal, from the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}.
-
-By modelling every root-goal as an explanation of a players behaviour, then assigning that full set of explanations to each player from the start of the game. What is measured over the course of the game is the probability of each explanation of a players behaviour and the highest probability by the end of the game is the plan recognition agents prediction.
+What is then measured over the course of the game is the probability of each explanation of a players behaviour and the highest probability by the end of the game is the plan recognition agents prediction.
 
 \subsection{Actions}
 
@@ -1065,7 +1061,7 @@ The plan recognition agent makes extensive use of the freely available Google Gu
 
 \section{Summary}
 
-NOT COMPLETE
+The plan recognition agent was written in the Java programming language following an event-driven system architecture. It operated in parallel to the Domination program recieving events fired from the program to update data structures it held locally that contained information about each players explanation predictions.
 
 \chapter{Evaluation} 
 
@@ -1147,43 +1143,11 @@ Scripts written in the Python programming language were then used to automate th
 
 \section{Experimental Findings}
 
-\subsection{Explanation Convergence}
-
-Whether is converges?
-
-\begin{figure}[h]
-\centerline{
-\includegraphics{images/example-good-convergence}
-}
-\caption{Example Convergence}
-\label{fig:example-good-convergence}
-\end{figure} 
-
-Find a more complicated graph
-
-TALK ABOUT HOW DOING ACTIONS MAKE SOME EXPLANATIONS MORE LIKELY AND OTHERS LESS LIKELY
-
-THEN AMONGST A GROUP OF LIKELY EXPLANATIONS SOME BECOME MORE LIKELY AND OTHER LESS LIKELY
-
-It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
-
-SHOW AN EXAMPLE OF IT NOT CONVERGING
-
-How fast it converges?
-
-At the start of a game fourty-two turns are required to place one army on each territory of the R.I.S.K map. After this the remaining initial armies are distributed by players on the terriories they were randomly assigned. During this time the probability of explanations that are consistent with the actions a player is performing will slowly rise, whereas explanations that are inconsistent will fall.
-
-Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players), the probabilities of each explanation move much more rapidly as the attack phase begins soon after. This behaviour is due to the prediction agents model which has been built to give attack actions the greatest significance.
-
-After the current player $p_c$ turn is over, other players get their attack phases and unless the action another player performs is to attack a territory owned by $p_c$ then the probabilities of $p_c$ explanations remained unaffected.
-
-\subsection{Insights}
-
-\textbf{Start with major insights and prove with data}
-
 Experiments with the plan recognition agent revealed the following insights:
 
 \begin{enumerate}
+\item
+The accuracy of the prediction agent is 32.61\% better than random guess.
 \item
 Constrained play has the best accuracy. 
 \item
@@ -1196,39 +1160,73 @@ The prediction accuracy of human players is significantly better than the domina
 From the prediction accuracy of the plan recognition agent, we can infer when the domination A.I. gives less significance to completing its missions.
 \item
 The length of game does...
-\item
-
 \end{enumerate}
+
+Keeping in mind the initial hypothesis, we primarily attempt to determine whether plan recognition algorithms are beneficial in games, specifically R.I.S.K.
+
+To do this we explore two questions:
+
+\begin{itemize}
+\item
+Does the plan recognition agent converges on the correct explanation?
+\item
+How fast it converges.
+\end{itemize}
+
+\subsection{Explanation Convergence}
+
+Given there are six mission cards, random guess of a players mission card returns an accuracy of 16.67\%. According to Table 7.1, at its worse the plan recongition agent performs 8.47\% better than random guess and at its best 63.72\% better, though this is for constrained play. 
+
+Table 7.1 reveals that in fact \textit{constrained play has a significantly higher accuracy than the other types of play}. This is unsurprising due to the artificial nature of constrained play. Players only performed directly-consistent actions whereas in Free and A.I. play, players did not. Constrained play was designed to be ideal for correctly predicting explanations and therefore is in actuality is solely not a good measure to evaluate the success of the plan recognition agent, though this does not imply data from constrained play cannot be used to evaluate the plan recognition agent.
+
+Free and A.I. play though are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent  primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the prediction agent is rather Free Play as prediction accuracies of human players is most significant. Therefore \textit{the plan recognition agent is 32.61\% better than random guess} and so indeed does converge on the correct explanation 49.28\% of the time.
+
+We then ask why did it not successfully converge on the correct explanation 50.72\% of the time? 
+
+\subsubsection{Successful Convergence}
+
+In general the format for successful convergence of the agents explanation probabilites is as follows.
+
+At the start of a game fourty-two turns are required to place one army on each territory of the R.I.S.K map. After this the remaining initial armies are distributed by players on the terriories they were randomly assigned. During this time the probability of explanations that are consistent with the actions a player is performing will slowly rise, whereas explanations that are inconsistent will fall.
+
+Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players), the probabilities of each explanation move much more rapidly as the attack phase begins soon after. This behaviour is due to the prediction agents model which has been built to give attack actions the greatest significance.
+
+After the current player $p_c$ turn is over, other players get their attack phases and unless the action another player performs is to attack a territory owned by $p_c$ then the probabilities of $p_c$ explanations remained unaffected. 
+
+This continues till the end of the game.
+
+Analysing why players won (winners) and lost (losers) sheds more light on to this question. 
+ 
+Table 7.2 shows that in every type of play \textit{the prediction accuracy of winners has shown to be better than that of losers}.
+
+Present cases where it does converge
+
+Present cases where it does not converge
+
+It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
+
+\subsubsection{Unsuccessful Convergence}
+
+
+\subsection{Convergence Speed}
+
+SHOW AN EXAMPLE OF IT NOT CONVERGING
+
+How fast it converges?
+
+\subsection{Insights}
+
+\textbf{Start with major insights and prove with data}
 
 \subsubsection{Insight One}
 
-From Table 7.1 we see that \textit{constrained play has a significantly higher accuracy than the other types of play}. This finding is unsurprising as due to the artificial nature of constrained play, players only performed directly-consistent actions whereas in Free and A.I. play, players did not. 
-
-Most definitely a more natural method of playing, players in Free and A.I. play perform actions that are either indirectly-consistent or inconsistent  because their plan at that point is different to that of their mission. What is interpret though is. Either actions reduce the predicted probability of the correct explanation given the current model.
-
-In the context of constrained play, as players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
-
-SUPPORT THIS CLAIM WITH DATA
-
-SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES
-
-Constrained play was designed to be ideal for correctly predicting explanations. Then what was the cause for 19.61\% to be incorrectly predicted? Analysing why players won (winners) and lost (losers) sheds more light on to this question. 
-
 \subsubsection{Insight Two - Winner Losers}
-
-Insights onto why players win and lose in the various modes.
 
 Why is the accuracy of winners better than losers?
 
-Table 7.2 shows that in every type of play \textit{the prediction accuracy of winners has shown to be better than that of losers}. Though there is a clear distinction in R.I.S.K between who won a game and who lost, \textit{how} they won can be generalised initially to winning a long game and winning a short game. 
 
-Winners by definition have successfully performed their mission or will have eliminated every player, in their case they will have performed each consistent action for a mission atleast once. Therefore the shorter the game the more likely the prediction will be correct for the winner. GET DATA TO SUPPORT THIS! HYPOTHESIS?
 
-The prediction accuracy in longer games for each
-
-the most consistent actions but this is not necessarily true winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
-
-As by definition winners must have completed their mission, the key difference between types of winners is how well they won. For R.I.S.K. this is based on a combination of luck and skill.
+but this is not necessarily true winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
 
 \begin{itemize}
 \item
@@ -1239,11 +1237,19 @@ won with significant opposition.
 
 GENERAL REASONS WHY WINNERS ACCURACY IS BETTER
 
+Winners by definition have successfully performed their mission or will have eliminated every player, in their case they will have performed each consistent action for a mission atleast once. Therefore the shorter the game the more likely the prediction will be correct for the winner. GET DATA TO SUPPORT THIS!
+
+WHY WINNERS IS WORSE
+
 Winners may occupy a continent in one turn and since sampling is done on a turn by turn basis it may miss a significant change in probabilities as the turn they occupied the continent was the last turn.
+
+General reasons why loser accuracy is worse
+
+A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the predicton will be wrong, inversely it may be correct for the very same reason.
 
 WINNERS CONSTRAINED PLAY
 
-Table 7.4 shows two incorrect predictions, both \textit{Two-Continent+1} mission types, from analysis of each respective csv file both are shown to be incorrect for the same reason. 
+Table 7.4 shows two incorrect predictions for winners in constrained play. Both were \textit{Two-Continent+1} mission types and from analysis of each both are shown to be incorrect for the same reason. 
 
 Mission Occupy-Europe-Australia-One
 
@@ -1254,10 +1260,6 @@ Mission Occupy-Europe-South-America-One
 INCLUDE TABLE OF TWO EQUAL FINAL PROBABILITIES
 
 The final prediction probabilities of both were split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an \textit{inconclusive} prediction.
-
-WINNERS FREE PLAY
-
-WINNERS A.I. PLAY
 
 Losers are often prevented from successfully achieving their goal.
 
@@ -1280,17 +1282,19 @@ who are eliminated late
 
 GENERAL REASONS WHY LOSERS ACCURACY IS WORSE
 
-A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the predicton will be wrong, inversely it may be correct for the very same reason.
-
 \subsubsection{Insight Three - Explanation Accuracy Analysis}
 
-In what way does overlap of missions effect predictions? Is it negative or positive, or is it both?
+In what way does overlap of missions between players effect predictions? Is it negative or positive, or is it both?
 
 Do certain explanations perform better? Why?
- 
-Do the accuracy of missions with two continents appear on average to be better?
 
-For A.I. Play, winner and loser - Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better?
+Constrained play two-continents appear to be better.
+
+Definite trend that two-continent-missions are predicted worse than others for a.i, very poor accuracy for weight 4.
+ 
+Do the accuracy of missions with two continents appear on average to be better? No
+
+For A.I. Play, winner and loser - Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better? Explore this
 
 The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder?
 
@@ -1304,9 +1308,7 @@ Is the prediction accuracy of any mission with Asia in it worse? Could get a goo
 
 \subsubsection{Insight Four - Players accuracy better than A.I}
 
-Comparing table 7.3 to table 7.9 and 7.12 we see that in general that prediction accuracies on human players are better than on A.I. players, it is impotant to note this does not have bearings on how good either is at playing R.I.S.K.
-
-There is though a number of reasons that may explain this.
+Comparing table 7.3 to table 7.9 and 7.12 we see that in general that prediction accuracies for human players are better than that of A.I. players.
 
 According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
 
@@ -1327,13 +1329,21 @@ Look at the length of the game, if length of the game is generally longer for we
 Each A.I. is better and therefore game is longer
 Each A.I is worse and therefore game is longer
 
-Even accounting for the prediction agent not being highly accurate there is a significant noticeable improvements in the prediction accuracy of the plan recognition agent and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
+There is a significant improvements in the prediction accuracy of the plan recognition agent from $w$4 to $w$100 and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
+
+\subsubsection{Insight Six - Length of Game affects game}
+
+In the context of constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
+
+SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES
+
+\subsubsection{Insight Seven - Prediction accuracy over time}
 
 \subsection{Nature of Game}
 
 The nature of R.I.S.K. is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
 
-Given the model these changes in behaviour are often directly inconsistent with their own mission. Instead this behaviour to the plan recognition agent seems consistent with whatever explanation that those actions \textit{are} directly consistent with instead.
+Given the model these changes in behaviour are see as directly-inconsistent with their own mission and rather seems consistent with whatever explanation that those actions \textit{are} directly consistent with instead.
 
 Given this environment and the high-level of overlap between missions the results are misclassification.
 
@@ -1455,6 +1465,8 @@ E.G
 0.4 WEIGHT FOR 1/10 THE NUMBER OF CONSISTENT ATTACK ACTIONS IN SET OF ALL ATTACK ACTIONS
 
 \subsubsection{More Sophisticated Modelling of Current Model}
+
+Players in these perform actions that are either indirectly-consistent or inconsistent  primarily because their plan at that point may be different to that of their mission. Either type of action reduces the probability of the correct explanation given the current model. MODEL TO TAKE THIS INTO ACCOUNT
 
 The model can be augmented further as any action could in fact be further decomposed into two types,\textit{directly-consistent} or \textit{indirectly-inconsistent}. For example a directly-consistent action would be to occupy a territory of an explanation, where as an indirectly-consistent action would be a player breaking another players continent by occupying a territory in that continent, as preventing other players from completing their mission makes completing ones own mission more likely. This distinction has not been taken into account as any action that is not directly-consistent is classified as an inconsistent action in the model and investigation into the effects of doing some may yield improvements.
 
