@@ -1,7 +1,49 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: report.aux
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: mybibfile.bib
 Warning--empty journal in journals/ai/CharniakG93
 Warning--empty journal in riskimage
 Warning--empty year in riskimage
+You've used 14 entries,
+            2118 wiz_defined-function locations,
+            602 strings with 6668 characters,
+and the built_in function-call counts, 4291 in all, are:
+= -- 427
+> -- 183
+< -- 2
++ -- 70
+- -- 55
+* -- 273
+:= -- 736
+add.period$ -- 46
+call.type$ -- 14
+change.case$ -- 65
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 174
+empty$ -- 355
+format.name$ -- 55
+if$ -- 899
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 12
+newline$ -- 73
+num.names$ -- 36
+pop$ -- 76
+preamble$ -- 1
+purify$ -- 52
+quote$ -- 0
+skip$ -- 117
+stack$ -- 0
+substring$ -- 231
+swap$ -- 29
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 3
+while$ -- 48
+width$ -- 16
+write$ -- 156
 (There were 3 warnings)

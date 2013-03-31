@@ -42,6 +42,12 @@ Robert~P. Goldman, Christopher~W. Geib, and Christopher~A. Miller.
 {Image taken from}.
 \newblock {$http://www.insurgencygaming.com$}.
 
+\bibitem{jlozanodbratz}
+{Juan Lozano, Dane Bratz}.
+\newblock {A Risky Proposal: Designing a Risk Game Playing Agent}.
+\newblock Technical report, Stanford, 2012.
+\newblock {(Machine Learning Final Project)}.
+
 \bibitem{conf/aaai/KautzA86}
 Henry~A. Kautz and James~F. Allen.
 \newblock {Generalized Plan Recognition}.
@@ -70,5 +76,11 @@ Gabriel Synnaeve and Pierre Bessi{\`e}re.
   Seventh {AAAI} Conference on Artificial Intelligence and Interactive Digital
   Entertainment, {AIIDE} 2011, October 10-14, 2011, Stanford, California,
   {USA}}. The AAAI Press, 2011.
+
+\bibitem{michaelwolf}
+Michael Wolf.
+\newblock {\em An Intelligent Artificial Player for the Game of Risk}.
+\newblock PhD thesis, Darmstadt University of Technology, 2005.
+\newblock (Unpublished Doctoral Dissertation).
 
 \end{thebibliography}
