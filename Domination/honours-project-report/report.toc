@@ -56,22 +56,30 @@
 \contentsline {subsection}{\numberline {5.4.1}Explanation Convergence}{37}
 \contentsline {subsection}{\numberline {5.4.2}Insights}{38}
 \contentsline {subsubsection}{\numberline {5.4.2.1}Insight One}{39}
-\contentsline {subsubsection}{\numberline {5.4.2.2}Insight Two}{40}
-\contentsline {subsubsection}{\numberline {5.4.2.3}Insight Three}{40}
-\contentsline {subsection}{\numberline {5.4.3}Nature of Game}{41}
-\contentsline {subsection}{\numberline {5.4.4}Simplicity of Model}{41}
-\contentsline {section}{\numberline {5.5}Outcomes}{43}
-\contentsline {section}{\numberline {5.6}Criticism}{43}
-\contentsline {chapter}{\numberline {6}Conclusions}{45}
-\contentsline {section}{\numberline {6.1}Summary of whole report}{45}
-\contentsline {section}{\numberline {6.2}Main insights and results}{45}
-\contentsline {section}{\numberline {6.3}Future Work}{45}
-\contentsline {chapter}{\numberline {7}Appendix}{49}
-\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{49}
-\contentsline {subsection}{\numberline {7.1.1}General Prediction Accuracy}{49}
-\contentsline {subsection}{\numberline {7.1.2}Free Play}{50}
-\contentsline {subsection}{\numberline {7.1.3}Constrained Play}{51}
-\contentsline {subsection}{\numberline {7.1.4}A.I. Play - Weight 100}{52}
-\contentsline {subsection}{\numberline {7.1.5}A.I. Play - Weight 4}{53}
-\contentsline {subsection}{\numberline {7.1.6}Graphs}{53}
-\contentsline {chapter}{Bibliography}{55}
+\contentsline {subsubsection}{\numberline {5.4.2.2}Insight Two - Winner Losers}{39}
+\contentsline {subsubsection}{\numberline {5.4.2.3}Insight Three - Explanation Accuracy Analysis}{41}
+\contentsline {subsubsection}{\numberline {5.4.2.4}Insight Four - Players better than A.I}{41}
+\contentsline {subsubsection}{\numberline {5.4.2.5}Insight Five - Plan Recognition Agent successfully detects a change in the calibration of the Domination A.I.}{41}
+\contentsline {subsection}{\numberline {5.4.3}Nature of Game}{42}
+\contentsline {subsection}{\numberline {5.4.4}Simplicity of Model}{42}
+\contentsline {section}{\numberline {5.5}Outcomes}{44}
+\contentsline {section}{\numberline {5.6}Criticism}{44}
+\contentsline {chapter}{\numberline {6}Conclusions}{47}
+\contentsline {section}{\numberline {6.1}Main insights and results}{47}
+\contentsline {section}{\numberline {6.2}Future Work}{47}
+\contentsline {subsection}{\numberline {6.2.1}Model Augmentation}{47}
+\contentsline {subsubsection}{\numberline {6.2.1.1}Application of Machine Learning}{47}
+\contentsline {subsubsection}{\numberline {6.2.1.2}More Sohisticated Action Probability Computations}{47}
+\contentsline {subsubsection}{\numberline {6.2.1.3}More Sophisticated Modelling of Current Model}{48}
+\contentsline {subsubsection}{\numberline {6.2.1.4}Extension to Include Other Types of Mission Cards}{48}
+\contentsline {subsection}{\numberline {6.2.2}Discussion of Possible Applications}{49}
+\contentsline {section}{\numberline {6.3}Summary of whole report}{49}
+\contentsline {chapter}{\numberline {7}Appendix}{51}
+\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{51}
+\contentsline {subsection}{\numberline {7.1.1}General Prediction Accuracy}{51}
+\contentsline {subsection}{\numberline {7.1.2}Free Play}{52}
+\contentsline {subsection}{\numberline {7.1.3}Constrained Play}{53}
+\contentsline {subsection}{\numberline {7.1.4}A.I. Play - Weight 100}{54}
+\contentsline {subsection}{\numberline {7.1.5}A.I. Play - Weight 4}{55}
+\contentsline {subsection}{\numberline {7.1.6}Graphs}{55}
+\contentsline {chapter}{Bibliography}{57}
