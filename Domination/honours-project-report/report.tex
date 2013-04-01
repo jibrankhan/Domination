@@ -7,6 +7,7 @@
 \usepackage{algorithm2e}
 \usepackage{array}
 \usepackage[labelfont=bf]{caption}
+\usepackage{multirow}
 
 \begin{document}
 
@@ -47,9 +48,15 @@ This paper we present the design and implementation of a plan recognition agent 
 
 \section*{Acknowledgements}
 
-Many thanks to Dr. Michael Rovatsos for agreeing to supervise this project. Especially for his herculean efforts in deciphering both my babblings at our weekly meetings and the writings of my cryptic drafts. His involvment has been above and beyond the call of duty. Efcharisto poli!
+I would especially like to thank and dedicate this project to my mother and father for going above and beyond, all my life. Without you both; nothing; not a single thing would be possible.
 
-A thank you to my parents and family for their unending support in matters both big and small. Without you all; nothing; not a single thing would be possible.
+\newpage
+
+Many thanks to Dr. Michael Rovatsos for agreeing to supervise this project. Especially for his herculean efforts in deciphering both my babblings at our weekly meetings and the writings of my cryptic drafts. His involvement has been above and beyond the call of duty. Efcharisto poli!
+
+WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
+
+family for their unending support in matters both big and small. 
 
 A big thanks to Christopher Geib for taking his time to meet with me and for his attempts to guide a lost undergraduate in the diverse world of plan recognition. His advice in general and his explanations of PHATT were invaluable. 
 
@@ -82,7 +89,7 @@ On the other hand, game A.I. is built to provide an enjoyable experience for tho
 
 Companies in the video games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional have kept their customers interested over the years. 
 
-Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will hopefully be better quality game A.I. and indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
+Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will likely be better quality game A.I. and indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
 
 A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning \cite{citeulike:5386647}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
@@ -112,7 +119,7 @@ In 1950 Alan Turing published a landmark paper "Computing Machinery and Intellig
 
 Interestingly though, it was thirty five years earlier that Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton \textbf{[ref]} which was capable of playing a king and rook endgame against a king from any position. Considered the worlds first computer game, it was arguably the beginning of Artificial Intelligence and board games a relationship older than the term Artificial Intelligence itself. 
 
-Since then the relationship has only flourised, many games such as chess, checkers and backgammon have all been the subjects of research. Each area has seen its various trumphs such as, Chess Grand Master Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 and a solution to the game checkers by Jonathan Schaeffer et al in 2007.
+Since then the relationship has only flourished, many games such as chess, checkers and backgammon have all been the subjects of research. Each area has seen its various triumphs such as, Chess Grand Master Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 and a solution to the game checkers by Jonathan Schaeffer et al in 2007.
 
 It is apparent that the development of A.I. and its application in any medium of games has been and continues to be a significant area of interest for both commercial and academic fields. Games are considered a good metric for testing the quality of an A.I. due to their potentially challenging game environments and opponents.
 
@@ -143,7 +150,7 @@ To determine whether plan recognition algorithms are beneficial in board games, 
 \item
 If the probability of a mission card is predicted the highest among all the other mission cards for an agent, then it will be the correct mission card.
 \item
-To determine whether the length of a game has any bearing on the prediction of the plan recogntion agent.
+To determine whether the length of a game has any bearing on the prediction of the plan recognition agent.
 \item
 To determine if the accuracy of certain mission cards is better than others.
 \end{itemize}
@@ -302,11 +309,11 @@ In each phase a player performs at least one discrete \textit{action} which help
 
 \subsubsection{Initial Setup}
 
-The game begins with an an initial setup, it involves:
+The game begins with an initial setup, which involves:
 
 \begin{itemize}
 \item
-Territories equally divided in a random order between players.
+Territories being equally divided in a random order between players.
 \item
 Players being given a number of starting armies. This number is calculated by taking an explicit number defined by the R.I.S.K rule book, which is inversely proportional to the number of players, and subtracting it from the number of territories the player owns. For example if there are three players, each player receives 35 starting armies and as there are 42 territories each player receives 14 territories. Therefore the number of remaining armies 35 subtract 14.
 \item
@@ -356,11 +363,11 @@ An attack of a territory has three outcomes:
 
 \begin{itemize}
 \item
-A \textit{failedAttack} by the attacker as they have only one army remaining in which case they must retreat and a \textit{successfulDefence} by the defender who retains the territory.
+A \textit{FailedOccupation} by the attacker as they have only one army remaining in which case they must retreat and a \textit{SuccessfulDefence} by the defender who retains the territory.
 \item
-A \textit{failedAttack} by the attacker as they choose to retreat before having only one army remaining and a \textit{successfulDefence} by the defender who retains the territory.
+A \textit{FailedOccupation} by the attacker as they choose to retreat before having only one army remaining and a \textit{SuccessfulDefence} by the defender who retains the territory.
 \item
-A \textit{successfulAttack} by the attacker who occupies the territory and a \textit{failedDefence} by the defender who has no armies remaining and so loses the territory. The attacking player, leaving at least one army behind, must then move armies from the territory they attacked from into the newly occupied territory.
+A \textit{SuccessfulOccupation} by the attacker who occupies the territory and a \textit{FailedDefence} by the defender who has no armies remaining and so loses the territory. The attacking player, leaving at least one army behind, must then move armies from the territory they attacked from into the newly occupied territory.
 \end{itemize}
 
 A player can perform any number of attacks from any territory they own during their turn, provided they have more than one army in the territory they choose to attack from.
@@ -369,7 +376,7 @@ A player can perform any number of attacks from any territory they own during th
 
 When either the player chooses to end the attacking phase or can no longer attack because they do not occupy a territory which contains more than one army their movement phase begins.
 
-During their movement phase a player may move armies from one territory to an neighbouring territory they own, provided they leave at least one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
+During their movement phase a player may move armies from one territory to a neighbouring territory they own, provided they leave at least one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
 
 After the movement phase has been completed the players turn ends and another players reinforcement phase begins.
 \newpage
@@ -380,6 +387,10 @@ For each territory is a corresponding card. As well as name of that territory ea
 
 \section{Why Plan Recognition in Board Games}
 
+Planners can give you the best response given the current situation, they make no attempt to give you a response to further situations?
+
+Look this up?
+
 NOT COMPLETE
 
 Algorithmic landmark - such as the solution of the game of checkers 
@@ -388,13 +399,15 @@ In the realm of board games such as chess, there have for many years dominated a
 
 Min-max Algorithm with Alpha-Beta Pruning
 
-Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], the search space for such games is so large and that finding the best move would take an unreasonable amount of time (Find a ref for this) Michael Wolf paper calculating state space for RISK is infinite.
-
-Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms we can weed out unlikely explanations before committing to a search of the 
-
-Main benefit is that responses can be personalized.
+Many games today have a large number of alternative moves are stochastic and have hidden state attributes. "Applying traditional game tree search algorithms designed for perfect information games that act on the raw state representation is infeasible" [ref Monte Carlo Planning in RTS Games], the search space for such games is so large and that finding the best move would take an unreasonable amount of time (Find a ref for this)
 
 This issue prompted research into the development of variants of the original algorithms that could cope but this 
+
+Michael Wolf paper calculating state space for RISK is infinite.
+
+Instead of a brute force method of finding the best alternative the idea of plan recognition offers another method. Use plan recognition algorithms we can prune unlikely explanations before committing to a search of the 
+
+Main benefit is that responses can be personalized.
 
 Using these algorithms people like Kabanza are starting to be able to tackle certain aspects which are harder to model?
 
@@ -508,9 +521,13 @@ Occupy Europe, South America and Australia.\newline
 
 Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction.
 
-As PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together, choosing to operate on a fully enumerated set of root-goals effectively removes the term \textit{Pr}(\textit{plans}|\textit{goals}), the probability of choosing a sub-goal, from the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}. This modelling choice is thus a design modification to the PHATT algorithm and so the plan recognition agent.
+FIX THIS AREA!
 
-By hard coding every root-goal as explanations of a players behaviour; then assigning that full set of explanations to each player from the start of the game, provided action probabilties are computed, multipled with each explanation then stored immediatly as soon as they occur. There is no need to store a history of pending sets, to save a list of actions a player has taken or to create and calculate new instances of explanations. This method is similar to that of the 'Test and Generate' algorithm propsed in PHATTs paper rather than the dynamic algorithm proposed at the end of the paper.
+DID NOT REMOVE SUB-GOAL TERM JUST SET TO 1 EFFECTIVELY REMOVING IT
+
+PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together. Choosing to operate on a fully enumerated set of root-goals removes the method choice effectively removes the term \textit{Pr}(\textit{plans}|\textit{goals}), the probability of choosing a sub-goal, from the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}. This modelling choice is thus a design modification to the PHATT algorithm and so the plan recognition agent.
+
+By hard coding every root-goal as explanations of a players behaviour; then assigning that full set of explanations to each player from the start of the game, provided that action probabilities are computed, multiplied with each explanation then stored immediately as soon as they occur. There is no need to store a history of pending sets, to save a list of actions a player has taken or to create and calculate new instances of explanations. This method is similar to that of the 'Test and Generate' algorithm proposed in PHATTs paper rather than the dynamic algorithm proposed at the end of the paper.
 
 What is then measured over the course of the game is the probability of each explanation of a players behaviour and the highest probability by the end of the game is the plan recognition agents prediction.
 
@@ -566,9 +583,9 @@ Having defined the outcome of attacks as either successful or unsuccessful, atta
 \hline 
 \textbf{Action} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-SuccessfulAttack & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
+SuccessfulOccupation & Yes & A good indication of a players plan is the territories they attack and successful attacks are in themselves the best outcome. \\ 
 \hline 
-FailedAttack & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a FailedAttack is in part due to a lack of armies which is suggestive that in cases the action has less significance than SuccessfulAttack, as we could assume that players would choose not to attack if their chances of winning were poor.\\ 
+FailedOccupation & Yes & Whether successful or not, attacking a territory is indicative of a players intention to occupy that territory and therefore a consistent action. Though a non-deterministic event, a FailedOccupation is in part due to a lack of armies which is suggestive that in cases the action has less significance than SuccessfulOccupation, as we could assume that players would choose not to attack if their chances of winning were poor.\\ 
 \hline
 \end{tabular}
 \caption{Modelling Attack Actions}
@@ -630,9 +647,9 @@ The action set of any territory is:
 \hline 
 \textbf{Action} & \textbf{Description} \\ 
 \hline 
-SuccessfulAttack & Attacking and occupying the territory.\\ 
+SuccessfulOccupation & Attacking and occupying the territory.\\ 
 \hline 
-FailedAttack & Attacking and failing to occupy the territory.\\ 
+FailedOccupation & Attacking and failing to occupy the territory.\\ 
 \hline 
 SuccessfulDefence & Retaining the territory after an attack.\\ 
 \hline 
@@ -747,7 +764,8 @@ During the initialisation of the R.I.S.K. map, a set of explanations must be bui
 
 				\textit{addAction}(MovementT) to \textit{ECA}
 				\textit{addAction}(SuccessfulDefence) to \textit{ECA}
-				\textit{addAction}(FailedAttackT) to \textit{ECA} \newline
+				\textit{addAction}{SuccessfulOccupationT} to \textit{ECA}
+				\textit{addAction}(FailedOccupationT) to \textit{ECA} \newline
 
 				\textit{addAction}(FailedDefenceT) to \textit{EIA}
 			}
@@ -789,8 +807,8 @@ $playerPS \gets $ $\emptyset$
 			\textit{addAction}(MovementT) to \textit{playerPS}
 		}{
 
-			\textit{addAction}(FailedAttackT) to \textit{playerPS}
-			\textit{addAction}(SucessfulAttackT) to \textit{playerPS}
+			\textit{addAction}(FailedOccupationT) to \textit{playerPS}
+			\textit{addAction}(SucessfulOccupationT) to \textit{playerPS}
 		}
 	}
 
@@ -932,11 +950,17 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 The concepts from this chapter can be tied together with an arbitrary example.
 
-First some assumptions:
+FIX PLAN LIBRARY CONNECTION FROM O-AS-SA TO AF MISTAKE
+
+Assumptions for this example are:
 
 \begin{itemize}
 \item
 Consistent attacks are assigned a weight $w$ of 0.02.
+\item
+When player $p_1$ attacks it is always a SuccessfulOccupation action.
+\item
+When player $p_1$ defends it is always a SuccessfulDefence action.
 \end{itemize}
 
 \begin{figure}[h]
@@ -948,13 +972,20 @@ Consistent attacks are assigned a weight $w$ of 0.02.
 \caption{Occupy Plan Library for North-Africa \& Egypt}
 \end{figure}
 
-Figure 3.1 illustrates the plan library for occupy actions specifically but is applicable to any action type e.g reinforce. Additionally the square notation in represent territories. Arrows away from these squares are connected to actions that a player can perfrom by occupying this territory, for example occupying the territory Egypt allows a player to perform the actions O-East-Africa, O-North-Africa and O-Middle-East.
+Figure 3.1 details the R.I.S.K plan library that we will be considering for this example. In this environment there are three root-goals:
 
-In this example R.I.S.K plan library there are three root-goals, Occupy-Europe-South-America + One other continent (Occupy-EU-SA+1), Occupy-North-America-South-America (O-NA-SA) and Occupy-South-America-Africa (O-SA-A). 
+\begin{itemize}
+\item
+Occupy-Europe-South-America + One other continent (Occupy-EU-SA+1)
+\item
+Occupy-North-America-South-America (O-AS-SA)
+\item
+Occupy-South-America-Africa (O-SA-AF)
+\end{itemize}
 
-As we know mission cards are handed out to players' at random, so the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. Therefore the initial probability of each root-goal is:
+Each of the three root-goals have several sub-goals. This implies for a player to accomplish that root-goal they must have accomplished each sub-goal and in the context of R.I.S.K means to accomplish occupying continent sub-gaols by performing SuccessfulOccupation actions on each of the several territories contained in that continent. 
 
-1/3
+Additionally squares represent territory entities. Arrows away from these squares are connected to the actions a player can perform by occupying this territory. This is done to represent the state of the world at the time the action was performed. For example by occupying the territory Egypt, it allows a player to perform the actions: O-East-Africa, O-North-Africa and O-Middle-East.
 
 Recall the formulae:\newline
 
@@ -962,17 +993,127 @@ Recall the formulae:\newline
 \textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{Pr}(\textit{goals})\textit{Pr}(\textit{plans}|\textit{goals})\textit{Pr}(\textit{obs}|\textit{exp})
 }
 
-Player $p_1$ occupies the territory North-Africa. $p_1$ then performs the action O-Egypt.
+As we know mission cards are handed out to players' at random, so the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. Therefore the term \textit{Pr}(\textit{goals}) for each explanation is 1/3. The term \textit{Pr}(\textit{plans}|\textit{goals}) is not taken in account due to previously mentioned design decisions.
 
-At this point
+Player initially $p_1$ already occupies the territory North-Africa and thus can perform actions connected to the North-Africa square. $p_1$ then achieves the sub-goal of O-Western-Europe through a SuccessfulOccupation action on the territory Western-Europe.
 
-ATTACK ACTION
+At this point we calculate the term \textit{Pr}(\textit{obs}|\textit{exp}), the probability that $p_1$ would choose to perform the observation O-Egypt given each explanation.
 
-DEFEND ACTION
+\textit{Pr}(\textit{O-Western-Europe}|\textit{O-AS-AF})
 
-REINFORCE ACTION
+\textit{Pr}(\textit{O-Western-Europe}|\textit{O-EU-SA+1})
 
-FAILED DEFENCE ACTION
+\textit{Pr}(\textit{O-Western-Europe}|\textit{O-AS-SA})
+
+To do so requires a $computeExpProb$ operation for each.
+
+First we utilize the $generatePS$ operation to build the full pending set for $p_1$ which contains actions of several different types.
+
+Then we retrieve a list of the consistent actions for each respective explanation by retrieving each explanations $ECA$ from its data structure.
+
+Given the observation O-Egypt, the complete pending set of the player, and the set $ECA$ we use the $computeObsProb$ operation to compute the probability of the observation.
+
+The operation first filters out all actions except SuccessfulOccupation actions from both $p_1$ pending set and each explanations $ECA$. The result is the all the SuccessfulOccupation actions that are consistent with the explanation $expConAct$ and a new pending set $pTotalActNum$ which contains the following actions:
+
+GET CURLY BRACKETS
+
+\centerline{
+$p_1PS$ = (O-Western-Europe, O-Brazil, O-Egypt, O-Congo, O-East-Africa)
+}
+
+Given these two sets we count the number of consistent actions that the players pending set contains for each respective explanation, by comparing what actions are contained in $pTotalActNum$ to each explanations $expConAct$ set.
+
+The counts given the action O-Western-Europe in this example is as follows:
+
+Counts
+
+O-AS-AF
+
+Consistent Actions = 0
+
+O-EU-SA+1
+
+Consistent Actions = 1
+
+O-AS-SA
+
+Consistent Actions = 0
+
+The total actions a player could perform at this time was 5
+
+With these counts we then can compute a $base$ probability for each explanation with the $computeBaseWeight$ operation.
+
+Given our assumed $w$ action probabilities are calculated as follows:
+
+O-AS-AF
+
+0.02 * 0
+
+1.0 - 0
+
+base = 1 / 5 
+
+O-EU-SA+1
+
+0.02 * 1
+
+1 - 0.02
+
+base = 0.98 / 5
+
+O-AS-SA
+
+0.02 * 0
+
+1.0 - 0
+
+base = 1 / 5
+
+Consistent actions $cons$ are weighted so the probability of a consistent action $Pr(cons)$ = $base$ + $w$
+
+Inconsistent actions $incons$ are not weighted so the probability of a inconsistent action $Pr(incons)$ = $base$
+
+O-AS-AF
+
+$Pr(cons)$ = 0.2
+
+$Pr(incons)$ = 0.2
+
+O-EU-SA+1
+
+$Pr(cons)$ = 0.216
+
+$Pr(incons)$ = 0.196
+
+O-AS-SA
+
+$Pr(cons)$ = 0.2
+
+$Pr(incons)$ = 0.2
+
+Finally we compute \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying it with one of the two action probabilities based on whether the action performed was consistent or not, in other words if is contained in $ECA$ or not. If so it would be multiplied by $Pr(cons)$ if not $Pr(incons)$
+
+O-AS-AF
+
+\textit{Pr(exp} $\wedge$ \textit{obs)} = 1/3 * 0.2
+
+O-EU-SA+1
+
+\textit{Pr(exp} $\wedge$ \textit{obs)} = 1/3 * 0.2
+
+O-AS-SA
+
+\textit{Pr(exp} $\wedge$ \textit{obs)} = 1/3 * 0.2
+
+Now another player $p-2$ attacks $p_1$! $p_1$ performs a SuccessfulDefence retaining the territory.
+
+Incorporating these events is much simpler as probabilities are scaled down or up. Given the operations to compute the action probabilities for SuccessfulOccupation.
+
+DEFEND ACTION - SuccessfulDefence action
+
+REINFORCE ACTION - reinforce
+
+Movement
 
 \subsection{Conceptual Issues}
 
@@ -993,6 +1134,8 @@ The summary for this section is
 \chapter{Implementation}
 
 Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
+
+WHY DID I USE JAVA , WIDELY USE, COMPARATIVELY EASIER, WIDE RANGE OF LIBRARIES, GOOD IDES
 
 \begin{figure}[h]
 \centerline{
@@ -1036,9 +1179,9 @@ NewPlayer & playerName & Initialises a new player data structure with ID \textit
 \hline 
 RemovePlayer & playerName & Destroys the player data structure with ID \textit{playerName}. \\ 
 \hline 
-SuccessfulAttack & attackerName, continentName, territoryName & Signals that the player named \textit{attackerName}  performed a SuccessfulAttack. \\ 
+SuccessfulOccupation & attackerName, continentName, territoryName & Signals that the player named \textit{attackerName}  performed a SuccessfulOccupation. \\ 
 \hline
-FailedAttack & attackerName, continentName, territoryName & Signals that \textit{attackerName} performed a FailedAttack. \\ 
+FailedOccupation & attackerName, continentName, territoryName & Signals that \textit{attackerName} performed a FailedOccupation. \\ 
 \hline
 SuccessfulDefence & defenderName, continentName, territoryName & Signals that \textit{defenderName} performed a SuccesfulDefence. \\ 
 \hline
@@ -1053,8 +1196,6 @@ Reinforce & playerName, continentName, territoryName & Signals that \textit{play
 \caption{Event Object Specification}
 \label{table:event-description}
 \end{table}
-
-The plan recognition agent needs be aware of when the game begins, the games initial state, any changes that occur in the game and when the game is finished.
 
 The architecture is such that the implementation of the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another plan recognition agent.
 
@@ -1074,7 +1215,7 @@ The plan recognition agent makes extensive use of the freely available Google Gu
 
 \section{Summary}
 
-The plan recognition agent was written in the Java programming language following an event-driven system architecture. It operated in parallel to the Domination program recieving events fired from the program to update data structures it held locally that contained information about each players explanation predictions.
+The plan recognition agent was written in the Java programming language following an event-driven system architecture. It operated in parallel to the Domination program receiving events fired from the program to update data structures it held locally that contained information about each players explanation predictions.
 
 \chapter{Evaluation} 
 
@@ -1123,6 +1264,8 @@ Completing their mission card.
 
 At the end of the game participants were asked to give a short summary of their initial plan and any changes to that plan during the course of the game.
 
+For the A.I. two experiments were performed with different values of $w$, 4 its normal setting and 100 a significantly higher value.
+
 \newpage
 
 \section{Data Collection}
@@ -1137,9 +1280,9 @@ After a game had finished the Domination program would generate a replay file, w
 \label{fig:dom-debug-gui}
 \end{figure} 
 
-Using this tool had significant implications, in that it would possible to re-observe games and so assist with evaluation. It would also allow for testing of the plan recognition agent again with different modelling and/or calibrations, but in the exact same game and by doing so eliminate the environment as a variable between comparisons of the plan recognition agent.
+Using this tool had significant implications, in that it would possible to re-observe games to assist with evaluation. It would also allow for testing of the plan recognition agent again with different modelling and/or calibrations in an exact same game and by doing so eliminate the environment as a variable between comparisons of the plan recognition agent.
 
-In addition to Dominations replay file the plan recognition agent would simultaneously generate a csv file recording the significant features of a game, namely:
+In addition to Dominations replay file, the plan recognition agent would simultaneously generate a csv file recording the significant features of a game, namely:
 
 \begin{itemize}
 \item
@@ -1162,20 +1305,20 @@ Experiments with the plan recognition agent revealed the following insights:
 \item
 The accuracy of the prediction agent is 32.61\% better than random guess.
 \item
-Constrained play has the best accuracy. 
+The prediction accuracy of the plan recognition agent is highest in constrained play. 
 \item
-The prediction accuracy for winners is better than losers.
+The prediction accuracy of the plan recognition agent is higher for players who win than players who lose.
 \item
-The difficulty of mission affects the prediction accuracy.
+The difficulty of mission affects the prediction accuracy of the plan recognition agent. IF CANNOT PROVE REMOVE
 \item
-The prediction accuracy of human players is significantly better than the domination A.I. players.
+The prediction accuracy of the plan recognition agent is significantly higher for human players than the domination A.I. players.
 \item
 From the prediction accuracy of the plan recognition agent, we can infer when the domination A.I. gives less significance to completing its missions.
 \item
 The length of game does...
 \end{enumerate}
 
-Keeping in mind the initial hypothesis, we primarily attempt to determine whether plan recognition algorithms are beneficial in games, specifically R.I.S.K.
+Keeping in mind the initial hypothesis, we attempt to evaluate whether plan recognition algorithms are beneficial in games, specifically R.I.S.K.
 
 To do this we explore two questions:
 
@@ -1188,65 +1331,97 @@ How fast it converges.
 
 \subsection{Explanation Convergence}
 
-Given there are six mission cards, random guess of a players mission card returns an accuracy of 16.67\%. According to Table 7.1, at its worse the plan recongition agent performs 8.47\% better than random guess and at its best 63.72\% better, though this is for constrained play. 
+Given there are six mission cards, random guess of a players mission card returns an accuracy of 16.67\%. According to Table 7.1, at its worse the plan recognition agent performs 8.47\% better than random guess and at its best 63.72\% better. 
 
-Table 7.1 reveals that in fact \textit{constrained play has a significantly higher accuracy than the other types of play}. This is unsurprising due to the artificial nature of constrained play. Players only performed directly-consistent actions whereas in Free and A.I. play, players did not. Constrained play was designed to be ideal for correctly predicting explanations and therefore is in actuality is solely not a good measure to evaluate the success of the plan recognition agent, though this does not imply data from constrained play cannot be used to evaluate the plan recognition agent.
+Table 7.1 reveals that \textit{constrained play has a significantly higher accuracy than the other types of play}. This is unsurprising due to the artificial nature of constrained play. Players only performed directly-consistent actions whereas in Free and A.I. play, players did not. Constrained play was designed to be ideal for correctly predicting explanations and therefore is in actuality, solely not a good measure to evaluate the success of the plan recognition agent, though this does not imply that information gleaned from constrained play cannot be used in evaluation.
 
-Free and A.I. play though are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent  primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the prediction agent is rather Free Play as prediction accuracies of human players is most significant. Therefore \textit{the plan recognition agent is 32.61\% better than random guess} and so indeed does converge on the correct explanation 49.28\% of the time.
+Free and A.I. play are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the prediction agent is rather Free Play as prediction accuracies of human players is most significant. Therefore \textit{the plan recognition agent is 32.61\% better than random guess} and so we can establish that the plan recognition agent indeed does converge on the correct explanation 49.28\% of the time.
 
-We then ask why did it not successfully converge on the correct explanation 50.72\% of the time? 
+Though to complete the answer to our initial hypothesis we must then ask, why then did it not successfully converge on the correct explanation 50.72\% of the time? 
 
-\subsubsection{Successful Convergence}
+Before exploring the possible reasons, the format for the convergence of the plan recognition agent explanation predictions, whether successful or not is as follows.
 
-In general the format for successful convergence of the agents explanation probabilites is as follows.
+At the start of a game forty-two turns are required to place one army on each territory of the R.I.S.K map. These observations are not taken into account as the distribution of territories between players is automatic and random. 
 
-At the start of a game fourty-two turns are required to place one army on each territory of the R.I.S.K map. After this the remaining initial armies are distributed by players on the terriories they were randomly assigned. During this time the probability of explanations that are consistent with the actions a player is performing will slowly rise, whereas explanations that are inconsistent will fall.
+After this the remaining initial armies are distributed by players on to their territories. During this the probability of explanations that are consistent with the actions a player is performing will slowly rise and conversely those that explanations which with the actions are inconsistent will slowly fall.
 
-Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players), the probabilities of each explanation move much more rapidly as the attack phase begins soon after. This behaviour is due to the prediction agents model which has been built to give attack actions the greatest significance.
+Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players) the attack phase begin for the first player $p_c$, at this time the probabilities of $p_c$ explanations may change rapidly depending on the number of actions that $p_c$ performs in their turn. The most significant change occurs when there is a high number of actions. This is due to the plan recognition agents model which has been built to give attack actions the greatest significance.
 
-After the current player $p_c$ turn is over, other players get their attack phases and unless the action another player performs is to attack a territory owned by $p_c$ then the probabilities of $p_c$ explanations remained unaffected. 
+After $p_c$ turn is over, other players begin their attack phases in-turn, and unless the action another player performs is to attack a territory owned by $p_c$, the probabilities of $p_c$ explanations remained unaffected. 
 
-This continues till the end of the game.
+This continues till the end of the game at which point the probability of a players explanation will have either converged successfully or unsuccessfully to the correct explanation.
 
-Analysing why players won (winners) and lost (losers) sheds more light on to this question. 
- 
-Table 7.2 shows that in every type of play \textit{the prediction accuracy of winners has shown to be better than that of losers}.
+\subsubsection{Winner-Loser Accuracy Differences}
 
-Present cases where it does converge
+By definition in cases where a player spends all of their game fighting over continents that are non-mission continents the plan recognition agent cannot produce an accurate prediction, as a player was not following or could not follow their mission. By establishing this as an extreme case, if we view the degree of fighting over mission and non-mission continents as a scale, the higher the proportion of fighting over mission continents to fighting over non-mission continents the higher the likelihood of the prediction agent is likely to be correct. NEED TO PROVE CLAIM?
 
-Present cases where it does not converge
+\textit{Winners} are player who have successfully fought to occupy their mission continents, \textit{losers} are players who have failed to do so. In table 7.2 evidence shows that in every type of play \textit{the prediction accuracy of winners has shown to be better than that of losers}.
 
-It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
+Present typically examples where this is the case.
 
-\subsubsection{Unsuccessful Convergence}
+This is due to the differences in how the game played out for each player their \textit{game-scenarios}. 
 
+The main game-scenarios that the plan recognition agent faces are the following:
 
-\subsection{Convergence Speed}
-
-SHOW AN EXAMPLE OF IT NOT CONVERGING
-
-How fast it converges?
-
-\subsection{Insights}
-
-\textbf{Start with major insights and prove with data}
-
-\subsubsection{Insight One}
-
-\subsubsection{Insight Two - Winner Losers}
-
-Why is the accuracy of winners better than losers?
-
-
-
-but this is not necessarily true winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
+Winners who won \textit{quickly} and \textit{slowly}, who spent the majority of their game:
 
 \begin{itemize}
 \item
-won with little opposition.
+fighting over non-mission continents.
 \item
-won with significant opposition.
+fighting over mission continents.
 \end{itemize}
+
+Losers who were eliminated \textit{quickly}, \textit{slowly} and who were \textit{not-eliminated}, who spent the majority of their game:
+
+\begin{itemize}
+\item
+fighting over non-mission continents.
+\item
+fighting over mission continents.
+\end{itemize}
+
+These cases can be compactly represented in a definitional framework.
+
+\newpage
+
+\begin{table}
+\centerline{
+\begin{tabular}{cc|c|c|c}
+\cline{3-4}
+&  & Mission & Non-Mission \\ 
+\cline{1-4}
+\multicolumn{1}{  |c| }{\multirow{2}{*}{Winner} } &
+\multicolumn{1}{  c| }{Quickly} & & & \\ \cline{2-4}
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{Slowly} & & & \\ \cline{1-4}
+\multicolumn{1}{ |c  }{\multirow{3}{*}{Loser} } &
+\multicolumn{1}{ |c| }{Quickly} & & & \\ \cline{2-4}
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{Slowly} & & & \\ \cline{2-4}
+\multicolumn{1}{ |c  }{} 						&
+\multicolumn{1}{ |c| }{Not-Eliminated} & & & \\ \cline{1-4}							
+\end{tabular}
+}
+\end{table}
+
+Using this tool allows for the classification of players into their different game-scenarios. As there can be only one winner, the winner row only ever has one entry, whereas the loser row can have 1 to 5 entries.
+
+Winners who win quickly
+
+Winners who win slowly
+
+Losers who were eliminated early
+
+Generally winners and losers were in situations where they either won or lost slowly and the majority of the time they fought over mission continents the plan recognition returned a better accuracy.
+
+Though there were exceptions to this? Misclassification due to association?
+
+We will describe each case, present a hypothesis for the plan recognition agents prediction accuracy then present examples from the data for most significant of these cases to support the hypothesis. 
+
+Why is the accuracy of winners better than losers? May be because weighting of attack actions is towards successful attacks, of which winners perform more.
+
+but this is not necessarily true winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
 
 GENERAL REASONS WHY WINNERS ACCURACY IS BETTER
 
@@ -1258,7 +1433,9 @@ Winners may occupy a continent in one turn and since sampling is done on a turn 
 
 General reasons why loser accuracy is worse
 
-A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the predicton will be wrong, inversely it may be correct for the very same reason.
+Losers are often prevented from successfully achieving their goal.
+
+A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the prediction will be wrong, inversely it may be correct for the very same reason.
 
 WINNERS CONSTRAINED PLAY
 
@@ -1274,28 +1451,9 @@ INCLUDE TABLE OF TWO EQUAL FINAL PROBABILITIES
 
 The final prediction probabilities of both were split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an \textit{inconclusive} prediction.
 
-Losers are often prevented from successfully achieving their goal.
+It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
 
-Losers who:
-
-\begin{itemize}
-\item
-are not eliminated and partially complete their mission quickly.
-\item
-are not eliminated and partially complete their mission slowly
-\item
-are not eliminated and complete none of their mission fast
-\item
-are not eliminated and complete none of their mission slowly
-\item
-who are eliminated early
-\item
-who are eliminated late
-\end{itemize}
-
-GENERAL REASONS WHY LOSERS ACCURACY IS WORSE
-
-\subsubsection{Insight Three - Explanation Accuracy Analysis}
+\subsubsection{Explanation Accuracy}
 
 In what way does overlap of missions between players effect predictions? Is it negative or positive, or is it both?
 
@@ -1319,15 +1477,26 @@ Asia-Africa appear to be lower prediction accuracy on average the A.I. play type
 
 Is the prediction accuracy of any mission with Asia in it worse? Could get a good indication of frequency of losers to winners with missions involving Asia. Do a total across all plays of number of winners and losers.
 
-\subsubsection{Insight Four - Players accuracy better than A.I}
+\subsection{Convergence Speed}
+
+DO TABLE OF CORRECT EXPLANATIONS OVER PERCENTAGE OF GAME
+
+FOR EACH GAME TYPE
+
+SHORT 25, 50, 75 percent of game
+LONG 25, 50, 75 percent of game
+
+In the context of constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
+
+SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES
+
+\subsection{Player-A.I. Analysis}
 
 Comparing table 7.3 to table 7.9 and 7.12 we see that in general that prediction accuracies for human players are better than that of A.I. players.
 
 According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
 
-\subsubsection{Insight Five - Plan Recognition Agent successfully detects a change in the calibration of the Domination A.I.}
-
-The A.I. for the game has its decisions skewed and varying this should in theory cause the A.I. to perform either better or worse depending on whether decisions are skewed towards decisions that are more consistent with the mission or away from decisions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
+Since the A.I. for the game has its decisions skewed, varying this should in theory cause the A.I. to perform either better or worse depending on whether decisions are skewed towards decisions that are more consistent with the mission or away from decisions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
 
 The variable that decides this to what degree decisions are skewed we will refer to as $w$.
 
@@ -1344,14 +1513,6 @@ Each A.I is worse and therefore game is longer
 
 There is a significant improvements in the prediction accuracy of the plan recognition agent from $w$4 to $w$100 and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
 
-\subsubsection{Insight Six - Length of Game affects game}
-
-In the context of constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
-
-SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES
-
-\subsubsection{Insight Seven - Prediction accuracy over time}
-
 \subsection{Nature of Game}
 
 The nature of R.I.S.K. is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
@@ -1366,19 +1527,15 @@ PRESENT EXAMPLE
 
 \subsection{Simplicity of Model}
 
-How to differentiate between two identical alternates? E.g prediction is equal between EU SA AU and EU AU SA 
-
-Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
-
 Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
 
-Inherent issues with PHATT is unable to deal with deception[ref] and often players must perform actions unrelated to a plan to be able to complete their plan e.g survive, have to conquer other non-relevant continents, this confuses the algorithm.
-
-Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
+Inherent issues with PHATT as is unable to deal with deception[ref] and often players must perform actions unrelated to a plan to be able to complete their plan e.g survive, have to conquer other non-relevant continents, this confuses the algorithm.
 
 Misclassification's occur due to three(keep looking in data) main reasons:
 
 by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations
+
+\subsection{Improvement of Model}
 
 HOW TO FIX
 
@@ -1441,6 +1598,12 @@ ATTACK probability COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATT
 
 Small number of data samples for free play and constrained winners, therefore analysis will likely not have covered all the cases.
 
+Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
+
+How to differentiate between two identical alternates? E.g prediction is equal between EU SA AU and EU AU SA 
+
+Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
+
 \chapter{Conclusions}
 
 \section{Main insights and results}
@@ -1450,6 +1613,8 @@ The main insights and results from this...
 \section{Future Work}
 
 A.I. play was done with six players, would be interesting to see the effects on prediction accuracy on games with different number of players.
+
+THINK ABOUT WHY IT WOULD IMPROVE
 
 \subsection{Model Augmentation}
 
@@ -1543,18 +1708,18 @@ A.I. - Weight 4 & 89 & 265 & 25.14 \\
 \centerline{
 \begin{tabular}{|c|c|c|c|c|}
 \hline 
-\textbf{Type of Play} & \textbf{Player End State} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
+\textbf{Type of Play} & \textbf{Player Type} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
 \hline 
-Free & Winner & 12 & 8 & 60.00 \\ 
+\multirow{2}{*}{Free} & Winner & 12 & 8 & 60.00 \\ 
 & Loser & 22 & 27 & 44.90 \\ 
 \hline 
-Constrained & Winner & 15 & 2 & 82.24 \\ 
+\multirow{2}{*}{Constrained} & Winner & 15 & 2 & 82.24 \\ 
 & Loser & 67 & 18 & 78.82 \\ 
 \hline
-A.I. - Weight 100 & Winner & 80 & 104 & 43.48 \\ 
+\multirow{2}{*}{A.I. - Weight 100} & Winner & 80 & 104 & 43.48 \\ 
 & Loser & 310 & 610 & 33.70 \\  
 \hline
-A.I. - Weight 4 & Winner & 16 & 43 & 27.12 \\ 
+\multirow{2}{*}{A.I. - Weight 4} & Winner & 16 & 43 & 27.12 \\ 
 & Loser & 73 & 222 & 24.75 \\ 
 \hline
 \end{tabular}
@@ -1867,9 +2032,95 @@ Occupy-North-America-Australia & 44 & 97 & 31.21 \\
 \label{table:ai-4-loser-accuracy}
 \end{table}
 
+\section{Game Length Correct-Incorrect Prediction Counts}
+
+\subsection{General Game-Length Correct-Incorrect Prediction Count}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{cc|c|c|c|c|c|c|c|c|c|c|}
+\cline{3-12}
+& & \multicolumn{10}{ c| }{\textbf{Turns}} \\
+\cline{3-12}
+& & \multicolumn{2}{ c| }{< 120} & \multicolumn{2}{ c| }{ 120-150} & \multicolumn{2}{ c| }{ 150-180} & \multicolumn{2}{ c| }{ 180-210} & \multicolumn{2}{ c| }{ 210+} \\ \cline{3-10} 
+\hline 
+\multicolumn{1}{ |c| }{\textbf{Type of Play} }& \textbf{Player Type} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I}\\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Free} } & Winner & & & & & & & & & & \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Constrained} } & Winner & 15 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & 67 & 18 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{2}{*}{A.I. - Weight 100} } & Winner & 9 & 12 & 20 & 35 & 20 & 22 & 17 & 23 & 14 & 12 \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & 36 & 69 & 100 & 175 & 65 & 145 & 71 & 129 & 38 & 92 \\  
+\hline
+\multicolumn{1}{ |c| }{\multirow{2}{*}{A.I. - Weight 4} } & Winner & 3 & 7 & 7 & 31 & 13 & 34 & 12 & 26 & 2 & 32 \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & 11 & 39 & 50 & 140 & 59 & 176 & 41 & 149 & 37 & 133 \\ 
+\hline
+\end{tabular}
+}
+\caption{Constrained Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
+\label{table:winner-loser-accuracy}
+\end{table}
+
 \subsection{Graphs}
 
-Graphs showing explanations for a player plotted over the course of the game
+\begin{table}
+\centerline{
+\begin{tabular}{cc|c|c|c}
+\cline{3-4}
+&  & Mission & Non-Mission \\ 
+\cline{1-4}
+\multicolumn{1}{  |c| }{\multirow{2}{*}{Winner} } &
+\multicolumn{1}{  c| }{Quick} & & & \\ \cline{2-4}
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{Slow} & & & \\ \cline{2-4}
+\multicolumn{1}{ |c  }{\multirow{3}{*}{Loser} } &
+\multicolumn{1}{ |c| }{Quick} & & & \\ \cline{1-4}
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{Slow} & & & \\ \cline{2-4}
+\multicolumn{1}{ |c  }{} 						&
+\multicolumn{1}{ |c| }{Till End} & & & \\ \cline{1-4}							
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{cc|c|c|c|c|c|c|c|c|c|c|}
+\cline{3-12}
+& & \multicolumn{10}{ c| }{\textbf{Turns}} \\
+\cline{3-12}
+& & \multicolumn{2}{ c| }{< 120} & \multicolumn{2}{ c| }{ 120-150} & \multicolumn{2}{ c| }{ 150-180} & \multicolumn{2}{ c| }{ 180-210} & \multicolumn{2}{ c| }{ 210+} \\ \cline{3-10} 
+\hline 
+\multicolumn{1}{ |c| }{\textbf{Type of Play} }& \textbf{Player Type} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I}\\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Free} } & Winner & & & & & & & & & & \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Constrained} } & Winner & & & & & & & & & & \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{2}{*}{A.I. - Weight 100} } & Winner & & & & & & & & & & \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\  
+\hline
+\multicolumn{1}{ |c| }{\multirow{2}{*}{A.I. - Weight 4} } & Winner & & & & & & & & & & \\ 
+\cline{2-12}
+\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
+\hline
+\end{tabular}
+}
+\caption{General Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
+\label{table:winner-loser-accuracy}
+\end{table}
 
 % use the following and \cite{} as above if you use bibtex
 % otherwise generate bibtem entries

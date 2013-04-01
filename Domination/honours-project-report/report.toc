@@ -38,49 +38,45 @@
 \contentsline {subsubsection}{\numberline {3.3.1.2}Computing Action Probabilities}{25}
 \contentsline {subsubsection}{\numberline {3.3.1.3}Computing Explanation Probabilities}{28}
 \contentsline {subsection}{\numberline {3.3.2}Example of Operation}{29}
-\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{30}
-\contentsline {section}{\numberline {3.4}Summary}{30}
-\contentsline {chapter}{\numberline {4}Implementation}{31}
-\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{32}
-\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{32}
-\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{33}
-\contentsline {section}{\numberline {4.2}Summary}{33}
-\contentsline {chapter}{\numberline {5}Evaluation}{35}
-\contentsline {section}{\numberline {5.1}Experimental Format}{36}
-\contentsline {section}{\numberline {5.2}Data Collection}{37}
-\contentsline {section}{\numberline {5.3}Experimental Findings}{38}
-\contentsline {subsection}{\numberline {5.3.1}Explanation Convergence}{38}
-\contentsline {subsubsection}{\numberline {5.3.1.1}Successful Convergence}{39}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Unsuccessful Convergence}{40}
-\contentsline {subsection}{\numberline {5.3.2}Convergence Speed}{40}
-\contentsline {subsection}{\numberline {5.3.3}Insights}{40}
-\contentsline {subsubsection}{\numberline {5.3.3.1}Insight One}{40}
-\contentsline {subsubsection}{\numberline {5.3.3.2}Insight Two - Winner Losers}{40}
-\contentsline {subsubsection}{\numberline {5.3.3.3}Insight Three - Explanation Accuracy Analysis}{41}
-\contentsline {subsubsection}{\numberline {5.3.3.4}Insight Four - Players accuracy better than A.I}{42}
-\contentsline {subsubsection}{\numberline {5.3.3.5}Insight Five - Plan Recognition Agent successfully detects a change in the calibration of the Domination A.I.}{42}
-\contentsline {subsubsection}{\numberline {5.3.3.6}Insight Six - Length of Game affects game}{43}
-\contentsline {subsubsection}{\numberline {5.3.3.7}Insight Seven - Prediction accuracy over time}{43}
-\contentsline {subsection}{\numberline {5.3.4}Nature of Game}{43}
-\contentsline {subsection}{\numberline {5.3.5}Simplicity of Model}{44}
-\contentsline {section}{\numberline {5.4}Outcomes}{45}
-\contentsline {section}{\numberline {5.5}Criticism}{46}
-\contentsline {chapter}{\numberline {6}Conclusions}{47}
-\contentsline {section}{\numberline {6.1}Main insights and results}{47}
-\contentsline {section}{\numberline {6.2}Future Work}{47}
-\contentsline {subsection}{\numberline {6.2.1}Model Augmentation}{47}
-\contentsline {subsubsection}{\numberline {6.2.1.1}Application of Machine Learning}{47}
-\contentsline {subsubsection}{\numberline {6.2.1.2}More Sophisticated Action Probability Computations}{47}
-\contentsline {subsubsection}{\numberline {6.2.1.3}More Sophisticated Modelling of Current Model}{48}
-\contentsline {subsubsection}{\numberline {6.2.1.4}Extension to Include Other Types of Mission Cards}{49}
-\contentsline {subsection}{\numberline {6.2.2}Discussion of Possible Applications}{49}
-\contentsline {section}{\numberline {6.3}Summary of whole report}{49}
-\contentsline {chapter}{\numberline {7}Appendix}{51}
-\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{51}
-\contentsline {subsection}{\numberline {7.1.1}General Prediction Accuracy}{51}
-\contentsline {subsection}{\numberline {7.1.2}Free Play}{52}
-\contentsline {subsection}{\numberline {7.1.3}Constrained Play}{53}
-\contentsline {subsection}{\numberline {7.1.4}A.I. Play - Weight 100}{54}
-\contentsline {subsection}{\numberline {7.1.5}A.I. Play - Weight 4}{55}
-\contentsline {subsection}{\numberline {7.1.6}Graphs}{55}
-\contentsline {chapter}{Bibliography}{57}
+\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{33}
+\contentsline {section}{\numberline {3.4}Summary}{33}
+\contentsline {chapter}{\numberline {4}Implementation}{35}
+\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{36}
+\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{36}
+\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{37}
+\contentsline {section}{\numberline {4.2}Summary}{37}
+\contentsline {chapter}{\numberline {5}Evaluation}{39}
+\contentsline {section}{\numberline {5.1}Experimental Format}{40}
+\contentsline {section}{\numberline {5.2}Data Collection}{41}
+\contentsline {section}{\numberline {5.3}Experimental Findings}{42}
+\contentsline {subsection}{\numberline {5.3.1}Explanation Convergence}{42}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Winner-Loser Accuracy Differences}{43}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Explanation Accuracy}{46}
+\contentsline {subsection}{\numberline {5.3.2}Convergence Speed}{47}
+\contentsline {subsection}{\numberline {5.3.3}Player-A.I. Analysis}{47}
+\contentsline {subsection}{\numberline {5.3.4}Nature of Game}{48}
+\contentsline {subsection}{\numberline {5.3.5}Simplicity of Model}{49}
+\contentsline {subsection}{\numberline {5.3.6}Improvement of Model}{49}
+\contentsline {section}{\numberline {5.4}Outcomes}{50}
+\contentsline {section}{\numberline {5.5}Criticism}{51}
+\contentsline {chapter}{\numberline {6}Conclusions}{53}
+\contentsline {section}{\numberline {6.1}Main insights and results}{53}
+\contentsline {section}{\numberline {6.2}Future Work}{53}
+\contentsline {subsection}{\numberline {6.2.1}Model Augmentation}{53}
+\contentsline {subsubsection}{\numberline {6.2.1.1}Application of Machine Learning}{53}
+\contentsline {subsubsection}{\numberline {6.2.1.2}More Sophisticated Action Probability Computations}{53}
+\contentsline {subsubsection}{\numberline {6.2.1.3}More Sophisticated Modelling of Current Model}{54}
+\contentsline {subsubsection}{\numberline {6.2.1.4}Extension to Include Other Types of Mission Cards}{55}
+\contentsline {subsection}{\numberline {6.2.2}Discussion of Possible Applications}{55}
+\contentsline {section}{\numberline {6.3}Summary of whole report}{55}
+\contentsline {chapter}{\numberline {7}Appendix}{57}
+\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{57}
+\contentsline {subsection}{\numberline {7.1.1}General Prediction Accuracy}{57}
+\contentsline {subsection}{\numberline {7.1.2}Free Play}{58}
+\contentsline {subsection}{\numberline {7.1.3}Constrained Play}{59}
+\contentsline {subsection}{\numberline {7.1.4}A.I. Play - Weight 100}{60}
+\contentsline {subsection}{\numberline {7.1.5}A.I. Play - Weight 4}{61}
+\contentsline {section}{\numberline {7.2}Game Length Correct-Incorrect Prediction Counts}{61}
+\contentsline {subsection}{\numberline {7.2.1}General Game-Length Correct-Incorrect Prediction Count}{61}
+\contentsline {subsection}{\numberline {7.2.2}Graphs}{61}
+\contentsline {chapter}{Bibliography}{63}
