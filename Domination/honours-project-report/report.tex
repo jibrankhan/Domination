@@ -930,9 +930,14 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 \subsection{Example of Operation}
 
-NOT COMPLETE
-
 The concepts from this chapter can be tied together with an arbitrary example.
+
+First some assumptions:
+
+\begin{itemize}
+\item
+Consistent attacks are assigned a weight $w$ of 0.02.
+\end{itemize}
 
 \begin{figure}[h]
 \fbox{
@@ -940,31 +945,40 @@ The concepts from this chapter can be tied together with an arbitrary example.
 		\includegraphics{images/risk-plan-library}
 	}
 }
-\caption{Risk Plan Library}
+\caption{Occupy Plan Library for North-Africa \& Egypt}
 \end{figure}
 
-In this example R.I.S.K map there are two explanations, Occupy-North-America-South-America (O-NA-SA) and Occupy-South-America-Africa (O-SA-A). 
+Figure 3.1 illustrates the plan library for occupy actions specifically but is applicable to any action type e.g reinforce. Additionally the square notation in represent territories. Arrows away from these squares are connected to actions that a player can perfrom by occupying this territory, for example occupying the territory Egypt allows a player to perform the actions O-East-Africa, O-North-Africa and O-Middle-East.
 
-Since mission cards are handed out to players' at random therefore the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. 
+In this example R.I.S.K plan library there are three root-goals, Occupy-Europe-South-America + One other continent (Occupy-EU-SA+1), Occupy-North-America-South-America (O-NA-SA) and Occupy-South-America-Africa (O-SA-A). 
 
-Some other assumptions for this example:
+As we know mission cards are handed out to players' at random, so the prior probability of each root-goal is 1/\textit{n} where \textit{n} is the number of mission cards. Therefore the initial probability of each root-goal is:
 
-\begin{itemize}
-\item
-The probability of a player choosing a sub-goal is uniform.
-\end{itemize}
+1/3
 
-Probabilities for each of the explanations = 1 / no of explanations
+Recall the formulae:\newline
 
-Player one attacks a territory 
+\centerline{
+\textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{Pr}(\textit{goals})\textit{Pr}(\textit{plans}|\textit{goals})\textit{Pr}(\textit{obs}|\textit{exp})
+}
+
+Player $p_1$ occupies the territory North-Africa. $p_1$ then performs the action O-Egypt.
+
+At this point
+
+ATTACK ACTION
+
+DEFEND ACTION
+
+REINFORCE ACTION
+
+FAILED DEFENCE ACTION
 
 \subsection{Conceptual Issues}
 
 NOT COMPLETE
 
 Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
-
-Another difference is that I do not store or manipulated derivative trees as the original paper includes in the pseudo code it presents, this is due to hard coding derivative trees into explanations.
 
 Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
 
