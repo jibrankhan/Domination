@@ -17,48 +17,50 @@
 \contentsline {subsubsection}{\numberline {2.2.3.4}Movement Phase}{11}
 \contentsline {subsection}{\numberline {2.2.4}Cards}{12}
 \contentsline {section}{\numberline {2.3}Why Plan Recognition in Board Games}{12}
-\contentsline {section}{\numberline {2.4}Summary}{13}
-\contentsline {chapter}{\numberline {3}Design}{15}
-\contentsline {section}{\numberline {3.1}Introduction to PHATT}{15}
-\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{16}
-\contentsline {section}{\numberline {3.2}Environment Modelling and Design}{16}
-\contentsline {subsection}{\numberline {3.2.1}Root-Goals}{16}
-\contentsline {subsection}{\numberline {3.2.2}Actions}{18}
-\contentsline {subsubsection}{\numberline {3.2.2.1}Attacking}{18}
-\contentsline {subsubsection}{\numberline {3.2.2.2}Defending}{20}
-\contentsline {subsubsection}{\numberline {3.2.2.3}Reinforce}{21}
-\contentsline {subsubsection}{\numberline {3.2.2.4}Movement}{21}
-\contentsline {subsubsection}{\numberline {3.2.2.5}Trading Territory Cards}{21}
-\contentsline {subsection}{\numberline {3.2.3}Territory}{21}
-\contentsline {subsection}{\numberline {3.2.4}Continent}{22}
-\contentsline {subsection}{\numberline {3.2.5}Player}{22}
-\contentsline {section}{\numberline {3.3}Explanations}{23}
-\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Design}{24}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{24}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Computing Action Probabilities}{25}
-\contentsline {subsubsection}{\numberline {3.3.1.3}Computing Explanation Probabilities}{28}
-\contentsline {subsection}{\numberline {3.3.2}Example of Operation}{29}
-\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{33}
-\contentsline {section}{\numberline {3.4}Summary}{33}
-\contentsline {chapter}{\numberline {4}Implementation}{35}
-\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{36}
-\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{36}
-\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{37}
-\contentsline {section}{\numberline {4.2}Summary}{37}
-\contentsline {chapter}{\numberline {5}Evaluation}{39}
-\contentsline {section}{\numberline {5.1}Experimental Format}{40}
-\contentsline {section}{\numberline {5.2}Data Collection}{41}
-\contentsline {section}{\numberline {5.3}Experimental Findings}{42}
-\contentsline {subsection}{\numberline {5.3.1}Explanation Convergence}{42}
-\contentsline {subsubsection}{\numberline {5.3.1.1}Winner-Loser Accuracy Differences}{43}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Explanation Accuracy}{46}
-\contentsline {subsection}{\numberline {5.3.2}Convergence Speed}{47}
-\contentsline {subsection}{\numberline {5.3.3}Player-A.I. Analysis}{47}
-\contentsline {subsection}{\numberline {5.3.4}Nature of Game}{48}
-\contentsline {subsection}{\numberline {5.3.5}Simplicity of Model}{49}
-\contentsline {subsection}{\numberline {5.3.6}Improvement of Model}{49}
+\contentsline {section}{\numberline {2.4}Summary}{12}
+\contentsline {chapter}{\numberline {3}Design}{13}
+\contentsline {section}{\numberline {3.1}Introduction to PHATT}{13}
+\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{14}
+\contentsline {section}{\numberline {3.2}Environment Modelling and Design}{14}
+\contentsline {subsection}{\numberline {3.2.1}Root-Goals}{14}
+\contentsline {subsection}{\numberline {3.2.2}Actions}{16}
+\contentsline {subsubsection}{\numberline {3.2.2.1}Attacking}{16}
+\contentsline {subsubsection}{\numberline {3.2.2.2}Defending}{18}
+\contentsline {subsubsection}{\numberline {3.2.2.3}Reinforce}{19}
+\contentsline {subsubsection}{\numberline {3.2.2.4}Movement}{19}
+\contentsline {subsubsection}{\numberline {3.2.2.5}Trading Territory Cards}{19}
+\contentsline {subsection}{\numberline {3.2.3}Territory}{19}
+\contentsline {subsection}{\numberline {3.2.4}Continent}{20}
+\contentsline {subsection}{\numberline {3.2.5}Player}{20}
+\contentsline {section}{\numberline {3.3}Explanations}{21}
+\contentsline {subsection}{\numberline {3.3.1}Prediction Agent Design}{22}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Building the Set of Explanations}{22}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Computing Action Probabilities}{23}
+\contentsline {subsubsection}{\numberline {3.3.1.3}Computing Explanation Probabilities}{26}
+\contentsline {subsection}{\numberline {3.3.2}Example of Operation}{27}
+\contentsline {subsection}{\numberline {3.3.3}Conceptual Issues}{31}
+\contentsline {section}{\numberline {3.4}Summary}{32}
+\contentsline {chapter}{\numberline {4}Implementation}{33}
+\contentsline {section}{\numberline {4.1}Additional Implementation Concepts}{34}
+\contentsline {subsection}{\numberline {4.1.1}Data Structure Re-Use}{34}
+\contentsline {subsection}{\numberline {4.1.2}Google Guava Libraries}{35}
+\contentsline {section}{\numberline {4.2}Summary}{35}
+\contentsline {chapter}{\numberline {5}Evaluation}{37}
+\contentsline {section}{\numberline {5.1}Experimental Format}{38}
+\contentsline {section}{\numberline {5.2}Data Collection}{39}
+\contentsline {section}{\numberline {5.3}Experimental Findings}{40}
+\contentsline {subsection}{\numberline {5.3.1}Explanation Convergence Format}{40}
+\contentsline {subsection}{\numberline {5.3.2}Prediction Accuracy in General}{41}
+\contentsline {subsection}{\numberline {5.3.3}Winner-Loser Prediction Accuracy}{43}
+\contentsline {subsubsection}{\numberline {5.3.3.1}Prediction Accuracy of Winners}{44}
+\contentsline {subsubsection}{\numberline {5.3.3.2}Prediction Accuracy of Losers}{45}
+\contentsline {subsubsection}{\numberline {5.3.3.3}Explanation Accuracy}{46}
+\contentsline {subsection}{\numberline {5.3.4}Prediction Analysis for A.I. Players}{47}
+\contentsline {subsection}{\numberline {5.3.5}Nature of Game}{48}
+\contentsline {subsection}{\numberline {5.3.6}Simplicity of Model}{48}
+\contentsline {subsection}{\numberline {5.3.7}Improvement of Model}{49}
 \contentsline {section}{\numberline {5.4}Outcomes}{50}
-\contentsline {section}{\numberline {5.5}Criticism}{51}
+\contentsline {section}{\numberline {5.5}Criticism}{50}
 \contentsline {chapter}{\numberline {6}Conclusions}{53}
 \contentsline {section}{\numberline {6.1}Main insights and results}{53}
 \contentsline {section}{\numberline {6.2}Future Work}{53}
@@ -76,7 +78,6 @@
 \contentsline {subsection}{\numberline {7.1.3}Constrained Play}{59}
 \contentsline {subsection}{\numberline {7.1.4}A.I. Play - Weight 100}{60}
 \contentsline {subsection}{\numberline {7.1.5}A.I. Play - Weight 4}{61}
-\contentsline {section}{\numberline {7.2}Game Length Correct-Incorrect Prediction Counts}{61}
-\contentsline {subsection}{\numberline {7.2.1}General Game-Length Correct-Incorrect Prediction Count}{61}
-\contentsline {subsection}{\numberline {7.2.2}Graphs}{61}
-\contentsline {chapter}{Bibliography}{63}
+\contentsline {section}{\numberline {7.2}Game Length Correct-Incorrect Prediction Count}{61}
+\contentsline {section}{\numberline {7.3}Graphs}{62}
+\contentsline {chapter}{Bibliography}{65}
