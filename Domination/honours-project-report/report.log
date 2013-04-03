@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.11)  3 APR 2013 13:48
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.11)  3 APR 2013 14:48
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -242,6 +242,15 @@ LaTeX Warning: Label `table:territory-actions-bonus' multiply defined.
 
 
 LaTeX Warning: Label `table:territory-actions-bonus' multiply defined.
+
+
+LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
+
+
+LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
+
+
+LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
 
 
 LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
@@ -570,74 +579,90 @@ Underfull \vbox (badness 2213) has occurred while \output is active []
 File: images/domination-debug-gui.png Graphic file (type png)
 
 <use images/domination-debug-gui.png> [43 <./images/domination-debug-gui.png>]
-[44] <images/general-graph.pdf, id=206, 511.1898pt x 259.24855pt>
-File: images/general-graph.pdf Graphic file (type pdf)
+[44] [45] <images/general-game-complete.pdf, id=209, 506.17105pt x 258.2448pt>
+File: images/general-game-complete.pdf Graphic file (type pdf)
 
-<use images/general-graph.pdf>
+<use images/general-game-complete.pdf>
+<images/general-game-length.pdf, id=210, 508.17854pt x 245.17596pt>
+File: images/general-game-length.pdf Graphic file (type pdf)
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+<use images/general-game-length.pdf> [46 <./images/general-game-complete.pdf
 
-[45] [46 <./images/general-graph.pdf
+pdfTeX warning: pdflatex (file ./images/general-game-complete.pdf): PDF inclusi
+on: Page Group detected which pdfTeX can't handle. Ignoring it.
+> <./images/general-game-length.pdf
 
-pdfTeX warning: pdflatex (file ./images/general-graph.pdf): PDF inclusion: Page
- Group detected which pdfTeX can't handle. Ignoring it.
->] <images/winner-graph.pdf, id=222, 512.19354pt x 263.27359pt>
-File: images/winner-graph.pdf Graphic file (type pdf)
+pdfTeX warning: pdflatex (file ./images/general-game-length.pdf): PDF inclusion
+: Page Group detected which pdfTeX can't handle. Ignoring it.
+>] [47] [48]
+<images/winner-game-complete.pdf, id=238, 504.1535pt x 251.21855pt>
+File: images/winner-game-complete.pdf Graphic file (type pdf)
 
-<use images/winner-graph.pdf> [47]
-<images/loser-graph.pdf, id=226, 514.20108pt x 273.3211pt>
-File: images/loser-graph.pdf Graphic file (type pdf)
+<use images/winner-game-complete.pdf>
+<images/winner-game-length.pdf, id=239, 507.1748pt x 248.19727pt>
+File: images/winner-game-length.pdf Graphic file (type pdf)
 
-<use images/loser-graph.pdf>
+<use images/winner-game-length.pdf> [49 <./images/winner-game-complete.pdf
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+pdfTeX warning: pdflatex (file ./images/winner-game-complete.pdf): PDF inclusio
+n: Page Group detected which pdfTeX can't handle. Ignoring it.
+> <./images/winner-game-length.pdf
 
+pdfTeX warning: pdflatex (file ./images/winner-game-length.pdf): PDF inclusion:
+ Page Group detected which pdfTeX can't handle. Ignoring it.
+>] [50] <images/loser-game-complete.pdf, id=265, 504.1535pt x 258.2448pt>
+File: images/loser-game-complete.pdf Graphic file (type pdf)
 
-Underfull \vbox (badness 1565) has occurred while \output is active []
+<use images/loser-game-complete.pdf>
+<images/loser-game-length.pdf, id=266, 506.17105pt x 266.28485pt>
+File: images/loser-game-length.pdf Graphic file (type pdf)
 
- [48 <./images/winner-graph.pdf
+<use images/loser-game-length.pdf> [51 <./images/loser-game-complete.pdf
 
-pdfTeX warning: pdflatex (file ./images/winner-graph.pdf): PDF inclusion: Page 
-Group detected which pdfTeX can't handle. Ignoring it.
->] [49 <./images/loser-graph.pdf
+pdfTeX warning: pdflatex (file ./images/loser-game-complete.pdf): PDF inclusion
+: Page Group detected which pdfTeX can't handle. Ignoring it.
+> <./images/loser-game-length.pdf
 
-pdfTeX warning: pdflatex (file ./images/loser-graph.pdf): PDF inclusion: Page G
-roup detected which pdfTeX can't handle. Ignoring it.
+pdfTeX warning: pdflatex (file ./images/loser-game-length.pdf): PDF inclusion: 
+Page Group detected which pdfTeX can't handle. Ignoring it.
 >]
-Overfull \hbox (6.26537pt too wide) in paragraph at lines 1537--1538
+Overfull \hbox (6.26537pt too wide) in paragraph at lines 1573--1574
 []\T1/cmr/m/n/12 SHOW A GRAPH OF ONE EX-AM-PLE OF WIN-NER CON-STRAINED WRONG 
  []
 
-[50]
-Overfull \hbox (2.19412pt too wide) in paragraph at lines 1569--1570
+
+Underfull \vbox (badness 1024) has occurred while \output is active []
+
+ [52]
+Overfull \hbox (2.19412pt too wide) in paragraph at lines 1605--1606
 []\T1/cmr/m/n/12 SHOW THAT CON-STRAINED PLAY GAMES ARE ON AV-ER-AGE SHORTER
  []
 
-[51] [52]
+[53] [54]
  6.
-[53
+[55
 
-] [54] [55] [56] [57] [58]
+] [56] [57] [58] [59] [60]
  7.
-[59
+[61
 
-] [60] [61] [62]
-Overfull \hbox (28.72581pt too wide) in paragraph at lines 2126--2126
+] [62] [63] [64]
+Overfull \hbox (28.72581pt too wide) in paragraph at lines 2162--2162
 []\T1/cmr/bx/n/17.28 Game Length Correct-Incorrect Pre-dic-tion Count 
  []
 
-[63] (./report.bbl [64] [65] [66
+[65] (./report.bbl [66] [67] [68
 
-] [67]) [68] (./report.aux)
+] [69]) [70] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4060 strings out of 256216
- 54241 string characters out of 1917072
+ 4075 strings out of 256216
+ 54832 string characters out of 1917072
  143840 words of memory out of 1500000
- 7295 multiletter control sequences out of 10000+200000
+ 7307 multiletter control sequences out of 10000+200000
  16103 words of font info for 38 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  35i,26n,38p,767b,550s stack positions out of 5000i,500n,6000p,200000b,15000s
@@ -660,9 +685,9 @@ m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/te
 xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
 mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
 nts/type1/bluesky/cm/cmsy10.pfb>
-Output written on report.pdf (74 pages, 1379865 bytes).
+Output written on report.pdf (76 pages, 1973676 bytes).
 PDF statistics:
- 824 PDF objects out of 1000 (max. 8388607)
+ 860 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
