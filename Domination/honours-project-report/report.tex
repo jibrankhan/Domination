@@ -64,9 +64,9 @@ A huge thank you to Christopher Geib for taking his time to meet with me, and hi
 
 Yura Mamyrin and her team at Yura.Net for their work on Domination. In particular Yura who kindly took her time replying to my endless emails.
 
-I want to give a warm thanks you to all my friends and in no particular order. Nick La Rooy for his great advice in troubled times and as a great source of discussion. Punit Bhudia for his encouragement and helping me to collect the data that fuelled this project. To my friends Akash Pandey and Ammar Khan who always been supportive whilst writing this project. 
+I want to give a warm thanks you to all my friends and in no particular order. Nick La Rooy for his great advice in troubled times and as a great source of discussion. Punit Bhudia for his encouragement and in helping me collect the data that fuelled this project. To my friends Akash Pandey and Ammar Khan who remained been supportive through these four long years. 
 
-Last but not least all those other friends and acquaintances who participated in my many experiments.
+Last but not least a thanks to all my other friends and acquaintances who participated in my many experiments.
 
 \tableofcontents
 
@@ -389,7 +389,7 @@ By "knowing a users plan and goals can significantly improve the effectiveness o
 
 Molineaux, Aha and Sukthankar believe that "plan recognition methods can be a powerful ally for machine learning techniques" \cite{Molineaux09g.:beating}. Synnaeve and Bessiere have also echo this belief with their work in StartCraft \cite{conf/aiide/SynnaeveB11}., since their plan recognition agent utilized unsupervised machine learning of common plans which they then could feed into an adaptive A.I. As of today, many program implementations of board games often contain an A.I which is used often as substitutes for human players.
 
-It is an attractive proposition to consider that through the same methods employed particularly by Synnaeve and Bessiere, plan recognition agents for board games could developed to augment board game A.I's, with for example personalized plan librarys as Fagan and Cunningham suggest \cite{Fagan03case-basedplan} and by doing so build more interesting opponents for people to play against.
+It is an attractive proposition to consider that through the same methods employed particularly by Synnaeve and Bessiere, plan recognition agents for board games could developed to augment board game A.I's, with for example personalized plan library's as Fagan and Cunningham suggest \cite{Fagan03case-basedplan} and by doing so build more interesting opponents for people to play against.
 
 \section{Summary}
 
@@ -442,7 +442,9 @@ The probability of an explanation is then calculated by multiplying each of the 
 \textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{Pr}(\textit{goals})\textit{Pr}(\textit{plans}|\textit{goals})\textit{Pr}(\textit{obs}|\textit{exp})
 }
 
-\section{Environment Modelling and Design}
+\section{Environment Modelling and Data-Structure Design}
+
+PHATT is designed to operate in an action space and therefore it was a vitally important conceptual issue for the design of plan recognition agent to be able to translate R.I.S.K into such a format as to be able represent the action space of a R.I.S.K game at any time. This process involved modelling and data structure design to exploit the constraints placed by the environment on what a player can do and by doing so, infer the plan of a player by based on what they do, given the choices they had.
 
 \subsection{Root-Goals}
 
@@ -599,15 +601,21 @@ Failed-Defence & No & An inconsistent action because a player would not normally
 
 \newpage
 
+\subsubsection{Movement}
+
+The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory that had armies moved into is directly related to.
+
+Movement actions will be modelled as as a less significant indicator of a players plan due to a much higher proportion of reinforce and attack actions which are already modelled in a manner to indicate a players plan.
+
 \subsubsection{Reinforce}
 
 The reinforce actions that a player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any players reinforce actions is therefore modelled as follows. 
 
 For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{l}$ is lost by $p$ (it is attacked then occupied by another player), its corresponding reinforce action is removed from the players pending set for the players turn at $t+1$. Conversely if another territory $T_{o}$ is occupied by $p$ then a reinforce action for $T_{o}$ is added to the players pending set at turn $t$.
 
-\subsubsection{Movement}
+Since reinforce actions are a unrestrained choice in that players are not being acted upon as in defence or constrained by the territories they own as in movement. Reinforce actions will be considered as consistent or inconsistent with all missions when one is observed.
 
-The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory that had armies moved into is directly related to.
+A reinforce action in R.I.S.K is much more frequent than any other action. Though it is an indicator of a plan ultimately where a player attacks is the crucial decision and therefore will be modelled as a less significant indicator of inferring a players plan.
 
 \subsubsection{Trading Territory Cards}
 
@@ -894,10 +902,11 @@ That the likelihood of inconsistent attack actions are uniformly distributed.
 $playerPS \gets generatePS()$
 
 $totalExpConsAct \gets ECA$
+$totalExpInconsAct \gets filterPS(EIA, obs)$
 
 $weight \gets arbitraryNumber$ \newline
 
-$base \gets computeObsProb(playerPS, totalExpConsAct, obs)$ 
+$base \gets computeObsProb(playerPS, totalExpInConsAct, obs)$ 
 
 $conActProb \gets base + weight$
 
@@ -926,9 +935,9 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 \subsection{Example of Operation}
 
-The concepts from this chapter can be tied together with an arbitrary example of computing \textit{Pr(exp}|\textit{obs)} the likelihood of an explanation given an observation. The example will be extended to include the plan recognition agent handle two observations.
+CHECK USE OF TERM EXPLANATION AND ROOT GOAL
 
-FIX PLAN LIBRARY CONNECTION FROM O-AS-SA TO AF MISTAKE
+The concepts from this chapter can be tied together with an arbitrary example of computing \textit{Pr(exp}|\textit{obs)} the likelihood of an explanation given an observation. The example will be extended to include the plan recognition agent handle two observations.
 
 Assumptions for this example are:
 
@@ -938,20 +947,18 @@ Mission cards are unique between players and randomly handed out.
 \item
 Consistent attacks are assigned a weight $w$ of 0.02.
 \item
-When player $p_1$ attacks it is always a Successful-Occupation action.
+When player $p_1$ attacks a territory it is always a Successful-Occupation action.
 \item
-When player $p_1$ defends it is always a Successful-Defence action.
+When player $p_1$ defends a territory it is always a Successful-Defence action.
 \item
-The R.I.S.K map consists of only territories, continents and root-goals illustrated on Figure 3.1.
+A closed world assumption - The R.I.S.K map consists of only territories, continents and root-goals illustrated on Figure 3.1.
 \end{itemize}
 
 \begin{figure}[h]
 \fbox{
-	\centerline{
-		\includegraphics[width=\textwidth]{images/risk-plan-library.pdf}
-	}
+	\includegraphics[width=\textwidth]{images/risk-plan-library.pdf}
 }
-\caption{Successful-Occupation Plan Library for North-Africa \& Egypt}
+\caption{Successful-Occupation Plan Library for North-Africa \& Egypt, \textbf{O} = Occupy, \textbf{SO} = Successful-Occupation}
 \end{figure}
 
 \newpage
@@ -967,9 +974,9 @@ Occupy-North-America-South-America (O-AS-SA)
 Occupy-South-America-Africa (O-SA-AF)
 \end{itemize}
 
-Each of the three root-goals have several sub-goals. In the context of mission R.I.S.K for a player to accomplish their root-goal they must have occupied every continent sub-goal, this is done through performing Successful-Occupation actions for every territory contained in that continent. 
+The first can be expressed in two ways given our example, therefore we must consider four root-goals. Each root-goal has a number of sub-goals. In the context of mission R.I.S.K, for a player to accomplish their root-goal they must have occupied every continent-sub-goal, this is done by performing Successful-Occupation actions on every territory contained in that continent. 
 
-Additionally squares represent territory entities. Arrows away from these squares are connected to the actions a player can perform by occupying this territory. This is done to represent the state of the world at the time the action was performed. For example by occupying the territory Egypt, it allows a player to perform the actions: O-East-Africa, O-North-Africa and O-Middle-East.
+For the purposes of this example we introduce another notation which are squares that represent territory entities. Arrows away from these squares are connected to the actions a player can perform when occupying this territory. This is done to visualize the state of the world at the time the action was performed. For example by occupying the territory Egypt, allows a player to perform the actions: SO-East-Africa, SO-North-Africa and SO-Middle-East.
 
 Recall the formulae:\newline
 
@@ -977,42 +984,44 @@ Recall the formulae:\newline
 \textit{Pr(exp} $\wedge$ \textit{obs)} = \textit{Pr}(\textit{goals})\textit{Pr}(\textit{plans}|\textit{goals})\textit{Pr}(\textit{obs}|\textit{exp})
 }
 
-The term \textit{Pr}(\textit{goals}), the prior probability of each root-goal, is 1/\textit{n} where \textit{n} is the number of mission cards and therefore for this example is 1/3 for each explanation. 
+The term \textit{Pr}(\textit{goals}), the prior probability of each root-goal, is 1/\textit{n} where \textit{n} is the number of mission cards and therefore for this example is 1/3 for each root-goal. 
 
-The term \textit{Pr}(\textit{plans}|\textit{goals}) is 1.0 and so is not taken in account because the design of the plan recognition agent is to operate on on the full set of explanations, hence removing the need to calculate a choice.
+The term \textit{Pr}(\textit{plans}|\textit{goals}) is 1.0 as we always consider the the full set of root-goals hence removing the need to calculate a choice on the part of the player.
 
-The term \textit{Pr}(\textit{obs}|\textit{exp}) will be computed once an observation occurs in the example environment.
+The term \textit{Pr}(\textit{obs}|\textit{exp}) is computed only when an observation occurs.
 
 Player $p_1$ initially occupies the territory North-Africa and thus can perform actions connected to the North-Africa square. $p_1$ then performs a Successful-Occupation-Western-Europe action.
 
-With an observation we can now compute the term \textit{Pr(exp} $\wedge$ \textit{obs)}, the probability of each explanation and O-Western-Europe for $p_1$.
+With an observation we can now compute the term \textit{Pr(exp} $\wedge$ \textit{obs)}, the probability of the explanation that the player has a root-goal and O-Western-Europe for $p_1$.
 
-First we must compute \textit{Pr}(\textit{obs}|\textit{exp}), the probability that $p_1$ would choose to perform the observation O-Western-Europe given each explanation.
+First we must compute \textit{Pr}(\textit{obs}|\textit{exp}), the probability that $p_1$ would choose to perform the observation O-Western-Europe given each root-goal.
 
 \begin{itemize}
 \item
 Case 1 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-AS-AF})
 \item
-Case 2 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-EU-SA+1})
+Case 2 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-EU-SA-AF})
 \item
-Cast 3 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-AS-SA})
+Case 3 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-EU-SA-AS})
+\item
+Cast 4 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-AS-SA})
 \end{itemize}
 
-The plan recongition agent first applys the $computeExpProb$ operation to each of the above cases. Then using the $generatePS$ operation to build the full pending set for $p_1$.
+The plan recognition agent first applies the $computeExpProb$ operation for each of the above cases. Then using the $generatePS$ operation to builds a full pending set for $p_1$.
 
-After this the plan recognition agent retrieves a list of the all the consistent actions for each explanation by retrieving the $ECA$ set from each explanations data structure.
+After this the plan recognition agent retrieves a list of all consistent actions for each explanation by retrieving the $ECA$ set from each explanations data structure.
 
-Given the observation O-Western-Europe, the complete pending set of the player, and the set $ECA$. The plan recognition agent uses the $computeObsProb$ operation to compute the probability of the Successful-Occupation-Western-Europe.
+Given the observation O-Western-Europe, the complete pending set of the player, and the set $ECA$. The plan recognition agent then uses the $computeObsProb$ operation to compute the probability of choosing the Successful-Occupation-Western-Europe action in the context of each root-goal.
 
-For each explanation the $computeObsProb$ filters out all actions types except Successful-Occupation from both $p_1$ pending set and each $ECA$ set. The result is the Successful-Occupation actions that are consistent with the explanation $expConAct$ and a new pending set $pTotalActNum$ which contain the following Successful-Occupation actions:\newline
+For each root-goal the $computeObsProb$ filters out all action types except Successful-Occupation actions, from both $p_1$ pending set and the $ECA$ set. The result is the Successful-Occupation actions that are consistent with the explanation $expConAct$ and a new pending set $pTotalActNum$ which contain the following Successful-Occupation actions given the state of the world in this example:\newline
 
 \centerline{
-$p_1PS$ = \{O-Western-Europe, O-Brazil, O-Egypt, O-Congo, O-East-Africa\}
+$p_1PS$ = \{SO-Western-Europe, SO-Brazil, SO-Egypt, SO-Congo, SO-East-Africa\}
 }
 
-Given these two sets we both count the number of consistent actions that the players pending set contains for each respective explanation, by comparing what actions are contained in $pTotalActNum$ to each explanations $expConAct$ set and we count the total number of actions a player can perform $pTotalActNum$.
+Given these two sets we count the number of consistent actions that the players pending set contains for each respective root-goal, by comparing what actions are contained in $pTotalActNum$ to each root-goals $expConAct$ set. We also count the total number of actions a player can perform $pTotalActNum$.
 
-$pTotalActNum$ = 5
+In this example it is currently $pTotalActNum$ = 5
 
 The counts given the action Successful-Occupation-Western-Europe is as follows:
 
@@ -1022,30 +1031,34 @@ The counts given the action Successful-Occupation-Western-Europe is as follows:
 \hline 
 \textbf{Explanation} & \textbf{Number of Consistent Actions} \\ 
 \hline 
-O-AS-AF & 0 \\ 
+O-AS-AF & 3 \\ 
 \hline 
-O-EU-SA+1 & 1 \\ 
+O-EU-SA-AF & 5 \\ 
 \hline 
-O-AS-SA & 0 \\ 
+O-EU-SA-AS & 2 \\ 
+\hline 
+O-AS-SA & 1 \\ 
 \hline 
 \end{tabular}
 \caption{Consistent Action Count}
-\label{table:territory-actions-bonus}
+\label{table:consistent-action-count}
 \end{table}
 
-With these counts and our assumed $w$ the plan recognition agent can then compute a $base$ action probability for each explanation with the $computeBaseWeight$ operation as follows:
+With these counts and our assumed $w$ the plan recognition agent then computes a $base$ action probability for each explanation with the $computeBaseWeight$ operation as follows:
 
 \begin{table}[ht]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline 
-\textbf{Explanation} & TotalWeight & LeftOver & Base \ \\ 
+\textbf{Explanation} & Total-Weight & Left-Over & Base \ \\ 
 \hline 
-O-AS-AF & 0.02 * 0 & 1.0 - 0 & 0.2 \\ 
+O-AS-AF & 0.02 * 3 & 1.0 - 0.06 = 0.94 & 0.188 \\ 
 \hline 
-O-EU-SA+1 & 0.2 * 1 & 1.0 - 0.02 & 0.196 \\ 
+O-EU-SA-AF & 0.02 * 5 & 1.0 - 0.10 = 0.9 & 0.18 \\ 
 \hline 
-O-AS-SA & 0.2 * 0 & 1.0 - 0 & 0.2 \\ 
+O-EU-SA-AS & 0.02 * 2 & 1.0 - 0.04 = 0.96 & 0.192 \\ 
+\hline 
+O-AS-SA & 0.02 * 1 & 1.0 - 0.02 = 0.98 & 0.196 \\ 
 \hline 
 \end{tabular}
 \caption{Consistent Action Count}
@@ -1062,35 +1075,39 @@ Inconsistent actions $incons$ are not weighted so the probability of a inconsist
 \hline 
 \textbf{Explanation} & $Pr(cons)$ & $Pr(incons)$ \ \\ 
 \hline 
-O-AS-AF & 0.2 & 0.2 \\ 
+O-AS-AF & 0.208 & 0.188 \\ 
 \hline 
-O-EU-SA+1 & 0.216 & 0.196 \\ 
+O-EU-SA-AF & 0.2 & 0.18 \\ 
 \hline 
-O-AS-SA & 0.2 & 0.2 \\ 
+O-EU-SA-AS & 0.212 & 0.192 \\ 
+\hline 
+O-AS-SA & 0.216 & 0.196 \\ 
 \hline 
 \end{tabular}
-\caption{Consistent Action Count}
+\caption{Computing Probabilities of Consistent/Inconsistent Actions}
 \label{table:territory-actions-bonus}
 \end{table}
 
-The plan recognition agent then computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying the term  \textit{Pr}(\textit{goals}) with one of the two action probabilities, depending on whether the action that was observed was consistent or not, in other words if was contained in $ECA$ or not.
+The plan recognition agent then computes an explanation that the players plan is the root goal given the observation \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying the term  \textit{Pr}(\textit{goals}) with one of the two action probabilities, depending on whether the action that was observed was consistent or not, in other words if was contained in $ECA$ or not.
 
-For example to compute \textit{Pr(exp} $\wedge$ \textit{obs)} for the explanation O-EU-SA+1 the plan recongition agent would choose to multiply by $Pr(cons)$ and so the calculation would be 1/3 * 0.216. 
+For example to compute \textit{Pr(exp} $\wedge$ \textit{obs)} for the explanation O-EU-SA-AF the plan recognition agent would choose to multiply by $Pr(cons)$ and so the calculation would be 1/3 * 0.2 
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{|c|c|}
+\begin{tabular}{|c|c|c|}
 \hline 
-\textbf{Explanation} & \textit{Pr(exp} $\wedge$ \textit{obs)} \\ 
+\textbf{Explanation} & \textbf{Terms Multiplied} &\textit{Pr(exp} $\wedge$ \textit{obs)} \\ 
 \hline 
-O-AS-AF &  0.066 \\ 
+O-AS-AF & \textit{Pr}(\textit{goals}) * $Pr(incons)$ & 0.0626 \\ 
 \hline 
-O-EU-SA+1 &  0.072 \\ 
+O-EU-SA-AF & \textit{Pr}(\textit{goals}) * $Pr(cons)$ & 0.0666 \\ 
 \hline 
-O-AS-SA & 0.066 \\ 
+O-EU-SA-AS & \textit{Pr}(\textit{goals}) * $Pr(cons)$ & 0.706 \\ 
+\hline 
+O-AS-SA & \textit{Pr}(\textit{goals}) * $Pr(incons)$ & 0.0653 \\ 
 \hline 
 \end{tabular}
-\caption{Consistent Action Count}
+\caption{Computing Un-Normalised Root-Goal Probabilities}
 \label{table:territory-actions-bonus}
 \end{table}
 
@@ -1102,11 +1119,13 @@ Finally to complete the calculation of \textit{Pr(exp}|\textit{obs)} the plan re
 \textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
 }
 
-For example to compute \textit{Pr($exp$}|\textit{obs)} for O-EU-SA, the plan recognition agent would sum all explanation probablities which would work out as 
+For example to compute \textit{Pr($exp$}|\textit{obs)} for O-EU-SA-AF, the plan recognition agent would first sum all explanation probabilities which is:
 
-0.066 + 0.072 + 0.066 = 0.204 
+0.0626 + 0.0666 + 0.0706 + 0.0653 = 0.2651 
 
-Then it would divide the probability of O-EU-SA which is 0.072 by 0.204 which is 0.353.
+It would then divide the probability of the term \textit{Pr($exp$}|\textit{obs)} for the O-EU-SA-AF root-goal which is:
+
+0.0666 / 0.2651 = 0.251.
 
 \begin{table}[ht]
 \centering
@@ -1114,48 +1133,51 @@ Then it would divide the probability of O-EU-SA which is 0.072 by 0.204 which is
 \hline 
 \textbf{Explanation} &  \textit{Pr($exp$}|\textit{obs)} Pre-Normalisation &  \textit{Pr($exp$}|\textit{obs)} Post-Normalisation \\ 
 \hline 
-O-AS-AF & 0.066 & 0.324  \\ 
+O-AS-AF & 0.0626 & 0.236  \\ 
 \hline 
-O-EU-SA+1 &  0.072 & 0.353 \\ 
+O-EU-SA-AF &  0.0666 & 0.251 \\
 \hline 
-O-AS-SA & 0.066 & 0.324 \\ 
+O-EU-SA-AS &  0.0706 & 0.266 \\ 
+\hline 
+O-AS-SA & 0.0653 & 0.246 \\ 
 \hline 
 \end{tabular}
 \caption{Consistent Action Count}
 \label{table:territory-actions-bonus}
 \end{table}
 
-NEED TO ADD ANOTHER ACTION
+At this point we set each normalised value of \textit{Pr($exp$}|\textit{obs)} as the value of each explanation and choose the highest as the prediction of the plan recognition agent. This is done to keep the explanation values from dropping to zero too quickly.
 
-Now another player $p_2$ attacks $p_1$.  $p_1$ then performs a Successful-Defence retaining the territory.
+Failed-Occupation actions are computed in the exact same way as Successful-Occupation actions, the difference being that the pre-defined $w$ is set to a lower value than that of Successful-Occupation.
 
-Incorporating these events is much simpler as probabilities are scaled down or up. Given the operations to compute the action probabilities for Successful-Occupation.
+The computation of other actions in the environment is considerably simpler given the assumptions of the model. To compute defence and movement actions the plan recognition agent would first retrieve the current explanation probability. Then firstly taking into consideration, whether it was an action performed on a territory that was contained in the high-level root-goal. If so then whether the action was consistent or not it would multiply it by for example:
 
-DEFEND ACTION - Successful-Defence action
+\begin{itemize}
+\item
+1.02 for consistent actions.
+\item
+0.98 for in-consistent actions.
+\end{itemize}
 
-REINFORCE ACTION - reinforce
+The final computed probability would then again be normalised and set to the current explanation probability as normal.
 
-\subsection{Conceptual Issues}
-
-NOT COMPLETE
-
-Main change is that PHATT works in an action space whereas I have had to adapt the implementation to represent the state of the 'risk world' for the algorithm to operate.
-
-Using the constraints in the environment initially the model was based on the plan library proposed in the PHATT paper. This was not good therefore utilized the constraints of countries to narrow the number of possible explanations and actions.
-
-Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal.
+For reinforce actions the plan recognition agent considers each explanations, if the reinforce action is observed as consistent the current explanations probability is multiplied by 1.02 if inconsistent then it is multiplied by 0.98. 
 
 \section{Summary}
 
-NOT COMPLETE
+CHECK SUMMARY TO SEE IF NOT MISSED THINGS
 
-The summary for this section is
+The design of the plan recognition agent is based on the PHATT algorithm. Various environmental modelling and design of environment data structures was necessary in order to allow the PHATT algorithm to be applicable to the R.I.S.K environment. 
+
+Each action of the R.I.S.K environment was modelled and various assumptions about each made in-order that each can be used to compute the probability of a players root-goal. Where necessary data structures were designed for the most significant objects in the environment. The purpose of each data structure would be to contain the essential information required by the plan recognition agent.
+
+In particular a key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} based on the territories a player owns and that by combining the action possible from each territory that a player owns into a single set, all the actions a player can perform can be captured.
 
 \chapter{Implementation}
 
-Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
-
 WHY DID I USE JAVA , WIDELY USE, COMPARATIVELY EASIER, WIDE RANGE OF LIBRARIES, GOOD IDES
+
+Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
 
 \begin{figure}[h]
 \centerline{
@@ -1239,7 +1261,7 @@ The plan recognition agent was written in the Java programming language followin
 
 \chapter{Evaluation} 
 
-The evaluation plan consistend of three experiments with the plan recongition agent:
+The evaluation plan consisted of three experiments with the plan recognition agent:
 
 \begin{enumerate}
 \item
@@ -1686,11 +1708,14 @@ Allow for method choice probabilities again and use machine learning to computer
 
 The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
 
+Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal. REMODEL MOVEMENT TO BE:
+
 Probability model changed to PROPORTION SYSTEM of consistent actions * 0.1 
 0.9 - proportion for consistent probability
 1 - proportion for inconsistent probability
 
 \subsubsection{More Sophisticated Modelling of Current Model}
+
 
 Players in these perform actions that are either indirectly-consistent or inconsistent  primarily because their plan at that point may be different to that of their mission. Either type of action reduces the probability of the correct explanation given the current model. MODEL TO TAKE THIS INTO ACCOUNT
 
