@@ -5,6 +5,12 @@ Nate Blaylock.
 \newblock {Retroactive Recognition of Interleaved Plans for Natural Language
   Dialogue}, December~11 2001.
 
+\bibitem{Carberry:2001:TPR:598284.598348}
+{Carberry, Sandra}.
+\newblock {Techniques for Plan Recognition}.
+\newblock {\em {User Modeling and User-Adapted Interaction}}, 11(1-2):31--48,
+  March 2001.
+
 \bibitem{journals/ai/CharniakG93}
 Eugene Charniak and Robert~P. Goldman.
 \newblock {A Bayesian Model of Plan Recognition}.
@@ -54,6 +60,19 @@ Henry~A. Kautz and James~F. Allen.
 \newblock In Tom Kehler, editor, {\em Proceedings of 1986 Conference of the
   American Association for Artificial Intelligence}, pages 32--37. Morgan
   Kaufmann, 1986.
+
+\bibitem{Fagan03case-basedplan}
+{Michael Fagan and Pádraig Cunningham}.
+\newblock {Case-Based Plan Recognition in Computer Games}.
+\newblock In {\em Proceedings of the Fifth ICCBR}, pages 161--170. Springer,
+  2003.
+
+\bibitem{Molineaux09g.:beating}
+Matthew Molineaux, David~W. Aha, and Gita Sukthankar.
+\newblock G.: Beating the defense: Using plan recognition to inform learning
+  agents.
+\newblock In {\em In: Proceedings of Florida Artifical Intelligence Research
+  Society, AAAI}, pages 337--343. Press, 2009.
 
 \bibitem{citeulike:5386647}
 Jeff Orkin.
