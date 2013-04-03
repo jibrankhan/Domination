@@ -41,7 +41,7 @@
 \date{\today}
 
 \abstract{
-This paper we present the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent's goal only to infer the unknown mission card of an agent based on observations of their behaviour in the board game R.I.S.K. EXTEND TO SUMMARISE REST OF REPORT
+This paper we present the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent behaves as an observer to the game and has the goal to infer the unknown mission card of an agent based on observations of their behaviour in the board game R.I.S.K. EXTEND TO SUMMARISE REST OF REPORT
 }
 
 \maketitle
@@ -64,7 +64,7 @@ A huge thank you to Christopher Geib for taking his time to meet with me, and hi
 
 Yura Mamyrin and her team at Yura.Net for their work on Domination. In particular Yura who kindly took her time replying to my endless emails.
 
-I want to give a warm thanks you to all my friends and in no particular order. Nick La Rooy for his great advice in troubled times and as a great source of discussion. Punit Bhudia for his encouragement and in helping me collect the data that fuelled this project. To my friends Akash Pandey and Ammar Khan who remained been supportive through these four long years. 
+I want to give a warm thanks you to all my friends and in no particular order. Nick La Rooy for his great advice in troubled times and as a great source of discussion. Punit Bhudia for his encouragement and in helping me collect the data that fuelled this project. To my friends Akash Pandey and Ammar Khan who been supportive through these four long years. 
 
 Last but not least a thanks to all my other friends and acquaintances who participated in my many experiments.
 
@@ -147,8 +147,6 @@ To determine whether plan recognition algorithms are beneficial in board games, 
 If the probability of a mission card is predicted the highest among all the other mission cards for an agent, then it will be the correct mission card.
 \item
 To determine whether the length of a game has any bearing on the prediction of the plan recognition agent.
-\item
-To determine if the accuracy of certain mission cards is better than others.
 \end{itemize}
 
 \section{Paper Structure}
@@ -1175,18 +1173,99 @@ In particular a key concept in the design of the agent is that the pending set o
 
 \chapter{Implementation}
 
-WHY DID I USE JAVA , WIDELY USE, COMPARATIVELY EASIER, WIDE RANGE OF LIBRARIES, GOOD IDES
+The Java programming language was selected for the implementation of the plan recognition agent. Reasons for doing so were:
 
-Built purely in the Java programming language, the plan recognition agent follows the following \textit{event-driven} system architecture.
+\begin{itemize}
+\item
+The availabilty of an open source project with an active development team.
+\item
+Familiarily with the language.
+\item
+Cross platform.
+\item
+High Quality Integrated Development Environments.
+\end{itemize}
+
+\section{System Architecture}
 
 \begin{figure}[h]
 \centerline{
 \includegraphics{images/event-driven-architecture}
 }
-\caption{Event-Driven Architecture}
+\caption{System Architecture}
 \end{figure} 
 
-To operate the plan recognition agent needs to be aware of several important aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
+The plan recognition agent followed an \textit{event-driven} system architecture.
+
+DESCRIBE THE DIFFERENT PARTS OF THE DIAGRAM ONCE ITS BEEN CHANGED!
+
+The system can be seen as three components.
+
+The Domination Program refers t
+
+Modifications to the Domination program included automating the output of the replay file, as well as lines of code to fire events into the processing class.
+
+The plan recognition algorithm also had access to the data structures in the Domination program rather than storing its own copy avoiding and problems potentially because of losing synchronisation between the two.
+
+The processing class is responsible for routing events to the plan recognition algorithm 
+
+When events occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event object(s) and depending on the type of event object and the information held by it handles the object appropriately. The types of events, what they contain and their purpose are:
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{|c|p{6cm}|p{8cm}|}
+\hline 
+\textbf{Event Type} & \textbf{Contains Variables} & \textbf{Purpose} \\ 
+\hline 
+New-Player & playerName & Initialises a new player data structure with ID \textit{playerName}. \\ 
+\hline 
+Remove-Player & playerName & Destroys the player data structure with ID \textit{playerName}. \\ 
+\hline 
+Successful-Occupation & attackerName, cName, tName & Signals that the player named \textit{attackerName}  performed a Successful-Occupation. \\ 
+\hline
+Failed-Occupation & attackerName, cName, tName & Signals that \textit{attackerName} performed a FailedOccupation. \\ 
+\hline
+Successful-Defence & defenderName, cName, tName & Signals that \textit{defenderName} performed a SuccesfulDefence. \\ 
+\hline
+Failed-Defence & defenderName, cName, tName & Signals that \textit{defenderName} performed a FailedDefence. \\ 
+\hline
+Army-Movement & playerName, cName, tName & Signals that \textit{playerName} performed an ArmyMovement. \\ 
+\hline
+Reinforce & playerName, cName, tName & Signals that \textit{playerName} performed a Reinforce action. \\ 
+\hline
+\end{tabular}
+}
+\caption{Event Object Specification, c = Continent, t = Territory}
+\label{table:event-description}
+\end{table}
+
+At the end of a game the domination program and the plan recogntion agent would output two files:
+
+The domination program would output a file that would be used for data collection.
+
+The plan recognition agent would output a csv file containg the prediction of the plan recogntion agent over the course of the game.
+
+TALK MORE ABOUT THE SYSTEM!
+
+The architecture of the system is such that the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another implementation of a plan recognition agent.
+
+\newpage
+
+\section{Plan Recognition Agent Architecture}
+
+PLAN RECOGNTION AGENT ARCHITECTURE-EXTENSION OF DIAGRAM INCLUDE PLAN RECOGNITION AGENT SUB DATA STRUCTURES - EXTENSION OF DIAGRAM TO INCLUDE OUTPUTTING OF CSV FILE
+
+The plan recognition agent has a data structure for each player which in turn has several data structures of the explanation that are initially hardcoded. Each explanation object calculate its own probability.
+
+When an event arrives from the processing class it is routed to its specified player data structure and then to its specifiied explanation data structure.
+
+Data structure that stores the probabilities of each players expalantion structure once this game ends the data structure writes it out to a data folder as a csv file.
+
+Given a list of hardcoded explanations the plan recognition could be used on any map that might be developed for the Domination Program.
+
+\section{System Operation}
+
+To operate the plan recognition agent needs to be aware of several aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
 
 \begin{itemize}
 \item
@@ -1209,39 +1288,15 @@ Reinforcement
 End Game
 \end{itemize}
 
-When these occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event object(s) and depending on the type of event object and the information held by it handles the object appropriately. The types of events, what they contain and their purpose are:
+When a game begins, the plan recognition agent initalises a list of hardcoded explanations, these objects contain all the necessary information from the environment to computes its own probability.
 
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|p{6cm}|p{8cm}|}
-\hline 
-\textbf{Event Type} & \textbf{Contains Variables} & \textbf{Purpose} \\ 
-\hline 
-New-Player & playerName & Initialises a new player data structure with ID \textit{playerName}. \\ 
-\hline 
-Remove-Player & playerName & Destroys the player data structure with ID \textit{playerName}. \\ 
-\hline 
-Successful-Occupation & attackerName, continentName, territoryName & Signals that the player named \textit{attackerName}  performed a Successful-Occupation. \\ 
-\hline
-Failed-Occupation & attackerName, continentName, territoryName & Signals that \textit{attackerName} performed a FailedOccupation. \\ 
-\hline
-Successful-Defence & defenderName, continentName, territoryName & Signals that \textit{defenderName} performed a SuccesfulDefence. \\ 
-\hline
-Failed-Defence & defenderName, continentName, territoryName & Signals that \textit{defenderName} performed a FailedDefence. \\ 
-\hline
-Army-Movement & playerName, continentName, territoryName & Signals that \textit{playerName} performed an ArmyMovement. \\ 
-\hline
-Reinforce & playerName, continentName, territoryName & Signals that \textit{playerName} performed a Reinforce action. \\ 
-\hline
-\end{tabular}
-}
-\caption{Event Object Specification}
-\label{table:event-description}
-\end{table}
-
-The architecture is such that the implementation of the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another plan recognition agent.
+The plan recognition agent also then initialises a set of player data strucutres. This complete list of explanations is cloned into each players data structure.
 
 \section{Additional Implementation Concepts}
+
+\subsection{Plan Recognition Agent Map Portability}
+
+Since explanations in the environement can be hardcoded without affecting the plan recogntion agents core structures, given a different list of hardcoded explanations the plan recognition can be used on any map that might be developed for the Domination Program.
 
 \subsection{Data Structure Re-Use}
 
@@ -1257,7 +1312,7 @@ The plan recognition agent makes extensive use of the freely available Google Gu
 
 \section{Summary}
 
-The plan recognition agent was written in the Java programming language following an event-driven system architecture. It operated in parallel to the Domination program receiving events fired from the program to update data structures it held locally that contained information about each players explanation predictions.
+The plan recognition agent was written in the Java programming language following an event-driven system architecture. It operated in parallel to the Domination program receiving events fired from the program to update data structures it held locally that contained information about each players explanation predictions. At the end of a game the domination program as well as the plan recognition agent would output two files allowing the replay of a game and a record of the plan recognition agents prediction probabilities for each players explanations over the couse of the game.
 
 \chapter{Evaluation} 
 
@@ -1306,6 +1361,10 @@ Completing their mission card.
 
 At the end of the game participants were asked to give a short summary of their initial plan and any changes to that plan during the course of the game.
 
+Since the A.I. for the game has its decisions skewed, varying this should in theory cause the A.I. to perform either better or worse depending on whether decisions are skewed towards decisions that are more consistent with the mission or away from decisions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
+
+Experiments were performed with with different values of $w$ to confirm this.
+
 For the A.I. two experiments were performed with different values of $w$, 4 its normal setting and 100 a significantly higher value.
 
 \newpage
@@ -1345,8 +1404,6 @@ Experiments with the plan recognition agent revealed the following insights:
 
 \begin{enumerate}
 \item
-The accuracy of the prediction agent is 32.61\% better than random guess.
-\item
 The prediction accuracy of the plan recognition agent is highest in constrained play. 
 \item
 The prediction accuracy of the plan recognition agent is HOW MUCH PERCENT higher for players who won than players who lost.
@@ -1362,11 +1419,7 @@ Keeping in mind the initial hypothesis, we attempt to evaluate whether plan reco
 
 To do this we first comment on general trends, then we explore two questions for both human and A.I players:
 
-FIX THIS SECTION, TALK ABOUT WHAT YOU DEFINE AS IN GENERAL
-
-CLARIFY STRUCTURE MORE
-
-The following sections will be made up of evaluating prediction accuracy in general, for winners and losers, asking two essential questions through out.
+The following sections will be made up of an analysis of the prediction accuracy of the plan recognition agent for players in \textit{General}, then we analyse the data further by decomposing players into players who won \textit{Winners} and players who lost \textit{Losers}.
 
 \begin{itemize}
 \item
@@ -1374,73 +1427,6 @@ Does the plan recognition agent converge on the correct explanation?
 \item
 How fast does the plan recognition agent converge on the correct explanation?
 \end{itemize}
-
-\subsection{Explanation Convergence Format}
-
-PICTURE OF STANDARD SUCCESSFUL CONVERGENCE OF AN EXPLANATION
-
-At the start of a game forty-two turns are required to place one army on each territory of the R.I.S.K map. These observations are not taken into account as the distribution of territories between players is automatic and random. 
-
-After this the remaining initial armies are distributed by players on to their territories. During this the probability of explanations that are consistent with the actions a player is performing will slowly rise and conversely those that explanations which with the actions are inconsistent will slowly fall.
-
-Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players) the attack phase begin for the first player $p_c$, at this time the probabilities of $p_c$ explanations may change rapidly depending on the number of actions that $p_c$ performs in their turn. The most significant change occurs when there is a high number of actions. This is due to the plan recognition agents model which has been built to give attack actions the greatest significance.
-
-After $p_c$ turn is over, other players begin their attack phases in-turn, and unless the action another player performs is to attack a territory owned by $p_c$, the probabilities of $p_c$ explanations remained unaffected. 
-
-This continues till the end of the game at which point the probability of a players explanation will have either converged successfully or unsuccessfully to the correct explanation. 
-
-\subsection{Prediction Accuracy in General}
-
-Given there are six mission cards, the accuracy of a random guess of a players mission card is 16.67\%. According to Table 7.1, at its worse the plan recognition agent in general performs 8.47\% better than this, and at its best 63.72\% better. 
-
-Of free and constrained play table 7.1 reveals that \textit{constrained play had a significantly higher accuracy than both free and A.I. play}. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performed.
-
-We then ask why and why not, did it converge.
-
-\newpage
-
-\begin{figure}[h]
-\centerline{
-\includegraphics[width=0.9\textwidth]{images/general-game-complete.pdf}
-}
-\caption{General Prediction Accuracy}
-\label{fig:dom-debug-gui}
-\end{figure} 
-
-\begin{figure}[h]
-\centerline{
-\includegraphics[width=0.9\textwidth]{images/general-game-length.pdf}
-}
-\caption{General Prediction Accuracy}
-\label{fig:dom-debug-gui}
-\end{figure} 
-
-\newpage
-
-Figure 5.2 details the general prediction accuracy of the plan recognition agent at intervals of 25\% of the games duration. From this we can infer several important trends.
-
-In general the plan recognition of the different types of play the plan recognition agent performed significantly better in \textit{constrained play had a than both free and A.I. play}. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performed.
-
-In general the plan recognition agent performed better on human players than A.I. players. The reason for this is due primarily to the way in which the humans and the A.I. differ in operation. According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
-
-Changing the variable $w$ hence explains the plan recognition agents increase in accuracy of up to \%10  as the A.I.'s decisions becomes more skewed towards occupying mission continents and less towards occupying accessible non mission-continents and eliminating opponents both of which are observed as inconsistent actions by the plan recognition agent.
-
-There is a significant increase in the prediction accuracy of the plan recognition agent in constrained play in the 75 to 100\% of game play complete range. This is because in the later part of any game players can perform more actions per turn due to the increasing number of armies on the board.
-
-Why in general does the 
-
-
-
-An analysis of the plan recognition agents accuracy in general is not sufficient, as it ignores that there are in fact two distinct types of player of R.I.S.K. which are:
-
-\begin{enumerate}
-\item
-\textit{Winners} - a player who have successfully occupied their mission continents
-\item
-\textit{Losers} - players who have failed to do so.
-\end{enumerate}
-
-\subsection{Winner-Loser Prediction Accuracy}
 
 How the game is played out for each player or their \textit{game-scenarios}, deciedes whether a player is a winner or loser.  The main game-scenarios that the plan recognition agent faces are the following:
 
@@ -1488,9 +1474,82 @@ These cases can be compactly represented in a definitional framework.
 
 Using table 5.1 we classify players into their game-scenarios on game-by-game basis. As there can be only one winner, the winner row only ever has one entry, whereas the loser row can have 1 to 5 entries.
 
-By definition in cases where a player performs action on non-mission continents \textit{only}, the plan recognition agent cannot produce a correct prediction. By establishing this extreme, if we view the degree of fighting over mission and non-mission continents as a scale, the higher the proportion of actions on mission continents to non-mission continents, the higher the likelihood of the prediction agent is likely to be correct. NEED TO PROVE CLAIM?
+\subsection{Explanation Convergence Format}
 
-\subsubsection{Prediction Accuracy of Winners}
+EXAMPLE OF STANDARD SUCCESSFUL CONVERGENCE OF AN EXPLANATION
+
+At the start of a game forty-two turns are required to place one army on each territory of the R.I.S.K map. These observations are not taken into account by the plan recognition agent as the distribution of territories between players is automatic and random. 
+
+After this the remaining initial armies are distributed by players on to their territories. During this the probability of explanations that are consistent with the actions a player is performing will slowly rise and conversely those that explanations which with the actions are inconsistent will slowly fall.
+
+Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players) the attack phase begin for the first player $p_c$, at this time the probabilities of $p_c$ explanations may change rapidly depending on the number of actions that $p_c$ performs in their turn. The most significant change occurs when there is a high number of actions. This is due to the plan recognition agents model which has been built to give attack actions the greatest significance.
+
+After $p_c$ turn is over, other players begin their attack phases in-turn, and unless the action another player performs is to attack a territory owned by $p_c$, the probabilities of $p_c$ explanations remained unaffected. 
+
+This continues till the end of the game at which point the probability of a players explanation will have either converged successfully or unsuccessfully to the correct explanation. 
+
+\subsection{Prediction Accuracy in General}
+
+Given there are six mission cards, the accuracy of a random guess of a players mission card is 16.67\%. According to Table 7.1, at its worse the plan recognition agent in general performs 8.47\% better than this, and at its best 63.72\% better. 
+
+Of free and constrained play table 7.1 reveals that \textit{constrained play had a significantly higher accuracy than both free and A.I. play}. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performed.
+
+\newpage
+
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=0.9\textwidth]{images/general-game-complete.pdf}
+}
+\caption{General Prediction Accuracy}
+\label{fig:dom-debug-gui}
+\end{figure} 
+
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=0.9\textwidth]{images/general-game-length.pdf}
+}
+\caption{General Prediction Accuracy}
+\label{fig:dom-debug-gui}
+\end{figure} 
+
+Figure 5.2 details the general prediction accuracy of the plan recognition agent at intervals of 25\% of the games duration. 
+
+Free and A.I. play are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the plan recognition  agent for humans is rather Ftree Play as prediction accuracies of human players is most significant. Therefore \textit{the plan recognition agent is 32.61\% better than random guess} and so we can establish that the plan recognition agent indeed does converge on the correct explanation 49.28\% of the time.
+
+From this we can infer several important trends.
+
+In general the plan recognition of the different types of play the plan recognition agent performed significantly better in \textit{constrained play had a than both free and A.I. play}. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performs for human players.
+
+In general the plan recognition agent performed better on human players than A.I. players. The reason for this is due primarily to the way in which the humans and the A.I. differ in operation. According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
+
+There is a significant improvements in the prediction accuracy of the plan recognition agent from $w$4 to $w$100 and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
+
+Changing the variable $w$ hence explains the plan recognition agents increase in accuracy of up to \%10  as the A.I.'s decisions becomes more skewed towards occupying mission continents and less towards occupying accessible non mission-continents and eliminating opponents both of which are observed as inconsistent actions by the plan recognition agent.
+
+There is a significant increase in the prediction accuracy of the plan recognition agent in constrained play in the 75 to 100\% of game play complete range. This is because in the later part of any game players can perform more actions per turn due to the increasing number of armies on the board.
+
+The general prediction accuracy over game length appears to fall for A.I over time whereas human players appear to be increasing. Though this is an interesting contrast from figure 5.2 which indicates that prediction accuracy over game length appear to be stable and in the case of constrained play increases significantly.
+
+In general it appears the shorter the game the better the prediction of the plan recognition will be, but
+
+The length of all human games is much lower that that of A.I. games this is either one of two reasons:
+
+\begin{itemize}
+\item
+A.I. prevents other A.I. from winning and therefore game is longer.
+\item
+A.I is worse and therefore game is longer because they cannot win.
+\end{itemize}
+
+With an example of the longest game we can see that this is not the case.
+
+GET EXAMPLE OF LONG GAME
+
+In this example the A.I. could have won but did not because it considered eliminating its opponents and occuping neibouring continents more significant that completing its mission despite owning all territories except one.
+
+This observation also happens to coincide with the signifanct drop of A.I. - 4 prediction accuracy in games longer than 210+, but looking at figure 1 we must conclude that the number of data samples of this length is relatively small given that figure 5.3 
+
+\section{Plan Recognition Agent Winner Prediction Accuracy}
 
 \newpage
 
@@ -1499,7 +1558,7 @@ By definition in cases where a player performs action on non-mission continents 
 \includegraphics[width=0.9\textwidth]{images/winner-game-complete.pdf}
 }
 \caption{Winner Prediction Accuracy}
-\label{fig:dom-debug-gui}
+\label{fig:winner-pred-accuracy}
 \end{figure} 
 
 \begin{figure}[h]
@@ -1510,9 +1569,9 @@ By definition in cases where a player performs action on non-mission continents 
 \label{fig:dom-debug-gui}
 \end{figure} 
 
-\newpage
+MAKE TABLE OF AVERAGE ACCURACY
 
-Comparison of the Figure 5.3 to figure 5.4 shows that in every type of play the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}. The plan recognition agent is more successful at predicting due to a number of reasons:
+Most prominantly we must point out that the prediction accuracy of  is 1.0 is due to the number of data samples, there was only a single data sample of a winner that was correctly predicted between 120-150 turn long games.
 
 Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission atleast once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect.
 
@@ -1520,9 +1579,13 @@ On the other hand though there are of course cases where the plan recognition ag
 
 There are cases where a winners has occupied the entire last continent for their mission in one turn and since sampling is done on a turn by turn basis the plan recognition agent will miss the significant change in probabilities as the system does not register an end of turn but rather a different event which is the end of the game.
 
-Therefore the shorter the game the more likely the prediction will be correct for the winner. GET DATA TO SUPPORT THIS! 
+Except for const
 
-\subsubsection{Prediction Accuracy of Losers}
+Therefore the shorter the game the more likely the prediction will be correct for the winner
+
+Comparison of the Figure 5.4 to figure 5.6 shows that in every type of play the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}. The plan recognition agent is more successful at predicting due to a number of reasons:
+
+\section{Plan Recognition Agent Loser Prediction Accuracy}
 
 \newpage
 
@@ -1544,6 +1607,8 @@ Therefore the shorter the game the more likely the prediction will be correct fo
 
 \newpage
 
+MAKE TABLE OF AVERAGE ACCURACY
+
 GENERAL REASONS WHY LOSER ACCURACY IS WORSE
 
 Losers who were eliminated early
@@ -1560,8 +1625,6 @@ Though there were exceptions to this? Misclassification due to association?
 
 We will describe each case, present a hypothesis for the plan recognition agents prediction accuracy then present examples from the data for most significant of these cases to support the hypothesis. 
 
-Why is the accuracy of winners better than losers? May be because weighting of attack actions is towards successful attacks, of which winners perform more.
-
 but this is not necessarily true winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
 
 A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the prediction will be wrong, inversely it may be correct for the very same reason.
@@ -1575,75 +1638,32 @@ SHOW A GRAPH OF ONE EXAMPLE OF WINNER CONSTRAINED WRONG
 The final prediction probabilities of the above graph was split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an incorrect or argueably \textit{inconclusive} prediction.
 
 It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
-
-\subsubsection{Explanation Accuracy}
-
-In what way does overlap of missions between players effect predictions? Is it negative or positive, or is it both?
-
-Do certain explanations perform better? Why?
-
-Constrained play two-continents appear to be better.
-
-Definite trend that two-continent-missions are predicted worse than others for a.i, very poor accuracy for weight 4.
  
-Do the accuracy of missions with two continents appear on average to be better? No
-
-For A.I. Play, winner and loser - Why is it that Europe-South-America-One is better than the rest when trend is normally two-continent accuracy is better? Explore this
-
-The number of data samples are quite small.	Why is it that there are no winners for the missions Asia-South-America and Asia-Africa. Is this because these mission cards are harder?
-
-Would make sense seeing as there is a trend in other data showing lower percentage accuracy for that mission.
-
-Accuracy of two-continent missions appear in general to be better.
-
-Asia-Africa appear to be lower prediction accuracy on average the A.I. play type, Asia is the hardest continent to occupy and therefore this might be causing the prediction accuracy to be the lowest, as players may not often choose to take Asia first first even if it is in their mission.
-
-Is the prediction accuracy of any mission with Asia in it worse? Could get a good indication of frequency of losers to winners with missions involving Asia. Do a total across all plays of number of winners and losers.
-
 In the context of constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
 
 SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES CAN DO WITH GRAPH
-
-\subsection{Prediction Analysis for A.I. Players}
 
 AI 100 LOSERS GETS WORSE OVER GAME LENGTH
 
 BIG DROP IN PREDICTION ACCURACY IN A.I 4 GAME OVERS 210 IN TURNS BUT SINCE THE NUMBER OF SAMPLES MUST BE SMALL HAS A LOW EFFECT ON THE GENERAL ACCURACY
 
-Since the A.I. for the game has its decisions skewed, varying this should in theory cause the A.I. to perform either better or worse depending on whether decisions are skewed towards decisions that are more consistent with the mission or away from decisions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
-
-The variable that decides this to what degree decisions are skewed we will refer to as $w$.
-
-Two experiments were performed with different values of $w$, 4 its normal setting and 100 a significantly higher value.
-
-The prediction accuracies were in tables ....
-
-Now we could make the argument that, 
-
-Look at the length of the game, if length of the game is generally longer for weight 4 than weight 100, then we can propose that on weight 4
-
-Each A.I. is better and therefore game is longer
-Each A.I is worse and therefore game is longer
-
-There is a significant improvements in the prediction accuracy of the plan recognition agent from $w$4 to $w$100 and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
-
 \section{Summary}
+
+Why is the accuracy of winners better than losers? May be because weighting of attack actions is towards successful attacks, of which winners perform more.
 
 \chapter{Conclusion}
 
-\subsection{Nature of Game}
+\section{Main insights and results}
 
-The nature of R.I.S.K. is adversarial and in-order to achieve ones own mission, players either directly or indirectly eliminate each other and must modify their own plan in order to survive or prevent other players from winning. 
+In R.I.S.K.there is only one winner. R.I.S.K is an adversarial environment where right from the start you are attacked. Given that you can survive an onslaught of attacks in-order to achieve ones own mission, players must either directly or indirectly eliminate each other and often modify their own plan in order to continue surviving or prevent other players from winning. 
 
-Given the model these changes in behaviour are see as directly-inconsistent with their own mission and rather seems consistent with whatever explanation that those actions \textit{are} directly consistent with instead.
+This environment and the high-level of overlap between missions the results are many misclassifications.
 
-Given this environment and the high-level of overlap between missions the results are misclassification.
+Given the design of the plan recognition agent these changes in behaviour are see as directly-inconsistent with their own mission and rather seems consistent with whatever explanation that those actions \textit{are} directly-consistent with instead.
 
-For example:
+The main issue facing the plan recognition agent is differentiating between noise from the environment.
 
-PRESENT EXAMPLE
-
-\subsection{Simplicity of Model}
+The plan recognition agent should not only consider what occurs in the action space but the state of the environment as well as the state of the environment further indicates the plans of players.
 
 Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
 
@@ -1655,25 +1675,23 @@ by Association - Explanations appear likely because players do things related to
 
 \subsection{Improvement of Model}
 
-HOW TO FIX
+Currently the system suffers from the problem of distinguishing noise from meaninful actions.
 
-Solving this problem could be done in potentially two ways either:
+Solving this problem could be taclked in two ways:
 
 Identifying actions are in-directly consistent and modelling them to accurately contribute to explanations - further modelling to further diffferentiate noise from meaninggul behaviour.
  
-Giving greater weights to actions that are directly consistent through the state of the game  more significant - making noise less significant.
-
-For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
-
-Use a system of tiered consistent actions!
-
-ExplanationProb = ExplanationProb * Weight
+Making the meaningful actions that one can already identify greater significance to actions that are directly consistent through the state of the game  more significant - making noise less significant.
 
 The weight for each consistent action is flat at the moment or more precisely actions are consistent in themselves but may not be consistent given the \textit{context} of the game state. To deal with this, we should introduce into our calculations data from the game state.
 
-For example
+Making a system of dynamically applying weights in a manner that is proportional to the state of the game e.g:
 
-Making a system of applying weights in a manner that is proportional to the state of the game e.g
+For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
+
+ExplanationProb = ExplanationProb * Weight * Fraction representing state of environment
+
+For example
 
 Weight = 0.1 * 1- (The proportion of consistent actions for that explanations) * (Proportion of territories a player owns of the continents) <- Proportion of reinforce actions available to the player.
 
@@ -1689,14 +1707,7 @@ Worst Case = High number of consistent actions and low number of territories own
 
 Has 12 attack options out of 13 and owns 4 of the ten territories
 
-What is the weight was computed in the normal manner but would be scaled up down by two factors in-order to make an action that appear
-Plans should consider not only consider what occurs in the action space but the state of the environment as well.
-
-\section{Main insights and results}
-
-The main insights and results from this...
-
-Free and A.I. play are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the plan recognition  agent for humans is rather Ftree Play as prediction accuracies of human players is most significant. Therefore \textit{the plan recognition agent is 32.61\% better than random guess} and so we can establish that the plan recognition agent indeed does converge on the correct explanation 49.28\% of the time.
+The weight was computed in the normal manner but would be scaled up down by two factors in-order to make an actions more a less significant given the state of the environment.
 
 \section{Outcomes}
 
@@ -1713,6 +1724,8 @@ Would you recommend doing something, what would you recommend not doing?
 TALK ABOUT THE OUTCOMES OF YOUR WORK!
 
 \section{Criticism}
+
+ACCURACY OVER LENGTH OF GAME SHOULD HAVE A SMALLER UNIT SO AS TO SEE TRENDS IN HUMAN DATA
 
 Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. Thus attack has been modelled as the most significant action in the environment and this we can intuitively tell is not the case.
 
@@ -1736,6 +1749,8 @@ THINK ABOUT WHY IT WOULD IMPROVE
 
 \subsection{Model Augmentation}
 
+ANALYSIS OF EACH EXPLANATION AND BUILD MODELS FOR EACH, DATA COLLECTED TO PERFORM BUT DID NOT HAVE TIME
+
 \subsubsection{Application of Machine Learning}
 
 Allow for method choice probabilities again and use machine learning to computer better sub-goal choice probabilities based on preferences shown in training data.
@@ -1751,7 +1766,6 @@ Probability model changed to PROPORTION SYSTEM of consistent actions * 0.1
 1 - proportion for inconsistent probability
 
 \subsubsection{More Sophisticated Modelling of Current Model}
-
 
 Players in these perform actions that are either indirectly-consistent or inconsistent  primarily because their plan at that point may be different to that of their mission. Either type of action reduces the probability of the correct explanation given the current model. MODEL TO TAKE THIS INTO ACCOUNT
 
@@ -1855,309 +1869,7 @@ WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
 \label{table:winner-loser-accuracy}
 \end{table}
 
-\newpage
-
-\subsection{Free Play}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 6 & 9 & 40.00 \\  
-\hline 
-Occupy-Asia-South-America & 8 & 4 & 66.67 \\ 
-\hline
-Occupy-Europe-South-America-One & 8 & 11 & 42.11 \\
-\hline
-Occupy-North-America-Africa & 5 & 6 & 45.45 \\
-\hline
-Occupy-Asia-Africa & 5 & 5 & 50.00 \\
-\hline
-Occupy-North-America-Australia & 4 & 4 & 50.00 \\
-\hline
-\end{tabular}
-}
-\caption{Free Play General Accuracy}
-\label{table:free-general-accuracy}
-\end{table}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 3 & 2 & 60.00 \\  
-\hline 
-Occupy-Asia-South-America & 2 & 1 & 66.67 \\ 
-\hline
-Occupy-Europe-South-America-One & 0& 3 & 0.00 \\
-\hline
-Occupy-North-America-Africa & 4 & 1 & 80.00 \\
-\hline
-Occupy-Asia-Africa & 1 & 1 & 50.00 \\
-\hline
-Occupy-North-America-Australia & 2 & 2 & 50.00 \\
-\hline
-\end{tabular}
-}
-\caption{Free Play Winner Accuracy}
-\label{table:free-winner-accuracy}
-\end{table}
-		
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 3 & 7 & 30.00 \\  
-\hline 
-Occupy-Asia-South-America & 6 & 3 & 66.67 \\ 
-\hline
-Occupy-Europe-South-America-One & 8 & 8 & 50.00 \\
-\hline
-Occupy-North-America-Africa & 1 & 5 & 16.67 \\
-\hline
-Occupy-Asia-Africa & 4 & 4 & 42.86 \\
-\hline
-Occupy-North-America-Australia & 2 & 2 & 50.00 \\
-\hline
-\end{tabular}
-}
-\caption{Free Play Loser Accuracy}
-\label{table:free-loser-accuracy}
-\end{table}	
-
-\newpage
-
-\subsection{Constrained Play}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 13 & 4 & 76.47 \\  
-\hline 
-Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
-\hline
-Occupy-Europe-South-America-One & 10 & 7 & 58.82 \\
-\hline
-Occupy-North-America-Africa & 12 & 5 & 70.59 \\
-\hline
-Occupy-Asia-Africa & 15 & 2 & 88.24 \\
-\hline
-Occupy-North-America-Australia & 16 & 1 & 94.12 \\
-\hline
-\end{tabular}
-}
-\caption{Constrained Play General Accuracy}
-\label{table:constrained-general-accuracy}
-\end{table}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 1 & 1 & 50.00 \\  
-\hline 
-Occupy-Asia-South-America & 0 & 0 & 0.00 \\ 
-\hline
-Occupy-Europe-South-America-One & 4 & 1 & 80.00 \\
-\hline
-Occupy-North-America-Africa & 5 & 0 & 100.00 \\
-\hline
-Occupy-Asia-Africa & 0 & 0 & 0.00 \\
-\hline
-Occupy-North-America-Australia & 5 & 0 & 100.00 \\
-\hline
-\end{tabular}
-}
-\caption{Constrained Play Winner Accuracy}
-\label{table:cons-winner-accuracy}
-\end{table}
-		
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 12 & 3 & 80.00 \\  
-\hline 
-Occupy-Asia-South-America & 16 & 1 & 94.12 \\ 
-\hline
-Occupy-Europe-South-America-One & 6 & 6 & 50.00 \\
-\hline
-Occupy-North-America-Africa & 7 & 5 & 58.33 \\
-\hline
-Occupy-Asia-Africa & 15 & 2 & 88.24 \\
-\hline
-Occupy-North-America-Australia & 11 & 1 & 91.67 \\
-\hline
-\end{tabular}
-}
-\caption{Constrained Play Loser Accuracy}
-\label{table:constrained-loser-accuracy}
-\end{table}	
-
-\newpage
-
-\subsection{A.I. Play - Weight 100}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 51 & 133 & 27.72 \\  
-\hline 
-Occupy-Asia-South-America & 50 & 134 & 27.17 \\ 
-\hline
-Occupy-Europe-South-America-One & 127 & 57 & 69.02 \\
-\hline
-Occupy-North-America-Africa & 58 & 126 & 31.52 \\
-\hline
-Occupy-Asia-Africa & 37 & 147 & 20.11 \\
-\hline
-Occupy-North-America-Australia & 67 & 117 & 36.41 \\
-\hline
-\end{tabular}
-}
-\caption{A.I. Play General Accuracy - Weight 100}
-\label{table:ai-100-general-accuracy}
-\end{table}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 15 & 21 & 41.67 \\  
-\hline 
-Occupy-Asia-South-America & 9 & 9 & 50.00 \\ 
-\hline
-Occupy-Europe-South-America-One & 9 & 8 & 52.94 \\
-\hline
-Occupy-North-America-Africa & 15 & 21 & 41.67 \\
-\hline
-Occupy-Asia-Africa & 14 & 28 & 33.33 \\
-\hline
-Occupy-North-America-Australia & 18 & 17 & 51.43 \\
-\hline
-\end{tabular}
-}
-\caption{A.I. Play Winner Accuracy - Weight 100}
-\label{table:ai-100-winner-accuracy}
-\end{table}
-			
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 36 & 112 & 24.32 \\  
-\hline 
-Occupy-Asia-South-America & 41 & 125 & 24.70 \\ 
-\hline
-Occupy-Europe-South-America-One & 118 & 49 & 70.66 \\
-\hline
-Occupy-North-America-Africa & 43 & 105 & 29.05 \\
-\hline
-Occupy-Asia-Africa & 23 & 119 & 16.20 \\
-\hline
-Occupy-North-America-Australia & 49 & 100 & 32.89 \\
-\hline
-\end{tabular}
-}
-\caption{A.I. Play Loser Accuracy - Weight 100}
-\label{table:ai-100-loser-accuracy}
-\end{table}			
-
-\newpage
-
-\subsection{A.I. Play - Weight 4}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 34 & 133 & 20.36 \\  
-\hline 
-Occupy-Asia-South-America & 27 & 140 & 16.17 \\ 
-\hline
-Occupy-Europe-South-America-One & 88 & 79 & 52.69 \\
-\hline
-Occupy-North-America-Africa & 28 & 139 & 16.77 \\
-\hline
-Occupy-Asia-Africa & 9 & 158 & 5.39 \\
-\hline
-Occupy-North-America-Australia & 49 & 118 & 29.34 \\
-\hline
-\end{tabular}
-}
-\caption{AI Play General Explanation Accuracy - Weight 4}
-\label{table:ai-4-general-accuracy}
-\end{table}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 6 & 27 & 18.18 \\  
-\hline 
-Occupy-Asia-South-America & 8 & 21 & 27.59 \\ 
-\hline
-Occupy-Europe-South-America-One & 14 & 20 & 41.18 \\
-\hline
-Occupy-North-America-Africa & 3 & 13 & 18.75 \\
-\hline
-Occupy-Asia-Africa & 1 & 28 & 3.45 \\
-\hline
-Occupy-North-America-Australia & 5 & 21 & 19.23 \\
-\hline
-\end{tabular}
-}
-\caption{AI Play Winner Explanation Accuracy - Weight 4}
-\label{table:ai-4-winner-accuracy}
-\end{table}
-
-\begin{table}[ht]
-\centerline{
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Mission} & \textbf{Correct} & \textbf{Incorrect} & \textbf{\% Accuracy} \\ 
-\hline 
-Occupy-Europe-Australia-One & 28 & 106 & 20.90 \\  
-\hline 
-Occupy-Asia-South-America & 19 & 119 & 13.77 \\ 
-\hline
-Occupy-Europe-South-America-One & 74 & 59 & 55.64 \\
-\hline
-Occupy-North-America-Africa & 25 & 126 & 16.56 \\
-\hline
-Occupy-Asia-Africa & 8 & 130 & 5.80 \\
-\hline
-Occupy-North-America-Australia & 44 & 97 & 31.21 \\
-\hline
-\end{tabular}
-}
-\caption{AI Play Winner Explanation Accuracy - Weight 4}
-\label{table:ai-4-loser-accuracy}
-\end{table}
+\newpage		
 
 \section{Game Length Correct-Incorrect Prediction Count}
 
@@ -2223,8 +1935,6 @@ Occupy-North-America-Australia & 44 & 97 & 31.21 \\
 
 \newpage
 
-\section{Graphs}
-
 \begin{table}
 \centerline{
 \begin{tabular}{cc|c|c|c}
@@ -2244,6 +1954,204 @@ Occupy-North-America-Australia & 44 & 97 & 31.21 \\
 \end{tabular}
 }
 \end{table}
+
+\newpage
+
+\section{Explanation Data}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{cc|c|c|c|c|c|c|c|c|}
+\cline{3-10}
+& & \multicolumn{8}{ c| }{\textbf{\% Game Played}} \\
+\cline{3-10}
+& & \multicolumn{2}{ c| }{25} & \multicolumn{2}{ c| }{50} & \multicolumn{2}{ c| }{75} & \multicolumn{2}{ c| }{100} \\ \cline{3-10} 
+\hline 
+\multicolumn{1}{ |c| }{\textbf{Type of Play} }& \textbf{Mission Card} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} \\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{6}{*}{Free} } & Occupy-Europe-Australia-One & 4 & 1 & 4 & 1 & 3 & 2 & 3 & 2 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 0 & 3 & 0 & 3 & 0 & 3 & 2 & 1 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 2 & 1 & 2 & 1 & 1 & 2 & 0 & 3  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 0 & 5 & 3 & 2 & 3 & 2 & 4 & 1 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 0 & 2 & 0 & 2 & 1 & 1 & 1 & 1 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 1 & 3 & 1 & 3 & 1 & 3 & 2 & 2 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{Constrained} } & Occupy-Europe-Australia-One & 2 & 0 & 2 & 0 & 2 & 0 & 1 & 1 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 3 & 2 & 3 & 2 & 4 & 1 & 4 & 1  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 0 & 5 & 1 & 4 & 1 & 4 & 5 & 0 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 0 & 5 & 0 & 5 & 0 & 5 & 5 & 0 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{A.I. - Weight 100} } & Occupy-Europe-Australia-One & 32 & 4 & 20 & 16 & 15 & 21 & 15 & 21 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 3 & 15 & 3 & 15 & 6 & 12 & 9 & 9 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 13 & 4 & 8 & 9 & 8 & 9 & 9 & 8  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 2 & 34 & 7 & 29 & 6 & 30 & 15 & 21 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 9 & 33 & 7 & 35 & 9 & 33 & 14 & 28 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 3 & 32 & 11 & 24 & 13 & 22 & 18 & 17 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{A.I. - Weight 4} } & Occupy-Europe-Australia-One & 21 & 12 & 15 & 18 & 8 & 25 & 6 & 27 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 1 & 28 & 8 & 21 & 8 & 21 & 8 & 21 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 11 & 23 & 13 & 21 & 13 & 21 & 14 & 20  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 0 & 16 & 1 & 15 & 3 & 13 & 3 & 13 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 1 & 28 & 1 & 28 & 0 & 29 & 1 & 28 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 1 & 25 & 5 & 21 & 5 & 21 & 5 & 21 \\ 
+\hline
+\end{tabular}
+}
+\caption{Winner Explanation Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
+\label{table:winner-loser-accuracy}
+\end{table}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{cc|c|c|c|c|c|c|c|c|}
+\cline{3-10}
+& & \multicolumn{8}{ c| }{\textbf{\% Game Played}} \\
+\cline{3-10}
+& & \multicolumn{2}{ c| }{25} & \multicolumn{2}{ c| }{50} & \multicolumn{2}{ c| }{75} & \multicolumn{2}{ c| }{100} \\ \cline{3-10} 
+\hline 
+\multicolumn{1}{ |c| }{\textbf{Type of Play} }& \textbf{Mission Card} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} \\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{6}{*}{Free} } & Occupy-Europe-Australia-One & 7 & 3 & 5 & 5 & 6 & 4 & 3 & 7 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 2 & 7 & 3 & 6 & 4 & 5 & 6 & 3 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 13 & 3 & 12 & 4 & 11 & 5 & 8 & 8  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 0 & 6 & 0 & 6 & 0 & 6 & 1 & 5 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 3 & 5 & 3 & 5 & 3 & 5 & 4 & 4 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 1 & 3 & 1 & 3 & 1 & 3 & 2 & 2 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{Constrained} } & Occupy-Europe-Australia-One & 11 & 4  & 11 & 4 & 10 & 5 & 12 & 3 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 7 & 10 & 8 & 9 & 9 & 8 & 16 & 1 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 6 & 6 & 5 & 7 & 5 & 7 & 6 & 6  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 5 & 7 & 6 & 6 & 6 & 6 & 7 & 5 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 9 & 8 & 9 & 8 & 11 & 6 & 15 & 2 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 3 & 9 & 3 & 9 & 6 & 6 & 11 & 1 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{A.I. - Weight 100} } & Occupy-Europe-Australia-One & 128 & 20 & 90 & 58 & 43 & 105 & 36 & 112 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 6 & 160 & 26 & 140 & 40 & 126 & 41 & 125 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 119 & 48 & 113 & 54 & 107 & 60 & 118 & 49  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 20 & 128 & 32 & 116 & 46 & 102 & 43 & 105 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 26 & 116 & 27 & 115 & 25 & 117 & 23 & 119 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 8 & 141 & 43 & 106 & 51 & 98 & 49 & 100 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{A.I. - Weight 4} } & Occupy-Europe-Australia-One & 77 & 57 & 51 & 83 & 31 & 103 & 28 & 106 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 5 & 133 & 16 & 122 & 16 & 122 & 19 & 119  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 71 & 62 & 66 & 67 & 67 & 66 & 74 & 59  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 8 & 143 & 21 & 130 & 23 & 128 & 25 & 126 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 10 & 128 & 14 & 124 & 9 & 129 & 8 & 130 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 5 & 136 & 35 & 106 & 43 & 98 & 44 & 97 \\ 
+\hline
+\end{tabular}
+}
+\caption{Loser Explanation Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
+\label{table:loser-exp-accuracy}
+\end{table}
+
+\begin{table}[ht]
+\centerline{
+\begin{tabular}{cc|c|c|c|c|c|c|c|c|}
+\cline{3-10}
+& & \multicolumn{8}{ c| }{\textbf{\% Game Played}} \\
+\cline{3-10}
+& & \multicolumn{2}{ c| }{25} & \multicolumn{2}{ c| }{50} & \multicolumn{2}{ c| }{75} & \multicolumn{2}{ c| }{100} \\ \cline{3-10} 
+\hline 
+\multicolumn{1}{ |c| }{\textbf{Type of Play} }& \textbf{Mission Card} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} \\ 
+\hline 
+\multicolumn{1}{ |c| }{\multirow{6}{*}{Free} } & Occupy-Europe-Australia-One & 11 & 4 & 9 & 6 & 9 & 6 & 6 & 9 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 2 & 10 & 3 & 9 & 5 & 7  & 8 & 4 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 15 & 4 & 14 & 5 & 12 & 7 & 8 & 11  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 0 & 11 & 3 & 8 & 3 & 8 & 5 & 6 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 3 & 7 & 3 & 7 & 3 & 7 & 5 & 5 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 2 & 6 & 2 & 6 & 2 & 6 & 4 & 4 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{Constrained} } & Occupy-Europe-Australia-One & 13 & 4 & 13 & 4 & 12 & 5 & 13 & 4 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 7 & 10 & 8 & 9 & 9 & 8 & 16 & 1 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 9 & 8 & 8 & 9 & 9 & 8 & 10 & 7 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 5 & 12 & 7 & 10 & 7 & 10 & 12 & 5 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 9 & 8 & 9 & 8 & 11 & 6 & 15 & 2 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 3 & 14 & 3 & 14 & 6 & 11 & 16 & 1 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{A.I. - Weight 100} } & Occupy-Europe-Australia-One & 59 & 125 & 160 & 24 & 110 & 74 & 51 & 133 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 47 & 137 & 9 & 175 & 29 & 155 & 50 & 134 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 116 & 68 & 132 & 52 & 121 & 63 & 127 & 57  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 53 & 131 & 22 & 162 & 39 & 145 & 58 & 126 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 34 & 150 & 35 & 149 & 34 & 150 & 37 & 147 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 63 & 121 & 11 & 173 & 54 & 130 & 67 & 117 \\ 
+\hline
+\multicolumn{1}{ |c| }{\multirow{6}{*}{A.I. - Weight 4} } & Occupy-Europe-Australia-One & 98 & 69 & 66 & 101 & 37 & 130 & 34 & 133 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Asia-South-America & 6 & 161 & 24 & 143 & 24 & 143 & 27 & 140 \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-Europe-South-America-One & 82 & 85 & 79 & 99 & 80 & 87 & 88 & 79  \\ 
+\cline{2-10}
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Africa & 8 & 159 & 22 & 145 & 26 & 141 & 28 & 139 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-Asia-Africa & 11 & 156 & 15 & 152 & 9 & 158 & 9 & 158 \\ 
+\cline{2-10} 
+\multicolumn{1}{ |c| }{} & Occupy-North-America-Australia & 6 & 161 & 40 & 127 & 48 & 119 & 49 & 118 \\ 
+\hline
+\end{tabular}
+}
+\caption{General Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
+\label{table:winner-loser-accuracy}
+\end{table}
+
+\section{Template Tables}
 
 \begin{table}[ht]
 \centerline{

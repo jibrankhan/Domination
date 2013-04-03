@@ -1,23 +1,30 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.11)  3 APR 2013 14:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  3 APR 2013 19:47
 entering extended mode
- %&-line parsing enabled.
-**report.tex
-(./report.tex
-LaTeX2e <2005/12/01>
-Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
-erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
- french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
-us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
-tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
-turkish, ukenglish, ukrainian, loaded.
-(./cs4rep.cls
+**C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
+rt/report.tex
+
+(C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repor
+t/report.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\cs4rep.cls
 Document Class: cs4rep 1995/02/02 DCS CS4 Report class
 Parskip option
-(/usr/share/texmf/tex/latex/base/report.cls
-Document Class: report 2005/09/16 v1.4f Standard LaTeX document class
-(/usr/share/texmf/tex/latex/base/size12.clo
-File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+("D:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("D:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@chapter=\count80
@@ -32,38 +39,47 @@ File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texmf/tex/latex/ntgclass/a4.sty
+(C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\latex\ntgclass\a4.sty
 Package: a4 2004/04/15 v1.2g A4 based page layout
 )
 Parskip package loaded
-(/usr/share/texmf/tex/latex/ltxmisc/parskip.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty"
 Package: parskip 2001/04/09 non-zero parskip adjustments
 ))
-(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/latex/graphics/keyval.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texmf/tex/latex/graphics/graphics.sty
-Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/latex/graphics/trig.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texmf/tex/latex/config/graphics.cfg
+("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 90.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+("D:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
 \Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
-) (./pseudocode.sty
+)
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\pseudocode.sty
 ** 
 ** Document Style `pseudocode' - environment 
 ** by D.L. Kreher and D.R. Stinson 
@@ -73,10 +89,10 @@ File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
 ** CRC Press, 1999. 
 Package: pseudocode 
 \pcode@width=\skip43
-(/usr/share/texmf/tex/latex/fancybox/fancybox.sty
-Package: fancybox 2000/09/19 1.3
+(C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\latex\fancybox\fancybox.sty
+Package: fancybox 2010/05/15 1.4
 
-Style option: `fancybox' v1.3 <2000/09/19> (tvz)
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \@fancybox=\box26
 \shadowsize=\dimen105
 \@Sbox=\box27
@@ -86,54 +102,54 @@ Style option: `fancybox' v1.3 <2000/09/19> (tvz)
 \EndVerbatimTokens=\toks18
 \Verbatim@Outfile=\write3
 \Verbatim@Infile=\read1
-) (/usr/share/texmf/tex/latex/base/ifthen.sty
+) ("D:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \c@pseudocode=\count89
 \c@pseudonum=\count90
 )
-(/usr/share/texmf/tex/latex/base/fontenc.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf/tex/latex/base/t1enc.def
+("D:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2000/07/18 v2.13 AMS math features
+("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks19
 \ex@=\dimen106
 ))
-(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count91
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count92
 \leftroot@=\count93
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count94
 \DOTSCASE@=\count95
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box28
 \strutbox@=\box29
 \big@size=\dimen108
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count96
 \c@MaxMatrixCols=\count97
 \dotsspace@=\muskip10
@@ -154,16 +170,17 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \multlinegap=\skip45
 \multlinetaggap=\skip46
 \mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
-) (./algorithm2e.sty
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\algorithm2e.sty
 Package: algorithm2e 2013/01/06 v5.00 algorithms environments
 \c@AlgoLine=\count103
-
-(/usr/share/texmf/tex/latex/tools/xspace.sty
-Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+ ("D:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-(/usr/share/texmf/tex/latex/ltxmisc/relsize.sty
+("D:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
 Package: relsize 2003/07/04 ver 3.1
 )
 ********************************************************
@@ -206,31 +223,34 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count106
 \algocf@algoframe=\box36
 \algocf@algobox=\box37
-) (/usr/share/texmf/tex/latex/tools/array.sty
-Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
+) ("D:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen121
 \extrarowheight=\dimen122
 \NC@list=\toks24
 \extratabsurround=\skip63
 \backup@length=\skip64
 )
-(/usr/share/texmf/tex/latex/caption/caption.sty
-Package: caption 2007/01/07 v3.0k Customising captions (AR)
+(C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+Package: caption 2013/02/03 v3.3-65 Customizing captions (AR)
 
-(/usr/share/texmf/tex/latex/caption/caption3.sty
-Package: caption3 2007/01/07 v3.0k caption3 kernel (AR)
+(C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
 \captionmargin=\dimen123
-\captionmarginx=\dimen124
+\captionmargin@=\dimen124
 \captionwidth=\dimen125
-\captionindent=\dimen126
-\captionparindent=\dimen127
-\captionhangindent=\dimen128
+\caption@tempdima=\dimen126
+\caption@indent=\dimen127
+\caption@parindent=\dimen128
+\caption@hangindent=\dimen129
 )
-Package caption Info: Global option `parskip' ignored on input line 131.
+\c@ContinuedFloat=\count107
 )
-(/usr/share/texmf/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen129
-) (./report.aux
+("D:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen130
+)
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\report.aux
 
 LaTeX Warning: Label `table:territory-actions-bonus' multiply defined.
 
@@ -259,7 +279,10 @@ LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
 LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
 
 
-LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
+LaTeX Warning: Label `table:winner-loser-accuracy' multiply defined.
+
+
+LaTeX Warning: Label `table:winner-loser-accuracy' multiply defined.
 
 
 LaTeX Warning: Label `table:winner-loser-accuracy' multiply defined.
@@ -274,8 +297,6 @@ LaTeX Warning: Label `table:winner-loser-accuracy' multiply defined.
 LaTeX Warning: Label `table:winner-loser-accuracy' multiply defined.
 
 )
-\openout1 = `report.aux'.
-
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
@@ -288,48 +309,33 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
- (/usr/share/texmf/tex/context/base/supp-pdf.tex
+ (C:\Users\s0914007\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
-\scratchdimen=\dimen130
+\scratchcounter=\count108
+\scratchdimen=\dimen131
 \scratchbox=\box38
-\nofMPsegments=\count108
-\nofMParguments=\count109
-\MPscratchCnt=\count110
-\MPscratchDim=\dimen131
-\MPnumerator=\count111
-\everyMPtoPDFconversion=\toks25
-) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
-Package: ragged2e 2003/03/25 v2.04 ragged2e Package (MS)
-
-(/usr/share/texmf/tex/latex/everysel/everysel.sty
-Package: everysel 1999/06/08 v1.03 EverySelectfont Package (MS)
-LaTeX Info: Redefining \selectfont on input line 125.
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen132
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks26
 )
-\CenteringLeftskip=\skip65
-\RaggedLeftLeftskip=\skip66
-\RaggedRightLeftskip=\skip67
-\CenteringRightskip=\skip68
-\RaggedLeftRightskip=\skip69
-\RaggedRightRightskip=\skip70
-\CenteringParfillskip=\skip71
-\RaggedLeftParfillskip=\skip72
-\RaggedRightParfillskip=\skip73
-\JustifyingParfillskip=\skip74
-\CenteringParindent=\skip75
-\RaggedLeftParindent=\skip76
-\RaggedRightParindent=\skip77
-\JustifyingParindent=\skip78
-) [1
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+{C:/Users/s0914007/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+[2
 
-] [3] [4] (./report.toc [5
+] [3] [4]
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\report.toc [5
 
 ])
 \tf@toc=\write4
-\openout4 = `report.toc'.
-
  [6]
  1.
 
@@ -349,7 +355,7 @@ Underfull \hbox (badness 1057) in paragraph at lines 106--107
 [2]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 134.
 
- (/usr/share/texmf/tex/latex/base/omscmr.fd
+ ("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
@@ -361,16 +367,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 ] [6] <images/example-plan-library.pdf, id=49, 451.6875pt x 105.39375pt>
 File: images/example-plan-library.pdf Graphic file (type pdf)
 
-<use images/example-plan-library.pdf> [7 <./images/example-plan-library.pdf, pa
-ge is rotated 90 degrees
-
-pdfTeX warning: pdflatex (file ./images/example-plan-library.pdf): PDF inclusio
-n: Page Group detected which pdfTeX can't handle. Ignoring it.
->] <images/risk-board.jpg, id=60, 192.72pt x 192.72pt>
+<use images/example-plan-library.pdf>
+Package pdftex.def Info: images/example-plan-library.pdf used on input line 225
+.
+(pdftex.def)             Requested size: 451.68639pt x 105.39348pt.
+ [7 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+eport/images/example-plan-library.pdf, page is rotated 90 degrees>] <images/ris
+k-board.jpg, id=61, 192.72pt x 192.72pt>
 File: images/risk-board.jpg Graphic file (type jpg)
 
-<use images/risk-board.jpg> [8 <./images/risk-board.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 278--280
+<use images/risk-board.jpg>
+Package pdftex.def Info: images/risk-board.jpg used on input line 252.
+(pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
+ [8 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+eport/images/risk-board.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
 
  []
 
@@ -379,109 +390,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 278--280
 ]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--429
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 439--440
+Underfull \hbox (badness 10000) in paragraph at lines 437--438
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 503--504
+Underfull \hbox (badness 10000) in paragraph at lines 501--502
 
  []
 
 [17] [18]
-Overfull \hbox (29.46509pt too wide) in paragraph at lines 562--571
+Overfull \hbox (29.46509pt too wide) in paragraph at lines 560--569
  [][] 
  []
 
 [19]
-Overfull \hbox (7.64029pt too wide) in paragraph at lines 581--582
+Overfull \hbox (7.64029pt too wide) in paragraph at lines 579--580
 []\T1/cmr/m/n/12 For ex-am-ple, given the three ex-pla-na-tions from the pre-vi
 -ous sec-tion. If a \T1/cmr/m/it/12 Successful-
  []
 
 
-Underfull \hbox (badness 1558) in paragraph at lines 595--596
+Underfull \hbox (badness 1558) in paragraph at lines 593--594
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (10.70032pt too wide) in paragraph at lines 589--598
+Overfull \hbox (10.70032pt too wide) in paragraph at lines 587--596
  [][] 
  []
 
 [20] [21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 673--674
+Underfull \hbox (badness 10000) in paragraph at lines 671--672
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
+Underfull \hbox (badness 10000) in paragraph at lines 694--695
 
  []
 
 [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 739--762
-[]$ 
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 737--760
+$[]$ 
  []
 
 [24]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 776--804
-[]$ 
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 774--802
+$[]$ 
  []
 
 [25]
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 808--809
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 806--807
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [26]
-Overfull \hbox (42.48602pt too wide) in paragraph at lines 827--838
+Overfull \hbox (42.48602pt too wide) in paragraph at lines 825--836
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; pTotal
 ActNum; pConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 827--838
-[]$ 
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 825--836
+$[]$ 
  []
 
 
-Overfull \hbox (4.83934pt too wide) in paragraph at lines 846--869
+Overfull \hbox (4.83934pt too wide) in paragraph at lines 844--867
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 846--869
-[]$ 
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 844--867
+$[]$ 
  []
 
 [27] [28]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 890--930
-[]$ 
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 888--928
+$[]$ 
  []
 
-[29] <images/risk-plan-library.pdf, id=137, 841.0321pt x 403.69821pt>
+[29] <images/risk-plan-library.pdf, id=138, 841.0321pt x 403.69821pt>
 File: images/risk-plan-library.pdf Graphic file (type pdf)
 
 <use images/risk-plan-library.pdf>
-Overfull \hbox (14.63141pt too wide) in paragraph at lines 960--961
+Package pdftex.def Info: images/risk-plan-library.pdf used on input line 958.
+(pdftex.def)             Requested size: 411.93877pt x 197.73376pt.
+
+Overfull \hbox (14.63141pt too wide) in paragraph at lines 958--959
 [][] 
  []
 
@@ -489,32 +503,29 @@ Overfull \hbox (14.63141pt too wide) in paragraph at lines 960--961
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 981--982
+Underfull \hbox (badness 10000) in paragraph at lines 979--980
 
  []
 
-[31 <./images/risk-plan-library.pdf, page is rotated 90 degrees
-
-pdfTeX warning: pdflatex (file ./images/risk-plan-library.pdf): PDF inclusion: 
-Page Group detected which pdfTeX can't handle. Ignoring it.
->]
-Overfull \hbox (12.16704pt too wide) in paragraph at lines 1016--1017
+[31 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+eport/images/risk-plan-library.pdf, page is rotated 90 degrees>]
+Overfull \hbox (12.16704pt too wide) in paragraph at lines 1014--1015
 []\T1/cmr/m/n/12 For each root-goal the $\OML/cmm/m/it/12 computeObsProb$ \T1/c
 mr/m/n/12 fil-ters out all ac-tion types ex-cept Successful-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
+Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
 
  []
 
 [32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1116--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1115
 
  []
 
 
-Overfull \hbox (18.16396pt too wide) in paragraph at lines 1132--1145
+Overfull \hbox (18.16396pt too wide) in paragraph at lines 1130--1143
  [][] 
  []
 
@@ -522,33 +533,18 @@ Overfull \hbox (18.16396pt too wide) in paragraph at lines 1132--1145
 
 ]
  4.
-<images/event-driven-architecture.pdf, id=171, 445.87578pt x 75.36156pt>
+<images/event-driven-architecture.pdf, id=173, 445.87578pt x 75.36156pt>
 File: images/event-driven-architecture.pdf Graphic file (type pdf)
 
 <use images/event-driven-architecture.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 1237--1237
-[]|\T1/cmr/m/n/12 attackerName, con-ti-nent-Name,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1237--1237
-[]|\T1/cmr/m/n/12 attackerName, con-ti-nent-Name,
- []
-
-
+Package pdftex.def Info: images/event-driven-architecture.pdf used on input lin
+e 1194.
+(pdftex.def)             Requested size: 445.87468pt x 75.36136pt.
+ [37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/event-driven-architecture.pdf>]
 Underfull \hbox (badness 3179) in paragraph at lines 1237--1237
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 at-tack-er-Name \T1/cmr/m/n/12 p
 er-formed a
- []
-
-
-Underfull \hbox (badness 6510) in paragraph at lines 1237--1237
-[]|\T1/cmr/m/n/12 defenderName, con-ti-nent-Name,
- []
-
-
-Underfull \hbox (badness 6510) in paragraph at lines 1237--1237
-[]|\T1/cmr/m/n/12 defenderName, con-ti-nent-Name,
  []
 
 
@@ -563,131 +559,163 @@ Underfull \hbox (badness 4660) in paragraph at lines 1237--1237
 formed an
  []
 
-[37 <./images/event-driven-architecture.pdf
+[38]
+Overfull \hbox (8.14787pt too wide) in paragraph at lines 1256--1257
+\T1/cmr/m/n/12 PLAN RECOGN-TION AGENT ARCHITECTURE-EXTENSION OF DI-A-GRAM
+ []
 
-pdfTeX warning: pdflatex (file ./images/event-driven-architecture.pdf): PDF inc
-lusion: Page Group detected which pdfTeX can't handle. Ignoring it.
->]
-Underfull \vbox (badness 2213) has occurred while \output is active []
-
- [38]
-[39] [40
+[39] [40] [41] [42
 
 ]
  5.
-[41] [42] <images/domination-debug-gui.png, id=197, 262.73157pt x 236.38312pt>
+[43] [44] <images/domination-debug-gui.png, id=207, 262.73157pt x 236.38312pt>
 File: images/domination-debug-gui.png Graphic file (type png)
 
-<use images/domination-debug-gui.png> [43 <./images/domination-debug-gui.png>]
-[44] [45] <images/general-game-complete.pdf, id=209, 506.17105pt x 258.2448pt>
+<use images/domination-debug-gui.png>
+Package pdftex.def Info: images/domination-debug-gui.png used on input line 137
+9.
+(pdftex.def)             Requested size: 262.73091pt x 236.38254pt.
+ [45 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/domination-debug-gui.png>]
+[46] [47] [48]
+<images/general-game-complete.pdf, id=222, 506.17105pt x 258.2448pt>
 File: images/general-game-complete.pdf Graphic file (type pdf)
 
 <use images/general-game-complete.pdf>
-<images/general-game-length.pdf, id=210, 508.17854pt x 245.17596pt>
+Package pdftex.def Info: images/general-game-complete.pdf used on input line 15
+02.
+(pdftex.def)             Requested size: 370.74237pt x 189.15154pt.
+
+<images/general-game-length.pdf, id=223, 508.17854pt x 245.17596pt>
 File: images/general-game-length.pdf Graphic file (type pdf)
 
-<use images/general-game-length.pdf> [46 <./images/general-game-complete.pdf
+<use images/general-game-length.pdf>
+Package pdftex.def Info: images/general-game-length.pdf used on input line 1510
+.
+(pdftex.def)             Requested size: 370.74237pt x 178.87221pt.
+ [49 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/general-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Do
+mination/Domination/honours-project-report/images/general-game-length.pdf
 
-pdfTeX warning: pdflatex (file ./images/general-game-complete.pdf): PDF inclusi
-on: Page Group detected which pdfTeX can't handle. Ignoring it.
-> <./images/general-game-length.pdf
-
-pdfTeX warning: pdflatex (file ./images/general-game-length.pdf): PDF inclusion
-: Page Group detected which pdfTeX can't handle. Ignoring it.
->] [47] [48]
-<images/winner-game-complete.pdf, id=238, 504.1535pt x 251.21855pt>
+pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
+n/Domination/honours-project-report/images/general-game-length.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>] [50] [51]
+<images/winner-game-complete.pdf, id=253, 504.1535pt x 251.21855pt>
 File: images/winner-game-complete.pdf Graphic file (type pdf)
 
 <use images/winner-game-complete.pdf>
-<images/winner-game-length.pdf, id=239, 507.1748pt x 248.19727pt>
+Package pdftex.def Info: images/winner-game-complete.pdf used on input line 155
+9.
+(pdftex.def)             Requested size: 370.74237pt x 184.74883pt.
+
+<images/winner-game-length.pdf, id=254, 507.1748pt x 248.19727pt>
 File: images/winner-game-length.pdf Graphic file (type pdf)
 
-<use images/winner-game-length.pdf> [49 <./images/winner-game-complete.pdf
+<use images/winner-game-length.pdf>
+Package pdftex.def Info: images/winner-game-length.pdf used on input line 1567.
 
-pdfTeX warning: pdflatex (file ./images/winner-game-complete.pdf): PDF inclusio
-n: Page Group detected which pdfTeX can't handle. Ignoring it.
-> <./images/winner-game-length.pdf
+(pdftex.def)             Requested size: 370.74237pt x 181.43622pt.
+ [52 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/winner-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Dom
+ination/Domination/honours-project-report/images/winner-game-length.pdf
 
-pdfTeX warning: pdflatex (file ./images/winner-game-length.pdf): PDF inclusion:
- Page Group detected which pdfTeX can't handle. Ignoring it.
->] [50] <images/loser-game-complete.pdf, id=265, 504.1535pt x 258.2448pt>
+pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
+n/Domination/honours-project-report/images/winner-game-length.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>] [53] <images/loser-game-complete.pdf, id=280, 504.1535pt x 258.2448pt>
 File: images/loser-game-complete.pdf Graphic file (type pdf)
 
 <use images/loser-game-complete.pdf>
-<images/loser-game-length.pdf, id=266, 506.17105pt x 266.28485pt>
+Package pdftex.def Info: images/loser-game-complete.pdf used on input line 1595
+.
+(pdftex.def)             Requested size: 370.74237pt x 189.916pt.
+
+<images/loser-game-length.pdf, id=281, 506.17105pt x 266.28485pt>
 File: images/loser-game-length.pdf Graphic file (type pdf)
 
-<use images/loser-game-length.pdf> [51 <./images/loser-game-complete.pdf
+<use images/loser-game-length.pdf>
+Package pdftex.def Info: images/loser-game-length.pdf used on input line 1603.
+(pdftex.def)             Requested size: 370.74237pt x 195.04048pt.
+ [54 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/loser-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Domi
+nation/Domination/honours-project-report/images/loser-game-length.pdf
 
-pdfTeX warning: pdflatex (file ./images/loser-game-complete.pdf): PDF inclusion
-: Page Group detected which pdfTeX can't handle. Ignoring it.
-> <./images/loser-game-length.pdf
-
-pdfTeX warning: pdflatex (file ./images/loser-game-length.pdf): PDF inclusion: 
-Page Group detected which pdfTeX can't handle. Ignoring it.
+pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
+n/Domination/honours-project-report/images/loser-game-length.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (6.26537pt too wide) in paragraph at lines 1573--1574
+Overfull \hbox (6.26537pt too wide) in paragraph at lines 1636--1637
 []\T1/cmr/m/n/12 SHOW A GRAPH OF ONE EX-AM-PLE OF WIN-NER CON-STRAINED WRONG 
  []
 
 
-Underfull \vbox (badness 1024) has occurred while \output is active []
-
- [52]
-Overfull \hbox (2.19412pt too wide) in paragraph at lines 1605--1606
+Overfull \hbox (2.19412pt too wide) in paragraph at lines 1644--1645
 []\T1/cmr/m/n/12 SHOW THAT CON-STRAINED PLAY GAMES ARE ON AV-ER-AGE SHORTER
  []
 
-[53] [54]
+[55] [56]
  6.
-[55
 
-] [56] [57] [58] [59] [60]
+Underfull \vbox (badness 1107) has occurred while \output is active []
+
+ [57
+
+]
+[58] [59] [60]
+Underfull \vbox (badness 2334) has occurred while \output is active []
+
+ [61]
+[62]
  7.
-[61
+[63
 
-] [62] [63] [64]
-Overfull \hbox (28.72581pt too wide) in paragraph at lines 2162--2162
+]
+Overfull \hbox (28.72581pt too wide) in paragraph at lines 1874--1874
 []\T1/cmr/bx/n/17.28 Game Length Correct-Incorrect Pre-dic-tion Count 
  []
 
-[65] (./report.bbl [66] [67] [68
+[64]
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\report.bbl [65] [66] [67] [68] [69] [70
 
-] [69]) [70] (./report.aux)
+] [71]) [72]
+(C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
+t\report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4075 strings out of 256216
- 54832 string characters out of 1917072
- 143840 words of memory out of 1500000
- 7307 multiletter control sequences out of 10000+200000
- 16103 words of font info for 38 fonts, out of 1200000 for 2000
- 645 hyphenation exceptions out of 8191
- 35i,26n,38p,767b,550s stack positions out of 5000i,500n,6000p,200000b,15000s
- </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/
-jknappen/ec/ecbi1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/t
-exmf-var/fonts/pk/ljfour/jknappen/ec/eccc1200.600pk> </afs/inf.ed.ac.uk/user/s0
-9/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <
-/afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecsl1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf
--var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </afs/inf.ed.ac.uk/user/s09/s0
-914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </afs
-/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen
-/ec/ecti1200.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </afs/inf.ed.ac.uk/user/s09/s09140
-07/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </afs/inf
-.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm1440.600pk> </afs/inf.ed.ac.uk/user/s09/s0914007/.texlive2007/texmf-var/fon
-ts/pk/ljfour/jknappen/ec/ecrm2488.600pk></usr/share/texmf/fonts/type1/bluesky/c
-m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/te
-xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
-mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
-nts/type1/bluesky/cm/cmsy10.pfb>
-Output written on report.pdf (76 pages, 1973676 bytes).
+ 4868 strings out of 493921
+ 70181 string characters out of 3147273
+ 210008 words of memory out of 3000000
+ 8109 multiletter control sequences out of 15000+200000
+ 16103 words of font info for 38 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 36i,26n,38p,847b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
+00\ecbi1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\eccc1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\s0914007\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\s0914007\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\s
+0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk
+> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecti1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
+ppen\ec\dpi600\ecbx1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\s0914007\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\s0914007\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk><D:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb>
+Output written on report.pdf (78 pages, 2012392 bytes).
 PDF statistics:
- 860 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 131072)
+ 868 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
