@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.11)  3 APR 2013 09:33
+=======
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  3 APR 2013 09:46
+>>>>>>> eea0ef1eee97c15322f4aa8c6011539e03de10f1
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -468,11 +472,22 @@ Overfull \hbox (10.16542pt too wide) in paragraph at lines 882--921
 []$ 
  []
 
+<<<<<<< HEAD
 [28] <images/risk-plan-library.pdf, id=134, 401.5pt x 198.7425pt>
 File: images/risk-plan-library.pdf Graphic file (type pdf)
 
 <use images/risk-plan-library.pdf>
 Overfull \hbox (14.63141pt too wide) in paragraph at lines 954--955
+=======
+[28] <images/risk-plan-library.pdf, id=135, 841.0321pt x 403.69821pt>
+File: images/risk-plan-library.pdf Graphic file (type pdf)
+
+<use images/risk-plan-library.pdf>
+Package pdftex.def Info: images/risk-plan-library.pdf used on input line 956.
+(pdftex.def)             Requested size: 411.93877pt x 197.73376pt.
+
+Overfull \hbox (14.63141pt too wide) in paragraph at lines 956--957
+>>>>>>> eea0ef1eee97c15322f4aa8c6011539e03de10f1
 [][] 
  []
 
@@ -631,6 +646,7 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  4059 strings out of 256216
  54210 string characters out of 1917072
  143840 words of memory out of 1500000
@@ -658,6 +674,35 @@ xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
 mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
 nts/type1/bluesky/cm/cmsy10.pfb>
 Output written on report.pdf (72 pages, 1375586 bytes).
+=======
+ 4859 strings out of 493921
+ 69784 string characters out of 3147273
+ 172008 words of memory out of 3000000
+ 8103 multiletter control sequences out of 15000+200000
+ 16103 words of font info for 38 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 36i,26n,38p,847b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
+00\ecbi1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\eccc1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\s0914007\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\s0914007\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\s
+0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk
+> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecti1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
+ppen\ec\dpi600\ecbx1200.pk> <C:\Users\s0914007\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\s0914007\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\s0914007\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk><D:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb>
+Output written on report.pdf (72 pages, 1408647 bytes).
+>>>>>>> eea0ef1eee97c15322f4aa8c6011539e03de10f1
 PDF statistics:
  816 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
