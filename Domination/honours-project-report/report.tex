@@ -74,6 +74,12 @@ Last but not least a thanks to all my other friends and acquaintances who partic
 
 \chapter{Introduction}
 
+CHECK USE OF TERM EXPLANATION AND ROOT GOAL
+
+CHECK SUMMARIES TO SEE IF NOT MISSED THINGS
+
+CHANGE GRAPH TITLE TO BE E.G GENERAL PLAN PREDICTION ACCURACY OVER GAME COMPLETION
+
 \begin{flushleft}
 \textit{AI has the potential to become the new driving force behind computer game innovation.}
 \end{flushleft}
@@ -933,8 +939,6 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 \subsection{Example of Operation}
 
-CHECK USE OF TERM EXPLANATION AND ROOT GOAL
-
 The concepts from this chapter can be tied together with an arbitrary example of computing \textit{Pr(exp}|\textit{obs)} the likelihood of an explanation given an observation. The example will be extended to include the plan recognition agent handle two observations.
 
 Assumptions for this example are:
@@ -1163,8 +1167,6 @@ For reinforce actions the plan recognition agent considers each explanations, if
 
 \section{Summary}
 
-CHECK SUMMARY TO SEE IF NOT MISSED THINGS
-
 The design of the plan recognition agent is based on the PHATT algorithm. Various environmental modelling and design of environment data structures was necessary in order to allow the PHATT algorithm to be applicable to the R.I.S.K environment. 
 
 Each action of the R.I.S.K environment was modelled and various assumptions about each made in-order that each can be used to compute the probability of a players root-goal. Where necessary data structures were designed for the most significant objects in the environment. The purpose of each data structure would be to contain the essential information required by the plan recognition agent.
@@ -1348,7 +1350,7 @@ This artificially constructed form of play is designed to be the easiest to perf
 
 There were two experiment formats, one for constrained play, the other for free play. Before any experiment the rules of the game were explained to participants. 
 
-For constricted play, the particular play style required was described to participants.
+For constrained play, the particular play style required was described to participants.
 
 For free play it was made clear to participants that there were two primary methods of winning in mission R.I.S.K. either by:
 
@@ -1413,6 +1415,10 @@ The prediction accuracy of the plan recognition agent is significantly higher fo
 From the prediction accuracy of the plan recognition agent, we can infer when the domination A.I. gives less significance to completing its missions.
 \item
 The length of game has a positive effect on the accuracy of the prediction agent.
+\item
+The further into a game, the better the plan recognition prediction accuracy is for players who won.
+\item
+Constrained play games were never longer than 120 turns, making them the shortest games of all game types.
 \end{enumerate}
 
 Keeping in mind the initial hypothesis, we attempt to evaluate whether plan recognition algorithms are beneficial in games, specifically R.I.S.K.
@@ -1490,12 +1496,6 @@ This continues till the end of the game at which point the probability of a play
 
 \subsection{Prediction Accuracy in General}
 
-Given there are six mission cards, the accuracy of a random guess of a players mission card is 16.67\%. According to Table 7.1, at its worse the plan recognition agent in general performs 8.47\% better than this, and at its best 63.72\% better. 
-
-Of free and constrained play table 7.1 reveals that \textit{constrained play had a significantly higher accuracy than both free and A.I. play}. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performed.
-
-\newpage
-
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/general-game-complete.pdf}
@@ -1508,56 +1508,52 @@ Of free and constrained play table 7.1 reveals that \textit{constrained play had
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/general-game-length.pdf}
 }
-\caption{General Prediction Accuracy}
+\caption{The general prediction accuracy of the plan recognition agent at various game lengths. }
 \label{fig:dom-debug-gui}
 \end{figure} 
 
-Figure 5.2 details the general prediction accuracy of the plan recognition agent at intervals of 25\% of the games duration. 
+In general the plan recognition agent performed significantly better in \textit{constrained play than on both free and A.I. play} at both intervals of game completion and various game lengths. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performs on human players.
 
-Free and A.I. play are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the plan recognition  agent for humans is rather Ftree Play as prediction accuracies of human players is most significant. Therefore \textit{the plan recognition agent is 32.61\% better than random guess} and so we can establish that the plan recognition agent indeed does converge on the correct explanation 49.28\% of the time.
+In general the plan recognition agent performed better on human players than A.I. players. The reason for this given the scale of difference must be due to the way in which the humans and the A.I. differ in their method of following plans, the data suggests that . According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
 
-From this we can infer several important trends.
+The core A.I. is built to play domination mode not specifically built to actively follow a plan. This reinforces the statement that human players followed their plans more actively than A.I. players.
 
-In general the plan recognition of the different types of play the plan recognition agent performed significantly better in \textit{constrained play had a than both free and A.I. play}. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performs for human players.
+Comparing the prediction accuracy at $w$4 and $w$100 we see improvements in the prediction accuracy by the plan recognition agent of up to \%10. As the A.I.'s decisions become more skewed towards occupying mission continents and less towards choosing occupying accessible non mission-continents and eliminating opponents both of which are observed as inconsistent actions by the plan recognition agent.
 
-In general the plan recognition agent performed better on human players than A.I. players. The reason for this is due primarily to the way in which the humans and the A.I. differ in operation. According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
+There is a 25\% increase in the prediction accuracy of the plan recognition agent for constrained play in the 75 to 100\% game completing category. Though in general we see a rise in the prediction accuracy in this game completetion category across all forms of play, this is significant rise remains exclusive to constrained play. This is once again due to the nature of constrained play, as we shall see with further analysis of winners and losers in both categories of players prediction accuracy remains high.
 
-There is a significant improvements in the prediction accuracy of the plan recognition agent from $w$4 to $w$100 and if the aim of the A.I. was to perform its mission quickly and in doing so effectively then this would be confirmed by the readings from the plan recognition agent.
+EXAMPLE OF CONSTRAINED PLAY AND BIG INCREASE IN PREDICTION ACCURACY OF WINNER AT END OF THE GAME, USE TABLE HERE TO SHOW THAT PLAYERS FIGHT ONLY OVER CONSISTENT PLACES MAJORITY OF GAME!
 
-Changing the variable $w$ hence explains the plan recognition agents increase in accuracy of up to \%10  as the A.I.'s decisions becomes more skewed towards occupying mission continents and less towards occupying accessible non mission-continents and eliminating opponents both of which are observed as inconsistent actions by the plan recognition agent.
+This trend of an increase towards the end of a game is primarily due in other forms of play to how, especially so for winners, a large number of consistent actions are performed in a short span of time at the end.
 
-There is a significant increase in the prediction accuracy of the plan recognition agent in constrained play in the 75 to 100\% of game play complete range. This is because in the later part of any game players can perform more actions per turn due to the increasing number of armies on the board.
+The general prediction accuracy over game length falls for A.I over time whereas human players increase. Figure 5.2 does not echo this trend though which indicates that prediction accuracy over game length appear to be stable which is indictive that the number of samples from Figure 5.3 reaching game length of over 210+ are relatively small as to not affect the average accuracy so significantly. 
 
-The general prediction accuracy over game length appears to fall for A.I over time whereas human players appear to be increasing. Though this is an interesting contrast from figure 5.2 which indicates that prediction accuracy over game length appear to be stable and in the case of constrained play increases significantly.
-
-In general it appears the shorter the game the better the prediction of the plan recognition will be, but
-
-The length of all human games is much lower that that of A.I. games this is either one of two reasons:
+The length of all human games up to a maximum between the range of 120-150 turns, which is far lower than that of A.I. games. This suggests either that one of two reasons:
 
 \begin{itemize}
 \item
-A.I. prevents other A.I. from winning and therefore game is longer.
+The A.I is good at preventing other A.I. from winning and therefore games are longer.
 \item
-A.I is worse and therefore game is longer because they cannot win.
+Games are longer because the A.I. does not win quickly.
 \end{itemize}
 
-With an example of the longest game we can see that this is not the case.
+With an example of the longest game we can see evidence to suggest the latter point.
 
 GET EXAMPLE OF LONG GAME
 
 In this example the A.I. could have won but did not because it considered eliminating its opponents and occuping neibouring continents more significant that completing its mission despite owning all territories except one.
 
-This observation also happens to coincide with the signifanct drop of A.I. - 4 prediction accuracy in games longer than 210+, but looking at figure 1 we must conclude that the number of data samples of this length is relatively small given that figure 5.3 
-
-\section{Plan Recognition Agent Winner Prediction Accuracy}
+This observation coincides with the signifanct drop of the plan recognition agents prediction accuracy for A.I. - 4 games longer than 210+ turns. But generally this is not the case as the number of such examples must be relatively small because we do not see a significant drop in prediction accuracy of A.I -4 games between 75 to 100 \% game completion.
 
 \newpage
+
+\section{Plan Recognition Agent Winner Prediction Accuracy}
 
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/winner-game-complete.pdf}
 }
-\caption{Winner Prediction Accuracy}
+\caption{Winner Plan Prediction Accuracy}
 \label{fig:winner-pred-accuracy}
 \end{figure} 
 
@@ -1565,35 +1561,45 @@ This observation also happens to coincide with the signifanct drop of A.I. - 4 p
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/winner-game-length.pdf}
 }
-\caption{Winner Prediction Accuracy}
+\caption{Winner Plan Prediction Accuracy}
 \label{fig:dom-debug-gui}
 \end{figure} 
 
-MAKE TABLE OF AVERAGE ACCURACY
+Firstly we must point out that the prediction accuracy of the plan recognition agent is 1.0 only due to the number of data samples of winners being small. There was only a single data sample of a winner between 120-150 turn long game, and that sample was correctly predicted.
 
-Most prominantly we must point out that the prediction accuracy of  is 1.0 is due to the number of data samples, there was only a single data sample of a winner that was correctly predicted between 120-150 turn long games.
+Games of constrained play were never longer than 120 turns.
 
-Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission atleast once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect.
+The highest plan prediction accuracy of the plan recognition is 88.24\% for winners in games of constrained play of length 0-120.
 
-On the other hand though there are of course cases where the plan recognition agent is unsuccessful: 
+What is striking about the data for winners is that for A.I. - 4 games there is a significant drop of plan prediction accuracy from 31.58\% to 5.88\% in from the 180-210 to the 210+ game length category. As we saw from the example of a long A.I. game in the previous section this can be explained because of the majority of the losers had been eliminated at that point in the game and the winner was focused on eliminating the last player, and this involved performing many inconsisent actions to eliminate them, and the losers that did survive did not perform many actions because of a comparatively low level of reinforcement armies. Once again though the number of these cases are small given the winner plan prediction accuracy remains stable on average through a game.
 
-There are cases where a winners has occupied the entire last continent for their mission in one turn and since sampling is done on a turn by turn basis the plan recognition agent will miss the significant change in probabilities as the system does not register an end of turn but rather a different event which is the end of the game.
+For A.I 100 there is a positive trend that as the game length increases so does the plan prediction accuracy.
 
-Except for const
+The trend of increase towards the end of the game is much more distinct for winners as seen by significant increases of plan prediction accuracy between 75\% and \%100 percent game completion. This will be due to winners performing many directly-consistent actions at the end of the game.
 
-Therefore the shorter the game the more likely the prediction will be correct for the winner
+Special cases include:
 
-Comparison of the Figure 5.4 to figure 5.6 shows that in every type of play the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}. The plan recognition agent is more successful at predicting due to a number of reasons:
+INCLUDE? There are cases where a winners has occupied the entire last continent for their mission in one turn and since sampling is done on a turn by turn basis the plan recognition agent will miss the significant change in probabilities as the system does not register an end of turn but rather a different event which is the end of the game.
 
-\section{Plan Recognition Agent Loser Prediction Accuracy}
+WINNERS CONSTRAINED PLAY
+
+It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
+
+Table 7.4 shows two incorrect predictions for winners in constrained play. Both were \textit{Two-Continent+1} mission types and from analysis of each both are shown to be incorrect for the same reason. 
+
+SHOW A GRAPH OF ONE EXAMPLE OF WINNER CONSTRAINED WRONG
+
+The final prediction probabilities of the above graph was split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an incorrect or argueably \textit{inconclusive} prediction.
 
 \newpage
+
+\section{Plan Recognition Agent Loser Prediction Accuracy}
 
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/loser-game-complete.pdf}
 }
-\caption{Domination Debug Graphical User Interface}
+\caption{Loser Plan Prediction Accuracy}
 \label{fig:dom-debug-gui}
 \end{figure} 
 
@@ -1605,61 +1611,46 @@ Comparison of the Figure 5.4 to figure 5.6 shows that in every type of play the 
 \label{fig:dom-debug-gui}
 \end{figure}
 
-\newpage
+The average accuracy of losers is stable through out the course of a game of any game type except for constrained play though.
 
-MAKE TABLE OF AVERAGE ACCURACY
+Losers in A.I - 100 appear to show negative trend in that as the game length increases the prediction accuracy falls. As we saw from an analysis of winners the inverse to this was true, as game length increases the plan prediction accuracy increases as well. This is an interesting correlation as it suggests that the prediction accuracy of winners atleast for A.I. - 100 play gets better as losers get worse. This makes sense given that winners by definition won because losers did not and that a winners sucess does have a negative impact on losers being able to follow their own mission.
 
-GENERAL REASONS WHY LOSER ACCURACY IS WORSE
+EXAMPLE OF WINNER?
 
-Losers who were eliminated early
+Special cases include:
 
-Losers are often prevented from successfully achieving their goal.
+Losers are often prevented from successfully achieving their goal as they may be eliminated early or may be pushed out of their mission continents.
 
-Present typically examples where this is the case.
-
-Winners who win quickly
-
-Winners who win slowly
-
-Though there were exceptions to this? Misclassification due to association?
-
-We will describe each case, present a hypothesis for the plan recognition agents prediction accuracy then present examples from the data for most significant of these cases to support the hypothesis. 
-
-but this is not necessarily true winners just like losers may be in positions where they cannot perform actions that are directly-consistent.
+EXAMPLE OF LOSER ELIMINATED EARLY
 
 A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the prediction will be wrong, inversely it may be correct for the very same reason.
 
-WINNERS CONSTRAINED PLAY
-
-Table 7.4 shows two incorrect predictions for winners in constrained play. Both were \textit{Two-Continent+1} mission types and from analysis of each both are shown to be incorrect for the same reason. 
-
-SHOW A GRAPH OF ONE EXAMPLE OF WINNER CONSTRAINED WRONG
-
-The final prediction probabilities of the above graph was split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an incorrect or argueably \textit{inconclusive} prediction.
-
-It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
- 
-In the context of constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere.
-
-SHOW THAT CONSTRAINED PLAY GAMES ARE ON AVERAGE SHORTER THAN OTHER GAME TYPES CAN DO WITH GRAPH
-
-AI 100 LOSERS GETS WORSE OVER GAME LENGTH
-
-BIG DROP IN PREDICTION ACCURACY IN A.I 4 GAME OVERS 210 IN TURNS BUT SINCE THE NUMBER OF SAMPLES MUST BE SMALL HAS A LOW EFFECT ON THE GENERAL ACCURACY
+Unlike the significant fall seen in A.I. -  4 Winners the plan prediction accuracy of A.I - 4 Losers remains stable. In the example we saw
 
 \section{Summary}
 
-Why is the accuracy of winners better than losers? May be because weighting of attack actions is towards successful attacks, of which winners perform more.
+The plan recognition agent was tested in three different game types.
+
+Analysis of the plan recognition agents plan prediction accuracy over different lengths of games and at various intervals in a game has several interesting insights.
 
 \chapter{Conclusion}
 
 \section{Main insights and results}
+
+Constrained play games were never longer than 120 turns making them the shortest of all game types.
+In constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere hence games are shorter.
+
+For A.I. 100 there is a inverse correlation between the plan prediction accuracy of winners and the plan prediction accuracy of losers.
+
+Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission atleast once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect. This proposition is supported by how the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}.
 
 In R.I.S.K.there is only one winner. R.I.S.K is an adversarial environment where right from the start you are attacked. Given that you can survive an onslaught of attacks in-order to achieve ones own mission, players must either directly or indirectly eliminate each other and often modify their own plan in order to continue surviving or prevent other players from winning. 
 
 This environment and the high-level of overlap between missions the results are many misclassifications.
 
 Given the design of the plan recognition agent these changes in behaviour are see as directly-inconsistent with their own mission and rather seems consistent with whatever explanation that those actions \textit{are} directly-consistent with instead.
+
+Given there are six mission cards, the accuracy of a random guess of a players mission card is 16.67\%. According to Figure 5.2 and 5.3 the percentage accuracy over time and over game length has a higher accuracy than this. On average CALCULATE AVERAGE
 
 The main issue facing the plan recognition agent is differentiating between noise from the environment.
 
@@ -1673,9 +1664,13 @@ Misclassification's occur due to three(keep looking in data) main reasons:
 
 by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations
 
+Free and A.I. play are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the plan recognition  agent for humans is rather Free Play as prediction accuracies of human players is most significant.
+
 \subsection{Improvement of Model}
 
 Currently the system suffers from the problem of distinguishing noise from meaninful actions.
+
+Curently model does little to take into account situations where a player cannot perform a consistent attack action. If a player chooses to attack even though they may intend to perform a consistent attack later, argueably this cannot be taken into account as you cannot know whether they performed the action with a different plan in mind to that of their mission card.
 
 Solving this problem could be taclked in two ways:
 
@@ -1743,9 +1738,9 @@ Sampling of probability needs to be more frequent rather than just at end of ter
 
 \section{Future Work}
 
-A.I. play was done with six players, would be interesting to see the effects on prediction accuracy on games with different number of players.
+Why is the accuracy of winners better than losers. It may be due to because weighting of attack actions is towards successful attacks, of which winners perform more. This question can be explored.
 
-THINK ABOUT WHY IT WOULD IMPROVE
+A.I. play was done with six players, would be interesting to see the effects on prediction accuracy on games with different numbers of players.
 
 \subsection{Model Augmentation}
 
@@ -1753,7 +1748,7 @@ ANALYSIS OF EACH EXPLANATION AND BUILD MODELS FOR EACH, DATA COLLECTED TO PERFOR
 
 \subsubsection{Application of Machine Learning}
 
-Allow for method choice probabilities again and use machine learning to computer better sub-goal choice probabilities based on preferences shown in training data.
+As according to PHATTs original design, allow for method choice probabilities again and use machine learning to compute better sub-goal choice probability based on preferences shown by players in collected training data.
 
 \subsubsection{More Sophisticated Action Probability Computations}
 
@@ -1957,7 +1952,7 @@ WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
 
 \newpage
 
-\section{Explanation Data}
+\section{Explanation Accuracy Data}
 
 \begin{table}[ht]
 \centerline{
@@ -2151,39 +2146,23 @@ WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
 \label{table:winner-loser-accuracy}
 \end{table}
 
-\section{Template Tables}
+\section{Average Accuracy of Plan Recognition Agent}
 
 \begin{table}[ht]
-\centerline{
-\begin{tabular}{cc|c|c|c|c|c|c|c|c|c|c|}
-\cline{3-12}
-& & \multicolumn{10}{ c| }{\textbf{Turns}} \\
-\cline{3-12}
-& & \multicolumn{2}{ c| }{< 120} & \multicolumn{2}{ c| }{ 120-150} & \multicolumn{2}{ c| }{ 150-180} & \multicolumn{2}{ c| }{ 180-210} & \multicolumn{2}{ c| }{ 210+} \\ \cline{3-10} 
+\centering
+\begin{tabular}{|c|c|p{8cm}|}
 \hline 
-\multicolumn{1}{ |c| }{\textbf{Type of Play} }& \textbf{Player Type} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I} & \textbf{C} & \textbf{I}\\ 
+\textbf{Game Type} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
 \hline 
-\multicolumn{1}{ |c| }{\multirow{2}{*}{Free} } & Winner & & & & & & & & & & \\ 
-\cline{2-12}
-\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
+Free & Yes & A successful defence of a territory may be purely a product of chance, but is more likely when they have a plan involving that territory. \\ 
 \hline 
-\multicolumn{1}{ |c| }{\multirow{2}{*}{Constrained} } & Winner & & & & & & & & & & \\ 
-\cline{2-12}
-\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
-\hline
-\multicolumn{1}{ |c| }{\multirow{2}{*}{A.I. - Weight 100} } & Winner & & & & & & & & & & \\ 
-\cline{2-12}
-\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\  
-\hline
-\multicolumn{1}{ |c| }{\multirow{2}{*}{A.I. - Weight 4} } & Winner & & & & & & & & & & \\ 
-\cline{2-12}
-\multicolumn{1}{ |c| }{} & Loser & & & & & & & & & & \\ 
+Failed-Defence & No & An inconsistent action because a player would not normally allow a territory to be lost if it is a part of their plan. \\ 
 \hline
 \end{tabular}
-}
-\caption{General Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
-\label{table:winner-loser-accuracy}
+\caption{Modelling Defence Actions}
+\label{table:attack-defend-modelling}
 \end{table}
+
 
 % use the following and \cite{} as above if you use bibtex
 % otherwise generate bibtem entries
