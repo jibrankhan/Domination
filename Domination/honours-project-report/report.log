@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  4 APR 2013 01:00
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  4 APR 2013 02:32
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -534,35 +534,41 @@ Overfull \hbox (18.16396pt too wide) in paragraph at lines 1134--1147
 
 ]
  4.
-<images/event-driven-architecture.pdf, id=173, 445.87578pt x 75.36156pt>
-File: images/event-driven-architecture.pdf Graphic file (type pdf)
+<images/system-architecture.pdf, id=173, 844.04335pt x 261.09544pt>
+File: images/system-architecture.pdf Graphic file (type pdf)
 
-<use images/event-driven-architecture.pdf>
-Package pdftex.def Info: images/event-driven-architecture.pdf used on input lin
-e 1196.
-(pdftex.def)             Requested size: 445.87468pt x 75.36136pt.
- [37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
-report/images/event-driven-architecture.pdf>]
-Underfull \hbox (badness 3179) in paragraph at lines 1239--1239
+<use images/system-architecture.pdf>
+Package pdftex.def Info: images/system-architecture.pdf used on input line 1196
+.
+(pdftex.def)             Requested size: 494.32526pt x 152.91351pt.
+
+Overfull \hbox (9.45702pt too wide) in paragraph at lines 1204--1205
+[]\T1/cmr/m/n/12 The \T1/cmr/m/it/12 Pro-cess-ing \T1/cmr/m/n/12 com-po-nent is
+ re-spon-si-ble for rout-ing events to the \T1/cmr/m/it/12 Plan-Recognition-
+ []
+
+[37 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-r
+eport/images/system-architecture.pdf, page is rotated 90 degrees>]
+Overfull \hbox (8.14787pt too wide) in paragraph at lines 1220--1221
+\T1/cmr/m/n/12 PLAN RECOGN-TION AGENT ARCHITECTURE-EXTENSION OF DI-A-GRAM
+ []
+
+[38]
+Underfull \hbox (badness 3179) in paragraph at lines 1278--1278
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 at-tack-er-Name \T1/cmr/m/n/12 p
 er-formed a
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 1239--1239
+Underfull \hbox (badness 2343) in paragraph at lines 1278--1278
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 de-fend-er-Name \T1/cmr/m/n/12 p
 er-formed a
  []
 
 
-Underfull \hbox (badness 4660) in paragraph at lines 1239--1239
+Underfull \hbox (badness 4660) in paragraph at lines 1278--1278
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 play-er-Name \T1/cmr/m/n/12 per-
 formed an
- []
-
-[38]
-Overfull \hbox (8.14787pt too wide) in paragraph at lines 1258--1259
-\T1/cmr/m/n/12 PLAN RECOGN-TION AGENT ARCHITECTURE-EXTENSION OF DI-A-GRAM
  []
 
 [39] [40] [41] [42
@@ -573,8 +579,8 @@ Overfull \hbox (8.14787pt too wide) in paragraph at lines 1258--1259
 File: images/domination-debug-gui.png Graphic file (type png)
 
 <use images/domination-debug-gui.png>
-Package pdftex.def Info: images/domination-debug-gui.png used on input line 138
-1.
+Package pdftex.def Info: images/domination-debug-gui.png used on input line 136
+5.
 (pdftex.def)             Requested size: 262.73091pt x 236.38254pt.
  [45 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/domination-debug-gui.png>]
@@ -582,15 +588,15 @@ report/images/domination-debug-gui.png>]
 File: images/general-game-complete.pdf Graphic file (type pdf)
 
 <use images/general-game-complete.pdf>
-Package pdftex.def Info: images/general-game-complete.pdf used on input line 15
-02.
+Package pdftex.def Info: images/general-game-complete.pdf used on input line 14
+86.
 (pdftex.def)             Requested size: 370.74237pt x 188.40678pt.
 
 <images/general-game-length.pdf, id=220, 504.1535pt x 242.16472pt>
 File: images/general-game-length.pdf Graphic file (type pdf)
 
 <use images/general-game-length.pdf>
-Package pdftex.def Info: images/general-game-length.pdf used on input line 1510
+Package pdftex.def Info: images/general-game-length.pdf used on input line 1494
 .
 (pdftex.def)             Requested size: 370.74237pt x 178.09053pt.
  [48 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
@@ -601,23 +607,23 @@ pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
 n/Domination/honours-project-report/images/general-game-length.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (11.09204pt too wide) in paragraph at lines 1525--1526
-\T1/cmr/m/n/12 HERE TO SHOW THAT PLAY-ERS FIGHT ONLY OVER CON-SIS-TENT PLACE
+Overfull \hbox (17.61823pt too wide) in paragraph at lines 1509--1510
+\T1/cmr/m/n/12 HERE TO SHOW THAT PLAY-ERS FIGHT ONLY OVER CON-SIS-TENT PLACES
  []
 
 [49] [50] <images/winner-game-complete.pdf, id=250, 503.14975pt x 252.2223pt>
 File: images/winner-game-complete.pdf Graphic file (type pdf)
 
 <use images/winner-game-complete.pdf>
-Package pdftex.def Info: images/winner-game-complete.pdf used on input line 155
-5.
+Package pdftex.def Info: images/winner-game-complete.pdf used on input line 153
+9.
 (pdftex.def)             Requested size: 370.74237pt x 185.85646pt.
 
 <images/winner-game-length.pdf, id=251, 502.13599pt x 234.13472pt>
 File: images/winner-game-length.pdf Graphic file (type pdf)
 
 <use images/winner-game-length.pdf>
-Package pdftex.def Info: images/winner-game-length.pdf used on input line 1563.
+Package pdftex.def Info: images/winner-game-length.pdf used on input line 1547.
 
 (pdftex.def)             Requested size: 370.74237pt x 172.87112pt.
  [51 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
@@ -628,7 +634,7 @@ pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
 n/Domination/honours-project-report/images/winner-game-length.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (6.26537pt too wide) in paragraph at lines 1590--1591
+Overfull \hbox (6.26537pt too wide) in paragraph at lines 1574--1575
 []\T1/cmr/m/n/12 SHOW A GRAPH OF ONE EX-AM-PLE OF WIN-NER CON-STRAINED WRONG 
  []
 
@@ -636,7 +642,7 @@ Overfull \hbox (6.26537pt too wide) in paragraph at lines 1590--1591
 File: images/loser-game-complete.pdf Graphic file (type pdf)
 
 <use images/loser-game-complete.pdf>
-Package pdftex.def Info: images/loser-game-complete.pdf used on input line 1601
+Package pdftex.def Info: images/loser-game-complete.pdf used on input line 1585
 .
 (pdftex.def)             Requested size: 370.74237pt x 189.88675pt.
 
@@ -644,7 +650,7 @@ Package pdftex.def Info: images/loser-game-complete.pdf used on input line 1601
 File: images/loser-game-length.pdf Graphic file (type pdf)
 
 <use images/loser-game-length.pdf>
-Package pdftex.def Info: images/loser-game-length.pdf used on input line 1609.
+Package pdftex.def Info: images/loser-game-length.pdf used on input line 1593.
 (pdftex.def)             Requested size: 370.74237pt x 207.24057pt.
  [53 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/loser-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Domi
@@ -662,12 +668,12 @@ n: multiple pdfs with page group included in a single page
 ]
  7.
 [63]
-Overfull \hbox (28.72581pt too wide) in paragraph at lines 1869--1869
+Overfull \hbox (28.72581pt too wide) in paragraph at lines 1853--1853
 []\T1/cmr/bx/n/17.28 Game Length Correct-Incorrect Pre-dic-tion Count 
  []
 
 [64]
-Underfull \hbox (badness 1558) in paragraph at lines 2159--2160
+Underfull \hbox (badness 1558) in paragraph at lines 2143--2144
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
@@ -684,7 +690,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  4868 strings out of 493921
- 70181 string characters out of 3147273
+ 70151 string characters out of 3147273
  204008 words of memory out of 3000000
  8109 multiletter control sequences out of 15000+200000
  16103 words of font info for 38 fonts, out of 3000000 for 9000
@@ -709,9 +715,9 @@ fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb>
-Output written on report.pdf (76 pages, 2020571 bytes).
+Output written on report.pdf (76 pages, 2023958 bytes).
 PDF statistics:
- 860 PDF objects out of 1000 (max. 8388607)
+ 859 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

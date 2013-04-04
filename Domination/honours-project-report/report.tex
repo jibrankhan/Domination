@@ -1192,26 +1192,65 @@ High Quality Integrated Development Environments.
 
 \begin{figure}[h]
 \centerline{
-\includegraphics{images/event-driven-architecture}
+\includegraphics[width=1.2\textwidth]{images/system-architecture}
 }
 \caption{System Architecture}
 \end{figure} 
 
-The plan recognition agent followed an \textit{event-driven} system architecture.
+The system was \textit{event-driven} it had three majpr components.
 
-DESCRIBE THE DIFFERENT PARTS OF THE DIAGRAM ONCE ITS BEEN CHANGED!
+\textit{Domination-Program} refers to the open-source game developed by Yura.Net, modifications to the source code of the program was automating the output of the \textit{Replay-File} which occured at the end of a game, as well as lines of code at various key to fire events into the \textit{Processing} component. 
 
-The system can be seen as three components.
+The \textit{Processing} component is responsible for routing events to the \textit{Plan-Recognition-Agent} MORE DETAIL REQUIRED.
 
-The Domination Program refers t
+The \textit{Plan-Recognition-Agent} also had access to the data structures in the Domination program rather than storing its own copy avoiding potential problems because of losing synchronisation between the two. Additional advantages of this approach include less overhead as well significantly reducing the possibility that the plan recognition agents copy loses syncronisation with the Domination-Programs data structures. On the other hand a disadvantage is that this makes the plan-recognition-agent more dependant on the methods of the developers implementation.
 
-Modifications to the Domination program included automating the output of the replay file, as well as lines of code to fire events into the processing class.
+The plan recognition agent makes extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
 
-The plan recognition algorithm also had access to the data structures in the Domination program rather than storing its own copy avoiding and problems potentially because of losing synchronisation between the two.
+Several Explanation objects comprised the \textit{Hardcoded-Explanations} section. Explanation objects had hardcoded root-goal and sub-goals. Using these sub-goals the system could build a list of consistent and inconsistent actions. These data structures were implemented seperate to the core structure of the plan recognition agent and therefore given a complete list of hardcoded explanations for another map the plan recognition can be used sucessfully once again.
 
-The processing class is responsible for routing events to the plan recognition algorithm 
+The domination program would be capable of outputing a Replayfile that would be used to replay a game.
 
-When events occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event object(s) and depending on the type of event object and the information held by it handles the object appropriately. The types of events, what they contain and their purpose are:
+The plan recognition agent would output a csv file containg the plan predictions for each player by the plan recogntion agent over the course of the game.
+
+The architecture of the system is such that the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another implementation of a plan recognition agent.
+
+\section{Plan Recognition Agent Architecture}
+
+PLAN RECOGNTION AGENT ARCHITECTURE-EXTENSION OF DIAGRAM INCLUDE PLAN RECOGNITION AGENT SUB DATA STRUCTURES - EXTENSION OF DIAGRAM TO INCLUDE OUTPUTTING OF CSV FILE
+
+The plan recognition agent has a data structure for each player which in turn has several data structures of the explanation that are initially hardcoded. Each explanation object calculate its own probability.
+
+When an event arrives from the processing class it is routed to its specified player data structure and then to its specifiied explanation data structure.
+
+Data structure that stores the probabilities of each players expalantion structure once this game ends the data structure writes it out to a data folder as a csv file.
+
+\section{Event Design}
+
+To operate the plan recognition agent needs to be aware of several aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
+
+\begin{itemize}
+\item
+Start Game
+\item
+Player Initialisation
+\item
+Player Removal
+\item
+Territory Placement
+\item
+Successful Occupation
+\item
+Failed Occupation
+\item
+Army Movement
+\item
+Reinforcement
+\item
+End Game
+\end{itemize}
+
+When these events occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event object(s) and depending on the type of event object and the information held by it, handles the object appropriately. The types of events, what they contain and their purpose are:
 
 \begin{table}[ht]
 \centerline{
@@ -1241,80 +1280,25 @@ Reinforce & playerName, cName, tName & Signals that \textit{playerName} performe
 \label{table:event-description}
 \end{table}
 
-At the end of a game the domination program and the plan recogntion agent would output two files:
-
-The domination program would output a file that would be used for data collection.
-
-The plan recognition agent would output a csv file containg the prediction of the plan recogntion agent over the course of the game.
-
-TALK MORE ABOUT THE SYSTEM!
-
-The architecture of the system is such that the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another implementation of a plan recognition agent.
-
-\newpage
-
-\section{Plan Recognition Agent Architecture}
-
-PLAN RECOGNTION AGENT ARCHITECTURE-EXTENSION OF DIAGRAM INCLUDE PLAN RECOGNITION AGENT SUB DATA STRUCTURES - EXTENSION OF DIAGRAM TO INCLUDE OUTPUTTING OF CSV FILE
-
-The plan recognition agent has a data structure for each player which in turn has several data structures of the explanation that are initially hardcoded. Each explanation object calculate its own probability.
-
-When an event arrives from the processing class it is routed to its specified player data structure and then to its specifiied explanation data structure.
-
-Data structure that stores the probabilities of each players expalantion structure once this game ends the data structure writes it out to a data folder as a csv file.
-
-Given a list of hardcoded explanations the plan recognition could be used on any map that might be developed for the Domination Program.
+More specifically other than player initalisation or removal events, each event will trigger the computation of explanation probabilites, which players explanation probabilites are decieded for example by the \textit{attackerName} and what effect is decieded by the state of the R.I.S.K world which can be built from the data structures of the Domination program and the continent and territory name of the event.
 
 \section{System Operation}
 
-To operate the plan recognition agent needs to be aware of several aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
+Before a game begins, based on the players registered in the game lobby screen the plan recognition agent initialises a set of player data strucutres. 
 
-\begin{itemize}
-\item
-Start Game
-\item
-Player Initialisation
-\item
-Player Removal
-\item
-Territory Placement
-\item
-Successful Occupation
-\item
-Failed Occupation
-\item
-Army Movement
-\item
-Reinforcement
-\item
-End Game
-\end{itemize}
+The plan recognition agent first initalises the list of \textit{Hardcoded-Explanations} which involves building the set of consistent and inconsistent actions based on the explanations sub-goals. These explanation objects contain all the necessary information from the environment to computes its own probability. Once the complete list of explanations has been fully initliased it is cloned into each players data structure.
 
-When a game begins, the plan recognition agent initalises a list of hardcoded explanations, these objects contain all the necessary information from the environment to computes its own probability.
+Once acton events start firing from the Domination-Program and was routed by the Processing component, the Plan-Recognition-Agent will depending on the event compute new explanation probabilites for a player.
 
-The plan recognition agent also then initialises a set of player data strucutres. This complete list of explanations is cloned into each players data structure.
-
-\section{Additional Implementation Concepts}
-
-\subsection{Plan Recognition Agent Map Portability}
-
-Since explanations in the environement can be hardcoded without affecting the plan recogntion agents core structures, given a different list of hardcoded explanations the plan recognition can be used on any map that might be developed for the Domination Program.
-
-\subsection{Data Structure Re-Use}
-
-The plan recognition agent makes use of the data structures from the game itself rather than the alternative of storing its own synchronized copy.
-
-The advantages of this approach is less overhead as well significantly reducing the possibility that the plan recognition agents copy loses sync with the actual game state. 
-
-On the other hand the disadvantage is that this makes the agent more dependant on the methods of the developers implementations.
-
-\subsection{Google Guava Libraries}
-
-The plan recognition agent makes extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
+This would continue till the end of a game the domination program as well as the plan recognition agent would output two files allowing the replay of a game and a record of the plan recognition agents prediction probabilities for each players explanations over the couse of the game.
 
 \section{Summary}
 
-The plan recognition agent was written in the Java programming language following an event-driven system architecture. It operated in parallel to the Domination program receiving events fired from the program to update data structures it held locally that contained information about each players explanation predictions. At the end of a game the domination program as well as the plan recognition agent would output two files allowing the replay of a game and a record of the plan recognition agents prediction probabilities for each players explanations over the couse of the game.
+The Plan-Recognition-Agent was written in the Java programming language following an event-driven system architecture. It was built to be able to operate on any map developed for the Domination-Program and using the Google Guava libraries could operate in parallel to the Domination program. 
+
+By receiving events fired from the program it would update locally held player data structures that contained information about each players explanation predictions and any other required would be retrieved from the Domination-Program.
+
+At the end of a game the Plan-Recognition-Agent would output two files. One was a Replay-File that would allow a complete replay of the game, the other was the Plan-Prediction-Record which detailed the probabilites of each players explanations over the couse of the game.
 
 \chapter{Evaluation} 
 

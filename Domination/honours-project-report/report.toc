@@ -41,12 +41,9 @@
 \contentsline {section}{\numberline {3.4}Summary}{35}
 \contentsline {chapter}{\numberline {4}Implementation}{37}
 \contentsline {section}{\numberline {4.1}System Architecture}{37}
-\contentsline {section}{\numberline {4.2}Plan Recognition Agent Architecture}{39}
-\contentsline {section}{\numberline {4.3}System Operation}{39}
-\contentsline {section}{\numberline {4.4}Additional Implementation Concepts}{40}
-\contentsline {subsection}{\numberline {4.4.1}Plan Recognition Agent Map Portability}{40}
-\contentsline {subsection}{\numberline {4.4.2}Data Structure Re-Use}{40}
-\contentsline {subsection}{\numberline {4.4.3}Google Guava Libraries}{40}
+\contentsline {section}{\numberline {4.2}Plan Recognition Agent Architecture}{38}
+\contentsline {section}{\numberline {4.3}Event Design}{39}
+\contentsline {section}{\numberline {4.4}System Operation}{39}
 \contentsline {section}{\numberline {4.5}Summary}{40}
 \contentsline {chapter}{\numberline {5}Evaluation}{43}
 \contentsline {section}{\numberline {5.1}Experimental Format}{44}
