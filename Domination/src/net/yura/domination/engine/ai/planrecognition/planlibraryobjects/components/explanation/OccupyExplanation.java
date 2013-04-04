@@ -49,8 +49,22 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
         Set<BasicAction> inConActiveSet = this.filterSet(observationType, this.getInConActions());
         Set<BasicAction> filteredActiveSet = this.filterSet(observationType, activePendingSet);
         
+        Set<BasicAction> territoriesOwned = this.filterSet(ActionConstants.countryReinforced, activePendingSet);
+        Set<BasicAction> conTerritories = this.filterSet(ActionConstants.countryReinforced, this.getConActions());
+        
         int conActionCounter = 0;
         int inConActionCounter = 0;
+        
+        int terConActionCounter = 0;
+        
+        // Count number of consistent territories in active pending set when action took place
+        for(BasicAction a : territoriesOwned){
+                
+            if(conTerritories.contains(a)){
+                    
+                terConActionCounter++;
+            }
+        }
         
         // Count number of inconsistent and consistent actions in active pending set when action took place
         for(BasicAction b : filteredActiveSet){
@@ -81,6 +95,7 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
         if(observationType.equals(ActionConstants.countryReinforced) || observationType.equals(ActionConstants.armyMovement)){
             
             double proportion = ((double) conActionCounter /  (double) filteredActiveSet.size()) * 0.1d; 
+            double conTerOwned = terConActionCounter / territoriesOwned.size();
             
             //System.out.println("Reinforce or Army Movement " + filteredActiveSet.size() + " " + conActionCounter);
             //System.out.println(proportion);
@@ -92,19 +107,32 @@ public abstract class OccupyExplanation extends Explanation implements OccupyMis
             weight = 0.01;
 
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
-
+            
             //System.out.println("Other " + filteredActiveSet.size() + " " + conActionCounter);
             conActionProb = base + weight;
             inconActionProb = base;
             
         } else if(observationType.equals(ActionConstants.successfulOccupation)) {
         
+            if(conActionCounter == 0){
+                
+                conActionCounter = 1;
+            }
+            
+            if(terConActionCounter == 0){
+                
+                terConActionCounter = 1;
+            }
+            
+            double propActions = 1d - ( (double) conActionCounter / (double) filteredActiveSet.size() );
+            double conTerOwned = terConActionCounter / territoriesOwned.size();
+            
             weight = 0.02;
             
             base = this.computeBaseWeight(weight, filteredActiveSet.size(), conActionCounter);
 
             //System.out.println("Other " + filteredActiveSet.size() + " " + conActionCounter);
-            conActionProb = base + weight;
+            conActionProb = base + (weight  * propActions * conTerOwned);
             inconActionProb = base;
             
         } else {

@@ -1451,35 +1451,7 @@ fighting over non-mission continents.
 fighting over mission continents.
 \end{itemize}
 
-These cases can be compactly represented in a definitional framework.
-
-\begin{table}
-\centerline{
-\begin{tabular}{cc|c|c|c}
-\cline{3-4}
-&  & Mission & Non-Mission \\ 
-\cline{1-4}
-\multicolumn{1}{  |c| }{\multirow{2}{*}{Winner} } &
-\multicolumn{1}{  c| }{Quickly} & & & \\ \cline{2-4}
-\multicolumn{1}{ |c  }{}                        &
-\multicolumn{1}{ |c| }{Slowly} & & & \\ \cline{1-4}
-\multicolumn{1}{ |c  }{\multirow{3}{*}{Loser} } &
-\multicolumn{1}{ |c| }{Quickly} & & & \\ \cline{2-4}
-\multicolumn{1}{ |c  }{}                        &
-\multicolumn{1}{ |c| }{Slowly} & & & \\ \cline{2-4}
-\multicolumn{1}{ |c  }{} 						&
-\multicolumn{1}{ |c| }{Not-Eliminated} & & & \\ \cline{1-4}					
-\end{tabular}
-}
-\caption{Game-Scenario Table}
-\label{table:ga,e-scenariol-table}
-\end{table}
-
-Using table 5.1 we classify players into their game-scenarios on game-by-game basis. As there can be only one winner, the winner row only ever has one entry, whereas the loser row can have 1 to 5 entries.
-
 \subsection{Explanation Convergence Format}
-
-EXAMPLE OF STANDARD SUCCESSFUL CONVERGENCE OF AN EXPLANATION
 
 At the start of a game forty-two turns are required to place one army on each territory of the R.I.S.K map. These observations are not taken into account by the plan recognition agent as the distribution of territories between players is automatic and random. 
 
@@ -1489,7 +1461,7 @@ Once this initial setup is complete (which could be from 80 to 120 turns dependi
 
 After $p_c$ turn is over, other players begin their attack phases in-turn, and unless the action another player performs is to attack a territory owned by $p_c$, the probabilities of $p_c$ explanations remained unaffected. 
 
-This continues till the end of the game at which point the probability of a players explanation will have either converged successfully or unsuccessfully to the correct explanation. 
+This continues till the end of the game at which point the probability of a players explanation will have either converged successfully or unsuccessfully to the correct explanation. The rate of convergence differs between types of play though as a general trend convergence occurs only after the attack phase for players has begun.
 
 \subsection{Prediction Accuracy in General}
 
@@ -1519,9 +1491,19 @@ Comparing the prediction accuracy at $w$4 and $w$100 we see improvements in the 
 
 There is a 25\% increase in the prediction accuracy of the plan recognition agent for constrained play in the 75 to 100\% game completing category. Though in general we see a rise in the prediction accuracy in this game completetion category across all forms of play, this is significant rise remains exclusive to constrained play. This is once again due to the nature of constrained play, as we shall see with further analysis of winners and losers in both categories of players prediction accuracy remains high.
 
-EXAMPLE OF CONSTRAINED PLAY AND BIG INCREASE IN PREDICTION ACCURACY OF WINNER AT END OF THE GAME, USE TABLE HERE TO SHOW THAT PLAYERS FIGHT ONLY OVER CONSISTENT PLACES MAJORITY OF GAME!
-
 This trend of an increase towards the end of a game is primarily due in other forms of play to how, especially so for winners, a large number of consistent actions are performed in a short span of time at the end.
+
+Looking at an example of constrained play.
+
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=1.1\textwidth]{images/short-constrained-game.pdf}
+}
+\caption{A.I. 4 - Example Game}
+\label{fig:dom-debug-gui}
+\end{figure} 
+
+The human players mission was North-America Africa, for the majority of the game during the placement phase up until turn 82 the probability does not rise too much. Though after turn 82 when the attack phases begin the increase in explanaton probability is much more significant and convergence for this example to the correct explanation occurs within 10 turns, reaching a significantly higher explanation probability soon after attacks have begun. 
 
 The general prediction accuracy over game length falls for A.I over time whereas human players increase. Figure 5.2 does not echo this trend though which indicates that prediction accuracy over game length appear to be stable which is indictive that the number of samples from Figure 5.3 reaching game length of over 210+ are relatively small as to not affect the average accuracy so significantly. 
 
@@ -1534,11 +1516,19 @@ The A.I is good at preventing other A.I. from winning and therefore games are lo
 Games are longer because the A.I. does not win quickly.
 \end{itemize}
 
-With an example of the longest game we can see evidence to suggest the latter point.
+With an example we can see evidence to suggest the latter point.
 
-GET EXAMPLE OF LONG GAME
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=1.1\textwidth]{images/bad-long-game.pdf}
+}
+\caption{A.I. 4 - Example Game}
+\label{fig:dom-debug-gui}
+\end{figure} 
 
-In this example the A.I. could have won but did not because it considered eliminating its opponents and occuping neibouring continents more significant that completing its mission despite owning all territories except one.
+This graph illustrates the probabilites of explanations of an A.I. 4 player whos misson was Asia South-America. The A.I won a game that was approximately 342 turns long. In this game the A.I.s were caught in a stalemate between each other for many turns, argueably though not out of skill but instead a lack of strategic diversity. For example A.I. players make no attempt to fortify and hold continents when they are weak or to consolidate their armies if they can be concentrated in strategic territories. Instead it would go for a strategy of an all-out attack. Mostly fighting in North-America and Australia, continents other than its mission.
+
+The A.I. at one point had a clear advantage but chose to attack a non-mission continent to eliminate a weaker player first.  Asia its final mission continent was conquered at the very last turn and so ending the game.
 
 This observation coincides with the signifanct drop of the plan recognition agents prediction accuracy for A.I. - 4 games longer than 210+ turns. But generally this is not the case as the number of such examples must be relatively small because we do not see a significant drop in prediction accuracy of A.I -4 games between 75 to 100 \% game completion.
 
@@ -1574,19 +1564,9 @@ For A.I 100 there is a positive trend that as the game length increases so does 
 
 The trend of increase towards the end of the game is much more distinct for winners as seen by significant increases of plan prediction accuracy between 75\% and \%100 percent game completion. This will be due to winners performing many directly-consistent actions at the end of the game.
 
-Special cases include:
-
-INCLUDE? There are cases where a winners has occupied the entire last continent for their mission in one turn and since sampling is done on a turn by turn basis the plan recognition agent will miss the significant change in probabilities as the system does not register an end of turn but rather a different event which is the end of the game.
-
-WINNERS CONSTRAINED PLAY
+There are cases where winners have occupied the an entire continent and completed their mission in one turn and since sampling is done on a turn by turn basis the plan recognition agent will miss the significant change in probabilities as the system does not register an end of turn but rather a different event which is the end of the game.
 
 It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
-
-Table 7.4 shows two incorrect predictions for winners in constrained play. Both were \textit{Two-Continent+1} mission types and from analysis of each both are shown to be incorrect for the same reason. 
-
-SHOW A GRAPH OF ONE EXAMPLE OF WINNER CONSTRAINED WRONG
-
-The final prediction probabilities of the above graph was split exactly equally between two different children-root-goals as their sub-goals were identical, thus resulting in an incorrect or argueably \textit{inconclusive} prediction.
 
 \newpage
 
@@ -1612,17 +1592,19 @@ The average accuracy of losers is stable through out the course of a game of any
 
 Losers in A.I - 100 appear to show negative trend in that as the game length increases the prediction accuracy falls. As we saw from an analysis of winners the inverse to this was true, as game length increases the plan prediction accuracy increases as well. This is an interesting correlation as it suggests that the prediction accuracy of winners at least for A.I. - 100 play gets better as losers get worse. This makes sense given that winners by definition won because losers did not and that a winners sucess does have a negative impact on losers being able to follow their own mission.
 
-EXAMPLE OF WINNER?
+Losers are often prevented from successfully achieving their goal as they may be eliminated early or may be pushed out of their mission continents. The following is an example of a player with mission North-America Africa being eliminated from a game at approximately turn 75. 
 
-Special cases include:
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=1.1\textwidth]{images/player-elim-early.pdf}
+}
+\caption{Winner Prediction Accuracy}
+\label{fig:dom-debug-gui}
+\end{figure}
 
-Losers are often prevented from successfully achieving their goal as they may be eliminated early or may be pushed out of their mission continents.
+A proportion of incorrect predictions occured because losers can be eliminated at an early stage of the game resulting in a lack of data about that player. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line} as we can clearly see from Figure 5.10, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the prediction will be wrong and will remain an incorrect plan prediction, inversely it may be correct for the very same reason.
 
-EXAMPLE OF LOSER ELIMINATED EARLY
-
-A proportion of incorrect predictions occur because losers can be eliminated resulting in a lack of data about the losers behaviour. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line}, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the prediction will be wrong, inversely it may be correct for the very same reason.
-
-Unlike the significant fall seen in A.I. -  4 Winners the plan prediction accuracy of A.I - 4 Losers remains stable. In the example we saw
+Unlike the significant fall seen in A.I. -  4 Winners the plan prediction accuracy of A.I - 4 Losers remains stable.
 
 \section{Summary}
 
@@ -1635,6 +1617,7 @@ Analysis of the plan recognition agents plan prediction accuracy over different 
 \section{Main insights and results}
 
 Constrained play games were never longer than 120 turns making them the shortest of all game types.
+
 In constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere hence games are shorter.
 
 For A.I. 100 there is a inverse correlation between the plan prediction accuracy of winners and the plan prediction accuracy of losers.
