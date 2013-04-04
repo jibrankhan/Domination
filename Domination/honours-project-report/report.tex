@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\title{Plan Recognition in R.I.S.K.}
+\title{Plan Recognition in Risk}
 
 \author{Jibran A.Z. Khan \& Dr. Michael Rovatsos}
 
@@ -41,7 +41,7 @@
 \date{\today}
 
 \abstract{
-This paper we present the design and implementation of a plan recognition agent based on an algorithm published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246} called The Probabilistic Hostile Agent Task Tracker (PHATT). The plan recognition agent behaves as an observer to the game and has the goal to infer the unknown mission card of an agent based on observations of their behaviour in the board game R.I.S.K. EXTEND TO SUMMARISE REST OF REPORT
+This paper presents the design and implementation of a plan recognition agent for the board game Risk. The agent is based on Geib and Goldman's Probabilistic Hostile Agent Task Tracker (PHATT) algorithm  \cite{Geib:2009:PPR:1550966.1551246}. The agent acts as an observer to the game with the goal of inferring the unknown mission cards based on player actions in real time. We then go on to evaluate the plan prediction accuracy of the agent with four different experiments. The results of these experiments are presented then analysed. We also discuss the project outcomes and propose future work.
 }
 
 \maketitle
@@ -49,38 +49,30 @@ This paper we present the design and implementation of a plan recognition agent 
 \newpage
 
 \begin{center}
-\textit{I dedicate this dissertation to my mother and father. Without you both; nothing; not a single thing would be possible.}
+\textit{I dedicate this dissertation to my mother and father. Without you both; nothing; not a single thing would be possible}
 \end{center}
 
 \newpage
 
 \section*{Acknowledgements}
 
-I would like to give a big thanks to Dr. Michael Rovatsos for agreeing to supervise this project. Dor his herculean efforts in deciphering both my babblings at our weekly meetings and the writings of my cryptic drafts. His involvement has been above and beyond the call of duty. Efcharisto poli!
+I would like to give a big thanks to Dr. Michael Rovatsos for agreeing to supervise this project. For his herculean efforts in deciphering both my babblings at our weekly meetings and the writings of my cryptic drafts. His involvement has been above and beyond the call of duty. Efcharisto poli!
 
-Thank you to my two little sisters and my family for their unending support in matters both big and small, its always appreciated. 
+Thank you to my two little sisters and my family for their unending support in matters both big and small, its always been appreciated. 
 
 A huge thank you to Christopher Geib for taking his time to meet with me, and his attempts to guide a lost undergraduate in the diverse world of plan recognition. His advice in general and his explanations of the PHATT algorithm were invaluable. 
 
-Yura Mamyrin and her team at Yura.Net for their work on Domination. In particular Yura who kindly took her time replying to my endless emails.
+I'd also like to thank Yura Mamyrin and her team at Yura.Net for their work on Domination. In particular Yura who kindly took her time replying to my endless emails.
 
-I want to give a warm thanks you to all my friends and in no particular order. Nick La Rooy for his great advice in troubled times and as a great source of discussion. Punit Bhudia for his encouragement and in helping me collect the data that fuelled this project. To my friends Akash Pandey and Ammar Khan who been supportive through these four long years. 
+I want to give a warm thanks to all my friends. In particular, Nick La Rooy for his advice in troubled times and as a constant source of discussion. Punit Bhudia for his encouragement and in helping me collect the data that fuelled this project. To my friends Akash Pandey and Ammar Khan who always been supportive through these four long years. 
 
-Last but not least a thanks to all my other friends and acquaintances who participated in my many experiments.
+Last but not least thank you to all my other friends and acquaintances who participated in my many experiments.
 
 \tableofcontents
 
 %\pagenumbering{arabic}
 
 \chapter{Introduction}
-
-CHECK USE OF TERM EXPLANATION AND ROOT GOAL
-
-CHECK SUMMARIES TO SEE IF NOT MISSED THINGS
-
-CHANGE GRAPH TITLE TO BE E.G GENERAL PLAN PREDICTION ACCURACY OVER GAME COMPLETION
-
-HAVE I ANSWERED MY HYPOTHESIS?
 
 \begin{flushleft}
 \textit{AI has the potential to become the new driving force behind computer game innovation.}
@@ -91,19 +83,19 @@ John David Funge, Artificial Intelligence for Computer Games, An Introduction
 
 \section{Motivation}
 
-Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia, in his book \textit{Artificial Intelligence for Computer Games, An Introduction}, John Funge argues \cite{JohnFunge:AIForComp} that academic A.I. and game A.I. are notably different in both scope and application.
+Artificial Intelligence for games, commonly termed 'game A.I.', has been an area of research since the beginning of significant work in the Artificial Intelligence field. Though techniques for game A.I. have typically come from academia, as John Funge argues \cite{JohnFunge:AIForComp} that academic A.I. and game A.I. are notably different in both scope and application.
 
-Where the primary goal of academia is to further human understanding, often by solving particularly complex problems, the scope of developed A.I. techniques from academia tend to be usually more general in their application.
+Since the primary goal of academia is to further human understanding, often by solving particularly complex problems, the scope of its A.I. techniques are more general in their application.
 
-On the other hand, game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
+Game A.I., on the other hand, is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. The goal of game A.I. is to control the game environment in a manner that pushes it towards states the game’s designer has chosen. 
 
-Companies in the video games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as hardware shader techniques, the move from two dimensional to three dimensional have kept their customers interested over the years. 
+Companies in the video game industry who utilise game A.I., which today is the vast majority, tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as hardware shader techniques and the move from two to three dimensional worlds has kept their customers’ interest over the years. 
 
-Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will likely be better quality game A.I. and indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
+Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to distinguish their product. This will likely be better quality game A.I. And indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
 
-A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture, which developer Jeff Orkin termed Goal-Oriented Action Planning \cite{citeulike:5386647}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
+A First-Person-Shooter psychological horror video game, F.E.A.R utilises a S.T.R.I.P.S. style planning-architecture, which developer Jeff Orkin termed Goal-Oriented Action Planning \cite{citeulike:5386647}. The game gained critical acclaim and is commonly referenced as an example of excellent game A.I.
 
-With this shift in focus, there are growing incentives for developers to create more sophisticated game A.I. likely, as in the past, this will be with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
+With this shift in focus, there are growing incentives for developers to create more sophisticated game A.I. As in the past, this will likely using techniques from academia. Plan recognition may provide such an opportunity for development.  
 
 Plan recognition is the problem of inferring an agent's plans from observed actions. Significant research in plan recognition began in the 1980's, the results of which have had numerous applications in several fields. Nate Blaylock highlights \cite{oai:CiteSeerPSU:538953} a few of the most prominent as being:
 
@@ -119,55 +111,52 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \hline
 \end{tabular} 
 
-Plan recognition algorithms continue to receive attention from various Computer Science communities due to its ability to provide personalized responses and an understanding that the consequences of failing to recognise plans can be problematic.
+Plan recognition provides the ability to give highly personalized responses and identify threats from malicious agents. As such, plan recognition algorithms continue to receive attention from various Computer Science communities. 
 
-In video games plan recognition has been used to perform dynamic analysis in game environments such as Real Time Strategy \cite{conf/aiide/SynnaeveB11} and Multi-User Dungeons \cite{Albrecht:1998:BMK:598277.598308}. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. or using machine learning to further augment A.I. The desired result being more sophisticated A.I. capable of recognising plans and behaving accordingly whether adversarial in purpose or not.
+In video games, plan recognition has been used to perform dynamic analysis in game environments such as Real Time Strategy \cite{conf/aiide/SynnaeveB11} and Multi-User Dungeons \cite{Albrecht:1998:BMK:598277.598308}. More exciting though is the prospect of combining plan recognition algorithms with planning-architectures such as G.O.A.P. or using machine learning to further augment A.I. The desired result is more sophisticated A.I. that is capable of recognising plans and altering its behaviour accordingly. 
 
 \section{Artificial Intelligence and Board Games}
 
-In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the birth of Artificial Intelligence as a field of research. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
+In 1950 Alan Turing published the landmark paper "Computing Machinery and Intelligence", establishing the Turing test, marking what many consider to be the birth of the Artificial Intelligence field. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines" \cite{mccarthai}.
 
-Interestingly though, it was thirty five years earlier that Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton which was capable of playing a king and rook endgame against a king from any position. Considered the world's first computer game, it was arguably the beginning of Artificial Intelligence and board games, a relationship older than the term Artificial Intelligence itself. 
+Interestingly though, it was thirty five years earlier that Leonardo Torres y Quevedo built "El Ajedrecista", a chess automaton capable of playing a king and rook endgame against a king from any position. Considered the world's first computer game, it was arguably the beginning of Artificial Intelligence and board games, a relationship older than the term Artificial Intelligence itself.  
 
-Since then the relationship has only flourished. Many games such as chess, checkers and backgammon have all been the subjects of research. Each area has seen its various triumphs such as, Chess Grand Master Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 and a solution to the game checkers by Jonathan Schaeffer et al in 2007.
+Since then the relationship has only flourished. Many games such as chess, checkers and backgammon have all been the subjects of research. Each area has seen its various triumphs such as, Chess Grand Master Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 \cite{aaai/1997w6} and a solution to the game checkers by Jonathan Schaeffer et al in 2007 \cite{SchaefferBBK0LLS05} .
 
-It is apparent that the development of A.I. and its application to the medium of games has been, and continues to be, a significant area of interest for both commercial and academic fields. Games are considered a good metric for testing the quality of an A.I. due to their potentially challenging game environments and opponents.
+It is clear that the development of A.I. and its application to the medium of games has been, and continues to be, a significant area of interest for both commercial and academic fields. Games are considered a good metric for testing the quality of an A.I. due to their potential for challenging game environments and opponents.
 
-There has been academic work done on A.I in R.I.S.K. , in particular various designs of A.I players for R.I.S.K. Michael Wolf at the University of Darmstadt wrote his PhD thesis titled "Development of an Intelligent Artificial Player for the Game of Risk" \cite{michaelwolf}, where he claims that R.I.S.K. is generally well known, but under recognised by academia. He then goes on to prove that the state space for R.I.S.K is in fact infinite. Other research on R.I.S.K includes that of efforts by students at Stanford University on an A.I. agent \cite{jlozanodbratz} to play R.I.S.K. In their paper they write that R.I.S.K. is an interesting opportunity for research as it is an "intersection between traditional and modern board games".
+Risk has been the subject of academic work before, with designs for A.I players being a particular focus. In his PhD thesis \cite{michaelwolf}, Michael Wolf of the University of Darmstadt proved that the state space for Risk is infinite. Other research on Risk includes work by students at Stanford University on A.I. players \cite{jlozanodbratz}. They summarise Risk as an interesting opportunity for research, sitting at the "intersection between traditional and modern board games".
 
 \section{Aims}
 
 \begin{itemize}
 \item
-To design and implement a plan recognition agent for the board game R.I.S.K. using the PHATT algorithm.
+To design and implement a plan recognition agent for the board game Risk using the PHATT algorithm.
 \item
 For the plan recognition agent to have an average plan prediction accuracy at least twice that of a uniform guess.
 \item
-To gain further understanding in the complexities of performing plan recognition in R.I.S.K.
+To gain further understanding in the complexities of performing plan recognition in Risk
 \item
-To determine whether plan recognition algorithms are beneficial in board games, specifically in R.I.S.K.
+To determine whether plan recognition algorithms are beneficial in board games, using Risk as an example.
 \end{itemize}
 
-\section{Hypothesis}
+\section{Hypotheses}
 
-\begin{itemize}
-\item
-If the probability of a mission card is predicted the highest among all the other mission cards for an agent, then it will be the correct mission card.
-\item
-To determine whether the length of a game has any bearing on the prediction of the plan recognition agent.
-\end{itemize}
+The hypothesis for the project is that \textit{plan recognition algorithms are beneficial in the board game Risk.}
+
+Beneficial is defined as a combination of two factors. That the plan prediction accuracy is high and the convergence to the correct explanation is fast.
 
 \section{Paper Structure}
 
-Chapter 2 presents a background to the project where the process of plan recognition and the board game R.I.S.K. are introduced. Reasons for using plan recognition in board games are then discussed.
+Chapter 2 presents a background to the project where the process of plan recognition and the board game Risk are introduced. Reasons for using plan recognition in board games are discussed.
 
-Chapter 3 introduces the design of the system, beginning with the introduction to the PHATT algorithm then the design of the plan recognition agent is and finally an example of the operation of the plan recognition agent. 
+Chapter 3 documents the design of the plan recognition agent. It includes an introduction to the PHATT algorithm, along with a worked example. 
 
-Chapter 4 details the implementation of the plan recognition agent. We present a high level overview of the design of the system as well as modifications to the open source project and relevant design concepts. 
+Chapter 4 details the implementation of the plan recognition agent. It includes the high level architecture of the code, as well as modifications to the open source project and relevant design concepts.  
 
-Chapter 5 presents an evaluation of the plan recognition agent, experiments using the agent are described and experimental findings are presented.
+Chapter 5 presents an evaluation of the plan recognition agent, including experiments using the agent. Experimental findings are presented here.
 
-Finally, chapter 6 where conclusions of the project are presented. The main insights and outcomes of the project are discussed and future work is detailed.
+Finally, chapter 6 summarises the conclusions of the project. The main insights and outcomes are discussed and future work is detailed.
 
 \chapter{Background}
 
@@ -186,41 +175,41 @@ They defined each as follows:
 \textit{Intended plan recognition} is the recognition of the plan of a cooperative agent who wishes to be understood.
 \end{itemize}
 
-In 1986, Kautz and Allen published a paper titled \textit{Generalized Plan Recognition} \cite{conf/aaai/KautzA86} which set the framework of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
+In 1986, Kautz and Allen published a paper titled \textit{Generalized Plan Recognition} \cite{conf/aaai/KautzA86} which set the framework of many plan recognition projects that followed. They formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
 
-It was Charniak and Goldman \cite{journals/ai/CharniakG93} who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic rather than logic based approach to plan recognition using a Bayesian model. Their research continues to be popular in many avenues of research, including its application in games.
+It was Charniak and Goldman \cite{journals/ai/CharniakG93} who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic, rather than logic based, approach to plan recognition using Bayesian models. Their research continues to be popular in many avenues of research, including its application to games.
 
-For example in 1998, Albrecht, Zukerman and Nicholson \cite{Albrecht:1998:BMK:598277.598308} researched keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The result of which "showed promise" for some domains. Five years later Fagan and Cunningham utilized case-based plan recognition in the classic game Space Invaders \cite{Fagan03case-basedplan} producing "good prediction accuracies in real time".
+For instance, in 1998, Albrecht, Zukerman and Nicholson \cite{Albrecht:1998:BMK:598277.598308} researched keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The results "showed promise" for various domains. Five years later Fagan and Cunningham utilised case-based plan recognition in the classic game Space Invaders \cite{Fagan03case-basedplan}, producing "good prediction accuracies in real time".
 
-More recently though Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a paper of the design and implementation of a plan recognition agent in the Real-Time-Strategy game StarCraft. The results of their work was a plan recognition agent capable of predicting the types of units a player intended to produce, through observations of what buildings they constructed.
+More recently though Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a paper on the design and implementation of a plan recognition agent in the Real-Time-Strategy game StarCraft. The result of their work was a plan recognition agent capable of predicting the types of units a player intended to produce, through observations of the buildings that they constructed.
 
 \subsection{An Example of Plan Recognition}
 
-We can introduce common concepts, assumptions and the process of plan recognition with an example of an agent attempting to infer the plan of another agent in a non-adversarial environment. 
+We can introduce common concepts, assumptions and the process of plan recognition with an example of an agent attempting to infer the plan of another in a non-adversarial environment. 
 
-Person A is making a meal for Person B. For this meal A can cook only one of two kinds of burger: a meat burger or vegetarian (veg) burger. In other words, A has two possible \textit{root-goals} (a state they wish to reach) either \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. 
+Person A is preparing a meal for Person B. For this meal, A can cook just one of two things: a meat burger or vegetarian burger (veg burger). In other words, A has two possible states they wish to reach, or \textit{root-goals}, either a \textit{Cooked-Veg-Burger} or a \textit{Cooked-Meat-Burger}. 
 
-A wanting to surprise B, will not tell B what his root-goal is. But B wants to know what to expect for lunch. Since B cannot know what A is thinking, B must infer A's root-goal through \textit{observing} A cook. In this way A's behavioural process is similar to a Hidden Markov Model to B. Person B thus models A's behaviour in the following manner. 
+A wants to surprise B, and so will not tell B what his root-goal is. B wants to know what to expect for lunch. Since B cannot know what A is thinking, B must infer A's root-goal through \textit{observing} A cook. In this way, B can consider A's behavioural processes as a Hidden Markov Model. Person B thus models A's behaviour in the following manner. 
 
-Person B assumes A is rational, and that A has a \textit{plan} to achieve their root-goal. Whatever A's root-goal is it can likely be decomposed into a number \textit{sub-goals} such as \textit{Cooked-Beef-Patties}. Sub-goals can then often be further decomposed into \textit{actions} to achieve them, such as \textit{Take-Beef-Patties-Out-Of-Packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal.
+Person B assumes that A is rational, and that A has a \textit{plan} to achieve their root-goal. A's root-goal can be decomposed into a number of \textit{sub-goals}, such as \textit{Cooked-Beef-Patties}. Sub-goals can often be decomposed further into \textit{actions} to achieve them, such as \textit{Take-Beef-Patties-Out-Of-Packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal. 
 
-To simplify the example, we introduce various assumptions:
+To simplify the example, we introduce the following assumptions:
 
 \begin{itemize}
 \item
-A believes that they can cook a meal.
+A believes that they can cook a meal, i.e that their goal is achievable. 
 \item
 B can only infer the cooking plan of A by observing what A is cooking.
 \item
-B knows everything that A can cook.
+B knows everything that A can cook. 
 \item
-Through observing A cook, B can predict with absolute certainty what A will cook.
+Through observing A cook, B can predict with certainty what A will cook. 
 \item
-A cannot hide any observations.
+A cannot hide any actions.
 \item
 A only wishes to cook one meal.
 \item
-A has no preferences of what to cook, in other words given a choice the probability of choosing is equally likely.
+A has no preferences of what to cook. In other words, given a choice the probability of choosing is equally likely. 
 \item
 A does not change cooking plan.
 \end{itemize}
@@ -239,17 +228,17 @@ To elaborate on the above diagram, one of A's top level or root-goals is \textit
 
 Children of Or-nodes such as \textit{Cooked-Meat-Patties}, represent choices available to A to accomplish the root-goal. For example to achieve \textit{Cook-Meat-Patties}, A could either accomplish \textit{Cooked-Chicken-Patties} or \textit{Cooked-Beef-Patties}.
 
-Arrows represent dependencies between nodes. For example to be able to accomplish the action \textit{Cook-Beef-Patties}, A must first perform the action \textit{Take-Beef-Patties-Out-Of-Packet}.
+Arrows represent dependencies between nodes. For instance to be able to accomplish the action \textit{Cook-Beef-Patties}, A must first perform the action \textit{Take-Beef-Patties-Out-Of-Packet}.
 
-Beginning the example, A first performs the action \textit{Take-Burger-Bun-Out-Of-Packet}, then proceeds to \textit{Toast-Burger-Buns}. At this point, looking at the plan library we have two possible \textit{explanations} for A's behaviour, \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. Each of these explanations are equally likely at this point because the actions that have occurred, so far could be part of either plan.
+Beginning the example, A first performs the action \textit{Take-Burger-Bun-Out-Of-Packet}, then proceeds to \textit{Toast-Burger-Buns}. At this point, looking at the plan library we have two possible \textit{explanations} for A's behaviour: \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. Each of these explanations are equally likely at this point because the actions that have occurred, so far could be part of either plan.
 
 A then performs the action \textit{Take-Chicken-Patties-Out-Of-Packet}, given our assumptions, we can now conclude that A's root-goal is \textit{Cooked-Meat-Burger} and not \textit{Cooked-Veg-Burger}. In this way B has recognised A's plan, thus performing the process of plan recognition.
 
 \newpage
 
-\section{Introduction to R.I.S.K.}
+\section{Introduction to Risk}
 
-RISK is a turn-based board game for two to six players. Their are many versions, the first of which was released by Albert Lamorisse in 1957 under the title "La Conqu\^ete du Monde". This paper is only concerned with the standard version of R.I.S.K. which is an adversarial environment where players' vie to control a fully observable board portraying a static geographical map of the Earth.
+RISK is a turn-based board game for two to six players. There are many versions, the first of which was released by french film director Albert Lamorisse in 1957 under the title "La Conqu\^ete du Monde". This paper is only concerned with the standard version of Risk, which is an adversarial environment where players vie for control of a fully observable board representing Earth.
 
 \subsection{Equipment}
 
@@ -264,22 +253,22 @@ The game consists of three pieces of equipment:
 
 \begin{itemize}
 \item
-A board portraying a geographical map of the earth.
+A board portraying a geographical map of the Earth.
 \item
 Different coloured tokens called \textit{armies}.
 \item
-Two sets of regular six-sided dice.
+Two fair six-sided dice.
 \item
 A deck of forty-four cards.
 \end{itemize}
 
 \subsection{Rules}
 
-The board is divided into forty two \textit{territories}. Each territory is a partition of the land mass of the Earth. These territories are further partitioned into six \textit{continents} usually corresponding to their real continent grouping.
+The board is divided into forty two \textit{territories}. Each territory is a partition of the land mass of the Earth. These territories are grouped into six \textit{continents}, usually corresponding to their actual geographic grouping.
 
-Armies are placed in territories. If a player places an army in a territory, this declares that the player \textit{occupies} that territory. Players must have at least one army placed in a territory they own at all times. Players can choose to place as many additional armies as they wish in that territory.
+Armies are placed on territories. If a player places an army on a territory, this declares that the player \textit{occupies} that territory. Players must have at least one army placed on each territory that they own at all times. Players can choose to place as many additional armies on a territory that they own as they wish.
 
-How a player wins largely depends on the \textit{Game mode}. Game modes significantly impact the behaviour of players and is decided by players beforehand. In standard RISK they are:
+Each player’s victory conditions depend on the \textit{Game mode}. Game modes significantly impact the behaviour of players and are decided before the game starts. In standard Risk, the possible game modes are:
 \newline
 
 \begin{tabular}{|l|p{11cm}|}
@@ -294,9 +283,9 @@ Capital Risk & Each player is given a Capital territory and to win a player must
 \hline
 \end{tabular} 
 
-This paper is concerned with the mission game mode \textbf{only}, therefore the following sections describe rules only for that game mode.
+This paper is concerned with the mission game mode \textbf{only}. Therefore the following sections only describe the rules for that game mode. 
 
-After an initial setup, each player's turn is split into three distinct phases which always occur in the same fixed order. These phases are:
+After the initial setup, each player's turn is split into three distinct phases which always occur in the same order. These phases are:
 
 \begin{enumerate}
 \item
@@ -307,7 +296,7 @@ Attack
 Movement
 \end{enumerate}
 
-In each phase a player performs at least one discrete \textit{action} which helps to further the players goals, thus forming a sequential task environment.
+In each phase a player performs at least one discrete \textit{action}, which helps to further the players goals, thus forming a sequential task environment.
 
 \subsection{Turn Structure}
 
@@ -317,9 +306,9 @@ The game begins with an initial setup, which involves:
 
 \begin{itemize}
 \item
-Territories being equally divided in a random order between players.
+Territories being equally divided between the players with a random allocation.
 \item
-Players being given a number of starting armies. This number is calculated by taking an explicit number defined by the R.I.S.K rule book, which is inversely proportional to the number of players, and subtracting it from the number of territories the player owns. For example if there are three players, each player receives 35 starting armies and as there are 42 territories each player receives 14 territories. Therefore the number of remaining armies 35 subtract 14.
+Players being given a number of starting armies. This number is defined in the Risk rule book. Roughly speaking, it is inversely proportional to the number of players. 
 \item
 Players distributing their starting armies over their territories.
 \item
@@ -357,11 +346,11 @@ Once a player has distributed their armies from the reinforcement phase, they ca
 
 Territories occupied by a player that contain more than one army can attack neighbouring territories occupied by any other player. An attack consists of several \textit{battles}. The outcome of a battle is decided by means of rolling two sets of dice, thus making it a stochastic environment. One set is rolled for the \textit{defender} of the territory and the other for the \textit{attacker}. 
 
-The number of dice each player receives for a battle is dependant on the number of armies placed in each of the players respective territories. The defender receives a die per army up to two armies. The attacker receives a die per army upto three armies not including the single army they are required to have in that territory while occupying it. 
+The number of dice each player receives for a battle is dependant on the number of armies placed in each of the players respective territories. The defender receives a die per army up to two armies. The attacker receives a die per army up to three armies not including the single army they are required to have in that territory while occupying it. 
 
-The general rules of engagement are: dice rolls by each player are compared on a one-to-one basis in descending order of values. The player with the lower value at each comparison loses a single army though if the die are equal in value the attacker loses an army. The number of comparisons per battle are set by the number of dice the defending player has rolled. The attacking player can commence as many battles as they wish during an attack provided they have more than one army in the attacking territory.
+The general rules of engagement are: dice rolls by each player are compared on a one-to-one basis in descending order.. The player with the lower value at each comparison loses a single army; if the die are equal in value the attacker loses an army. The number of comparisons per battle are set by the number of dice the defending player has rolled. The attacking player can commence as many battles as they wish during an attack provided they have the requisite armies.
 
-An attack of a territory has three outcomes:
+An attack of a territory has three possible outcomes:
 
 \begin{itemize}
 \item
@@ -376,28 +365,28 @@ A player can perform any number of attacks from any territory they own during th
 
 \subsubsection{Movement Phase}
 
-When either the player chooses to end the attacking phase or can no longer attack because they do not occupy a territory which contains more than one army their movement phase begins.
+When the player chooses to end the attacking phase, or they are no longer able to attack, their movement phase begins.
 
-During their movement phase a player may move armies from one territory to a neighbouring territory they own, provided they leave at least one army in the territory the armies were moved from. This action can only be done once per turn in this phase, after which the movement phase is finished.
+During their movement phase a player may move armies from one territory to a neighbouring territory they own, provided they leave at least one army behind. This action can only be done once per turn in this phase, after which the movement phase is finished.
 
-After the movement phase has been completed the players turn ends and another players reinforcement phase begins.
+After the movement phase has been completed, the player’s turn ends and another player’s reinforcement phase begins.
 \newpage
 
 \subsection{Cards}
 
-eEach territory has a corresponding card. As well as name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is awarded a single card per turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing. Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
+Each territory has a corresponding card. As well as displaying the name of that territory, each card either depicts an infantry, cavalry or artillery symbol. By successfully occupying another player's territory in a turn, a player is awarded a single card for that turn. There are also two wild cards which can be assigned a symbol of the player’s choosing. Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies. This trade can be done at any point during the player’s turn. 
 
 \section{Why Plan Recognition in Board Games}
 
 By "knowing a users plan and goals can significantly improve the effectiveness of an interactive system" \cite{Carberry:2001:TPR:598284.598348}, to this board games are most definitely not exempt. With the success seen in the application of plan recognition to video games, often in complex environments, gives rise to optimism to transferring this success to board games.
 
-Molineaux, Aha and Sukthankar believe that "plan recognition methods can be a powerful ally for machine learning techniques" \cite{Molineaux09g.:beating}. Synnaeve and Bessiere reinforce this belief with their work in StartCraft \cite{conf/aiide/SynnaeveB11}. Their plan recognition agent utilized unsupervised machine learning of common plans, which they then could feed into an adaptive A.I. 
+"Knowing a user’s plan and goals can significantly improve the effectiveness of an interactive system" \cite{Carberry:2001:TPR:598284.598348}. The successes seen in the application of plan recognition to video games, many of which have highly complex environments, indicates that similar successes can be had with board games. 
 
- It is an attractive proposition to consider, that through these same methods. Plan recognition agents for board games could developed to augment board game A.I's, with for example personalized plan library's as Fagan and Cunningham suggest \cite{Fagan03case-basedplan}. By doing aim to build more interesting A.I. opponents for people to play against.
+Molineaux, Aha and Sukthankar argue that "plan recognition methods can be a powerful ally for machine learning techniques" \cite{Molineaux09g.:beating}. Indeed, this was demonstrated by  Synnaeve and Bessiere’s work with StartCraft \cite{conf/aiide/SynnaeveB11}. Their plan recognition agent utilised unsupervised machine learning of common plans, which could be used as input for adaptive A.I. Using similar techniques for augmenting board game A.I. is an attractive proposition. 
 
 \section{Summary}
 
-Plan recognition is an old area of research dating back to the 1950's. It has seen applications in a variety of fields including video games. R.I.S.K. a popular board game provides an interesting environment to test the application of plan recognition algorithms, having features such as being a multi-agent adversarial environment it intersects between classical board games which are often full observable deterministic environments, with elements of modern games such as stochastic environments. Since plan recognition has been used before to augment A.I. for video games, there rises an opportunity to apply them to board games with techniques such as machine learning in-order to create more interesting A.I. opponents.
+Plan recognition is a mature area of research dating back to the 1950's. It has seen applications in a variety of fields including video games. Risk a popular board game that provides an interesting environment to test the application of plan recognition algorithms. It is a multi-agent adversarial environment at the intersection between modern and classical board games. Plan recognition techniques have been used before to augment video game A.I.; there are similar opportunities for applying them to board games. Machine learning can be used to create more interesting A.I. opponents.
 
 \chapter{Design}
 
@@ -405,17 +394,16 @@ Plan recognition is an old area of research dating back to the 1950's. It has se
 
 MENTION WHY I CHOOSE PHATT!
 
-GO THROUGH NEW SECTIONSt
+GO THROUGH NEW SECTIONS
 
-PHATT was published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246}. PHATT's approach is that plans are executed dynamically and the set of actions that an agent can take at each step, their \textit{pending set} depends critically on the actions that the agent has previously taken, this formed the basis of their model of plan execution.
-
-The model is as follows. An agent would first choose a root-goal, then a set of plans to achieve that root-goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set and this would result in some actions being appended to the pending set and others being removed to form a new pending set. Assuming \textit{blind commitment} on the part of the agent, the agent would then continue to perform actions until it concluded the root goal had been achieved.
+PHATT is a plan recognition algorithm by Christopher Geib and Robert Goldman \cite{Geib:2009:PPR:1550966.1551246}. PHATT operates on plans that are executed dynamically, but in discrete time steps. The set of actions that an agent can take each step, their \textit{pending set}, depends on the actions that the agent has previously taken.
+The model is as follows. An agent first chooses a root-goal, then a set of plans to achieve that root-goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set, which results in some actions being appended to the pending set and others being removed, thus forming the next pending set. Assuming \textit{blind commitment} on the part of the agent, the agent would then continue to perform actions until its root goal has been satisfied.
 
 From this model, Geib and Goldman proposed an algorithm utilizing a Bayesian approach to perform probabilistic plan recognition. 
 
-The algorithm computed \textit{Pr(g}|\textit{obs)}, the conditional probability of a root-goal \textit{g} given a set of observations \textit{obs} or its equivalent form \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} that the agent had a root-goal, given a set of observations \textit{obs}.
+The algorithm computes \textit{Pr(g}|\textit{obs)} - the conditional probability of a root-goal \textit{g} given a set of observations \textit{obs} - or its equivalent form \textit{Pr(exp}|\textit{obs)}, the conditional probability of a particular explanation \textit{exp} that the agent had a root-goal, given a set of observations \textit{obs}.
 
-Using Bayes Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
+Using Bayes’ Rule they defined \textit{Pr(exp}|\textit{obs)} as:\newline
 
 \centerline{
 \textit{Pr(exp}|\textit{obs)} = \textit{Pr(exp} $\wedge$ \textit{obs)} / \textit{Pr(obs)}
@@ -450,13 +438,13 @@ The probability of an explanation is then calculated by multiplying each of the 
 
 \section{Environment Modelling and Data-Structure Design}
 
-PHATT is designed to operate in an action space. Therefore it was a vitally important as a conceptual issue for the design of plan recognition agent, to be able to translate R.I.S.K into such an action space for PHATT to operate.
+PHATT is designed to work in an action space. It was therefore it was a vital to translate Risk into such an action space. 
 
-Solving this issue involved modelling and data structure design. By exploiting the constraints placed by the environment on what a player can do, and observing the choices they made given these constraints we attempt infer the plan of a player.
+Solving this issue involved modelling and data structure design. By exploiting the environmental constraints on what a player can do, and observing the choices they made given these constraints, we attempt infer the plan of a player.
 
 \subsection{Root-Goals}
 
-The mission cards of the R.I.S.K. environment are the root-goals, these are:
+The mission cards of the Risk environment are the root-goals. These are:
 
 \begin{itemize}
 \item
@@ -479,7 +467,7 @@ Occupy 18 territories and occupy each with at least two troops.
 Eliminate a player.
 \end{itemize}
 
-As mission cards are handed out at random, the prior probability of a root-goal is 1/$n$ where $n$ is the number of mission cards. The data structure of a root-goal is therefore in the form of a tuple containing the name of the root-goal and its prior probability.
+Since mission cards are handed out at random, the prior probability of a root-goal is 1/$n$, where $n$ is the number of mission cards. The data structure of a root-goal is therefore in the form of a tuple containing the name of the root-goal and its prior probability: 
 
 \centerline{
  $RG = ( rootGoalName, 1/n)$\newline
@@ -487,7 +475,7 @@ As mission cards are handed out at random, the prior probability of a root-goal 
 
 The collection of these data structures form the basis of the term \textit{Pr}(\textit{goals}) in the computation of \textit{Pr(exp} $\wedge$ \textit{obs)}.
 
-A subset of these where the root-goal involved occupying continents only were chosen to be the focus of this paper. This choice was made due to time constraints and remains a definite avenue for future work. 
+A subset of these, where the root-goal involved occupying continents only, were chosen to be the focus of this paper. This choice was made due to time constraints and is an avenue for future work.
 
 Root-goals involving occupying continents can be defined as one of two types:
 
@@ -511,17 +499,17 @@ Occupy Europe, South America and North America.
 Occupy Europe, South America and Australia.\newline
 \end{itemize}
 
-Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore an assumption is made, where if the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction. A modelling difference followed this assumption.
+Each is a valid root-goal in itself, but are still children of the same parent-root-goal. Therefore, the assumption is made that when the plan recognition agent predicts one of the children-root-goals when the players mission card is the parent-root-goal, it is classified as a correct prediction. A modelling difference followed this assumption. 
 
 By hard coding every root-goal as explanations of a players behaviour; then assigning that full set of explanations to each player from the start of the game, provided that action probabilities are computed, multiplied with each respective explanation, normalised and then stored immediately as soon as the action occurs. Removes the need to store a history of pending sets, to save a list of actions a player has taken or to create and calculate new instances of explanations. This method is similar to that of the 'Test and Generate' algorithm proposed in PHATTs paper rather than the dynamic algorithm proposed at the end of the paper.
 
-Additionally this has another implication. Since PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together. Choosing to operate on a fully enumerated set of root-goals removes the need to compute player choice as we consider every case from the start hence the term \textit{Pr}(\textit{plans}|\textit{goals}) is equal to one for all explanations.
+This has another implication. Since PHATT computes \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying three terms together, choosing to operate on a fully enumerated set of root-goals removes the need to compute player choice as we consider every case from the start hence the term \textit{Pr}(\textit{plans}|\textit{goals}) is equal to one for all explanations.
 
-What is then measured over the course of the game is the probability of each explanation of a players behaviour, and the highest probability by the end of the game is the plan recognition agents prediction.
+What is then measured over the course of the game is the probability of each explanation of a player’s behaviour, and the highest probability by the end of the game is the plan recognition agent’s prediction.
 
 \subsection{Actions}
 
-In R.I.S.K. the only actions players perform are:
+In Risk the only actions players perform are:
 
 \begin{itemize}
 \item
@@ -538,19 +526,19 @@ Moving armies.
 Trading Territory Cards.
 \end{itemize}
 
-Each of these action must be modelled in a manner that contributes towards explanations of a player's behaviour.
+Each of these action must be modelled in a manner that contributes towards an explanation of a player's behaviour.
 
 \subsubsection{Attacking}
 
-Though players can perform several attacks during their turn, they can only attack one territory at a time. Thus players' must choose both which territories to attack and the order in which to attack them, provided they have neighbouring territories and sufficient armies. Modelling these choices provides an avenue to infer a players plan.
+Though players can perform several attacks during their turn, they can only attack one territory at a time. Thus, players must choose both which territories to attack and the order in which to attack them, provided they have neighbouring territories and sufficient armies. Modelling these choices provides an avenue to infer a player’s plan.
 
-The pending set of a player's attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own, that are neighbour to at least one territory that they own which also contains at least two armies.
+The pending set of a player's attack actions for any given turn is the aggregate of either a successful or unsuccessful attack on each territory that the game rules will allow them to attack. 
 
 If a player $p$ successfully occupies a territory $T_{o}$, then the attack actions of neighbouring territories of $T_{o}$ are added to $p$'s attack pending set. If they lose a territory $T_{l}$ due to another player's successful attack, then any attack actions of neighbouring territories of $T_{l}$ are removed from their attack pending set for their next turn. 
 
-The attack action is a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a players behaviour. 
+The attack action is a singular event that is either \textit{consistent} or \textit{inconsistent} with explanations of a player’s behaviour. 
 
-For example given three explanations:
+For example, given three explanations:
 
 \begin{enumerate}
 \item
@@ -561,9 +549,9 @@ Occupy North America and Africa.
 Occupy Asia and South America.
 \end{enumerate}
 
-Successfully occupying a territory in North America would be \textit{consistent} with explanations 1 and 2, but \textit{inconsistent} with 3, or in probabilistic terms the likelihood of 1 and 2 would rise whereas 3 would fall.
+Successfully occupying a territory in North America would be \textit{consistent} with explanations 1 and 2, but \textit{inconsistent} with 3. In probabilistic terms, the likelihood of 1 and 2 would rise whereas 3 would fall.
 
-Having defined the outcome of attacks as either successful or unsuccessful, attacks can be decomposed into following two actions: 
+Having defined the outcome of attacks as either successful or unsuccessful, attacks can be decomposed into the following two actions: 
 
 \begin{table}[ht]
 \centering
@@ -584,13 +572,13 @@ Failed-Occupation & Yes & Whether successful or not, attacking a territory is in
 
 \subsubsection{Defending}
 
-Defending as opposed to attacking can be seen as a 'passive' action as an attack is required before a defence can occur. In that way the defence action is modelled as consistent or inconsistent with only the explanations it is directly related to. 
+Defending, as opposed to attacking, can be seen as a 'passive' action. An attack is required before a defence can occur. In this way, the defence action is modelled as either consistent or inconsistent with only the explanations it is directly related to. 
 
-For example, given the three explanations from the previous section. If a \textit{Successful-Defence} were to occur in a territory in North America explanation one and two would be multiplied by a term $x$ which would be greater than 1, whereas explanation three would not be multiplied by anything. In the case of a \textit{Failed-Defence} occurring in a territory in North America the same would occur but with $x$ in the range 0.9 < $x$ < 1.0. This model results in an interesting side-effect.
+Consider the three explanations from the previous section. If a \textit{Successful-Defence} were to occur in a territory in North America, explanation one and two would be multiplied by a term $x$ which would be greater than 1, whereas explanation three would not be multiplied by anything. In the case of a \textit{Failed-Defence} occurring in a territory in North America the same would occur but with $x$ in the range 0.9 < $x$ < 1.0. 
 
-In PHATT at some point each explanations probability is normalised. The result is that explanations that were not multiplied by $x$ will inversely increase or decrease to explanations that were multiplied $x$. The more $x$ changes the value of an explanation the greater the difference will be in explanations that were not multiplied by $x$. To minimize this effect as big changes in explanation probabilities are undesirable for defence actions, the value of $x$ is kept in the range of 0.9 < $x$ < 1.1.
+This model results in a side-effect which is the increase of other explanations. In PHATT, each explanation’s probability must be normalised. The result is that explanations that were not multiplied by $x$ will inversely increase or decrease to explanations that were multiplied $x$. The more $x$ changes the value of an explanation, the greater the difference will be compared to explanations that were not multiplied by $x$. Since big changes in explanation probabilities are undesirable for defence actions, this effect was minimized by constraining $x$ by 0.9 < $x$ < 1.1. 
 
-Defence in the same manner as attack can be either successful or unsuccessful, therefore defence can be decomposed into the following: 
+As with attacks, a defence can be either successful or unsuccessful. Therefore, defence can be decomposed into the following: 
 
 \begin{table}[ht]
 \centering
@@ -609,19 +597,19 @@ Failed-Defence & No & An inconsistent action because a player would not normally
 
 \subsubsection{Movement}
 
-The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory that had armies moved into is directly related to.
+The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with missions that require that territory. 
 
-Movement actions will be modelled as a less significant indicator of a players plan due to the much higher proportion of reinforce and attack actions which are already modelled in a manner to indicate a players plan.
+Movement actions are modelled as a less significant indicator of a player’s plan. This is due to the high proportion of reinforce and attack actions that are already modelled. 
 
 \subsubsection{Reinforce}
 
-The reinforce actions that a player $p$ can perform at any turn $t$ is based solely on the territories that $p$ owns during turn $t$. The pending set of any players reinforce actions is therefore modelled as follows. 
+The reinforce actions that a player $p$ can perform at any turn $t$ is determined by the territories that $p$ owns during turn $t$. The pending set of any player’s reinforce actions is therefore modelled as follows. 
 
-For each territory $T$ that $p$ owns at a certain turn $t$. In $p$'s pending set is an action to reinforce $T$. If a territory $T_{l}$ is lost by $p$ (it is attacked then occupied by another player), its corresponding reinforce action is removed from the players pending set for the players turn at $t+1$. Conversely if another territory $T_{o}$ is occupied by $p$ then a reinforce action for $T_{o}$ is added to the players pending set at turn $t$.
+For each territory $T$ that $p$ owns at turn $t$, in $p$'s pending set is an action to reinforce $T$. If a territory $T_{l}$ is lost by $p$ to another player, its corresponding reinforce action is removed from the player’s pending set for their turn at $t+1$. Conversely, if another territory $T_{o}$ is occupied by $p$ then a reinforce action for $T_{o}$ is added to the player’s pending set at turn $t$. 
 
-Since reinforce actions are a unrestrained choice in that players are not being acted upon as in defence or constrained by the territories they own as in movement. Reinforce actions will be considered as consistent or inconsistent with all missions when one is observed.
+Reinforce actions are an unrestrained choice, in that player’s are not being acted upon as in defence, or constrained by the territories they own as in movement. Reinforce actions will be considered as either consistent or inconsistent with all missions when one is observed. 
 
-A reinforce action in R.I.S.K is much more frequent than any other action. Though it is an indicator of a plan ultimately where a player attacks is the crucial decision and therefore will be modelled as a less significant indicator of inferring a players plan.
+Since reinforce actions are the most frequently observed action in Risk, modelling it as an action could have significant impact on the plan predictions. That said, it is clearly an important indicator of a player’s plan. The crucial decision is when a player takes the risk of attacking; not where to place ones reinforcements. Therefore, the reinforce action will be modelled as a less significant indicator. 
 
 \subsubsection{Trading Territory Cards}
 
@@ -740,7 +728,7 @@ Occupy Asia and Africa.
 
 \subsubsection{Building the Set of Explanations}
 
-During the initialisation of the R.I.S.K. map, a set of explanations must be built for the environment to be later assigned to players. This first required the explicit specification of a root-goal and of sub-goals for each respective explanation in the environment, or in this context the Domination program. In addition it also required populating of each explanation with a set of consistent and inconsistent actions. This is done by the following operation:
+During the initialisation of the Risk map, a set of explanations must be built for the environment to be later assigned to players. This first required the explicit specification of a root-goal and of sub-goals for each respective explanation in the environment, or in this context the Domination program. In addition it also required populating of each explanation with a set of consistent and inconsistent actions. This is done by the following operation:
 
 \begin{pseudocode}[ruled]{generateExpList}{-}
 \begin{algorithm}[H]
@@ -775,7 +763,7 @@ With a complete set of environment explanations $ES$, each player then allocated
 
 \subsubsection{Computing Action Probabilities}
 
-Since the sub-goal probabilities were removed and the root-goal prior probabilities are uniform, finding an appropriate method of computing \textit{Pr}(\textit{obs}|\textit{exp}), the probability of a player choosing an action from their pending set, was critical in the design of the plan recognition agent. 
+Since the sub-goal probabilities were removed and the root-goal prior probabilities are uniform, finding an appropriate method of computing \textit{Pr}(\textit{obs}|\textit{exp}), the probability of a player choosing an action from their pending set, was critical in the design of the PR agent. 
 
 To achieve this of course first presumes that we know what actions a player can perform and for that we require a method of generating a pending set of the available actions a player can perform. This is done by the following operation:
 
@@ -813,7 +801,7 @@ After initializing an empty pending set $playerPS$. The above pseudo code first 
 
 Before proceeding onto the next territory in $PT$ another loop is performed through the set of neighbouring territories $TN$ of that territory with an if-then-else statement. If the player owns that territory then the if condition $playerOwnN$ return true and a $MovementT$ action is added to $playerPS$, if not then a $OccupyT$ action is added to $playerPS$. After the operation the $playerPS$ is returned and can be cached if necessary.
 
-With the $generatePS$ operation and an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting action probabilities towards consistent actions, a technique of doing so in the R.I.S.K. environment was required. Based on reasoning about the implications of an action to an explanation, consistent actions were positively weighted and inconsistent negatively weighted, but by how much is the crucial question?
+With the $generatePS$ operation and an idea from a paper by Goldman, Geib and Miller \cite{Goldman99anew} which proposes weighting action probabilities towards consistent actions, a technique of doing so in the Risk. environment was required. Based on reasoning about the implications of an action to an explanation, consistent actions were positively weighted and inconsistent negatively weighted, but by how much is the crucial question?
 
 The first approach to answer this was given a players pending set, the total number of actions are counted, these actions are then separated into consistent and inconsistent actions then a manually defined total weight is split among consistent and inconsistent respectively. For example out of a total action probability of 1.0, 0.5 would be distributed among consistent actions and 0.5 inconsistent actions. The idea behind this approach was that as the number of consistent actions decreased the likelihood of the them choosing the action given an explanation would in theory increase.
 
@@ -941,7 +929,7 @@ At this point in the operation $expProb$ is normalized, doing this is a deviatio
 
 \subsection{Example of Operation}
 
-The concepts from this chapter can be tied together with an arbitrary example of computing \textit{Pr(exp}|\textit{obs)} the likelihood of an explanation given an observation. The example will be extended to include the plan recognition agent handle two observations.
+The concepts from this chapter can be tied together with an arbitrary example. In this example we compute \textit{Pr(exp}|\textit{obs)} the likelihood of an explanation given an attack observation. Computing \textit{Pr(exp}|\textit{obs)} with other action types will also be discussed.
 
 Assumptions for this example are:
 
@@ -955,7 +943,7 @@ When player $p_1$ attacks a territory it is always a Successful-Occupation actio
 \item
 When player $p_1$ defends a territory it is always a Successful-Defence action.
 \item
-A closed world assumption - The R.I.S.K map consists of only territories, continents and root-goals illustrated on Figure 3.1.
+A closed world assumption - The Risk map consists of only the territories, continents and root-goals illustrated on Figure 3.1.
 \end{itemize}
 
 \begin{figure}[h]
@@ -978,7 +966,7 @@ Occupy-North-America-South-America (O-AS-SA)
 Occupy-South-America-Africa (O-SA-AF)
 \end{itemize}
 
-The first can be expressed in two ways given our example, therefore we must consider four root-goals. Each root-goal has a number of sub-goals. In the context of mission R.I.S.K, for a player to accomplish their root-goal they must have occupied every continent-sub-goal, this is done by performing Successful-Occupation actions on every territory contained in that continent. 
+The first can be expressed in two ways given our example, therefore we must consider four root-goals. Each root-goal has a number of sub-goals. In the context of mission Risk, for a player to accomplish their root-goal they must have occupied every continent-sub-goal, this is done by performing Successful-Occupation actions on every territory contained in that continent. 
 
 For the purposes of this example we introduce another notation which are squares that represent territory entities. Arrows away from these squares are connected to the actions a player can perform when occupying this territory. This is done to visualize the state of the world at the time the action was performed. For example by occupying the territory Egypt, allows a player to perform the actions: SO-East-Africa, SO-North-Africa and SO-Middle-East.
 
@@ -1011,11 +999,11 @@ Case 3 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-EU-SA-AS})
 Cast 4 : \textit{Pr}(\textit{O-Western-Europe}|\textit{O-AS-SA})
 \end{itemize}
 
-The plan recognition agent first applies the $computeExpProb$ operation for each of the above cases. Then using the $generatePS$ operation to builds a full pending set for $p_1$.
+The PR agent first applies the $computeExpProb$ operation for each of the above cases. Then using the $generatePS$ operation to builds a full pending set for $p_1$.
 
-After this the plan recognition agent retrieves a list of all consistent actions for each explanation by retrieving the $ECA$ set from each explanations data structure.
+After this the PR agent retrieves a list of all consistent actions for each explanation by retrieving the $ECA$ set from each explanations data structure.
 
-Given the observation O-Western-Europe, the complete pending set of the player, and the set $ECA$. The plan recognition agent then uses the $computeObsProb$ operation to compute the probability of choosing the Successful-Occupation-Western-Europe action in the context of each root-goal.
+Given the observation O-Western-Europe, the complete pending set of the player, and the set $ECA$. The PR agent then uses the $computeObsProb$ operation to compute the probability of choosing the Successful-Occupation-Western-Europe action in the context of each root-goal.
 
 For each root-goal the $computeObsProb$ filters out all action types except Successful-Occupation actions, from both $p_1$ pending set and the $ECA$ set. The result is the Successful-Occupation actions that are consistent with the explanation $expConAct$ and a new pending set $pTotalActNum$ which contain the following Successful-Occupation actions given the state of the world in this example:\newline
 
@@ -1048,7 +1036,7 @@ O-AS-SA & 1 \\
 \label{table:consistent-action-count}
 \end{table}
 
-With these counts and our assumed $w$ the plan recognition agent then computes a $base$ action probability for each explanation with the $computeBaseWeight$ operation as follows:
+With these counts and our assumed $w$ the PR agent then computes a $base$ action probability for each explanation with the $computeBaseWeight$ operation as follows:
 
 \begin{table}[ht]
 \centering
@@ -1092,9 +1080,9 @@ O-AS-SA & 0.216 & 0.196 \\
 \label{table:territory-actions-bonus}
 \end{table}
 
-The plan recognition agent then computes an explanation that the players plan is the root goal given the observation \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying the term  \textit{Pr}(\textit{goals}) with one of the two action probabilities, depending on whether the action that was observed was consistent or not, in other words if was contained in $ECA$ or not.
+The PR agent then computes an explanation that the players plan is the root goal given the observation \textit{Pr(exp} $\wedge$ \textit{obs)} by multiplying the term  \textit{Pr}(\textit{goals}) with one of the two action probabilities, depending on whether the action that was observed was consistent or not, in other words if was contained in $ECA$ or not.
 
-For example to compute \textit{Pr(exp} $\wedge$ \textit{obs)} for the explanation O-EU-SA-AF the plan recognition agent would choose to multiply by $Pr(cons)$ and so the calculation would be 1/3 * 0.2 
+For example to compute \textit{Pr(exp} $\wedge$ \textit{obs)} for the explanation O-EU-SA-AF the PR agent would choose to multiply by $Pr(cons)$ and so the calculation would be 1/3 * 0.2 
 
 \begin{table}[ht]
 \centering
@@ -1117,13 +1105,13 @@ O-AS-SA & \textit{Pr}(\textit{goals}) * $Pr(incons)$ & 0.0653 \\
 
 \newpage
 
-Finally to complete the calculation of \textit{Pr(exp}|\textit{obs)} the plan recognition agent normalises each with the following formula: \newline
+Finally to complete the calculation of \textit{Pr(exp}|\textit{obs)} the PR agent normalises each with the following formula: \newline
 
 \centerline{
 \textit{Pr($exp_0$}|\textit{obs)} = \textit{Pr($exp_0$} $\wedge$ \textit{obs)} / $\displaystyle\sum\nolimits_{i}$ \textit{Pr($exp_i$} $\wedge$ \textit{obs)}
 }
 
-For example to compute \textit{Pr($exp$}|\textit{obs)} for O-EU-SA-AF, the plan recognition agent would first sum all explanation probabilities which is:
+For example to compute \textit{Pr($exp$}|\textit{obs)} for O-EU-SA-AF, the PR agent would first sum all explanation probabilities which is:
 
 0.0626 + 0.0666 + 0.0706 + 0.0653 = 0.2651 
 
@@ -1150,11 +1138,11 @@ O-AS-SA & 0.0653 & 0.246 \\
 \label{table:territory-actions-bonus}
 \end{table}
 
-At this point we set each normalised value of \textit{Pr($exp$}|\textit{obs)} as the value of each explanation and choose the highest as the prediction of the plan recognition agent. This is done to keep the explanation values from dropping to zero too quickly.
+At this point we set each normalised value of \textit{Pr($exp$}|\textit{obs)} as the value of each explanation and choose the highest as the prediction of the PR agent. This is done to keep the explanation values from dropping to zero too quickly.
 
 Failed-Occupation actions are computed in the exact same way as Successful-Occupation actions, the difference being that the pre-defined $w$ is set to a lower value than that of Successful-Occupation.
 
-The computation of other actions in the environment is considerably simpler given the assumptions of the model. To compute defence and movement actions the plan recognition agent would first retrieve the current explanation probability. Then firstly taking into consideration, whether it was an action performed on a territory that was contained in the high-level root-goal. If so then whether the action was consistent or not it would multiply it by for example:
+The computation of other actions in the environment is considerably simpler given the assumptions of the model. To compute defence and movement actions the PR agent would first retrieve the current explanation probability. Then firstly taking into consideration, whether it was an action performed on a territory that was contained in the high-level root-goal. If so then whether the action was consistent or not it would multiply it by for example:
 
 \begin{itemize}
 \item
@@ -1165,29 +1153,27 @@ The computation of other actions in the environment is considerably simpler give
 
 The final computed probability would then again be normalised and set to the current explanation probability as normal.
 
-For reinforce actions the plan recognition agent considers each explanations, if the reinforce action is observed as consistent the current explanations probability is multiplied by 1.02 if inconsistent then it is multiplied by 0.98. 
+For reinforce actions the PR agent considers each explanations, if the reinforce action is observed as consistent the current explanations probability is multiplied by 1.02 if inconsistent then it is multiplied by 0.98. 
 
 \section{Summary}
 
-The design of the plan recognition agent is based on the PHATT algorithm. Various environmental modelling and design of environment data structures was necessary in order to allow the PHATT algorithm to be applicable to the R.I.S.K environment. 
+Environmental modelling and a design of environment data structures was necessary in order to allow the PHATT algorithm to operate in the Risk environment. 
 
-Each action of the R.I.S.K environment was modelled and various assumptions about each made in-order that each can be used to compute the probability of a players root-goal. Where necessary data structures were designed for the most significant objects in the environment. The purpose of each data structure would be to contain the essential information required by the plan recognition agent.
+Each action in the Risk environment was modelled and various assumptions about each were made in-order to compute the probability of a player. Where necessary data structures were designed for the most significant objects in the environment. The purpose of each data structure would be to contain the essential information required by the PR agent.
 
-In particular a key concept in the design of the agent is that the pending set of a player is decided \textit{a priori} based on the territories a player owns and that by combining the action possible from each territory that a player owns into a single set, all the actions a player can perform can be captured.
+A key concept in the design of the agent, is that the pending set of a player is decided \textit{a priori} by the territories that a player owns. And by combining the actions that are possible from each territory that a player owns into a single set, all the actions a player can perform can be captured.
 
 \chapter{Implementation}
 
-The Java programming language was selected for the implementation of the plan recognition agent. Reasons for doing so were:
+The Java programming language was selected for the implementation of the PR agent. The reasons for doing so were:
 
 \begin{itemize}
 \item
-The availabilty of an open source project with an active development team.
+The availability of an open-source project with an active development team.
 \item
-Familiarily with the language.
+Personal familiarly with the language.
 \item
-Cross platform.
-\item
-High Quality Integrated Development Environments.
+Java being cross-platform.
 \end{itemize}
 
 \section{System Architecture}
@@ -1199,23 +1185,32 @@ High Quality Integrated Development Environments.
 \caption{System Architecture}
 \end{figure} 
 
-The system was \textit{event-driven} it had three major components.
+The system followed an \textit{event-driven} architecture, comprising of three major components.
 
-\textit{Domination-Program} refers to the open-source game developed by Yura.Net, modifications to the source code of the program was automating the output of the \textit{Replay-File} which occured at the end of a game, as well as lines of code at various key to fire events into the \textit{Processing} component. 
+The \textit{Domination-Program} which refers to the open-source game developed by Yura.Net. Modifications to the source code of the program were:
 
-The \textit{Processing} component is responsible for routing events to the \textit{Plan-Recognition-Agent} MORE DETAIL REQUIRED.
+\begin{itemize}
+\item
+Automating the output of the \textit{Replay-File}.
+\item
+Code to fire events into the \textit{Processing} component. 
+\end{itemize}
 
-The \textit{Plan-Recognition-Agent} also had access to the data structures in the Domination program rather than storing its own copy avoiding potential problems because of losing synchronisation between the two. Additional advantages of this approach include less overhead as well significantly reducing the possibility that the plan recognition agents copy loses syncronisation with the Domination-Programs data structures. On the other hand a disadvantage is that this makes the plan-recognition-agent more dependant on the methods of the developers implementation.
+The \textit{Processing} component was responsible for routing events to the \textit{Plan-Recognition-Agent} MORE DETAIL REQUIRED.
 
-The plan recognition agent makes extensive use of the freely available Google Guava libraries to allow the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
+The \textit{Plan-Recognition-Agent} as well as being responsible for had access to the data structures in the Domination program. Rather than storing its own copy avoided any synchronisation between it and the Domination program. Additionally the advantages of this approach includes less overhead as well significantly reducing the possibility that the PR agents copy loses synchronisation with the Domination-Programs data structures. On the other hand a disadvantage is that this makes the plan-recognition-agent more dependant on the methods of the developers implementation.
 
-Several Explanation objects comprised the \textit{Hardcoded-Explanations} section. Explanation objects had hardcoded root-goal and sub-goals. Using these sub-goals the system could build a list of consistent and inconsistent actions. These data structures were implemented seperate to the core structure of the plan recognition agent and therefore given a complete list of hardcoded explanations for another map the plan recognition can be used sucessfully once again.
+The PR agent made extensive use of the freely available Google Guava libraries. These allowed the prediction agent to operate concurrently with the game as well as more efficiently in its operations.
 
-The Domination-Program is capable of outputing a Replay-File that could be used to replay a game.
+A set of explanation objects made up the \textit{Hard-coded-Explanations}. Explanation objects had hard coded root and sub goals. Using these sub-goals, the system could build a list of consistent and inconsistent actions using the data structures stored by the Domination program. 
 
-The plan recognition agent would output a csv file containg the plan predictions for each player by the plan recogntion agent over the course of the game.
+The \textit{Hard-coded-Explanations} were implemented as separate to the core structure of the PR agent. As given a complete list of hard-coded explanations for another map the plan recognition can be used successfully once again.
 
-The architecture of the system is such that the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another implementation of a plan recognition agent.
+The Domination-Program is capable of outputting a Replay-File that could be used to replay a game.
+
+The PR agent would output a csv file containing the plan predictions for each player over the course of the game.
+
+The architecture of the system is such that the PR agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another implementation of a PR agent.
 
 \newpage
 
@@ -1225,22 +1220,22 @@ The architecture of the system is such that the plan recognition agent is not as
 \centerline{
 \includegraphics[width=0.7\textwidth]{images/plan-recognition-agent-architecture}
 }
-\caption{Plan Recognition Agent Architecture}
+\caption{PR Agent Architecture}
 \end{figure} 
 
-The Plan-Recognition-Agent has a data structure for each player which in turn has several explanation data structures that are initially hardcoded. Each explanation object calculates its own probability.
+The Plan-Recognition-Agent has a data structure for each player, which in turn has several explanation data structures that are initially hard-coded. Each explanation object calculates its own probability.
 
-The Root-Goal and Sub-Goal data structures must be hardcoded 
+The Root-Goal and Sub-Goal data structures must be hard-coded 
 
-When an event arrives from the processing class it is routed to its specified player data structure and then to its specifiied explanation data structure which would use the observed action to compute its new probability.
+When an event arrives from the processing class it is routed to its specified player data structure and then to its specified explanation data structure which would use the observed action to compute its new probability.
 
-Data structure that stores the probabilities of each players expalantion structure once this game ends the data structure writes it out to a data folder as a csv file.
+Data structure that stores the probabilities of each players explanation structure once this game ends the data structure writes it out to a data folder as a csv file.
 
 \newpage
 
 \section{Event Design}
 
-To operate the plan recognition agent needs to be aware of several aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
+To operate the PR agent needs to be aware of several aspects of the game. In particular: how many players there are, when the game begins, the games initial state, any changes that occur in the game and when the game is finished. These aspects can be broken down into individual events:
 
 \begin{itemize}
 \item
@@ -1263,7 +1258,7 @@ Reinforcement
 End Game
 \end{itemize}
 
-When these events occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the plan recognition agent. These events are observed by the processing class which then routes them to the plan recognition agent. The plan recognition agent then looks at the received event object(s) and depending on the type of event object and the information held by it, handles the object appropriately. The types of events, what they contain and their purpose are:
+When these events occur a distinct event object is fired, these even objects contains important information about the event that is necessary to the PR agent. These events are observed by the processing class which then routes them to the PR agent. The PR agent then looks at the received event object(s) and depending on the type of event object and the information held by it, handles the object appropriately. The types of events, what they contain and their purpose are:
 
 \begin{table}[ht]
 \centerline{
@@ -1271,21 +1266,21 @@ When these events occur a distinct event object is fired, these even objects con
 \hline 
 \textbf{Event Type} & \textbf{Contains Variables} & \textbf{Purpose} \\ 
 \hline 
-New-Player & playerName & Initialises a new player data structure with ID \textit{playerName}. \\ 
+New-Player & player-name & Initialises a new player data structure with ID \textit{player-name}. \\ 
 \hline 
-Remove-Player & playerName & Destroys the player data structure with ID \textit{playerName}. \\ 
+Remove-Player & player-name & Destroys the player data structure with ID \textit{player-name}. \\ 
 \hline 
-Successful-Occupation & attackerName, cName, tName & Signals that the player named \textit{attackerName}  performed a Successful-Occupation. \\ 
+Successful-Occupation & attacker-name, cName, tName & Signals that the player named \textit{attacker-name}  performed a Successful-Occupation. \\ 
 \hline
-Failed-Occupation & attackerName, cName, tName & Signals that \textit{attackerName} performed a FailedOccupation. \\ 
+Failed-Occupation & attacker-name, cName, tName & Signals that \textit{attacker-name} performed a Failed-Occupation. \\ 
 \hline
-Successful-Defence & defenderName, cName, tName & Signals that \textit{defenderName} performed a SuccesfulDefence. \\ 
+Successful-Defence & defender-name, cName, tName & Signals that \textit{defender-name} performed a Successful-Defence. \\ 
 \hline
-Failed-Defence & defenderName, cName, tName & Signals that \textit{defenderName} performed a FailedDefence. \\ 
+Failed-Defence & defender-nName, cName, tName & Signals that \textit{defender-name} performed a Failed-Defence. \\ 
 \hline
-Army-Movement & playerName, cName, tName & Signals that \textit{playerName} performed an ArmyMovement. \\ 
+Army-Movement & player-name, cName, tName & Signals that \textit{player-name} performed an Army-Movement. \\ 
 \hline
-Reinforce & playerName, cName, tName & Signals that \textit{playerName} performed a Reinforce action. \\ 
+Reinforce & player-name, cName, tName & Signals that \textit{player-name} performed a Reinforce action. \\ 
 \hline
 \end{tabular}
 }
@@ -1293,17 +1288,17 @@ Reinforce & playerName, cName, tName & Signals that \textit{playerName} performe
 \label{table:event-description}
 \end{table}
 
-More specifically other than player initalisation or removal events, each event will trigger the computation of explanation probabilites, which players explanation probabilites are decieded for example by the \textit{attackerName} and what effect, is decieded by the state of the R.I.S.K world namely the respective players pending set which can be built from the data structures of the Domination-Program and the continent and territory name of the event.
+More specifically other than player initialisation or removal events, each event will trigger the computation of explanation probabilities, which players explanation probabilities are decided for example by the \textit{attacker-name} and what effect, is decided by the state of the Risk world namely the respective players pending set which can be built from the data structures of the Domination-Program and the continent and territory name of the event.
 
 \section{System Operation}
 
-Before a game begins, based on the players registered in the game lobby screen the plan recognition agent initialises a set of player data strucutres. 
+Before a game begins, based on the players registered in the game lobby screen the PR agent initialises a set of player data structures. 
 
-The plan recognition agent first initalises the list of \textit{Hardcoded-Explanations} which involves building the set of consistent and inconsistent actions based on the explanations sub-goals. These explanation objects contain all the necessary information from the environment to computes its own probability. Once the complete list of explanations has been fully initliased it is cloned into each players data structure.
+The PR agent first initialises the list of \textit{Hardcoded-Explanations} which involves building the set of consistent and inconsistent actions based on the explanations sub-goals. These explanation objects contain all the necessary information from the environment to computes its own probability. Once the complete list of explanations has been fully initialised it is cloned into each players data structure.
 
-Once acton events start firing from the Domination-Program and was routed by the Processing component, the Plan-Recognition-Agent will depending on the event compute new explanation probabilites for a player.
+Once action events start firing from the Domination-Program and was routed by the Processing component, the Plan-Recognition-Agent will depending on the event compute new explanation probabilities for a player.
 
-This would continue till the end of a game the domination program as well as the plan recognition agent would output two files allowing the replay of a game and a record of the plan recognition agents prediction probabilities for each players explanations over the couse of the game.
+This would continue till the end of a game the domination program as well as the PR agent would output two files allowing the replay of a game and a record of the PR agents prediction probabilities for each players explanations over the course of the game.
 
 \section{Summary}
 
@@ -1311,11 +1306,11 @@ The Plan-Recognition-Agent was written in the Java programming language followin
 
 By receiving events fired from the program it would update locally held player data structures that contained information about each players explanation predictions and any other required would be retrieved from the Domination-Program.
 
-At the end of a game the Plan-Recognition-Agent would output two files. One was a Replay-File that would allow a complete replay of the game, the other was the Plan-Prediction-Record which detailed the probabilites of each players explanations over the couse of the game.
+At the end of a game the Plan-Recognition-Agent would output two files. One was a Replay-File that would allow a complete replay of the game, the other was the Plan-Prediction-Record which detailed the probabilities of each players explanations over the course of the game.
 
-\chapter{Evaluation} 
+\chapter{Evaluation}
 
-The evaluation plan consisted of three experiments with the plan recognition agent:
+The evaluation plan consists of four experiments on the Plan Recognition agent:
 
 \begin{enumerate}
 \item
@@ -1323,12 +1318,23 @@ Free Play
 \item
 Constrained Play
 \item
-A.I Play
+A.I Play - 100
+\item
+A.I Play - 4
 \end{enumerate}
 
-\textit{Free Play} can simply be described as human players "playing to win". In this manner it is how people would normally play mission R.I.S.K.
+\section{Experimental Format}
 
-\textit{Constrained Play} consists of human players only performing actions that are directly-consistent with their root-goal.  More formally (excluding card related actions) given a set of actions, a player will only either:
+\subsection{Participant Experiments}
+
+Of the four experiments, two were conducted with human players: 
+
+\textit{Free Play}, where human players "play to win", in any manner they see fit. This is how people would normally play mission Risk.
+
+\textit{Constrained Play} consists of players only performing actions that are \textit{directly-consistent} with their root-goal. 
+
+An example of a directly-consistent action is occupying a territory required by a root-goal. An example of the converse, a \textit{indirectly-consistent} action, would be breaking another player's continent by occupying a territory in that continent. It is indirectly-consistent because whilst not satisfying the player's goal, it prevents other player's from satisfying theirs. And only one player can win. 
+More formally, given a set of actions (excluding card related actions), a player will only either:
 
 \begin{itemize}
 \item
@@ -1339,18 +1345,13 @@ Reinforce a territory that is directly-consistent with their plan, or a territor
 Moves armies to a territory that is directly-consistent with their plan, or a territory that is on the shortest route to a territory that is directly consistent with their plan.
 \end{itemize}
 
-This artificially constructed form of play is designed to be the easiest to perform plan recognition on due to the lack of environmental noise fron in-directly consistent and inconsistent actions found in other forms of play. In doing so a high correct prediction accuracy is expected and if this is not the case then the resulting experiments will provide a good indication into why.
+This artificial form of play is designed to give optimal performance from the plan recognition agent. This is achieved by minimizing environmental noise from indirectly-consistent and inconsistent actions found in the other forms of play. Under this form of play, a high prediction accuracy is expected. If this is not the case then the resulting experiments should provide a good indication as to why.
 
-\textit{A.I. Play} is games using the Domination programs existing implementations of A.I. players for its various game modes only. These A.I. players can be substituted for human players to the point where a game can consists of only A.I. players' fighting each other, and by doing so can complete a game in a fraction of the time that human players do. By automating the collection of these data samples using an free macro program called AutoHotkey \textbf{[ref to autohotkey]}, provided an opportunity for the collection of a large number of data samples to analyse. 
-
-\section{Experimental Format}
-
-There were two experiment formats, one for constrained play, the other for free play. Before any experiment the rules of the game were explained to participants. 
+The A.I. players used were those provided with the Domination implementation of Risk. For experiments involving human players, the game rules were explained before the start of the experiment. 
 
 For constrained play, the particular play style required was described to participants.
 
-For free play it was made clear to participants that there were two primary methods of winning in mission R.I.S.K. either by:
-
+For free play, it was made clear to participants that there were two primary methods of winning the game:
 \begin{enumerate}
 \item
 Eliminating all other players from the game.
@@ -1358,19 +1359,45 @@ Eliminating all other players from the game.
 Completing their mission card.
 \end{enumerate}
 
-At the end of the game participants were asked to give a short summary of their initial plan and any changes to that plan during the course of the game.
+At the end of the game participants were asked to give a short summary of their initial plan and any changes they to it during the course of the game. 
 
-Since the A.I. for the game has its decisions skewed, varying this should in theory cause the A.I. to perform either better or worse depending on whether decisions are skewed towards decisions that are more consistent with the mission or away from decisions that are consistent with the mission but are rather focused on occupying continents that the A.I. has advantages in or eliminating players who are weak.
+In total, nineteen people participated in the experiments. Some took part multiple times.
 
-Experiments were performed with with different values of $w$ to confirm this.
+The final count of participant data samples was:
 
-For the A.I. two experiments were performed with different values of $w$, 4 its normal setting and 100 a significantly higher value.
+\begin{itemize}
+\item
+75 data samples collected for free play.
+\item
+100 samples collected for constrained play.
+\end{itemize}
+
+\subsection{A.I. Experiments}
+
+\textit{A.I. Play} are games played using only the game A.I provided with the Domination Risk implementation. These A.I. players can be substituted for human players to the point where a game can consists of only A.I. players battling each other. A.I. games can finish in a fraction of the time that it takes to complete a game with human players.
+
+According to the A.I developer at Yura.Net, "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly."
+
+Looking at the Domination program, the degree to which the A.I.'s decisions are skewed, is dependant on a variable $w$. By increasing this value, it causes the A.I. to more actively pursue its assigned mission card.
+
+Using this we can evaluate the plan prediction accuracy of the PR agent, and perhaps more importantly see whether the PR agent is capable of detecting the behavioural change that follows a change in $w$.
+
+Automating the collection of these data samples using the free macro program AutoHotkey, provided an opportunity for the collection of a large number of data samples for analysis.
+
+The final count of A.I. data samples was:
+
+\begin{itemize}
+\item
+1004 A.I. data samples set at $w$ 4.
+\item
+1004 A.I. data samples set at $w$ 100.
+\end{itemize}
 
 \newpage
 
 \section{Data Collection}
 
-After a game had finished the Domination program would generate a replay file, which if saved could be loaded at a later point through a specialised user interface for debugging created by the developers allowing a completely-independent and exact replay of the game.
+After a game had finished the Domination program would generate a replay file. This file can be loaded later through a specialised interface, allowing an exact replay of the game.
 
 \begin{figure}[h]
 \centerline{
@@ -1378,90 +1405,74 @@ After a game had finished the Domination program would generate a replay file, w
 }
 \caption{Domination Debug Graphical User Interface}
 \label{fig:dom-debug-gui}
-\end{figure} 
+\end{figure}
 
-Using this tool had significant implications, in that it would possible to re-observe games to assist with evaluation. It would also allow for testing of the plan recognition agent again with different modelling and/or calibrations in an exact same game and by doing so eliminate the environment as a variable between comparisons of the plan recognition agent.
+Using this tool made it possible to re-observe games for their evaluation. It also allows the PR agent to be tested with different modelling and calibrations in the same game twice. This eliminates environmental variables between comparisons of the PR agent.
 
-In addition to Dominations replay file, the plan recognition agent would simultaneously generate a csv file recording the significant features of a game, namely:
+In addition to the Domination replay file, the PR agent would also generate a CSV file containing the significant features of a game, namely:
 
 \begin{itemize}
 \item
-Which player won and which players' lost.
+Which players took part
 \item
-Each players actual mission.
+Which player won
 \item
-The probabilities of each players explanations over the course of the game.
+Each player's mission card
+\item
+The probabilities of each player's explanations over the course of the game
 \end{itemize}
 
-Scripts written in the Python programming language were then used to automate the analysis of these generated csv files.
+Scripts written in Python were used to automate the analysis of the generated CSV files.
 
 \newpage
 
 \section{Experimental Findings}
 
-Experiments with the plan recognition agent revealed the following insights:
+Experiments with the PR agent revealed the following insights:
 
 \begin{enumerate}
 \item
-The prediction accuracy of the plan recognition agent is highest in constrained play. 
+The prediction accuracy of the PR agent is highest in constrained play.
 \item
-The prediction accuracy of the plan recognition agent is HOW MUCH PERCENT higher for players who won than players who lost.
+The prediction accuracy of the PR agent is higher for winning players than losing players. 
 \item
-The prediction accuracy of the plan recognition agent is significantly higher for human players than the domination A.I. players.
+The prediction accuracy of the PR agent is higher for human players than the Domination A.I. players.
 \item
-From the prediction accuracy of the plan recognition agent, we can infer when the domination A.I. gives less significance to completing its missions.
+The prediction accuracy of the PR agent reflects the failings of the Domination A.I. in completing its mission.
 \item
-The length of game has a positive effect on the accuracy of the prediction agent.
+There is a positive correlation between game length and prediction accuracy. 
 \item
-The further into a game, the better the plan recognition prediction accuracy is for players who won.
+This is most true of winning players. 
 \item
-Constrained play games were never longer than 120 turns, making them the shortest games of all game types.
+Constrained play games were never longer than 120 turns, making them the shortest of the four game types.
 \end{enumerate}
 
-Keeping in mind the initial hypothesis, we attempt to evaluate whether plan recognition algorithms are beneficial in games, specifically R.I.S.K.
+Keeping in mind the initial hypotheses, we attempt to evaluate the claim that plan recognition algorithms are beneficial in Risk.
 
-To do this we first comment on general trends, then we explore two questions for both human and A.I players:
-
-The following sections will be made up of an analysis of the prediction accuracy of the plan recognition agent for players in \textit{General}, then we analyse the data further by decomposing players into players who won \textit{Winners} and players who lost \textit{Losers}.
-
+To do this, we explore the two questions that define what we consider beneficial:
 \begin{itemize}
 \item
-Does the plan recognition agent converge on the correct explanation?
+Is the PR agent accurate in its predictions?
 \item
-How fast does the plan recognition agent converge on the correct explanation?
+How quickly does the PR agent converge on a correct prediction?
 \end{itemize}
 
-How the game is played out for each player or their \textit{game-scenarios}, deciedes whether a player is a winner or loser.  The main game-scenarios that the plan recognition agent faces are the following:
+The term \textit{General} player is used to refer to both human and A.I players. Players are further decomposed into players who won, \textit{Winners}, and players who lost, \textit{Losers}.
 
-Winners who won \textit{quickly} or \textit{slowly} and who spent the majority of their game:
+\subsection{Format of Explanation Convergence}
 
-\begin{itemize}
-\item
-fighting over non-mission continents.
-\item
-fighting over mission continents.
-\end{itemize}
+At the start of a game, forty two turns are required to place one army on each territory of the Risk map. These observations are not taken into account by the PR agent, as the distribution of territories between players is automatic and random.
 
-Losers who were eliminated \textit{quickly} or \textit{slowly} or who were \textit{not-eliminated} and who spent the majority of their game:
+After this, the remaining initial armies are distributed by players onto their territories. During this, the probability of explanations that are consistent with a player's actions will slowly increase. Conversely, those explanations with which the actions are inconsistent with will slowly decrease.
 
-\begin{itemize}
-\item
-fighting over non-mission continents.
-\item
-fighting over mission continents.
-\end{itemize}
+Once the initial setup is complete (which ranges from 80 to 120 turns, depending on the number of players), the attack phase begins for the first player $p_c$. At this time the probabilities of $p_c$ explanations may change rapidly, depending on the number of actions that $p_c$ performs in their turn.
 
-\subsection{Explanation Convergence Format}
+The most significant change in explanation probability occurs when there are many Successful-Attack actions in a single turn. This is due to the design of the PR agent.
+After $p_c$'s turn is over, other players begin their attack phases in turn. Unless the action another player performs is to attack a territory owned by $p_c$, the probabilities of $p_c$ explanations remained unaffected.
 
-At the start of a game forty-two turns are required to place one army on each territory of the R.I.S.K map. These observations are not taken into account by the plan recognition agent as the distribution of territories between players is automatic and random. 
+This pattern continues till the end of the game, at which point the PR agent will have determined its predictions. The level of convergence differs between types of play, although generally significant convergence only occurs after the attack phases have begun.
 
-After this the remaining initial armies are distributed by players on to their territories. During this the probability of explanations that are consistent with the actions a player is performing will slowly rise and conversely those that explanations which with the actions are inconsistent will slowly fall.
-
-Once this initial setup is complete (which could be from 80 to 120 turns depending on the number of players) the attack phase begin for the first player $p_c$, at this time the probabilities of $p_c$ explanations may change rapidly depending on the number of actions that $p_c$ performs in their turn. The most significant change occurs when there is a high number of actions. This is due to the plan recognition agents model which has been built to give attack actions the greatest significance.
-
-After $p_c$ turn is over, other players begin their attack phases in-turn, and unless the action another player performs is to attack a territory owned by $p_c$, the probabilities of $p_c$ explanations remained unaffected. 
-
-This continues till the end of the game at which point the probability of a players explanation will have either converged successfully or unsuccessfully to the correct explanation. The rate of convergence differs between types of play though as a general trend convergence occurs only after the attack phase for players has begun.
+\newpage
 
 \subsection{Prediction Accuracy in General}
 
@@ -1471,29 +1482,29 @@ This continues till the end of the game at which point the probability of a play
 }
 \caption{General Prediction Accuracy}
 \label{fig:dom-debug-gui}
-\end{figure} 
+\end{figure}
 
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/general-game-length.pdf}
 }
-\caption{The general prediction accuracy of the plan recognition agent at various game lengths. }
+\caption{The general prediction accuracy of the PR agent at various game lengths. }
 \label{fig:dom-debug-gui}
-\end{figure} 
+\end{figure}
 
-In general the plan recognition agent performed significantly better in \textit{constrained play than on both free and A.I. play} at both intervals of game completion and various game lengths. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the plan recognition agent, it is therefore in itself not a good measure of evaluating the success of the plan recognition agent, but in conjunction with Free Play gives us a better picture of how well the plan recognition agent performs on human players.
+The data has several trends with regards to player prediction accuracy. 
 
-In general the plan recognition agent performed better on human players than A.I. players. The reason for this given the scale of difference must be due to the way in which the humans and the A.I. differ in their method of following plans, the data suggests that . According to the A.I developer at Yura.Net "the mission A.I. is a minimal extension of the core play. Since the core logic is reasonably good at conquering continents and eliminating opponents it just has it's decisions skewed a little to make sure it's going after the right continent/player without causing it to generally play poorly. "
+The PR agent plan prediction accuracy was significantly better in \textit{Constrained play than in Free or A.I. play} in both interval of game completion, and game length metrics. This is unsurprising given its artificial nature. Designed to be ideal the scenario for the PR agent, it is not a good measure of evaluating the success of the PR agent in general. Instead, in conjunction with Free Play, it gives us a better picture of how well the PR agent performs on human players.
 
-The core A.I. is built to play domination mode not specifically built to actively follow a plan. This reinforces the statement that human players followed their plans more actively than A.I. players.
+The PR agent's plan prediction accuracy was on average better for human players than A.I. players. The reason for this is the degree with which human and A.I. players actively follow their mission card. The data suggests that, since the core A.I. is a modification to the domination mode A.I., it is not specifically built to actively follow a plan. Thus we can confirm that human players followed their mission cards more actively than A.I. players.
 
-Comparing the prediction accuracy at $w$4 and $w$100 we see improvements in the prediction accuracy by the plan recognition agent of up to \%10. As the A.I.'s decisions become more skewed towards occupying mission continents and less towards choosing occupying accessible non mission-continents and eliminating opponents both of which are observed as inconsistent actions by the plan recognition agent.
+Comparing the prediction accuracy at $w$4 and $w$100, we see up to a 10\% improvement in the plan prediction accuracy of the PR agent. This confirms that as the A.I.'s decisions become more skewed towards occupying mission continents and less towards other activities, prediction accuracy increases. 
 
-There is a 25\% increase in the prediction accuracy of the plan recognition agent for constrained play in the 75 to 100\% game completing category. Though in general we see a rise in the prediction accuracy in this game completetion category across all forms of play, this is significant rise remains exclusive to constrained play. This is once again due to the nature of constrained play, as we shall see with further analysis of winners and losers in both categories of players prediction accuracy remains high.
+There is a 25\% increase in the plan prediction accuracy of the PR agent for constrained play in the 75\% to 100\% game completion category. In general there is a rise in the prediction accuracy in this game completion category across all forms of play, though the most significant rise remains exclusive to constrained play. Again, this is likely due to the nature of constrained play. As we shall see with further analysis of winners and losers, both categories of constrained play yield high prediction accuracy.
 
-This trend of an increase towards the end of a game is primarily due in other forms of play to how, especially so for winners, a large number of consistent actions are performed in a short span of time at the end.
+A trend can be seen of an increase in plan prediction accuracy towards the end of a game. As before, this is primarily due to how winners perform a large number of consistent actions in a short span of time at the end of a game.
 
-Looking at an example of constrained play.
+We can look at an example of constrained play to confirm this.
 
 \begin{figure}[h]
 \centerline{
@@ -1501,22 +1512,23 @@ Looking at an example of constrained play.
 }
 \caption{A.I. 4 - Example Game}
 \label{fig:dom-debug-gui}
-\end{figure} 
+\end{figure}
 
-The human players mission was North-America Africa, for the majority of the game during the placement phase up until turn 82 the probability does not rise too much. Though after turn 82 when the attack phases begin the increase in explanaton probability is much more significant and convergence for this example to the correct explanation occurs within 10 turns, reaching a significantly higher explanation probability soon after attacks have begun. 
+The winning players mission was to capture North-America and Africa. For the majority of the game - during the placement phase and up until turn 82 - the probability does not rise significantly. After turn 82, when the attack phases begin, the increase in explanation probability is substantial. Convergence to the correct explanation occurs within 10 turns, reaching a significantly higher explanation probability soon after attacks have begun.
 
-The general prediction accuracy over game length falls for A.I over time whereas human players increase. Figure 5.2 does not echo this trend though which indicates that prediction accuracy over game length appear to be stable which is indictive that the number of samples from Figure 5.3 reaching game length of over 210+ are relatively small as to not affect the average accuracy so significantly. 
+The general prediction accuracy over game length falls for A.I. players over time, whereas for human players it increases. Figure 5.2 does not echo this trend though which indicates that prediction accuracy over game length appear to be stable which is indicative that the number of samples from Figure 5.3 reaching game length of over 210+ are relatively small as to not affect the average accuracy so significantly.
 
-The length of all human games up to a maximum between the range of 120-150 turns, which is far lower than that of A.I. games. This suggests either that one of two reasons:
-
+The of length the human games ranged between 120 and 150 turns, which is far lower than that of A.I. games. This suggests that either:
 \begin{itemize}
 \item
-The A.I is good at preventing other A.I. from winning and therefore games are longer.
+The A.I. is good at preventing other A.I. players from winning. 
 \item
-Games are longer because the A.I. does not win quickly.
+Games are longer because the A.I. is ineffective at finishing their mission.  
 \end{itemize}
 
-With an example we can see evidence to suggest the latter point.
+With an example we can see evidence to suggest the latter point. 
+
+\newpage
 
 \begin{figure}[h]
 \centerline{
@@ -1524,13 +1536,13 @@ With an example we can see evidence to suggest the latter point.
 }
 \caption{A.I. 4 - Example Game}
 \label{fig:dom-debug-gui}
-\end{figure} 
+\end{figure}
 
-This graph illustrates the probabilites of explanations of an A.I. 4 player whos misson was Asia South-America. The A.I won a game that was approximately 342 turns long. In this game the A.I.s were caught in a stalemate between each other for many turns, argueably though not out of skill but instead a lack of strategic diversity. For example A.I. players make no attempt to fortify and hold continents when they are weak or to consolidate their armies if they can be concentrated in strategic territories. Instead it would go for a strategy of an all-out attack. Mostly fighting in North-America and Australia, continents other than its mission.
+Figure 5.5 illustrates the probabilities of explanations for a 4 player game between A.I.s. Player 4,  who has the mission of conquering Asia and South-America, won in approximately 342 turns. The A.I. players were caught in a stalemate between each other for many turns, arguably not out of skill but by a lack of strategic diversity. 
 
-The A.I. at one point had a clear advantage but chose to attack a non-mission continent to eliminate a weaker player first.  Asia its final mission continent was conquered at the very last turn and so ending the game.
+For instance, they make no attempt to fortify and hold continents when they were weak, or to consolidate their armies in strategic territories. Instead, the players opted for a strategy of all-out attack. Most of player 4's engagements occurred in North-America and Australia - continents outside of its mission. At one point, the player had a clear advantage but chose to attack a non-mission continent to eliminate a weaker player instead of taking Asia, its final mission continent. 
 
-This observation coincides with the signifanct drop of the plan recognition agents prediction accuracy for A.I. - 4 games longer than 210+ turns. But generally this is not the case as the number of such examples must be relatively small because we do not see a significant drop in prediction accuracy of A.I -4 games between 75 to 100 \% game completion.
+This observation coincides with the significant drop of the PR agents prediction accuracy for A.I. - 4 games longer than 210 turns. The number of such examples must be relatively small because we do not see a significant drop in prediction accuracy of A.I -4 games between 75 to 100 \% game completion.
 
 \newpage
 
@@ -1542,43 +1554,41 @@ This observation coincides with the signifanct drop of the plan recognition agen
 }
 \caption{Winner Plan Prediction Accuracy}
 \label{fig:winner-pred-accuracy}
-\end{figure} 
-
+\end{figure}
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/winner-game-length.pdf}
 }
 \caption{Winner Plan Prediction Accuracy}
-\label{fig:dom-debug-gui}
-\end{figure} 
+\label{fig:win-plan-pred}
+\end{figure}
 
-Firstly we must point out that the prediction accuracy of the plan recognition agent is 1.0 only due to the number of data samples of winners being small. There was only a single data sample of a winner between 120-150 turn long game, and that sample was correctly predicted.
+First, we must point out that the prediction accuracy of the PR agent is 1.0 only due to the number of data samples of winners being small. There was only a single data sample of a winner between 120-150 turn long game, and that sample was correctly predicted.
 
 Games of constrained play were never longer than 120 turns.
 
-The highest plan prediction accuracy of the plan recognition is 88.24\% for winners in games of constrained play of length 0-120.
+The highest plan prediction accuracy of the plan recognition is 88.24\%, which is for winners in constrained play games of length 0-120.
 
-What is striking about the data for winners is that for A.I. - 4 games there is a significant drop of plan prediction accuracy from 31.58\% to 5.88\% in from the 180-210 to the 210+ game length category. As we saw from the example of a long A.I. game in the previous section this can be explained because of the majority of the losers had been eliminated at that point in the game and the winner was focused on eliminating the last player, and this involved performing many inconsisent actions to eliminate them, and the losers that did survive did not perform many actions because of a comparatively low level of reinforcement armies. Once again though the number of these cases are small given the winner plan prediction accuracy remains stable on average through a game.
+What is striking about the data for winners, is that for A.I. - 4 games, there is a significant drop in plan prediction accuracy from 31.58\% to 5.88\% in from the 180-210 to the 210+ game length category.
 
-For A.I 100 there is a positive trend that as the game length increases so does the plan prediction accuracy.
+As we saw from the example of a long A.I. game in the previous section, this can be explained by the majority of the losers having been eliminated at that stage and the winner was focused on eliminating the last player. This involved performing many inconsistent actions to eliminate them, and the losers that did survive did not perform many actions because of a comparatively low level of reinforcement armies. Once again, though the number of these cases are small given the winner’s plan prediction accuracy remains stable on average through a game.
 
-The trend of increase towards the end of the game is much more distinct for winners as seen by significant increases of plan prediction accuracy between 75\% and \%100 percent game completion. This will be due to winners performing many directly-consistent actions at the end of the game.
+For A.I-100,  there is a positive trend that as the game length increases, so does the plan prediction accuracy.
 
-There are cases where winners have occupied the an entire continent and completed their mission in one turn and since sampling is done on a turn by turn basis the plan recognition agent will miss the significant change in probabilities as the system does not register an end of turn but rather a different event which is the end of the game.
+The trend of increase towards the end of the game is much more apparent for winners, as seen by significant increases of plan prediction accuracy between 75\% and 100\% game completion. This is due to winners performing more directly-consistent actions at the end of a game.
 
-It will not converge clearly in the case a player performs only actions that are consistent with more than one explanation.
+There are cases where winners have occupied an entire continent and completed their mission in one turn. Since sampling is done on a turn by turn basis, the PR agent will miss the significant change in probabilities. This is a consequence of the system not registering an end of turn, but rather a different event which is the end of the game.
 
 \newpage
 
 \section{Plan Recognition Agent Loser Prediction Accuracy}
-
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=0.9\textwidth]{images/loser-game-complete.pdf}
 }
 \caption{Loser Plan Prediction Accuracy}
 \label{fig:dom-debug-gui}
-\end{figure} 
+\end{figure}
 
 \begin{figure}[h]
 \centerline{
@@ -1588,195 +1598,150 @@ It will not converge clearly in the case a player performs only actions that are
 \label{fig:dom-debug-gui}
 \end{figure}
 
-The average accuracy of losers is stable through out the course of a game of any game type except for constrained play though.
+\newpage
 
-Losers in A.I - 100 appear to show negative trend in that as the game length increases the prediction accuracy falls. As we saw from an analysis of winners the inverse to this was true, as game length increases the plan prediction accuracy increases as well. This is an interesting correlation as it suggests that the prediction accuracy of winners at least for A.I. - 100 play gets better as losers get worse. This makes sense given that winners by definition won because losers did not and that a winners sucess does have a negative impact on losers being able to follow their own mission.
+Losers in A.I - 100 appear to show negative trend in that as the game length increases the prediction accuracy falls. As we saw from an analysis of winners the inverse to this was true, as game length increases the plan prediction accuracy increases as well. This is an interesting correlation as it suggests that the prediction accuracy of winners at least for A.I. - 100 play gets better as losers get worse. This makes sense; by definition, a loser cannot complete their mission. 
 
-Losers are often prevented from successfully achieving their goal as they may be eliminated early or may be pushed out of their mission continents. The following is an example of a player with mission North-America Africa being eliminated from a game at approximately turn 75. 
+Losers are often prevented from successfully achieving their goal as they may be eliminated early or may be pushed out of their mission continents. The following is an example of a player with the mission of taking North-America and Africa being eliminated from a game at approximately turn 75.
 
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=1.1\textwidth]{images/player-elim-early.pdf}
 }
-\caption{Winner Prediction Accuracy}
+\caption{Example Player Eliminated}
 \label{fig:dom-debug-gui}
 \end{figure}
 
-A proportion of incorrect predictions occured because losers can be eliminated at an early stage of the game resulting in a lack of data about that player. If a loser was to be eliminated early on in the game then their explanations probabilities would \textit{flat-line} as we can clearly see from Figure 5.10, in that the prediction does not change for the remainder of the game. If the loser had been performing more inconsistent actions then consistent actions up until that point then the prediction will be wrong and will remain an incorrect plan prediction, inversely it may be correct for the very same reason.
+\newpage
 
-Unlike the significant fall seen in A.I. -  4 Winners the plan prediction accuracy of A.I - 4 Losers remains stable.
-
-\section{Summary}
-
-The plan recognition agent was tested in three different game types.
-
-Analysis of the plan recognition agents plan prediction accuracy over different lengths of games and at various intervals in a game has several interesting insights.
-
-\chapter{Conclusion}
-
-\section{Main insights and results}
-
-Constrained play games were never longer than 120 turns making them the shortest of all game types.
-
-In constrained play, players do not purposely seek to hinder the progress of other players' missions. The winner of constrained play is often the player with the least overlapping mission with other players and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere hence games are shorter.
-
-For A.I. 100 there is a inverse correlation between the plan prediction accuracy of winners and the plan prediction accuracy of losers.
-
-Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission at least once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect. This proposition is supported by how the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}.
-
-In R.I.S.K.there is only one winner. R.I.S.K is an adversarial environment where right from the start you are attacked. Given that you can survive an onslaught of attacks in-order to achieve ones own mission, players must either directly or indirectly eliminate each other and often modify their own plan in order to continue surviving or prevent other players from winning. 
-
-This environment and the high-level of overlap between missions the results are many misclassifications.
-
-Given the design of the plan recognition agent these changes in behaviour are see as directly-inconsistent with their own mission and rather seems consistent with whatever explanation that those actions \textit{are} directly-consistent with instead.
-
-Given there are six mission cards, the accuracy of a random guess of a players mission card is 16.67\%. According to Figure 5.2 and 5.3 the percentage accuracy over time and over game length has a higher accuracy than this. On average CALCULATE AVERAGE
-
-The main issue facing the plan recognition agent is differentiating between noise from the environment.
-
-The plan recognition agent should not only consider what occurs in the action space but the state of the environment as well as the state of the environment further indicates the plans of players.
-
-Players who spend a game fighting over a single continent raise the probability of all explanations associated with that continent and the result is a prediction of several explanations being equally likely. This also applies to fighting over two continents that are part of a three continent explanation.
-
-Inherent issues with PHATT as is unable to deal with deception[ref] and often players must perform actions unrelated to a plan to be able to complete their plan e.g survive, have to conquer other non-relevant continents, this confuses the algorithm.
-
-Misclassification's occur due to three(keep looking in data) main reasons:
-
-by Association - Explanations appear likely because players do things related to them even though they haven't done anything in one of the continents e.g Europe SA, Asia appears likely even though there has been occupation of territories in Europe because of lots of activity in SA and Asia. This issue is slightly negated by how I have modelled the attack actions probability contribution to explanations
-
-Free and A.I. play are definitely a more natural form of playing. Players in these perform actions that are either indirectly-consistent or inconsistent primarily because their plan at that point may be different to that of their mission. So a better measure for the general accuracy of the plan recognition  agent for humans is rather Free Play as prediction accuracies of human players is most significant.
-
-\subsection{Improvement of Model}
-
-Currently the system suffers from the problem of distinguishing noise from meaninful actions.
-
-Curently model does little to take into account situations where a player cannot perform a consistent attack action. If a player chooses to attack even though they may intend to perform a consistent attack later, argueably this cannot be taken into account as you cannot know whether they performed the action with a different plan in mind to that of their mission card.
-
-Solving this problem could be taclked in two ways:
-
-Identifying actions are in-directly consistent and modelling them to accurately contribute to explanations - further modelling to further diffferentiate noise from meaninggul behaviour.
- 
-Making the meaningful actions that one can already identify greater significance to actions that are directly consistent through the state of the game  more significant - making noise less significant.
-
-The weight for each consistent action is flat at the moment or more precisely actions are consistent in themselves but may not be consistent given the \textit{context} of the game state. To deal with this, we should introduce into our calculations data from the game state.
-
-Making a system of dynamically applying weights in a manner that is proportional to the state of the game e.g:
-
-For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
-
-ExplanationProb = ExplanationProb * Weight * Some fraction representing the state of environment
-
-For example
-
-Weight = 0.1 * 1- (The proportion of consistent actions for that explanations) * (Proportion of territories a player owns of the continents) <- Proportion of reinforce actions available to the player.
-
-Best case = Low Number of consistent actions and high number of territories owned e.g
-
-Has 1 attack option out of 13 and owns 9 of the ten territories
-
-0.1 * 1-(1/13) * 9/10 
-
-Worst Case = High number of consistent actions and low number of territories owned
-
-0.1 * 1-(12/13) * 4/10 
-
-Has 12 attack options out of 13 and owns 4 of the ten territories
-
-The weight was computed in the normal manner but would be scaled up down by two factors in-order to make an actions more a less significant given the state of the environment.
+A number of incorrect predictions occurred due to the lack of data about players that are eliminated early on. If a loser is eliminated early in the game, then their explanations probabilities would \textit{flat-line}. This can be seen clearly in Figure 5.10. If the loser had been performing more inconsistent actions than consistent actions up to that point, then the prediction will be incorrect and will remain so for the rest of the game. Conversely, it may remain correct for the same reason.
 
 \section{Outcomes}
 
-Players don't ignore their mission card like at first predicted, as long as the mission appears easier to complete than eliminating all other players, then players will try achieve their mission.
+The PR agent has shown to perform better than uniform choice of mission card, but the prediction accuracy is still below 50\% and significant successful convergence does not occur typically until after 75\% of the game is complete. This does not meet the projects definitions of beneficial. In defence to this, the PR agent did perform better on players than on A.I. which for our purposes is significant. 
 
-In evaluation DO NOT JUST RELY ON MEASUREMENTS! DISCUSS OUTCOMES! MAKE INFERENCES FROM DATA!
+The data that we have collect supports the theory that unless players behaved as in constrained play, the intense adversarial atmosphere, together with the high level of overlap between mission cards causes significant noise for the PR agent, which is detrimental to converging on the correct explanation but rather results in on average high levels of incorrect plan prediction's.
 
-THE WHOLE PURPOSE OF ACADEMIA IS TO LEARN, SHOW THAT YOU HAVE SOMETHING TO CONTRIBUTE TO THAT AIM TO LEARN!
+Particularly difficult areas of this project have been, deciding on methods of computing action probabilities and how much if any to weight each of those actions. 
 
-What did you do that you found easy? What did you do that you found hard? 
+There was trouble working with an algorithm that was made to deal with an action space rather than such a significant state based environment. Therefore having to figure out how to represent the environment as an action space so that the algorithm could operate was particularly difficult. 
 
-Would you recommend doing something, what would you recommend not doing?
+Finding plan recognition algorithms that are made to cope with such noisy environments may be beneficial in future research. Also given that it works well in constrained play, the design has some in less complex environments such as the card game Pit.
 
-TALK ABOUT THE OUTCOMES OF YOUR WORK!
+Constrained play games were never longer than 120 turns, thus making them the shortest of all game types. In constrained play, players do not purposely seek to hinder the progress of other players' missions. So therefore winner of constrained play  tends to be the player with the least overlapping missions with other players, and the smallest number of territories to occupy. This situation allows for a player to quickly complete their mission with little opposition from other players who do not interfere due to the design of constrained play. Hence games are shorter.
 
-\section{Criticism}
+For A.I. 100 there is a inverse correlation between the plan prediction accuracy of winners and the plan prediction accuracy of losers. 
 
-Better inferences of human players game over time could have been more detailed by making the intervals of game length smaller.
+Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission at least once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect. This proposition is supported by how the PR agents \textit{prediction accuracy of winners is better than that of losers}.
 
-Attack has been modelled following PHATT though the rest of the actions are simply given a weighting of e.g 0.98 for inconsistent and 1.02 for consistent to scale the explanation up or down respectively. Thus attack has been modelled as the most significant action and this is a weak assumption.
+In Risk.there is only one winner. Risk is an adversarial environment where right from the start you are attacked. Given that you can survive an onslaught of attacks in-order to achieve ones own mission, players must either directly or indirectly eliminate each other and often modify their own plan in order to continue surviving or prevent other players from winning. 
 
-MODEL IS LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
+Given the design of the PR agent these changes in behaviour are see as directly-inconsistent with their own mission and rather seems consistent with whatever explanation that those actions \textit{are} directly-consistent with instead.
 
-ATTACK probability COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
-
-A small number of data samples were collected for free and constrained play and therefore the data is less resistant to outliers which could have effected the evaluation.
-
-Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
-
-The model makes no attempt to differentiate two identical child-root-goal  e.g the plan prediction accuracy is equal between EU SA AU and EU AU SA in many cases. 
-
-The sampling of explanation probabilities needs to be more frequent than only at end of each tunr as several actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
+It is unfortunate that the project has not proved the original hypothesis though how indeed showed som success. And we can conclude, that Risk is certainly a challenging environment to perform plan recognition for.
 
 \section{Future Work}
 
-Why is the accuracy of winners better than losers. It may be due to because weighting of attack actions is towards successful attacks, of which winners perform more. This question can be explored.
+A platform has been setup for further improvements of the PR agent. Avenues of future work include exploring:
 
-A.I. play was done with six players, would be interesting to see the effects on prediction accuracy on games with different numbers of players.
+If the plan prediction accuracy of winners is better than loser is in fact may be due to because weighting of attack actions is towards successful attacks, of which winners perform more. This question can be explored.
 
-\subsection{Model Augmentation}
+The effects on accuracy when experimenting with A.I. play was done with six players. This would be interesting to see the effects on prediction accuracy differs depending on the numbers of players in the game.
 
-ANALYSIS OF EACH EXPLANATION AND BUILD MODELS FOR EACH, DATA COLLECTED TO PERFORM BUT DID NOT HAVE TIME
+Data has been collected for explanation accuracy measure but has not been analysed. Doing so could shed some light onto whether the accuracy of mission cards are different and why.
 
-\subsubsection{Application of Machine Learning}
+Using the collected data samples, test the PR agent with different models of the environment or different calibrations.
 
-As according to PHATTs original design, allow for method choice probabilities again and use machine learning to compute better sub-goal choice probability based on preferences shown by players in collected training data.
+The model could be extended to include other mission cards.
 
-\subsubsection{More Sophisticated Action Probability Computations}
+\subsection{Improvement of Action Probability Computation}
 
-The application of more sophisticated computation models based on the idea of generating a pending set from the state of the world then performing calculations with that pending set.
+Currently the system suffers from the problem of distinguishing noise from meaningful actions. Solving this problem could be tackled in two ways:
 
-Initially the movement model was based on the attack model where the smaller the number of actions the bigger the weighting should be, this is an incorrect model as the number of territories a player owns increases as a player gains more consistent movement and reinforce actions as they continue to be successful in their goal. REMODEL MOVEMENT TO BE:
+\begin{itemize}
+\item
+Identifying actions are indirectly-consistent and modelling them to accurately contribute to explanations - further modelling to further differentiate noise from meaningful behaviour.
+\item
+Making the meaningful actions that one can already identify greater significance to actions that are directly consistent through the state of the game more significant - making noise less significant.
+\end{itemize}
 
-Probability model changed to PROPORTION SYSTEM of consistent actions * 0.1 
-0.9 - proportion for consistent probability
-1 - proportion for inconsistent probability
+Considering the latter point. By knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
 
-\subsubsection{More Sophisticated Modelling of Current Model}
+Currently the weight for actions is flat at the moment or more precisely actions are consistent in themselves but may not be consistent given the \textit{context} of the game state. To deal with this, we propose using a dynamic weight system that captures certain aspects of the Risk environment as follows:
 
-Players in these perform actions that are either indirectly-consistent or inconsistent  primarily because their plan at that point may be different to that of their mission. Either type of action reduces the probability of the correct explanation given the current model. MODEL TO TAKE THIS INTO ACCOUNT
+Explanation-Prob = Explanation-Prob * Weight * Fraction-Representing-State-of-Environment
 
-The model can be augmented further as any action could in fact be further decomposed into two types,\textit{directly-consistent} or \textit{indirectly-inconsistent}. For example a directly-consistent action would be to occupy a territory of an explanation, where as an indirectly-consistent action would be a player breaking another players continent by occupying a territory in that continent, as preventing other players from completing their mission makes completing ones own mission more likely. This distinction has not been taken into account as any action that is not directly-consistent is classified as an inconsistent action in the model and investigation into the effects of doing some may yield improvements.
+More specifically:\newline
 
-Only attack actions have been modelled in a manner other than scaling up by 1.02 and down by 0.98 to simulate the effects of small decreases and increases in likelihood. More sophisticated computation models of action probabilities could be investigated to capture the state of the game to a greater degree in each calculation rather than scaling.
+\centerline{
+Weight = 0.1 * 1- (No of Consistent actions) * (No of territories a player owns of that continent)
+}
 
-Other than modelling attacks as two events where the result affect both involved players, the model does not considered the effects. This could be improved by
+Therefore:
 
-Model does not take into account situations where players cannot perform any consistent actions and therefore any action that a player performs is considered inconsistent but actually could be indirectly-consistent. This could be improved by
+\textbf{Best-Case} = Low Number of consistent actions and high number of territories owned e.g
+
+A player has 1 attack option out of 13 and owns 9 of the ten territories\newline
+
+\centerline{
+0.1 * 1-(1/13) * 9/10  = 0.083
+}
+
+\textbf{Worst-Case} = High number of consistent actions and low number of territories owned
+
+A player has 12 attack options out of 13 and owns 4 of the ten territories
+
+\centerline{
+0.1 * 1-(12/13) * 4/10 = 0.00307
+}
+
+The action probability would be computed in the normal manner using but the weight would be scaled up or down by two factors in-order to make an actions more a less significant given the state of the environment.
+
+\subsection{Use of Machine Learning}
+
+According to PHATTs original design, we are not supposed to operate on a full set of explanations. By introducing the term for sub-goal probabilities again we can use machine learning on collected training data of games, to optimize the values for the priors of the sub-goal probabilities based on preferences of what choices are made by players in the training set.
+
+\subsection{Meta Optimisation}
+
+Using plan recognition software, given an intended plan of a programs behaviour, plan recognition algorithms can be used in detecting the programs success in performing that plan. More specifically using genetic algorithms we can perform meta optimisation of programs, tuning the program with the result of the plan recognition algorithm.
+
+\section{Criticism}
+
+\subsection{Modelling Issues}
+
+The only action that has been modelled following PHATT's design is attack. The remaining actions are crude probability manipulations to by scaling explanation probabilities up or down based on design assumptions. No modelling done of indirectly-consistent actions.
+
+In the computation of attack probabilities, treats any non-owned connected territory as attackable. This is not the case as some territories may not have two armies and so cannot attack the neighbour.
+
+The model also makes no attempt to differentiate two identical child-root-goal  e.g the plan prediction accuracy is equal between EU SA AU and EU AU SA in many cases. 
 
 The model does not take into account the importance of territories. Each continent has a number of territories which control entry into the continent. To elaborate each continent has a fixed number of these entry territories and if it were possible for a player to perfectly defend only the entry territories and occupy the remaining territories of the continent they would in theory never lose the continent as players must occupy the entry territory to be able to occupy other territories in that continent. The model does not take into consideration this.
 
-Look at where player has already placed armies and figure out a probability based on where they place armies. Argument though is placement is not restricted an form.
+The model does not take into account situations where players cannot perform any consistent actions and therefore any action that a player performs is considered inconsistent but actually could be indirectly-consistent.
 
-\subsubsection{Extension to Include Other Types of Mission Cards}
+The PR agent should not only consider what occurs in the action space, but the state of the environment as well as it further indicates the plans of players.
 
-Extension of the model to include other mission cards. Due to the design, eliminating players could be modelled but modelling Occupy 24, 18 due to design decision has such high overlap with all other missions it would be hard to model this.
+\subsection{Data Issues}
 
-A proposed method of modelling eliminating player missions
+A better picture of the PR agents plan prediction accuracy for human players, could have been seen by making the intervals of the game length smaller. Thus expanding constrained play which was a single data point in several graphs.
 
-Eliminating player mission cards - some system where data of who is being consistently attacked is recorded and probabilities are multiplied by a number based on number of attack actions for a player and number of territories that player has remaining.
+A comparatively small number of data samples were collected for free and constrained play. Therefore the data is not representative to the same degree as the A.I. data samples were. Additionally data samples were collected with a small group of participants, as the same people play the game several times, it becomes an influencing factor in the results of the experiments.
 
-\subsection{Discussion of Possible Applications}
+The sampling of explanation probabilities needs to be more frequent than only at end of each turn as several actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
 
-Using the plan recognition software given a programs a plan to detect how well a program performs a plan. 
+\section{Summary}
 
-Using genetic algorithms to perform meta optimisation this is done by randomly assigning a choice weight to the ai then looking at the numbers returned by the plan recognition algorithm and choosing the best configuration that survived and won.
+The PR agent was evaluated using four different experiments. Constrained play gave the highest accuracy, but free play is more representative of and actual game. Analysis of the PR agent's plan prediction accuracy over different game lengths and at various time intervals yielded several valuable insights. Generally speaking, the hypotheses were borne out by the data. 
 
-\section{Summary of whole report}
+\chapter{Conclusion}
 
-A platform has been setup for further improvements of the model.
+This project has presented a plan recognition agent for the board game Risk. The agent is based on the PHATT algorithm \cite{Geib:2009:PPR:1550966.1551246} and acts as an observer to the game with the goal of inferring the unknown mission cards based on player actions in real time. 
 
-Why because they are an artificially derived benefit which can be used by a player to optimize their behaviour, not solely , but in conjunction with the results of a plan recognition system.
+After a detailed design specification of the PR agent, and a high level overview of its implementation, we went on to evaluate the PR agent. This was done by means of testing its accuracy and speed of convergence in four different experiments. The results of these experiments were then presented and analysed.
 
-WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
+The PR agent has the highest accuracy on constrained play, but performed the worst on A.I. - 4 play. For the most representative test, free play between human players, it was generally a success compared to naive methods.
+
+There is still room for improvement. For instance, by introducing factors that capture the state of the environment into the calculations, or choosing better prior probabilities with machine learning techniques, the prediction accuracy may be improved. These are avenues for further research. At present, the agent may be used to assess existing Risk A.I. players, develop better A.I. players, or act as an assistant to human players. The key point is this: that plan recognition can be applied successfully to multi-agent board games. 
 
 \chapter{Appendix}
 
@@ -1907,30 +1872,6 @@ WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
 \caption{General Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
 \label{table:winner-loser-accuracy}
 \end{table}
-
-\newpage
-
-\begin{table}
-\centerline{
-\begin{tabular}{cc|c|c|c}
-\cline{3-4}
-&  & Mission & Non-Mission \\ 
-\cline{1-4}
-\multicolumn{1}{  |c| }{\multirow{2}{*}{Winner} } &
-\multicolumn{1}{  c| }{Quick} & & & \\ \cline{2-4}
-\multicolumn{1}{ |c  }{}                        &
-\multicolumn{1}{ |c| }{Slow} & & & \\ \cline{2-4}
-\multicolumn{1}{ |c  }{\multirow{3}{*}{Loser} } &
-\multicolumn{1}{ |c| }{Quick} & & & \\ \cline{1-4}
-\multicolumn{1}{ |c  }{}                        &
-\multicolumn{1}{ |c| }{Slow} & & & \\ \cline{2-4}
-\multicolumn{1}{ |c  }{} 						&
-\multicolumn{1}{ |c| }{Till End} & & & \\ \cline{1-4}							
-\end{tabular}
-}
-\end{table}
-
-\newpage
 
 \section{Explanation Accuracy Data}
 
@@ -2125,24 +2066,6 @@ WHY USE THIS ALGORITHM WHY IS SUITABLE END ON A POSITIVE NOTE
 \caption{General Game-Length Correct-Incorrect Prediction Count, \textbf{C} = Correct, \textbf{I} = Incorrect}
 \label{table:winner-loser-accuracy}
 \end{table}
-
-\section{Average Accuracy of Plan Recognition Agent}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|p{8cm}|}
-\hline 
-\textbf{Game Type} & \textbf{Consistent}  & \textbf{Reasoning} \\ 
-\hline 
-Free & Yes & A successful defence of a territory may be purely a product of chance, but is more likely when they have a plan involving that territory. \\ 
-\hline 
-Failed-Defence & No & An inconsistent action because a player would not normally allow a territory to be lost if it is a part of their plan. \\ 
-\hline
-\end{tabular}
-\caption{Modelling Defence Actions}
-\label{table:attack-defend-modelling}
-\end{table}
-
 
 % use the following and \cite{} as above if you use bibtex
 % otherwise generate bibtem entries

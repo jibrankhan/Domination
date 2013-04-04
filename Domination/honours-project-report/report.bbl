@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{aaai/1997w6}
+{\em Deep Blue Versus Kasparov: The Significance for Artificial Intelligence,
+  Collected Papers from the 1997 AAAI Workshop}. AAAI Press, 1997.
+
 \bibitem{oai:CiteSeerPSU:538953}
 Nate Blaylock.
 \newblock {Retroactive Recognition of Interleaved Plans for Natural Language
@@ -48,6 +52,11 @@ Robert~P. Goldman, Christopher~W. Geib, and Christopher~A. Miller.
 {Image taken from}.
 \newblock {$http://www.insurgencygaming.com$}.
 
+\bibitem{mccarthai}
+{John McCarthy}.
+\newblock {\em {What is Artificial Intelligence}}.
+\newblock November 2007.
+
 \bibitem{jlozanodbratz}
 {Juan Lozano, Dane Bratz}.
 \newblock {A Risky Proposal: Designing a Risk Game Playing Agent}.
@@ -80,6 +89,12 @@ Jeff Orkin.
   Planning in Games}.
 \newblock In Dan Fu and Jeff Orkin, editors, {\em Proc. of the 2004 AAAI
   Workshop}, Menlo Park, CA, 2004. AAAI, AAAI Press.
+
+\bibitem{SchaefferBBK0LLS05}
+Jonathan Schaeffer, Yngvi Bj{\"o}rnsson, Neil Burch, Akihiro Kishimoto, Martin
+  M{\"u}ller, Robert Lake, Paul Lu, and Steve Sutphen.
+\newblock Solving checkers.
+\newblock In {\em IJCAI}, pages 292--297, 2005.
 
 \bibitem{journals/ai/SchmidtSG78}
 Charles~F. Schmidt, N.~S. Sridharan, and John~L. Goodson.
