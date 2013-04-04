@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  4 APR 2013 04:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.27)  4 APR 2013 06:25
 entering extended mode
 **C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-repo
 rt/report.tex
@@ -262,6 +262,15 @@ LaTeX Warning: Label `table:territory-actions-bonus' multiply defined.
 
 
 LaTeX Warning: Label `table:territory-actions-bonus' multiply defined.
+
+
+LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
+
+
+LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
+
+
+LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
 
 
 LaTeX Warning: Label `fig:dom-debug-gui' multiply defined.
@@ -591,104 +600,126 @@ Package pdftex.def Info: images/domination-debug-gui.png used on input line 137
 (pdftex.def)             Requested size: 262.73091pt x 236.38254pt.
  [43 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/domination-debug-gui.png>]
-[44] [45] <images/general-game-complete.pdf, id=221, 508.17854pt x 258.2448pt>
+[44] <images/general-game-complete.pdf, id=218, 508.17854pt x 258.2448pt>
 File: images/general-game-complete.pdf Graphic file (type pdf)
 
 <use images/general-game-complete.pdf>
 Package pdftex.def Info: images/general-game-complete.pdf used on input line 14
-99.
+71.
 (pdftex.def)             Requested size: 370.74237pt x 188.40678pt.
 
-<images/general-game-length.pdf, id=222, 504.1535pt x 242.16472pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/general-game-length.pdf, id=219, 504.1535pt x 242.16472pt>
 File: images/general-game-length.pdf Graphic file (type pdf)
 
 <use images/general-game-length.pdf>
-Package pdftex.def Info: images/general-game-length.pdf used on input line 1507
+Package pdftex.def Info: images/general-game-length.pdf used on input line 1479
 .
 (pdftex.def)             Requested size: 370.74237pt x 178.09053pt.
- [46 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
-report/images/general-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Do
-mination/Domination/honours-project-report/images/general-game-length.pdf
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[45] [46 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-proj
+ect-report/images/general-game-complete.pdf>]
+<images/short-constrained-game.pdf, id=236, 752.63184pt x 275.16805pt>
+File: images/short-constrained-game.pdf Graphic file (type pdf)
+
+<use images/short-constrained-game.pdf>
+Package pdftex.def Info: images/short-constrained-game.pdf used on input line 1
+501.
+(pdftex.def)             Requested size: 453.13515pt x 165.66891pt.
+ [47 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/general-game-length.pdf> <C:/Users/s0914007/Documents/GitHub/Domi
+nation/Domination/honours-project-report/images/short-constrained-game.pdf
 
 pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
-n/Domination/honours-project-report/images/general-game-length.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
->]
-Overfull \hbox (17.61823pt too wide) in paragraph at lines 1522--1523
-\T1/cmr/m/n/12 HERE TO SHOW THAT PLAY-ERS FIGHT ONLY OVER CON-SIS-TENT PLACES
- []
+n/Domination/honours-project-report/images/short-constrained-game.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>] <images/bad-long-game.pdf, id=259, 751.62808pt x 293.2556pt>
+File: images/bad-long-game.pdf Graphic file (type pdf)
 
-[47] [48] <images/winner-game-complete.pdf, id=251, 503.14975pt x 252.2223pt>
+<use images/bad-long-game.pdf>
+Package pdftex.def Info: images/bad-long-game.pdf used on input line 1524.
+(pdftex.def)             Requested size: 453.13515pt x 176.79149pt.
+ [48 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/bad-long-game.pdf>] [49]
+<images/winner-game-complete.pdf, id=277, 503.14975pt x 252.2223pt>
 File: images/winner-game-complete.pdf Graphic file (type pdf)
 
 <use images/winner-game-complete.pdf>
-Package pdftex.def Info: images/winner-game-complete.pdf used on input line 155
+Package pdftex.def Info: images/winner-game-complete.pdf used on input line 154
 2.
 (pdftex.def)             Requested size: 370.74237pt x 185.85646pt.
 
-<images/winner-game-length.pdf, id=252, 502.13599pt x 234.13472pt>
+<images/winner-game-length.pdf, id=278, 502.13599pt x 234.13472pt>
 File: images/winner-game-length.pdf Graphic file (type pdf)
 
 <use images/winner-game-length.pdf>
-Package pdftex.def Info: images/winner-game-length.pdf used on input line 1560.
+Package pdftex.def Info: images/winner-game-length.pdf used on input line 1550.
 
 (pdftex.def)             Requested size: 370.74237pt x 172.87112pt.
- [49 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+ [50 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/winner-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Dom
 ination/Domination/honours-project-report/images/winner-game-length.pdf
 
 pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
 n/Domination/honours-project-report/images/winner-game-length.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
->]
-Overfull \hbox (6.26537pt too wide) in paragraph at lines 1587--1588
-[]\T1/cmr/m/n/12 SHOW A GRAPH OF ONE EX-AM-PLE OF WIN-NER CON-STRAINED WRONG 
- []
-
-[50] <images/loser-game-complete.pdf, id=279, 506.161pt x 259.24855pt>
+>] [51] <images/loser-game-complete.pdf, id=304, 506.161pt x 259.24855pt>
 File: images/loser-game-complete.pdf Graphic file (type pdf)
 
 <use images/loser-game-complete.pdf>
-Package pdftex.def Info: images/loser-game-complete.pdf used on input line 1598
+Package pdftex.def Info: images/loser-game-complete.pdf used on input line 1578
 .
 (pdftex.def)             Requested size: 370.74237pt x 189.88675pt.
 
-<images/loser-game-length.pdf, id=280, 505.15726pt x 282.36491pt>
+<images/loser-game-length.pdf, id=305, 505.15726pt x 282.36491pt>
 File: images/loser-game-length.pdf Graphic file (type pdf)
 
 <use images/loser-game-length.pdf>
-Package pdftex.def Info: images/loser-game-length.pdf used on input line 1606.
+Package pdftex.def Info: images/loser-game-length.pdf used on input line 1586.
 (pdftex.def)             Requested size: 370.74237pt x 207.24057pt.
- [51 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+ [52 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
 report/images/loser-game-complete.pdf> <C:/Users/s0914007/Documents/GitHub/Domi
 nation/Domination/honours-project-report/images/loser-game-length.pdf
 
 pdfTeX warning: pdflatex.EXE (file C:/Users/s0914007/Documents/GitHub/Dominatio
 n/Domination/honours-project-report/images/loser-game-length.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] [52]
- 6.
-[53
+>] <images/player-elim-early.pdf, id=328, 754.63933pt x 309.3156pt>
+File: images/player-elim-early.pdf Graphic file (type pdf)
 
-] [54] [55] [56] [57] [58] [59] [60
+<use images/player-elim-early.pdf>
+Package pdftex.def Info: images/player-elim-early.pdf used on input line 1600.
+(pdftex.def)             Requested size: 453.13515pt x 185.73238pt.
+ [53 <C:/Users/s0914007/Documents/GitHub/Domination/Domination/honours-project-
+report/images/player-elim-early.pdf>]
+[54
+
+]
+ 6.
+[55] [56] [57] [58] [59] [60] [61] [62
 
 ]
  7.
-[61]
-Overfull \hbox (28.72581pt too wide) in paragraph at lines 1866--1866
+[63]
+Overfull \hbox (28.72581pt too wide) in paragraph at lines 1848--1848
 []\T1/cmr/bx/n/17.28 Game Length Correct-Incorrect Pre-dic-tion Count 
  []
 
-[62]
-Underfull \hbox (badness 1558) in paragraph at lines 2156--2157
+[64]
+Underfull \hbox (badness 1558) in paragraph at lines 2138--2139
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
-t\report.bbl [63] [64] [65] [66] [67
+t\report.bbl [65] [66] [67] [68] [69
 
-]) [68]
+]) [70]
 (C:\Users\s0914007\Documents\GitHub\Domination\Domination\honours-project-repor
 t\report.aux)
 
@@ -696,10 +727,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4873 strings out of 493921
- 70393 string characters out of 3147273
+ 4887 strings out of 493921
+ 70826 string characters out of 3147273
  204008 words of memory out of 3000000
- 8113 multiletter control sequences out of 15000+200000
+ 8124 multiletter control sequences out of 15000+200000
  16103 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,26n,38p,867b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -722,9 +753,9 @@ fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb>
-Output written on report.pdf (74 pages, 2036079 bytes).
+Output written on report.pdf (76 pages, 2555155 bytes).
 PDF statistics:
- 861 PDF objects out of 1000 (max. 8388607)
+ 897 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
