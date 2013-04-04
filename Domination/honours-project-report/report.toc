@@ -26,51 +26,51 @@
 \contentsline {subsection}{\numberline {3.2.2}Actions}{18}
 \contentsline {subsubsection}{\numberline {3.2.2.1}Attacking}{18}
 \contentsline {subsubsection}{\numberline {3.2.2.2}Defending}{20}
-\contentsline {subsubsection}{\numberline {3.2.2.3}Movement}{21}
+\contentsline {subsubsection}{\numberline {3.2.2.3}Movement}{20}
 \contentsline {subsubsection}{\numberline {3.2.2.4}Reinforce}{21}
 \contentsline {subsubsection}{\numberline {3.2.2.5}Trading Territory Cards}{21}
-\contentsline {subsection}{\numberline {3.2.3}Territory}{22}
-\contentsline {subsection}{\numberline {3.2.4}Continent}{23}
-\contentsline {subsection}{\numberline {3.2.5}Player}{23}
+\contentsline {subsection}{\numberline {3.2.3}Territory}{21}
+\contentsline {subsection}{\numberline {3.2.4}Continent}{22}
+\contentsline {subsection}{\numberline {3.2.5}Player}{22}
 \contentsline {subsection}{\numberline {3.2.6}Explanations}{23}
 \contentsline {section}{\numberline {3.3}Prediction Agent Design}{24}
 \contentsline {subsubsection}{\numberline {3.3.0.1}Building the Set of Explanations}{24}
 \contentsline {subsubsection}{\numberline {3.3.0.2}Computing Action Probabilities}{25}
-\contentsline {subsubsection}{\numberline {3.3.0.3}Computing Explanation Probabilities}{29}
-\contentsline {subsection}{\numberline {3.3.1}Example of Operation}{30}
-\contentsline {section}{\numberline {3.4}Summary}{35}
-\contentsline {chapter}{\numberline {4}Implementation}{37}
-\contentsline {section}{\numberline {4.1}System Architecture}{37}
-\contentsline {section}{\numberline {4.2}Plan Recognition Agent Architecture}{38}
-\contentsline {section}{\numberline {4.3}Event Design}{39}
-\contentsline {section}{\numberline {4.4}System Operation}{39}
-\contentsline {section}{\numberline {4.5}Summary}{40}
-\contentsline {chapter}{\numberline {5}Evaluation}{43}
-\contentsline {section}{\numberline {5.1}Experimental Format}{44}
-\contentsline {section}{\numberline {5.2}Data Collection}{45}
-\contentsline {section}{\numberline {5.3}Experimental Findings}{46}
-\contentsline {subsection}{\numberline {5.3.1}Explanation Convergence Format}{47}
-\contentsline {subsection}{\numberline {5.3.2}Prediction Accuracy in General}{48}
-\contentsline {section}{\numberline {5.4}Plan Recognition Agent Winner Prediction Accuracy}{51}
-\contentsline {section}{\numberline {5.5}Plan Recognition Agent Loser Prediction Accuracy}{53}
-\contentsline {section}{\numberline {5.6}Summary}{54}
-\contentsline {chapter}{\numberline {6}Conclusion}{55}
-\contentsline {section}{\numberline {6.1}Main insights and results}{55}
-\contentsline {subsection}{\numberline {6.1.1}Improvement of Model}{56}
-\contentsline {section}{\numberline {6.2}Outcomes}{57}
-\contentsline {section}{\numberline {6.3}Criticism}{58}
-\contentsline {section}{\numberline {6.4}Future Work}{59}
-\contentsline {subsection}{\numberline {6.4.1}Model Augmentation}{59}
-\contentsline {subsubsection}{\numberline {6.4.1.1}Application of Machine Learning}{59}
-\contentsline {subsubsection}{\numberline {6.4.1.2}More Sophisticated Action Probability Computations}{59}
-\contentsline {subsubsection}{\numberline {6.4.1.3}More Sophisticated Modelling of Current Model}{59}
-\contentsline {subsubsection}{\numberline {6.4.1.4}Extension to Include Other Types of Mission Cards}{60}
-\contentsline {subsection}{\numberline {6.4.2}Discussion of Possible Applications}{61}
-\contentsline {section}{\numberline {6.5}Summary of whole report}{61}
-\contentsline {chapter}{\numberline {7}Appendix}{63}
-\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{63}
-\contentsline {subsection}{\numberline {7.1.1}General Prediction Accuracy}{63}
-\contentsline {section}{\numberline {7.2}Game Length Correct-Incorrect Prediction Count}{64}
-\contentsline {section}{\numberline {7.3}Explanation Accuracy Data}{65}
-\contentsline {section}{\numberline {7.4}Average Accuracy of Plan Recognition Agent}{65}
-\contentsline {chapter}{Bibliography}{69}
+\contentsline {subsubsection}{\numberline {3.3.0.3}Computing Explanation Probabilities}{28}
+\contentsline {subsection}{\numberline {3.3.1}Example of Operation}{29}
+\contentsline {section}{\numberline {3.4}Summary}{34}
+\contentsline {chapter}{\numberline {4}Implementation}{35}
+\contentsline {section}{\numberline {4.1}System Architecture}{35}
+\contentsline {section}{\numberline {4.2}Plan Recognition Agent Architecture}{37}
+\contentsline {section}{\numberline {4.3}Event Design}{38}
+\contentsline {section}{\numberline {4.4}System Operation}{38}
+\contentsline {section}{\numberline {4.5}Summary}{39}
+\contentsline {chapter}{\numberline {5}Evaluation}{41}
+\contentsline {section}{\numberline {5.1}Experimental Format}{42}
+\contentsline {section}{\numberline {5.2}Data Collection}{43}
+\contentsline {section}{\numberline {5.3}Experimental Findings}{44}
+\contentsline {subsection}{\numberline {5.3.1}Explanation Convergence Format}{45}
+\contentsline {subsection}{\numberline {5.3.2}Prediction Accuracy in General}{46}
+\contentsline {section}{\numberline {5.4}Plan Recognition Agent Winner Prediction Accuracy}{49}
+\contentsline {section}{\numberline {5.5}Plan Recognition Agent Loser Prediction Accuracy}{51}
+\contentsline {section}{\numberline {5.6}Summary}{52}
+\contentsline {chapter}{\numberline {6}Conclusion}{53}
+\contentsline {section}{\numberline {6.1}Main insights and results}{53}
+\contentsline {subsection}{\numberline {6.1.1}Improvement of Model}{54}
+\contentsline {section}{\numberline {6.2}Outcomes}{55}
+\contentsline {section}{\numberline {6.3}Criticism}{56}
+\contentsline {section}{\numberline {6.4}Future Work}{57}
+\contentsline {subsection}{\numberline {6.4.1}Model Augmentation}{57}
+\contentsline {subsubsection}{\numberline {6.4.1.1}Application of Machine Learning}{57}
+\contentsline {subsubsection}{\numberline {6.4.1.2}More Sophisticated Action Probability Computations}{57}
+\contentsline {subsubsection}{\numberline {6.4.1.3}More Sophisticated Modelling of Current Model}{57}
+\contentsline {subsubsection}{\numberline {6.4.1.4}Extension to Include Other Types of Mission Cards}{58}
+\contentsline {subsection}{\numberline {6.4.2}Discussion of Possible Applications}{59}
+\contentsline {section}{\numberline {6.5}Summary of whole report}{59}
+\contentsline {chapter}{\numberline {7}Appendix}{61}
+\contentsline {section}{\numberline {7.1}Accuracy Count Measurements}{61}
+\contentsline {subsection}{\numberline {7.1.1}General Prediction Accuracy}{61}
+\contentsline {section}{\numberline {7.2}Game Length Correct-Incorrect Prediction Count}{62}
+\contentsline {section}{\numberline {7.3}Explanation Accuracy Data}{63}
+\contentsline {section}{\numberline {7.4}Average Accuracy of Plan Recognition Agent}{63}
+\contentsline {chapter}{Bibliography}{67}

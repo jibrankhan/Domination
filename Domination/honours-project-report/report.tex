@@ -80,6 +80,8 @@ CHECK SUMMARIES TO SEE IF NOT MISSED THINGS
 
 CHANGE GRAPH TITLE TO BE E.G GENERAL PLAN PREDICTION ACCURACY OVER GAME COMPLETION
 
+HAVE I ANSWERED MY HYPOTHESIS?
+
 \begin{flushleft}
 \textit{AI has the potential to become the new driving force behind computer game innovation.}
 \end{flushleft}
@@ -89,21 +91,21 @@ John David Funge, Artificial Intelligence for Computer Games, An Introduction
 
 \section{Motivation}
 
-Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia, in his book Artificial Intelligence for Computer Games, An Introduction, John Funge argues \cite{JohnFunge:AIForComp} that academic A.I. and game A.I. are notably different in both scope and application.
+Artificial Intelligence for games or commonly termed 'game A.I.' has been an area of research ever since the beginning of significant work on A.I. Though techniques for game A.I. have typically come from academia, in his book \textit{Artificial Intelligence for Computer Games, An Introduction}, John Funge argues \cite{JohnFunge:AIForComp} that academic A.I. and game A.I. are notably different in both scope and application.
 
 Where the primary goal of academia is to further human understanding, often by solving particularly complex problems, the scope of developed A.I. techniques from academia tend to be usually more general in their application.
 
 On the other hand, game A.I. is built to provide an enjoyable experience for those playing the game, usually by creating the illusion of intelligence. Game A.I. is frequently built with a singular purpose in mind, which is generally considered to be any kind of control problem in a game.
 
-Companies in the video games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as dynamic rendering, the move from two dimensional to three dimensional have kept their customers interested over the years. 
+Companies in the video games industry who utilize game A.I. (which today is the vast majority) tirelessly seek an edge over their competition. This edge has typically come from computer graphics, effects such as hardware shader techniques, the move from two dimensional to three dimensional have kept their customers interested over the years. 
 
 Emerging though is the idea that as users become accustomed to high quality graphics, developers will require something new to give their product an edge over their competitors. That edge will likely be better quality game A.I. and indeed there have already been examples of successful games acclaimed for their game A.I, one such example is F.E.A.R. 
 
-A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture which developer Jeff Orkin termed Goal-Oriented Action Planning \cite{citeulike:5386647}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
+A First-Person-Shooter psychological horror video game, F.E.A.R utilizes a S.T.R.I.P.S. style planning-architecture, which developer Jeff Orkin termed Goal-Oriented Action Planning \cite{citeulike:5386647}. The game gained much acclaim and is commonly referenced as an excellent example of game A.I.
 
-With this shift in focus, there are growing incentives for developers to create more sophisticated game A.I. likely, as in the past, with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
+With this shift in focus, there are growing incentives for developers to create more sophisticated game A.I. likely, as in the past, this will be with techniques developed in academia. Plan recognition may provide such an opportunity for development. 
 
-Plan recognition is the problem of inferring an agent's plans from observations. Significant research in plan recognition began in the 1980's, the results of which have had numerous applications in several fields. In Nate Blaylocks paper on "Retroactive Recognition of Interleaved Plans for Natural Language Dialogue" \cite{oai:CiteSeerPSU:538953} he highlights a few of the most prominent as being:
+Plan recognition is the problem of inferring an agent's plans from observed actions. Significant research in plan recognition began in the 1980's, the results of which have had numerous applications in several fields. Nate Blaylock highlights \cite{oai:CiteSeerPSU:538953} a few of the most prominent as being:
 
 \begin{tabular}{|l|p{8cm}|}
 \hline 
@@ -117,21 +119,21 @@ Natural Language Processing & Story Understanding, Machine Translation, Dialogue
 \hline
 \end{tabular} 
 
-Plan recognition continues to receive attention from various computer science communities due to its ability to both provide personalized responses, and an understanding that the consequences of failing to recognise plans can in some situations be dire; though not so much the latter point, applying plan recognition to video games is no different.
+Plan recognition algorithms continue to receive attention from various Computer Science communities due to its ability to provide personalized responses and an understanding that the consequences of failing to recognise plans can be problematic.
 
-Plan recognition in video games has been used in performing dynamic analysis in game environments such as Real Time Strategy \cite{conf/aiide/SynnaeveB11} and Multi-User Dungeons\cite{Albrecht:1998:BMK:598277.598308}. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. The desired result being A.I. capable of recognising plans and subsequently building counter plans.
+In video games plan recognition has been used to perform dynamic analysis in game environments such as Real Time Strategy \cite{conf/aiide/SynnaeveB11} and Multi-User Dungeons \cite{Albrecht:1998:BMK:598277.598308}. More exciting though is the prospect of research into combining plan recognition algorithms with planning-architectures such as G.O.A.P. or using machine learning to further augment A.I. The desired result being more sophisticated A.I. capable of recognising plans and behaving accordingly whether adversarial in purpose or not.
 
 \section{Artificial Intelligence and Board Games}
 
 In 1950 Alan Turing published a landmark paper "Computing Machinery and Intelligence" establishing the Turing test, marking what many consider to be the birth of Artificial Intelligence as a field of research. Soon after John McCarthy officially coined the term Artificial Intelligence at a conference in Dartmouth College. He defined it as "the science and engineering of making intelligent machines".
 
-Interestingly though, it was thirty five years earlier that Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton which was capable of playing a king and rook endgame against a king from any position. Considered the worlds first computer game, it was arguably the beginning of Artificial Intelligence and board games a relationship older than the term Artificial Intelligence itself. 
+Interestingly though, it was thirty five years earlier that Leonardo Torres y Quevedo had built "El Ajedrecista" a chess automaton which was capable of playing a king and rook endgame against a king from any position. Considered the world's first computer game, it was arguably the beginning of Artificial Intelligence and board games, a relationship older than the term Artificial Intelligence itself. 
 
-Since then the relationship has only flourished, many games such as chess, checkers and backgammon have all been the subjects of research. Each area has seen its various triumphs such as, Chess Grand Master Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 and a solution to the game checkers by Jonathan Schaeffer et al in 2007.
+Since then the relationship has only flourished. Many games such as chess, checkers and backgammon have all been the subjects of research. Each area has seen its various triumphs such as, Chess Grand Master Garry Kasparovs defeat to IBM's chess computer DEEP BLUE in 1997 and a solution to the game checkers by Jonathan Schaeffer et al in 2007.
 
-It is apparent that the development of A.I. and its application in any medium of games has been and continues to be a significant area of interest for both commercial and academic fields. Games are considered a good metric for testing the quality of an A.I. due to their potentially challenging game environments and opponents.
+It is apparent that the development of A.I. and its application to the medium of games has been, and continues to be, a significant area of interest for both commercial and academic fields. Games are considered a good metric for testing the quality of an A.I. due to their potentially challenging game environments and opponents.
 
-There has been academic work done on A.I in R.I.S.K. , in particular various designs of A.I players for R.I.S.K. Michael Wolf at the University of Darmstadt wrote his PhD thesis titled "Development of an Intelligent Artificial Player for the Game of Risk" \cite{michaelwolf}, where he claims that R.I.S.K. is generally well known, but under recognised by academia. He then goes on to prove that the state space for R.I.S.K is in fact infinite. Other research on R.I.S.K includes that of efforts by students at Stanford University on an A.I. \cite{jlozanodbratz} agent to play R.I.S.K. In their paper they write that R.I.S.K. is an interesting opportunity for research as it is an "intersection between traditional and modern board games".
+There has been academic work done on A.I in R.I.S.K. , in particular various designs of A.I players for R.I.S.K. Michael Wolf at the University of Darmstadt wrote his PhD thesis titled "Development of an Intelligent Artificial Player for the Game of Risk" \cite{michaelwolf}, where he claims that R.I.S.K. is generally well known, but under recognised by academia. He then goes on to prove that the state space for R.I.S.K is in fact infinite. Other research on R.I.S.K includes that of efforts by students at Stanford University on an A.I. agent \cite{jlozanodbratz} to play R.I.S.K. In their paper they write that R.I.S.K. is an interesting opportunity for research as it is an "intersection between traditional and modern board games".
 
 \section{Aims}
 
@@ -139,16 +141,16 @@ There has been academic work done on A.I in R.I.S.K. , in particular various des
 \item
 To design and implement a plan recognition agent for the board game R.I.S.K. using the PHATT algorithm.
 \item
-For the plan recognition agent to be able to perform atleast with twice the accuracy of a random guess of mission card.
+For the plan recognition agent to have an average plan prediction accuracy at least twice that of a uniform guess.
 \item
-To further understanding in the complexities of performing plan recognition in R.I.S.K.
+To gain further understanding in the complexities of performing plan recognition in R.I.S.K.
+\item
+To determine whether plan recognition algorithms are beneficial in board games, specifically in R.I.S.K.
 \end{itemize}
 
 \section{Hypothesis}
 
 \begin{itemize}
-\item
-To determine whether plan recognition algorithms are beneficial in board games, specifically in R.I.S.K.
 \item
 If the probability of a mission card is predicted the highest among all the other mission cards for an agent, then it will be the correct mission card.
 \item
@@ -165,42 +167,42 @@ Chapter 4 details the implementation of the plan recognition agent. We present a
 
 Chapter 5 presents an evaluation of the plan recognition agent, experiments using the agent are described and experimental findings are presented.
 
-Finally chapter 6 the conclusions of the project are presented. The main insights and outcomes of the project are discussed, future work is described.
+Finally, chapter 6 where conclusions of the project are presented. The main insights and outcomes of the project are discussed and future work is detailed.
 
 \chapter{Background}
 
 \section{Previous Work in Plan Recognition}
 
-Many consider one of the earliest major projects on plan recognition to have been in 1978. Having identified plan recognition as a problem in itself, Schmidt et al \cite{journals/ai/SchmidtSG78} conducted experiments to determine whether or not people inferred the plans of other agents. From their results they created a rule based system called BELIEVER which attempted to capture the process of plan recognition. 
+Many consider one of the earliest major projects on plan recognition to have been in 1978. Having identified plan recognition as a problem in itself, Schmidt et al \cite{journals/ai/SchmidtSG78} conducted experiments to determine whether or not people inferred the plans of other agents. From their results they created a rule based system called BELIEVER, which attempted to capture the process of plan recognition. 
 
-Three years later Cohen, Perrault and Allen identified two different types of plan recognition \textit{keyhole} and \textit{intended} \cite{Cohen82a}. 
+Three years later, Cohen Perrault and Allen identified two different types of plan recognition: \textit{keyhole} and \textit{intended} \cite{Cohen82a}. 
 
-They defined each as:
+They defined each as follows:
 
 \begin{itemize}
 \item
-\textit{Keyhole plan recognition} is the recognition of an agent's plan through unobtrusive observation".
+\textit{Keyhole plan recognition} is the recognition of an agent's plan through unobtrusive observation.
 \item
 \textit{Intended plan recognition} is the recognition of the plan of a cooperative agent who wishes to be understood.
 \end{itemize}
 
-In 1986 Kautz and Allen published a paper titled "Generalized Plan Recognition" \cite{conf/aaai/KautzA86} which set the framework of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
+In 1986, Kautz and Allen published a paper titled \textit{Generalized Plan Recognition} \cite{conf/aaai/KautzA86} which set the framework of many plan recognition projects that followed and formed the basis of plan recognition through logic and reasoning. They defined keyhole plan recognition as involving the identification of a set of top-level goals from possible plans, which could be decomposed into related sub-goals and basic actions, thus creating an event hierarchy also known as a \textit{plan library}. 
 
-It was Charniak and Goldman \cite{journals/ai/CharniakG93} who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic rather than logic based approach to plan recognition using a Bayesian model. Their research continues to be popular in many avenues of research including its application in games.
+It was Charniak and Goldman \cite{journals/ai/CharniakG93} who first argued that plan recognition was largely a problem of reasoning under uncertainty and that any system which did not account for uncertainty would be inadequate. They went on to propose a probabilistic rather than logic based approach to plan recognition using a Bayesian model. Their research continues to be popular in many avenues of research, including its application in games.
 
-For example in 1998, Albrecht, Zukerman and Nicholson \cite{Albrecht:1998:BMK:598277.598308} did research on using keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The result of which "showed promise" for some domains. Five years later Fagan and Cunningham utilized case-based plan recognition in the classic game Space Invaders \cite{Fagan03case-basedplan} producing "good prediction accuracies in real time".
+For example in 1998, Albrecht, Zukerman and Nicholson \cite{Albrecht:1998:BMK:598277.598308} researched keyhole plan recognition using dynamic Bayesian networks to represent features of an adventure game. The result of which "showed promise" for some domains. Five years later Fagan and Cunningham utilized case-based plan recognition in the classic game Space Invaders \cite{Fagan03case-basedplan} producing "good prediction accuracies in real time".
 
-More recently though Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a paper of the design and implementation of a plan recognition agent in the Real-Time-Strategy game Starcraft. Their plan recognition agent through observations of building construction patterns could predict the types of units a player intended to produce.
+More recently though Synnaeve and Bessiere \cite{conf/aiide/SynnaeveB11} published a paper of the design and implementation of a plan recognition agent in the Real-Time-Strategy game StarCraft. The results of their work was a plan recognition agent capable of predicting the types of units a player intended to produce, through observations of what buildings they constructed.
 
 \subsection{An Example of Plan Recognition}
 
 We can introduce common concepts, assumptions and the process of plan recognition with an example of an agent attempting to infer the plan of another agent in a non-adversarial environment. 
 
-Person A is making a meal for Person B. For this meal A can cook only one of two kinds of burger, a meat burger or vegetarian (veg) burger. In other words A has two possible \textit{root-goals} (a state they wish to reach) either \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. 
+Person A is making a meal for Person B. For this meal A can cook only one of two kinds of burger: a meat burger or vegetarian (veg) burger. In other words, A has two possible \textit{root-goals} (a state they wish to reach) either \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. 
 
-A wanting to surprise B, will not tell B what his root-goal is but B wants to know what to expect for lunch. Since B cannot know what A is thinking, B must somehow infer what A's root-goal is likely to be by \textit{observing} A cook. In this way A's behavioural process is similar to a Hidden Markov Model to B. Person B thus models A's behaviour in the following manner. 
+A wanting to surprise B, will not tell B what his root-goal is. But B wants to know what to expect for lunch. Since B cannot know what A is thinking, B must infer A's root-goal through \textit{observing} A cook. In this way A's behavioural process is similar to a Hidden Markov Model to B. Person B thus models A's behaviour in the following manner. 
 
-Person B assumes A is rational and that A has a \textit{plan} to achieve their root-goal. Whatever A's root-goal is it can likely be decomposed into a number \textit{sub-goals} such as \textit{Cooked-Beef-Patties}. Sub-goals can then often be further decomposed into \textit{actions} to achieve them, such as \textit{Take-Beef-Patties-Out-Of-Packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal.
+Person B assumes A is rational, and that A has a \textit{plan} to achieve their root-goal. Whatever A's root-goal is it can likely be decomposed into a number \textit{sub-goals} such as \textit{Cooked-Beef-Patties}. Sub-goals can then often be further decomposed into \textit{actions} to achieve them, such as \textit{Take-Beef-Patties-Out-Of-Packet}. An important point to note is that these actions are not limited to only being a component of a sub-goal.
 
 To simplify the example, we introduce various assumptions:
 
@@ -220,10 +222,10 @@ A only wishes to cook one meal.
 \item
 A has no preferences of what to cook, in other words given a choice the probability of choosing is equally likely.
 \item
-One A does not change cooking plan.
+A does not change cooking plan.
 \end{itemize}
 
-Given these assumptions and B's knowledge of A's cooking abilities we can model the set of all of A's plans, following the notation set by Geib and Goldman in their paper presenting PHATT.
+Given these assumptions and B's knowledge of A's cooking abilities, we can model the set of all of A's plans following the notation set by Geib and Goldman in their paper presenting PHATT.
 
 \begin{figure}[h]
 \centerline{
@@ -233,23 +235,21 @@ Given these assumptions and B's knowledge of A's cooking abilities we can model 
 \label{fig:example-plan-library}
 \end{figure}
 
-To elaborate on the above diagram one of A's top level or root-goals is \textit{Cooked-Veg-Burgers} it is an And-node and so means to accomplish it, requires successfully performing all of its children nodes. 
+To elaborate on the above diagram, one of A's top level or root-goals is \textit{Cooked-Veg-Burgers}. It is an And-node and so accomplishing it requires accomplishing all of its child nodes. 
 
-Children of Or-nodes such as \textit{Cooked-Meat-Patties} represent choices available to A to accomplish the root-goal. For example to achieve \textit{Cook-Meat-Patties} A could either accomplish \textit{Cooked-Chicken-Patties} or \textit{Cooked-Beef-Patties}.
+Children of Or-nodes such as \textit{Cooked-Meat-Patties}, represent choices available to A to accomplish the root-goal. For example to achieve \textit{Cook-Meat-Patties}, A could either accomplish \textit{Cooked-Chicken-Patties} or \textit{Cooked-Beef-Patties}.
 
 Arrows represent dependencies between nodes. For example to be able to accomplish the action \textit{Cook-Beef-Patties}, A must first perform the action \textit{Take-Beef-Patties-Out-Of-Packet}.
 
-Beginning the example, A first performs the action \textit{Take-Burger-Bun-Out-Of-Packet}, then proceeds to \textit{Toast-Burger-Buns}. At this point looking at the plan library we have two possible \textit{explanations} for A's behaviour, \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}.
+Beginning the example, A first performs the action \textit{Take-Burger-Bun-Out-Of-Packet}, then proceeds to \textit{Toast-Burger-Buns}. At this point, looking at the plan library we have two possible \textit{explanations} for A's behaviour, \textit{Cooked-Veg-Burger} or \textit{Cooked-Meat-Burger}. Each of these explanations are equally likely at this point because the actions that have occurred, so far could be part of either plan.
 
-Each of these explanations are equally likely at this point because the actions that have occurred so far could be part of either plan.
-
-A then performs the action \textit{Take-Chicken-Patties-Out-Of-Packet}, given our assumptions we can conclude that A's root-goal is \textit{Cooked-Meat-Burger} and not \textit{Cooked-Veg-Burger}. In this way B has recognised A's plan thus performing the process of plan recognition.
+A then performs the action \textit{Take-Chicken-Patties-Out-Of-Packet}, given our assumptions, we can now conclude that A's root-goal is \textit{Cooked-Meat-Burger} and not \textit{Cooked-Veg-Burger}. In this way B has recognised A's plan, thus performing the process of plan recognition.
 
 \newpage
 
 \section{Introduction to R.I.S.K.}
 
-Developed and released by french film director Albert Lamorisse in 1957 as La Conqu\^ete du Monde, RISK is a turn-based board game for two to six players. This paper is only concerned with the standard version of R.I.S.K. which is an adversarial environment where players' vie to control a fully observable board portraying a static geographical map of the Earth.
+RISK is a turn-based board game for two to six players. Their are many versions, the first of which was released by Albert Lamorisse in 1957 under the title "La Conqu\^ete du Monde". This paper is only concerned with the standard version of R.I.S.K. which is an adversarial environment where players' vie to control a fully observable board portraying a static geographical map of the Earth.
 
 \subsection{Equipment}
 
@@ -385,15 +385,15 @@ After the movement phase has been completed the players turn ends and another pl
 
 \subsection{Cards}
 
-For each territory is a corresponding card. As well as name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is then awarded a card and no more than one in that turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing. Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
+eEach territory has a corresponding card. As well as name of that territory each card either depicts the symbol of an infantry, cavalry or artillery. By successfully occupying another player's territory in a turn, a player is awarded a single card per turn. Additionally there are two wild cards which can be substituted to represent a symbol of the players choosing. Owning a set of three cards with the same symbols or a set of three distinct symbols gives the player the opportunity to trade the set of cards for additional armies.
 
 \section{Why Plan Recognition in Board Games}
 
 By "knowing a users plan and goals can significantly improve the effectiveness of an interactive system" \cite{Carberry:2001:TPR:598284.598348}, to this board games are most definitely not exempt. With the success seen in the application of plan recognition to video games, often in complex environments, gives rise to optimism to transferring this success to board games.
 
-Molineaux, Aha and Sukthankar believe that "plan recognition methods can be a powerful ally for machine learning techniques" \cite{Molineaux09g.:beating}. Synnaeve and Bessiere have also echo this belief with their work in StartCraft \cite{conf/aiide/SynnaeveB11}., since their plan recognition agent utilized unsupervised machine learning of common plans which they then could feed into an adaptive A.I. As of today, many program implementations of board games often contain an A.I which is used often as substitutes for human players.
+Molineaux, Aha and Sukthankar believe that "plan recognition methods can be a powerful ally for machine learning techniques" \cite{Molineaux09g.:beating}. Synnaeve and Bessiere reinforce this belief with their work in StartCraft \cite{conf/aiide/SynnaeveB11}. Their plan recognition agent utilized unsupervised machine learning of common plans, which they then could feed into an adaptive A.I. 
 
-It is an attractive proposition to consider that through the same methods employed particularly by Synnaeve and Bessiere, plan recognition agents for board games could developed to augment board game A.I's, with for example personalized plan library's as Fagan and Cunningham suggest \cite{Fagan03case-basedplan} and by doing so build more interesting opponents for people to play against.
+ It is an attractive proposition to consider, that through these same methods. Plan recognition agents for board games could developed to augment board game A.I's, with for example personalized plan library's as Fagan and Cunningham suggest \cite{Fagan03case-basedplan}. By doing aim to build more interesting A.I. opponents for people to play against.
 
 \section{Summary}
 
@@ -404,6 +404,8 @@ Plan recognition is an old area of research dating back to the 1950's. It has se
 \section{Introduction to PHATT}
 
 MENTION WHY I CHOOSE PHATT!
+
+GO THROUGH NEW SECTIONSt
 
 PHATT was published by Christopher Geib and Robert Goldman in 2009 \cite{Geib:2009:PPR:1550966.1551246}. PHATT's approach is that plans are executed dynamically and the set of actions that an agent can take at each step, their \textit{pending set} depends critically on the actions that the agent has previously taken, this formed the basis of their model of plan execution.
 
@@ -429,7 +431,7 @@ This is the conditional probability of the explanation $exp_0$ being computed by
 
 \subsection{Computing an Explanation's Probability}
 
-To compute the term \textit{Pr(exp} $\wedge$ \textit{obs)} requires the plan library to be augmented with three probabilistic features:\newline
+Computing the term \textit{Pr(exp} $\wedge$ \textit{obs)} requires the plan library to be augmented with three probabilistic features:\newline
 
 \begin{enumerate}
 \item
@@ -448,7 +450,9 @@ The probability of an explanation is then calculated by multiplying each of the 
 
 \section{Environment Modelling and Data-Structure Design}
 
-PHATT is designed to operate in an action space and therefore it was a vitally important conceptual issue for the design of plan recognition agent to be able to translate R.I.S.K into such a format as to be able represent the action space of a R.I.S.K game at any time. This process involved modelling and data structure design to exploit the constraints placed by the environment on what a player can do and by doing so, infer the plan of a player by based on what they do, given the choices they had.
+PHATT is designed to operate in an action space. Therefore it was a vitally important as a conceptual issue for the design of plan recognition agent, to be able to translate R.I.S.K into such an action space for PHATT to operate.
+
+Solving this issue involved modelling and data structure design. By exploiting the constraints placed by the environment on what a player can do, and observing the choices they made given these constraints we attempt infer the plan of a player.
 
 \subsection{Root-Goals}
 
@@ -540,7 +544,7 @@ Each of these action must be modelled in a manner that contributes towards expla
 
 Though players can perform several attacks during their turn, they can only attack one territory at a time. Thus players' must choose both which territories to attack and the order in which to attack them, provided they have neighbouring territories and sufficient armies. Modelling these choices provides an avenue to infer a players plan.
 
-The pending set of a player's attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own, that are neighbour to atleast one territory that they own which also contains at least two armies.
+The pending set of a player's attack actions for any turn is to either successfully or unsuccessfully attack territories they do not own, that are neighbour to at least one territory that they own which also contains at least two armies.
 
 If a player $p$ successfully occupies a territory $T_{o}$, then the attack actions of neighbouring territories of $T_{o}$ are added to $p$'s attack pending set. If they lose a territory $T_{l}$ due to another player's successful attack, then any attack actions of neighbouring territories of $T_{l}$ are removed from their attack pending set for their next turn. 
 
@@ -603,13 +607,11 @@ Failed-Defence & No & An inconsistent action because a player would not normally
 \label{table:attack-defend-modelling}
 \end{table}
 
-\newpage
-
 \subsubsection{Movement}
 
 The pending set of movement actions of player $p$ is the set of territories a player owns that are neighbour to a territory where $p$ has more than one army. Moving armies into a territory is modelled as a consistent action with the explanation that the territory that had armies moved into is directly related to.
 
-Movement actions will be modelled as as a less significant indicator of a players plan due to a much higher proportion of reinforce and attack actions which are already modelled in a manner to indicate a players plan.
+Movement actions will be modelled as a less significant indicator of a players plan due to the much higher proportion of reinforce and attack actions which are already modelled in a manner to indicate a players plan.
 
 \subsubsection{Reinforce}
 
@@ -1197,7 +1199,7 @@ High Quality Integrated Development Environments.
 \caption{System Architecture}
 \end{figure} 
 
-The system was \textit{event-driven} it had three majpr components.
+The system was \textit{event-driven} it had three major components.
 
 \textit{Domination-Program} refers to the open-source game developed by Yura.Net, modifications to the source code of the program was automating the output of the \textit{Replay-File} which occured at the end of a game, as well as lines of code at various key to fire events into the \textit{Processing} component. 
 
@@ -1209,21 +1211,32 @@ The plan recognition agent makes extensive use of the freely available Google Gu
 
 Several Explanation objects comprised the \textit{Hardcoded-Explanations} section. Explanation objects had hardcoded root-goal and sub-goals. Using these sub-goals the system could build a list of consistent and inconsistent actions. These data structures were implemented seperate to the core structure of the plan recognition agent and therefore given a complete list of hardcoded explanations for another map the plan recognition can be used sucessfully once again.
 
-The domination program would be capable of outputing a Replayfile that would be used to replay a game.
+The Domination-Program is capable of outputing a Replay-File that could be used to replay a game.
 
 The plan recognition agent would output a csv file containg the plan predictions for each player by the plan recogntion agent over the course of the game.
 
 The architecture of the system is such that the plan recognition agent is not as dependant sub-component of the game, but rather a separate entity that operates in parallel to the game which if need be could be replaced by another implementation of a plan recognition agent.
 
+\newpage
+
 \section{Plan Recognition Agent Architecture}
 
-PLAN RECOGNTION AGENT ARCHITECTURE-EXTENSION OF DIAGRAM INCLUDE PLAN RECOGNITION AGENT SUB DATA STRUCTURES - EXTENSION OF DIAGRAM TO INCLUDE OUTPUTTING OF CSV FILE
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=0.7\textwidth]{images/plan-recognition-agent-architecture}
+}
+\caption{Plan Recognition Agent Architecture}
+\end{figure} 
 
-The plan recognition agent has a data structure for each player which in turn has several data structures of the explanation that are initially hardcoded. Each explanation object calculate its own probability.
+The Plan-Recognition-Agent has a data structure for each player which in turn has several explanation data structures that are initially hardcoded. Each explanation object calculates its own probability.
 
-When an event arrives from the processing class it is routed to its specified player data structure and then to its specifiied explanation data structure.
+The Root-Goal and Sub-Goal data structures must be hardcoded 
+
+When an event arrives from the processing class it is routed to its specified player data structure and then to its specifiied explanation data structure which would use the observed action to compute its new probability.
 
 Data structure that stores the probabilities of each players expalantion structure once this game ends the data structure writes it out to a data folder as a csv file.
+
+\newpage
 
 \section{Event Design}
 
@@ -1280,7 +1293,7 @@ Reinforce & playerName, cName, tName & Signals that \textit{playerName} performe
 \label{table:event-description}
 \end{table}
 
-More specifically other than player initalisation or removal events, each event will trigger the computation of explanation probabilites, which players explanation probabilites are decieded for example by the \textit{attackerName} and what effect is decieded by the state of the R.I.S.K world which can be built from the data structures of the Domination program and the continent and territory name of the event.
+More specifically other than player initalisation or removal events, each event will trigger the computation of explanation probabilites, which players explanation probabilites are decieded for example by the \textit{attackerName} and what effect, is decieded by the state of the R.I.S.K world namely the respective players pending set which can be built from the data structures of the Domination-Program and the continent and territory name of the event.
 
 \section{System Operation}
 
@@ -1597,7 +1610,7 @@ The final prediction probabilities of the above graph was split exactly equally 
 
 The average accuracy of losers is stable through out the course of a game of any game type except for constrained play though.
 
-Losers in A.I - 100 appear to show negative trend in that as the game length increases the prediction accuracy falls. As we saw from an analysis of winners the inverse to this was true, as game length increases the plan prediction accuracy increases as well. This is an interesting correlation as it suggests that the prediction accuracy of winners atleast for A.I. - 100 play gets better as losers get worse. This makes sense given that winners by definition won because losers did not and that a winners sucess does have a negative impact on losers being able to follow their own mission.
+Losers in A.I - 100 appear to show negative trend in that as the game length increases the prediction accuracy falls. As we saw from an analysis of winners the inverse to this was true, as game length increases the plan prediction accuracy increases as well. This is an interesting correlation as it suggests that the prediction accuracy of winners at least for A.I. - 100 play gets better as losers get worse. This makes sense given that winners by definition won because losers did not and that a winners sucess does have a negative impact on losers being able to follow their own mission.
 
 EXAMPLE OF WINNER?
 
@@ -1626,7 +1639,7 @@ In constrained play, players do not purposely seek to hinder the progress of oth
 
 For A.I. 100 there is a inverse correlation between the plan prediction accuracy of winners and the plan prediction accuracy of losers.
 
-Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission atleast once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect. This proposition is supported by how the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}.
+Winners by definition have successfully performed their mission or will have eliminated every player, in either case they will have performed each consistent action for a mission at least once. Making on average as the data reflects the number of consistent actions performed by the winner, on average higher than that of losers hence making it easier to detect. This proposition is supported by how the plan recognition agents \textit{prediction accuracy of winners is better than that of losers}.
 
 In R.I.S.K.there is only one winner. R.I.S.K is an adversarial environment where right from the start you are attacked. Given that you can survive an onslaught of attacks in-order to achieve ones own mission, players must either directly or indirectly eliminate each other and often modify their own plan in order to continue surviving or prevent other players from winning. 
 
@@ -1668,7 +1681,7 @@ Making a system of dynamically applying weights in a manner that is proportional
 
 For example, knowing that a player owns four out of five of a continents territories when they choose to attack the last territory is intuitively more significant to the explanation of the player wanting to own that continent then if they only owned a single continent of that territory and choose to attack another territory.
 
-ExplanationProb = ExplanationProb * Weight * Fraction representing state of environment
+ExplanationProb = ExplanationProb * Weight * Some fraction representing the state of environment
 
 For example
 
@@ -1704,21 +1717,21 @@ TALK ABOUT THE OUTCOMES OF YOUR WORK!
 
 \section{Criticism}
 
-ACCURACY OVER LENGTH OF GAME SHOULD HAVE A SMALLER UNIT SO AS TO SEE TRENDS IN HUMAN DATA
+Better inferences of human players game over time could have been more detailed by making the intervals of game length smaller.
 
-Essentially attack has been modelled following PHATT but the rest of the actions are simple given a weighting of 0.98 for inconsistent and 1.0 for consistent. Thus attack has been modelled as the most significant action in the environment and this we can intuitively tell is not the case.
+Attack has been modelled following PHATT though the rest of the actions are simply given a weighting of e.g 0.98 for inconsistent and 1.02 for consistent to scale the explanation up or down respectively. Thus attack has been modelled as the most significant action and this is a weak assumption.
 
 MODEL IS LOP SIDED TOWARDS ATTACK, SHOULD TAKE INTO ACCOUNT WHAT TERRITORIES PLAYERS OWN AT THE END OF A TURN.
 
 ATTACK probability COMPUTATIONS, TREATS ANY NON OWNED CONNECTED TERRITORY AS ATTACKABLE, GOES ON ASSUMPTION THAT PLAYER HAS AT LEAST TWO ARMIES IN EVERY TERRITORY
 
-Small number of data samples for free play and constrained winners, therefore analysis will likely not have covered all the cases.
+A small number of data samples were collected for free and constrained play and therefore the data is less resistant to outliers which could have effected the evaluation.
 
 Calculation problems, give example of a explanation with more territories being higher than one with fewer even though the fewer one was correct.
 
-How to differentiate between two identical alternates? E.g prediction is equal between EU SA AU and EU AU SA 
+The model makes no attempt to differentiate two identical child-root-goal  e.g the plan prediction accuracy is equal between EU SA AU and EU AU SA in many cases. 
 
-Sampling of probability needs to be more frequent rather than just at end of term as many actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
+The sampling of explanation probabilities needs to be more frequent than only at end of each tunr as several actions occur between turns and the game may end in the middle of a lot of actions during one turn. Players do a lot of significant things in one turn.
 
 \section{Future Work}
 
