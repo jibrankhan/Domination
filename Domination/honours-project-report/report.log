@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.12)  4 APR 2013 15:04
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.9.12)  4 APR 2013 15:25
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -388,50 +388,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 271--273
 ]
  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
+Underfull \hbox (badness 10000) in paragraph at lines 408--409
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--423
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
 
  []
 
-
-Underfull \vbox (badness 2073) has occurred while \output is active []
-
- [15]
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 499--500
+Underfull \hbox (badness 10000) in paragraph at lines 495--496
 
  []
 
 [17] [18]
-Overfull \hbox (29.46509pt too wide) in paragraph at lines 558--567
+Overfull \hbox (29.46509pt too wide) in paragraph at lines 554--563
  [][] 
  []
 
 [19]
-Underfull \hbox (badness 1558) in paragraph at lines 591--592
+Underfull \hbox (badness 1558) in paragraph at lines 587--588
 []|\T1/cmr/m/n/12 An in-con-sis-tent ac-tion be-cause a player
  []
 
 
-Overfull \hbox (10.70032pt too wide) in paragraph at lines 585--594
+Overfull \hbox (10.70032pt too wide) in paragraph at lines 581--590
  [][] 
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 667--668
+Underfull \hbox (badness 10000) in paragraph at lines 663--664
 
  []
 
@@ -439,50 +436,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 667--668
 Underfull \vbox (badness 3078) has occurred while \output is active []
 
  [22]
-Underfull \hbox (badness 10000) in paragraph at lines 690--691
+Underfull \hbox (badness 10000) in paragraph at lines 686--687
 
  []
 
 [23]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 733--756
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 729--752
 []$ 
  []
 
 [24]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 770--798
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 766--794
 []$ 
  []
 
 
-Overfull \hbox (1.17232pt too wide) in paragraph at lines 802--803
+Overfull \hbox (1.17232pt too wide) in paragraph at lines 798--799
 []\T1/cmr/m/n/12 Before pro-ceed-ing onto the next ter-ri-tory in $\OML/cmm/m/i
 t/12 PT$ \T1/cmr/m/n/12 an-other loop is per-formed through
  []
 
 [25]
-Overfull \hbox (42.48602pt too wide) in paragraph at lines 821--832
+Overfull \hbox (42.48602pt too wide) in paragraph at lines 817--828
 \T1/cmr/bx/n/12 Algorithm 3.3.3:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 w; pTotal
 ActNum; pConsActNum$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 821--832
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 817--828
 []$ 
  []
 
 [26]
-Overfull \hbox (4.83934pt too wide) in paragraph at lines 840--863
+Overfull \hbox (4.83934pt too wide) in paragraph at lines 836--859
 \T1/cmr/bx/n/12 Algorithm 3.3.4:| []\T1/cmr/m/n/12 ($\OML/cmm/m/it/12 playerPS;
  totalExpConAct; obs$\T1/cmr/m/n/12 ) 
  []
 
 
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 840--863
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 836--859
 []$ 
  []
 
 [27]
-Overfull \hbox (10.16542pt too wide) in paragraph at lines 884--924
+Overfull \hbox (10.16542pt too wide) in paragraph at lines 880--920
 []$ 
  []
 
@@ -490,7 +487,7 @@ Overfull \hbox (10.16542pt too wide) in paragraph at lines 884--924
 File: images/risk-plan-library.pdf Graphic file (type pdf)
 
 <use images/risk-plan-library.pdf>
-Overfull \hbox (14.63141pt too wide) in paragraph at lines 952--953
+Overfull \hbox (14.63141pt too wide) in paragraph at lines 948--949
 [][] 
  []
 
@@ -498,7 +495,7 @@ Overfull \hbox (14.63141pt too wide) in paragraph at lines 952--953
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 973--974
+Underfull \hbox (badness 10000) in paragraph at lines 969--970
 
  []
 
@@ -507,23 +504,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 973--974
 pdfTeX warning: pdflatex (file ./images/risk-plan-library.pdf): PDF inclusion: 
 Page Group detected which pdfTeX can't handle. Ignoring it.
 >]
-Overfull \hbox (12.16704pt too wide) in paragraph at lines 1008--1009
+Overfull \hbox (12.16704pt too wide) in paragraph at lines 1004--1005
 []\T1/cmr/m/n/12 For each root-goal the $\OML/cmm/m/it/12 computeObsProb$ \T1/c
 mr/m/n/12 fil-ters out all ac-tion types ex-cept Successful-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1009
+Underfull \hbox (badness 10000) in paragraph at lines 1004--1005
 
  []
 
 [31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1108--1109
+Underfull \hbox (badness 10000) in paragraph at lines 1104--1105
 
  []
 
 
-Overfull \hbox (18.16396pt too wide) in paragraph at lines 1124--1137
+Overfull \hbox (18.16396pt too wide) in paragraph at lines 1120--1133
  [][] 
  []
 
@@ -533,7 +530,7 @@ Overfull \hbox (18.16396pt too wide) in paragraph at lines 1124--1137
 File: images/system-architecture.pdf Graphic file (type pdf)
 
 <use images/system-architecture.pdf>
-Overfull \hbox (20.22523pt too wide) in paragraph at lines 1199--1200
+Overfull \hbox (20.22523pt too wide) in paragraph at lines 1195--1196
 []\T1/cmr/m/n/12 The \T1/cmr/m/it/12 Pro-cess-ing \T1/cmr/m/n/12 com-po-nent wa
 s re-spon-si-ble for rout-ing events to the \T1/cmr/m/it/12 Plan-Recognition-
  []
@@ -554,25 +551,25 @@ ition-agent-architecture.pdf, page is rotated 90 degrees
 pdfTeX warning: pdflatex (file ./images/plan-recognition-agent-architecture.pdf
 ): PDF inclusion: Page Group detected which pdfTeX can't handle. Ignoring it.
 >]
-Underfull \hbox (badness 2443) in paragraph at lines 1286--1286
+Underfull \hbox (badness 2443) in paragraph at lines 1282--1282
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 attacker-name \T1/cmr/m/n/12 per
 -formed a
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 1286--1286
+Underfull \hbox (badness 1748) in paragraph at lines 1282--1282
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 defender-name \T1/cmr/m/n/12 per
 -formed a
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 1286--1286
+Underfull \hbox (badness 1748) in paragraph at lines 1282--1282
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 defender-name \T1/cmr/m/n/12 per
 -formed a
  []
 
 
-Underfull \hbox (badness 3701) in paragraph at lines 1286--1286
+Underfull \hbox (badness 3701) in paragraph at lines 1282--1282
 []|\T1/cmr/m/n/12 Signals that \T1/cmr/m/it/12 player-name \T1/cmr/m/n/12 per-f
 ormed an
  []
@@ -666,12 +663,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [56]
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 1674--1675
+Underfull \hbox (badness 10000) in paragraph at lines 1670--1671
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1684--1685
+Underfull \hbox (badness 10000) in paragraph at lines 1680--1681
 
  []
 
@@ -684,7 +681,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1684--1685
 ]
  7.
 [63]
-Overfull \hbox (28.72581pt too wide) in paragraph at lines 1814--1814
+Overfull \hbox (28.72581pt too wide) in paragraph at lines 1810--1810
 []\T1/cmr/bx/n/17.28 Game Length Correct-Incorrect Pre-dic-tion Count 
  []
 
@@ -722,7 +719,7 @@ m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/te
 xmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
 mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fo
 nts/type1/bluesky/cm/cmsy10.pfb>
-Output written on report.pdf (76 pages, 2518521 bytes).
+Output written on report.pdf (76 pages, 2518448 bytes).
 PDF statistics:
  895 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

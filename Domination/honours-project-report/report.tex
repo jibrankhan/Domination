@@ -392,10 +392,6 @@ Plan recognition is a mature area of research dating back to the 1950's. It has 
 
 \section{Introduction to PHATT}
 
-MENTION WHY I CHOOSE PHATT!
-
-GO THROUGH NEW SECTIONS
-
 PHATT is a plan recognition algorithm by Christopher Geib and Robert Goldman \cite{Geib:2009:PPR:1550966.1551246}. PHATT operates on plans that are executed dynamically, but in discrete time steps. The set of actions that an agent can take each step, their \textit{pending set}, depends on the actions that the agent has previously taken.
 The model is as follows. An agent first chooses a root-goal, then a set of plans to achieve that root-goal. Any actions of those plans that had no pre-requisite actions would form the initial pending set of the agent. The agent would then perform an action from the initial pending set, which results in some actions being appended to the pending set and others being removed, thus forming the next pending set. Assuming \textit{blind commitment} on the part of the agent, the agent would then continue to perform actions until its root goal has been satisfied.
 
@@ -1196,7 +1192,7 @@ Automating the output of the \textit{Replay-File}.
 Code to fire events into the \textit{Processing} component. 
 \end{itemize}
 
-The \textit{Processing} component was responsible for routing events to the \textit{Plan-Recognition-Agent} MORE DETAIL REQUIRED.
+The \textit{Processing} component was responsible for routing events to the \textit{Plan-Recognition-Agent}.
 
 The \textit{Plan-Recognition-Agent} as well as being responsible for had access to the data structures in the Domination program. Rather than storing its own copy avoided any synchronisation between it and the Domination program. Additionally the advantages of this approach includes less overhead as well significantly reducing the possibility that the PR agents copy loses synchronisation with the Domination-Programs data structures. On the other hand a disadvantage is that this makes the plan-recognition-agent more dependant on the methods of the developers implementation.
 

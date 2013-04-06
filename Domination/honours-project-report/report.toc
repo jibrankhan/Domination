@@ -20,7 +20,7 @@
 \contentsline {section}{\numberline {2.4}Summary}{12}
 \contentsline {chapter}{\numberline {3}Design}{15}
 \contentsline {section}{\numberline {3.1}Introduction to PHATT}{15}
-\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{16}
+\contentsline {subsection}{\numberline {3.1.1}Computing an Explanation's Probability}{15}
 \contentsline {section}{\numberline {3.2}Environment Modelling and Data-Structure Design}{16}
 \contentsline {subsection}{\numberline {3.2.1}Root-Goals}{16}
 \contentsline {subsection}{\numberline {3.2.2}Actions}{18}
